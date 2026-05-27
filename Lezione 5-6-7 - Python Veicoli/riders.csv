@@ -1,0 +1,41 @@
+rider_id,nome,cognome,telefono,email,anni_esperienza,zone_operative,patente,disponibile
+R01,Sara,Ricci,+39 379 202 3252,sara.ricci@delivery.it,1,Arcella | Arcella,Nessuna,SI
+R02,Lucia,Villa,+39 379 588 4267,lucia.villa@delivery.it,5,Arcella | Rubano,Nessuna,NO
+R03,Francesco,Costa,+39 389 856 1611,francesco.costa@delivery.it,3,Centro Padova | Pontevigodarzere | Arcella | Rubano,Nessuna,SI
+R04,Monica,Marchetti,+39 367 906 9116,monica.marchetti@delivery.it,3,Vigodarzere | Centro Padova,Nessuna,NO
+R05,Giorgio,Fontana,+39 398 209 6489,giorgio.fontana@delivery.it,5,Vigodarzere | Centro Padova | Limena,Nessuna,SI
+R06,Chiara,Esposito,+39 346 928 2845,chiara.esposito@delivery.it,6,Selvazzano | Albignasego | Albignasego | Vigodarzere,Nessuna,SI
+R07,Matteo,Fontana,+39 315 445 5833,matteo.fontana@delivery.it,4,Rubano | Rubano | Noventa Padovana,Nessuna,SI
+R08,Matteo,Barbato,+39 367 785 2562,matteo.barbato@delivery.it,3,Vigodarzere | Arcella | Limena | Selvazzano,Nessuna,SI
+R09,Davide,Rinaldi,+39 347 557 5374,davide.rinaldi@delivery.it,6,Vigodarzere | Selvazzano | Centro Padova,Nessuna,SI
+R10,Giacomo,Testa,+39 347 163 2936,giacomo.testa@delivery.it,8,Abano Terme | Centro Padova | Rubano | Rubano,Nessuna,SI
+R11,Giacomo,Moretti,+39 314 220 5833,giacomo.moretti@delivery.it,6,Rubano | Selvazzano | Noventa Padovana,A2,SI
+R12,Elena,Ricci,+39 315 720 7121,elena.ricci@delivery.it,7,Albignasego | Albignasego,A2,SI
+R13,Anna,Greco,+39 346 880 5054,anna.greco@delivery.it,2,Pontevigodarzere | Selvazzano | Vigodarzere,A2,SI
+R14,Paola,Colombo,+39 326 660 9281,paola.colombo@delivery.it,4,Noventa Padovana | Centro Padova | Arcella | Abano Terme,A2,SI
+R15,Claudia,Greco,+39 375 219 4365,claudia.greco@delivery.it,8,Albignasego | Centro Padova,A2,SI
+R16,Andrea,Marchetti,+39 370 567 1945,andrea.marchetti@delivery.it,8,Albignasego | Pontevigodarzere | Centro Padova | Vigodarzere,A2,SI
+R17,Marta,Ferrara,+39 320 863 4570,marta.ferrara@delivery.it,2,Noventa Padovana | Centro Padova | Arcella,A2,SI
+R18,Luca,Caruso,+39 333 583 1519,luca.caruso@delivery.it,5,Noventa Padovana | Arcella | Selvazzano,A2,NO
+R19,Monica,Moretti,+39 311 530 7135,monica.moretti@delivery.it,7,Pontevigodarzere | Rubano,A2,NO
+R20,Chiara,Vitale,+39 329 652 3178,chiara.vitale@delivery.it,6,Arcella | Arcella | Rubano,A2,NO
+R21,Simone,Moretti,+39 326 103 1372,simone.moretti@delivery.it,5,Arcella | Selvazzano | Rubano | Noventa Padovana,B,NO
+R22,Chiara,Mancini,+39 347 571 6671,chiara.mancini@delivery.it,3,Selvazzano | Arcella | Vigodarzere | Limena,B,SI
+R23,Nicola,Serra,+39 318 116 4943,nicola.serra@delivery.it,4,Pontevigodarzere | Abano Terme | Selvazzano | Rubano,B,SI
+R24,Andrea,Conti,+39 327 350 1724,andrea.conti@delivery.it,7,Selvazzano | Albignasego | Abano Terme | Rubano,B,SI
+R25,Chiara,Ricci,+39 350 339 6224,chiara.ricci@delivery.it,6,Albignasego | Pontevigodarzere | Limena | Selvazzano,B,SI
+R26,Riccardo,Costa,+39 350 381 1998,riccardo.costa@delivery.it,3,Rubano | Selvazzano,B,SI
+R27,Sara,Mancini,+39 311 787 7244,sara.mancini@delivery.it,6,Selvazzano | Albignasego | Selvazzano,B,NO
+R28,Anna,Caruso,+39 389 584 4948,anna.caruso@delivery.it,4,Rubano | Vigodarzere | Arcella,B,SI
+R29,Giacomo,Vitale,+39 370 670 9683,giacomo.vitale@delivery.it,3,Rubano | Pontevigodarzere | Albignasego | Selvazzano,B,SI
+R30,Giulia,Ricci,+39 375 967 7079,giulia.ricci@delivery.it,2,Albignasego | Centro Padova | Rubano,B,SI
+R31,Lucia,Fontana,+39 398 717 1647,lucia.fontana@delivery.it,2,Pontevigodarzere | Abano Terme,CE,SI
+R32,Filippo,Ferrara,+39 329 440 5967,filippo.ferrara@delivery.it,1,Noventa Padovana | Rubano | Selvazzano | Noventa Padovana,CE,SI
+R33,Filippo,Villa,+39 318 590 4974,filippo.villa@delivery.it,4,Noventa Padovana | Limena,CE,SI
+R34,Giulia,Villa,+39 367 577 9743,giulia.villa@delivery.it,6,Selvazzano | Centro Padova,CE,SI
+R35,Giacomo,Bruno,+39 315 580 6246,giacomo.bruno@delivery.it,4,Selvazzano | Albignasego | Limena,CE,SI
+R36,Alessandro,Marino,+39 320 367 7841,alessandro.marino@delivery.it,5,Pontevigodarzere | Abano Terme | Noventa Padovana,CE,SI
+R37,Davide,Serra,+39 379 663 6530,davide.serra@delivery.it,5,Noventa Padovana | Arcella | Abano Terme,CE,SI
+R38,Valentina,Santoro,+39 345 850 6770,valentina.santoro@delivery.it,3,Noventa Padovana | Rubano | Vigodarzere,CE,SI
+R39,Davide,Fontana,+39 383 134 2217,davide.fontana@delivery.it,1,Albignasego | Vigodarzere | Selvazzano | Rubano,CE,NO
+R40,Valentina,Ferrari,+39 314 254 1149,valentina.ferrari@delivery.it,4,Vigodarzere | Limena | Rubano,CE,SI

@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+# Cartelle di configurazione degli IDE da ignorare nella root
+.idea/
+.vscode/
+.DS_Store

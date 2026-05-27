@@ -1,0 +1,151 @@
+cliente_id,nome,cognome,indirizzo,zona,latitudine,longitudine,telefono,email
+C001,Sara,Conti,"""Via Roma, 71""",Selvazzano,45.383357,11.823675,+39 312 858 9935,sara.conti12@outlook.it
+C002,Luca,Ferrari,"""Via Garibaldi, 56""",Selvazzano,45.390129,11.806637,+39 346 833 9928,luca.ferrari54@libero.it
+C003,Chiara,Testa,"""Via Mazzini, 2""",Albignasego,45.362755,11.870166,+39 340 320 6514,chiara.testa14@gmail.com
+C004,Giulia,Conti,"""Corso Italia, 89""",Vigodarzere,45.444349,11.839043,+39 375 649 3045,giulia.conti49@gmail.com
+C005,Lucia,Costa,"""Viale Codalunga, 93""",Vigodarzere,45.442615,11.839669,+39 312 333 5741,lucia.costa11@libero.it
+C006,Enrico,Conti,"""Via Milano, 72""",Pontevigodarzere,45.437256,11.872756,+39 358 463 4432,enrico.conti86@yahoo.it
+C007,Anna,Villa,"""Via Oberdan, 19""",Vigodarzere,45.453239,11.850819,+39 347 267 8573,anna.villa49@yahoo.it
+C008,Giorgio,Esposito,"""Via Aquileia, 143""",Selvazzano,45.394431,11.826228,+39 318 157 4752,giorgio.esposito5@yahoo.it
+C009,Giulia,Bruno,"""Via Garibaldi, 55""",Vigodarzere,45.459033,11.845552,+39 311 611 7482,giulia.bruno83@outlook.it
+C010,Davide,Bruno,"""Via Cavour, 64""",Limena,45.444935,11.850928,+39 370 697 7543,davide.bruno47@libero.it
+C011,Davide,Longo,"""Corso del Popolo, 24""",Centro Padova,45.415066,11.868468,+39 345 911 7916,davide.longo77@gmail.com
+C012,Giulia,Lombardi,"""Via XX Settembre, 120""",Limena,45.438034,11.846277,+39 320 796 2876,giulia.lombardi88@yahoo.it
+C013,Valentina,Esposito,"""Corso Italia, 29""",Abano Terme,45.358434,11.788889,+39 315 996 5315,valentina.esposito65@libero.it
+C014,Paola,Villa,"""Via Garibaldi, 77""",Limena,45.446615,11.836668,+39 318 265 9837,paola.villa68@gmail.com
+C015,Elena,Marino,"""Corso del Popolo, 5""",Arcella,45.428298,11.887089,+39 326 926 6038,elena.marino31@gmail.com
+C016,Riccardo,Marchetti,"""Via XX Settembre, 21""",Arcella,45.423566,11.885585,+39 318 645 3060,riccardo.marchetti17@outlook.it
+C017,Lucia,Moretti,"""Via Mazzini, 136""",Vigodarzere,45.448155,11.843083,+39 389 873 4295,lucia.moretti92@yahoo.it
+C018,Giulia,Mancini,"""Via Oberdan, 96""",Pontevigodarzere,45.443591,11.874836,+39 347 330 2049,giulia.mancini44@gmail.com
+C019,Claudia,Greco,"""Via Dante, 57""",Centro Padova,45.396104,11.879946,+39 347 169 1514,claudia.greco43@gmail.com
+C020,Paola,Ricci,"""Via Mazzini, 125""",Selvazzano,45.390942,11.82336,+39 392 690 8744,paola.ricci32@outlook.it
+C021,Stefano,Caruso,"""Via Dante, 25""",Arcella,45.421816,11.874503,+39 370 578 1887,stefano.caruso87@gmail.com
+C022,Luca,Lombardi,"""Via Aquileia, 87""",Arcella,45.411968,11.870565,+39 375 243 7912,luca.lombardi24@yahoo.it
+C023,Chiara,Ricci,"""Viale Codalunga, 20""",Pontevigodarzere,45.441393,11.884543,+39 338 151 9856,chiara.ricci2@gmail.com
+C024,Giorgio,Coppola,"""Viale Codalunga, 61""",Albignasego,45.355754,11.873553,+39 329 510 1960,giorgio.coppola22@outlook.it
+C025,Marco,Lombardi,"""Via Mazzini, 117""",Abano Terme,45.358152,11.800976,+39 323 669 8973,marco.lombardi20@libero.it
+C026,Giacomo,Serra,"""Via Roma, 149""",Limena,45.433463,11.840527,+39 327 698 8811,giacomo.serra65@libero.it
+C027,Luca,Longo,"""Via Garibaldi, 48""",Arcella,45.420281,11.882205,+39 347 513 2964,luca.longo73@libero.it
+C028,Claudia,Barbato,"""Via Roma, 21""",Noventa Padovana,45.431777,11.951565,+39 356 367 4346,claudia.barbato86@yahoo.it
+C029,Riccardo,Bruno,"""Via Milano, 34""",Abano Terme,45.358973,11.800296,+39 333 109 8508,riccardo.bruno80@gmail.com
+C030,Andrea,Greco,"""Via Dante, 130""",Abano Terme,45.351179,11.786376,+39 333 350 7054,andrea.greco37@libero.it
+C031,Chiara,Santoro,"""Via Palestro, 78""",Vigodarzere,45.461612,11.85737,+39 383 108 5905,chiara.santoro85@gmail.com
+C032,Paolo,Gallo,"""Via Mazzini, 30""",Arcella,45.423818,11.869731,+39 350 719 4450,paolo.gallo92@yahoo.it
+C033,Filippo,Mancini,"""Via Oberdan, 68""",Limena,45.443725,11.854728,+39 329 152 2512,filippo.mancini82@outlook.it
+C034,Roberto,Bruno,"""Via Roma, 1""",Rubano,45.430507,11.811291,+39 349 265 8239,roberto.bruno71@outlook.it
+C035,Lucia,Ferrari,"""Via Garibaldi, 20""",Albignasego,45.359094,11.88203,+39 392 665 3426,lucia.ferrari56@libero.it
+C036,Luca,Costa,"""Corso Italia, 11""",Rubano,45.417042,11.801989,+39 338 462 7658,luca.costa80@libero.it
+C037,Giorgio,Villa,"""Via Dante, 42""",Albignasego,45.367154,11.862595,+39 315 440 7745,giorgio.villa86@libero.it
+C038,Nicola,Moretti,"""Via Montegrappa, 28""",Noventa Padovana,45.436932,11.958606,+39 347 304 8541,nicola.moretti45@yahoo.it
+C039,Roberto,Ferrara,"""Viale Codalunga, 59""",Selvazzano,45.378568,11.810635,+39 356 385 2137,roberto.ferrara99@yahoo.it
+C040,Alessandro,Esposito,"""Via Palestro, 103""",Limena,45.439948,11.833662,+39 349 282 5349,alessandro.esposito5@gmail.com
+C041,Elena,Caruso,"""Corso Italia, 81""",Noventa Padovana,45.430549,11.950274,+39 367 690 4114,elena.caruso33@gmail.com
+C042,Anna,Caruso,"""Via Roma, 134""",Limena,45.448485,11.855566,+39 315 786 4228,anna.caruso47@outlook.it
+C043,Andrea,Mancini,"""Via Altinate, 85""",Vigodarzere,45.445534,11.858352,+39 315 407 9308,andrea.mancini40@outlook.it
+C044,Francesco,Lombardi,"""Via Aquileia, 76""",Limena,45.435055,11.843091,+39 367 793 3851,francesco.lombardi79@yahoo.it
+C045,Giulia,Greco,"""Viale Codalunga, 1""",Abano Terme,45.354886,11.788317,+39 392 721 6279,giulia.greco60@outlook.it
+C046,Chiara,Mancini,"""Via Dante, 131""",Pontevigodarzere,45.44105,11.887036,+39 315 273 2389,chiara.mancini37@yahoo.it
+C047,Andrea,Santoro,"""Via Montegrappa, 61""",Abano Terme,45.353391,11.782779,+39 320 147 5011,andrea.santoro61@gmail.com
+C048,Chiara,Caruso,"""Via Altinate, 148""",Selvazzano,45.39524,11.815215,+39 367 349 3417,chiara.caruso84@gmail.com
+C049,Paolo,Coppola,"""Viale Codalunga, 28""",Noventa Padovana,45.421252,11.957299,+39 314 630 8611,paolo.coppola7@libero.it
+C050,Giorgio,Vitale,"""Via Garibaldi, 117""",Albignasego,45.365234,11.878022,+39 389 709 6198,giorgio.vitale97@outlook.it
+C051,Elena,Santoro,"""Via Aquileia, 130""",Noventa Padovana,45.435934,11.951149,+39 345 861 8777,elena.santoro58@yahoo.it
+C052,Valentina,Ricci,"""Viale Codalunga, 71""",Limena,45.44363,11.838742,+39 375 179 5681,valentina.ricci31@yahoo.it
+C053,Francesco,Marino,"""Via Altinate, 139""",Arcella,45.409321,11.87155,+39 314 256 4505,francesco.marino9@outlook.it
+C054,Monica,Marino,"""Via Palestro, 120""",Noventa Padovana,45.417494,11.957989,+39 367 888 1320,monica.marino98@outlook.it
+C055,Serena,Ferrari,"""Corso Italia, 77""",Noventa Padovana,45.436483,11.960882,+39 370 651 9947,serena.ferrari78@libero.it
+C056,Serena,Ricci,"""Via Mazzini, 112""",Pontevigodarzere,45.422697,11.872067,+39 312 917 7624,serena.ricci93@libero.it
+C057,Roberto,Colombo,"""Via Altinate, 33""",Vigodarzere,45.450819,11.859766,+39 392 677 1444,roberto.colombo11@outlook.it
+C058,Davide,Vitale,"""Corso del Popolo, 47""",Centro Padova,45.400644,11.872656,+39 375 434 6529,davide.vitale98@outlook.it
+C059,Nicola,Coppola,"""Viale Codalunga, 108""",Abano Terme,45.368038,11.789287,+39 315 652 1853,nicola.coppola45@libero.it
+C060,Sara,Bianchi,"""Via Montegrappa, 11""",Centro Padova,45.417191,11.869585,+39 320 736 3496,sara.bianchi31@libero.it
+C061,Serena,Mancini,"""Via Garibaldi, 145""",Selvazzano,45.389161,11.81215,+39 358 271 2876,serena.mancini21@yahoo.it
+C062,Simone,Testa,"""Via Roma, 80""",Vigodarzere,45.454256,11.860996,+39 367 832 4249,simone.testa10@libero.it
+C063,Simone,De Luca,"""Via Montegrappa, 78""",Vigodarzere,45.457333,11.857109,+39 392 901 1672,simone.de luca45@outlook.it
+C064,Marta,Russo,"""Via Garibaldi, 130""",Rubano,45.412304,11.806081,+39 379 208 8102,marta.russo47@outlook.it
+C065,Anna,Gallo,"""Via Milano, 46""",Limena,45.455171,11.839482,+39 323 651 8921,anna.gallo60@outlook.it
+C066,Roberto,Fontana,"""Via XX Settembre, 69""",Rubano,45.432441,11.815938,+39 333 385 8385,roberto.fontana32@outlook.it
+C067,Claudia,Barbato,"""Via Oberdan, 98""",Rubano,45.412689,11.816423,+39 345 599 4475,claudia.barbato46@yahoo.it
+C068,Francesco,Bruno,"""Via Altinate, 71""",Limena,45.432244,11.855754,+39 333 347 7658,francesco.bruno63@libero.it
+C069,Anna,Rinaldi,"""Via Oberdan, 126""",Pontevigodarzere,45.44103,11.866233,+39 347 514 4986,anna.rinaldi40@yahoo.it
+C070,Serena,Greco,"""Via Palestro, 89""",Noventa Padovana,45.439919,11.951209,+39 358 819 8434,serena.greco35@yahoo.it
+C071,Nicola,Ricci,"""Via Garibaldi, 50""",Rubano,45.414869,11.808861,+39 318 806 4033,nicola.ricci25@libero.it
+C072,Laura,Rinaldi,"""Via Mazzini, 135""",Vigodarzere,45.444792,11.840413,+39 346 403 4727,laura.rinaldi47@libero.it
+C073,Giacomo,Ferrari,"""Via Aquileia, 137""",Albignasego,45.352583,11.885383,+39 389 399 3068,giacomo.ferrari82@outlook.it
+C074,Simone,Vitale,"""Via Roma, 147""",Abano Terme,45.359266,11.788571,+39 345 152 5136,simone.vitale62@gmail.com
+C075,Roberto,Bianchi,"""Via Milano, 126""",Arcella,45.419849,11.882475,+39 340 252 5978,roberto.bianchi11@libero.it
+C076,Simone,Greco,"""Via Montegrappa, 107""",Vigodarzere,45.452307,11.852842,+39 318 635 7232,simone.greco58@outlook.it
+C077,Giacomo,Vitale,"""Via XX Settembre, 110""",Abano Terme,45.361647,11.779446,+39 315 201 4404,giacomo.vitale81@libero.it
+C078,Nicola,Mancini,"""Via Garibaldi, 41""",Selvazzano,45.382172,11.807802,+39 320 518 8381,nicola.mancini89@outlook.it
+C079,Giacomo,Rossi,"""Via Dante, 74""",Abano Terme,45.364872,11.788897,+39 312 339 5334,giacomo.rossi81@libero.it
+C080,Monica,Conti,"""Via Palestro, 58""",Albignasego,45.367802,11.881839,+39 333 161 3718,monica.conti40@yahoo.it
+C081,Chiara,Conti,"""Corso del Popolo, 78""",Noventa Padovana,45.438624,11.950011,+39 379 548 2317,chiara.conti77@gmail.com
+C082,Paolo,Caruso,"""Via Aquileia, 83""",Vigodarzere,45.444009,11.840192,+39 312 956 1339,paolo.caruso98@yahoo.it
+C083,Claudia,Rossi,"""Via Montegrappa, 45""",Pontevigodarzere,45.434455,11.874614,+39 349 285 8141,claudia.rossi82@outlook.it
+C084,Andrea,Rinaldi,"""Corso Italia, 105""",Rubano,45.419705,11.79851,+39 345 437 7744,andrea.rinaldi89@outlook.it
+C085,Giacomo,Mancini,"""Via Milano, 141""",Centro Padova,45.405316,11.872348,+39 356 218 7622,giacomo.mancini66@gmail.com
+C086,Marta,Vitale,"""Via Palestro, 119""",Noventa Padovana,45.417301,11.950443,+39 398 874 9167,marta.vitale81@outlook.it
+C087,Valentina,Rossi,"""Via Dante, 69""",Limena,45.435144,11.839913,+39 314 596 2989,valentina.rossi4@libero.it
+C088,Anna,Moretti,"""Via Mazzini, 142""",Centro Padova,45.407654,11.867037,+39 326 216 8560,anna.moretti16@libero.it
+C089,Serena,Villa,"""Via Aquileia, 75""",Limena,45.44893,11.842972,+39 379 583 4993,serena.villa59@libero.it
+C090,Giulia,Serra,"""Via Altinate, 131""",Albignasego,45.366737,11.86863,+39 323 974 7798,giulia.serra44@yahoo.it
+C091,Roberto,Ferrari,"""Via Mazzini, 77""",Vigodarzere,45.451918,11.853839,+39 329 252 8316,roberto.ferrari69@outlook.it
+C092,Alessandro,Marino,"""Via Palestro, 140""",Noventa Padovana,45.426928,11.945723,+39 346 814 4912,alessandro.marino74@outlook.it
+C093,Riccardo,Vitale,"""Via Montegrappa, 106""",Centro Padova,45.402036,11.876151,+39 323 490 7325,riccardo.vitale85@libero.it
+C094,Serena,Rossi,"""Via Cavour, 129""",Vigodarzere,45.445968,11.840409,+39 329 550 2633,serena.rossi68@outlook.it
+C095,Marco,Fontana,"""Via Cavour, 105""",Albignasego,45.347796,11.880757,+39 349 446 7512,marco.fontana84@gmail.com
+C096,Enrico,Marino,"""Viale Codalunga, 137""",Noventa Padovana,45.438899,11.953043,+39 318 599 9864,enrico.marino5@gmail.com
+C097,Riccardo,Esposito,"""Via Oberdan, 74""",Selvazzano,45.395922,11.816415,+39 338 878 2646,riccardo.esposito57@libero.it
+C098,Anna,Costa,"""Via Altinate, 8""",Centro Padova,45.402185,11.866147,+39 358 483 8056,anna.costa19@libero.it
+C099,Paola,Caruso,"""Via XX Settembre, 47""",Albignasego,45.350202,11.876628,+39 367 734 4945,paola.caruso64@libero.it
+C100,Riccardo,Colombo,"""Via Oberdan, 66""",Pontevigodarzere,45.428128,11.864226,+39 323 576 5712,riccardo.colombo87@libero.it
+C101,Andrea,Colombo,"""Corso Italia, 77""",Noventa Padovana,45.432568,11.948964,+39 350 303 7302,andrea.colombo62@gmail.com
+C102,Riccardo,Lombardi,"""Via XX Settembre, 92""",Vigodarzere,45.445101,11.854783,+39 320 949 7484,riccardo.lombardi36@gmail.com
+C103,Claudia,Vitale,"""Via Oberdan, 13""",Vigodarzere,45.455884,11.857988,+39 350 894 4770,claudia.vitale78@yahoo.it
+C104,Riccardo,Esposito,"""Via Dante, 65""",Albignasego,45.361078,11.883682,+39 311 140 6061,riccardo.esposito57@gmail.com
+C105,Claudia,Russo,"""Via Aquileia, 34""",Arcella,45.427831,11.873841,+39 370 279 4289,claudia.russo17@yahoo.it
+C106,Paola,Longo,"""Via Altinate, 70""",Albignasego,45.352167,11.881793,+39 379 925 5835,paola.longo96@yahoo.it
+C107,Stefano,Conti,"""Corso del Popolo, 20""",Albignasego,45.3641,11.867415,+39 312 841 7511,stefano.conti72@yahoo.it
+C108,Andrea,Ferrara,"""Via Milano, 4""",Abano Terme,45.360878,11.788915,+39 312 866 5295,andrea.ferrara75@outlook.it
+C109,Roberto,Esposito,"""Corso Italia, 28""",Selvazzano,45.389315,11.820869,+39 389 435 4626,roberto.esposito83@gmail.com
+C110,Sara,Santoro,"""Corso del Popolo, 78""",Noventa Padovana,45.4188,11.939088,+39 327 411 9071,sara.santoro15@gmail.com
+C111,Riccardo,Marchetti,"""Via Palestro, 35""",Noventa Padovana,45.426887,11.954092,+39 315 813 9850,riccardo.marchetti54@libero.it
+C112,Paolo,Caruso,"""Via Oberdan, 26""",Pontevigodarzere,45.436776,11.886537,+39 349 133 7070,paolo.caruso28@outlook.it
+C113,Chiara,Ricci,"""Viale Codalunga, 93""",Arcella,45.429542,11.874816,+39 311 467 1992,chiara.ricci51@yahoo.it
+C114,Filippo,Conti,"""Viale Codalunga, 117""",Arcella,45.421906,11.881401,+39 398 121 1828,filippo.conti43@libero.it
+C115,Davide,Ferrara,"""Via XX Settembre, 53""",Arcella,45.425916,11.879301,+39 392 321 4817,davide.ferrara43@libero.it
+C116,Stefano,Marchetti,"""Via XX Settembre, 1""",Abano Terme,45.368602,11.781473,+39 340 653 5106,stefano.marchetti23@gmail.com
+C117,Marta,Vitale,"""Via Roma, 34""",Centro Padova,45.402998,11.883722,+39 392 431 1258,marta.vitale23@yahoo.it
+C118,Luca,Gallo,"""Via Aquileia, 108""",Limena,45.434728,11.834525,+39 375 896 6931,luca.gallo66@gmail.com
+C119,Chiara,Longo,"""Via Dante, 12""",Limena,45.439239,11.84844,+39 320 162 8847,chiara.longo52@outlook.it
+C120,Marta,Conti,"""Corso del Popolo, 114""",Arcella,45.427582,11.873731,+39 340 167 3067,marta.conti36@yahoo.it
+C121,Giulia,Barbato,"""Via Palestro, 76""",Pontevigodarzere,45.434133,11.874325,+39 323 818 2874,giulia.barbato84@libero.it
+C122,Monica,Colombo,"""Via Altinate, 59""",Noventa Padovana,45.424134,11.948884,+39 370 847 2557,monica.colombo41@outlook.it
+C123,Francesco,Mancini,"""Via Mazzini, 96""",Albignasego,45.362484,11.873382,+39 333 951 2398,francesco.mancini12@outlook.it
+C124,Simone,Fontana,"""Via Aquileia, 96""",Albignasego,45.359353,11.876075,+39 389 675 6400,simone.fontana86@gmail.com
+C125,Monica,Russo,"""Viale Codalunga, 109""",Centro Padova,45.417642,11.87921,+39 358 206 9313,monica.russo28@libero.it
+C126,Marta,Rinaldi,"""Via Dante, 28""",Rubano,45.432289,11.804821,+39 318 385 4705,marta.rinaldi55@gmail.com
+C127,Elena,Villa,"""Via Oberdan, 69""",Centro Padova,45.39873,11.881665,+39 350 447 6751,elena.villa1@libero.it
+C128,Enrico,Gallo,"""Via XX Settembre, 103""",Arcella,45.409405,11.881196,+39 320 193 9691,enrico.gallo28@outlook.it
+C129,Monica,Colombo,"""Corso Italia, 41""",Rubano,45.419479,11.803785,+39 392 710 2391,monica.colombo7@libero.it
+C130,Matteo,Coppola,"""Via XX Settembre, 13""",Arcella,45.41253,11.881887,+39 379 721 8242,matteo.coppola54@yahoo.it
+C131,Filippo,Coppola,"""Via Palestro, 30""",Rubano,45.422318,11.802798,+39 312 707 8972,filippo.coppola68@yahoo.it
+C132,Luca,Ricci,"""Via Milano, 15""",Centro Padova,45.399306,11.887488,+39 318 240 5186,luca.ricci38@yahoo.it
+C133,Simone,Ferrari,"""Corso del Popolo, 111""",Albignasego,45.3491,11.874782,+39 347 612 6802,simone.ferrari10@outlook.it
+C134,Enrico,Fontana,"""Via Roma, 112""",Centro Padova,45.405434,11.866669,+39 356 689 8033,enrico.fontana74@outlook.it
+C135,Anna,Esposito,"""Via Milano, 75""",Arcella,45.415721,11.889189,+39 345 920 8538,anna.esposito89@yahoo.it
+C136,Andrea,Caruso,"""Viale Codalunga, 28""",Selvazzano,45.388456,11.815611,+39 333 505 6083,andrea.caruso96@yahoo.it
+C137,Riccardo,Marino,"""Via Montegrappa, 44""",Arcella,45.418252,11.868737,+39 383 298 6724,riccardo.marino45@libero.it
+C138,Riccardo,Conti,"""Via Cavour, 66""",Selvazzano,45.382164,11.809669,+39 318 771 2234,riccardo.conti23@outlook.it
+C139,Chiara,Coppola,"""Via XX Settembre, 149""",Pontevigodarzere,45.438347,11.885169,+39 311 750 6295,chiara.coppola81@yahoo.it
+C140,Davide,Colombo,"""Via Garibaldi, 121""",Pontevigodarzere,45.437153,11.883112,+39 392 157 6766,davide.colombo65@gmail.com
+C141,Giacomo,Colombo,"""Corso del Popolo, 10""",Centro Padova,45.40325,11.87169,+39 311 984 2479,giacomo.colombo79@outlook.it
+C142,Chiara,Testa,"""Via Palestro, 11""",Pontevigodarzere,45.443817,11.87772,+39 346 429 8792,chiara.testa65@libero.it
+C143,Luca,Colombo,"""Via Garibaldi, 88""",Arcella,45.418109,11.870141,+39 347 824 8172,luca.colombo57@libero.it
+C144,Alessandro,Russo,"""Via Altinate, 73""",Noventa Padovana,45.42581,11.946121,+39 398 153 6482,alessandro.russo9@yahoo.it
+C145,Simone,Greco,"""Via Oberdan, 99""",Abano Terme,45.354048,11.798438,+39 398 994 3463,simone.greco43@gmail.com
+C146,Claudia,Mancini,"""Via Cavour, 90""",Abano Terme,45.371225,11.794764,+39 367 232 2388,claudia.mancini40@outlook.it
+C147,Sara,Ferrara,"""Corso Italia, 33""",Limena,45.434243,11.849091,+39 383 470 1298,sara.ferrara47@yahoo.it
+C148,Matteo,Serra,"""Corso Italia, 125""",Selvazzano,45.383437,11.809302,+39 333 402 2657,matteo.serra65@gmail.com
+C149,Marta,Marino,"""Via Altinate, 34""",Vigodarzere,45.447041,11.841894,+39 326 809 3712,marta.marino93@outlook.it
+C150,Luca,Caruso,"""Corso Italia, 61""",Pontevigodarzere,45.436654,11.882057,+39 323 559 4833,luca.caruso69@libero.it

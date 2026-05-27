@@ -1,0 +1,112 @@
+---
+id: 76bbcd00-9c16-45ab-bd15-ab6ed6bcbcd4
+---
+classDiagram
+    %% GERARCHIA ANAGRAFICA
+    class Anagrafica {
+        +persona_id
+        +nome
+        +cognome
+        +telefono
+        +email
+        +nome_completo() Unisce Nome e Cognome
+    }
+
+    class Cliente {
+        +indirizzo
+        +zona
+        +latitudine
+        +longitudine
+        +da_csv(path)$ Crea lista Clienti da file
+        +distanza_da(lat, lon) Calcola distanza in km (Haversine)
+    }
+
+    class Rider {
+        +anni_esperienza
+        +zone_operative
+        +patente
+        +disponibile
+        +veicolo
+        +consegne
+        +da_csv(path)$ Crea lista Rider da file
+        +assegna_veicolo(veicolo) Collega mezzo se patente idonea
+        +clienti_per_distanza(clienti) Ordina percorso dal deposito (Greedy)
+    }
+
+    Anagrafica --|> Cliente
+    Anagrafica --|> Rider
+
+    %% GERARCHIA VEICOLI (FACTORY)
+    class Veicolo {
+        +veicolo_id
+        +marca
+        +modello
+        +km_totali
+        +patente_richiesta
+        +stato
+        +peso_max_kg
+        +in_standby
+        +compatibile_con_patente(patente) Verifica idoneita
+        +da_csv(path)$ Factory: Istanzia mezzi specifici
+        +rompi_casuali(veicoli, perc)$ Simula guasti sul N% della flotta
+        +gestisci_standby_casuali(veicoli, perc)$ Ferma in deposito il N%
+        +assegna_a_riders(veicoli, riders)$ Distribuisce mezzi disponibili
+        +peso_max_per_collo() Calcola peso max singolo pacco
+    }
+
+    class Bicicletta {
+        +compatibile_con_patente(patente) Override per bici
+    }
+    class Scooter {
+        +compatibile_con_patente(patente) Override per scooter
+    }
+    class Auto {
+        +compatibile_con_patente(patente) Override per auto
+    }
+    class Furgone {
+        +compatibile_con_patente(patente) Override per furgone
+    }
+
+    Veicolo --|> Bicicletta
+    Veicolo --|> Scooter
+    Veicolo --|> Auto
+    Veicolo --|> Furgone
+
+    %% COMPONENTI DELLA CONSEGNA
+    class Collo {
+        +collo_id
+        +peso_kg
+        +da_csv(path)$ Crea lista Colli da file
+    }
+
+    class Consegna {
+        +consegna_id
+        +rider
+        +veicolo
+        +cliente
+        +distanza_km
+        +collo
+    }
+
+    class GiornataDiConsegne {
+        +consegne
+        +genera(riders, clienti, colli, n) Abbina tutto e crea i percorsi
+    }
+
+    %% VISTE
+    class VisualizzazioneDriver {
+        +riders
+        +mostra() Stampa riepilogo per il Driver
+    }
+
+    class VisualizzazioneManager {
+        +veicoli
+        +mostra() Stampa flotta (Disponibili/Rotti/Standby)
+    }
+
+    %% RELAZIONI
+    Rider "1" o-- "0..1" Veicolo : "Ha in uso"
+    Consegna "1" *-- "1" Rider : "Assegnata a"
+    Consegna "1" *-- "1" Cliente : "Destinata a"
+    Consegna "1" *-- "1" Collo : "Contiene"
+    GiornataDiConsegne "1" *-- "*" Consegna : "Gestisce"

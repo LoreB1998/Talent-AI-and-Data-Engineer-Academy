@@ -1,0 +1,6 @@
+=== TICKET DI INGRESSO ===
+Ticket ID: TICK-160908-142
+Targa    : AB000AB
+Posto    : 13
+Ingresso : 2026-05-26 16:09:08
+==========================

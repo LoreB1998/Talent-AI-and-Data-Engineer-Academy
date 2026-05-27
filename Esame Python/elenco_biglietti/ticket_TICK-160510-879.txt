@@ -1,0 +1,6 @@
+=== TICKET DI INGRESSO ===
+Ticket ID: TICK-160510-879
+Targa    : AA003AA
+Posto    : 3
+Ingresso : 2026-05-26 16:05:10
+==========================

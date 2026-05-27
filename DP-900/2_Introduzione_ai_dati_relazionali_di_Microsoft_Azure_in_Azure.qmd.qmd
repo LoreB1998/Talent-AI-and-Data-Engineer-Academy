@@ -1,0 +1,513 @@
+---
+title: "Introduzione ai dati relazionali di Microsoft Azure in Azure"
+subtitle: "DP-900"
+author: "Lorenzo Barbato"
+date: today
+date-format: "DD MMMM YYYY"
+lang: it
+watch-inputs: true
+embed-resources: true
+format:
+  html:
+    theme: lumen            # Temi puliti e professionali: cosmo, flatly, lumen, o sandstone per quello scuri darkly, cyborg, slate, solar
+    toc: true              # Genera automaticamente l'indice dei contenuti a destra
+    toc-title: "Indice"    # Titolo dell'indice
+    toc-depth: 3           # Profondità dell'indice (fino a ###)
+    number-sections: true  # Numera automaticamente i capitoli (1., 1.1, ecc.)
+    code-fold: true        # Se aggiungi codice Python, lo nasconde dietro un bottone cliccabile
+    smooth-scroll: true    # Rende lo scorrimento cliccando sull'indice più fluido
+    css: style.css
+---
+# Esplorare i concetti fondamentali dei dati relazionali
+
+## Introduzione
+
+Nei primi anni dei sistemi informatici, ogni applicazione archiviava i dati in una propria struttura specifica. Quando gli sviluppatori volevano creare applicazioni per usare tali dati, dovevano conoscere molto bene tale struttura per trovare i dati necessari. Le prime strutture di dati erano inefficienti, difficili da gestire e difficili da ottimizzare per garantire prestazioni ottimali delle applicazioni. Il modello di database relazionale è stato progettato per risolvere il problema di più strutture di dati arbitrarie. Il modello relazionale offre un metodo standard per rappresentare i dati ed eseguirvi query che può essere usato da qualsiasi applicazione. Uno dei vantaggi principali dei modelli di database relazionali consiste nell'uso di tabelle, che offrono un modo intuitivo, efficiente e flessibile per archiviare informazioni strutturate e accedervi.
+
+Il modello relazionale, semplice ma potente, viene adottato da organizzazioni di tutti i tipi e dimensioni per un'ampia gamma di esigenze di gestione delle informazioni. I database relazionali vengono usati per tenere traccia delle scorte, elaborare le transazioni di e-commerce, gestire grandi quantità di informazioni sui clienti di importanza cruciale e molto altro ancora. Un database relazionale è utile per archiviare le informazioni contenenti elementi dati correlati che devono essere organizzati in una struttura coerente, basata su regole.
+
+In questo modulo si apprenderanno le caratteristiche principali dei database relazionali e si esploreranno le strutture dei dati relazionali.
+
+## Comprendere i dati relazionali
+
+In un database relazionale si modellano raccolte di entità dal mondo reale come tabelle. Un'entità può essere qualsiasi elemento per il quale si desidera registrare le informazioni; in genere oggetti ed eventi importanti. Ad esempio, in un sistema di vendita al dettaglio, è possibile creare tabelle per clienti, prodotti, ordini e voci all'interno di un ordine. Una tabella contiene righe e ogni riga rappresenta una singola istanza di un'entità. Nello scenario di vendita al dettaglio ogni riga della tabella customer contiene i dati per un singolo cliente, ogni riga nella tabella product definisce un singolo prodotto, ogni riga nella tabella degli ordini rappresenta un ordine effettuato da un cliente e ogni riga nella tabella degli elementi riga rappresenta un prodotto incluso in un ordine.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-relational-data-offerings/media/relational-tables.png){width=60% fig-align="center"}
+
+Le tabelle relazionali sono un formato per i dati strutturati e ogni riga di una tabella ha le stesse colonne; anche se in alcuni casi, non tutte le colonne devono avere un valore, ad esempio una tabella customer potrebbe includere una colonna **MiddleName** ; che può essere vuoto (o `NULL`) per le righe che rappresentano i clienti senza un secondo nome o il cui secondo nome è sconosciuto.
+
+Ogni colonna archivia i dati di un tipo di dati specifico. Ad esempio, una colonna **Email** in una tabella **Customer** potrebbe essere definita per archiviare dati basati su caratteri (testo) (che potrebbero essere a lunghezza fissa o variabile), una colonna **Price** in una tabella **Product** potrebbe essere definita per archiviare dati numerici decimali, mentre una colonna **Quantity** in una tabella **Order** potrebbe essere vincolata a valori numerici interi; e una colonna **OrderDate** nella stessa tabella **Order** verrebbe definita per archiviare i valori di data/ora. I tipi di dati disponibili che è possibile usare per definire una tabella dipendono dal sistema di database in uso; sebbene esistano tipi di dati standard definiti dall'American National Standards Institute (ANSI) supportati dalla maggior parte dei sistemi di database.
+
+## Comprendere la normalizzazione
+
+La normalizzazione è un termine usato dai professionisti del database per un processo di progettazione dello schema che riduce al minimo la duplicazione dei dati e impone l'integrità dei dati.
+
+Anche se esistono molte regole complesse che definiscono il processo di refactoring dei dati in vari livelli (o forme) di normalizzazione, una definizione semplice per scopi pratici è:
+
+1. Separare ogni *entità* nella propria tabella.
+2. Separare ogni *attributo* discreto nella propria colonna.
+3. Identificare in modo univoco ogni istanza di entità (riga) usando una *chiave primaria*.
+4. Usare le colonne *chiave esterna* per collegare entità correlate.
+
+Per comprendere i principi di base della normalizzazione, si supponga che la tabella seguente rappresenti un foglio di calcolo usato da un'azienda per tenere traccia delle vendite.
+
+| OrderNo | NomeCliente | IndirizzoCliente     | NomeDelProdotto | Prezzo unitario | Quantità |
+| ------- | ----------- | -------------------- | --------------- | --------------- | -------- |
+| 1       | Jane Smith  | 42 Oak St.Seattle    | Widget A        | 9.99            | 2        |
+| 1       | Jane Smith  | 42 Oak St.Seattle    | Widget B        | 4.49            | 1        |
+| 2       | Bob Jones   | 18 Pine Ave Portland | Widget A        | 9.99            | 5        |
+| 2       | Bob Jones   | 18 Pine Ave Portland | Gadget X        | 24,99           | 1        |
+| 3       | Jane Smith  | 42 Oak St.Seattle    | Gadget X        | 24,99           | 3        |
+| 3       | Jane Smith  | 42 Oak St.Seattle    | Widget B        | 4.49            | 2        |
+
+Si noti che i dettagli del cliente e del prodotto vengono duplicati per ogni singolo articolo venduto; e che il nome del cliente e l'indirizzo postale, e il nome e il prezzo del prodotto vengono combinati nelle stesse celle del foglio di calcolo.
+
+Si esaminerà ora il modo in cui la normalizzazione cambia il modo in cui vengono archiviati i dati.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-relational-data-offerings/media/normalized-data.png){width=60% fig-align="center"}
+
+Ogni entità rappresentata nei dati (customer, product, sales order e line item) viene archiviata nella propria tabella e ogni attributo discreto di tali entità si trova nella propria colonna.
+
+La registrazione di ogni istanza di un'entità come riga in una tabella specifica dell'entità rimuove la duplicazione dei dati. Ad esempio, per modificare l'indirizzo di un cliente, è necessario modificare solo il valore in una singola riga.
+
+La scomposizione degli attributi in singole colonne garantisce che ogni valore sia vincolato a un tipo di dati appropriato, ad esempio i prezzi dei prodotti devono essere valori decimali, mentre le quantità degli elementi riga devono essere numeri interi. Inoltre, la creazione di singole colonne offre un livello utile di granularità nei dati per l'esecuzione di query, ad esempio è possibile filtrare facilmente i clienti per coloro che risiedono in una città specifica.
+
+Le istanze di ogni entità vengono identificate in modo univoco da un ID o da un altro valore di chiave, noto come chiave primaria; e quando un'entità fa riferimento a un'altra (ad esempio, un ordine ha un cliente associato), la chiave primaria dell'entità correlata viene archiviata come chiave esterna. È possibile cercare l'indirizzo del cliente (archiviato una sola volta) per ogni record nella tabella **Order** facendo riferimento al record corrispondente nella tabella **Customer**. In genere, un sistema di gestione di database relazionale (RDBMS) può applicare l'integrità referenziale per garantire che un valore immesso in un campo di chiave esterna abbia una chiave primaria corrispondente nella tabella correlata, ad esempio impedendo gli ordini per i clienti inesistenti.
+
+In alcuni casi, una chiave (primaria o esterna) può essere definita come chiave composta in base a una combinazione univoca di più colonne. Ad esempio, la tabella **LineItem** nell'esempio precedente usa una combinazione univoca di **OrderNo** e **ItemNo** per identificare un elemento di riga da un singolo ordine.
+
+## Esplora SQL
+
+SQL è l'acronimo di *Structured Query Language* e viene usato per comunicare con un database relazionale. È il linguaggio standard per i sistemi di gestione di database relazionali. Le istruzioni SQL vengono usate per eseguire attività come l'aggiornamento dei dati in un database o il recupero dei dati da un database. Alcuni sistemi di gestione di database relazionali comuni che usano SQL includono Microsoft SQL Server, database SQL di Azure, Istanza gestita di SQL di Azure, SQL Server in Macchine virtuali di Azure, MySQL, PostgreSQLe Oracle.
+
+:::{.callout-note}
+SQL è stato originariamente standardizzato dall'American National Standards Institute (ANSI) nel 1986 e dall'International Organization for Standardization (ISO) nel 1987. Da allora, lo standard è stato esteso più volte perché i fornitori di database relazionali hanno aggiunto nuove funzionalità ai propri sistemi. Inoltre, la maggior parte dei fornitori di database include le proprie estensioni proprietarie che non fanno parte dello standard, che ha portato a una varietà di dialetti di SQL.
+:::
+
+È possibile usare istruzioni SQL come `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE` e `DROP` per eseguire quasi tutte le operazioni necessarie per un database. Anche se queste istruzioni SQL fanno parte dello standard SQL, molti sistemi di gestione di database hanno anche estensioni proprietarie aggiuntive per gestire le specifiche del sistema di gestione di database. Queste estensioni forniscono funzionalità non coperte dallo standard SQL e includono aree come la gestione della sicurezza e la programmabilità. Ad esempio, Microsoft SQL Server e i servizi di database di Azure basati sul motore di database di SQL Server, usare Transact-SQL. Questa implementazione include estensioni proprietarie per la scrittura di stored procedure e trigger (codice dell'applicazione che può essere archiviato nel database) e la gestione degli account utente. PostgreSQL e MySQL hanno anche versioni specifiche di queste funzionalità.
+
+Alcuni dialetti popolari di SQL includono:
+
+- *Transact-SQL* (T-SQL). Questa versione di SQL viene usata da Microsoft SQL Server, database SQL di Azure, Istanza gestita di SQL di Azure e SQL Server in Macchine virtuali di Azure.
+
+- *pgSQL*. Questo è il dialetto, con le estensioni implementate in PostgreSQL.
+
+- *PL/SQL*. Questo è il dialetto usato da Oracle. PL/SQL è l'acronimo di Procedural Language/SQL.
+
+Gli utenti che intendono lavorare in modo specifico con un singolo sistema di database devono apprendere le complessità del dialetto e della piattaforma SQL preferiti.
+
+:::{.callout-note}
+Il database SQL di Azure include funzionalità di intelligenza artificiale che è possibile usare per scrivere e comprendere le query SQL usando il linguaggio naturale.
+:::
+
+:::{.callout-note}
+Gli esempi di codice SQL in questo modulo sono basati sul dialetto Transact-SQL, a meno che non diversamente indicato. La sintassi per altri dialetti è in genere simile, ma può variare in alcuni dettagli.
+:::
+
+### Tipi di istruzioni SQL
+
+Le istruzioni SQL vengono raggruppate in tre gruppi logici principali:
+
+- DDL (Data Definition Language)
+- Linguaggio DCL (Data Control Language)
+- DML (Data Manipulation Language)
+
+#### Istruzioni DDL
+
+Le istruzioni DDL vengono usate per creare, modificare e rimuovere tabelle e altri oggetti in un database (tabella, stored procedure, viste e così via).
+
+Le istruzioni DDL (Data Definition Language) più comuni sono:
+
+| Dichiarazione | Descrizione                                                                                                   |
+| ------------- | ------------------------------------------------------------------------------------------------------------- |
+| `CREATE`        | Creare un nuovo oggetto nel database, ad esempio una tabella o una vista.                                     |
+| `ALTER`         | Modificare la struttura di un oggetto . Ad esempio, modificando una tabella per aggiungere una nuova colonna. |
+| `DROP`          | Rimuovere un oggetto dal database.                                                                            |
+| `RENAME`        | Rinominare un oggetto esistente.                                                                              |
+
+:::{.callout-warning}
+L'istruzione `DROP` è molto potente. Quando si elimina una tabella, tutte le righe vengono perse. A meno che non si disponga di un backup, non sarà possibile recuperare questi dati.
+:::
+
+Nell'esempio seguente viene creata una nuova tabella di database. Gli elementi tra parentesi specificano i dettagli di ogni colonna, incluso il nome, il tipo di dati, se la colonna deve contenere sempre un valore (`NOT NULL`) e se i dati nella colonna vengono usati per identificare in modo univoco una riga (`PRIMARY KEY`). Ogni tabella deve avere una chiave primaria, anche se SQL non applica questa regola.
+
+:::{.callout-note}
+Le colonne contrassegnate come NOT NULL sono denominate colonne obbligatorie . Se si omette la clausola NOT NULL , è possibile creare righe che non contengono un valore nella colonna. Una colonna vuota in una riga ha un valore NULL .
+:::
+
+```{.sql filename="SQL"}
+CREATE TABLE Product
+(
+    ID INT PRIMARY KEY,
+    Name VARCHAR(20) NOT NULL,
+    Price DECIMAL NULL
+);
+```
+
+I tipi di dati disponibili per le colonne di una tabella variano tra i sistemi di gestione del database. Tuttavia, la maggior parte dei sistemi di gestione di database supporta tipi numerici come `INT` (un numero intero o intero), `DECIMAL` (un numero decimale) e tipi stringa come `VARCHAR` (*varchar* è l'acronimo di dati di tipo carattere di lunghezza variabile). Per altre informazioni, vedere la documentazione relativa al sistema di gestione dei database selezionato.
+
+#### Istruzioni DCL
+
+Gli amministratori di database usano in genere istruzioni DCL per gestire l'accesso agli oggetti in un database concedendo, negando o revocando le autorizzazioni a utenti o gruppi specifici.
+
+Le tre istruzioni DCL principali sono:
+
+| Dichiarazione | Descrizione                                               |
+| ------------- | ----------------------------------------- |
+| `GRANT`         | Concedere l'autorizzazione per eseguire azioni specifiche |
+| `DENY`          | Negare l'autorizzazione per eseguire azioni specifiche    |
+| `REVOKE`        | Rimuovere un'autorizzazione concessa in precedenza        |
+
+Ad esempio, l'istruzione `GRANT` seguente consente a un utente denominato user1 di leggere, inserire e modificare i dati nella tabella **Product** .
+
+```{.sql filename="SQL"}
+GRANT SELECT, INSERT, UPDATE
+ON Product
+TO user1;
+```
+
+#### Istruzioni DML
+Le istruzioni DML vengono usate per modificare le righe nelle tabelle. Queste istruzioni consentono di recuperare dati (query), inserire nuove righe o modificare righe esistenti. È anche possibile eliminare righe se non sono più necessarie.
+
+Le quattro istruzioni DML principali sono:
+
+| Dichiarazione | Descrizione                             |
+| ------------- | --------------------------------------- |
+| `SELECT`        | Leggere le righe da una tabella         |
+| `INSERT`        | Inserire nuove righe in una tabella     |
+| `UPDATE`        | Modificare i dati nelle righe esistenti |
+| `DELETE`        | Eliminare righe esistenti               |
+
+
+La forma di base di un'istruzione `INSERT` inserirà una riga alla volta. Per impostazione predefinita, le istruzioni `SELECT`, `UPDATE` e `DELETE` vengono applicate a ogni riga di una tabella. In genere si applica una clausola `WHERE` con queste istruzioni per specificare i criteri; verranno selezionate, aggiornate o eliminate solo le righe che corrispondono a questi criteri.
+
+:::{.callout-warning}
+SQL non fornisce "sei sicuro?" quindi fai attenzione quando usi `DELETE` o `UPDATE` senza una clausola `WHERE` perché è possibile perdere o modificare molti dati.
+:::
+
+Il codice seguente è un esempio di istruzione SQL che seleziona tutte le colonne (indicate da `*`) dalla tabella **Customer** in cui il valore della colonna **City** è "Seattle":
+
+```{.sql filename="SQL"}
+SELECT *
+FROM Customer
+WHERE City = 'Seattle';
+```
+
+Per recuperare solo un subset specifico di colonne dalla tabella, elencarle nella clausola `SELECT` , come illustrato di seguito:
+
+```{.sql filename="SQL"}
+SELECT FirstName, LastName, Address, City
+FROM Customer
+WHERE City = 'Seattle';
+```
+
+Se una query restituisce molte righe, non vengono necessariamente visualizzate in una sequenza specifica. Se si desidera ordinare i dati, è possibile aggiungere una clausola `ORDER BY`. I dati verranno ordinati in base alla colonna specificata:
+
+```{.sql filename="SQL"}
+SELECT FirstName, LastName, Address, City
+FROM Customer
+WHERE City = 'Seattle'
+ORDER BY LastName;
+```
+
+È anche possibile eseguire istruzioni `SELECT` che recuperano dati da più tabelle usando una clausola `JOIN`. I join indicano in che modo le righe di una tabella sono connesse con righe nell'altra per determinare quali dati restituire. Una condizione di join tipica corrisponde a una chiave esterna di una tabella e alla relativa chiave primaria associata nell'altra tabella.
+
+La query seguente mostra un esempio che unisce le tabelle **Customer** e **Order**. La query usa alias di tabella per abbreviare i nomi di tabella quando si specificano le colonne da recuperare nella clausola `SELECT` e le colonne da confrontare nella clausola `JOIN`.
+
+```{.sql filename="SQL"}
+SELECT o.OrderNo, o.OrderDate, c.Address, c.City
+FROM Order AS o
+JOIN Customer AS c
+ON o.Customer = c.ID
+```
+
+Nell'esempio seguente viene illustrato come modificare una riga esistente usando SQL. Modifica il valore della colonna **Address** nella tabella **Customer** per le righe con il valore `1` nella colonna **ID** . Tutte le altre righe vengono lasciate invariate:
+
+```{.sql filename="SQL"}
+UPDATE Customer
+SET Address = '123 High St.'
+WHERE ID = 1;
+```
+
+:::{.callout-warning}
+Se si omette la clausola `WHERE`, un'istruzione `UPDATE` modificherà ogni riga della tabella.
+:::
+
+Usare l'istruzione `DELETE` per rimuovere righe. Specificare la tabella da cui eliminare e una clausola `WHERE` che identifica le righe da eliminare:
+
+```{.sql filename="SQL"}
+DELETE FROM Product
+WHERE ID = 162;
+```
+
+
+:::{.callout-warning}
+Se si omette la clausola `WHERE`, un'istruzione `DELETE` rimuoverà ogni riga dalla tabella.
+:::
+
+L'istruzione `INSERT` assume una forma leggermente diversa. Specificare una tabella e colonne in una clausola `INTO` e un elenco di valori da archiviare in queste colonne. SQL standard supporta solo l'inserimento di una riga alla volta, come illustrato nell'esempio seguente. Alcuni dialetti consentono di specificare più clausole `VALUES` per aggiungere più righe alla volta:
+
+```{.sql filename="SQL"}
+INSERT INTO Product(ID, Name, Price)
+VALUES (99, 'Drill', 4.99);
+```
+
+:::{.callout-note}
+In questo argomento vengono descritte alcune istruzioni SQL di base e la sintassi per comprendere in che modo SQL viene usato per lavorare con gli oggetti in un database. Per altre informazioni sull'esecuzione di query sui dati con SQL, vedere il percorso di apprendimento [Introduzione alle query con Transact-SQL](https://learn.microsoft.com/it-it/training/paths/get-started-querying-with-transact-sql) in Microsoft Learn.
+:::
+
+## Descrivere gli oggetti di database
+
+Oltre alle tabelle, un database relazionale può contenere altre strutture che consentono di ottimizzare l'organizzazione dei dati, incapsulare le azioni programmatiche e migliorare la velocità di accesso. In questa unità apprenderai più nel dettaglio tre di queste strutture: *view*, *stored procedure* e *indici*.
+
+### Che cos'è una *view*?
+
+Una **view** è una tabella virtuale basata sul set di risultati di una query `SELECT`. È possibile considerare una vista come una finestra sulle righe specificate in una o più tabelle sottostanti. È ad esempio possibile creare una vista nelle tabelle **Order** e **Customer** che recuperano i dati degli ordini e dei clienti per fornire un singolo oggetto che semplifica la determinazione degli indirizzi di consegna per gli ordini:
+
+```{.sql filename="SQL"}
+CREATE VIEW Deliveries
+AS
+SELECT o.OrderNo, o.OrderDate,
+       c.FirstName, c.LastName, c.Address, c.City
+FROM Order AS o JOIN Customer AS c
+ON o.Customer = c.ID;
+```
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-relational-data-offerings/media/view.png){width="650" height="350" fig-align="center"}
+
+È possibile eseguire una query sulla visualizzazione e filtrare i dati allo stesso modo di una tabella. La query seguente trova i dettagli degli ordini per i clienti che risiedono a Seattle:
+
+```{.sql filename="SQL"}
+SELECT OrderNo, OrderDate, LastName, Address
+FROM Deliveries
+WHERE City = 'Seattle';
+```
+
+### Che cos'è una stored procedure?
+Una stored procedure definisce istruzioni SQL che possono essere eseguite su comando. Le stored procedure vengono usate per incapsulare la logica programmatica in un database per le azioni che le applicazioni devono eseguire quando si usano i dati.
+
+È possibile definire una stored procedure con parametri per creare una soluzione flessibile per azioni comuni che potrebbe essere necessario applicare ai dati in base a una chiave o a criteri specifici. È ad esempio possibile definire la stored procedure seguente per modificare il nome di un prodotto in base all'ID prodotto specificato.
+
+```{.sql filename="SQL"}
+CREATE PROCEDURE RenameProduct
+	@ProductID INT,
+	@NewName VARCHAR(20)
+AS
+UPDATE Product
+SET Name = @NewName
+WHERE ID = @ProductID;
+```
+Quando un prodotto deve essere rinominato, è possibile eseguire la stored procedure, passando l'ID del prodotto e il nuovo nome da assegnare:
+
+```{.sql filename="SQL"}
+EXEC RenameProduct 201, 'Spanner';
+```
+
+### Che cos'è un indice?
+
+Un indice consente di cercare i dati in una tabella. Un indice di una tabella è paragonabile all'indice riportato nelle ultime pagine di un libro. L'indice di un libro contiene un set ordinato di riferimenti, con l'indicazione della pagina in cui si trova ogni riferimento. Quando si vuole trovare un riferimento a un elemento contenuto nel libro, è possibile cercarlo attraverso l'indice. È quindi possibile usare i numeri di pagina nell'indice per passare direttamente alle pagine appropriate. Senza un indice, potrebbe essere necessario leggere l'intero libro per trovare i riferimenti che si stanno cercando.
+
+Quando si crea un indice in un database, si specifica una colonna della tabella e l'indice contiene una copia di questi dati disposti in ordine, con puntatori alle righe corrispondenti nella tabella. Quando l'utente esegue una query che specifica questa colonna nella clausola `WHERE`, il sistema di gestione di database può usare l'indice per recuperare i dati più rapidamente rispetto a quando doveva analizzare l'intera tabella riga per riga.
+
+È ad esempio possibile usare il codice seguente per creare un indice nella colonna **Name** della tabella **Product**:
+
+```{.sql filename="SQL"}
+CREATE INDEX idx_ProductName
+ON Product(Name);
+```
+
+L'indice crea una struttura basata su albero che lo strumento Query Optimizer del sistema di database può usare per trovare rapidamente righe nella tabella Product in base a un valore Name specificato.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-relational-data-offerings/media/index.png){width=50% fig-align="center"}
+
+Per una tabella contenente poche righe, l'uso dell'indice non è probabilmente più efficiente rispetto alla semplice lettura dell'intera tabella e alla ricerca delle righe richieste dalla query. In tale caso, Query Optimizer ignorerà l'indice. Quando una tabella ha molte righe, tuttavia, gli indici possono migliorare notevolmente le prestazioni delle query.
+
+In una tabella è possibile creare molti indici. Se si vuole anche trovare prodotti in base al prezzo, quindi, la creazione di un altro indice nella colonna **Price** nella tabella **Product** potrebbe essere utile. Gli indici comportano tuttavia un costo. Un indice utilizza spazio di archiviazione e ogni volta che si inseriscono, aggiornano o eliminano dati in una tabella, gli indici di tale tabella richiedono un'attività di gestione. Questo lavoro aggiuntivo può rallentare le operazioni di inserimento, aggiornamento ed eliminazione. È necessario trovare un equilibrio tra l'uso di indici per velocizzare le query e il costo dell'esecuzione di altre operazioni.
+
+# Esplorare i servizi di database relazionali in Azure
+
+## Introduzione
+
+Azure supporta diversi servizi di database e consente di eseguire nel cloud i principali sistemi di gestione dei database relazionali, ad esempio SQL Server, PostgreSQL e MySQL.
+
+La maggior parte dei servizi di database di Azure è completamente gestita e consente di risparmiare tempo prezioso che altrimenti sarebbe destinato alla gestione del database. Le prestazioni di livello aziendale con disponibilità elevata predefinita garantiscono la possibilità di dimensionare rapidamente i servizi e di realizzare la distribuzione globale senza preoccuparsi dei costosi tempi di inattività. Gli sviluppatori possono sfruttare le innovazioni leader del settore, ad esempio le funzionalità di sicurezza predefinite con monitoraggio e rilevamento delle minacce automatici, ottimizzando automaticamente le prestazioni. Oltre a tutte queste funzionalità, è garantita anche la disponibilità.
+
+In questo modulo si esaminano le opzioni disponibili per i servizi di database relazionale di Azure.
+
+## Descrivere i servizi e le funzionalità di Azure SQL
+
+Azure SQL è un termine collettivo indicante una famiglia di servizi di database basati su Microsoft SQL Server in Azure. I servizi specifici di Azure SQL includono:
+
+- **SQL Server su macchine virtuali di Azure** - una macchina virtuale che esegue in Azure un'installazione di SQL Server. L'uso di una macchina virtuale fa di questa opzione una soluzione IaaS (infrastruttura distribuita come servizio) che virtualizza l'infrastruttura hardware per il calcolo, l'archiviazione e la rete in Azure, rendendola l'opzione ideale per la migrazione al cloud in modalità "lift-and-shift" di installazioni locali esistenti di SQL Server.
+- **Istanza gestita di SQL di Azure**: opzione PaaS (piattaforma distribuita come servizio) che assicura quasi il 100% della compatibilità con le istanze di SQL Server locali astraendo l'hardware e il sistema operativo sottostanti. Il servizio include la gestione automatizzata degli aggiornamenti software, dei backup e di altre attività di manutenzione, riducendo l'onere amministrativo del supporto di un'istanza del server di database.
+- **Database SQL di Azure**: un servizio di database PaaS completamente gestito e altamente scalabile progettato per il cloud. Questo servizio include le funzionalità di base a livello di database di SQL Server locale ed è una valida opzione quando è necessario creare una nuova applicazione nel cloud.
+
+### Confrontare i servizi di Azure SQL
+
+| Funzionalità / Caratteristica | SQL Server in macchine virtuali di Azure | Istanza gestita di SQL di Azure | Database SQL di Azure |
+| :--- | :--- | :--- | :--- |
+| **Tipo di servizio cloud** | IaaS | PaaS | PaaS |
+| **Compatibilità di SQL Server** | Completamente compatibile con installazioni fisiche e virtualizzate locali. È possibile eseguire facilmente la migrazione di applicazioni e database in modalità "lift-and-shift" senza modifiche. | Compatibilità quasi completa con SQL Server. È possibile eseguire la migrazione della maggior parte dei database locali con modifiche minime al codice usando il servizio Migrazione del database di Azure. | Supporta la maggior parte delle funzionalità di base a livello di database di SQL Server. Alcune funzionalità dipendenti da un'applicazione locale potrebbero non essere disponibili. |
+| **Architettura** | Le istanze di SQL Server vengono installate in una macchina virtuale. Ogni istanza può supportare più database. | Ogni istanza gestita può supportare più database. Inoltre, i pool di istanze possono essere usati per condividere le risorse in modo efficiente tra istanze più piccole. | È possibile effettuare il provisioning di un database singolo in un server dedicato gestito (logico); oppure è possibile usare un pool elastico per condividere le risorse tra più database e sfruttare la scalabilità su richiesta. |
+| **Disponibilità** | 99,99% | 99,99% | 99,995% |
+| **Gestione** | È necessario gestire tutti gli aspetti del server, inclusi il sistema operativo e gli aggiornamenti di SQL Server, la configurazione, i backup e altre attività di manutenzione. | Aggiornamenti, backup e ripristino completamente automatizzati. | Aggiornamenti, backup e ripristino completamente automatizzati. |
+| **Casi d'uso** | Usare questa opzione quando è necessario eseguire la migrazione di una soluzione SQL Server locale o estenderla e mantenere il controllo completo su tutti gli aspetti della configurazione del server e del database. | Usare questa opzione per la maggior parte degli scenari di migrazione al cloud, in particolare quando sono necessarie modifiche minime alle applicazioni esistenti. | Usare questa opzione per le nuove soluzioni cloud o per eseguire la migrazione di applicazioni con dipendenze minime a livello di istanza. |
+
+### SQL Server in Macchine virtuali di Azure
+
+SQL Server in macchine virtuali consente di usare le versioni complete di SQL Server nel cloud senza dover gestire hardware locale. Questo è un esempio dell'approccio IaaS.
+
+SQL Server in esecuzione in una macchina virtuale di Azure replica efficacemente il database in esecuzione su hardware locale reale. La migrazione dal sistema in esecuzione in locale a una macchina virtuale di Azure non è diversa dallo spostamento dei database da un server locale a un altro.
+
+Questo approccio è adatto alle migrazioni e alle applicazioni che richiedono l'accesso alle funzionalità del sistema operativo che potrebbero non essere supportate a livello PaaS. Le macchine virtuali SQL sono pronte per il trasferimento in modalità lift-and-shift per le applicazioni esistenti che richiedono una migrazione rapida al cloud con modifiche minime. È anche possibile usare SQL Server nelle macchine virtuali di Azure per estendere le applicazioni locali esistenti al cloud nelle distribuzioni ibride.
+
+:::{.callout-note}
+Una *distribuzione ibrida* è un sistema in cui parte dell'operazione viene eseguita in locale e parte nel cloud. Il database potrebbe far parte di un sistema più ampio eseguito in locale, anche se gli elementi del database potrebbero essere ospitati nel cloud.
+:::
+
+È possibile usare SQL Server in una macchina virtuale per sviluppare e testare applicazioni SQL Server tradizionali. Con una macchina virtuale, si dispone dei diritti amministrativi completi sul DBMS e sul sistema operativo. Si tratta di una scelta perfetta quando un'organizzazione ha già a disposizione risorse IT per gestire le macchine virtuali.
+
+Queste funzionalità consentono di:
+
+- Creare scenari di sviluppo e test rapidi quando non si vuole acquistare hardware SQL Server non di produzione locale.
+- Prepararsi per il lift-and-shift per le applicazioni esistenti che richiedono una migrazione rapida al cloud con modifiche minime o senza modifiche.
+- Aumentare le dimensioni della piattaforma in cui SQL Server è in esecuzione, allocando più memoria, potenza della CPU e spazio su disco per la macchina virtuale. È possibile ridimensionare rapidamente una macchina virtuale di Azure senza la necessità di reinstallare il software in esecuzione su di essa.
+
+#### Vantaggi aziendali
+
+L'esecuzione di SQL Server su macchine virtuali consente di soddisfare esigenze aziendali univoche e diversificate grazie a una combinazione di distribuzioni locali e ospitate nel cloud, usando lo stesso set di prodotti server, strumenti di sviluppo e competenze in questi ambienti.
+
+Per le aziende non è sempre facile trasferire il DBMS a un servizio completamente gestito. Potrebbe essere necessario soddisfare requisiti specifici per eseguire la migrazione a un servizio gestito che richiede modifiche al database e alle applicazioni che lo usano. Per questo motivo, l'uso di macchine virtuali può offrire una soluzione, ma non elimina la necessità di amministrare il sistema di gestione di database con la stessa attenzione di un sistema locale.
+
+### Istanza gestita di SQL di Azure
+
+L'istanza gestita di Azure SQL esegue efficacemente un'istanza completamente controllabile di SQL Server nel cloud. È possibile installare più database nella stessa istanza. Si ha il controllo completo di questa istanza, come per un server locale. Istanza gestita di SQL automatizza i backup, l'applicazione di patch software, il monitoraggio dei database e altre attività generali, ma si ha il controllo completo sulla sicurezza e sull'allocazione delle risorse per i database. Per informazioni dettagliate, vedere [Che cos'è Istanza gestita di SQL di Azure?](https://learn.microsoft.com/it-it/azure/sql-database/sql-database-managed-instance).
+
+Le istanze gestite dipendono da altri servizi di Azure, ad esempio Archiviazione di Azure per i backup, Hub eventi di Azure per la telemetria, Microsoft Entra ID per l'autenticazione, Azure Key Vault per Transparent Data Encryption (TDE) e un paio di servizi della piattaforma Azure che offrono funzionalità di sicurezza e supporto. Le istanze gestite consentono di stabilire connessioni a tali servizi.
+
+Tutte le comunicazioni vengono crittografate e firmate con certificati. Per verificare l'attendibilità delle parti di comunicazione, le istanze gestite verificano costantemente questi certificati tramite elenchi di revoche di certificati. Se i certificati vengono revocati, l'istanza gestita chiude le connessioni per proteggere i dati.
+
+#### Casi d'uso
+
+Si consideri Istanza gestita di SQL di Azure se si vuole spostare in modalità lift-and-shift un'istanza di SQL Server locale e tutti i relativi database nel cloud, senza incorrere nell'overhead di gestione dell'esecuzione di SQL Server in una macchina virtuale.
+
+Istanza gestita di SQL di Azure fornisce funzionalità non disponibili nel database SQL di Azure (illustrato di seguito). Se il sistema usa funzionalità quali server collegati, Service Broker (un sistema di elaborazione dei messaggi che può essere usato per distribuire il lavoro tra server) o Posta elettronica database (che consente al database di inviare messaggi di posta elettronica agli utenti), è necessario usare l'istanza gestita. Per verificare la compatibilità con un sistema locale esistente, è possibile installare [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595). Questo strumento analizza i database in SQL Server e segnala eventuali problemi che potrebbero bloccare la migrazione a un'istanza gestita.
+
+#### Vantaggi aziendali
+
+Istanza gestita di SQL di Azure consente a un amministratore di sistema di dedicare meno tempo alle attività amministrative perché il servizio le esegue automaticamente o le semplifica notevolmente. Le attività automatizzate includono l'installazione di software e l'applicazione di patch al sistema operativo e al sistema di gestione del database, il ridimensionamento e la configurazione di istanze dinamiche, i backup, la replica di database (inclusi i database di sistema), la configurazione della disponibilità elevata e la configurazione dei flussi di dati di monitoraggio dello stato e delle prestazioni.
+
+Istanza gestita di SQL di Azure ha una compatibilità quasi al 100% con SQL Server Enterprise Edition, in esecuzione in locale.
+
+Istanza gestita di SQL di Azure supporta gli account di accesso del motore di database di SQL server e gli account di accesso integrati con Microsoft Entra ID. Gli account di accesso del motore di database di SQL Server includono un nome utente e una password. È necessario immettere le credenziali ogni volta che ci si connette al server. Gli account di accesso di Microsoft Entra usano le credenziali associate all'accesso al computer corrente e non è necessario specificarle ogni volta che ci si connette al server.
+
+### Database SQL di Azure
+
+Il database SQL di Azure è un'offerta PaaS di Microsoft. Si crea un server di database gestito nel cloud, quindi si distribuiscono i database in questo server.
+
+:::{.callout-note}
+Un server di database SQL è un costrutto logico che funge da punto di amministrazione centrale per più database singoli o in pool, account di accesso, regole del firewall, regole di controllo, criteri di rilevamento delle minacce e gruppi di failover.
+:::
+
+Il database SQL di Azure è disponibile come *database singolo* o *pool elastico*.
+
+#### Database singolo
+
+Questa opzione consente di configurare ed eseguire rapidamente un singolo database di SQL Server. Si crea ed esegue un server di database nel cloud e si accede al database tramite questo server. Microsoft gestisce il server, quindi è sufficiente configurare il database, creare le tabelle e popolarle con i dati. È possibile ridimensionare il database se è necessario più spazio di archiviazione, memoria o potenza di elaborazione. Per impostazione predefinita, le risorse sono pre-allocate e l'addebito avviene su base oraria per le risorse richieste. È anche possibile specificare una configurazione serverless . In questa configurazione, Microsoft crea il proprio server, che può essere condiviso dai database appartenenti ad altri sottoscrittori di Azure. Microsoft garantisce la privacy del database. Il database viene ridimensionato automaticamente e le risorse vengono allocate o deallocate in base alle esigenze.
+
+#### Pool elastico
+
+Questa opzione è simile a Database singolo, ad eccezione del fatto che per impostazione predefinita più database possono condividere le stesse risorse, ad esempio memoria, spazio di archiviazione dati e potenza di elaborazione tramite più tenancy. Le risorse vengono indicate come un pool. Si crea il pool e solo i database possono usarlo. Questo modello è utile se sono presenti database con requisiti di risorse che variano nel corso del tempo e che consentono di ridurre i costi. Ad esempio, il database delle retribuzioni potrebbe richiedere molta potenza della CPU alla fine di ogni mese durante la gestione dell'elaborazione delle retribuzioni, ma in altre occasioni potrebbe diventare molto meno attivo. Si potrebbe disporre di un altro database usato per l'esecuzione di report. Questo database potrebbe essere attivo per diversi giorni a metà del mese, quando vengono generati report di gestione, ma potrebbe avere un carico più leggero in altri momenti. Il Pool elastico consente di usare le risorse disponibili nel pool e quindi di rilasciare le risorse al termine dell'elaborazione.
+
+
+#### Casi d'uso
+
+Il database SQL di Azure offre l'opzione migliore per costi ridotti con amministrazione minima. Non è completamente compatibile con le installazioni di SQL Server locali. Viene spesso usato in nuovi progetti cloud in cui la progettazione dell'applicazione può adattarsi a tutte le modifiche necessarie per le applicazioni.
+
+:::{.callout-note}
+È possibile usare Data Migration Assistant per rilevare problemi di compatibilità con i database che potrebbero compromettere la funzionalità del database nel database SQL di Azure. Per altre informazioni, vedere [Panoramica di Data Migration Assistant](https://learn.microsoft.com/it-it/sql/dma/dma-overview).
+:::
+
+Il database SQL di Azure viene spesso usato per:
+
+- Applicazioni cloud moderne per le quali è necessario usare le funzionalità di SQL Server stabili più recenti.
+- Applicazioni che richiedono disponibilità elevata.
+- Sistemi con carico variabile, che necessitano del server di database per il ridimensionamento verticale rapido.
+
+#### Vantaggi aziendali
+
+Il database SQL di Azure aggiorna e installa patch automaticamente nel software SQL Server per assicurare che sia sempre in esecuzione la versione più recente e più sicura del servizio.
+
+Le funzionalità di ridimensionamento del database SQL di Azure assicurano che sia possibile aumentare le risorse disponibili per archiviare ed elaborare i dati senza dover eseguire un aggiornamento manuale costoso.
+
+Il servizio fornisce garanzie di disponibilità elevata, per assicurare che i database siano disponibili per almeno il 99,995% del tempo. Il database SQL di Azure supporta il ripristino temporizzato, che consente di ripristinare un database nello stato in cui si trovava in qualsiasi momento nel passato. I database possono essere replicati in aree geografiche diverse per fornire più resilienza e ripristino di emergenza.
+
+Advanced Threat Protection offre funzionalità di sicurezza avanzate, ad esempio valutazioni delle vulnerabilità, per consentire di rilevare e risolvere i potenziali problemi di sicurezza con i database. Threat Protection rileva anche attività anomale che indicano tentativi insoliti e potenzialmente dannosi di accedere o sfruttare il database. Monitora in modo continuo il database in caso di attività sospette e fornisce avvisi di sicurezza immediati su potenziali vulnerabilità, attacchi SQL injection e in caso di criteri anomali di accesso ai database. Gli avvisi di Threat Protection includono dettagli sulle attività sospette e consigliano azioni per l'analisi e la mitigazione della minaccia.
+
+Il controllo tiene traccia degli eventi del database e li scrive in un log di controllo nell'account di archiviazione di Azure. Il controllo consente di agevolare la conformità alle normative, comprendere le attività del database e ottenere informazioni su eventuali discrepanze e anomalie che potrebbero indicare problemi aziendali o sospette violazioni della sicurezza.
+
+Il database SQL consente di proteggere i dati fornendo la crittografia che protegge i dati archiviati nel database (inattivi) e durante il trasferimento in rete (in movimento).
+
+## Descrivere i servizi di Azure per i database open source
+
+Oltre ai servizi SQL di Azure, i servizi dati di Azure sono disponibili per altri sistemi di database relazionali più diffusi, tra cui MySQL e PostgreSQL. Il motivo principale di questi servizi è consentire alle organizzazioni che li usano nelle app locali di passare rapidamente ad Azure, senza modificare in modo significativo le applicazioni.
+
+### Che cosa sono MySQL e PostgreSQL?
+
+MySQL e PostgreSQL sono sistemi di gestione di database relazionali personalizzati per specializzazioni diverse.
+
+MySQL è nato come sistema di gestione di database open source semplice da usare. È il principale database relazionale open source per le app dello stack LAMP (Linux, Apache, MySQL e PHP). È disponibile in diverse edizioni: Community, Standard ed Enterprise. L'edizione Community è disponibile gratuitamente e in passato era diffusa come sistema di gestione di database per applicazioni Web, in esecuzione in Linux. Sono disponibili versioni anche per Windows. L'edizione Standard offre prestazioni più elevate e usa una tecnologia diversa per archiviare i dati. L'edizione Enterprise offre un set completo di strumenti e funzionalità, tra cui sicurezza, disponibilità e scalabilità migliorate. Le edizioni Standard ed Enterprise sono le versioni usate più frequentemente dalle organizzazioni commerciali, sebbene queste versioni del software non siano gratuite.
+
+PostgreSQL è un database di oggetti relazionali ibrido. È possibile archiviare i dati in tabelle relazionali, ma un database PostgreSQL consente anche di archiviare tipi di dati personalizzati, con le relative proprietà non relazionali. Il sistema di gestione di database è estensibile; è possibile aggiungere al database moduli di codice che possono essere eseguiti da query. Un'altra funzionalità chiave è la capacità di archiviare e modificare i dati geometrici, ad esempio linee, cerchi e poligoni.
+
+PostgreSQL ha un linguaggio di query denominato pgsql. Questo linguaggio è una variante del linguaggio di query relazionale standard, SQL, con funzionalità che consentono di scrivere stored procedure eseguite all'interno del database.
+
+### Database di Azure per MySQL ![](https://az-icons.com/export/icons/6600d5a7782168fc474119f373c4a86e.svg){width=5%}
+
+Database di Azure per MySQL è un'implementazione PaaS di MySQL nel cloud di Azure, basata su MySQL Community Edition.
+
+Il servizio Database di Azure per MySQL include una disponibilità elevata senza costi aggiuntivi e ridimensionamento in base alle esigenze. Si paga solo per le risorse usate. Vengono forniti backup automatici con ripristino a un punto nel tempo.
+
+Il server fornisce sicurezza della connessione per applicare regole del firewall e, facoltativamente, richiedere connessioni SSL. Molti parametri del server consentono di configurare le impostazioni del server, ad esempio le modalità di blocco, il numero massimo di connessioni e i timeout.
+
+Database di Azure per MySQL offre un sistema di database globale che consente di aumentare le dimensioni fino a database di grandi dimensioni senza dover gestire hardware, componenti di rete, server virtuali, patch software e altri componenti sottostanti.
+
+Alcune operazioni non sono disponibili con Database di Azure per MySQL. Queste funzioni riguardano principalmente la sicurezza e l'amministrazione. Azure gestisce questi aspetti del server di database stesso.
+
+#### Vantaggi di Database di Azure per MySQL
+
+Con Database di Azure per MySQL si ottengono le funzionalità seguenti:
+
+- Funzionalità di disponibilità elevata integrate.
+- Prestazioni prevedibili.
+- Ridimensionamento facile che risponde rapidamente alle esigenze.
+- Dati protetti, sia inattivi che in movimento.
+- Backup automatici e ripristino a un punto specifico nel tempo per gli ultimi 35 giorni.
+- Sicurezza e conformità a livello aziendale con la normativa.
+
+Il sistema usa prezzi con pagamento in base al consumo, in modo da pagare solo per le risorse usate.
+
+Il Database di Azure per server MySQL offre funzionalità di monitoraggio per aggiungere avvisi e per visualizzare metriche e log.
+
+#### Server flessibile di Database di Azure per MySQL
+
+L'opzione di distribuzione server flessibile è un servizio di database completamente gestito progettato per offrire un controllo e una flessibilità più granulari sulle funzioni di gestione del database e sulle impostazioni di configurazione. Fornisce controlli di ottimizzazione dei costi ed è l'opzione di distribuzione consigliata per i nuovi carichi di lavoro.
+
+### Database di Azure per PostgreSQL ![](https://az-icons.com/export/icons/747f79d1963ab0eb020650db2f63a3cd.svg){width=5%}
+
+Se si preferisce PostgreSQL, è possibile scegliere Database di Azure per PostgreSQL per eseguire un'implementazione PaaS di PostgreSQL nel cloud di Azure. Questo servizio offre la stessa disponibilità, prestazioni, ridimensionamento, sicurezza e vantaggi amministrativi del servizio MySQL.
+
+Alcune funzionalità dei database PostgreSQL locali non sono disponibili in Database di Azure per PostgreSQL. Queste funzionalità riguardano principalmente le estensioni che gli utenti possono aggiungere a un database per eseguire attività specializzate, ad esempio la scrittura di stored procedure in diversi linguaggi di programmazione (a eccezione di pgsql, disponibile) e l'interazione direttamente con il sistema operativo. È supportato un set di base delle estensioni usate più frequentemente e l'elenco delle estensioni disponibili è in revisione continua.
+
+#### Database di Azure per PostgreSQL - Server flessibile
+
+L'opzione di distribuzione Server flessibile per PostgreSQL è un servizio di database completamente gestito. Offre un livello elevato di controllo e personalizzazioni della configurazione del server, oltre ai controlli per l'ottimizzazione dei costi.
+
+#### Vantaggi di Database di Azure per PostgreSQL
+
+Database di Azure per PostgreSQL è un servizio a disponibilità elevata. Contiene meccanismi di rilevamento degli errori e failover predefiniti.
+
+Gli utenti di PostgreSQL hanno familiarità con lo strumento pgAdmin, che è possibile usare per gestire e monitorare un database PostgreSQL. È possibile continuare a usare questo strumento per connettersi a Database di Azure per PostgreSQL. Tuttavia, alcune funzionalità incentrate sul server, ad esempio l'esecuzione del backup e del ripristino del server, non sono disponibili perché il server è gestito da Microsoft.
+
+Database di Azure per PostgreSQL registra le informazioni sulle query eseguite sui database nel server e le salva in un database denominato `azure_sys`. Esegui una query sulla vista `query_store.qs_view` per ottenere queste informazioni e utilizzarle per monitorare le query che gli utenti stanno eseguendo. Queste informazioni possono risultare utili se è necessario ottimizzare le query eseguite dalle applicazioni.
+

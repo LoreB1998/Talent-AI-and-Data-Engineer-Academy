@@ -1,0 +1,22 @@
+
+====== TOP 20 PAROLE (min len 6) =======
+ 1. quella          (que-lla) ->  765 occorrenze
+ 2. qualche         (qua-che) ->  468 occorrenze
+ 3. quando          (qua-ndo) ->  463 occorrenze
+ 4. perchè          (per-chè) ->  408 occorrenze
+ 5. questa          (que-sta) ->  407 occorrenze
+ 6. sempre          (sem-pre) ->  317 occorrenze
+ 7. quello          (que-llo) ->  303 occorrenze
+ 8. subito          (sub-ito) ->  285 occorrenze
+ 9. quelle          (que-lle) ->  269 occorrenze
+10. strada          (str-ada) ->  257 occorrenze
+11. parole          (par-ole) ->  243 occorrenze
+12. giorno          (gio-rno) ->  240 occorrenze
+13. abbondio        (abb-dio) ->  228 occorrenze
+14. momento         (mom-nto) ->  226 occorrenze
+15. agnese          (agn-ese) ->  217 occorrenze
+16. quelli          (que-lli) ->  216 occorrenze
+17. allora          (all-ora) ->  212 occorrenze
+18. sarebbe         (sar-bbe) ->  212 occorrenze
+19. signore         (sig-ore) ->  208 occorrenze
+20. quanto          (qua-nto) ->  198 occorrenze

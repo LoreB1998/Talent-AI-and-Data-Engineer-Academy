@@ -1,0 +1,359 @@
+---
+title: "Introduzione ai dati non relazionali di Microsoft Azure in Azure"
+subtitle: "DP-900"
+author: "Lorenzo Barbato"
+date: today
+date-format: "DD MMMM YYYY"
+lang: it
+watch-inputs: true
+embed-resources: true
+format:
+  html:
+    theme: lumen            # Temi puliti e professionali: cosmo, flatly, lumen, o sandstone per quello scuri darkly, cyborg, slate, solar
+    toc: true              # Genera automaticamente l'indice dei contenuti a destra
+    toc-title: "Indice"    # Titolo dell'indice
+    toc-depth: 3           # Profondità dell'indice (fino a ###)
+    number-sections: true  # Numera automaticamente i capitoli (1., 1.1, ecc.)
+    code-fold: true        # Se aggiungi codice Python, lo nasconde dietro un bottone cliccabile
+    smooth-scroll: true    # Rende lo scorrimento cliccando sull'indice più fluido
+    css: style.css
+---
+
+# Esplorare Archiviazione di Azure per i dati non relazionali
+
+## Introduzione
+
+La maggior parte delle applicazioni software prevede l'archiviazione di dati. Spesso i dati vengono memorizzati in un database relazionale, in cui i dati vengono organizzati in tabelle correlate e gestiti tramite Structured Query Language (SQL). Tuttavia, molte applicazioni non necessitano della struttura rigida di un database relazionale e si basano sull'archiviazione non relazionale (spesso definita NoSQL).
+
+Archiviazione di Azure e Microsoft OneLake offrono una vasta gamma di opzioni per memorizzare i dati nel cloud. In questo modulo vengono esaminate le funzionalità fondamentali di Archiviazione di Azure e Microsoft OneLake e si apprenderà come vengono usate per supportare applicazioni che richiedono archivi dati non relazionali.
+
+## Esplorare l'archiviazione BLOB di Azure
+
+L'archiviazione BLOB di Azure è un servizio che consente di archiviare quantità elevate di dati non strutturati, come gli oggetti binari di grandi dimensioni o BLOB, nel cloud. I BLOB sono un modo efficiente per archiviare i file di dati in un formato ottimizzato per l'archiviazione basata sul cloud e le applicazioni possono leggerle e scriverle usando l'API di archiviazione BLOB Azure.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-provision-deploy-non-relational-data-services-azure/media/azure-blob-storage.png){width=30% fig-align="center"}
+
+In un account di archiviazione di Azure, i BLOB vengono archiviati in contenitori. Un contenitore offre un modo pratico per raggruppare i BLOB correlati. È possibile controllare gli utenti che possono leggere e scrivere sui BLOB all'interno di un contenitore a livello di contenitore. L'autenticazione con Microsoft Entra ID (il servizio di gestione delle identità e degli accessi di Azure) è il metodo di accesso consigliato per Archiviazione BLOB di Azure e consente di assegnare autorizzazioni precise tramite il controllo degli accessi in base al ruolo di Azure (RBAC), un sistema che controlla chi può eseguire azioni specifiche sulle risorse di Azure.
+
+In un contenitore è possibile organizzare i BLOB in una gerarchia di cartelle virtuali, simili ai file di un file system sul disco. Tuttavia, per impostazione predefinita, queste cartelle sono semplicemente un modo per usare un carattere "/" in un nome di blob per organizzare i blob in namespace. Le cartelle sono puramente virtuali e non è possibile eseguire operazioni a livello di cartella per controllare l'accesso o eseguire operazioni bulk.
+
+L'archiviazione BLOB di Azure supporta tre diversi tipi di BLOB:
+
+- **BLOB in blocchi**. Un blob in blocchi viene gestito come un insieme di blocchi. Ogni blocco può variare in base alle dimensioni, fino a 4.000 MiB. Un BLOB in blocchi può contenere fino a 190,7 TiB (4.000 MiB X 50.000 blocchi). Il blocco è la quantità minima di dati che è possibile leggere o scrivere come singola unità. I BLOB in blocchi sono particolarmente adatti per l'archiviazione di oggetti binari discreti e di grandi dimensioni che cambiano poco frequentemente.
+- **BLOB di pagine**. Un BLOB di pagine è organizzato come raccolta di pagine a dimensione fissa di 512 byte. Un BLOB di pagine è ottimizzato per il supporto di operazioni di lettura e scrittura casuali. Se necessario, è possibile recuperare e archiviare i dati di una singola pagina. Un BLOB di pagine può contenere fino a 8 TB di dati. Azure usa i BLOB di pagine per implementare l'archiviazione su disco virtuale per le macchine virtuali.
+- **BLOB di accodamento**. Un BLOB di accodamento è un BLOB in blocchi ottimizzato per il supporto delle operazioni di accodamento. È possibile aggiungere i blocchi solo alla fine di un blob di aggiunta; aggiornare o eliminare blocchi esistenti non è supportato. Ogni blocco può avere dimensioni diverse, fino a 4 MB. La dimensione massima di un BLOB di accodamento è di circa 195 GB.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-provision-deploy-non-relational-data-services-azure/media/azure-blob-types.png){width=60% fig-align="center"}
+
+L'archiviazione BLOB offre quattro livelli di accesso, che consentono di bilanciare la latenza di accesso e i costi di archiviazione:
+
+- Il **livello Hot** è quello predefinito. Questo livello viene usato per i BLOB a cui si accede di frequente. I dati BLOB vengono archiviati in supporti a prestazioni elevate.
+- Il **livello Cool** ha costi di archiviazione inferiori, ma costi di accesso più elevati rispetto al livello Hot. Usare il "Cool tier" per i dati a cui si accede raramente. I dati devono rimanere nel livello ad accesso sporadico per un minimo di 30 giorni per evitare sanzioni per l'eliminazione anticipata. Di solito, la frequenza di accesso ai BLOB appena creati è inizialmente molto elevata, per poi diminuire con il passare del tempo. In queste situazioni è possibile creare il BLOB nel livello caldo per poi migrare al livello freddo in un secondo momento. È anche possibile eseguire la migrazione di un BLOB dal livello di accesso sporadico al livello di accesso frequente.
+- Il **livello Cold** è ottimizzato per l'archiviazione dei dati a cui si accede o si modificano raramente, ma che richiedono comunque un recupero rapido. Il livello Cold ha costi di archiviazione inferiori e costi di accesso più elevati rispetto al livello Cool. I dati devono rimanere nel livello Cold per un minimo di 90 giorni per evitare penalità di eliminazione anticipata. Usare questo livello per i dati, ad esempio backup a breve termine, dati di ripristino di emergenza o set di dati di grandi dimensioni che richiedono un'archiviazione conveniente.
+- Il **livello archivio** prevede il costo di archiviazione più basso, ma con una latenza maggiore. Il livello Archivio è indicato per i dati cronologici che devono essere conservati, ma a cui è necessario accedere solo raramente. I dati devono rimanere nel livello archivio per un minimo di 180 giorni per evitare sanzioni per l'eliminazione anticipata. I BLOB nel livello Archivio vengono archiviati in uno stato offline. La latenza di lettura tipica per i livelli Hot, Cool e Cold è di pochi millisecondi, ma per il livello Archive possono essere necessarie fino a 15 ore prima che i dati siano disponibili. Per recuperare un BLOB dal livello Archivio, è necessario modificare il livello di accesso in Hot, Cool o Cold. Il BLOB verrà quindi riattivato. È possibile leggere il BLOB solo al termine del processo di riattivazione.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-provision-deploy-non-relational-data-services-azure/media/azure-blob-access-tiers.png){width=60% fig-align="center"}
+
+È possibile creare criteri di gestione del ciclo di vita per i BLOB in un account di archiviazione. Una politica di gestione del ciclo di vita può spostare automaticamente un BLOB dallo stato Hot a quello Cool, poi a Cold e infine al livello Archive, man mano che invecchia e viene utilizzato meno frequentemente (la politica si basa sul numero di giorni trascorsi dalla modifica). Un criterio di gestione del ciclo di vita può inoltre prevedere l'eliminazione dei BLOB obsoleti.
+
+Archiviazione di Azure offre anche opzioni di ridondanza predefinite per mantenere i dati a disponibilità elevata e protetti da errori. **L'archiviazione con ridondanza locale mantiene** tre copie dei dati in un singolo data center. **L'archiviazione con ridondanza della zona distribuisce** le copie tra tre zone di disponibilità nell'area primaria, in modo che i dati rimangano accessibili anche in caso di arresto di una zona. Per la protezione dalle emergenze a livello di area, **l'archiviazione con ridondanza geografica e l'archiviazione con ridondanza geografica della zona (GZRS)** replicano in modo asincrono i dati in un'area secondaria a centinaia di chilometri di distanza. È anche possibile abilitare l'accesso in lettura all'area secondaria (RA-GRS o RA-GZRS) in modo che l'applicazione possa leggere i dati dall'area secondaria anche prima che si verifichi un failover.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-provision-deploy-non-relational-data-services-azure/media/azure-storage-redundancy.png){width=60% fig-align="center"}
+
+## Esplorare Azure Data Lake Storage Gen2
+
+Azure Data Lake Storage Gen2 è una soluzione data lake su scala cloud integrata in Archiviazione di Azure. Combina la scalabilità e il controllo dei costi delle Archiviazione BLOB di Azure, inclusi i livelli di archiviazione e la gestione del ciclo di vita, con un file system gerarchico compatibile con i principali sistemi di analisi.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-provision-deploy-non-relational-data-services-azure/media/azure-data-lake.png){width=30% fig-align="center"}
+
+Sistemi come Azure Databricks possono montare un file system distribuito ospitato in Azure Data Lake Storage Gen2 e usarlo per elaborare grandi volumi di dati. Per i tenant di Microsoft Fabric viene eseguito automaticamente il provisioning di OneLake, basato su Azure Data Lake Storage Gen2.
+
+Per creare un file system Azure Data Lake Storage Gen2, è necessario abilitare l'opzione Hierarchical Namespace di un account Archiviazione di Azure. A tale scopo, è possibile creare inizialmente l'account di archiviazione oppure aggiornare un account di Archiviazione di Azure esistente per supportare uno spazio dei nomi gerarchico. Si noti che l'aggiornamento è un processo irreversibile: dopo l'aggiornamento, non è possibile riportare l'account di archiviazione a uno spazio dei nomi semplice.
+
+## Esplorare Microsoft OneLake in Fabric
+
+Microsoft Fabric effettua automaticamente il provisioning di OneLake, basato su Azure Data Lake Gen 2.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-provision-deploy-non-relational-data-services-azure/media/onelake-foundation-for-fabric.png){width=70% fig-align="center"}
+
+OneLake è un singolo data lake logico unificato progettato per l'intera organizzazione. OneLake viene fornito automaticamente con ogni tenant di Microsoft Fabric e funge da repository centrale per tutti i dati di analisi. Indipendentemente dal fatto che sia strutturato o no, OneLake supporta qualsiasi tipo di file e consente di usare gli stessi dati in più motori analitici senza spostamento o duplicazione dei dati.
+
+### Vantaggi principali di OneLake
+
+- Data lake a livello di organizzazione Prima di OneLake, la creazione di più data lake per diversi gruppi di business era comune. OneLake offre ora una soluzione collaborativa, assicurando che l'intera organizzazione condivida un singolo data lake.
+
+- Proprietà distribuita e collaborazione All'interno di un tenant è possibile creare aree di lavoro, consentendo a diverse parti dell'organizzazione di gestire gli elementi di dati. Questa proprietà distribuita promuove la collaborazione mantenendo al tempo stesso i limiti di governance.
+
+- Aperto e compatibile Basato su Azure Data Lake Storage (ADLS) Gen2, OneLake archivia i dati nel formato Delta Parquet, un formato di file aperto ed efficiente ampiamente utilizzato per i dati analitici. Supporta le API e gli SDK di ADLS Gen2 esistenti, rendendolo compatibile con le applicazioni correnti.
+
+- Facile da esplorare È semplice spostarsi tra i dati di OneLake da Windows usando [Esplora file di OneLake](https://learn.microsoft.com/it-it/fabric/onelake/onelake-file-explorer).
+
+
+## Esplorare File di Azure
+
+Molti sistemi locali che comprendono una rete di computer interni usano condivisioni file. Una condivisione file consente di archiviare un file in un computer e di concedere l'accesso a tale file a utenti e applicazioni in esecuzione in altri computer. Questa strategia può funzionare bene per i computer nella stessa rete locale, ma non si adatta bene con l'aumento del numero di utenti o se gli utenti si trovano in siti diversi.
+
+File di Azure è essenzialmente un modo per creare condivisioni di rete basate sul cloud, ad esempio in genere nelle organizzazioni locali per rendere disponibili documenti e altri file a più utenti. Ospitando condivisioni file in Azure, le organizzazioni possono eliminare i costi hardware e il sovraccarico di manutenzione e trarre vantaggio dalla disponibilità elevata e dall'archiviazione cloud scalabile per i file.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-provision-deploy-non-relational-data-services-azure/media/azure-files.png){width=30% fig-align="center"}
+
+L'archiviazione file di Azure viene creata in un account di archiviazione. File di Azure consente di condividere grandi quantità di dati in un singolo account di archiviazione, fino a 256 TiB per gli account basati su SSD e ancora di più per gli account basati su HDD. Questi dati possono essere distribuiti tra un numero qualsiasi di condivisioni file nell'account. La dimensione massima di un singolo file è 4 TiB, ma è possibile impostare quote per limitare le dimensioni di ogni condivisione al di sotto di questa figura. Attualmente, l'Archiviazione file di Azure supporta fino a 2.000 handle simultanei per file o directory.
+
+Dopo aver creato un account di archiviazione, è possibile caricare file in Archiviazione file di Azure usando il portale di Azure o strumenti come l'utilità **AzCopy**. È anche possibile usare il servizio Sincronizzazione file di Azure per sincronizzare le copie memorizzate nella cache locale dei file condivisi con i dati in Azure Archiviazione file.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-provision-deploy-non-relational-data-services-azure/media/azure-files-architecture.png){width=70% fig-align="center"}
+
+L'archiviazione file di Azure offre due livelli di archiviazione. Il livello **HDD** usa hardware basato su disco rigido in un data center e il livello **SSD** usa dischi ssd. Il livello **SSD** offre una maggiore capacità di trasmissione, ma viene addebitato a una tariffa più elevata.
+
+File di Azure supporta due protocolli comuni di condivisione file di rete:
+
+- **Server Message Block (SMB)** la condivisione file viene comunemente usata in più sistemi operativi (Windows, Linux, macOS).
+
+- **Le condivisioni NFS (Network File System)** vengono usate da Linux (kernel 4.3 o versione successiva). Le condivisioni file Azure NFS non sono supportate in Windows o macOS. Per creare una condivisione NFS, è necessario usare un account di archiviazione a livello SSD e creare e configurare una rete virtuale tramite cui è possibile controllare l'accesso alla condivisione.
+
+## Esplorare le tabelle di Azure
+
+**Archiviazione tabelle di Azure** è una soluzione di archiviazione **NoSQL** che usa tabelle contenenti **key/value** elementi di dati. Ogni elemento è rappresentato da una riga che contiene le colonne relative ai campi dati che devono essere archiviati.
+
+:::{.callout-note}
+I concetti di questa unità si applicano anche a Azure Cosmos DB per Table, un servizio più recente che archivia i dati nello stesso formato chiave/valore, ma aggiunge prestazioni e disponibilità globale maggiori. Per i nuovi carichi di lavoro, Azure Cosmos DB per Tabella è la scelta consigliata.
+:::
+
+Tuttavia, non lasciarti trarre in inganno pensando che una tabella in Archiviazione tabelle di Azure sia come una tabella in un database relazionale. Una tabella di Azure consente di archiviare dati semistrutturati. Tutte le righe di una tabella devono avere una chiave univoca (composta da una **chiave di partizione** e una **chiave di riga**) e quando si modificano i dati in una tabella, una colonna timestamp registra la data e l'ora in cui è stata apportata la modifica. ma diversamente da questo, le colonne in ogni riga possono variare. Le tabelle di Archiviazione tabelle di Azure non supportano chiavi esterne, relazioni, stored procedure, viste o altri oggetti che si possono trovare in un database relazionale.
+
+I dati in Azure Table Storage sono in genere **denormalizzati**, in cui ogni riga contiene tutti i dati relativi a un'entità logica. Ad esempio, una tabella contenente informazioni sui clienti potrebbe archiviare il nome, il nome della famiglia, uno o più numeri di telefono e uno o più indirizzi per ogni cliente. Il numero di campi in ogni riga può variare a seconda del numero dei numeri di telefono e degli indirizzi per ogni cliente e dei dettagli memorizzati per ogni indirizzo. In un database relazionale, queste informazioni verrebbero suddivise tra più righe in più tabelle.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-provision-deploy-non-relational-data-services-azure/media/azure-tables.png){width=40% fig-align="center"}
+
+
+Per garantire un accesso rapido, Archiviazione tabelle di Azure suddivide una tabella in partizioni. Il partizionamento è un meccanismo per raggruppare le righe correlate in base a PartitionKey , ovvero un valore che si sceglie di riflettere una proprietà condivisa delle righe correlate. Le righe che condividono la stessa chiave di partizione vengono archiviate insieme. Il partizionamento non solo consente di organizzare i dati, ma può anche migliorare la scalabilità e le prestazioni nei modi seguenti:
+
+- Le partizioni sono indipendenti l'una dall'altra e possono essere aumentate o ridotte man mano che le righe vengono aggiunte o rimosse da una partizione. Una tabella può contenere un numero qualsiasi di partizioni.
+
+- Quando si esegue la ricerca di dati, è possibile includere la chiave di partizione nei criteri di ricerca. Questo consente di limitare il volume dei dati da esaminare e di migliorare le prestazioni riducendo la quantità di I/O (operazioni di input e output o di lettura e scrittura) necessarie per individuare i dati.
+
+La chiave in una tabella Archiviazione tabelle di Azure comprende due elementi, la chiave **partition** che identifica la partizione contenente la riga e una chiave **row** univoca per ogni riga nella stessa partizione. Gli elementi nella stessa partizione vengono archiviati in base all'ordine delle chiavi di riga. Se un'applicazione aggiunge una nuova riga a una tabella, Azure garantisce che la riga si trovi nella posizione corretta nella tabella. Questo schema consente a un'applicazione di eseguire rapidamente **query su un punto** che identificano una singola riga e **query sull'intervallo** che recuperano un blocco contiguo di righe in una partizione.
+
+
+# Esplorare i concetti fondamentali di Azure Cosmos DB
+
+## Introduzione
+
+I database relazionali archiviano i dati in tabelle relazionali, ma talvolta la struttura imposta da questo modello può essere troppo rigida e spesso comporta una riduzione delle prestazioni, a meno che non si dedichi del tempo all'implementazione di un'ottimizzazione dettagliata. Esistono altri modelli, noti collettivamente come database NoSQL . Questi modelli archiviano i dati in altre strutture, ad esempio documenti, grafici, archivi chiave-valore e archivi di famiglie di colonne.
+
+Azure Cosmos DB è un servizio di database cloud ad alta scalabilità per i dati NoSQL.
+
+## Descrivere Azure Cosmos DB
+
+Nell'unità precedente si è appreso che Azure Cosmos DB è un servizio di database cloud altamente scalabile per i dati NoSQL. In questa unità si esamineranno le differenze rispetto ai database relazionali tradizionali, al modo in cui organizza i dati internamente e quando è la scelta giusta per l'applicazione.
+
+### Che cos'è Azure Cosmos DB?
+
+**Azure Cosmos DB** è un servizio di database NoSQL completamente gestito in Azure, un'offerta PaaS (Platform-as-a-Service). Microsoft gestisce tutte le infrastrutture sottostanti: provisioning del server, applicazione di patch, aggiornamenti e backup. Ci si concentra sulla logica dell'applicazione mentre Cosmos DB gestisce il sovraccarico operativo.
+
+Cosmos DB è **indipendente dallo schema**. Gli elementi archiviati nello stesso contenitore non devono condividere la stessa struttura. Un elemento potrebbe avere cinque proprietà; un altro nello stesso contenitore potrebbe avere 15 completamente diversi. Questa flessibilità rende Cosmos DB particolarmente adatto alle applicazioni in cui le forme di dati cambiano nel tempo o variano tra i record.
+
+Microsoft usa internamente Cosmos DB per alcuni dei servizi più esigenti, tra cui Xbox Live, Microsoft 365 e parti principali di Azure. Questi servizi gestiscono collettivamente miliardi di operazioni al giorno, che offre un'idea della scalabilità di Cosmos DB per cui viene creata.
+
+### Come Azure Cosmos DB organizza i dati
+Cosmos DB usa una gerarchia di risorse a quattro livelli per organizzare i dati:
+
+- **Account**: risorsa di Azure di primo livello. Un singolo account può contenere database illimitati.
+- **Database**: spazio dei nomi logico che raggruppa i contenitori correlati.
+- **Contenitore**: unità primaria di archiviazione e ridimensionamento. Configurare la chiave di partizione, la velocità effettiva, i criteri di indicizzazione e un TTL (Time-to-Live) facoltativo a livello di contenitore.
+- **Elementi**: singole entità di dati archiviate all'interno di un contenitore. A seconda dell'API usata, gli elementi possono essere chiamati documenti, righe, nodi o bordi.
+
+La **chiave di partizione** è una proprietà che si sceglie di distribuire i dati tra partizioni logiche. Ogni partizione logica può avere fino a 20 GB di dati. Una chiave di partizione ben scelta, una con molti valori distinti e una distribuzione uniforme dei dati tra tali valori, è importante per mantenere bilanciata la velocità effettiva man mano che il database cresce.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-non-relational-data-stores-azure/media/cosmos-db-hierarchy.png){width=70% fig-align="center"}
+
+Cosmos DB crea e gestisce automaticamente gli indici in tutte le proprietà degli elementi per impostazione predefinita. Non è necessario definire uno schema prima o gestire manualmente gli indici; il servizio gestisce entrambi.
+
+### Distribuzione globale e prestazioni
+
+Cosmos DB è progettato per la distribuzione globale. Aggiungi regioni di Azure al tuo account in qualsiasi momento e il servizio replica automaticamente i tuoi dati in ciascuna di esse. Gli utenti in posizioni diverse leggono e scrivono nella replica regionale più vicina, mantenendo bassa la latenza indipendentemente dalla posizione in cui si trovano.
+
+Gli account con scrittura in più aree offrono garanzie di alta disponibilità. Al 99° percentile, le letture vengono in genere completate in circa 4 millisecondi e le scritture in circa 5 millisecondi.
+
+Poiché le repliche esistono in più aree, è necessario decidere in che modo tali repliche devono essere coerenti tra loro. Cosmos DB offre cinque **livelli di coerenza** per ottimizzare il compromesso:
+
+| Livello di coerenza | Descrizione |
+| :----- | :---------- |
+| **Forte** | Ogni lettura riflette la scrittura più recente. |
+| **Obsolescenza limitata** | Le letture sono in ritardo rispetto alle scritture di un intervallo configurabile (tempo o numero di versioni). |
+| **Session** | La coerenza è garantita all'interno di una singola sessione client. Questo è il livello più diffuso. |
+| **Prefisso coerente** | Le letture non visualizzano mai scritture non ordinate, ma potrebbero visualizzare dati non aggiornati. |
+| **Eventuale** | Le repliche convergono nel tempo; la garanzia più debole, ma la massima disponibilità. |
+
+Per la maggior parte delle applicazioni transazionali, la coerenza della sessione è il punto di partenza consigliato.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-non-relational-data-stores-azure/media/cosmos-db-global-consistency.png){width=80% fig-align="center"}
+
+### Modalità di throughput e prezzi
+
+Cosmos DB misura la capacità nelle unità richiesta al secondo (UR/sec). Una UR/s equivale approssimativamente al costo di lettura di un elemento da 1 KB. Ogni operazione, ovvero letture, scritture, query ed eliminazioni, utilizza un certo numero di UR/sec, offrendo una singola metrica per ragionare sia sulle prestazioni che sui costi.
+
+Sono disponibili tre modalità di velocità effettiva:
+
+| Modalità velocità effettiva | Descrzione|
+| :--- | :--------- |
+| **Dedicato** | La capacità effettiva è riservata esclusivamente a un singolo contenitore. |
+| **Shared**  | La capacità effettiva viene allocata a livello di database e condivisa tra un massimo di 25 contenitori.|
+| **Serverless** | Nessuna capacità di elaborazione da allocare in anticipo; paghi per richiesta. Ideale per i carichi di lavoro con traffico imprevedibile o basso. |
+
+:::{.callout-note}
+Gli account serverless sono limitati a una singola area Azure. Se l'applicazione richiede una distribuzione globale in più aree, usare invece un account di velocità effettiva con provisioning.
+:::
+
+L'opzione di **scalabilità automatica** consente di impostare un numero massimo di UR/sec e Cosmos DB regola automaticamente la capacità all'interno di tale intervallo in base alla domanda effettiva.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-non-relational-data-stores-azure/media/cosmos-db-throughput-modes.png){width=80% fig-align="center"}
+
+### Quando usare Cosmos DB
+Cosmos DB è una soluzione ideale per le applicazioni che necessitano di schemi flessibili, copertura globale e bassa latenza coerente:
+
+- **IoT e telemetria**: inserimento rapido dei dati dei dispositivi ad alta frequenza, disponibile per l'elaborazione quasi in tempo reale.
+- **Giochi**: profili dei giocatori, classifiche e statistiche in gioco che richiedono tempi di risposta in millisecondi a cifra singola.
+- **Retail e e-commerce**: cataloghi di prodotti, carrello acquisti e pipeline di ordini su qualsiasi scala.
+- **App Web e per dispositivi mobili**: esperienze utente personalizzate, funzionalità di social networking e integrazioni di terze parti.
+
+Alcuni carichi di lavoro non sono adatti. Se l'applicazione dipende da join complessi tra più tabelle, database SQL di Azure si adatta meglio. Per l'analisi cronologica su larga scala, prendere in considerazione Microsoft Fabric o Azure Synapse Analytics.
+
+Nell'unità successiva verranno esaminate le diverse API supportate da Cosmos DB e il modo in cui ognuno di essi consente di usare i dati usando strumenti familiari e linguaggi di query.
+
+## Identificare le API di Azure Cosmos DB
+
+Nell'unità precedente sono state esaminate le Azure Cosmos DB e il modo in cui organizza i dati. Una delle sue caratteristiche più pratiche è che non blocca l'utente in un singolo linguaggio di query o modello di dati. Cosmos DB espone invece più API compatibili con wire-protocol, in modo che gli sviluppatori usino strumenti, librerie e sintassi familiari per lavorare con i dati, anche quando si esegue la migrazione di un'applicazione esistente.
+
+### Perché Cosmos DB supporta più API
+
+Quando si crea un account Cosmos DB, si sceglie quale API usare. Tale scelta determina il modo in cui l'applicazione interagisce con il database: il formato di dati inviato, il linguaggio di query usato e le librerie client con cui funziona. Internamente, Cosmos DB archivia i dati nel proprio formato; l'API funge da livello di astrazione in alto.
+
+Il vantaggio principale è la portabilità. Se il team ha già un'applicazione basata su MongoDB o Apache Cassandra, è possibile puntare a Cosmos DB con modifiche minime al codice e ottenere distribuzione globale, velocità effettiva gestita e vantaggi intrinseci del contratto di servizio nel processo.
+
+Le cinque API supportate sono: **NoSQL**, **MongoDB**, **Table**, **Apache Cassandra** e **Apache Gremlin**. Ognuno di essi è progettato per un tipo diverso di dati o casi d'uso.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-non-relational-data-stores-azure/media/cosmos-db-apis.png){width=50% fig-align="center"}
+
+### Cosmos DB per NoSQL
+
+**Azure Cosmos DB per NoSQL** è l'API nativa di Cosmos DB. Archivia i dati come documenti JSON e consente di eseguire query con una sintassi simile a SQL.
+
+:::{.callout-note}
+Questa API è stata precedentemente chiamata API SQL. È stato rinominato in API NoSQL nel 2023. Se viene visualizzata la documentazione precedente che fa riferimento all'API SQL, si tratta dello stesso servizio.
+:::
+
+L'API NoSQL è consigliata per le nuove applicazioni.
+
+Una query ha questo aspetto:
+
+```{.sql filename="SQL"}
+SELECT *
+FROM customers c
+WHERE c.id = "joe@litware.com"
+```
+
+Il risultato è un documento JSON:
+
+```{.json filename="JSON"}
+{
+   "id": "joe@litware.com",
+   "name": "Joe Jones",
+   "address": {
+        "street": "1 Main St.",
+        "city": "Seattle"
+    }
+}
+```
+
+:::{.callout-tip}
+Cosmos DB per NoSQL supporta Fabric mirroring, che replica i dati operativi in Microsoft Fabric automaticamente, senza alcuna pipeline necessaria. In questo modo è facile eseguire analisi sui dati in tempo reale senza influire sul carico di lavoro transazionale.
+:::
+
+### Cosmos DB per MongoDB
+
+Azure Cosmos DB per MongoDB è compatibile con driver e librerie client MongoDB, in modo che le applicazioni MongoDB esistenti possano connettersi a Cosmos DB senza modifiche significative al codice.
+
+I dati vengono archiviati in formato BSON (Binary JSON, una codifica binaria di JSON) e le query usano il linguaggio MQL (MongoDB Query Language), una sintassi compatta e orientata agli oggetti in cui si chiamano i metodi sugli oggetti raccolta. Per trovare un prodotto in base all'ID:
+
+
+```{.js filename="JavaScript"}
+db.products.find({id: 123})
+```
+
+Il risultato:
+
+
+```{.json filename="JSON"}
+{
+   "id": 123,
+   "name": "Hammer",
+   "price": 2.99
+}
+```
+
+Questa API è una scelta naturale quando il team ha già esperienza mongoDB o quando si esegue la migrazione di un carico di lavoro MongoDB esistente a un servizio cloud gestito.
+
+### Cosmos DB per tabelle
+
+**Azure Cosmos DB per Tabelle** archivia i dati come coppie chiave-valore nelle tabelle, usando lo stesso modello di programmazione di Archiviazione tabelle di Azure. Se si dispone già di un'applicazione Archiviazione tabelle di Azure, può connettersi a Cosmos DB per tabella con modifiche minime al codice.
+
+Ciò che si ottiene rispetto a Archiviazione tabelle di Azure include maggiore scalabilità, distribuzione globale, indici secondari automatici e scalabilità automatica immediata. Una tabella potrebbe essere simile alla seguente:
+
+| PartitionKey | RowKey | Nome | E-mail |
+| :--- | :---- | :--- | :--- |
+| 1 | 123    | Joe Jones   | joe@litware.com     |
+| 1 | 124    | Samir Nadoy | samir@northwind.com |
+
+Ogni riga viene identificata da una combinazione **PartitionKey** e **RowKey**. È possibile recuperare una riga specifica tramite un endpoint di tipo REST:
+
+```{.text filename="text"}
+https://endpoint/Customers(PartitionKey='1',RowKey='124')
+```
+
+:::{.callout-tip}
+Archiviazione tabelle di Azure è ancora disponibile e supportato, ma Cosmos DB per tabella è la scelta consigliata per i nuovi carichi di lavoro che richiedono l'archiviazione chiave-valore su larga scala.
+:::
+
+### Cosmos DB per Apache Cassandra
+
+Azure Cosmos DB per Apache Cassandra è compatibile con Apache Cassandra, un database open source che usa un modello di archiviazione della famiglia di colonne. Nelle tabelle della famiglia di colonne, le righe non devono contenere le stesse colonne, a differenza di una tabella relazionale in cui lo schema è fisso per tutte le righe.
+
+Ad esempio, una tabella Employees potrebbe essere simile alla seguente:
+
+| ID | Name | Responsabile |
+|:---|:----|:---|
+|1|Sue Smith||
+|2|Ben Chan|Sue Smith|
+
+Cassandra usa **CQL** (Cassandra Query Language), che ha una sintassi simile a SQL. Per recuperare un record specifico:
+
+```{.sql filename="CQL"}
+SELECT * FROM Employees WHERE ID = 2
+```
+
+Questa API è ideale per i team che eseguono la migrazione di un carico di lavoro Apache Cassandra a un database cloud completamente gestito
+
+### Cosmos DB per Apache Gremlin
+
+Azure Cosmos DB per Apache Gremlin è progettato per i dati a grafo — un modello in cui le entità sono rappresentate come vertici (nodi) e le relazioni come archi. I database a grafo sono utili quando le connessioni tra i dati sono importanti quanto i dati stessi: pensare ai social network, ai motori di raccomandazione, al rilevamento delle frodi e alle gerarchie organizzative.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-non-relational-data-stores-azure/media/graph.png){width=40% fig-align="center"}
+
+Nell'esempio precedente, i vertici dipendente e reparto sono collegati da archi che rappresentano relazioni gerarchiche e di appartenenza ai reparti.
+
+Gremlin è il linguaggio di query usato per attraversare e modificare i dati del grafo. Per aggiungere un vertice dipendente e connetterlo a uno esistente:
+
+```{.groovy filename="apache"}
+g.addV('employee').property('id', '3').property('firstName', 'Alice')
+g.V('3').addE('reports to').to(g.V('1'))
+```
+
+Per recuperare tutti i vertici relativi ai dipendenti in ordine di ID:
+
+```{.groovy filename="apache"}
+g.V().hasLabel('employee').order().by('id')
+```
+
+Con cinque API tra cui scegliere, è possibile associare l'interfaccia di Cosmos DB al modello di dati, alle competenze esistenti del team e al codice dell'applicazione. Nell'unità successiva si otterrà un'esperienza pratica con Cosmos DB direttamente.
+

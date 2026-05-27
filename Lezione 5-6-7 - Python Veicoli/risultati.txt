@@ -1,0 +1,1363 @@
+
+=====================================================================================
+══════════════════════ MANAGEMENT DASHBOARD - FLOTTA AZIENDALE ══════════════════════
+=====================================================================================
+
+ VEICOLI DISPONIBILI / IN SERVIZIO SU STRADA (43)
+ ─────────────────────────────────────────────────────────────────────────────
+   ID: V002   | Bicicletta      (Max Cap: 15.0 kg)
+   ID: V003   | Bicicletta      (Max Cap: 15.0 kg)
+   ID: V004   | Bicicletta      (Max Cap: 15.0 kg)
+   ID: V006   | Bicicletta      (Max Cap: 15.0 kg)
+   ID: V007   | Bicicletta      (Max Cap: 15.0 kg)
+   ID: V009   | Bicicletta      (Max Cap: 15.0 kg)
+   ID: V010   | Bicicletta      (Max Cap: 15.0 kg)
+   ID: V011   | Bicicletta      (Max Cap: 15.0 kg)
+   ID: V012   | Bicicletta      (Max Cap: 15.0 kg)
+   ID: V013   | Bicicletta      (Max Cap: 15.0 kg)
+   ID: V018   | Scooter         (Max Cap: 30.0 kg)
+   ID: V019   | Scooter         (Max Cap: 30.0 kg)
+   ID: V023   | Scooter         (Max Cap: 30.0 kg)
+   ID: V024   | Scooter         (Max Cap: 30.0 kg)
+   ID: V025   | Scooter         (Max Cap: 30.0 kg)
+   ID: V026   | Scooter         (Max Cap: 30.0 kg)
+   ID: V027   | Scooter         (Max Cap: 30.0 kg)
+   ID: V028   | Scooter         (Max Cap: 30.0 kg)
+   ID: V029   | Scooter         (Max Cap: 30.0 kg)
+   ID: V030   | Scooter         (Max Cap: 30.0 kg)
+   ID: V031   | Auto            (Max Cap: 100.0 kg)
+   ID: V032   | Auto            (Max Cap: 100.0 kg)
+   ID: V033   | Auto            (Max Cap: 100.0 kg)
+   ID: V034   | Auto            (Max Cap: 100.0 kg)
+   ID: V035   | Auto            (Max Cap: 100.0 kg)
+   ID: V037   | Auto            (Max Cap: 100.0 kg)
+   ID: V038   | Auto            (Max Cap: 100.0 kg)
+   ID: V039   | Auto            (Max Cap: 100.0 kg)
+   ID: V040   | Auto            (Max Cap: 100.0 kg)
+   ID: V042   | Auto            (Max Cap: 100.0 kg)
+   ID: V043   | Auto            (Max Cap: 100.0 kg)
+   ID: V044   | Auto            (Max Cap: 100.0 kg)
+   ID: V048   | Furgone         (Max Cap: 500.0 kg)
+   ID: V050   | Furgone         (Max Cap: 500.0 kg)
+   ID: V051   | Furgone         (Max Cap: 500.0 kg)
+   ID: V052   | Furgone         (Max Cap: 500.0 kg)
+   ID: V053   | Furgone         (Max Cap: 500.0 kg)
+   ID: V055   | Furgone         (Max Cap: 500.0 kg)
+   ID: V056   | Furgone         (Max Cap: 500.0 kg)
+   ID: V057   | Furgone         (Max Cap: 500.0 kg)
+   ID: V058   | Furgone         (Max Cap: 500.0 kg)
+   ID: V059   | Furgone         (Max Cap: 500.0 kg)
+   ID: V060   | Furgone         (Max Cap: 500.0 kg)
+
+ VEICOLI IN STAND-BY / FERMI IN DEPOSITO (5) [Target: 10% di quelli OK]
+ ─────────────────────────────────────────────────────────────────────────────
+   ID: V001   | Bicicletta     
+   ID: V015   | Bicicletta     
+   ID: V041   | Auto           
+   ID: V047   | Furgone        
+   ID: V054   | Furgone        
+
+ VEICOLI ROTTI / FUORI SERVIZIO (12) [Target: 20%]
+ ─────────────────────────────────────────────────────────────────────────────
+   ID: V005   | Bicicletta     
+   ID: V008   | Bicicletta     
+   ID: V014   | Bicicletta     
+   ID: V016   | Scooter        
+   ID: V017   | Scooter        
+   ID: V020   | Scooter        
+   ID: V021   | Scooter        
+   ID: V022   | Scooter        
+   ID: V036   | Auto           
+   ID: V045   | Auto           
+   ID: V046   | Furgone        
+   ID: V049   | Furgone        
+
+=====================================================================================
+
+
+
+===============================================================================================
+═══════════════════════════ DRIVER DASHBOARD - RIEPILOGO GIORNALIERO ══════════════════════════
+===============================================================================================
+
+DRIVER: Sara Ricci                     | ID: R01
+MEZZO:  Bicicletta | Velocità media: 15.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL001   | Paolo Gallo          |    2.01 km | 8.1 min         | PKG0312 (0.5 kg)
+   DEL002   | Claudia Russo        |    0.55 km | 2.2 min         | PKG0679 (0.5 kg)
+   DEL003   | Riccardo Marchetti   |    1.03 km | 4.1 min         | PKG0481 (0.6 kg)
+   DEL004   | Luca Caruso          |    1.48 km | 5.9 min         | PKG1608 (0.2 kg)
+   DEL005   | Simone Testa         |    2.56 km | 10.2 min        | PKG1062 (0.4 kg)
+   DEL006   | Chiara Santoro       |    0.87 km | 3.5 min         | PKG0625 (0.5 kg)
+   DEL007   | Paola Villa          |    2.32 km | 9.3 min         | PKG0517 (0.7 kg)
+   DEL008   | Valentina Rossi      |    1.30 km | 5.2 min         | PKG0410 (0.7 kg)
+   DEL009   | Marta Russo          |    3.66 km | 14.7 min        | PKG1524 (0.6 kg)
+   DEL010   | Roberto Esposito     |    2.80 km | 11.2 min        | PKG1774 (0.3 kg)
+   DEL011   | Sara Conti           |    0.70 km | 2.8 min         | PKG1820 (0.7 kg)
+   DEL012   | Riccardo Conti       |    1.10 km | 4.4 min         | PKG1760 (0.3 kg)
+   DEL013   | Nicola Coppola       |    2.24 km | 8.9 min         | PKG0690 (0.3 kg)
+   DEL014   | Stefano Marchetti    |    0.61 km | 2.5 min         | PKG0044 (0.2 kg)
+   DEL015   | Marco Lombardi       |    1.92 km | 7.7 min         | PKG1362 (0.3 kg)
+   DEL016   | Giorgio Villa        |    4.92 km | 19.7 min        | PKG0516 (0.2 kg)
+   DEL017   | Giorgio Vitale       |    1.22 km | 4.9 min         | PKG1994 (0.3 kg)
+   DEL018   | Monica Marino        |    8.53 km | 34.1 min        | PKG1604 (0.4 kg)
+   DEL019   | Elena Santoro        |    2.12 km | 8.5 min         | PKG0318 (0.5 kg)
+   DEL020   | Chiara Conti         |    0.31 km | 1.2 min         | PKG0072 (0.3 kg)
+   RTRN     | Rientro in Deposito  |    6.74 km | 27.0 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 49.00 km
+   Tempo Totale (incluse soste): 4h 31m
+   Carico Totale:   8.59 kg / Capacità Max Mezzo: 15.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Lucia Villa                    | ID: R02
+MEZZO:  Bicicletta | Velocità media: 15.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL021   | Matteo Coppola       |    0.79 km | 3.2 min         | PKG0580 (0.4 kg)
+   DEL022   | Sara Bianchi         |    1.09 km | 4.4 min         | PKG1445 (0.2 kg)
+   DEL023   | Stefano Caruso       |    0.64 km | 2.6 min         | PKG0144 (0.7 kg)
+   DEL024   | Serena Ricci         |    0.21 km | 0.9 min         | PKG0252 (0.6 kg)
+   DEL025   | Luca Caruso          |    1.74 km | 6.9 min         | PKG0187 (0.6 kg)
+   DEL026   | Davide Colombo       |    0.10 km | 0.4 min         | PKG0678 (0.4 kg)
+   DEL027   | Chiara Mancini       |    0.53 km | 2.1 min         | PKG0693 (0.4 kg)
+   DEL028   | Giulia Mancini       |    0.99 km | 4.0 min         | PKG1026 (0.2 kg)
+   DEL029   | Simone Greco         |    1.97 km | 7.9 min         | PKG1965 (0.5 kg)
+   DEL030   | Anna Gallo           |    1.09 km | 4.4 min         | PKG1592 (0.4 kg)
+   DEL031   | Paolo Caruso         |    1.24 km | 5.0 min         | PKG1246 (0.3 kg)
+   DEL032   | Valentina Ricci      |    0.12 km | 0.5 min         | PKG1402 (0.2 kg)
+   DEL033   | Roberto Bruno        |    2.59 km | 10.4 min        | PKG0135 (0.3 kg)
+   DEL034   | Filippo Coppola      |    1.13 km | 4.5 min         | PKG0744 (0.7 kg)
+   DEL035   | Andrea Rinaldi       |    0.44 km | 1.8 min         | PKG1615 (0.2 kg)
+   DEL036   | Paola Ricci          |    3.74 km | 15.0 min        | PKG0998 (0.6 kg)
+   DEL037   | Monica Conti         |    5.24 km | 21.0 min        | PKG0807 (0.6 kg)
+   DEL038   | Paolo Coppola        |    8.37 km | 33.5 min        | PKG1558 (0.6 kg)
+   DEL039   | Enrico Marino        |    1.99 km | 8.0 min         | PKG1634 (0.2 kg)
+   DEL040   | Serena Greco         |    0.18 km | 0.7 min         | PKG1115 (0.7 kg)
+   RTRN     | Rientro in Deposito  |    6.90 km | 27.6 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 41.10 km
+   Tempo Totale (incluse soste): 4h 0m
+   Carico Totale:   8.87 kg / Capacità Max Mezzo: 15.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Francesco Costa                | ID: R03
+MEZZO:  Bicicletta | Velocità media: 15.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL041   | Marta Vitale         |    0.66 km | 2.6 min         | PKG0585 (0.2 kg)
+   DEL042   | Riccardo Marino      |    2.06 km | 8.2 min         | PKG0475 (0.7 kg)
+   DEL043   | Marta Conti          |    1.11 km | 4.4 min         | PKG0197 (0.7 kg)
+   DEL044   | Elena Marino         |    1.05 km | 4.2 min         | PKG0841 (0.6 kg)
+   DEL045   | Sara Ferrara         |    3.04 km | 12.2 min        | PKG1644 (0.6 kg)
+   DEL046   | Francesco Lombardi   |    0.48 km | 1.9 min         | PKG0893 (0.7 kg)
+   DEL047   | Laura Rinaldi        |    1.10 km | 4.4 min         | PKG0513 (0.5 kg)
+   DEL048   | Paola Villa          |    0.36 km | 1.4 min         | PKG1613 (0.2 kg)
+   DEL049   | Anna Gallo           |    0.98 km | 3.9 min         | PKG0867 (0.1 kg)
+   DEL050   | Roberto Ferrari      |    1.18 km | 4.7 min         | PKG1904 (0.6 kg)
+   DEL051   | Roberto Colombo      |    0.48 km | 1.9 min         | PKG0935 (0.1 kg)
+   DEL052   | Marta Rinaldi        |    4.76 km | 19.0 min        | PKG0380 (0.5 kg)
+   DEL053   | Riccardo Esposito    |    4.14 km | 16.6 min        | PKG0008 (0.3 kg)
+   DEL054   | Chiara Caruso        |    0.12 km | 0.5 min         | PKG0203 (0.3 kg)
+   DEL055   | Andrea Greco         |    5.39 km | 21.6 min        | PKG0474 (0.6 kg)
+   DEL056   | Chiara Testa         |    6.67 km | 26.7 min        | PKG0607 (0.6 kg)
+   DEL057   | Riccardo Esposito    |    1.07 km | 4.3 min         | PKG0605 (0.4 kg)
+   DEL058   | Elena Caruso         |    9.31 km | 37.2 min        | PKG1135 (0.2 kg)
+   DEL059   | Claudia Barbato      |    0.17 km | 0.7 min         | PKG1922 (0.5 kg)
+   DEL060   | Serena Greco         |    0.91 km | 3.6 min         | PKG0212 (0.3 kg)
+   RTRN     | Rientro in Deposito  |    6.90 km | 27.6 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 51.92 km
+   Tempo Totale (incluse soste): 5h 43m
+   Carico Totale:   8.51 kg / Capacità Max Mezzo: 15.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Monica Marchetti               | ID: R04
+MEZZO:  Bicicletta | Velocità media: 15.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL061   | Luca Lombardi        |    0.79 km | 3.2 min         | PKG0649 (0.7 kg)
+   DEL062   | Claudia Russo        |    1.78 km | 7.1 min         | PKG1069 (0.7 kg)
+   DEL063   | Giulia Barbato       |    0.70 km | 2.8 min         | PKG0432 (0.4 kg)
+   DEL064   | Enrico Conti         |    0.37 km | 1.5 min         | PKG0229 (0.5 kg)
+   DEL065   | Chiara Ricci         |    1.03 km | 4.1 min         | PKG1139 (0.3 kg)
+   DEL066   | Andrea Mancini       |    2.09 km | 8.4 min         | PKG0650 (0.4 kg)
+   DEL067   | Roberto Ferrari      |    0.79 km | 3.2 min         | PKG0301 (0.8 kg)
+   DEL068   | Serena Rossi         |    1.24 km | 5.0 min         | PKG0411 (0.5 kg)
+   DEL069   | Paolo Caruso         |    0.22 km | 0.9 min         | PKG1405 (0.6 kg)
+   DEL070   | Lucia Costa          |    0.16 km | 0.6 min         | PKG0651 (0.4 kg)
+   DEL071   | Paola Villa          |    0.50 km | 2.0 min         | PKG0791 (0.6 kg)
+   DEL072   | Serena Mancini       |    6.67 km | 26.7 min        | PKG0544 (0.4 kg)
+   DEL073   | Giacomo Rossi        |    3.25 km | 13.0 min        | PKG0040 (0.5 kg)
+   DEL074   | Andrea Ferrara       |    0.44 km | 1.8 min         | PKG0861 (0.1 kg)
+   DEL075   | Simone Fontana       |    6.81 km | 27.2 min        | PKG0076 (0.5 kg)
+   DEL076   | Giacomo Ferrari      |    1.05 km | 4.2 min         | PKG1068 (0.2 kg)
+   DEL077   | Alessandro Russo     |    9.42 km | 37.7 min        | PKG1692 (0.4 kg)
+   DEL078   | Elena Caruso         |    0.62 km | 2.5 min         | PKG1512 (0.5 kg)
+   DEL079   | Elena Santoro        |    0.60 km | 2.4 min         | PKG1041 (0.5 kg)
+   DEL080   | Enrico Marino        |    0.36 km | 1.4 min         | PKG1382 (0.3 kg)
+   RTRN     | Rientro in Deposito  |    6.96 km | 27.8 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 45.87 km
+   Tempo Totale (incluse soste): 4h 19m
+   Carico Totale:   9.22 kg / Capacità Max Mezzo: 15.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Giorgio Fontana                | ID: R05
+MEZZO:  Bicicletta | Velocità media: 15.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL081   | Marta Vitale         |    0.66 km | 2.6 min         | PKG0394 (0.7 kg)
+   DEL082   | Elena Villa          |    0.50 km | 2.0 min         | PKG1444 (0.3 kg)
+   DEL083   | Claudia Greco        |    0.32 km | 1.3 min         | PKG0750 (0.3 kg)
+   DEL084   | Enrico Fontana       |    1.47 km | 5.9 min         | PKG0395 (0.7 kg)
+   DEL085   | Francesco Bruno      |    3.10 km | 12.4 min        | PKG0556 (0.2 kg)
+   DEL086   | Lucia Costa          |    1.70 km | 6.8 min         | PKG0054 (0.4 kg)
+   DEL087   | Valentina Ricci      |    0.13 km | 0.5 min         | PKG1496 (0.5 kg)
+   DEL088   | Laura Rinaldi        |    0.18 km | 0.7 min         | PKG1906 (0.3 kg)
+   DEL089   | Serena Rossi         |    0.13 km | 0.5 min         | PKG1260 (0.2 kg)
+   DEL090   | Marta Marino         |    0.17 km | 0.7 min         | PKG1663 (0.7 kg)
+   DEL091   | Filippo Coppola      |    4.11 km | 16.4 min        | PKG1054 (0.5 kg)
+   DEL092   | Nicola Ricci         |    0.95 km | 3.8 min         | PKG1910 (0.1 kg)
+   DEL093   | Matteo Serra         |    3.50 km | 14.0 min        | PKG0692 (0.2 kg)
+   DEL094   | Marco Lombardi       |    2.89 km | 11.5 min        | PKG1771 (0.4 kg)
+   DEL095   | Valentina Esposito   |    0.94 km | 3.8 min         | PKG1572 (0.6 kg)
+   DEL096   | Monica Colombo       |   14.47 km | 57.9 min        | PKG0635 (0.5 kg)
+   DEL097   | Riccardo Marchetti   |    0.51 km | 2.0 min         | PKG1792 (0.4 kg)
+   DEL098   | Claudia Barbato      |    0.58 km | 2.3 min         | PKG0920 (0.4 kg)
+   DEL099   | Elena Santoro        |    0.46 km | 1.9 min         | PKG0573 (0.3 kg)
+   DEL100   | Serena Ferrari       |    0.76 km | 3.0 min         | PKG1860 (0.4 kg)
+   RTRN     | Rientro in Deposito  |    7.37 km | 29.5 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 44.91 km
+   Tempo Totale (incluse soste): 4h 15m
+   Carico Totale:   7.96 kg / Capacità Max Mezzo: 15.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Chiara Esposito                | ID: R06
+MEZZO:  Bicicletta | Velocità media: 15.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL101   | Luca Ricci           |    1.15 km | 4.6 min         | PKG0417 (0.5 kg)
+   DEL102   | Stefano Caruso       |    2.70 km | 10.8 min        | PKG0932 (0.2 kg)
+   DEL103   | Lucia Costa          |    3.57 km | 14.3 min        | PKG1703 (0.3 kg)
+   DEL104   | Valentina Ricci      |    0.13 km | 0.5 min         | PKG0311 (0.7 kg)
+   DEL105   | Giulia Conti         |    0.08 km | 0.3 min         | PKG0454 (0.2 kg)
+   DEL106   | Serena Villa         |    0.59 km | 2.4 min         | PKG1855 (0.1 kg)
+   DEL107   | Anna Gallo           |    0.75 km | 3.0 min         | PKG0572 (0.7 kg)
+   DEL108   | Giulia Bruno         |    0.64 km | 2.6 min         | PKG0372 (0.4 kg)
+   DEL109   | Roberto Ferrari      |    1.02 km | 4.1 min         | PKG1800 (0.2 kg)
+   DEL110   | Roberto Fontana      |    3.67 km | 14.7 min        | PKG0468 (0.7 kg)
+   DEL111   | Roberto Bruno        |    0.42 km | 1.7 min         | PKG1871 (0.7 kg)
+   DEL112   | Claudia Barbato      |    2.02 km | 8.1 min         | PKG0655 (0.3 kg)
+   DEL113   | Paola Ricci          |    2.48 km | 9.9 min         | PKG1186 (0.3 kg)
+   DEL114   | Sara Conti           |    0.84 km | 3.4 min         | PKG1961 (0.1 kg)
+   DEL115   | Riccardo Conti       |    1.10 km | 4.4 min         | PKG0181 (0.3 kg)
+   DEL116   | Andrea Ferrara       |    2.87 km | 11.5 min        | PKG1055 (0.5 kg)
+   DEL117   | Giorgio Coppola      |    6.64 km | 26.6 min        | PKG0730 (0.6 kg)
+   DEL118   | Monica Marino        |    9.52 km | 38.1 min        | PKG1704 (0.5 kg)
+   DEL119   | Claudia Barbato      |    1.67 km | 6.7 min         | PKG1286 (0.6 kg)
+   DEL120   | Chiara Conti         |    0.77 km | 3.1 min         | PKG0637 (0.4 kg)
+   RTRN     | Rientro in Deposito  |    6.74 km | 27.0 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 49.37 km
+   Tempo Totale (incluse soste): 4h 33m
+   Carico Totale:   8.31 kg / Capacità Max Mezzo: 15.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Matteo Fontana                 | ID: R07
+MEZZO:  Bicicletta | Velocità media: 15.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL121   | Enrico Fontana       |    0.80 km | 3.2 min         | PKG1980 (0.8 kg)
+   DEL122   | Riccardo Marino      |    1.43 km | 5.7 min         | PKG0089 (0.6 kg)
+   DEL123   | Marta Conti          |    1.11 km | 4.4 min         | PKG0434 (0.6 kg)
+   DEL124   | Giulia Barbato       |    0.73 km | 2.9 min         | PKG1049 (0.2 kg)
+   DEL125   | Chiara Testa         |    1.11 km | 4.4 min         | PKG0003 (0.2 kg)
+   DEL126   | Chiara Longo         |    2.34 km | 9.4 min         | PKG1311 (0.2 kg)
+   DEL127   | Giacomo Serra        |    0.89 km | 3.6 min         | PKG0238 (0.1 kg)
+   DEL128   | Lucia Moretti        |    1.65 km | 6.6 min         | PKG1007 (0.6 kg)
+   DEL129   | Marta Rinaldi        |    3.47 km | 13.9 min        | PKG0325 (0.2 kg)
+   DEL130   | Marta Russo          |    2.22 km | 8.9 min         | PKG1165 (0.6 kg)
+   DEL131   | Roberto Esposito     |    2.80 km | 11.2 min        | PKG0526 (0.4 kg)
+   DEL132   | Matteo Serra         |    1.11 km | 4.5 min         | PKG0800 (0.1 kg)
+   DEL133   | Nicola Mancini       |    0.18 km | 0.7 min         | PKG1802 (0.2 kg)
+   DEL134   | Andrea Ferrara       |    2.79 km | 11.2 min        | PKG1108 (0.1 kg)
+   DEL135   | Simone Ferrari       |    6.84 km | 27.3 min        | PKG0490 (0.6 kg)
+   DEL136   | Monica Conti         |    2.15 km | 8.6 min         | PKG0097 (0.5 kg)
+   DEL137   | Anna Esposito        |    5.36 km | 21.4 min        | PKG0973 (0.3 kg)
+   DEL138   | Alessandro Russo     |    4.58 km | 18.3 min        | PKG0019 (0.3 kg)
+   DEL139   | Marta Vitale         |    1.00 km | 4.0 min         | PKG1833 (0.2 kg)
+   DEL140   | Serena Greco         |    2.52 km | 10.1 min        | PKG1853 (0.6 kg)
+   RTRN     | Rientro in Deposito  |    6.90 km | 27.6 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 51.99 km
+   Tempo Totale (incluse soste): 5h 43m
+   Carico Totale:   7.47 kg / Capacità Max Mezzo: 15.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Matteo Barbato                 | ID: R08
+MEZZO:  Bicicletta | Velocità media: 15.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL141   | Riccardo Vitale      |    0.49 km | 2.0 min         | PKG0353 (0.5 kg)
+   DEL142   | Matteo Coppola       |    1.25 km | 5.0 min         | PKG0735 (0.5 kg)
+   DEL143   | Marta Conti          |    1.79 km | 7.2 min         | PKG0823 (0.4 kg)
+   DEL144   | Davide Colombo       |    1.29 km | 5.2 min         | PKG0088 (0.2 kg)
+   DEL145   | Paolo Caruso         |    0.27 km | 1.1 min         | PKG0771 (0.7 kg)
+   DEL146   | Andrea Mancini       |    2.40 km | 9.6 min         | PKG0453 (0.6 kg)
+   DEL147   | Marta Marino         |    1.29 km | 5.2 min         | PKG0689 (0.1 kg)
+   DEL148   | Giulia Conti         |    0.37 km | 1.5 min         | PKG1287 (0.5 kg)
+   DEL149   | Paola Villa          |    0.31 km | 1.3 min         | PKG1158 (0.4 kg)
+   DEL150   | Alessandro Esposito  |    0.78 km | 3.1 min         | PKG1034 (0.4 kg)
+   DEL151   | Roberto Fontana      |    1.62 km | 6.5 min         | PKG1177 (0.2 kg)
+   DEL152   | Roberto Bruno        |    0.42 km | 1.7 min         | PKG1891 (0.7 kg)
+   DEL153   | Andrea Rinaldi       |    1.56 km | 6.2 min         | PKG1192 (0.6 kg)
+   DEL154   | Francesco Bruno      |    4.68 km | 18.7 min        | PKG1843 (0.5 kg)
+   DEL155   | Elena Caruso         |    7.38 km | 29.5 min        | PKG1888 (0.2 kg)
+   DEL156   | Enrico Marino        |    0.95 km | 3.8 min         | PKG0396 (0.7 kg)
+   DEL157   | Monica Marino        |    2.41 km | 9.6 min         | PKG2000 (0.3 kg)
+   DEL158   | Lucia Ferrari        |    8.80 km | 35.2 min        | PKG1377 (0.3 kg)
+   DEL159   | Andrea Ferrara       |    7.28 km | 29.1 min        | PKG0242 (0.7 kg)
+   DEL160   | Simone Vitale        |    0.18 km | 0.7 min         | PKG0365 (0.3 kg)
+   RTRN     | Rientro in Deposito  |    8.66 km | 34.6 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 54.19 km
+   Tempo Totale (incluse soste): 5h 52m
+   Carico Totale:   8.69 kg / Capacità Max Mezzo: 15.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Davide Rinaldi                 | ID: R09
+MEZZO:  Bicicletta | Velocità media: 15.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL161   | Giacomo Mancini      |    0.37 km | 1.5 min         | PKG0147 (0.1 kg)
+   DEL162   | Monica Russo         |    1.47 km | 5.9 min         | PKG0716 (0.1 kg)
+   DEL163   | Filippo Conti        |    0.50 km | 2.0 min         | PKG0996 (0.2 kg)
+   DEL164   | Riccardo Colombo     |    1.51 km | 6.0 min         | PKG0075 (0.2 kg)
+   DEL165   | Francesco Bruno      |    0.80 km | 3.2 min         | PKG0260 (0.5 kg)
+   DEL166   | Sara Ferrara         |    0.57 km | 2.3 min         | PKG0617 (0.6 kg)
+   DEL167   | Giulia Lombardi      |    0.48 km | 1.9 min         | PKG0225 (0.5 kg)
+   DEL168   | Davide Bruno         |    0.85 km | 3.4 min         | PKG1030 (0.2 kg)
+   DEL169   | Valentina Ricci      |    0.96 km | 3.8 min         | PKG1149 (0.7 kg)
+   DEL170   | Luca Gallo           |    1.04 km | 4.2 min         | PKG0302 (0.3 kg)
+   DEL171   | Roberto Fontana      |    1.47 km | 5.9 min         | PKG0323 (0.7 kg)
+   DEL172   | Roberto Bruno        |    0.42 km | 1.7 min         | PKG1535 (0.3 kg)
+   DEL173   | Andrea Rinaldi       |    1.56 km | 6.2 min         | PKG0023 (0.2 kg)
+   DEL174   | Chiara Caruso        |    3.02 km | 12.1 min        | PKG1029 (0.7 kg)
+   DEL175   | Roberto Esposito     |    0.79 km | 3.2 min         | PKG0438 (0.2 kg)
+   DEL176   | Sara Conti           |    0.70 km | 2.8 min         | PKG1273 (0.2 kg)
+   DEL177   | Giacomo Rossi        |    3.41 km | 13.6 min        | PKG0933 (0.6 kg)
+   DEL178   | Simone Fontana       |    6.84 km | 27.4 min        | PKG0701 (0.7 kg)
+   DEL179   | Monica Marino        |    9.09 km | 36.4 min        | PKG0877 (0.3 kg)
+   DEL180   | Giulia Mancini       |    7.11 km | 28.4 min        | PKG1839 (0.5 kg)
+   RTRN     | Rientro in Deposito  |    4.14 km | 16.6 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 47.10 km
+   Tempo Totale (incluse soste): 4h 24m
+   Carico Totale:   7.84 kg / Capacità Max Mezzo: 15.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Giacomo Testa                  | ID: R10
+MEZZO:  Bicicletta | Velocità media: 15.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL181   | Davide Vitale        |    0.72 km | 2.9 min         | PKG1812 (0.6 kg)
+   DEL182   | Elena Villa          |    0.73 km | 2.9 min         | PKG0641 (0.5 kg)
+   DEL183   | Luca Ricci           |    0.46 km | 1.8 min         | PKG1819 (0.7 kg)
+   DEL184   | Anna Esposito        |    1.83 km | 7.3 min         | PKG0813 (0.4 kg)
+   DEL185   | Luca Colombo         |    1.51 km | 6.0 min         | PKG1238 (0.6 kg)
+   DEL186   | Anna Moretti         |    1.19 km | 4.8 min         | PKG0845 (0.7 kg)
+   DEL187   | Giacomo Serra        |    3.54 km | 14.2 min        | PKG0082 (0.5 kg)
+   DEL188   | Paola Villa          |    1.49 km | 6.0 min         | PKG0943 (0.6 kg)
+   DEL189   | Marta Marino         |    0.41 km | 1.6 min         | PKG1547 (0.2 kg)
+   DEL190   | Anna Gallo           |    0.92 km | 3.7 min         | PKG0029 (0.1 kg)
+   DEL191   | Anna Villa           |    0.91 km | 3.6 min         | PKG1566 (0.1 kg)
+   DEL192   | Simone De Luca       |    0.67 km | 2.7 min         | PKG1735 (0.1 kg)
+   DEL193   | Riccardo Lombardi    |    1.37 km | 5.5 min         | PKG1929 (0.7 kg)
+   DEL194   | Chiara Coppola       |    2.49 km | 9.9 min         | PKG1492 (0.7 kg)
+   DEL195   | Paolo Caruso         |    0.20 km | 0.8 min         | PKG0234 (0.5 kg)
+   DEL196   | Alessandro Marino    |    4.75 km | 19.0 min        | PKG1928 (0.5 kg)
+   DEL197   | Paola Caruso         |   10.09 km | 40.4 min        | PKG0247 (0.1 kg)
+   DEL198   | Roberto Ferrara      |    6.04 km | 24.2 min        | PKG1424 (0.7 kg)
+   DEL199   | Paola Ricci          |    1.70 km | 6.8 min         | PKG1448 (0.5 kg)
+   DEL200   | Claudia Barbato      |    2.48 km | 9.9 min         | PKG0642 (0.2 kg)
+   RTRN     | Rientro in Deposito  |    4.76 km | 19.1 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 48.27 km
+   Tempo Totale (incluse soste): 4h 29m
+   Carico Totale:   9.07 kg / Capacità Max Mezzo: 15.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Giacomo Moretti                | ID: R11
+MEZZO:  Scooter | Velocità media: 35.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL201   | Riccardo Vitale      |    0.49 km | 0.8 min         | PKG0069 (0.7 kg)
+   DEL202   | Anna Moretti         |    0.95 km | 1.6 min         | PKG0859 (0.8 kg)
+   DEL203   | Luca Colombo         |    1.19 km | 2.0 min         | PKG1643 (1.2 kg)
+   DEL204   | Claudia Russo        |    1.12 km | 1.9 min         | PKG0793 (0.3 kg)
+   DEL205   | Chiara Ricci         |    0.20 km | 0.4 min         | PKG1013 (0.6 kg)
+   DEL206   | Riccardo Colombo     |    0.84 km | 1.4 min         | PKG1170 (0.1 kg)
+   DEL207   | Francesco Bruno      |    0.80 km | 1.4 min         | PKG0847 (0.5 kg)
+   DEL208   | Lucia Moretti        |    2.03 km | 3.5 min         | PKG0706 (0.2 kg)
+   DEL209   | Roberto Bruno        |    3.16 km | 5.4 min         | PKG1145 (0.3 kg)
+   DEL210   | Riccardo Conti       |    5.38 km | 9.2 min         | PKG1154 (0.6 kg)
+   DEL211   | Stefano Marchetti    |    2.67 km | 4.6 min         | PKG0674 (0.7 kg)
+   DEL212   | Valentina Esposito   |    1.27 km | 2.2 min         | PKG0736 (1.2 kg)
+   DEL213   | Giorgio Villa        |    5.84 km | 10.0 min        | PKG1422 (1.1 kg)
+   DEL214   | Francesco Mancini    |    0.99 km | 1.7 min         | PKG1951 (0.5 kg)
+   DEL215   | Monica Conti         |    0.89 km | 1.5 min         | PKG0548 (0.4 kg)
+   DEL216   | Simone Ferrari       |    2.15 km | 3.7 min         | PKG1943 (0.2 kg)
+   DEL217   | Chiara Mancini       |   10.27 km | 17.6 min        | PKG1700 (0.3 kg)
+   DEL218   | Alessandro Marino    |    4.84 km | 8.3 min         | PKG0979 (0.3 kg)
+   DEL219   | Enrico Marino        |    1.45 km | 2.5 min         | PKG1215 (0.6 kg)
+   DEL220   | Serena Ferrari       |    0.67 km | 1.1 min         | PKG1120 (0.5 kg)
+   RTRN     | Rientro in Deposito  |    7.37 km | 12.6 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 54.56 km
+   Tempo Totale (incluse soste): 3h 61m
+   Carico Totale:   11.15 kg / Capacità Max Mezzo: 30.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Elena Ricci                    | ID: R12
+MEZZO:  Scooter | Velocità media: 35.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL221   | Davide Vitale        |    0.72 km | 1.2 min         | PKG0899 (0.6 kg)
+   DEL222   | Luca Ricci           |    1.17 km | 2.0 min         | PKG0624 (0.5 kg)
+   DEL223   | Luca Colombo         |    2.49 km | 4.3 min         | PKG0601 (1.1 kg)
+   DEL224   | Paolo Gallo          |    0.64 km | 1.1 min         | PKG1313 (0.2 kg)
+   DEL225   | Riccardo Marchetti   |    1.24 km | 2.1 min         | PKG1092 (0.2 kg)
+   DEL226   | Luca Caruso          |    1.48 km | 2.5 min         | PKG0258 (1.4 kg)
+   DEL227   | Andrea Mancini       |    2.10 km | 3.6 min         | PKG1098 (0.2 kg)
+   DEL228   | Lucia Moretti        |    1.23 km | 2.1 min         | PKG0067 (1.2 kg)
+   DEL229   | Giulia Conti         |    0.53 km | 0.9 min         | PKG0295 (0.3 kg)
+   DEL230   | Valentina Rossi      |    1.03 km | 1.8 min         | PKG0071 (0.4 kg)
+   DEL231   | Luca Gallo           |    0.42 km | 0.7 min         | PKG1597 (0.6 kg)
+   DEL232   | Filippo Coppola      |    2.83 km | 4.9 min         | PKG0967 (0.4 kg)
+   DEL233   | Riccardo Esposito    |    3.12 km | 5.4 min         | PKG1476 (1.4 kg)
+   DEL234   | Serena Mancini       |    0.82 km | 1.4 min         | PKG1447 (0.6 kg)
+   DEL235   | Sara Conti           |    1.11 km | 1.9 min         | PKG0514 (1.3 kg)
+   DEL236   | Roberto Ferrara      |    1.15 km | 2.0 min         | PKG1393 (0.3 kg)
+   DEL237   | Giulia Greco         |    3.16 km | 5.4 min         | PKG1067 (0.7 kg)
+   DEL238   | Chiara Testa         |    6.45 km | 11.1 min        | PKG1157 (0.2 kg)
+   DEL239   | Paolo Coppola        |    9.41 km | 16.1 min        | PKG1167 (0.6 kg)
+   DEL240   | Nicola Moretti       |    1.75 km | 3.0 min         | PKG0222 (1.0 kg)
+   RTRN     | Rientro in Deposito  |    7.23 km | 12.4 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 50.07 km
+   Tempo Totale (incluse soste): 3h 53m
+   Carico Totale:   13.17 kg / Capacità Max Mezzo: 30.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Anna Greco                     | ID: R13
+MEZZO:  Scooter | Velocità media: 35.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL241   | Matteo Coppola       |    0.79 km | 1.4 min         | PKG0972 (0.3 kg)
+   DEL242   | Stefano Caruso       |    1.18 km | 2.0 min         | PKG1970 (1.3 kg)
+   DEL243   | Serena Ricci         |    0.21 km | 0.4 min         | PKG1122 (0.4 kg)
+   DEL244   | Luca Caruso          |    1.74 km | 3.0 min         | PKG1330 (0.3 kg)
+   DEL245   | Anna Rinaldi         |    1.33 km | 2.3 min         | PKG0815 (0.3 kg)
+   DEL246   | Claudia Vitale       |    1.77 km | 3.0 min         | PKG1995 (0.4 kg)
+   DEL247   | Paola Villa          |    1.96 km | 3.4 min         | PKG0963 (0.6 kg)
+   DEL248   | Luca Gallo           |    1.33 km | 2.3 min         | PKG0721 (0.2 kg)
+   DEL249   | Marta Rinaldi        |    2.33 km | 4.0 min         | PKG0594 (1.5 kg)
+   DEL250   | Riccardo Esposito    |    4.14 km | 7.1 min         | PKG1941 (0.3 kg)
+   DEL251   | Serena Mancini       |    0.82 km | 1.4 min         | PKG1035 (1.4 kg)
+   DEL252   | Andrea Caruso        |    0.28 km | 0.5 min         | PKG0114 (0.4 kg)
+   DEL253   | Marco Lombardi       |    3.56 km | 6.1 min         | PKG0441 (0.6 kg)
+   DEL254   | Simone Greco         |    0.50 km | 0.9 min         | PKG0977 (0.2 kg)
+   DEL255   | Valentina Esposito   |    0.89 km | 1.5 min         | PKG0264 (0.4 kg)
+   DEL256   | Marco Fontana        |    7.28 km | 12.5 min        | PKG1285 (0.1 kg)
+   DEL257   | Monica Colombo       |   10.02 km | 17.2 min        | PKG0329 (0.4 kg)
+   DEL258   | Paolo Coppola        |    0.73 km | 1.3 min         | PKG1331 (0.5 kg)
+   DEL259   | Serena Ferrari       |    1.72 km | 2.9 min         | PKG1796 (0.2 kg)
+   DEL260   | Nicola Moretti       |    0.18 km | 0.3 min         | PKG0923 (0.2 kg)
+   RTRN     | Rientro in Deposito  |    7.23 km | 12.4 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 50.00 km
+   Tempo Totale (incluse soste): 3h 53m
+   Carico Totale:   9.95 kg / Capacità Max Mezzo: 30.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Paola Colombo                  | ID: R14
+MEZZO:  Scooter | Velocità media: 35.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL261   | Enrico Gallo         |    0.48 km | 0.8 min         | PKG1564 (0.6 kg)
+   DEL262   | Giacomo Colombo      |    1.01 km | 1.7 min         | PKG1482 (0.5 kg)
+   DEL263   | Sara Bianchi         |    1.56 km | 2.7 min         | PKG0788 (0.3 kg)
+   DEL264   | Marta Conti          |    1.20 km | 2.1 min         | PKG0117 (0.1 kg)
+   DEL265   | Giulia Barbato       |    0.73 km | 1.3 min         | PKG1900 (0.4 kg)
+   DEL266   | Luca Caruso          |    0.67 km | 1.1 min         | PKG0992 (0.7 kg)
+   DEL267   | Chiara Coppola       |    0.31 km | 0.5 min         | PKG0322 (0.7 kg)
+   DEL268   | Andrea Mancini       |    2.24 km | 3.8 min         | PKG1902 (0.5 kg)
+   DEL269   | Roberto Ferrari      |    0.79 km | 1.4 min         | PKG0436 (0.2 kg)
+   DEL270   | Giulia Bruno         |    1.02 km | 1.8 min         | PKG1256 (0.6 kg)
+   DEL271   | Luca Gallo           |    2.84 km | 4.9 min         | PKG1993 (0.1 kg)
+   DEL272   | Roberto Bruno        |    1.87 km | 3.2 min         | PKG1315 (0.7 kg)
+   DEL273   | Sara Conti           |    5.33 km | 9.1 min         | PKG1102 (0.4 kg)
+   DEL274   | Riccardo Bruno       |    3.27 km | 5.6 min         | PKG0041 (1.2 kg)
+   DEL275   | Simone Vitale        |    0.92 km | 1.6 min         | PKG0568 (0.6 kg)
+   DEL276   | Giacomo Rossi        |    0.62 km | 1.1 min         | PKG0634 (0.5 kg)
+   DEL277   | Riccardo Esposito    |    7.42 km | 12.7 min        | PKG1722 (0.1 kg)
+   DEL278   | Alessandro Russo     |    8.69 km | 14.9 min        | PKG0747 (0.2 kg)
+   DEL279   | Riccardo Marchetti   |    0.63 km | 1.1 min         | PKG1220 (0.7 kg)
+   DEL280   | Paolo Coppola        |    0.67 km | 1.2 min         | PKG1221 (0.3 kg)
+   RTRN     | Rientro in Deposito  |    6.50 km | 11.1 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 48.77 km
+   Tempo Totale (incluse soste): 3h 51m
+   Carico Totale:   9.62 kg / Capacità Max Mezzo: 30.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Claudia Greco                  | ID: R15
+MEZZO:  Scooter | Velocità media: 35.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL281   | Anna Moretti         |    0.77 km | 1.3 min         | PKG0416 (0.4 kg)
+   DEL282   | Marta Conti          |    2.28 km | 3.9 min         | PKG0864 (0.2 kg)
+   DEL283   | Anna Rinaldi         |    1.61 km | 2.8 min         | PKG1919 (0.3 kg)
+   DEL284   | Giulia Mancini       |    0.73 km | 1.2 min         | PKG1637 (1.4 kg)
+   DEL285   | Chiara Longo         |    2.12 km | 3.6 min         | PKG0249 (0.8 kg)
+   DEL286   | Giulia Lombardi      |    0.22 km | 0.4 min         | PKG0370 (0.1 kg)
+   DEL287   | Sara Ferrara         |    0.48 km | 0.8 min         | PKG1625 (0.7 kg)
+   DEL288   | Giacomo Serra        |    0.67 km | 1.2 min         | PKG1085 (0.1 kg)
+   DEL289   | Paola Villa          |    1.49 km | 2.6 min         | PKG0569 (0.3 kg)
+   DEL290   | Anna Villa           |    1.33 km | 2.3 min         | PKG0389 (0.7 kg)
+   DEL291   | Giulia Bruno         |    0.76 km | 1.3 min         | PKG0299 (0.5 kg)
+   DEL292   | Roberto Fontana      |    3.75 km | 6.4 min         | PKG0172 (0.7 kg)
+   DEL293   | Filippo Coppola      |    1.52 km | 2.6 min         | PKG1682 (0.6 kg)
+   DEL294   | Luca Ferrari         |    3.59 km | 6.2 min         | PKG0912 (1.1 kg)
+   DEL295   | Riccardo Bruno       |    3.50 km | 6.0 min         | PKG0857 (0.4 kg)
+   DEL296   | Giacomo Vitale       |    1.66 km | 2.8 min         | PKG0552 (0.4 kg)
+   DEL297   | Giulia Serra         |    6.99 km | 12.0 min        | PKG0560 (0.4 kg)
+   DEL298   | Monica Conti         |    1.04 km | 1.8 min         | PKG0792 (0.2 kg)
+   DEL299   | Paola Caruso         |    2.00 km | 3.4 min         | PKG0717 (0.5 kg)
+   DEL300   | Riccardo Marchetti   |   10.45 km | 17.9 min        | PKG1141 (0.2 kg)
+   RTRN     | Rientro in Deposito  |    6.45 km | 11.1 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 53.40 km
+   Tempo Totale (incluse soste): 3h 59m
+   Carico Totale:   9.84 kg / Capacità Max Mezzo: 30.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Andrea Marchetti               | ID: R16
+MEZZO:  Scooter | Velocità media: 35.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL301   | Marta Vitale         |    0.66 km | 1.1 min         | PKG1386 (0.4 kg)
+   DEL302   | Matteo Coppola       |    1.07 km | 1.8 min         | PKG0875 (0.7 kg)
+   DEL303   | Luca Colombo         |    1.11 km | 1.9 min         | PKG0603 (0.5 kg)
+   DEL304   | Riccardo Marino      |    0.11 km | 0.2 min         | PKG0415 (0.5 kg)
+   DEL305   | Claudia Russo        |    1.14 km | 1.9 min         | PKG0113 (0.7 kg)
+   DEL306   | Elena Marino         |    1.04 km | 1.8 min         | PKG0559 (0.3 kg)
+   DEL307   | Luca Caruso          |    1.01 km | 1.7 min         | PKG0872 (0.5 kg)
+   DEL308   | Davide Colombo       |    0.10 km | 0.2 min         | PKG0652 (0.4 kg)
+   DEL309   | Roberto Ferrari      |    2.81 km | 4.8 min         | PKG0749 (0.3 kg)
+   DEL310   | Valentina Ricci      |    1.50 km | 2.6 min         | PKG1712 (0.7 kg)
+   DEL311   | Andrea Rinaldi       |    4.11 km | 7.1 min         | PKG1456 (0.2 kg)
+   DEL312   | Marta Russo          |    1.01 km | 1.7 min         | PKG0363 (0.5 kg)
+   DEL313   | Matteo Serra         |    3.22 km | 5.5 min         | PKG1927 (0.1 kg)
+   DEL314   | Nicola Mancini       |    0.18 km | 0.3 min         | PKG0946 (0.3 kg)
+   DEL315   | Giacomo Rossi        |    2.43 km | 4.2 min         | PKG0118 (1.2 kg)
+   DEL316   | Stefano Marchetti    |    0.71 km | 1.2 min         | PKG0543 (0.7 kg)
+   DEL317   | Stefano Conti        |    6.73 km | 11.5 min        | PKG0499 (0.1 kg)
+   DEL318   | Monica Conti         |    1.20 km | 2.1 min         | PKG1428 (0.6 kg)
+   DEL319   | Elena Santoro        |    9.31 km | 16.0 min        | PKG0799 (0.7 kg)
+   DEL320   | Chiara Conti         |    0.31 km | 0.5 min         | PKG1463 (0.1 kg)
+   RTRN     | Rientro in Deposito  |    6.74 km | 11.6 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 46.50 km
+   Tempo Totale (incluse soste): 2h 47m
+   Carico Totale:   9.21 kg / Capacità Max Mezzo: 30.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Marta Ferrara                  | ID: R17
+MEZZO:  Scooter | Velocità media: 35.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL321   | Marta Vitale         |    0.66 km | 1.1 min         | PKG1567 (0.6 kg)
+   DEL322   | Enrico Fontana       |    1.36 km | 2.3 min         | PKG0602 (0.3 kg)
+   DEL323   | Riccardo Marino      |    1.43 km | 2.5 min         | PKG1097 (0.5 kg)
+   DEL324   | Luca Colombo         |    0.11 km | 0.2 min         | PKG0339 (1.3 kg)
+   DEL325   | Luca Longo           |    0.97 km | 1.7 min         | PKG1340 (0.2 kg)
+   DEL326   | Claudia Rossi        |    1.68 km | 2.9 min         | PKG0033 (0.5 kg)
+   DEL327   | Riccardo Lombardi    |    1.95 km | 3.3 min         | PKG0570 (0.3 kg)
+   DEL328   | Anna Villa           |    0.96 km | 1.6 min         | PKG1395 (0.2 kg)
+   DEL329   | Simone De Luca       |    0.67 km | 1.1 min         | PKG0476 (0.7 kg)
+   DEL330   | Anna Gallo           |    1.40 km | 2.4 min         | PKG0162 (0.3 kg)
+   DEL331   | Lucia Moretti        |    0.83 km | 1.4 min         | PKG0695 (0.5 kg)
+   DEL332   | Valentina Ricci      |    0.61 km | 1.0 min         | PKG1719 (0.2 kg)
+   DEL333   | Francesco Lombardi   |    1.01 km | 1.7 min         | PKG1938 (0.5 kg)
+   DEL334   | Sara Ferrara         |    0.48 km | 0.8 min         | PKG1628 (0.8 kg)
+   DEL335   | Roberto Esposito     |    5.46 km | 9.4 min         | PKG0699 (0.7 kg)
+   DEL336   | Andrea Ferrara       |    4.03 km | 6.9 min         | PKG0154 (0.2 kg)
+   DEL337   | Lucia Ferrari        |    7.28 km | 12.5 min        | PKG1242 (0.5 kg)
+   DEL338   | Marta Vitale         |    8.39 km | 14.4 min        | PKG1178 (0.1 kg)
+   DEL339   | Paolo Coppola        |    0.69 km | 1.2 min         | PKG0849 (0.7 kg)
+   DEL340   | Andrea Colombo       |    1.42 km | 2.4 min         | PKG1011 (1.1 kg)
+   RTRN     | Rientro in Deposito  |    6.34 km | 10.9 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 47.72 km
+   Tempo Totale (incluse soste): 3h 49m
+   Carico Totale:   10.23 kg / Capacità Max Mezzo: 30.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Luca Caruso                    | ID: R18
+MEZZO:  Scooter | Velocità media: 35.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL341   | Enrico Gallo         |    0.48 km | 0.8 min         | PKG1369 (0.6 kg)
+   DEL342   | Anna Moretti         |    1.12 km | 1.9 min         | PKG1793 (0.6 kg)
+   DEL343   | Davide Longo         |    0.83 km | 1.4 min         | PKG1752 (0.3 kg)
+   DEL344   | Roberto Bianchi      |    1.22 km | 2.1 min         | PKG1147 (0.2 kg)
+   DEL345   | Claudia Russo        |    1.11 km | 1.9 min         | PKG1507 (0.1 kg)
+   DEL346   | Giulia Mancini       |    1.75 km | 3.0 min         | PKG0955 (0.7 kg)
+   DEL347   | Filippo Mancini      |    1.57 km | 2.7 min         | PKG1164 (0.3 kg)
+   DEL348   | Davide Bruno         |    0.33 km | 0.6 min         | PKG0748 (0.4 kg)
+   DEL349   | Laura Rinaldi        |    0.82 km | 1.4 min         | PKG1110 (0.2 kg)
+   DEL350   | Valentina Ricci      |    0.18 km | 0.3 min         | PKG0246 (0.7 kg)
+   DEL351   | Luca Ricci           |    6.23 km | 10.7 min        | PKG0579 (0.4 kg)
+   DEL352   | Sara Santoro         |    4.57 km | 7.8 min         | PKG0022 (0.7 kg)
+   DEL353   | Andrea Colombo       |    1.71 km | 2.9 min         | PKG1046 (0.4 kg)
+   DEL354   | Enrico Marino        |    0.77 km | 1.3 min         | PKG0448 (0.5 kg)
+   DEL355   | Serena Ferrari       |    0.67 km | 1.1 min         | PKG1596 (0.7 kg)
+   DEL356   | Giacomo Ferrari      |   11.04 km | 18.9 min        | PKG0053 (0.7 kg)
+   DEL357   | Sara Conti           |    5.91 km | 10.1 min        | PKG1807 (0.4 kg)
+   DEL358   | Luca Ferrari         |    1.53 km | 2.6 min         | PKG1414 (0.6 kg)
+   DEL359   | Riccardo Bruno       |    3.50 km | 6.0 min         | PKG1606 (0.3 kg)
+   DEL360   | Simone Vitale        |    0.92 km | 1.6 min         | PKG1897 (1.4 kg)
+   RTRN     | Rientro in Deposito  |    8.66 km | 14.8 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 54.92 km
+   Tempo Totale (incluse soste): 3h 62m
+   Carico Totale:   10.21 kg / Capacità Max Mezzo: 30.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Monica Moretti                 | ID: R19
+MEZZO:  Scooter | Velocità media: 35.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL361   | Matteo Coppola       |    0.79 km | 1.4 min         | PKG0185 (0.7 kg)
+   DEL362   | Roberto Bianchi      |    0.82 km | 1.4 min         | PKG0820 (0.6 kg)
+   DEL363   | Filippo Conti        |    0.24 km | 0.4 min         | PKG1116 (0.3 kg)
+   DEL364   | Davide Ferrara       |    0.48 km | 0.8 min         | PKG1310 (0.2 kg)
+   DEL365   | Anna Rinaldi         |    1.97 km | 3.4 min         | PKG1610 (1.4 kg)
+   DEL366   | Anna Villa           |    1.81 km | 3.1 min         | PKG0821 (1.4 kg)
+   DEL367   | Simone De Luca       |    0.67 km | 1.1 min         | PKG1873 (1.3 kg)
+   DEL368   | Giulia Bruno         |    0.92 km | 1.6 min         | PKG1333 (0.5 kg)
+   DEL369   | Serena Rossi         |    1.51 km | 2.6 min         | PKG1205 (0.6 kg)
+   DEL370   | Elena Villa          |    6.16 km | 10.6 min        | PKG0201 (0.5 kg)
+   DEL371   | Simone Fontana       |    4.40 km | 7.5 min         | PKG1070 (0.6 kg)
+   DEL372   | Simone Ferrari       |    1.14 km | 2.0 min         | PKG0914 (0.2 kg)
+   DEL373   | Riccardo Conti       |    6.28 km | 10.8 min        | PKG1442 (1.3 kg)
+   DEL374   | Luca Ferrari         |    0.92 km | 1.6 min         | PKG0776 (0.3 kg)
+   DEL375   | Simone Vitale        |    3.71 km | 6.4 min         | PKG1968 (0.2 kg)
+   DEL376   | Giacomo Vitale       |    0.76 km | 1.3 min         | PKG1794 (0.7 kg)
+   DEL377   | Monica Marino        |   15.26 km | 26.2 min        | PKG0183 (0.5 kg)
+   DEL378   | Claudia Barbato      |    1.67 km | 2.9 min         | PKG0993 (1.1 kg)
+   DEL379   | Andrea Colombo       |    0.22 km | 0.4 min         | PKG0844 (0.4 kg)
+   DEL380   | Serena Greco         |    0.84 km | 1.4 min         | PKG1028 (1.5 kg)
+   RTRN     | Rientro in Deposito  |    6.90 km | 11.8 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 57.46 km
+   Tempo Totale (incluse soste): 3h 0m
+   Carico Totale:   13.94 kg / Capacità Max Mezzo: 30.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Chiara Vitale                  | ID: R20
+MEZZO:  Scooter | Velocità media: 35.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL381   | Enrico Fontana       |    0.80 km | 1.4 min         | PKG1720 (0.7 kg)
+   DEL382   | Luca Ricci           |    1.76 km | 3.0 min         | PKG1174 (0.8 kg)
+   DEL383   | Riccardo Marchetti   |    2.70 km | 4.6 min         | PKG0482 (0.6 kg)
+   DEL384   | Marta Conti          |    1.03 km | 1.8 min         | PKG0830 (0.1 kg)
+   DEL385   | Claudia Rossi        |    0.77 km | 1.3 min         | PKG1847 (0.6 kg)
+   DEL386   | Anna Rinaldi         |    0.98 km | 1.7 min         | PKG0277 (0.6 kg)
+   DEL387   | Simone Testa         |    1.53 km | 2.6 min         | PKG0275 (0.6 kg)
+   DEL388   | Simone De Luca       |    0.46 km | 0.8 min         | PKG0930 (0.5 kg)
+   DEL389   | Francesco Lombardi   |    2.71 km | 4.6 min         | PKG0962 (0.2 kg)
+   DEL390   | Valentina Rossi      |    0.25 km | 0.4 min         | PKG0865 (0.5 kg)
+   DEL391   | Monica Colombo       |    3.31 km | 5.7 min         | PKG1423 (0.5 kg)
+   DEL392   | Riccardo Esposito    |    2.80 km | 4.8 min         | PKG0761 (0.2 kg)
+   DEL393   | Stefano Marchetti    |    4.08 km | 7.0 min         | PKG0523 (0.7 kg)
+   DEL394   | Giacomo Vitale       |    0.79 km | 1.4 min         | PKG1548 (0.5 kg)
+   DEL395   | Lucia Ferrari        |    8.02 km | 13.7 min        | PKG1126 (0.6 kg)
+   DEL396   | Monica Conti         |    0.97 km | 1.7 min         | PKG0784 (1.2 kg)
+   DEL397   | Monica Colombo       |    8.16 km | 14.0 min        | PKG1587 (0.3 kg)
+   DEL398   | Alessandro Russo     |    0.29 km | 0.5 min         | PKG1100 (0.4 kg)
+   DEL399   | Alessandro Marino    |    0.13 km | 0.2 min         | PKG0839 (0.4 kg)
+   DEL400   | Riccardo Marchetti   |    0.65 km | 1.1 min         | PKG1488 (0.1 kg)
+   RTRN     | Rientro in Deposito  |    6.45 km | 11.1 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 48.63 km
+   Tempo Totale (incluse soste): 3h 51m
+   Carico Totale:   10.09 kg / Capacità Max Mezzo: 30.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Simone Moretti                 | ID: R21
+MEZZO:  Auto | Velocità media: 45.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL401   | Davide Vitale        |    0.72 km | 1.0 min         | PKG1012 (0.2 kg)
+   DEL402   | Sara Bianchi         |    1.86 km | 2.5 min         | PKG0161 (2.3 kg)
+   DEL403   | Luca Colombo         |    0.11 km | 0.1 min         | PKG0298 (4.1 kg)
+   DEL404   | Chiara Ricci         |    1.32 km | 1.8 min         | PKG1262 (3.3 kg)
+   DEL405   | Claudia Rossi        |    0.55 km | 0.7 min         | PKG1723 (3.7 kg)
+   DEL406   | Luca Caruso          |    0.63 km | 0.8 min         | PKG0681 (4.4 kg)
+   DEL407   | Chiara Testa         |    0.87 km | 1.2 min         | PKG1057 (4.2 kg)
+   DEL408   | Anna Rinaldi         |    0.95 km | 1.3 min         | PKG1232 (0.2 kg)
+   DEL409   | Francesco Bruno      |    1.27 km | 1.7 min         | PKG1235 (4.2 kg)
+   DEL410   | Francesco Lombardi   |    1.04 km | 1.4 min         | PKG0694 (0.2 kg)
+   DEL411   | Giacomo Serra        |    0.27 km | 0.4 min         | PKG0833 (4.4 kg)
+   DEL412   | Luca Gallo           |    0.49 km | 0.7 min         | PKG0960 (4.9 kg)
+   DEL413   | Lucia Costa          |    0.96 km | 1.3 min         | PKG1846 (0.3 kg)
+   DEL414   | Marta Rinaldi        |    2.95 km | 3.9 min         | PKG1318 (2.5 kg)
+   DEL415   | Claudia Barbato      |    2.36 km | 3.1 min         | PKG0173 (1.3 kg)
+   DEL416   | Riccardo Esposito    |    1.86 km | 2.5 min         | PKG1881 (4.3 kg)
+   DEL417   | Sara Conti           |    1.51 km | 2.0 min         | PKG1359 (0.7 kg)
+   DEL418   | Claudia Mancini      |    2.63 km | 3.5 min         | PKG0471 (1.6 kg)
+   DEL419   | Nicola Coppola       |    0.56 km | 0.7 min         | PKG1603 (1.0 kg)
+   DEL420   | Valentina Esposito   |    1.07 km | 1.4 min         | PKG1859 (3.7 kg)
+   RTRN     | Rientro in Deposito  |    8.69 km | 11.6 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 32.66 km
+   Tempo Totale (incluse soste): 2h 11m
+   Carico Totale:   51.42 kg / Capacità Max Mezzo: 100.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Chiara Mancini                 | ID: R22
+MEZZO:  Auto | Velocità media: 45.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL421   | Anna Moretti         |    0.77 km | 1.0 min         | PKG0664 (3.9 kg)
+   DEL422   | Davide Longo         |    0.83 km | 1.1 min         | PKG1981 (2.0 kg)
+   DEL423   | Roberto Bianchi      |    1.22 km | 1.6 min         | PKG1462 (4.8 kg)
+   DEL424   | Anna Esposito        |    0.70 km | 0.9 min         | PKG0204 (4.7 kg)
+   DEL425   | Elena Marino         |    1.41 km | 1.9 min         | PKG0200 (2.8 kg)
+   DEL426   | Chiara Testa         |    1.87 km | 2.5 min         | PKG0882 (3.1 kg)
+   DEL427   | Anna Rinaldi         |    0.95 km | 1.3 min         | PKG1436 (2.1 kg)
+   DEL428   | Claudia Vitale       |    1.77 km | 2.4 min         | PKG1933 (0.4 kg)
+   DEL429   | Laura Rinaldi        |    1.84 km | 2.5 min         | PKG1845 (0.2 kg)
+   DEL430   | Paolo Caruso         |    0.09 km | 0.1 min         | PKG1328 (0.3 kg)
+   DEL431   | Valentina Rossi      |    0.99 km | 1.3 min         | PKG1020 (1.8 kg)
+   DEL432   | Nicola Ricci         |    3.31 km | 4.4 min         | PKG0541 (3.7 kg)
+   DEL433   | Nicola Mancini       |    3.64 km | 4.8 min         | PKG0925 (4.8 kg)
+   DEL434   | Andrea Santoro       |    3.75 km | 5.0 min         | PKG0406 (4.1 kg)
+   DEL435   | Giulia Serra         |    6.87 km | 9.2 min         | PKG0336 (2.5 kg)
+   DEL436   | Francesco Mancini    |    0.60 km | 0.8 min         | PKG0995 (3.4 kg)
+   DEL437   | Marta Vitale         |    8.57 km | 11.4 min        | PKG1172 (2.2 kg)
+   DEL438   | Riccardo Marchetti   |    1.10 km | 1.5 min         | PKG1725 (2.2 kg)
+   DEL439   | Elena Caruso         |    0.50 km | 0.7 min         | PKG0753 (0.1 kg)
+   DEL440   | Claudia Barbato      |    0.17 km | 0.2 min         | PKG0738 (3.2 kg)
+   RTRN     | Rientro in Deposito  |    6.48 km | 8.6 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 47.43 km
+   Tempo Totale (incluse soste): 2h 31m
+   Carico Totale:   52.36 kg / Capacità Max Mezzo: 100.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Nicola Serra                   | ID: R23
+MEZZO:  Auto | Velocità media: 45.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL441   | Giacomo Mancini      |    0.37 km | 0.5 min         | PKG0758 (0.3 kg)
+   DEL442   | Enrico Fontana       |    0.44 km | 0.6 min         | PKG0096 (4.1 kg)
+   DEL443   | Sara Bianchi         |    1.33 km | 1.8 min         | PKG1176 (2.9 kg)
+   DEL444   | Serena Ricci         |    0.64 km | 0.9 min         | PKG1458 (1.5 kg)
+   DEL445   | Filippo Conti        |    0.73 km | 1.0 min         | PKG1768 (0.5 kg)
+   DEL446   | Chiara Ricci         |    0.99 km | 1.3 min         | PKG0896 (0.1 kg)
+   DEL447   | Enrico Conti         |    0.87 km | 1.2 min         | PKG0764 (3.2 kg)
+   DEL448   | Chiara Mancini       |    1.19 km | 1.6 min         | PKG0644 (1.1 kg)
+   DEL449   | Riccardo Lombardi    |    2.56 km | 3.4 min         | PKG0549 (3.8 kg)
+   DEL450   | Simone Greco         |    0.82 km | 1.1 min         | PKG1339 (2.3 kg)
+   DEL451   | Claudia Vitale       |    0.57 km | 0.8 min         | PKG1375 (0.6 kg)
+   DEL452   | Serena Villa         |    1.40 km | 1.9 min         | PKG1218 (2.9 kg)
+   DEL453   | Paola Villa          |    0.56 km | 0.7 min         | PKG0547 (0.6 kg)
+   DEL454   | Giulia Conti         |    0.31 km | 0.4 min         | PKG0423 (3.7 kg)
+   DEL455   | Lucia Costa          |    0.20 km | 0.3 min         | PKG0208 (0.6 kg)
+   DEL456   | Giorgio Esposito     |    5.46 km | 7.3 min         | PKG0900 (2.4 kg)
+   DEL457   | Giulia Serra         |    4.52 km | 6.0 min         | PKG0732 (2.0 kg)
+   DEL458   | Monica Conti         |    1.04 km | 1.4 min         | PKG0630 (1.9 kg)
+   DEL459   | Giacomo Vitale       |    8.03 km | 10.7 min        | PKG1391 (0.7 kg)
+   DEL460   | Monica Marino        |   15.26 km | 20.4 min        | PKG0558 (2.6 kg)
+   RTRN     | Rientro in Deposito  |    6.46 km | 8.6 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 53.75 km
+   Tempo Totale (incluse soste): 2h 39m
+   Carico Totale:   37.75 kg / Capacità Max Mezzo: 100.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Andrea Conti                   | ID: R24
+MEZZO:  Auto | Velocità media: 45.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL461   | Riccardo Vitale      |    0.49 km | 0.7 min         | PKG0393 (0.7 kg)
+   DEL462   | Luca Lombardi        |    1.19 km | 1.6 min         | PKG0272 (0.6 kg)
+   DEL463   | Monica Russo         |    0.92 km | 1.2 min         | PKG1926 (1.6 kg)
+   DEL464   | Stefano Caruso       |    0.59 km | 0.8 min         | PKG0680 (0.7 kg)
+   DEL465   | Paolo Gallo          |    0.43 km | 0.6 min         | PKG0427 (2.8 kg)
+   DEL466   | Riccardo Marchetti   |    1.24 km | 1.7 min         | PKG1828 (1.9 kg)
+   DEL467   | Elena Marino         |    0.54 km | 0.7 min         | PKG1659 (0.2 kg)
+   DEL468   | Chiara Coppola       |    1.13 km | 1.5 min         | PKG1520 (2.6 kg)
+   DEL469   | Chiara Ricci         |    0.34 km | 0.5 min         | PKG0017 (3.3 kg)
+   DEL470   | Claudia Rossi        |    1.09 km | 1.5 min         | PKG0134 (2.4 kg)
+   DEL471   | Francesco Bruno      |    1.49 km | 2.0 min         | PKG1121 (2.7 kg)
+   DEL472   | Davide Bruno         |    1.46 km | 1.9 min         | PKG0194 (0.3 kg)
+   DEL473   | Andrea Caruso        |    6.86 km | 9.1 min         | PKG1593 (3.3 kg)
+   DEL474   | Matteo Serra         |    0.74 km | 1.0 min         | PKG1525 (2.9 kg)
+   DEL475   | Nicola Coppola       |    2.32 km | 3.1 min         | PKG1744 (2.8 kg)
+   DEL476   | Riccardo Bruno       |    1.33 km | 1.8 min         | PKG1420 (0.3 kg)
+   DEL477   | Stefano Conti        |    5.27 km | 7.0 min         | PKG0980 (1.8 kg)
+   DEL478   | Giacomo Ferrari      |    1.90 km | 2.5 min         | PKG1471 (0.4 kg)
+   DEL479   | Paolo Coppola        |    9.48 km | 12.6 min        | PKG1953 (4.9 kg)
+   DEL480   | Claudia Barbato      |    1.25 km | 1.7 min         | PKG1667 (0.1 kg)
+   RTRN     | Rientro in Deposito  |    6.48 km | 8.6 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 46.55 km
+   Tempo Totale (incluse soste): 2h 30m
+   Carico Totale:   36.23 kg / Capacità Max Mezzo: 100.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Chiara Ricci                   | ID: R25
+MEZZO:  Auto | Velocità media: 45.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL481   | Francesco Marino     |    0.52 km | 0.7 min         | PKG0522 (2.6 kg)
+   DEL482   | Luca Lombardi        |    0.30 km | 0.4 min         | PKG0265 (1.9 kg)
+   DEL483   | Roberto Bianchi      |    1.28 km | 1.7 min         | PKG1886 (1.2 kg)
+   DEL484   | Riccardo Marchetti   |    0.48 km | 0.6 min         | PKG1996 (2.5 kg)
+   DEL485   | Anna Rinaldi         |    2.46 km | 3.3 min         | PKG0316 (0.5 kg)
+   DEL486   | Riccardo Lombardi    |    1.00 km | 1.3 min         | PKG0590 (1.5 kg)
+   DEL487   | Roberto Colombo      |    0.75 km | 1.0 min         | PKG1837 (4.3 kg)
+   DEL488   | Simone De Luca       |    0.75 km | 1.0 min         | PKG1136 (2.2 kg)
+   DEL489   | Serena Villa         |    1.45 km | 1.9 min         | PKG1024 (2.4 kg)
+   DEL490   | Monica Colombo       |    4.48 km | 6.0 min         | PKG0430 (0.5 kg)
+   DEL491   | Chiara Caruso        |    2.84 km | 3.8 min         | PKG1396 (0.2 kg)
+   DEL492   | Paola Ricci          |    0.80 km | 1.1 min         | PKG0527 (3.5 kg)
+   DEL493   | Simone Greco         |    4.54 km | 6.1 min         | PKG1683 (0.5 kg)
+   DEL494   | Giacomo Vitale       |    1.71 km | 2.3 min         | PKG0020 (0.1 kg)
+   DEL495   | Chiara Testa         |    7.09 km | 9.5 min         | PKG1265 (3.6 kg)
+   DEL496   | Paola Longo          |    1.49 km | 2.0 min         | PKG0565 (2.2 kg)
+   DEL497   | Alessandro Marino    |    9.70 km | 12.9 min        | PKG0346 (3.2 kg)
+   DEL498   | Andrea Colombo       |    0.68 km | 0.9 min         | PKG0068 (3.8 kg)
+   DEL499   | Serena Greco         |    0.84 km | 1.1 min         | PKG1770 (3.2 kg)
+   DEL500   | Serena Ferrari       |    0.85 km | 1.1 min         | PKG0958 (3.0 kg)
+   RTRN     | Rientro in Deposito  |    7.37 km | 9.8 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 51.35 km
+   Tempo Totale (incluse soste): 2h 36m
+   Carico Totale:   43.10 kg / Capacità Max Mezzo: 100.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Riccardo Costa                 | ID: R26
+MEZZO:  Auto | Velocità media: 45.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL501   | Giacomo Mancini      |    0.37 km | 0.5 min         | PKG1183 (0.7 kg)
+   DEL502   | Enrico Fontana       |    0.44 km | 0.6 min         | PKG1528 (1.5 kg)
+   DEL503   | Claudia Greco        |    1.47 km | 2.0 min         | PKG1773 (2.7 kg)
+   DEL504   | Paolo Gallo          |    3.18 km | 4.2 min         | PKG1664 (2.1 kg)
+   DEL505   | Chiara Coppola       |    2.02 km | 2.7 min         | PKG1144 (3.4 kg)
+   DEL506   | Chiara Mancini       |    0.33 km | 0.4 min         | PKG1239 (4.7 kg)
+   DEL507   | Giulia Mancini       |    0.99 km | 1.3 min         | PKG1298 (1.6 kg)
+   DEL508   | Roberto Colombo      |    1.42 km | 1.9 min         | PKG0968 (4.2 kg)
+   DEL509   | Riccardo Lombardi    |    0.75 km | 1.0 min         | PKG1489 (0.5 kg)
+   DEL510   | Chiara Longo         |    0.82 km | 1.1 min         | PKG0303 (3.0 kg)
+   DEL511   | Paolo Caruso         |    0.83 km | 1.1 min         | PKG0326 (1.8 kg)
+   DEL512   | Anna Villa           |    1.32 km | 1.8 min         | PKG1658 (4.7 kg)
+   DEL513   | Serena Mancini       |    7.74 km | 10.3 min        | PKG0384 (4.2 kg)
+   DEL514   | Andrea Ferrara       |    3.63 km | 4.8 min         | PKG0032 (1.4 kg)
+   DEL515   | Andrea Santoro       |    0.96 km | 1.3 min         | PKG1138 (1.2 kg)
+   DEL516   | Giorgio Villa        |    6.42 km | 8.6 min         | PKG0024 (0.5 kg)
+   DEL517   | Giorgio Vitale       |    1.22 km | 1.6 min         | PKG1275 (1.1 kg)
+   DEL518   | Riccardo Esposito    |    0.64 km | 0.9 min         | PKG1739 (0.3 kg)
+   DEL519   | Riccardo Marchetti   |    9.15 km | 12.2 min        | PKG1365 (1.3 kg)
+   DEL520   | Serena Ferrari       |    1.19 km | 1.6 min         | PKG1875 (4.1 kg)
+   RTRN     | Rientro in Deposito  |    7.37 km | 9.8 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 52.27 km
+   Tempo Totale (incluse soste): 2h 37m
+   Carico Totale:   45.29 kg / Capacità Max Mezzo: 100.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Sara Mancini                   | ID: R27
+MEZZO:  Auto | Velocità media: 45.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL521   | Anna Moretti         |    0.77 km | 1.0 min         | PKG1409 (0.6 kg)
+   DEL522   | Paolo Gallo          |    1.81 km | 2.4 min         | PKG1307 (4.6 kg)
+   DEL523   | Riccardo Colombo     |    0.64 km | 0.9 min         | PKG0124 (0.6 kg)
+   DEL524   | Francesco Bruno      |    0.80 km | 1.1 min         | PKG1151 (0.4 kg)
+   DEL525   | Davide Bruno         |    1.46 km | 1.9 min         | PKG0665 (4.0 kg)
+   DEL526   | Paolo Caruso         |    0.84 km | 1.1 min         | PKG1500 (0.6 kg)
+   DEL527   | Anna Gallo           |    1.24 km | 1.7 min         | PKG0052 (0.2 kg)
+   DEL528   | Claudia Vitale       |    1.45 km | 1.9 min         | PKG0493 (4.5 kg)
+   DEL529   | Chiara Testa         |    2.04 km | 2.7 min         | PKG0657 (1.2 kg)
+   DEL530   | Chiara Mancini       |    0.79 km | 1.1 min         | PKG1499 (1.9 kg)
+   DEL531   | Paolo Caruso         |    0.48 km | 0.6 min         | PKG1168 (0.2 kg)
+   DEL532   | Chiara Ricci         |    1.22 km | 1.6 min         | PKG0888 (4.8 kg)
+   DEL533   | Anna Esposito        |    1.90 km | 2.5 min         | PKG1282 (0.1 kg)
+   DEL534   | Giulia Serra         |    5.68 km | 7.6 min         | PKG0891 (1.2 kg)
+   DEL535   | Francesco Mancini    |    0.60 km | 0.8 min         | PKG0383 (1.6 kg)
+   DEL536   | Simone Fontana       |    0.41 km | 0.5 min         | PKG1684 (0.5 kg)
+   DEL537   | Giorgio Coppola      |    0.45 km | 0.6 min         | PKG1655 (3.6 kg)
+   DEL538   | Andrea Caruso        |    5.81 km | 7.7 min         | PKG1459 (0.6 kg)
+   DEL539   | Filippo Coppola      |    3.90 km | 5.2 min         | PKG0508 (4.8 kg)
+   DEL540   | Giulia Greco         |    7.58 km | 10.1 min        | PKG1103 (3.4 kg)
+   RTRN     | Rientro in Deposito  |    8.98 km | 12.0 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 48.85 km
+   Tempo Totale (incluse soste): 2h 33m
+   Carico Totale:   39.54 kg / Capacità Max Mezzo: 100.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Anna Caruso                    | ID: R28
+MEZZO:  Auto | Velocità media: 45.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL541   | Davide Colombo       |    3.45 km | 4.6 min         | PKG1036 (0.4 kg)
+   DEL542   | Paolo Caruso         |    0.27 km | 0.4 min         | PKG0673 (0.6 kg)
+   DEL543   | Giulia Mancini       |    1.19 km | 1.6 min         | PKG1939 (4.1 kg)
+   DEL544   | Simone Testa         |    1.60 km | 2.1 min         | PKG0789 (4.7 kg)
+   DEL545   | Paolo Caruso         |    1.98 km | 2.6 min         | PKG1266 (0.2 kg)
+   DEL546   | Giulia Conti         |    0.10 km | 0.1 min         | PKG0965 (4.2 kg)
+   DEL547   | Giorgio Esposito     |    5.64 km | 7.5 min         | PKG1924 (2.2 kg)
+   DEL548   | Serena Mancini       |    1.25 km | 1.7 min         | PKG0347 (3.7 kg)
+   DEL549   | Sara Conti           |    1.11 km | 1.5 min         | PKG1234 (5.0 kg)
+   DEL550   | Roberto Ferrara      |    1.15 km | 1.5 min         | PKG1089 (0.3 kg)
+   DEL551   | Simone Vitale        |    2.75 km | 3.7 min         | PKG1326 (2.1 kg)
+   DEL552   | Valentina Esposito   |    0.10 km | 0.1 min         | PKG0236 (4.0 kg)
+   DEL553   | Andrea Santoro       |    0.74 km | 1.0 min         | PKG0263 (4.3 kg)
+   DEL554   | Simone Greco         |    1.23 km | 1.6 min         | PKG1584 (2.1 kg)
+   DEL555   | Giorgio Villa        |    5.22 km | 7.0 min         | PKG0093 (0.7 kg)
+   DEL556   | Stefano Conti        |    0.51 km | 0.7 min         | PKG0351 (4.3 kg)
+   DEL557   | Chiara Testa         |    0.26 km | 0.3 min         | PKG1639 (0.6 kg)
+   DEL558   | Paola Longo          |    1.49 km | 2.0 min         | PKG0442 (1.1 kg)
+   DEL559   | Sara Santoro         |    8.66 km | 11.5 min        | PKG0199 (4.5 kg)
+   DEL560   | Enrico Marino        |    2.49 km | 3.3 min         | PKG0743 (4.4 kg)
+   RTRN     | Rientro in Deposito  |    6.96 km | 9.3 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 48.13 km
+   Tempo Totale (incluse soste): 2h 32m
+   Carico Totale:   53.50 kg / Capacità Max Mezzo: 100.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Giacomo Vitale                 | ID: R29
+MEZZO:  Auto | Velocità media: 45.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL561   | Enrico Gallo         |    0.48 km | 0.6 min         | PKG0608 (3.4 kg)
+   DEL562   | Francesco Marino     |    0.75 km | 1.0 min         | PKG0798 (2.0 kg)
+   DEL563   | Riccardo Marino      |    1.02 km | 1.4 min         | PKG1947 (1.9 kg)
+   DEL564   | Claudia Russo        |    1.14 km | 1.5 min         | PKG0656 (0.5 kg)
+   DEL565   | Chiara Testa         |    1.80 km | 2.4 min         | PKG0190 (4.7 kg)
+   DEL566   | Simone De Luca       |    2.20 km | 2.9 min         | PKG0095 (3.2 kg)
+   DEL567   | Anna Gallo           |    1.40 km | 1.9 min         | PKG0986 (2.4 kg)
+   DEL568   | Valentina Ricci      |    1.28 km | 1.7 min         | PKG1805 (2.8 kg)
+   DEL569   | Claudia Barbato      |    3.86 km | 5.1 min         | PKG1002 (3.8 kg)
+   DEL570   | Andrea Rinaldi       |    1.60 km | 2.1 min         | PKG1675 (1.8 kg)
+   DEL571   | Paola Ricci          |    3.74 km | 5.0 min         | PKG1743 (4.3 kg)
+   DEL572   | Giorgio Villa        |    4.05 km | 5.4 min         | PKG1180 (1.3 kg)
+   DEL573   | Monica Conti         |    1.51 km | 2.0 min         | PKG1599 (1.2 kg)
+   DEL574   | Simone Greco         |    6.69 km | 8.9 min         | PKG0025 (0.1 kg)
+   DEL575   | Simone Vitale        |    0.96 km | 1.3 min         | PKG0317 (3.9 kg)
+   DEL576   | Stefano Marchetti    |    1.18 km | 1.6 min         | PKG1730 (0.3 kg)
+   DEL577   | Alessandro Marino    |   14.37 km | 19.2 min        | PKG0166 (1.6 kg)
+   DEL578   | Monica Colombo       |    0.40 km | 0.5 min         | PKG1741 (0.4 kg)
+   DEL579   | Enrico Marino        |    1.67 km | 2.2 min         | PKG1240 (4.5 kg)
+   DEL580   | Serena Greco         |    0.18 km | 0.2 min         | PKG0936 (2.6 kg)
+   RTRN     | Rientro in Deposito  |    6.90 km | 9.2 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 57.18 km
+   Tempo Totale (incluse soste): 2h 44m
+   Carico Totale:   46.54 kg / Capacità Max Mezzo: 100.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Giulia Ricci                   | ID: R30
+MEZZO:  Auto | Velocità media: 45.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL581   | Giacomo Mancini      |    0.37 km | 0.5 min         | PKG0051 (1.5 kg)
+   DEL582   | Luca Colombo         |    1.43 km | 1.9 min         | PKG1410 (2.6 kg)
+   DEL583   | Luca Longo           |    0.97 km | 1.3 min         | PKG1004 (4.8 kg)
+   DEL584   | Giulia Barbato       |    1.66 km | 2.2 min         | PKG0684 (3.5 kg)
+   DEL585   | Enrico Conti         |    0.37 km | 0.5 min         | PKG0300 (2.0 kg)
+   DEL586   | Paolo Caruso         |    1.08 km | 1.4 min         | PKG1370 (0.1 kg)
+   DEL587   | Giacomo Serra        |    3.61 km | 4.8 min         | PKG0251 (1.1 kg)
+   DEL588   | Lucia Costa          |    1.02 km | 1.4 min         | PKG0116 (0.2 kg)
+   DEL589   | Valentina Ricci      |    0.13 km | 0.2 min         | PKG0480 (4.9 kg)
+   DEL590   | Laura Rinaldi        |    0.18 km | 0.2 min         | PKG0478 (0.5 kg)
+   DEL591   | Monica Colombo       |    4.01 km | 5.3 min         | PKG0578 (3.2 kg)
+   DEL592   | Chiara Caruso        |    2.84 km | 3.8 min         | PKG1096 (0.3 kg)
+   DEL593   | Riccardo Bruno       |    4.20 km | 5.6 min         | PKG0636 (4.9 kg)
+   DEL594   | Simone Greco         |    0.57 km | 0.8 min         | PKG1537 (2.6 kg)
+   DEL595   | Andrea Santoro       |    1.23 km | 1.6 min         | PKG1209 (0.2 kg)
+   DEL596   | Chiara Testa         |    6.91 km | 9.2 min         | PKG1617 (2.9 kg)
+   DEL597   | Francesco Mancini    |    0.25 km | 0.3 min         | PKG0583 (2.8 kg)
+   DEL598   | Simone Fontana       |    0.41 km | 0.5 min         | PKG1454 (4.5 kg)
+   DEL599   | Lucia Ferrari        |    0.47 km | 0.6 min         | PKG0015 (3.9 kg)
+   DEL600   | Paola Caruso         |    1.08 km | 1.4 min         | PKG0489 (3.1 kg)
+   RTRN     | Rientro in Deposito  |    6.25 km | 8.3 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 39.02 km
+   Tempo Totale (incluse soste): 2h 20m
+   Carico Totale:   49.63 kg / Capacità Max Mezzo: 100.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Lucia Fontana                  | ID: R31
+MEZZO:  Furgone | Velocità media: 50.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL601   | Francesco Marino     |    0.52 km | 0.6 min         | PKG1413 (17.8 kg)
+   DEL602   | Luca Lombardi        |    0.30 km | 0.4 min         | PKG1702 (20.4 kg)
+   DEL603   | Anna Moretti         |    0.55 km | 0.7 min         | PKG1872 (15.1 kg)
+   DEL604   | Enrico Fontana       |    0.25 km | 0.3 min         | PKG1734 (4.0 kg)
+   DEL605   | Anna Costa           |    0.36 km | 0.4 min         | PKG0769 (0.7 kg)
+   DEL606   | Matteo Coppola       |    1.68 km | 2.0 min         | PKG0897 (0.7 kg)
+   DEL607   | Davide Ferrara       |    1.50 km | 1.8 min         | PKG0152 (6.7 kg)
+   DEL608   | Giulia Barbato       |    0.99 km | 1.2 min         | PKG1829 (11.4 kg)
+   DEL609   | Roberto Ferrari      |    2.54 km | 3.1 min         | PKG0814 (3.6 kg)
+   DEL610   | Simone Greco         |    0.09 km | 0.1 min         | PKG1440 (3.3 kg)
+   DEL611   | Anna Villa           |    0.19 km | 0.2 min         | PKG0525 (8.6 kg)
+   DEL612   | Serena Villa         |    0.78 km | 0.9 min         | PKG1621 (8.2 kg)
+   DEL613   | Giulia Conti         |    0.59 km | 0.7 min         | PKG0768 (9.9 kg)
+   DEL614   | Alessandro Marino    |    8.55 km | 10.3 min        | PKG1626 (0.6 kg)
+   DEL615   | Monica Colombo       |    0.40 km | 0.5 min         | PKG1453 (18.9 kg)
+   DEL616   | Elena Santoro        |    1.32 km | 1.6 min         | PKG1950 (3.5 kg)
+   DEL617   | Chiara Conti         |    0.31 km | 0.4 min         | PKG1988 (5.7 kg)
+   DEL618   | Serena Ferrari       |    0.88 km | 1.1 min         | PKG1713 (4.0 kg)
+   DEL619   | Riccardo Bruno       |   15.21 km | 18.3 min        | PKG0909 (3.7 kg)
+   DEL620   | Marco Lombardi       |    0.11 km | 0.1 min         | PKG1526 (18.6 kg)
+   RTRN     | Rientro in Deposito  |    7.99 km | 9.6 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 45.13 km
+   Tempo Totale (incluse soste): 2h 22m
+   Carico Totale:   165.37 kg / Capacità Max Mezzo: 500.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Filippo Ferrara                | ID: R32
+MEZZO:  Furgone | Velocità media: 50.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL621   | Giacomo Colombo      |    0.53 km | 0.6 min         | PKG1662 (0.7 kg)
+   DEL622   | Riccardo Marino      |    1.68 km | 2.0 min         | PKG0293 (18.2 kg)
+   DEL623   | Serena Ricci         |    0.56 km | 0.7 min         | PKG1219 (1.6 kg)
+   DEL624   | Paolo Gallo          |    0.22 km | 0.3 min         | PKG1607 (0.7 kg)
+   DEL625   | Luca Longo           |    1.05 km | 1.3 min         | PKG1460 (2.1 kg)
+   DEL626   | Chiara Testa         |    2.64 km | 3.2 min         | PKG1742 (2.1 kg)
+   DEL627   | Anna Villa           |    2.35 km | 2.8 min         | PKG1134 (0.6 kg)
+   DEL628   | Serena Rossi         |    1.15 km | 1.4 min         | PKG1737 (11.0 kg)
+   DEL629   | Laura Rinaldi        |    0.13 km | 0.2 min         | PKG0852 (4.5 kg)
+   DEL630   | Giorgio Esposito     |    5.71 km | 6.8 min         | PKG1322 (2.5 kg)
+   DEL631   | Andrea Caruso        |    1.06 km | 1.3 min         | PKG1064 (16.2 kg)
+   DEL632   | Riccardo Conti       |    0.84 km | 1.0 min         | PKG0862 (23.3 kg)
+   DEL633   | Claudia Mancini      |    1.68 km | 2.0 min         | PKG0616 (3.4 kg)
+   DEL634   | Chiara Testa         |    5.97 km | 7.2 min         | PKG1937 (17.3 kg)
+   DEL635   | Simone Fontana       |    0.60 km | 0.7 min         | PKG1701 (6.0 kg)
+   DEL636   | Marta Vitale         |    8.67 km | 10.4 min        | PKG1421 (22.2 kg)
+   DEL637   | Paolo Coppola        |    0.69 km | 0.8 min         | PKG1997 (0.4 kg)
+   DEL638   | Riccardo Marchetti   |    0.67 km | 0.8 min         | PKG1244 (17.3 kg)
+   DEL639   | Elena Caruso         |    0.50 km | 0.6 min         | PKG1534 (15.8 kg)
+   DEL640   | Alessandro Marino    |    0.54 km | 0.6 min         | PKG1780 (0.5 kg)
+   RTRN     | Rientro in Deposito  |    5.84 km | 7.0 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 43.09 km
+   Tempo Totale (incluse soste): 2h 19m
+   Carico Totale:   166.30 kg / Capacità Max Mezzo: 500.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Filippo Villa                  | ID: R33
+MEZZO:  Furgone | Velocità media: 50.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL641   | Giacomo Mancini      |    0.37 km | 0.4 min         | PKG0031 (3.6 kg)
+   DEL642   | Riccardo Vitale      |    0.47 km | 0.6 min         | PKG0974 (0.1 kg)
+   DEL643   | Elena Villa          |    0.57 km | 0.7 min         | PKG0622 (3.3 kg)
+   DEL644   | Monica Russo         |    2.11 km | 2.5 min         | PKG0404 (14.0 kg)
+   DEL645   | Giulia Barbato       |    1.87 km | 2.2 min         | PKG0588 (23.5 kg)
+   DEL646   | Paolo Caruso         |    1.00 km | 1.2 min         | PKG1786 (3.6 kg)
+   DEL647   | Chiara Ricci         |    0.54 km | 0.6 min         | PKG1716 (4.3 kg)
+   DEL648   | Chiara Longo         |    2.83 km | 3.4 min         | PKG0255 (11.2 kg)
+   DEL649   | Laura Rinaldi        |    0.88 km | 1.1 min         | PKG0451 (3.2 kg)
+   DEL650   | Anna Villa           |    1.24 km | 1.5 min         | PKG0989 (0.7 kg)
+   DEL651   | Chiara Santoro       |    1.06 km | 1.3 min         | PKG0817 (1.3 kg)
+   DEL652   | Giacomo Serra        |    3.39 km | 4.1 min         | PKG0364 (25.0 kg)
+   DEL653   | Riccardo Conti       |    6.19 km | 7.4 min         | PKG1883 (1.5 kg)
+   DEL654   | Simone Vitale        |    3.03 km | 3.6 min         | PKG0397 (2.9 kg)
+   DEL655   | Giulia Serra         |    6.31 km | 7.6 min         | PKG1198 (2.3 kg)
+   DEL656   | Paola Longo          |    1.92 km | 2.3 min         | PKG1294 (1.5 kg)
+   DEL657   | Marta Vitale         |    9.01 km | 10.8 min        | PKG1966 (3.4 kg)
+   DEL658   | Andrea Colombo       |    1.70 km | 2.0 min         | PKG1236 (3.7 kg)
+   DEL659   | Chiara Conti         |    0.68 km | 0.8 min         | PKG1550 (4.7 kg)
+   DEL660   | Serena Greco         |    0.17 km | 0.2 min         | PKG1163 (8.4 kg)
+   RTRN     | Rientro in Deposito  |    6.90 km | 8.3 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 52.24 km
+   Tempo Totale (incluse soste): 2h 30m
+   Carico Totale:   122.07 kg / Capacità Max Mezzo: 500.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Giulia Villa                   | ID: R34
+MEZZO:  Furgone | Velocità media: 50.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL661   | Davide Vitale        |    0.72 km | 0.9 min         | PKG0621 (8.5 kg)
+   DEL662   | Elena Villa          |    0.73 km | 0.9 min         | PKG0685 (1.9 kg)
+   DEL663   | Sara Bianchi         |    2.26 km | 2.7 min         | PKG1137 (10.7 kg)
+   DEL664   | Luca Colombo         |    0.11 km | 0.1 min         | PKG0262 (0.6 kg)
+   DEL665   | Filippo Conti        |    0.97 km | 1.2 min         | PKG1726 (2.2 kg)
+   DEL666   | Riccardo Colombo     |    1.51 km | 1.8 min         | PKG0121 (23.1 kg)
+   DEL667   | Enrico Conti         |    1.21 km | 1.5 min         | PKG0675 (3.5 kg)
+   DEL668   | Anna Rinaldi         |    0.66 km | 0.8 min         | PKG0127 (2.1 kg)
+   DEL669   | Andrea Mancini       |    0.79 km | 1.0 min         | PKG1569 (2.8 kg)
+   DEL670   | Anna Caruso          |    0.39 km | 0.5 min         | PKG0840 (17.4 kg)
+   DEL671   | Chiara Longo         |    1.17 km | 1.4 min         | PKG1579 (1.6 kg)
+   DEL672   | Valentina Ricci      |    0.90 km | 1.1 min         | PKG0658 (4.0 kg)
+   DEL673   | Serena Rossi         |    0.29 km | 0.3 min         | PKG1749 (0.4 kg)
+   DEL674   | Alessandro Esposito  |    0.85 km | 1.0 min         | PKG0868 (11.6 kg)
+   DEL675   | Roberto Fontana      |    1.62 km | 1.9 min         | PKG1426 (0.3 kg)
+   DEL676   | Riccardo Bruno       |    8.26 km | 9.9 min         | PKG0107 (15.7 kg)
+   DEL677   | Chiara Testa         |    5.48 km | 6.6 min         | PKG0143 (15.6 kg)
+   DEL678   | Giorgio Vitale       |    0.67 km | 0.8 min         | PKG0803 (16.5 kg)
+   DEL679   | Claudia Barbato      |    9.37 km | 11.2 min        | PKG0503 (1.8 kg)
+   DEL680   | Chiara Conti         |    0.77 km | 0.9 min         | PKG0491 (24.0 kg)
+   RTRN     | Rientro in Deposito  |    6.74 km | 8.1 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 45.48 km
+   Tempo Totale (incluse soste): 2h 22m
+   Carico Totale:   164.04 kg / Capacità Max Mezzo: 500.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Giacomo Bruno                  | ID: R35
+MEZZO:  Furgone | Velocità media: 50.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL681   | Davide Vitale        |    0.72 km | 0.9 min         | PKG0752 (23.7 kg)
+   DEL682   | Claudia Greco        |    0.76 km | 0.9 min         | PKG1649 (2.5 kg)
+   DEL683   | Riccardo Marino      |    2.61 km | 3.1 min         | PKG1457 (4.6 kg)
+   DEL684   | Filippo Conti        |    1.07 km | 1.3 min         | PKG1809 (20.9 kg)
+   DEL685   | Enrico Conti         |    1.84 km | 2.2 min         | PKG1037 (3.9 kg)
+   DEL686   | Giulia Mancini       |    0.72 km | 0.9 min         | PKG0884 (2.2 kg)
+   DEL687   | Chiara Testa         |    0.23 km | 0.3 min         | PKG0811 (17.1 kg)
+   DEL688   | Chiara Ricci         |    0.60 km | 0.7 min         | PKG0843 (3.5 kg)
+   DEL689   | Andrea Mancini       |    2.09 km | 2.5 min         | PKG0193 (20.3 kg)
+   DEL690   | Anna Caruso          |    0.39 km | 0.5 min         | PKG1435 (2.8 kg)
+   DEL691   | Giulia Lombardi      |    1.37 km | 1.6 min         | PKG1923 (3.5 kg)
+   DEL692   | Valentina Ricci      |    0.86 km | 1.0 min         | PKG0529 (22.4 kg)
+   DEL693   | Riccardo Esposito    |    5.58 km | 6.7 min         | PKG0832 (21.8 kg)
+   DEL694   | Andrea Caruso        |    0.83 km | 1.0 min         | PKG0230 (3.2 kg)
+   DEL695   | Nicola Coppola       |    3.06 km | 3.7 min         | PKG1531 (16.1 kg)
+   DEL696   | Giorgio Villa        |    5.73 km | 6.9 min         | PKG1880 (4.3 kg)
+   DEL697   | Giulia Serra         |    0.47 km | 0.6 min         | PKG0213 (3.3 kg)
+   DEL698   | Stefano Conti        |    0.31 km | 0.4 min         | PKG0802 (15.9 kg)
+   DEL699   | Monica Colombo       |    9.22 km | 11.1 min        | PKG1772 (10.2 kg)
+   DEL700   | Nicola Moretti       |    1.61 km | 1.9 min         | PKG0327 (4.7 kg)
+   RTRN     | Rientro in Deposito  |    7.23 km | 8.7 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 47.31 km
+   Tempo Totale (incluse soste): 2h 24m
+   Carico Totale:   206.77 kg / Capacità Max Mezzo: 500.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Alessandro Marino              | ID: R36
+MEZZO:  Furgone | Velocità media: 50.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL701   | Roberto Bianchi      |    1.56 km | 1.9 min         | PKG1673 (19.2 kg)
+   DEL702   | Riccardo Marchetti   |    0.48 km | 0.6 min         | PKG1932 (4.2 kg)
+   DEL703   | Davide Ferrara       |    0.56 km | 0.7 min         | PKG0461 (1.6 kg)
+   DEL704   | Giulia Barbato       |    0.99 km | 1.2 min         | PKG0110 (20.1 kg)
+   DEL705   | Giulia Mancini       |    1.05 km | 1.3 min         | PKG1008 (13.6 kg)
+   DEL706   | Valentina Ricci      |    2.82 km | 3.4 min         | PKG0080 (20.3 kg)
+   DEL707   | Nicola Ricci         |    3.96 km | 4.7 min         | PKG1381 (1.9 kg)
+   DEL708   | Luca Costa           |    0.59 km | 0.7 min         | PKG0926 (4.2 kg)
+   DEL709   | Andrea Rinaldi       |    0.40 km | 0.5 min         | PKG0671 (0.1 kg)
+   DEL710   | Roberto Esposito     |    3.80 km | 4.6 min         | PKG1536 (1.9 kg)
+   DEL711   | Simone Greco         |    4.30 km | 5.2 min         | PKG1925 (5.6 kg)
+   DEL712   | Francesco Mancini    |    5.93 km | 7.1 min         | PKG1086 (4.7 kg)
+   DEL713   | Simone Fontana       |    0.41 km | 0.5 min         | PKG0855 (0.1 kg)
+   DEL714   | Giorgio Vitale       |    0.67 km | 0.8 min         | PKG0880 (2.1 kg)
+   DEL715   | Marta Vitale         |    8.09 km | 9.7 min         | PKG1620 (6.5 kg)
+   DEL716   | Alessandro Russo     |    1.00 km | 1.2 min         | PKG0723 (4.5 kg)
+   DEL717   | Riccardo Marchetti   |    0.63 km | 0.8 min         | PKG0917 (20.4 kg)
+   DEL718   | Claudia Barbato      |    0.58 km | 0.7 min         | PKG1253 (3.3 kg)
+   DEL719   | Serena Ferrari       |    0.90 km | 1.1 min         | PKG0790 (14.4 kg)
+   DEL720   | Serena Greco         |    0.85 km | 1.0 min         | PKG1914 (15.0 kg)
+   RTRN     | Rientro in Deposito  |    6.90 km | 8.3 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 46.46 km
+   Tempo Totale (incluse soste): 2h 23m
+   Carico Totale:   163.75 kg / Capacità Max Mezzo: 500.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Davide Serra                   | ID: R37
+MEZZO:  Furgone | Velocità media: 50.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL721   | Giacomo Colombo      |    0.53 km | 0.6 min         | PKG0592 (5.5 kg)
+   DEL722   | Luca Longo           |    2.06 km | 2.5 min         | PKG0500 (6.8 kg)
+   DEL723   | Filippo Conti        |    0.19 km | 0.2 min         | PKG1039 (3.4 kg)
+   DEL724   | Elena Marino         |    0.84 km | 1.0 min         | PKG0297 (0.5 kg)
+   DEL725   | Chiara Ricci         |    0.97 km | 1.2 min         | PKG1949 (4.4 kg)
+   DEL726   | Giulia Lombardi      |    2.42 km | 2.9 min         | PKG0916 (0.4 kg)
+   DEL727   | Paolo Caruso         |    0.82 km | 1.0 min         | PKG1189 (3.4 kg)
+   DEL728   | Serena Rossi         |    0.22 km | 0.3 min         | PKG0922 (10.0 kg)
+   DEL729   | Marta Marino         |    0.17 km | 0.2 min         | PKG0004 (0.3 kg)
+   DEL730   | Anna Gallo           |    0.92 km | 1.1 min         | PKG1777 (1.7 kg)
+   DEL731   | Marta Russo          |    5.43 km | 6.5 min         | PKG1106 (2.5 kg)
+   DEL732   | Andrea Caruso        |    2.75 km | 3.3 min         | PKG1297 (14.6 kg)
+   DEL733   | Riccardo Conti       |    0.84 km | 1.0 min         | PKG1090 (24.8 kg)
+   DEL734   | Giulia Serra         |    4.91 km | 5.9 min         | PKG0401 (12.7 kg)
+   DEL735   | Giorgio Coppola      |    1.28 km | 1.5 min         | PKG1412 (24.1 kg)
+   DEL736   | Giacomo Ferrari      |    0.99 km | 1.2 min         | PKG0271 (5.6 kg)
+   DEL737   | Monica Marino        |    9.18 km | 11.0 min        | PKG0901 (11.4 kg)
+   DEL738   | Paolo Coppola        |    0.42 km | 0.5 min         | PKG0647 (5.6 kg)
+   DEL739   | Riccardo Marchetti   |    0.67 km | 0.8 min         | PKG1561 (1.4 kg)
+   DEL740   | Andrea Colombo       |    0.75 km | 0.9 min         | PKG1920 (0.3 kg)
+   RTRN     | Rientro in Deposito  |    6.34 km | 7.6 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 42.71 km
+   Tempo Totale (incluse soste): 2h 19m
+   Carico Totale:   139.28 kg / Capacità Max Mezzo: 500.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Valentina Santoro              | ID: R38
+MEZZO:  Furgone | Velocità media: 50.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL741   | Riccardo Vitale      |    0.49 km | 0.6 min         | PKG1990 (3.0 kg)
+   DEL742   | Luca Ricci           |    0.94 km | 1.1 min         | PKG1389 (4.1 kg)
+   DEL743   | Paolo Gallo          |    3.06 km | 3.7 min         | PKG0285 (24.9 kg)
+   DEL744   | Chiara Ricci         |    0.75 km | 0.9 min         | PKG1740 (24.6 kg)
+   DEL745   | Chiara Ricci         |    1.52 km | 1.8 min         | PKG0669 (14.9 kg)
+   DEL746   | Roberto Colombo      |    2.20 km | 2.6 min         | PKG1798 (2.4 kg)
+   DEL747   | Anna Caruso          |    0.42 km | 0.5 min         | PKG0895 (7.6 kg)
+   DEL748   | Roberto Ferrari      |    0.40 km | 0.5 min         | PKG0105 (14.7 kg)
+   DEL749   | Serena Villa         |    0.91 km | 1.1 min         | PKG0574 (19.8 kg)
+   DEL750   | Giulia Bruno         |    1.14 km | 1.4 min         | PKG1212 (3.9 kg)
+   DEL751   | Luca Costa           |    5.78 km | 6.9 min         | PKG0414 (0.5 kg)
+   DEL752   | Riccardo Esposito    |    2.60 km | 3.1 min         | PKG0341 (3.8 kg)
+   DEL753   | Matteo Serra         |    1.50 km | 1.8 min         | PKG0812 (5.4 kg)
+   DEL754   | Nicola Mancini       |    0.18 km | 0.2 min         | PKG1363 (19.9 kg)
+   DEL755   | Roberto Ferrara      |    0.46 km | 0.5 min         | PKG0581 (1.9 kg)
+   DEL756   | Claudia Mancini      |    1.48 km | 1.8 min         | PKG1464 (0.6 kg)
+   DEL757   | Andrea Santoro       |    2.19 km | 2.6 min         | PKG0062 (0.1 kg)
+   DEL758   | Alessandro Russo     |   15.08 km | 18.1 min        | PKG1494 (12.5 kg)
+   DEL759   | Claudia Barbato      |    0.79 km | 0.9 min         | PKG0746 (4.4 kg)
+   DEL760   | Enrico Marino        |    0.80 km | 1.0 min         | PKG0129 (4.2 kg)
+   RTRN     | Rientro in Deposito  |    6.96 km | 8.4 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 49.65 km
+   Tempo Totale (incluse soste): 2h 27m
+   Carico Totale:   173.33 kg / Capacità Max Mezzo: 500.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Davide Fontana                 | ID: R39
+MEZZO:  Furgone | Velocità media: 50.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL761   | Francesco Marino     |    0.52 km | 0.6 min         | PKG0156 (4.4 kg)
+   DEL762   | Enrico Fontana       |    0.58 km | 0.7 min         | PKG1546 (18.5 kg)
+   DEL763   | Riccardo Marino      |    1.43 km | 1.7 min         | PKG1570 (21.1 kg)
+   DEL764   | Riccardo Marchetti   |    1.44 km | 1.7 min         | PKG0470 (0.4 kg)
+   DEL765   | Claudia Rossi        |    1.48 km | 1.8 min         | PKG1783 (1.6 kg)
+   DEL766   | Andrea Mancini       |    1.77 km | 2.1 min         | PKG0890 (3.5 kg)
+   DEL767   | Anna Caruso          |    0.39 km | 0.5 min         | PKG1583 (0.6 kg)
+   DEL768   | Roberto Ferrari      |    0.40 km | 0.5 min         | PKG1882 (2.5 kg)
+   DEL769   | Serena Villa         |    0.91 km | 1.1 min         | PKG0098 (13.3 kg)
+   DEL770   | Serena Rossi         |    0.39 km | 0.5 min         | PKG0100 (18.7 kg)
+   DEL771   | Paolo Caruso         |    0.22 km | 0.3 min         | PKG0055 (2.1 kg)
+   DEL772   | Paola Villa          |    0.40 km | 0.5 min         | PKG0502 (3.4 kg)
+   DEL773   | Marta Rinaldi        |    2.95 km | 3.5 min         | PKG1289 (16.0 kg)
+   DEL774   | Marta Russo          |    2.22 km | 2.7 min         | PKG1344 (1.4 kg)
+   DEL775   | Andrea Caruso        |    2.75 km | 3.3 min         | PKG0613 (8.0 kg)
+   DEL776   | Roberto Ferrara      |    1.17 km | 1.4 min         | PKG0178 (4.1 kg)
+   DEL777   | Marco Lombardi       |    2.39 km | 2.9 min         | PKG0765 (3.0 kg)
+   DEL778   | Andrea Greco         |    1.38 km | 1.7 min         | PKG0697 (4.0 kg)
+   DEL779   | Andrea Santoro       |    0.37 km | 0.4 min         | PKG0037 (0.2 kg)
+   DEL780   | Stefano Marchetti    |    1.69 km | 2.0 min         | PKG0112 (3.6 kg)
+   RTRN     | Rientro in Deposito  |    8.55 km | 10.3 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 33.42 km
+   Tempo Totale (incluse soste): 2h 8m
+   Carico Totale:   130.57 kg / Capacità Max Mezzo: 500.00 kg
+   -------------------------------------------------------------------------------------
+
+DRIVER: Valentina Ferrari              | ID: R40
+MEZZO:  Furgone | Velocità media: 50.0 km/h
+   -------------------------------------------------------------------------------------
+   ID       | Cliente Destinatario | Distanza   | Tempo Viaggio   | Pacco          
+   -------------------------------------------------------------------------------------
+   DEL781   | Luca Ricci           |    1.15 km | 1.4 min         | PKG0633 (0.3 kg)
+   DEL782   | Roberto Bianchi      |    2.32 km | 2.8 min         | PKG1506 (19.5 kg)
+   DEL783   | Davide Ferrara       |    0.72 km | 0.9 min         | PKG0426 (24.1 kg)
+   DEL784   | Chiara Testa         |    1.99 km | 2.4 min         | PKG1976 (1.2 kg)
+   DEL785   | Giulia Mancini       |    0.23 km | 0.3 min         | PKG0726 (3.1 kg)
+   DEL786   | Roberto Ferrari      |    1.88 km | 2.3 min         | PKG0063 (4.0 kg)
+   DEL787   | Anna Villa           |    0.28 km | 0.3 min         | PKG1908 (8.5 kg)
+   DEL788   | Simone De Luca       |    0.67 km | 0.8 min         | PKG1519 (3.0 kg)
+   DEL789   | Chiara Longo         |    2.12 km | 2.5 min         | PKG0563 (11.2 kg)
+   DEL790   | Claudia Barbato      |    3.87 km | 4.6 min         | PKG0910 (15.1 kg)
+   DEL791   | Nicola Ricci         |    0.64 km | 0.8 min         | PKG0902 (16.7 kg)
+   DEL792   | Luca Ferrari         |    2.76 km | 3.3 min         | PKG0760 (0.6 kg)
+   DEL793   | Paola Ricci          |    1.31 km | 1.6 min         | PKG1959 (0.3 kg)
+   DEL794   | Sara Conti           |    0.84 km | 1.0 min         | PKG0294 (2.4 kg)
+   DEL795   | Nicola Coppola       |    3.18 km | 3.8 min         | PKG1160 (13.8 kg)
+   DEL796   | Stefano Marchetti    |    0.61 km | 0.7 min         | PKG0059 (10.2 kg)
+   DEL797   | Valentina Esposito   |    1.27 km | 1.5 min         | PKG0727 (2.9 kg)
+   DEL798   | Paola Caruso         |    6.92 km | 8.3 min         | PKG0310 (23.8 kg)
+   DEL799   | Paola Longo          |    0.46 km | 0.6 min         | PKG0455 (11.7 kg)
+   DEL800   | Alessandro Marino    |    9.70 km | 11.6 min        | PKG0763 (1.4 kg)
+   RTRN     | Rientro in Deposito  |    5.84 km | 7.0 min            | -
+   -------------------------------------------------------------------------------------
+   Riepilogo Turno: 20 consegne effettuate | Distanza totale: 48.75 km
+   Tempo Totale (incluse soste): 2h 26m
+   Carico Totale:   173.74 kg / Capacità Max Mezzo: 500.00 kg
+   -------------------------------------------------------------------------------------
+
+===============================================================================================

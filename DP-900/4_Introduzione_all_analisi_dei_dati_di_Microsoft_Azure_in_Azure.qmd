@@ -1,0 +1,530 @@
+---
+title: "Introduzione all'analisi dei dati di Microsoft Azure in Azure"
+subtitle: "DP-900"
+author: "Lorenzo Barbato"
+date: today
+date-format: "DD MMMM YYYY"
+lang: it
+watch-inputs: true
+embed-resources: true
+format:
+  html:
+    theme: lumen            # Temi puliti e professionali: cosmo, flatly, lumen, o sandstone per quello scuri darkly, cyborg, slate, solar
+    toc: true              # Genera automaticamente l'indice dei contenuti a destra
+    toc-title: "Indice"    # Titolo dell'indice
+    toc-depth: 3           # Profondità dell'indice (fino a ###)
+    number-sections: true  # Numera automaticamente i capitoli (1., 1.1, ecc.)
+    code-fold: true        # Se aggiungi codice Python, lo nasconde dietro un bottone cliccabile
+    smooth-scroll: true    # Rende lo scorrimento cliccando sull'indice più fluido
+    css: style.css
+---
+
+# Esplorare i concetti fondamentali dell'analisi su larga scala
+
+## Introduzione
+
+Prima di esplorare la modalità di compilazione delle soluzioni di analisi su larga scala, verranno presentate le due principali piattaforme di analisi su Azure che verranno presentate in questo modulo.
+
+**Microsoft Fabric** è la piattaforma di analisi saaS (Software as a Service) unificata di Microsoft. Riunisce l'ingegneria dei dati, il data warehousing, l'analisi in tempo reale, la data science e Power BI in un'unica area di lavoro basata su browser su un unico livello di archiviazione condiviso denominato OneLake. Non si gestiscono server o cluster, ovvero si creano aree di lavoro ed elementi e Microsoft esegue l'infrastruttura.
+
+**Azure Databricks** è una piattaforma di analisi cloud basata su Apache Spark. È ottimizzato per la progettazione dei dati su larga scala, l'analisi scientifica dei dati e l'analisi SQL su formati open lakehouse. Usa **Delta Lake**, un formato di archiviazione open source che aggiunge transazioni, imposizione dello schema e controllo delle versioni sui file Parquet, offrendo affidabilità in stile lakehouse su larga scala. Databricks funziona come servizio gestito all'interno della tua sottoscrizione Azure ed è una scelta comune per i team che hanno bisogno di workflow basati su Spark, sul codice e su notebook.
+
+### Analisi su larga scala
+
+Le soluzioni di analisi dei dati su larga scala combinano il data warehousing convenzionale usato per supportare la business intelligence (BI) con le tecniche usate per l'analisi dei cosiddetti "Big Data". Una soluzione di **data warehousing** convenzionale comporta in genere la copia di dati da archivi dati transazionali in un database relazionale con uno schema **ottimizzato per l'esecuzione di query** e la creazione di modelli multidimensionali. Le soluzioni di elaborazione dei Big Data vengono usate con grandi volumi di dati in più formati, ovvero caricati in batch o acquisiti in **flussi in tempo reale** e archiviati in un **data lake** da cui i motori di elaborazione distribuiti come **Apache Spark** li elaborano.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/examine-components-of-modern-data-warehouse/media/large-scale-analytics.png){width=80% fig-align="center"}
+
+La combinazione di Analisi SQL tramite data lake storage flessibile e data warehouse ha portato alla nascita di un design di analisi su larga scala spesso chiamato **data lakehouse**.
+
+## Descrivere l'architettura del data warehousing
+
+L'architettura di analisi dei dati su larga scala può variare, così come le tecnologie specifiche usate per implementarla, ma in generale sono inclusi i seguenti elementi:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/examine-components-of-modern-data-warehouse/media/analytics-architecture-layers.png){width=80% fig-align="center"}
+
+1. **Inserimento ed elaborazione dei dati**: i dati provenienti da uno o più archivi dati transazionali, file, flussi in tempo reale o altre origini vengono caricati in un data lake o in un data warehouse relazionale. L'operazione di caricamento comporta solitamente un processo di estrazione, trasformazione e caricamento (ETL) o di estrazione, caricamento e trasformazione (ELT) in cui i dati vengono puliti, filtrati e ristrutturati per l'analisi. Nei processi ETL i dati vengono trasformati prima di essere caricati in un archivio analitico, mentre in un processo ELT i dati vengono copiati nell'archivio e quindi trasformati. In ogni caso, la struttura dei dati risultante è ottimizzata per le query analitiche. L'elaborazione dati viene spesso eseguita da sistemi distribuiti che possono elaborare elevati volumi di dati in parallelo usando cluster multinodo. L'inserimento dati comprende sia l'elaborazione batch di dati statici che l'elaborazione in tempo reale di dati in streaming.
+
+2. **Archivio dati analitici**: gli archivi dati per l'analisi su larga scala includono data warehouse relazionali, data lake basati su file system e architetture ibride che combinano funzionalità di data warehouse e data lake (talvolta denominati data lakehouse o database lake). Se ne parlerà più approfonditamente in seguito.
+
+3. **Modello di dati analitici**: mentre gli analisti dei dati e i data scientist possono lavorare con i dati direttamente nell'archivio dati analitici, è comune creare uno o più modelli di dati per semplificare la produzione di report, dashboard e visualizzazioni interattive. Storicamente, questi modelli sono stati descritti come cube, in cui i valori di dati numerici sono stati preaggregati in una o più dimensioni (ad esempio, vendite totali per prodotto e area) usando tecnologie come SQL Server Analysis Services (SSAS) multidimensionale. Oggi, l'approccio preferito è un modello semantic, ovvero il modello tabulare che supporta Power BI e Microsoft Fabric. Un modello semantico definisce tabelle, relazioni, gerarchie e misure scritte in DAX (Espressioni di analisi dei dati, un linguaggio di formula usato per definire i calcoli), con aggregazioni calcolate in fase di query anziché archiviate in anticipo. In Microsoft Fabric i modelli semantici possono usare Direct Lake per leggere direttamente le tabelle Delta da OneLake, senza importare o preaggregare i dati.
+
+4. **Visualizzazione dei dati**: gli analisti dei dati usano i dati dei modelli analitici e direttamente dagli archivi analitici per creare report, dashboard e altre visualizzazioni. Inoltre, gli utenti di un'organizzazione che non sono professionisti del settore tecnologico possono eseguire analisi dei dati e creazioni di report self-service. Le visualizzazioni dei dati mostrano tendenze, confronti e indicatori di prestazioni chiave (KPI) per un'azienda o un'altra organizzazione e possono assumere la forma di report stampati, grafici e grafici in documenti o presentazioni PowerPoint, dashboard basati sul Web e ambienti interattivi in cui gli utenti possono esplorare visivamente i dati.
+
+5. **Analisi assistita dall'intelligenza artificiale**: le organizzazioni estendono sempre più lo stack di analisi con funzionalità di linguaggio naturale e intelligenza artificiale. In Power BI, la funzionalità Q&A consente agli utenti di digitare domande in linguaggio naturale e ricevere grafici come risposta. Copilot in Microsoft Fabric consente agli utenti di descrivere ciò che vogliono nel linguaggio naturale; Copilot genera quindi misure DAX, scrive query SQL, riepiloga i report e spiega le tendenze dei dati. In Azure Databricks, Genie offre funzionalità simili sui dati Delta Lake: gli utenti pongono domande in linguaggio naturale in un'interfaccia di conversazione e Genie genera ed esegue SQL. Queste funzionalità estendono il self-service analitico agli utenti che non scrivono query o compilano report.
+
+### Stack di analisi moderno in Azure
+
+Azure offre due piattaforme leader per l'analisi su larga scala: **Microsoft Fabric** e **Azure Databricks**. Entrambi supportano l'architettura di analisi completa descritta in precedenza, ma tengono approcci diversi.
+
+#### Microsoft Fabric
+
+Microsoft Fabric organizza tutti questi livelli in un'unica area di lavoro SaaS unificata. L'archiviazione viene fornita da OneLake, un data lake a livello di tenant condiviso da ogni Fabric carico di lavoro. Invece di copiare dati tra silo di archiviazione, ogni servizio Fabric legge e scrive direttamente in OneLake, usando **Delta Lake** come formato open source standard per i dati lakehouse.
+
+All'interno di un'area di lavoro di Fabric, i componenti fondamentali corrispondono ai livelli dell'architettura illustrati sopra:
+
+- **Fabric Lakehouse**: combina Data Lake Storage con query SQL. I dati vengono archiviati in formato Delta Lake ed esposti tramite un endpoint di analisi SQL.
+- **Fabric Warehous**e: un data warehouse relazionale completamente gestito e compatibile con SQL Server per l'analisi strutturata con un'imposizione avanzata dello schema.
+- **Fabric Data Factory**: compila e pianifica pipeline e trasformazioni con poco codice per l'inserimento e lo spostamento dei dati.
+- **Power BI**: fornisce report, dashboard e modelli semantici; Direct Lake modalità legge direttamente le tabelle Delta da OneLake senza l'importazione o l'aggiornamento pianificato dei dati.
+
+#### Azure Databricks
+
+Azure Databricks è una piattaforma di analisi cloud basata su Apache Spark, ottimizzata per la progettazione dei dati su larga scala, l'analisi scientifica dei dati e l'analisi SQL. Viene eseguito come servizio gestito all'interno della sottoscrizione Azure e usa Delta Lake come formato di archiviazione aperto nativo.
+
+I componenti principali in Azure Databricks sono:
+
+- **Databricks Lakehouse**: un livello di archiviazione unificato basato su Delta Lake che supporta sia carichi di lavoro di analisi SQL che di Machine Learning nello stesso ambiente.
+- **Databricks SQL**: sql warehouse serverless per l'esecuzione di query analitiche direttamente su tabelle Delta, con cronologia query predefinita, dashboard e avvisi.
+- **Notebook Databricks**: notebook collaborativi in Python, SQL, Scala e R per le pipeline di data engineering, l’analisi esplorativa e l’apprendimento automatico.
+- **Unity Catalog**: un livello di governance unificato per dati e risorse di IA nell'intero workspace Databricks, che offre controllo degli accessi granulare, tracciabilità dei dati e individuazione delle risorse.
+- **Genie**: un'interfaccia di conversazione basata su intelligenza artificiale che consente agli utenti di porre domande in linguaggio naturale sui propri dati; Genie genera ed esegue SQL automaticamente, restituendo risultati senza richiedere la scrittura di query.
+
+## Esplorare l'inserimento dati nelle pipeline
+
+Ora che si comprende l'architettura di una soluzione di data warehousing su larga scala, è possibile esplorare il modo in cui i dati vengono inseriti in un archivio dati analitici da una o più origini.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/examine-components-of-modern-data-warehouse/media/data-ingestion-options.png){width=80% fig-align="center"}
+
+### Microsoft Fabric
+
+Microsoft Fabric offre diversi modi per portare i dati in OneLake, che spaziano dall'ETL basato su pipeline alla federazione zero-copy e allo streaming in tempo reale.
+
+#### Fabric Data Factory
+
+Fabric Data Factory è il punto di partenza consigliato per l'inserimento basato su pipeline. Offre due strumenti complementari:
+
+- **Pipeline**: orchestrare flussi di lavoro di spostamento e trasformazione dei dati in più passaggi, concatenamento di attività eseguite in sequenza o in parallelo.
+- **Dataflows Gen2**: un'esperienza visiva con poco codice per la creazione di una logica di trasformazione dei dati riutilizzabile usando Power Query, senza scrivere codice.
+
+Le pipeline sono costituite da una o più *attività* che operano sui dati. Un set di dati di input fornisce i dati di origine e le attività possono essere definite come flusso di dati che modifica in modo incrementale i dati finché non viene prodotto un set di dati di output. Le pipeline usano *servizi collegati* per connettersi a origini e destinazioni, consentendo di caricare dati, eseguire stored procedure, richiamare notebook e applicare logica personalizzata in un singolo flusso di lavoro. È possibile salvare l'output in un Microsoft Fabric Lakehouse o Warehouse o in qualsiasi altra destinazione supportata. Le pipeline possono includere anche attività predefinite che non richiedono un servizio collegato.
+
+#### Collegamenti a OneLake
+
+Un collegamento è un riferimento live all'archiviazione esterna: ADLS Gen2, Amazon S3, Google Cloud Storage o un'altra posizione di OneLake. Invece di copiare i dati in Fabric, una scorciatoia fa apparire i dati esterni come se fossero già presenti nel Lakehouse. Nessuna pipeline, nessun movimento, nessuna duplicazione. Ciò è particolarmente utile quando i dati devono restare nella posizione originale per motivi di conformità o costi, ma devono comunque essere queryabili da Fabric.
+
+#### Mirroring
+
+**Fabric Mirroring** replica continuamente un database esterno, database SQL di Azure, Snowflake, Azure Cosmos DB e altri, direttamente in OneLake quasi in tempo reale. La connessione di origine viene configurata una sola volta e Fabric gestisce automaticamente il rilevamento delle modifiche e la replica, senza alcuna creazione della pipeline. I dati replicati vengono archiviati in formato Delta Lake e sono immediatamente interrogabili tramite l'endpoint di analisi SQL del Lakehouse.
+
+#### Eventstream
+
+Per l'inserimento in streaming in tempo reale, **Fabric Eventstream** si connette a origini eventi come Hub eventi di Azure, Apache Kafka, hub IoT di Azure e endpoint personalizzati. Instrada, filtra e trasforma gli eventi di streaming prima di inserirli in un lakehouse di Fabric, in un database KQL (un archivio ottimizzato per le serie temporali interrogato con il linguaggio di query Kusto) o in una destinazione di Real-Time Intelligence, consentendo analisi quasi in tempo reale sui dati in continuo arrivo.
+
+#### Notebook dell'infrastruttura
+
+**Fabric Notebook** (con tecnologia Apache Spark) sono un'opzione code-first per l'inserimento dati quando non esiste alcun connettore predefinito o quando è necessaria la logica di trasformazione personalizzata. È possibile scrivere PySpark, Python, Scala, R o SQL per leggere da API REST, database, file o qualsiasi endpoint raggiungibile e quindi scrivere i risultati direttamente in una tabella Lakehouse Delta o warehouse. I notebook possono essere eseguiti in modo interattivo o pianificati come parte di una pipeline, il che li rende una soluzione flessibile per scenari che altri strumenti di Fabric non possono coprire nativamente.
+
+### Azure Data Factory
+
+**Azure Data Factory** è il servizio Azure autonomo per la creazione di pipeline di integrazione dei dati all'esterno di Fabric, ad esempio quando la destinazione è database SQL di Azure o un servizio esterno o quando ci si connette a origini dati locali in un ambiente ibrido. Come Fabric Data Factory, usa lo stesso modello basato su pipeline con i servizi collegati, quindi le competenze vengono trasferite tra i due.
+
+### Azure Databricks
+
+Azure Databricks offre diversi approcci di inserimento, da pipeline dichiarative a notebook ad hoc e meccanismi specializzati di caricamento di file.
+
+#### Pipeline dichiarative di Lakeflow
+
+**Lakeflow Spark Declarative Pipelines** offre un framework dichiarativo per la creazione di pipeline affidabili e aggiornate in modo incrementale in **Delta Lake**. Definire le tabelle di output che devono contenere; Databricks gestisce automaticamente l'ordinamento dell'esecuzione, il rilevamento delle dipendenze e l'elaborazione incrementale. Questo è l'approccio consigliato per le pipeline di ingestione di livello produttivo in esecuzione continua.
+
+#### Notebook di Databricks
+
+Databricks Notebooks supporta PySpark, Python, Scala, SQL e R e sono una soluzione naturale per il lavoro di inserimento ad hoc o esplorativo, ovvero la lettura da API REST, origini JDBC, archiviazione cloud o origini di streaming e scrittura in tabelle Delta Lake. I notebook possono anche essere operativi pianificandoli come processi o incorporandoli all'interno di una pipeline Lakeflow come passaggio di trasformazione.
+
+:::{.callout-note}
+Azure Databricks offre meccanismi di inserimento specializzati aggiuntivi oltre a quelli descritti qui.
+:::
+
+## Esplorare gli archivi dati analitici
+
+### Data warehouse
+
+Un data warehouse è un database relazionale in cui i dati vengono archiviati in uno schema ottimizzato per l'analisi dei dati anziché per i carichi di lavoro transazionali. In genere, i dati di un archivio transazionale vengono trasformati in uno schema in cui i valori numerici vengono archiviati in tabelle dei **fatti** centrali, correlate a una o più tabelle delle **dimensioni** che rappresentano entità in base a cui è possibile aggregare i dati. Ad esempio, una tabella dei fatti può contenere dati sugli ordini di vendita, che si possono aggregare in base alle dimensioni cliente, prodotto, archivio e tempo (consentendo ad esempio di trovare facilmente i ricavi totali mensili delle vendite per prodotto per ogni negozio). Questo tipo di schema di tabella dei fatti e delle dimensioni è denominato **schema star**; anche se viene spesso esteso in uno s**chema snowflake** aggiungendo tabelle aggiuntive correlate alle tabelle delle dimensioni per rappresentare gerarchie dimensionali (ad esempio, il prodotto potrebbe essere correlato alle categorie di prodotti).
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/examine-components-of-modern-data-warehouse/media/star-snowflake-schema.png){width=80% fig-align="center"}
+
+Un data warehouse è una scelta ottimale quando si hanno dati transazionali che possono essere organizzati in uno schema strutturato di tabelle e si vuole usare SQL per eseguire query.
+
+### Archivi data lake
+
+Un **data lake** è un archivio file, in genere in un file system distribuito per l'accesso ai dati ad alte prestazioni. I motori di elaborazione distribuita nativi del cloud come Apache Spark vengono usati per elaborare query sui file archiviati e restituire dati per la creazione di report e l'analisi. Questi sistemi applicano spesso un approccio di tipo schema in lettura per definire schemi tabulari nei file di dati semistrutturati nel punto in cui i dati vengono letti per l'analisi, senza applicare vincoli quando vengono archiviati.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/examine-components-of-modern-data-warehouse/media/data-lake.png){width=20% fig-align="center"}
+
+I data lake sono ideali per supportare una combinazione di dati strutturati, semistrutturati e persino non strutturati da analizzare senza la necessità di applicare lo schema quando i dati vengono scritti nell'archivio.
+
+### Approcci ibridi
+È possibile usare un approccio ibrido che combina le funzionalità di data lake e data warehouse in un **data lakehouse**. I dati non elaborati vengono archiviati come file in un data lake e un endpoint di analisi SQL espone tali file come tabelle su cui è possibile eseguire query con SQL. I data lakehouse sono abilitati tramite **Delta Lake**, ovvero il formato open source standard usato sia da Microsoft Fabric che da Azure Databricks. Delta Lake aggiunge funzionalità di archiviazione relazionale sui file Parquet, in modo da poter definire tabelle che impongono schemi e coerenza transazionale, supportare origini dati caricate in batch e di streaming e fornire un'API SQL per l'esecuzione di query.
+
+In Microsoft Fabric tutti i dati lakehouse vengono archiviati in **OneLake**, un singolo livello di archiviazione a livello di tenant condiviso in ogni carico di lavoro Fabric. Quando si crea un Fabric Lakehouse, viene creato automaticamente un endpoint di analisi SQL. Quando si crea un Fabric Warehouse, i dati si trovano anche in OneLake, offrendo a entrambe le esperienze una base unificata di archiviazione.
+
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/examine-components-of-modern-data-warehouse/media/data-lakehouse.png){width=60% fig-align="center"}
+
+### Servizi di Azure per archivi analitici
+
+In Azure sono disponibili diversi servizi principali che è possibile usare per implementare un archivio analitico su larga scala, tra cui:
+
+[Microsoft Fabric](https://www.microsoft.com/microsoft-fabric) è una piattaforma unificata di analisi SaaS end-to-end basata su OneLake. Offre due esperienze principali di archivio analitico:
+
+- **Fabric Lakehouse**: archivia i dati in formato Delta Lake in OneLake, supporta notebook e Spark per carichi di lavoro di data science ed espone un endpoint di analisi SQL per l'esecuzione di query strutturate. È la scelta giusta quando si lavora con dati misti o semistrutturati o si eseguono flussi di lavoro di Machine Learning.
+- **Fabric Warehous**e: un data warehouse relazionale completamente gestito e compatibile con SQL Server supportato anche da OneLake. È la scelta giusta quando i dati sono strutturati, il team scrive in SQL e serve un rigido controllo dello schema e della concorrenza per molti utenti contemporanei.
+
+Fabric include anche pipeline di dati predefinite (Fabric Data Factory) per l'inserimento e la trasformazione dei dati e funzionalità di intelligence Real-Time native per l'analisi dei log e dei dati di telemetria. Fabric Mirroring consente di replicare continuamente i dati dai sistemi operativi, tra cui Azure Cosmos DB, database SQL di Azure e Snowflake, direttamente in OneLake senza creare pipeline personalizzate.
+
+[Azure Databricks](https://azure.microsoft.com/services/databricks) è una piattaforma di analisi cloud basata su Apache Spark, ottimizzata per la progettazione di dati su larga scala, data science e analisi SQL. Usa **Delta Lake** come formato di archiviazione nativo, offrendo a ogni transazione di tabella il supporto, l'imposizione dello schema e il controllo delle versioni. Per la creazione di report basati su SQL e business intelligence, Azure Databricks fornisce un **Databricks SQL Warehouse**, un endpoint SQL dedicato ottimizzato per gli strumenti di business intelligence e i carichi di lavoro di query simultanei. Databricks è una scelta comune quando sono necessari flussi di lavoro Spark code-first, portabilità multicloud o competenze aziendali esistenti con la piattaforma.
+
+Sia Fabric che Azure Databricks includono funzionalità di assistente IA per scrivere query SQL e generare codice per notebook.
+
+:::{.callout-note}
+Ognuno di questi servizi può essere considerato come un archivio di dati analitici, nel senso mette a disposizione uno schema e un'interfaccia con cui è possibile eseguire query sui dati. In molti casi, i dati vengono effettivamente archiviati in un data lake e il servizio elabora i dati ed esegue query. Alcune soluzioni combinano entrambi i servizi: un processo di inserimento ELT potrebbe copiare i dati nel data lake, usare un notebook in esecuzione in Azure Databricks per elaborare un volume elevato di dati e quindi caricare i risultati in tabelle in un Microsoft Fabric Warehouse.
+:::
+
+# Esplorare i concetti fondamentali dell'analisi in tempo reale
+
+## Introduzione
+
+L'aumento del ricorso alla tecnologia da parte di individui, aziende e altre organizzazioni, insieme alla proliferazione dei dispositivi intelligenti e alla diffusione dell'accesso a Internet, ha portato a una crescita straordinaria del volume di dati che è possibile generare, acquisire e analizzare. Gran parte di questi dati può essere elaborata in tempo reale (o almeno, quasi in tempo reale) come flusso perpetuo di dati, consentendo la creazione di sistemi che rivelano informazioni e tendenze istantanee o intraprendere azioni immediate reattive agli eventi man mano che si verificano.
+
+:::{.callout-note}
+Questo modulo è concepito per offrire una panoramica concettuale dell'elaborazione in tempo reale e per descrivere i servizi di Azure che è possibile usare per creare soluzioni di analisi in tempo reale. Non è progettato per insegnare i dettagli di implementazione per la creazione di una soluzione di elaborazione del flusso.
+:::
+
+## Comprendere l'elaborazione batch e dei flussi
+
+L'elaborazione dati è semplicemente la conversione dei dati non elaborati in informazioni significative tramite un processo. Esistono due modi generali per elaborare i dati:
+
+- **Elaborazione batch**, in cui vengono raccolti e archiviati più record di dati prima di essere elaborati insieme in un'unica operazione.
+- **Elaborazione del flusso**, in cui un'origine di dati viene costantemente monitorata ed elaborata in tempo reale man mano che si verificano nuovi eventi di dati.
+
+### Informazioni sull'elaborazione batch
+Nell'elaborazione batch, i nuovi elementi di dati in arrivo vengono raccolti e archiviati e **l'intero gruppo viene elaborato insieme come batch**. Il momento esatto in cui ogni gruppo viene elaborato può essere determinato in diversi modi. È ad esempio possibile elaborare i dati in base a un intervallo di tempo pianificato (ad esempio, ogni ora) oppure attivare il processo quando viene raggiunta una determinata quantità di dati o come risultato di un altro evento.
+
+Si supponga, ad esempio, di voler analizzare il traffico stradale conteggiando il numero di auto presenti su un tratto di strada. Con un approccio basato sull'elaborazione batch si dovrebbero riunire le auto in un parcheggio per poi conteggiarle in un'unica operazione mentre sono ferme.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-stream-processing/media/batch-processing.png#lightbox){width=80% fig-align="center"}
+
+Se la strada è trafficata, con un numero elevato di auto che transitano a intervalli frequenti, questo approccio può risultare poco pratico. Si noti che non si ottengono risultati fino a quando non si è parcheggiato un batch di auto ed è stato effettuato il conteggio.
+
+Un esempio reale di elaborazione batch è dato dalla fatturazione delle società che gestiscono le carte di credito. Il cliente non riceve una fattura per ogni acquisto effettuato con la carta di credito, bensì una fattura mensile per tutti gli acquisti del mese.
+
+| Aspect | Vantaggi dell'elaborazione batch | Svantaggi dell'elaborazione batch |
+| :--- | :--- | :--- |
+| **Capacità di l'elaborazione** | Grandi volumi di dati possono essere elaborati in modo efficiente in un momento pratico. | Prima di iniziare l'elaborazione, è necessario preparare tutti i dati di input. |
+| **Utilizzo del sistema** | I processi possono essere pianificati durante gli orari di inattività o di minore attività (ad esempio durante la notte), migliorando l'utilizzo delle risorse. | Spesso si verifica un ritardo tra l'input dei dati e la ricezione dei risultati. |
+| **Affidabilità e gestione degli errori** | – | Gli errori nei dati, gli arresti anomali o i malfunzionamenti del programma possono interrompere l'intera elaborazione batch. |
+| **Convalida dei dati** | – | I dati di input devono essere controllati attentamente prima di riesecuzione del processo batch. |
+| **Impatto degli errori secondari** | – | Anche piccoli errori di dati possono impedire l'esecuzione corretta dell'intero processo batch. |
+
+### Comprendere l'elaborazione dei flussi
+Nell'elaborazione del flusso, **ogni nuovo elemento di dati viene elaborato all'arrivo**. A differenza dell'elaborazione batch, non c'è attesa fino al successivo intervallo di elaborazione batch: i dati vengono elaborati come singole unità in tempo reale anziché essere elaborati un batch alla volta. L'elaborazione dei dati di flusso è vantaggiosa negli scenari in cui vengono continuamente generati nuovi dati dinamici.
+
+Ad esempio, un approccio migliore al conteggio ipotetico delle automobili potrebbe essere quello di applicare un approccio di **streaming**, conteggiando le automobili in tempo reale man mano che passano:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-stream-processing/media/stream-processing.png){width=80% fig-align="center"}
+
+In questo approccio non è necessario attendere che tutte le auto siano posteggiate per avviare l'elaborazione ed è possibile aggregare i dati in intervalli di tempo, ad esempio conteggiando il numero di auto che passano ogni minuto.
+
+Ecco alcuni esempi di dati in streaming del mondo reale:
+
+- Un istituto finanziario monitora le fluttuazioni nel mercato azionario in tempo reale, calcola il valore a rischio e ribilancia automaticamente i portafogli in base all'andamento dei prezzi delle azioni.
+- Una società di giochi online raccoglie i dati in tempo reale sulle interazioni tra i giocatori e li inserisce nella piattaforma di gioco. Analizza quindi i dati in tempo reale e offre incentivi ed esperienze dinamiche per coinvolgere i giocatori.
+- Un sito Web immobiliare monitora un subset di dati dei dispositivi mobili e propone consigli in tempo reale sulle proprietà da visitare in base alla posizione geografica.
+- L'elaborazione del flusso è ideale per **operazioni critiche** in tempo reale che richiedono una risposta immediata in tempo reale. Ad esempio, un sistema che monitora fumo e calore in un edificio e deve attivare gli allarmi e sbloccare le porte per consentire ai residenti di fuggire immediatamente in caso di incendio.
+
+### Informazioni sulle differenze tra dati batch e di streaming
+Oltre alle modalità di gestione dei dati nell'elaborazione batch e di streaming, ci sono altre differenze:
+
+- **Ambito dati**: l'elaborazione batch può elaborare tutti i dati nel set di dati. L'elaborazione di flussi in genere ha accesso solo ai dati più recenti ricevuti o all'interno di una finestra temporale mobile (ad esempio, gli ultimi 30 secondi).
+
+- **Dimensioni dei dati**: l'elaborazione batch è adatta per la gestione efficiente di set di dati di grandi dimensioni. L'elaborazione del flusso è destinata a singoli record o micro batch costituiti da pochi record.
+
+- **Prestazioni**: la latenza è il tempo impiegato per la ricezione e l'elaborazione dei dati. la latenza per l'elaborazione batch è in genere di alcune ore. L'elaborazione di flussi avviene in genere immediatamente, con latenza nell'ordine di secondi o millisecondi.
+
+- **Analisi**: in genere si usa l'elaborazione batch per eseguire analisi complesse. L'elaborazione di flussi viene usata per semplici funzioni di risposta, aggregazioni o calcoli, ad esempio le medie mobili.
+
+### Combinare l'elaborazione batch e di flussi
+
+Molte soluzioni di analisi su larga scala includono una combinazione di elaborazione batch e dei flussi, consentendo sia l'analisi cronologica che l'analisi in tempo reale dei dati. È comune che le soluzioni di elaborazione dei flussi acquisiscano i dati in tempo reale, li elaborino filtrandoli o aggregandoli e li presentino usando dashboard e visualizzazioni in tempo reale (ad esempio, presentando il totale parziale delle auto che hanno transitato in una strada nell'ora corrente), conservando anche i risultati elaborati in un archivio dati per l'analisi cronologica insieme ai dati elaborati in batch (ad esempio, per consentire l'analisi dei volumi di traffico per l'anno precedente).
+
+Anche quando non è necessaria l'analisi in tempo reale o la visualizzazione dei dati, le tecnologie di streaming vengono spesso usate per acquisire dati in tempo reale e archiviarli in un archivio dati per l'elaborazione batch successiva (equivale a reindirizzare tutte le automobili che viaggiano lungo una strada in un parcheggio prima di conteggiarle).
+
+Il diagramma seguente illustra un'**architettura lambda**, un modello comune per combinare l'elaborazione batch e flusso in una soluzione di analisi dei dati su larga scala.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-stream-processing/media/lambda-architecture.png){width=80% fig-align="center"}
+
+1. Gli eventi dei dati di un'origine dati in streaming vengono acquisiti in tempo reale.
+2. I dati di altre origini vengono inseriti in un archivio dati (spesso un **data lake**) per l'elaborazione batch.
+3. Se l'analisi in tempo reale non è necessaria, i dati di streaming acquisiti vengono scritti nell'archivio dati per l'elaborazione batch successiva.
+4. Quando è necessaria l'analisi in tempo reale, viene usata una tecnologia di elaborazione dei flussi per preparare i dati di flusso per l'analisi o la visualizzazione in tempo reale, spesso filtrando o aggregando i dati in finestre temporali.
+5. I dati non di flusso vengono elaborati periodicamente per prepararli per l'analisi e i risultati vengono mantenuti in un archivio dati analitici (spesso definito data warehouse) per l'analisi cronologica.
+6. I risultati dell'elaborazione dei flussi possono anche essere salvati in modo permanente nell'archivio dati analitici per supportare l'analisi cronologica.
+7. Gli strumenti analitici e di visualizzazione vengono usati per presentare ed esplorare i dati in tempo reale e cronologici.
+
+:::{.callout-note}
+Le architetture di soluzione comunemente usate per l'elaborazione combinata dei dati batch e di flusso includono le architetture **lambda** e **delta**. L'architettura **kappa** è un'alternativa più semplice che elimina completamente il livello batch separato, trattando tutti i dati come flusso continuo e riproducendoli quando è necessaria la rielaborazione cronologica. Piattaforme moderne come Microsoft Fabric e Apache Kafka rendono sempre più pratiche soluzioni in stile kappa. I dettagli di queste architetture non rientrano nell'ambito di questo corso.
+:::
+
+## Esplorare gli elementi comuni dell'architettura di elaborazione dei flussi
+
+Esistono molte tecnologie che possono essere usate per implementare una soluzione di elaborazione dei flussi, ma, mentre i dettagli specifici dell'implementazione possono variare, alcuni elementi sono comuni alla maggior parte delle architetture di elaborazione dei flussi.
+
+### Architettura generale per l'elaborazione dei flussi
+Nella sua forma più semplice, un'architettura generale per l'elaborazione dei flussi si presenta come segue:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-stream-processing/media/stream-processing-architecture.png){width=80% fig-align="center"}
+
+1. Un evento genera dei dati. Potrebbe trattarsi dell'emissione di un segnale da parte di un sensore, della pubblicazione di un messaggio su un social media, della scrittura di una voce in un file di log o di qualsiasi altro evento che produca dati digitali.
+
+2. I dati generati vengono acquisiti in un'origine in streaming per l'elaborazione. In casi semplici, l'origine può essere una cartella in un archivio dati cloud o una tabella in un database. Nelle soluzioni di streaming più affidabili, l'origine può essere una coda che incapsula la logica per garantire che i dati dell'evento vengano elaborati in ordine e che ogni evento venga elaborato una sola volta.
+
+3. I dati dell'evento vengono elaborati, spesso da una query perpetua che opera sui dati dell'evento per selezionare i dati per tipi specifici di eventi, valori di dati di progetto o valori di dati aggregati in periodi temporali (basati sul tempo) (o finestre), ad esempio conteggiando il numero di emissioni di sensori al minuto.
+
+4. I risultati dell'operazione di elaborazione dei flussi vengono scritti in un output (o sink), che può essere un file, una tabella di database, un dashboard visivo in tempo reale o un'altra coda per un'ulteriore elaborazione da parte di una successiva query downstream.
+
+### Servizi di analisi in tempo reale
+
+Microsoft supporta diverse tecnologie che possono essere usate per implementare l'analisi in tempo reale dei dati in streaming, tra cui:
+
+- **Microsoft Fabric Real-Time Intelligence**: set di strumenti completo e integrato per i dati in tempo reale integrati in Microsoft Fabric. Include **Eventstreams** (per inserire, instradare e trasformare i dati di streaming), Eventhouse (un database ottimizzato per i dati di serie temporali ed eventi, sottoposto a query usando KQL - Linguaggio di query Kusto, un linguaggio di query progettato per l'analisi rapida dei log e della telemetria), **Real-Time Dashboard** (per la visualizzazione dei dati live) e **Activator** (per attivare azioni automatizzate quando i dati di streaming soddisfano le condizioni definite). L'assistenza per l'intelligenza artificiale in Fabric Real-Time Intelligence consente di generare query KQL da domande in linguaggio naturale.
+
+- **Spark Structured Streaming**: libreria open source che consente di sviluppare soluzioni di streaming complesse in servizi basati su Apache Spark, tra cui **Azure Databrick**s e Microsoft Fabric.
+
+- **Analisi di flusso di Azure**: una soluzione PaaS (Platform-as-a-Service) che è possibile usare per definire processi streaming che inseriscono dati da un'origine di **streaming**, applicare una query **perpetual** e scrivere i risultati in un output. È un'opzione solida per scenari di streaming autonomi o ibridi all'esterno di Fabric.
+
+### Origini per l'elaborazione dei flussi
+I servizi seguenti vengono comunemente usati per inserire i dati per l'elaborazione dei flussi in Azure:
+
+- **Hub eventi di Azure**: servizio di inserimento dati che è possibile usare per gestire le code di dati di eventi, per assicurarsi che ogni evento venga elaborato in ordine, esattamente una volta.
+
+- **Hub IoT di Azure**: servizio di inserimento dati simile a Hub eventi di Azure, ma ottimizzato per gestire i dati degli eventi dai dispositivi IoT (Internet delle cose).
+
+- **Azure Data Lake Store Gen 2**: servizio di archiviazione altamente scalabile spesso usato negli scenari di elaborazione batch, ma utilizzabile anche come origine di dati in streaming.
+
+- **Apache Kafka**: soluzione di inserimento dati open source in genere usata insieme ad Apache Spark.
+
+### Sink per l'elaborazione dei flussi
+L'output dell'elaborazione dei flussi viene spesso inviato ai servizi seguenti:
+
+- **Hub eventi di Azure**: usato per accodare i dati elaborati per un'ulteriore elaborazione downstream.
+
+- **Azure Data Lake Store Gen 2, Microsoft OneLake o Archiviazione BLOB di Azure**: usato per salvare in modo permanente come file i risultati elaborati.
+
+- **Database SQL di Azure, Azure Databricks o Microsoft Fabric**: usato per salvare in modo permanente i risultati elaborati in una tabella per l'esecuzione di query e l'analisi.
+
+- **Microsoft Power BI**: usato per generare visualizzazioni dei dati in tempo reale in report e dashboard.
+
+
+## Esplorare l'intelligence in tempo reale di Microsoft Fabric
+
+Microsoft Fabric Real-Time Intelligence è un set di strumenti integrati in Microsoft Fabric per l'inserimento, l'elaborazione e l'analisi dei dati di streaming. Illustra la pipeline completa dall'arrivo dei dati alla visualizzazione e all'azione automatizzata: connettersi a origini eventi, archiviare ed eseguire query sui dati in ingresso, compilare dashboard live e configurare avvisi che si attivano quando vengono soddisfatte le condizioni definite, tutte all'interno della stessa area di lavoro Fabric.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-stream-processing/media/real-time-intelligence.png){width=80% fig-align="center"}
+
+### Hub in tempo reale
+
+L'hub in tempo reale di Microsoft Fabric funge da catalogo centralizzato per l'organizzazione. Semplifica l'accesso, l'aggiunta, l'esplorazione e la condivisione dei dati. Catalogando le origini dati da tutta l'organizzazione, offre un'unica posizione per individuare e condividere i dati di streaming. L'hub rende i dati disponibili e accessibili per l'esecuzione di query e l'analisi. È possibile condividere i dati di streaming da più origini per supportare l'analisi in team e domini diversi.
+
+### Esplorazione dei dati con l'intelligenza in tempo reale
+
+Per esplorare i dati con l'intelligenza in tempo reale, scegliere inizialmente un flusso dei dati dall'organizzazione od origini esterne/interne connesse e quindi utilizzare gli strumenti di Intelligence in tempo reale per l'esplorazione dei dati e per visualizzare modelli di dati, anomalie e quantità di previsione.
+
+I dashboard in tempo reale semplificano la comprensione dei dati, accessibili a tutti tramite strumenti visivi, linguaggio naturale e Copilot. È quindi possibile trasformare le informazioni dettagliate in azioni configurando gli avvisi di Activator per reagire in tempo reale.
+
+:::{.callout-note}
+Per altre informazioni sulle funzionalità di Microsoft Fabric Real-Time Intelligence, vedere la [documentazione di Real-Time Intelligence in Microsoft Fabric.](https://learn.microsoft.com/it-it/fabric/real-time-intelligence/)
+:::
+
+## Esplorare Apache Spark Structured Streaming
+
+Apache Spark è un potente motore di elaborazione dati progettato per gestire rapidamente grandi quantità di dati. Anziché elaborare i dati in un singolo computer, Spark suddivide il lavoro tra più computer (un cluster) in modo che tutto venga eseguito in parallelo. È possibile usare Spark in Microsoft Azure nei servizi seguenti:
+
+- Microsoft Fabric
+- Azure Databricks
+
+Spark supporta il codice scritto in Python, Scala o Java e può gestire sia l'elaborazione batch che l'elaborazione del flusso.
+
+### Streaming Strutturato di Spark
+
+**Spark Structured Streaming** è una libreria integrata in Spark che semplifica l'uso dei dati di streaming. Si consideri come un modo per trattare un flusso di dati live allo stesso modo in cui si lavora con una tabella in un foglio di calcolo, ad eccezione del fatto che la tabella continua a crescere in tempo reale man mano che arrivano nuovi dati.
+
+Ecco come funziona in pratica:
+
+1. Ci si connette a un'origine **streaming**, ad esempio una coda di messaggi come Hub eventi di Azure, una cartella di file o un feed di rete.
+2. Spark legge i dati in ingresso in un **dataframe**, essenzialmente una tabella di righe e colonne che riempie continuamente nuovi dati man mano che arrivano gli eventi.
+3. Si scrive una **query** su tale dataframe, ad esempio per contare gli eventi al minuto o calcolare una media in esecuzione.
+4. I risultati della query vengono scritti in un **output (sink)**, ad esempio un file, un database o un dashboard.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-stream-processing/media/spark-structured-streaming.png#lightbox){width=80% fig-align="center"}
+
+Spark Structured Streaming è una scelta ottimale quando si usa già Spark per l'elaborazione dei dati e si vuole estendere il lavoro per includere flussi di dati in tempo reale.
+
+:::{.callout-note}
+Per altre informazioni su Spark Structured Streaming, vedere [la Guida alla programmazione di Spark Structured Streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html).
+:::
+
+### Delta Lake
+Delta Lake è un formato di archiviazione open source che migliora la modalità di archiviazione dei dati in un data lake. Per impostazione predefinita, un data lake è solo una raccolta di file, non esiste un modo predefinito per garantire che i dati siano completi, coerenti o strutturati correttamente. Delta Lake aggiunge tali garanzie, rendendo data lake storage più simile a un database tradizionale.
+
+I vantaggi principali di Delta Lake includono:
+
+- **Affidabilità**: vengono rilevate modifiche ai dati, quindi le scritture parziali o non riuscite non danneggiano i dati.
+- **Applicazione dello schema**: i dati devono corrispondere a una struttura definita prima di essere accettati, impedendo che record disordinati o incompatibili si insinuino.
+- **Elaborazione batch e streaming unificata**: la stessa tabella Delta può fungere sia da destinazione di streaming (con dati scritti in tempo reale nella tabella) sia da origine per query batch, quindi non è necessaria un'archiviazione separata per i dati storici e quelli in tempo reale.
+
+I runtime di Spark in Microsoft Fabric e Azure Databricks includono il supporto predefinito per Delta Lake.
+
+Delta Lake combinato con Spark Structured Streaming è una buona soluzione quando si vuole un singolo archivio dati coerente che funziona sia per l'inserimento in tempo reale che per l'analisi cronologica.
+
+:::{.callout-note}
+Per altre informazioni su Delta Lake, vedere le [Tabelle Lakehouse e Delta Lake](https://learn.microsoft.com/it-it/fabric/data-engineering/lakehouse-and-delta-tables).
+:::
+
+# Esplorare i principi fondamentali della visualizzazione dei dati
+
+## Introduzione
+
+La modellazione e la visualizzazione dei dati sono al centro dei carichi di lavoro di Business Intelligence (BI) supportati da soluzioni di analisi dei dati su larga scala. La visualizzazione dei dati supporta la creazione di report e il processo decisionale nelle organizzazioni.
+
+In questo modulo vengono illustrati i principi fondamentali della modellazione dei dati analitici e della visualizzazione dei dati, sfruttando Microsoft Power BI come piattaforma per esplorare questi principi in azione.
+
+## Descrivere strumenti e flusso di lavoro di Power BI
+
+Sono disponibili molti strumenti di visualizzazione dei dati che gli analisti dei dati possono usare per esplorare i dati e riepilogare visivamente le informazioni dettagliate; incluso il supporto dei grafici in strumenti di produttività come Microsoft Excel e widget di visualizzazione dei dati predefiniti nei notebook usati per esplorare i dati nei servizi come Microsoft Fabric e Azure Databricks. Tuttavia, per l'analisi aziendale su larga scala, è spesso necessaria una soluzione integrata che possa supportare la modellazione dei dati complessa, la creazione di report interattivi e la condivisione sicura.
+
+### Microsoft Power BI
+Microsoft Power BI è una suite di strumenti e servizi che costituisce un carico di lavoro principale di Microsoft Fabric, che gli analisti dei dati possono usare per creare visualizzazioni interattive dei dati che gli utenti aziendali possono usare.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-data-visualization/media/power-bi-flow.png){width=80% fig-align="center"}
+
+Un flusso di lavoro tipico per la creazione di una soluzione di visualizzazione dati inizia con **Power BI Desktop**, un'applicazione Microsoft Windows in cui è possibile importare dati da un'ampia gamma di origini dati, combinare e organizzare dati da queste origini in un modello di dati di analisi e creare report che contengono visualizzazioni interattive dei dati.
+
+Dopo aver creato modelli di dati e report, è possibile pubblicarli nel **servizio Power BI**: un servizio cloud in cui i report possono essere pubblicati e con i quali gli utenti aziendali possono interagire. È anche possibile eseguire alcune operazioni di modellazione dei dati di base e modifica dei report direttamente nel servizio usando un Web browser, ma la funzionalità per questa operazione è limitata rispetto allo strumento Power BI Desktop. È possibile usare il servizio per pianificare gli aggiornamenti delle origini dati su cui si basano i report e condividere report con altri utenti. È anche possibile definire dashboard e app che combinano report correlati in un'unica posizione, facile da usare.
+
+Gli utenti possono utilizzare report, dashboard e app nel servizio Power BI tramite un Web browser o nei dispositivi mobili usando l'**app per telefono Power BI**.
+
+### Power BI in Microsoft Fabric
+
+Power BI è completamente integrato nella piattaforma di analisi unificata di Microsoft Fabric Microsoft. All'interno di Fabric, i contenuti di Power BI si trovano in **aree di lavoro** condivise insieme ad altri elementi di data engineering e analisi, tutti basati sullo stesso livello di archiviazione **OneLake**. Le principali funzionalità specifiche di Fabric includono:
+
+- **Aree di lavoro**: ambienti condivisi in cui i team collaborano ai report e ai modelli semantici in un browser, senza bisogno di software desktop.
+
+- **Modelli semantici**: un modello semantico definisce le misure, le relazioni e le gerarchie basate sui report e possono essere condivise tra più report.
+
+- **Direct Lake mode**: una modalità di archiviazione che consente di Power BI eseguire query sui dati direttamente dai file OneLake, combinando la velocità dell'analisi in memoria con la scala di un data lake, senza richiedere un ciclo di importazione o aggiornamento dei dati separato.
+
+- **Modifica dei report basata sul Web**: gli analisti possono creare e aggiornare report interamente nel browser, rendendo Power BI accessibile senza installare Power BI Desktop.
+
+### Assistenza per l'intelligenza artificiale in Power BI
+Power BI include funzionalità di intelligenza artificiale predefinite che consentono agli analisti di lavorare in modo più efficiente.
+
+#### Copilot in Power BI
+Le funzionalità di Copilot richiedono una capacità Fabric (F2 o superiore) o Power BI Premium (P1 o superiore) e sono disponibili sia in Power BI Desktop che nel servizio Power BI:
+
+- **Summarize a report**: Copilot genera un riepilogo in linguaggio normale degli elementi visualizzati da un report.
+- **Crea le pagine del report**: Copilot crea pagine del report e seleziona i tipi di grafico appropriati in base ai dati e alla richiesta.
+- **Generare misure DAX**: Copilot scrive espressioni di misura DAX partendo da una descrizione in linguaggio naturale.
+
+#### Altre funzionalità di intelligenza artificiale
+Le funzionalità basate sull'intelligenza artificiale seguenti sono disponibili senza una licenza Copilot:
+
+- **Narrazione intelligente visual**: genera automaticamente un riepilogo di testo che descrive i dati in un report e viene aggiornato in modo dinamico man mano che i dati cambiano.
+
+Queste funzionalità rendono l'IA una parte naturale del flusso di lavoro quotidiano dell'analista all'interno di Power BI e Microsoft Fabric.
+
+## Descrivere i concetti di base della modellazione dei dati
+
+I modelli analitici, detti anche modelli semantic in Microsoft Fabric e Power BI, consentono di supportare l'analisi. Un modello viene creato da tabelle correlate di dati. Definisce i valori numerici da analizzare o segnalare, noti come misure, e le entità usate per aggregarle, note come dimensioni.
+
+Ad esempio, un modello può includere misure numeriche per le vendite (ad esempio ricavi o quantità) e dimensioni per prodotti, clienti e tempo. In questo modo è possibile aggregare le misure in una o più dimensioni, ad esempio per identificare i ricavi totali per cliente o gli articoli totali venduti per prodotto al mese.
+
+### Tabelle e schema
+
+Le **tabelle delle dimensioni** rappresentano le entità da raggruppare o filtrare, ad esempio prodotto o cliente. Ogni riga ha un valore di chiave univoco e le colonne rimanenti archiviano attributi, ad esempio nomi di prodotto, categorie o città dei clienti. La maggior parte dei modelli analitici include una dimensione Temporale in modo da poter aggregare le misure in periodi di tempo.
+
+Nelle **tabelle dei fatti** vengono archiviate le misure numeriche da analizzare. Ogni riga rappresenta un evento registrato, ad esempio una transazione di vendita con valori per la quantità venduta e i ricavi.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-data-visualization/media/star-schema.png){width=80% fig-align="center"}
+
+Quando una tabella dei fatti è correlata a una o più tabelle delle dimensioni, la progettazione viene chiamata **schema a stella**. Se le tabelle delle dimensioni si riferiscono ulteriormente a tabelle di dettaglio aggiuntive, ad esempio una tabella **Category** collegata a una tabella **Product**, la progettazione viene chiamata **schema snowflake**.
+
+Quando si caricano dati in un modello semantico, Power BI li archivia in un archivio columnar in memoria efficiente usando il motore VertiPaq. Le aggregazioni vengono calcolate in fase di query, che offre analisi e report rapidi.
+
+### Gerarchie di attributi
+
+Le **gerarchie** consentono di eseguire il drill up o il drill down tra i valori aggregati nei diversi livelli di una dimensione. Per esempio:
+
+- Nella tabella **Product** una gerarchia potrebbe raggruppare i prodotti in categorie.
+- Nella tabella **Customer** una gerarchia può raggruppare i clienti in base alla città.
+- Nella tabella **Time** una gerarchia può raggruppare i giorni in mesi e i mesi in anni.
+
+Quando si visualizzano le vendite totali per anno e quindi si esegue il drill-down per visualizzare una suddivisione mensile, il motore VertiPaq calcola i valori aggregati a ogni livello in fase di query.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-data-visualization/media/hierarchy.png){width=80% fig-align="center"}
+
+### Modellazione analitica in Microsoft Power BI
+
+In Power BI si definisce un modello semantico dalle tabelle importate da una o più origini dati. Utilizzare la vista Model in Power BI Desktop per creare relazioni tra tabelle dei fatti e delle dimensioni, definire gerarchie, impostare tipi di dati e formati di visualizzazione e configurare altre proprietà che modellano il modello per l'analisi.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-data-visualization/media/power-bi-model.png){width=80% fig-align="center"}
+
+Se i dati sono archiviati in **OneLake**, il data lake condiviso di Microsoft Fabric, usa la modalità di archiviazione Direct Lake per connettere il modello semantico direttamente ai file del data lake. Ciò offre prestazioni delle query in memoria senza un passaggio di importazione dei dati separato.
+
+## Descrivere le considerazioni per la visualizzazione dei dati
+
+Dopo aver creato un modello, è possibile usarlo per generare visualizzazioni dei dati che possono essere incluse in un report.
+
+Esistono molti tipi di visualizzazioni dei dati, alcuni comunemente usati e alcuni più specializzati. Power BI include un ampio set di visualizzazioni predefinite, che possono essere estese con visualizzazioni personalizzate e di terze parti. Il resto di questa unità illustra alcune visualizzazioni dei dati comuni, ma non è un elenco completo.
+
+### Tabelle e testo
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-data-visualization/media/text-table.png){width=50% fig-align="center"}
+
+Le tabelle e il testo sono spesso il modo più semplice per comunicare i dati. Le tabelle sono utili quando devono essere visualizzati numerosi valori correlati e i singoli valori di testo nelle schede possono essere un modo utile per visualizzare figure o metriche importanti.
+
+### Grafici a barre e a colonne
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-data-visualization/media/bar-column-chart.png){width=50% fig-align="center"}
+
+I grafici a barre e colonne sono un buon modo per confrontare visivamente i valori numerici per le categorie discrete.
+
+### Grafici a linee
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-data-visualization/media/line-chart.png){width=50% fig-align="center"}
+
+I grafici a linee possono essere usati anche per confrontare i valori classificati e sono utili quando è necessario esaminare le tendenze, spesso nel corso del tempo.
+
+### Grafici a torta
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-data-visualization/media/pie-chart.png){width=50% fig-align="center"}
+
+I grafici a torta vengono spesso usati nei report aziendali per confrontare visivamente i valori classificati come proporzioni di un totale.
+
+### Grafici di dispersione
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-data-visualization/media/scatter-plot.png){width=50% fig-align="center"}
+
+I grafici a dispersione sono utili quando si vogliono confrontare due misure numeriche e identificare una relazione o una correlazione tra di esse.
+
+### Mappe
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-data-visualization/media/map.png){width=50% fig-align="center"}
+
+Le mappe sono un ottimo modo per confrontare visivamente i valori per diverse posizioni o aree geografiche.
+
+### Report interattivi in Power BI
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/explore-fundamentals-data-visualization/media/power-bi-report.png){width=80% fig-align="center"}
+
+In Power BI gli elementi visivi per i dati correlati in un report vengono collegati automaticamente a un altro e forniscono l'interattività. Ad esempio, la selezione di una singola categoria in una visualizzazione filtra ed evidenzia automaticamente tale categoria in altre visualizzazioni correlate nel report. Nell'immagine precedente la città di Seattle è stata selezionata nel grafico a colonne Vendite per città e categoria e le altre visualizzazioni vengono filtrate per riflettere solo i valori relativi a Seattle.
+
+### Visualizzazioni basate sull'intelligenza artificiale in Power BI
+
+Power BI include diverse funzionalità di visualizzazione basate sull'intelligenza artificiale che consentono agli analisti di esplorare e spiegare i dati in modo più efficiente:
+
+- **Narrazioni intelligenti**: genera automaticamente riepiloghi scritti che descrivono cosa mostra una visualizzazione, aggiornata dinamicamente man mano che cambiano i dati.
+- **Visualizzazione Q&A**: consente agli utenti dei report di porre domande in linguaggio naturale e ricevere istantaneamente risposte sotto forma di grafici basate sul modello semantico.
+- **Fattori di influenza chiave**: identifica i fattori che determinano maggiormente una metrica selezionata, visualizzando i risultati come oggetto visivo interattivo.
+- **Albero di scomposizione**: consente di approfondire in modo interattivo i dati attraverso più dimensioni per identificare i fattori che contribuiscono a un valore.
+Queste funzionalità sono il modo in cui Power BI porta l'IA direttamente nel flusso di lavoro quotidiano dell'analista.
+
