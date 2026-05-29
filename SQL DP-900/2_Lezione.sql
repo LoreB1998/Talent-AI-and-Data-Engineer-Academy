@@ -27,15 +27,10 @@ SELECT h.SalesOrderID, OrderDate, CustomerID, TotalDue, -- colonne prese dalla t
 FROM SalesLT.SalesOrderHeader h
 INNER JOIN SalesLT.SalesOrderDetail d ON h.SalesOrderID = d.SalesOrderID;
 
--- LEFT JOIN
-SELECT c.CustomerID, FirstName, LastName, SalesOrderID, OrderDate, TotalDue
-FROM SalesLT.Customer c
-LEFT JOIN SalesLT.SalesOrderHeader h ON c.CustomerID = h.CustomerID
-
 -- Utilizzando un JOIN, trova i prodotti che hanno generato un ricavo superiore a 20.000.
 SELECT P.ProductID, Name, ProductNumber, SUM(OrderQty * UnitPrice)  AS tot
 FROM SalesLT.Product P
-LEFT OUTER JOIN SalesLT.SalesOrderDetail SOD on P.ProductID = SOD.ProductID
+LEFT JOIN SalesLT.SalesOrderDetail SOD on P.ProductID = SOD.ProductID
 GROUP BY P.ProductID, Name, ProductNumber
 HAVING SUM(OrderQty * UnitPrice) > 20000
 ORDER BY 4;
@@ -49,13 +44,53 @@ INNER JOIN SalesLT.SalesOrderDetail SOD ON P.ProductID = SOD.ProductID
 GROUP BY P.Name
 HAVING  SUM(SOD.OrderQty)> 20 AND SUM(SOD.OrderQty * SOD.UnitPrice) > 5000;
 
--- Percentuale Colorati
-SELECT AVG(IIF(Color IS NOT NULL, 1.0, 0.0))*100 AS PercentualeColorati
-FROM SalesLT.Product;
 
---- Raggruppa i prodotti per una categoria di colore mostrando solo i gruppi con prezzo medio > 100.
-SELECT Color, AVG(ListPrice) AS avg_price
+-- Raggruppa i prodotti per colore (gestendo i valori mancanti) e
+-- calcola il prezzo medio con la relativa fascia (Alto/Medio/Basso).
+SELECT COALESCE(Color, 'No Color') AS Color,
+       AVG(ListPrice) AS PrezzoMedio,
+       CASE WHEN AVG(ListPrice) > 1000 THEN 'Alto'
+            WHEN AVG(ListPrice) > 500  THEN 'Medio'
+            ELSE 'Basso'
+       END AS GruppoPrezzo
 FROM SalesLT.Product
 GROUP BY Color
-HAVING AVG(ListPrice)>100
-ORDER BY 2 DESC;
+HAVING AVG(ListPrice) > 100
+ORDER BY PrezzoMedio DESC;
+
+
+-- Mostra il nome e il cognome dei clienti in maiuscolo e senza spazi iniziali/finali
+-- CONCAT -> Unisce più stringhe
+-- TRIM   -> Rimuove gli spazi
+-- UPPER  -> Maiuscolo
+
+SELECT DISTINCT CONCAT(TRIM(UPPER(FirstName)),' ', TRIM(UPPER(LastName))) NomeCompleto
+FROM SalesLT.Customer
+ORDER BY 1;
+
+
+/*
+Definizione della Stored Procedure, per trovare prodotti presenti in ordini con ricavo superiore
+a una certa soglia
+*/
+GO
+CREATE OR ALTER PROCEDURE SalesLT.GetProductsByRevenueThreshold
+    @RevenueThreshold MONEY = 20000 -- Parametro di ingresso con valore di default a 20.000
+AS
+BEGIN
+    -- Disabilita il conteggio delle righe per ottimizzare le performance
+    SET NOCOUNT ON;
+
+    SELECT P.ProductID,
+           P.Name,
+           P.ProductNumber,
+           SUM(SOD.OrderQty * SOD.UnitPrice) AS TotaleRicavo
+    FROM SalesLT.Product P
+    LEFT JOIN SalesLT.SalesOrderDetail SOD ON P.ProductID = SOD.ProductID
+    GROUP BY P.ProductID, P.Name, P.ProductNumber
+    HAVING SUM(SOD.OrderQty * SOD.UnitPrice) > @RevenueThreshold
+    ORDER BY TotaleRicavo DESC;
+END;
+-- Per utilizzarla
+GO
+EXEC SalesLT.GetProductsByRevenueThreshold @RevenueThreshold = 5000;
