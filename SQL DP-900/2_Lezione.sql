@@ -27,3 +27,4 @@ SELECT h.SalesOrderID, OrderDate, CustomerID, TotalDue, -- colonne prese dalla t
 FROM SalesLT.SalesOrderHeader h
 LEFT JOIN SalesLT.SalesOrderDetail d ON h.SalesOrderID = d.SalesOrderID;
 
+-- INNER JOIN
