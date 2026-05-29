@@ -21,10 +21,41 @@
    -> Tecnico: JOIN di una tabella con se stessa (es. gerarchie Dipendente -> Capo).
 */
 
--- LEFT JOIN
+-- INNER JOIN
 SELECT h.SalesOrderID, OrderDate, CustomerID, TotalDue, -- colonne prese dalla tabella SalesorderHeader
        ProductID, UnitPrice, OrderQty                   -- colonne prese dalla tabella SalesorderDetail
 FROM SalesLT.SalesOrderHeader h
-LEFT JOIN SalesLT.SalesOrderDetail d ON h.SalesOrderID = d.SalesOrderID;
+INNER JOIN SalesLT.SalesOrderDetail d ON h.SalesOrderID = d.SalesOrderID;
 
--- INNER JOIN
+-- LEFT JOIN
+SELECT c.CustomerID, FirstName, LastName, SalesOrderID, OrderDate, TotalDue
+FROM SalesLT.Customer c
+LEFT JOIN SalesLT.SalesOrderHeader h ON c.CustomerID = h.CustomerID
+
+-- Utilizzando un JOIN, trova i prodotti che hanno generato un ricavo superiore a 20.000.
+SELECT P.ProductID, Name, ProductNumber, SUM(OrderQty * UnitPrice)  AS tot
+FROM SalesLT.Product P
+LEFT OUTER JOIN SalesLT.SalesOrderDetail SOD on P.ProductID = SOD.ProductID
+GROUP BY P.ProductID, Name, ProductNumber
+HAVING SUM(OrderQty * UnitPrice) > 20000
+ORDER BY 4;
+
+-- Trova i prodotti venduti in più di 20 unità e con un ricavo superiore a 5.000.
+SELECT P.Name,
+       SUM(SOD.OrderQty) AS TotalOrdered,
+       SUM(OrderQty * UnitPrice) AS Revenue
+FROM SalesLT.Product AS P
+INNER JOIN SalesLT.SalesOrderDetail SOD ON P.ProductID = SOD.ProductID
+GROUP BY P.Name
+HAVING  SUM(SOD.OrderQty)> 20 AND SUM(SOD.OrderQty * SOD.UnitPrice) > 5000;
+
+-- Percentuale Colorati
+SELECT AVG(IIF(Color IS NOT NULL, 1.0, 0.0))*100 AS PercentualeColorati
+FROM SalesLT.Product;
+
+--- Raggruppa i prodotti per una categoria di colore mostrando solo i gruppi con prezzo medio > 100.
+SELECT Color, AVG(ListPrice) AS avg_price
+FROM SalesLT.Product
+GROUP BY Color
+HAVING AVG(ListPrice)>100
+ORDER BY 2 DESC;
