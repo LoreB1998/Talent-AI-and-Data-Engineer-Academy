@@ -284,3 +284,110 @@ Regolata dall'**Allegato XXXIII** del D.Lgs. 81/08. Il rischio principale è il 
 ::: {.callout-note}
 Il livello di rischio è determinato dalla **classe di rischio macrosettoriale** dell'azienda in base al **Codice ATECO**.
 :::
+
+---
+
+## Classificazione dei Rischi {#sec-classificazione-rischi}
+
+Il D.Lgs. 81/08 classifica i rischi in tre macrocategorie:
+
+**Rischi per la salute (igienico-ambientali)**
+:   Esposizioni ad agenti chimici, fisici e biologici che causano patologie professionali. Esempi: rumore, vibrazioni, polveri, sostanze tossiche.
+
+**Rischi per la sicurezza (infortunistici)**
+:   Situazioni che causano danni fisici immediati: cadute dall'alto, utilizzo di macchinari, rischio elettrico, incendi.
+
+**Rischi trasversali/organizzativi**
+:   Derivano dall'organizzazione del lavoro: stress lavoro-correlato, lavoro notturno, turni.
+
+---
+
+## Agenti Fisici (Titolo VIII, Art. 180) {#sec-agenti-fisici}
+
+Per "agenti fisici" si intendono: rumore, ultrasuoni, infrasuoni, vibrazioni meccaniche, campi elettromagnetici, radiazioni ottiche artificiali, microclima e atmosfere iperbariche.
+
+### Rischio Rumore (Artt. 187–198)
+
+| Livello di esposizione giornaliera LEX,8h | Azione richiesta |
+|-------------------------------------------|-----------------|
+| < 80 dB(A) | Nessun obbligo specifico |
+| ≥ 80 dB(A) — **Valore inferiore d'azione** | Informazione/formazione; DPI disponibili su richiesta |
+| ≥ 85 dB(A) — **Valore superiore d'azione** | Misure tecniche obbligatorie; DPI obbligatori; sorveglianza sanitaria |
+| 87 dB(A) — **Valore limite** | Non deve mai essere superato (tenendo conto dell'attenuazione dei DPI) |
+
+### Rischio Vibrazioni (Artt. 199–205)
+
+| Tipo | Valore d'azione giornaliero | Valore limite |
+|------|-----------------------------|---------------|
+| **HAV** (sistema mano-braccio) | 2,5 m/s² | 5 m/s² |
+| **WBV** (corpo intero) | 0,5 m/s² | 1,15 m/s² |
+
+### Stress Lavoro-Correlato
+
+::: {.callout-note}
+L'Art. 28 impone la **valutazione obbligatoria del rischio da stress lavoro-correlato**, da includere nel DVR, secondo le indicazioni della Commissione Consultiva Permanente per la Salute e Sicurezza sul Lavoro.
+:::
+
+---
+
+## Agenti Biologici (Titolo X, Artt. 266–286) {#sec-biologici}
+
+Si applicano a lavoratori esposti intenzionalmente o potenzialmente a microrganismi (virus, batteri, funghi, parassiti).
+
+| Gruppo | Caratteristiche | Esempi |
+|--------|----------------|--------|
+| **1** | Improbabile causa di malattie nell'uomo | — |
+| **2** | Può causare malattie; cura efficace disponibile | *E. coli*, virus influenzale |
+| **3** | Può causare malattie gravi; rischio di diffusione limitato; cura disponibile | *M. tuberculosis*, HIV |
+| **4** | Causa malattie gravi; alto rischio di diffusione; nessuna cura efficace | Virus Ebola |
+
+::: {.callout-important}
+Per i lavoratori esposti ad agenti del **Gruppo 2, 3 o 4** sono obbligatori la **sorveglianza sanitaria** e il **registro degli esposti**.
+:::
+
+---
+
+## Attrezzature di Lavoro (Titolo III, Artt. 69–73) {#sec-attrezzature}
+
+- Il datore di lavoro mette a disposizione attrezzature **idonee** al lavoro da svolgere.
+- Sono soggette a **verifiche periodiche obbligatorie** le attrezzature elencate nell'**Allegato VII** (es. apparecchi di sollevamento, recipienti in pressione).
+- L'utilizzo di attrezzature che richiedono conoscenze particolari è riservato a lavoratori **appositamente incaricati e formati**.
+
+---
+
+## Patente a Crediti nei Cantieri (Art. 27) {#sec-patente}
+
+::: {.callout-important}
+Dal **1° ottobre 2024** imprese e lavoratori autonomi che operano in **cantieri temporanei o mobili** devono essere in possesso della **patente a crediti** (introdotta dal D.L. 19/2024 che riscrive l'Art. 27 del D.Lgs. 81/08).
+:::
+
+- **Punteggio iniziale**: 30 crediti.
+- **Soglia minima operativa**: 15 crediti (al di sotto non si può operare in cantiere).
+- I crediti vengono **decurtati** a seguito di infortuni, violazioni accertate e provvedimenti sanzionatori.
+- I crediti possono essere **recuperati** attraverso investimenti in formazione e sistemi di gestione della sicurezza certificati.
+
+---
+
+## Cantieri Temporanei e Mobili (Titolo IV) {#sec-cantieri}
+
+### Figure specifiche del cantiere
+
+**Committente**
+:   Soggetto per conto del quale l'intera opera viene realizzata. Ha obblighi di sicurezza già in fase di progettazione.
+
+**Responsabile dei Lavori (RL)**
+:   Può essere delegato dal committente, di cui assume gli obblighi.
+
+**Coordinatore per la Sicurezza in fase di Progettazione (CSP)**
+:   Redige il **PSC** (Piano di Sicurezza e Coordinamento) e il **Fascicolo dell'Opera**.
+
+**Coordinatore per la Sicurezza in fase di Esecuzione (CSE)**
+:   Verifica l'applicazione del PSC; coordina le imprese esecutrici; può **sospendere i lavori** in caso di pericolo grave e immediato.
+
+### Documenti obbligatori in cantiere
+
+| Documento | Chi lo redige | Quando è obbligatorio |
+|-----------|--------------|----------------------|
+| **PSC** — Piano di Sicurezza e Coordinamento | CSP | Quando operano più imprese |
+| **POS** — Piano Operativo di Sicurezza | Ciascuna impresa esecutrice | Sempre |
+| **Notifica Preliminare** | Committente/RL | Quando prevista dall'Allegato XII (cantieri oltre soglia) |
