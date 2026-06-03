@@ -1,0 +1,286 @@
+---
+title: "Manuale Completo per il Superamento del Test sulla Sicurezza"
+subtitle: "D.Lgs. 81/08 — Testo Unico sulla Salute e Sicurezza sul Lavoro"
+author: ""
+lang: it
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-title: "Indice"
+    number-sections: true
+    embed-resources: true
+    smooth-scroll: true
+    theme: cosmo
+    highlight-style: github
+---
+
+## Definizioni Legali e Concetti Chiave (Art. 2) {#sec-definizioni}
+
+Nei test, scambiare queste definizioni significa fallire la domanda. La legge le definisce in modo univoco:
+
+**Pericolo**
+:   Proprietà intrinseca di un determinato fattore (materiale, attrezzatura, metodo di lavoro) avente il potenziale di causare danni. *Esempio: la corrente elettrica in sé.*
+
+**Rischio**
+:   Probabilità che sia raggiunto il livello potenziale di danno nelle condizioni di impiego o di esposizione. Formula matematica:
+
+$$R = P \times D$$
+
+dove $P$ = Probabilità e $D$ = Danno.
+
+**Danno**
+:   La gravità della lesione fisica o della patologia subita a causa del verificarsi dell'evento pericoloso.
+
+**Prevenzione**
+:   Il complesso delle disposizioni o misure adottate o previste in tutte le fasi dell'attività lavorativa per evitare o diminuire i rischi professionali.
+
+**Protezione**
+:   Misure finalizzate a ridurre le conseguenze di un evento pericoloso quando questo si è già verificato (es. barriere antincendio, DPI).
+
+**Lavoratore**
+:   Persona che, indipendentemente dalla tipologia contrattuale, svolge un'attività lavorativa nell'ambito dell'organizzazione di un datore di lavoro pubblico o privato, con o senza retribuzione, anche al solo fine di apprendere un mestiere.
+Rientrano in questa definizione: stagisti, tirocinanti, studenti in alternanza scuola-lavoro, volontari.
+
+---
+
+## Il Sistema Istituzionale della Prevenzione {#sec-sistema}
+
+I test contengono spesso domande sugli organi dello Stato che vigilano sulla sicurezza.
+
+| Ente | Competenza |
+|------|-----------|
+| **ASL / SPRESAL** | Vigilanza e controllo generale nei luoghi di lavoro |
+| **INL** (Ispettorato Nazionale del Lavoro) | Competenze ispettive sul lavoro |
+| **Vigili del Fuoco** | Vigilanza esclusiva su prevenzione incendi e rischio di incidente rilevante |
+| **INAIL** | Assicurazione obbligatoria contro infortuni e malattie professionali; supporto, ricerca e finanziamento per la sicurezza |
+
+---
+
+## Ruoli, Obblighi e Sanzioni Penali {#sec-ruoli}
+
+### Datore di Lavoro (DL)
+
+È il titolare del rapporto di lavoro con il lavoratore o il soggetto che ha la responsabilità dell'organizzazione o dell'unità produttiva.
+
+#### Obblighi NON delegabili (Art. 17)
+
+::: {.callout-important}
+I seguenti due obblighi non possono essere delegati ad altri soggetti, nemmeno con formale delega di funzioni:
+
+1. **Valutazione di tutti i rischi** con conseguente redazione del **DVR** (Documento di Valutazione dei Rischi).
+2. **Nomina dell'RSPP** (Responsabile del Servizio di Prevenzione e Protezione).
+:::
+
+Qualsiasi altra attività (es. acquisto DPI, gestione della formazione) può essere delegata tramite formale **Delega di Funzioni** (Art. 16).
+
+### Dirigente e Preposto
+
+**Dirigente**
+:   Attua le direttive del datore di lavoro organizzando l'attività lavorativa e vigilando su di essa.
+
+**Preposto (Art. 19)**
+:   Sovrintende all'attività lavorativa e vigila sulla corretta esecuzione delle direttive ricevute. Ha il potere/dovere di:
+
+- **interrompere l'attività** del lavoratore in caso di persistente inosservanza delle norme di sicurezza;
+- **informare i superiori** di ogni situazione di rischio.
+
+### RSPP e ASPP
+
+**RSPP**
+:   Persona in possesso di attitudini e capacità professionali adeguate, designata dal DL, a cui fa capo il servizio di prevenzione e protezione.
+
+::: {.callout-note}
+**Nota fondamentale per il test:** L'RSPP ha un ruolo esclusivamente **consultivo e non decisionale**. Non ha potere di spesa autonomo e non ha responsabilità penali dirette per le violazioni della sicurezza, salvo il caso in cui abbia fornito una consulenza errata che ha causato un infortunio.
+:::
+
+### Medico Competente (MC)
+
+- Collabora con il DL alla valutazione dei rischi.
+- Effettua la **Sorveglianza Sanitaria**: visite preventive, periodiche, al cambio mansione, alla cessazione del rapporto di lavoro.
+- Rilascia i **Giudizi di Idoneità** alla mansione:
+
+| Giudizio | Significato |
+|---------|-------------|
+| Idoneo | Nessuna limitazione |
+| Idoneo con prescrizioni/limitazioni | Può lavorare con restrizioni specifiche |
+| Inidoneo temporaneo | Non idoneo per un periodo definito |
+| Inidoneo permanente | Non idoneo in modo definitivo |
+
+### RLS (Rappresentante dei Lavoratori per la Sicurezza)
+
+- Eletto o designato dai lavoratori per rappresentarli in tutti gli aspetti della salute e sicurezza.
+- Ha **diritto di accesso** ai luoghi di lavoro e a tutta la documentazione aziendale sulla sicurezza (incluso il DVR).
+- Deve essere **consultato preventivamente e tempestivamente** sulla valutazione dei rischi.
+
+---
+
+## Diritti, Doveri e Sanzioni del Lavoratore (Art. 20) {#sec-lavoratore}
+
+Il lavoratore risponde penalmente (sanzioni amministrative, ammende o arresto) se viola i propri doveri:
+
+1. Deve prendersi cura della propria salute e sicurezza e di quella delle altre persone presenti.
+2. Deve utilizzare correttamente macchinari, utensili, sostanze e dispositivi di protezione.
+3. Deve utilizzare in modo appropriato i DPI messi a sua disposizione.
+4. Deve **segnalare immediatamente** qualsiasi condizione di pericolo.
+5. **Non può** rimuovere o modificare i dispositivi di sicurezza o di segnalazione senza autorizzazione.
+6. Deve sottoporsi ai programmi di formazione, addestramento e alla sorveglianza sanitaria obbligatoria.
+
+---
+
+## Il Documento di Valutazione dei Rischi (DVR) {#sec-dvr}
+
+È l'atto cardine della sicurezza aziendale.
+
+### Contenuto minimo obbligatorio
+
+- Relazione sulla valutazione di tutti i rischi.
+- Indicazione delle misure di prevenzione e protezione attuate.
+- Programma delle misure atte a garantire il miglioramento nel tempo.
+- Individuazione delle procedure per l'attuazione delle misure.
+
+### Firme obbligatorie — Criterio della Data Certa
+
+Il DVR deve essere firmato digitalmente o con data certa da:
+
+- **Datore di Lavoro**
+- **RSPP**
+- **Medico Competente**
+- **RLS** (per presa visione/consultazione)
+
+### Aggiornamento
+
+::: {.callout-warning}
+Il DVR deve essere rielaborato **entro 30 giorni** in caso di:
+
+- modifiche del processo produttivo;
+- evoluzione della tecnica;
+- infortuni gravi;
+- risultati della sorveglianza sanitaria che ne evidenzino la necessità.
+:::
+
+---
+
+## Segnaletica di Sicurezza {#sec-segnaletica}
+
+| Tipo di Segnale | Forma | Colore di fondo | Colore simbolo | Esempio |
+|----------------|-------|-----------------|----------------|---------|
+| **Divieto** | Rotonda | Bianco con bordo e banda **rossi** | Nero | Vietato fumare |
+| **Avvertimento/Pericolo** | Triangolare | **Giallo** con bordo nero | Nero | Pericolo elettrico |
+| **Prescrizione/Obbligo** | Rotonda | **Azzurro** | Bianco | Uso obbligatorio dei guanti |
+| **Salvataggio/Soccorso** | Quadrata o rettangolare | **Verde** | Bianco | Uscita di emergenza |
+| **Antincendio** | Quadrata o rettangolare | **Rosso** | Bianco | Estintore / Idrante |
+
+---
+
+## Dispositivi di Protezione (DPI vs DPC) {#sec-dpi}
+
+**DPC — Dispositivi di Protezione Collettiva**
+:   Intervengono direttamente sulla fonte del rischio (es. cappe di aspirazione, parapetti). La legge impone la **priorità dei DPC rispetto ai DPI**.
+
+**DPI — Dispositivi di Protezione Individuale**
+:   Qualsiasi attrezzatura destinata ad essere indossata dal lavoratore allo scopo di proteggerlo contro uno o più rischi.
+
+| Categoria | Rischio | Esempi |
+|-----------|---------|--------|
+| **I** | Lievi | Guanti da giardinaggio |
+| **II** | Medi | Scarpe antinfortunistiche comuni |
+| **III** | Gravi, mortali o con danni irreversibili | Imbracature anticaduta, maschere con filtri chimici |
+
+::: {.callout-important}
+I DPI di **Categoria III** richiedono **addestramento pratico obbligatorio**.
+:::
+
+---
+
+## Gestione delle Emergenze, Antincendio e Primo Soccorso {#sec-emergenze}
+
+### Nomina degli addetti
+
+Il Datore di Lavoro designa i lavoratori incaricati delle misure di prevenzione incendi e primo soccorso. I lavoratori **non possono rifiutare** la designazione, salvo giustificato motivo clinico certificato.
+
+### Diritto di abbandono (Art. 44)
+
+::: {.callout-note}
+Il lavoratore che, in caso di pericolo **grave, immediato e non evitabile**, abbandona il posto di lavoro o la zona pericolosa **non può subire pregiudizi** e gode dell'immunità da sanzioni disciplinari o penali.
+:::
+
+### Triangolo del Fuoco
+
+Per generare una combustione servono **contemporaneamente** tre elementi:
+
+```{mermaid}
+graph LR
+    combustibile(("🪵 Combustibile"))
+    comburente(("💨 Comburente"))
+    innesco(("🔥 Sorgente di innesco"))
+
+    combustibile -->|"alimenta"| kinnesco
+    innesco -->|"innesca"| comburente
+    comburente -->|"sostiene"| combustibile
+```
+
+Rimuovendo **anche solo uno** dei tre elementi, l'incendio si spegne.
+
+### Classi di Fuoco
+
+| Classe | Tipo di fuoco | Esempi |
+|--------|--------------|--------|
+| **A** | Solidi | Legno, carta, tessuti |
+| **B** | Liquidi | Idrocarburi, solventi, alcol |
+| **C** | Gas | Metano, GPL |
+| **D** | Metalli | Magnesio, potassio |
+
+::: {.callout-warning}
+**Sulle apparecchiature elettriche sotto tensione non si usa mai l'acqua** (rischio di folgorazione). Si utilizzano estintori a **CO₂** o a **polvere dielettrica**.
+:::
+
+---
+
+## Rischi Specifici Ricorrenti nei Test {#sec-rischi}
+
+### Rischio Elettrico
+
+Il corpo umano è un conduttore. Gli effetti del passaggio di corrente sono:
+
+- **Tetanizzazione muscolare**: impossibilità di staccarsi dalla fonte
+- **Blocco respiratorio**
+- **Fibrillazione ventricolare** (arresto cardiaco)
+- **Ustioni**
+
+### Movimentazione Manuale dei Carichi (MMC)
+
+Regolata dall'**Allegato XXXIII** del D.Lgs. 81/08. Il rischio principale è il sovraccarico biomeccanico dell'apparato dorso-lombare.
+
+| Soggetto | Peso massimo standard |
+|----------|----------------------|
+| Uomini adulti | **25 kg** |
+| Donne adulte | **20 kg** |
+
+### Videoterminali (VDT)
+
+È considerato **lavoratore a videoterminale** chi utilizza un VDT in modo sistematico o abituale, per almeno **20 ore settimanali**.
+
+- Diritto a una pausa di **15 minuti** ogni **120 minuti** (2 ore) di applicazione continuativa.
+
+### Agenti Chimici
+
+- Identificati dai **pittogrammi CLP** (rombi a bordo rosso su fondo bianco).
+- L'esposizione può avvenire per via **inalatoria**, **cutanea** o per **ingestione**.
+- La **Scheda di Sicurezza (SDS)** è composta tassativamente da **16 sezioni obbligatorie**.
+
+---
+
+## La Formazione Obbligatoria (Accordi Stato-Regioni) {#sec-formazione}
+
+| Tipo di formazione | Durata | Note |
+|-------------------|--------|------|
+| **Formazione Generale** | 4 ore (tutti i settori) | Credito **permanente** (non scade mai) |
+| **Formazione Specifica — Rischio Basso** | 4 ore (tot. 8 ore) | — |
+| **Formazione Specifica — Rischio Medio** | 8 ore (tot. 12 ore) | — |
+| **Formazione Specifica — Rischio Alto** | 12 ore (tot. 16 ore) | — |
+| **Aggiornamento Lavoratori** | Min. 6 ore | Obbligatorio ogni **5 anni** per tutti i livelli di rischio |
+
+::: {.callout-note}
+Il livello di rischio è determinato dalla **classe di rischio macrosettoriale** dell'azienda in base al **Codice ATECO**.
+:::
