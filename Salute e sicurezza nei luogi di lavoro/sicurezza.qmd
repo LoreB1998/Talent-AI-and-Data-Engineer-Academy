@@ -215,7 +215,7 @@ graph LR
     comburente(("💨 Comburente"))
     innesco(("🔥 Sorgente di innesco"))
 
-    combustibile -->|"alimenta"| kinnesco
+    combustibile -->|"alimenta"| innesco
     innesco -->|"innesca"| comburente
     comburente -->|"sostiene"| combustibile
 ```
