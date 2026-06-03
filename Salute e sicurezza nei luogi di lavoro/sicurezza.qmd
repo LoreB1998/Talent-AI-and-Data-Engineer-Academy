@@ -129,8 +129,17 @@ Il DL che assume il ruolo di RSPP deve frequentare appositi **corsi di formazion
 
 ### Medico Competente (MC)
 
+::: {.callout-important}
+Il MC deve essere nominato dal datore di lavoro **solo quando la valutazione dei rischi evidenzia la presenza di rischi per la salute** che richiedono sorveglianza sanitaria (Art. 18, comma 1, lett. a). Non tutte le aziende sono quindi obbligate ad averlo.
+
+Sono tuttavia definite per legge come attività che richiedono **automaticamente** la sorveglianza sanitaria, tra cui: lavoro ai videoterminali (≥ 20 ore/settimana), lavori su impianti elettrici, lavori in ambienti con agenti chimici, fisici o biologici sopra i valori d'azione, e attività lavorative su strada.
+:::
+
+Il MC è uno **specialista in medicina del lavoro** (o disciplina equipollente). I suoi compiti principali:
+
 - Collabora con il DL alla valutazione dei rischi.
 - Effettua la **Sorveglianza Sanitaria**: visite preventive, periodiche, al cambio mansione, alla cessazione del rapporto di lavoro.
+- **Partecipa alle riunioni periodiche** sulla sicurezza (Art. 35), almeno una volta l'anno nelle aziende con più di 15 lavoratori.
 - Rilascia i **Giudizi di Idoneità** alla mansione:
 
 | Giudizio | Significato |
@@ -287,7 +296,33 @@ I DPI di **Categoria III** richiedono **addestramento pratico obbligatorio**.
 
 ### Nomina degli addetti
 
-Il Datore di Lavoro designa i lavoratori incaricati delle misure di prevenzione incendi e primo soccorso. I lavoratori **non possono rifiutare** la designazione, salvo giustificato motivo clinico certificato.
+Il Datore di Lavoro designa i lavoratori incaricati delle misure di prevenzione incendi e primo soccorso. I lavoratori **non possono rifiutare** la designazione, salvo giustificato motivo certificato (es. condizione medica o psicologica che impedisca di prestare assistenza efficace).
+
+### Sistemi di Protezione Antincendio
+
+I sistemi di protezione si dividono in due categorie:
+
+**Sistemi attivi**
+:   Richiedono un intervento umano o un'attivazione per funzionare. Esempi: estintori, idranti, impianti sprinkler con azionamento manuale.
+
+**Sistemi passivi**
+:   Si attivano autonomamente o sono strutturalmente incorporati nell'edificio, senza necessità di intervento. Esempi: porte tagliafuoco, compartimentazioni, uscite di emergenza, materiali ignifughi.
+
+### Compiti degli Addetti Antincendio
+
+Gli addetti antincendio nominati dal datore di lavoro devono:
+
+- Intervenire nelle **prime fasi dell'emergenza** per contenere l'incendio.
+- **Assistere i lavoratori** nel raggiungimento delle uscite di sicurezza in attesa dei soccorsi.
+- **Vigilare periodicamente** sui rischi di incendio presenti in azienda.
+- **Compilare e aggiornare i registri** delle verifiche periodiche delle attrezzature antincendio.
+- Assicurarsi che idranti ed estintori siano **presenti, efficienti e funzionanti**, pronti ad essere attivati in emergenza.
+
+### Formazione degli Addetti alle Emergenze
+
+::: {.callout-note}
+Sia gli addetti antincendio sia quelli al primo soccorso devono partecipare a **corsi tecnici e pratici** tenuti da personale qualificato. Per il primo soccorso, la formazione è erogata da personale medico e infermieristico. I corsi preparano i lavoratori a gestire gli incidenti specifici del loro luogo di lavoro.
+:::
 
 ### Diritto di abbandono (Art. 44)
 
