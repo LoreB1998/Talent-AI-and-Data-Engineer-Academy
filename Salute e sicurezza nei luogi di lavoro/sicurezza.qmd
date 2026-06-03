@@ -74,6 +74,19 @@ I seguenti due obblighi non possono essere delegati ad altri soggetti, nemmeno c
 
 Qualsiasi altra attività (es. acquisto DPI, gestione della formazione) può essere delegata tramite formale **Delega di Funzioni** (Art. 16).
 
+#### Delega di Funzioni (Art. 16)
+
+Il DL può delegare funzioni di sicurezza ad altri soggetti (es. dirigenti), purché:
+
+- la delega risulti da **atto scritto** con data certa;
+- il delegato possegga tutti i requisiti di professionalità e idoneità necessari;
+- la delega attribuisca al delegato i poteri di organizzazione, gestione e controllo richiesti, nonché **l'autonomia di spesa** necessaria;
+- la delega **non escluda** l'obbligo di vigilanza in capo al delegante.
+
+#### Modelli di Organizzazione e Gestione — MOG (Art. 30)
+
+L'adozione di un MOG conforme alle Linee Guida UNI-INAIL o alle norme ISO 45001 può **escludere la responsabilità amministrativa dell'ente** ai sensi del D.Lgs. 231/2001 in caso di reati commessi in materia di sicurezza nell'interesse o a vantaggio dell'azienda.
+
 ### Dirigente e Preposto
 
 **Dirigente**
@@ -85,14 +98,34 @@ Qualsiasi altra attività (es. acquisto DPI, gestione della formazione) può ess
 - **interrompere l'attività** del lavoratore in caso di persistente inosservanza delle norme di sicurezza;
 - **informare i superiori** di ogni situazione di rischio.
 
-### RSPP e ASPP
+### RSPP e ASPP — Artt. 31–33
 
 **RSPP**
-:   Persona in possesso di attitudini e capacità professionali adeguate, designata dal DL, a cui fa capo il servizio di prevenzione e protezione.
+:   Persona in possesso di attitudini e capacità professionali adeguate (Art. 32), designata dal DL, a cui fa capo il servizio di prevenzione e protezione.
 
 ::: {.callout-note}
 **Nota fondamentale per il test:** L'RSPP ha un ruolo esclusivamente **consultivo e non decisionale**. Non ha potere di spesa autonomo e non ha responsabilità penali dirette per le violazioni della sicurezza, salvo il caso in cui abbia fornito una consulenza errata che ha causato un infortunio.
 :::
+
+#### Tipologie di RSPP (Art. 31)
+
+Il DL deve organizzare il Servizio di Prevenzione e Protezione **prioritariamente all'interno** dell'azienda. Può avvalersi di persone o servizi esterni solo se non dispone internamente di personale adeguato. In alcuni settori (es. centrali termoelettriche, impianti nucleari, attività minerarie, fabbricazione di esplosivi) l'RSPP deve essere **obbligatoriamente interno** (Art. 31, comma 6).
+
+#### Il Datore di Lavoro può svolgere il ruolo di RSPP (Art. 34)
+
+::: {.callout-important}
+Nei casi previsti dall'**Allegato II** del D.Lgs. 81/08, il datore di lavoro può svolgere **direttamente** i compiti dell'RSPP (cosiddetto **DL-RSPP** o **DLSPP**), dandone preventiva informazione all'RLS. I casi principali previsti dall'Allegato II sono:
+
+- Aziende artigiane e industriali fino a **30 lavoratori** (esclusi settori ad alto rischio)
+- Aziende agricole e zootecniche fino a **30 lavoratori**
+- Aziende della pesca fino a **20 lavoratori**
+- Altre aziende fino a **200 lavoratori**
+
+Il DL che assume il ruolo di RSPP deve frequentare appositi **corsi di formazione** e relativi aggiornamenti ogni 5 anni (Accordo Stato-Regioni).
+:::
+
+**ASPP**
+:   Addetto al Servizio di Prevenzione e Protezione, affianca l'RSPP nell'espletamento dei compiti del servizio.
 
 ### Medico Competente (MC)
 
@@ -107,11 +140,43 @@ Qualsiasi altra attività (es. acquisto DPI, gestione della formazione) può ess
 | Inidoneo temporaneo | Non idoneo per un periodo definito |
 | Inidoneo permanente | Non idoneo in modo definitivo |
 
-### RLS (Rappresentante dei Lavoratori per la Sicurezza)
+### RLS (Rappresentante dei Lavoratori per la Sicurezza) — Art. 47
 
-- Eletto o designato dai lavoratori per rappresentarli in tutti gli aspetti della salute e sicurezza.
-- Ha **diritto di accesso** ai luoghi di lavoro e a tutta la documentazione aziendale sulla sicurezza (incluso il DVR).
+L'RLS è eletto o designato dai lavoratori in **tutte le aziende o unità produttive** (Art. 47, comma 2). Le modalità variano in base alla dimensione aziendale:
+
+| Dimensione | Modalità di elezione/designazione |
+|------------|----------------------------------|
+| **Fino a 15 lavoratori** | Eletto direttamente dai lavoratori al loro interno (Art. 47, c. 3) |
+| **Più di 15 lavoratori** | Eletto o designato nell'ambito delle **Rappresentanze Sindacali in azienda (RSU/RSA)**; in loro assenza, eletto direttamente dai lavoratori (Art. 47, c. 4) |
+
+::: {.callout-note}
+**Numero minimo di RLS** (Art. 47, comma 7):
+
+- **1 RLS** per aziende fino a 200 lavoratori
+- **3 RLS** per aziende da 201 a 1.000 lavoratori
+- **6 RLS** per aziende oltre 1.000 lavoratori
+:::
+
+**Attribuzioni principali (Art. 50):**
+
+- Ha **diritto di accesso** ai luoghi di lavoro e a tutta la documentazione aziendale sulla sicurezza, incluso il DVR.
 - Deve essere **consultato preventivamente e tempestivamente** sulla valutazione dei rischi.
+- Può fare ricorso alle autorità competenti qualora ritenga inadeguate le misure adottate.
+
+::: {.callout-important}
+L'RLS **non può coincidere con il RSPP** nominato dal datore di lavoro (Art. 50, comma 6).
+:::
+
+**Formazione dell'RLS (Art. 37, comma 10):**
+Minimo **32 ore** iniziali, con aggiornamento periodico in relazione ai rischi specifici del settore.
+
+#### RLST — Rappresentante dei Lavoratori per la Sicurezza Territoriale (Art. 48)
+
+Qualora in un'azienda non venga eletto o designato un RLS aziendale, le sue funzioni sono svolte dal **RLST**, che opera su base territoriale o di comparto. Le aziende prive di RLS proprio sono tenute a partecipare al **Fondo di sostegno** (Art. 52) istituito presso l'INAIL.
+
+#### RLSSP — Rappresentante dei Lavoratori per la Sicurezza di Sito Produttivo (Art. 49)
+
+Figura prevista nei **siti produttivi di grandi dimensioni** ove operano più imprese o cantieri, con particolari caratteristiche organizzative.
 
 ---
 
@@ -125,6 +190,31 @@ Il lavoratore risponde penalmente (sanzioni amministrative, ammende o arresto) s
 4. Deve **segnalare immediatamente** qualsiasi condizione di pericolo.
 5. **Non può** rimuovere o modificare i dispositivi di sicurezza o di segnalazione senza autorizzazione.
 6. Deve sottoporsi ai programmi di formazione, addestramento e alla sorveglianza sanitaria obbligatoria.
+
+---
+
+## Il Sistema della Prevenzione in Azienda: Il SPP {#sec-spp}
+
+Il **Servizio di Prevenzione e Protezione (SPP)** è l'insieme delle persone, sistemi e mezzi interni o esterni all'azienda finalizzati all'attività di prevenzione e protezione dai rischi. È composto dall'RSPP e dagli ASPP.
+
+### Compiti del SPP (Art. 33)
+
+- Individuare i fattori di rischio e le misure per la sicurezza.
+- Elaborare le misure preventive e protettive e i sistemi di controllo.
+- Elaborare le procedure di sicurezza per le attività aziendali.
+- Proporre i programmi di formazione e informazione.
+- Partecipare alle consultazioni in materia di sicurezza.
+
+---
+
+## Organismi Paritetici (Art. 51) {#sec-organismi-paritetici}
+
+Sono organismi costituiti a iniziativa di una o più associazioni dei datori e dei prestatori di lavoro. Svolgono funzioni di:
+
+- **supporto** alle imprese nell'attuazione delle norme in materia di salute e sicurezza;
+- **orientamento** e promozione di buone pratiche;
+- **formazione**: i loro attestati costituiscono credito formativo permanente;
+- **designazione del RLST** nei territori in cui operano.
 
 ---
 
@@ -391,3 +481,87 @@ Dal **1° ottobre 2024** imprese e lavoratori autonomi che operano in **cantieri
 | **PSC** — Piano di Sicurezza e Coordinamento | CSP | Quando operano più imprese |
 | **POS** — Piano Operativo di Sicurezza | Ciascuna impresa esecutrice | Sempre |
 | **Notifica Preliminare** | Committente/RL | Quando prevista dall'Allegato XII (cantieri oltre soglia) |
+
+---
+
+## Sorveglianza Sanitaria (Titolo I, Art. 41) {#sec-sorveglianza}
+
+La sorveglianza sanitaria è effettuata dal **Medico Competente** e comprende:
+
+| Tipo di visita | Quando |
+|----------------|--------|
+| **Preventiva** | Prima dell'assunzione o del cambio mansione |
+| **Periodica** | Con periodicità stabilita dal MC (default: annuale o secondo protocollo) |
+| **Su richiesta del lavoratore** | Quando la mansione può comportare rischi per la salute |
+| **Al cambio mansione** | In caso di variazione delle attività svolte |
+| **Alla cessazione del rapporto di lavoro** | Per i lavoratori esposti ad agenti con effetti a lungo termine |
+| **Dopo assenza superiore a 60 giorni** | Per verificare l'idoneità alla ripresa del lavoro |
+
+::: {.callout-important}
+Il lavoratore ha l'**obbligo** di sottoporsi alla sorveglianza sanitaria. Il giudizio di idoneità è comunicato anche al datore di lavoro.
+
+**Avverso il giudizio di idoneità** il lavoratore (e il DL) possono ricorrere, entro 30 giorni, all'**organo di vigilanza territorialmente competente** (ASL/SPRESAL).
+:::
+
+---
+
+## Informazione e Formazione dei Lavoratori (Artt. 36–37) {#sec-informazione}
+
+### Informazione (Art. 36)
+
+Il datore di lavoro provvede affinché ciascun lavoratore riceva **informazioni** su:
+
+- i rischi specifici cui è esposto in relazione all'attività svolta;
+- le procedure di primo soccorso, lotta antincendio ed evacuazione;
+- i nominativi del RSPP, ASPP, Medico Competente e addetti alle emergenze.
+
+### Formazione (Art. 37)
+
+La formazione deve essere:
+
+- **sufficiente e adeguata** alla mansione e ai rischi;
+- **comprensibile** per il lavoratore (anche in lingua madre se necessario);
+- **aggiornata** periodicamente in relazione all'evoluzione dei rischi.
+
+::: {.callout-note}
+La formazione **non può avvenire durante il lavoro ordinario** e deve essere svolta **in orario di lavoro** (è retribuita).
+:::
+
+---
+
+## Principali Sanzioni (Artt. 55–60) {#sec-sanzioni}
+
+Il D.Lgs. 81/08 prevede un sistema sanzionatorio articolato. Di seguito le fattispecie più ricorrenti nei test.
+
+### Sanzioni per il Datore di Lavoro e il Dirigente (Art. 55)
+
+| Violazione | Sanzione |
+|-----------|---------|
+| Mancata valutazione dei rischi e redazione del DVR | **Arresto** da 3 a 6 mesi o ammenda |
+| Mancata nomina dell'RSPP | **Arresto** da 3 a 6 mesi o ammenda |
+| Mancata nomina del Medico Competente (ove previsto) | Ammenda |
+| Mancata formazione dei lavoratori | Arresto o ammenda |
+
+### Sanzioni per il Preposto (Art. 56)
+
+Arresto o ammenda per la mancata sorveglianza sulla corretta applicazione delle disposizioni.
+
+### Sanzioni per il Lavoratore (Art. 59)
+
+Il lavoratore può essere sanzionato con **arresto fino a 1 mese** o **ammenda** per:
+
+- mancato utilizzo dei DPI;
+- rimozione o modifica dei dispositivi di sicurezza;
+- mancata partecipazione alla formazione obbligatoria.
+
+::: {.callout-warning}
+**Principio di effettività:** la responsabilità penale segue la reale posizione di controllo e potere decisionale, non solo la qualifica formale. Chi esercita di fatto i poteri del datore di lavoro ne assume anche le responsabilità.
+:::
+
+---
+
+## Comunicazione degli Infortuni (Art. 18, comma 1, lett. r) {#sec-infortuni}
+
+Il datore di lavoro ha l'obbligo di **comunicare all'INAIL** gli infortuni sul lavoro che comportano un'assenza superiore a **3 giorni** (escluso quello dell'evento), **entro 2 giorni** dalla ricezione del certificato medico.
+
+In caso di **infortuni mortali o con pericolo di morte**, la comunicazione all'INAIL e all'Autorità di Pubblica Sicurezza deve avvenire **entro 24 ore**.
