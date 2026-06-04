@@ -176,7 +176,7 @@ Joe,Jones,joe@litware.com
 
 JSON è un formato universale in cui si usa uno schema di documento gerarchico per definire entità di dati (oggetti) che hanno più attributi. Ogni attributo può essere un oggetto (o una raccolta di oggetti), rendendo JSON un formato flessibile adatto sia per i dati strutturati che per i dati semistrutturati.
 
-L'esempio seguente mostra un documento JSON contenente una raccolta di clienti. Ogni cliente ha tre attributi (firstName, lastName e contact) e l'attributo contact contiene una raccolta di oggetti che rappresentano uno o più metodi di contatto (posta elettronica o telefono). Gli oggetti sono racchiusi tra parentesi graffe (`{..}`) e le raccolte sono racchiuse tra parentesi quadre (`[..]`). Gli attributi sono rappresentati da coppie nome:valore e separate da virgole (`,`).
+L'esempio seguente mostra un documento JSON contenente una raccolta di clienti. Ogni cliente ha tre attributi (firstName, lastName e contact) e l'attributo contact contiene una raccolta di oggetti che rappresentano uno o più metodi di contatto (posta elettronica o telefono). Gli oggetti sono racchiusi tra parentesi graffe (`{..}`) e le raccolte sono racchiuse tra parentesi quadre (`[..]`). Gli attributi sono rappresentati da coppie `chiave:valore` e separate da virgole (`,`).
 
 :::{#lst-json-customers2}
 ```{.json filename="JSON"}
@@ -216,7 +216,7 @@ Esempio codice JSON
 :::
 
 ### Extensible Markup Language (XML)
-XML è un formato di dati leggibile diffuso negli anni '90 e 2000. È stato in gran parte superato dal meno dettagliato formato JSON, ma esistono ancora alcuni sistemi che usano XML per rappresentare i dati. XML usa tag racchiusi tra parentesi angolari (<.. />) per definire elementi e attributi, come illustrato in questo esempio:
+XML è un formato di dati leggibile diffuso negli anni '90 e 2000. È stato in gran parte superato dal meno dettagliato formato JSON, ma esistono ancora alcuni sistemi che usano XML per rappresentare i dati. XML usa tag racchiusi tra parentesi angolari (`<.. />`) per definire elementi e attributi, come illustrato in questo esempio:
 
 :::{#lst-XML-example}
 ```{.xml filename="XML"}
@@ -368,7 +368,7 @@ Diversi tipi di utenti possono eseguire operazioni analitiche sui dati in divers
 
 ### Piattaforme di analisi moderne
 
-Azure offre diversi servizi gestiti che coprono la pipeline di analisi completa, dall'inserimento di dati non elaborati a report interattivi. Due piattaforme "all-in-one" riuniscono la maggior parte di queste funzionalità in un'unica area di lavoro. **Microsoft Fabric** e **Azure Databricks** sono queste due piattaforme; un terzo servizio,** Microsoft Purview**, incentrato sulla governance dei dati in tutte le origini. Non è ancora necessario avere familiarità con nessuno di questi servizi. Le descrizioni seguenti offrono un'idea generale di ciò che ognuno fa.
+Azure offre diversi servizi gestiti che coprono la pipeline di analisi completa, dall'inserimento di dati non elaborati a report interattivi. Due piattaforme "all-in-one" riuniscono la maggior parte di queste funzionalità in un'unica area di lavoro. **Microsoft Fabric** e **Azure Databricks** sono queste due piattaforme; un terzo servizio, **Microsoft Purview**, incentrato sulla governance dei dati in tutte le origini. Non è ancora necessario avere familiarità con nessuno di questi servizi. Le descrizioni seguenti offrono un'idea generale di ciò che ognuno fa.
 
 **Microsoft Fabric** è una piattaforma di analisi SaaS (Software as a Service) unificata che offre funzionalità di archiviazione, ingegneria dei dati, data warehousing e creazione di report in un'unica area di lavoro. **Azure Databricks** è una piattaforma di analisi cloud creata per data engineering e data science su larga scala, usando **Delta Lake**, Parquet e un log delle transazioni che consente il controllo delle versioni e le transazioni ACID, come formato di archiviazione standard. **Microsoft Purview** offre sicurezza unificata dei dati, governance e conformità, consentendo di individuare, classificare, proteggere e gestire i dati in tutte le origini dati.
 
