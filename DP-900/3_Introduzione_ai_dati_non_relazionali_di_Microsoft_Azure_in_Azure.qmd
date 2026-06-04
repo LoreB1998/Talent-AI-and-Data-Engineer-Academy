@@ -2,20 +2,21 @@
 title: "Introduzione ai dati non relazionali di Microsoft Azure in Azure"
 subtitle: "DP-900"
 author: "Lorenzo Barbato"
-date: today
-date-format: "DD MMMM YYYY"
 lang: it
 watch-inputs: true
 embed-resources: true
 format:
   html:
-    theme: lumen            # Temi puliti e professionali: cosmo, flatly, lumen, o sandstone per quello scuri darkly, cyborg, slate, solar
+    theme: 
+        dark: darkly            # Temi puliti e professionali: cosmo, flatly, lumen, o sandstone per quello scuri darkly, cyborg, slate, solar
+        light: flatly
     toc: true              # Genera automaticamente l'indice dei contenuti a destra
     toc-title: "Indice"    # Titolo dell'indice
     toc-depth: 3           # Profondità dell'indice (fino a ###)
     number-sections: true  # Numera automaticamente i capitoli (1., 1.1, ecc.)
     code-fold: true        # Se aggiungi codice Python, lo nasconde dietro un bottone cliccabile
     smooth-scroll: true    # Rende lo scorrimento cliccando sull'indice più fluido
+    respect-user-color-scheme: true
     css: style.css
 ---
 
