@@ -1,0 +1,1894 @@
+---
+title: "Concetti di intelligenza artificiale per sviluppatori e professionisti della tecnologia"
+subtitle: "AI-900"
+author: "Lorenzo Barbato"
+lang: it
+watch-inputs: true
+embed-resources: true
+format:
+  html:
+    theme: 
+        dark: darkly       # Temi puliti e professionali: cosmo, flatly, lumen, o sandstone per quello scuri darkly, cyborg, slate, solar
+        light: flatly
+    toc: true              # Genera automaticamente l'indice dei contenuti a destra
+    toc-title: "Indice"    # Titolo dell'indice
+    toc-depth: 3           # Profondità dell'indice (fino a ###)
+    number-sections: true  # Numera automaticamente i capitoli (1., 1.1, ecc.)
+    code-fold: true        # Se aggiungi codice Python, lo nasconde dietro un bottone cliccabile
+    smooth-scroll: true    # Rende lo scorrimento cliccando sull'indice più fluido
+    respect-user-color-scheme: true
+    css: style.css
+---
+
+# Introduzione ai concetti relativi all'intelligenza artificiale
+
+## Intelligenza artificiale generativa e agenti
+
+L'*intelligenza artificiale generativa* è un ramo di intelligenza artificiale che consente alle applicazioni software di generare nuovi contenuti; spesso dialoghi in linguaggio naturale, ma anche immagini, video, codice e altri formati.
+
+Ad esempio, un sito Web della cronologia di calcolo può fornire un'interfaccia di chat di intelligenza artificiale generativa in cui gli utenti possono immettere domande su figure chiave, tecnologie ed eventi nella cronologia del calcolo.
+
+![](assets/01_AI.png){width=80% fig-align="center"}
+
+La possibilità di chattare con il sito e di generare risposte originali alle domande crea un'esperienza interattiva accattivante per gli utenti.
+
+### Come funziona l'IA generativa?
+
+La possibilità di generare contenuto è basata su un *modello linguistico*, che è stato sottoposto a training con enormi volumi di dati, spesso documenti provenienti da Internet o da altre fonti pubbliche di informazioni.
+
+![](assets/02_AI.png){width=50% fig-align="center"}
+
+Gli utenti interagiscono con i *modelli linguistici generativi* di intelligenza artificiale tramite richieste: istruzioni o domande in linguaggio naturale. Il modello linguistico in una soluzione di intelligenza artificiale generativa usa il prompt per avviare la generazione di una risposta significativa.
+
+I *modelli di intelligenza artificiale* generativi incapsulano relazioni semantiche tra gli elementi del linguaggio (un modo interessante di dire che i modelli "sanno" come le parole sono correlate tra loro) e questo è ciò che consente loro di generare una sequenza significativa di testo.
+
+Esistono* modelli di linguaggio di grandi dimensioni* e *modelli di linguaggio di piccole dimensioni*. La differenza si basa sul volume di dati e sul numero di variabili nel modello. I modelli linguistici di grandi dimensioni sono potenti e generalizzano bene, ma possono essere più costosi da addestrare e da usare. I modelli di linguaggio di piccole dimensioni (SLM) tendono a operare bene in scenari più incentrati su aree tematiche specifiche o che richiedono la distribuzione semplice di modelli di piccole dimensioni per applicazioni e agenti locali su dispositivi.
+
+### Che cosa sono gli agenti?
+
+Gli agenti sono applicazioni software basate sull'intelligenza artificiale generativa che possono ragionare e generare linguaggio naturale, automatizzare le attività usando gli strumenti e rispondere alle condizioni contestuali per intraprendere azioni appropriate.
+
+![](assets/03_AI.png){fig-align="center" width=50%}
+
+Gli agenti di intelligenza artificiale hanno tre elementi chiave:
+
+- **Un modello linguistico di grandi dimensioni**: questo è il cervello dell'agente; uso dell'intelligenza artificiale generativa per la comprensione e il ragionamento del linguaggio.
+- **Istruzioni**: richiesta di sistema che definisce il ruolo e il comportamento dell'agente. Pensa a questa come alla descrizione delle mansioni dell'agente.
+- **Strumenti**: si tratta di ciò che l'agente usa per interagire con il mondo. Gli strumenti possono includere:
+  - *Strumenti di conoscenza* che forniscono l'accesso alle informazioni, ad esempio motori di ricerca o database
+  - *Strumenti di azione* che consentono all'agente di eseguire attività, ad esempio l'invio di messaggi di posta elettronica, l'aggiornamento di calendari o il controllo dei dispositivi.
+
+Con queste funzionalità, gli agenti di intelligenza artificiale possono assumere il ruolo di assistenti digitali che automatizzano in modo intelligente le attività e collaborano con l'utente per lavorare in modo più intelligente ed efficiente.
+
+### Scenari di intelligenza artificiale generativi e agentici
+
+Gli usi comuni dell'intelligenza artificiale generativa e degli agenti includono:
+
+- Creazione di chat bot che rispondono alle domande dell'utente o interagiscono nella conversazione
+- Implementazione di assistenti di intelligenza artificiale che aiutano gli utenti umani automatizzando le attività
+- Creazione di nuovi documenti o altro contenuto (spesso come punto di partenza per un ulteriore sviluppo iterativo)
+- Traduzione automatica del testo tra le lingue.
+Riepilogo o spiegazione di documenti complessi.
+
+## Testo e linguaggio naturale
+
+L'elaborazione del linguaggio naturale (NLP) è un termine generale che copre modelli e tecniche di intelligenza artificiale per avere un senso del linguaggio. L'elaborazione del linguaggio naturale è la base su cui vengono costruiti grandi modelli di linguaggio di intelligenza artificiale (LLMs).
+
+Le tecniche NLP si basa sull'abilitazione di soluzioni di analisi del testo in grado di analizzare e riepilogare il testo in linguaggio naturale. Ad esempio, il sito della cronologia di calcolo potrebbe consentire agli utenti di riepilogare gli articoli relativi agli eventi cronologici principali ed estrarre nomi, luoghi e date specifici da essi.
+
+### Tecniche di analisi del testo
+
+Anche se molti scenari di elaborazione del linguaggio naturale sono attualmente gestiti da modelli di intelligenza artificiale generativi, esistono casi d'uso comuni di analisi del testo in cui vengono usati strumenti di prevenzione della perdita dei dati specifici per produrre risultati prevedibili o applicare regole personalizzate.
+
+![](assets/04_AI.png){fig-align="center" width=50%}
+
+- *Rilevamento della lingua*: determinazione della lingua (o delle lingue) in cui è scritto un documento. Il rilevamento della lingua è spesso il primo passaggio di un flusso di lavoro di elaborazione del testo in più fasi.
+- *Classificazione del testo*: assegnazione di un documento a una categoria specifica; inclusa l'analisi del sentiment per determinare se un corpo del testo è positivo, negativo o neutro.
+- *Estrazione di termini chiave e rilevamento di entità*: identificazione di parole chiave o frasi in un documento e individuazione di menzioni di entità come persone, luoghi e organizzazioni. Una forma particolarmente specializzata di rilevamento delle entità consiste nel rilevare e redattire informazioni personali (PII) personali; ad esempio nomi, indirizzi, numeri di telefono e altri dettagli privati.
+- *Riepilogo* - riduzione del testo racchiudendo i punti principali.
+
+### Scenari di analisi del testo
+Gli usi comuni delle tecnologie NLP per l'analisi del testo includono:
+
+- Analisi di documenti o trascrizioni di chiamate e riunioni per determinare gli argomenti chiave e identificare menzioni specifiche di persone, luoghi, organizzazioni, prodotti o altre entità.
+- Analisi di post di social media, recensioni di prodotti o articoli per valutare il sentiment e l'opinione.
+- Implementazione di chatbot che possono rispondere a domande frequenti o orchestrare dialoghi di conversazione prevedibili che non richiedono la complessità dell'intelligenza artificiale generativa.
+- Redigere i dati PII prima di condividerli o analizzarli per conformarsi alle politiche sulla privacy e alla legislazione.
+
+## Funzionalità vocali
+
+Le *funzionalità vocali* nelle applicazioni e negli agenti di intelligenza artificiale consentono agli utenti di interagire con loro tramite la lingua parlata.
+
+Ad esempio, il sito della cronologia di calcolo può includere un pulsante microfono che consente agli utenti di porre domande verbalmente e rispondere sintetizzando le risposte pronunciate.
+
+![](assets/05_AI.png){fig-align="center" width=80%}
+
+### Riconoscimento vocale
+
+![](assets/06_AI.png){fig-align="center" width=50%}
+
+Il *riconoscimento vocale* è la capacità di intelligenza artificiale di "ascoltare" e interpretare il parlato. In genere questa funzionalità assume la forma di sintesi vocale (dove il segnale audio per il parlato viene trascritto in testo).
+
+### Sintesi vocale
+
+![](assets/07_AI.png){fig-align="center" width=50%}
+
+La *sintesi vocale* è la capacità dell'intelligenza artificiale di pronunciare le parole come lingua parlata. In genere questa funzionalità assume la forma di sintesi vocale in cui le informazioni in formato testo vengono convertite in un segnale acustico.
+
+La tecnologia di riconoscimento vocale di intelligenza artificiale si sta evolvendo rapidamente per gestire sfide come ignorare il rumore di fondo, rilevare le interruzioni e generare voci sempre più espressive e simili a quelle umane.
+
+### Scenari di riconoscimento vocale per intelligenza artificiale
+
+Gli usi comuni delle tecnologie vocali di intelligenza artificiale includono:
+
+- Gli agenti di intelligenza artificiale che comprendono l'input parlato, eseguono attività e rispondono con risultati vocali.
+- Trascrizione automatica di chiamate o riunioni.
+- Automazione delle descrizioni audio del video o del testo.
+- Traduzione vocale automatica tra le lingue.
+
+## Computer Vision
+
+*computer vision* è l'area dell'intelligenza artificiale che si occupa dell'analisi dell'input visivo; ad esempio fotografie, video e feed di fotocamere live.
+
+Ad esempio, è possibile estendere il sito della cronologia di calcolo per consentire agli utenti di caricare immagini di computer vintage, che possono essere analizzati, identificati e descritti.
+
+![](assets/08_AI.png){fig-align="center" width=80%}
+
+### Come funziona computer vision?
+La computer vision viene eseguita usando un numero elevato di immagini per eseguire il training di un modello.
+
+![](assets/09_AI.png){fig-align="center" width=50%}
+
+Esistono più tipi di modello di computer vision.
+
+- La *classificazione* delle immagini è una forma di computer vision in cui viene eseguito il training di un modello con immagini etichettate con l'oggetto principale dell'immagine (in altre parole, quello di cui è un'immagine) in modo che possa analizzare immagini senza etichetta e prevedere l'etichetta più appropriata, identificando l'oggetto dell'immagine.
+- Il *rilevamento* degli oggetti è una forma di computer vision in cui viene eseguito il training del modello per identificare la posizione di oggetti specifici in un'immagine.
+- La *segmentazione semantica* è una forma avanzata di rilevamento degli oggetti in cui, anziché indicare la posizione di un oggetto disegnando una casella intorno, il modello può identificare i singoli pixel nell'immagine che appartengono a un oggetto specifico.
+- I *modelli multi modali* combinano caratteristiche visive e descrizioni di testo associate, consentendo loro di generare descrizioni complete delle immagini.
+
+### Scenari di computer vision
+Gli usi comuni della computer vision includono:
+
+- Agenti di intelligenza artificiale che possono interpretare l'input visivo.
+- Creazione automatica di didascalie o generazione di tag per le fotografie.
+- Ricerca visiva.
+- Monitoraggio dei livelli delle scorte o identificazione degli articoli per il checkout negli scenari di vendita al dettaglio.
+- Monitoraggio video di sicurezza.
+- Autenticazione tramite riconoscimento facciale.
+- Robotica e veicoli auto-guida.
+
+## Estrazione di informazioni
+
+L'intelligenza artificiale viene comunemente usata per automatizzare le soluzioni di *estrazione delle informazioni* che trovano informazioni e sbloccano informazioni dettagliate in origini dati non strutturate, ad esempio documenti e moduli digitalizzati, immagini e registrazioni audio o video.
+
+Ad esempio, è possibile estendere le funzionalità di computer vision dell'applicazione cronologia di calcolo per estrarre i numeri di serie e altro testo dalle immagini dei componenti del computer e usare le informazioni per identificare il computer di origine.
+
+### Come funziona l'estrazione delle informazioni?
+
+La base per la maggior parte delle soluzioni di analisi dei documenti è una tecnologia di computer vision denominata *riconoscimento ottico dei caratteri* (OCR), che può identificare la posizione del testo in un'immagine. OCR viene spesso combinato con un modello analitico in grado di *interpretare* i singoli valori nel documento e quindi estrarre campi specifici. Ad esempio, per associare il testo estratto da una ricevuta ai campi in una presentazione di rimborso spese.
+
+![](assets/10_AI.png){fig-align="center" width=50%}
+
+Anche se la maggior parte dei modelli di estrazione dei dati si è sempre concentrata sull'estrazione di campi da moduli basati su testo, modelli più avanzati in grado di estrarre informazioni dalla registrazione audio, dalle immagini e dai video stanno diventando sempre più disponibili.
+
+### Scenari di estrazione dei dati e delle informazioni dettagliate
+
+Gli usi comuni dell'intelligenza artificiale per estrarre dati e informazioni dettagliate includono:
+
+- Elaborazione automatizzata di moduli e altri documenti in un processo aziendale, ad esempio l'elaborazione di una richiesta di spesa.
+- Digitalizzazione su larga scala dei dati dei moduli cartacei. Ad esempio, l'analisi e l'archiviazione dei record del censimento.
+- Indicizzazione di documenti per la ricerca.
+- Identificazione di punti chiave e azioni di completamento da trascrizioni o registrazioni delle riunioni.
+
+## Intelligenza artificiale responsabile
+
+L'IA responsabile è un termine usato per descrivere le considerazioni per la creazione di sistemi di IA che includono protezioni per ridurre il rischio di generazione di contenuti dannosi, illegali o offensivi o azioni automatizzate.
+
+Ad esempio, la soluzione di cronologia di calcolo deve evitare di fornire informazioni agli utenti che potrebbero aiutare o incoraggiare attività illegali o dannose.
+
+![](assets/11_AI.png){fig-align="center" width=80%}
+
+I filtri di contenuto sono un modo per ridurre il rischio di generazione di contenuti dannosi dai sistemi di intelligenza artificiale; ma una soluzione di IA responsabile richiede una considerazione dei principi chiave della sua concezione, attraverso la progettazione e l'implementazione, e nel suo funzionamento.
+
+### Principi dell'intelligenza artificiale responsabile
+
+|Principio	| Descrizione|
+|:---|:-----------|
+|**Equità**	|I modelli di intelligenza artificiale vengono sottoposti a training usando i dati, che in genere vengono originati e selezionati dagli esseri umani. Esiste un rischio sostanziale che i criteri di selezione dei dati o i dati stessi riflettano pregiudizi inconsci che possono causare la produzione di output discriminatori da parte di un modello. Gli sviluppatori di intelligenza artificiale devono prendersi cura di ridurre al minimo le distorsioni nei dati di training e testare i sistemi di intelligenza artificiale per l'equità.|
+|**Affidabilità e sicurezza** | L'intelligenza artificiale si basa su modelli probabilistici, non è infallibile. Le applicazioni basate sull'intelligenza artificiale devono tenerne conto e attenuare i rischi di conseguenza.|
+|**Sicurezza e privacy** | I modelli vengono sottoposti a training usando dati, che possono includere informazioni personali. Gli sviluppatori di intelligenza artificiale hanno la responsabilità di garantire che i dati di training siano protetti e che i modelli sottoposti a training non possano essere usati per rivelare i dettagli personali o dell'organizzazione privati.|
+|**Inclusione**	| Il potenziale dell'IA per migliorare la vita e favorire il successo dovrebbe essere aperto a tutti. Gli sviluppatori di intelligenza artificiale devono cercare di garantire che le soluzioni non escludano alcuni utenti.|
+|**Trasparenza** | A volte l'intelligenza artificiale può sembrare "magic", ma è importante rendere gli utenti consapevoli del funzionamento del sistema e delle potenziali limitazioni che potrebbe avere.|
+|**Responsabilità**	| In definitiva, le persone e le organizzazioni che sviluppano e distribuiscono soluzioni di intelligenza artificiale sono responsabili delle loro azioni. È importante per le organizzazioni che sviluppano modelli e applicazioni di intelligenza artificiale definire e applicare un framework di governance per garantire che applichino principi di IA responsabili al loro lavoro.|
+
+### Esempi di intelligenza artificiale responsabile
+Di seguito sono riportati alcuni esempi di scenari in cui devono essere applicate le procedure di IA responsabili:
+
+- Un sistema di ammissione all'università basato sull'IA deve essere testato per garantire che valuta tutte le applicazioni in modo equo, tenendo conto dei criteri accademici pertinenti, evitando la discriminazione infondata in base a fattori demografici irrilevanti.
+- Una soluzione robotica basata sull'intelligenza artificiale che utilizza la computer vision per rilevare oggetti deve evitare lesioni o danni accidentali. Un modo per raggiungere questo obiettivo consiste nell'usare i valori di probabilità per determinare la "confidenza" nell'identificazione dell'oggetto prima di interagire con gli oggetti fisici ed evitare qualsiasi azione se il livello di confidenza è inferiore a una soglia specifica.
+- Un sistema di identificazione facciale usato in un aeroporto o in un'altra area sicura deve eliminare immagini personali usate per l'accesso temporaneo non appena non sono più necessarie. Inoltre, le misure di sicurezza devono impedire che le immagini siano rese accessibili agli operatori o agli utenti che non hanno bisogno di visualizzarli.
+- Un agente di intelligenza artificiale che offre un'interazione basata sul riconoscimento vocale deve anche generare didascalie di testo per evitare che il sistema sia inutilizzabile per gli utenti con problemi di udito.
+Una banca che usa un'applicazione di approvazione dei prestiti basata sull'IA deve divulgare l'uso dell'IA e descrivere le caratteristiche dei dati su cui è stato eseguito il training (senza rivelare informazioni riservate).
+
+# Introduzione all'intelligenza artificiale e agli agenti generativi
+
+## Introduzione
+
+L'IA generativa e le tecnologie che lo implementano sono sempre più nella coscienza pubblica, anche tra le persone che non lavorano nei ruoli tecnologici o hanno un background in ambito informatico o machine learning. Il futurista e romanziere Arthur C. Clarke è citato come osservare che "qualsiasi tecnologia sufficientemente avanzata è indistinguibile dalla magia". Nel caso dell'IA generativa, sembra avere una capacità quasi miracolosa di produrre contenuti originali simili a quelli umani, tra cui poesia, prosa e persino codice informatico.
+
+Tuttavia, non esistono procedure guidate coinvolte nell'intelligenza artificiale generativa: solo l'applicazione di tecniche matematiche individuate e perfezionate in modo incrementale nel corso di molti anni di ricerca in statistiche, data science e Machine Learning. È possibile acquisire una conoscenza generale del modo in cui il trucco magico viene eseguito apprendendo i concetti e i principi di base esplorati in questo modulo. Mentre apprendi di più sulle tecnologie di IA generative che abbiamo oggi e su come alimentino una nuova generazione di agenti di intelligenza artificiale, puoi contribuire ad aiutare la società a immaginare nuove possibilità per l'IA domani.
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+## Modelli linguistici di grandi dimensioni (LLM)
+
+Al centro dell'intelligenza artificiale generativa, i modelli linguistici di grandi dimensioni (LLMs) e i loro rapporti più compatti, i modelli linguistici di piccole dimensioni (SLMs), racchiudono le relazioni linguistiche e semantiche tra le parole e le frasi in un vocabolario. Il modello può usare queste relazioni per ragionare sull'input del linguaggio naturale e generare risposte significative e pertinenti.
+
+Fondamentalmente, i modelli linguistici di grandi dimensioni vengono sottoposti a training per generare completamenti basati su prompt. Si considerino esempi super potenti della funzionalità di testo predittivo su molti cellulari. Una richiesta avvia una sequenza di stime di testo che genera un completamento semanticamente corretto. Il trucco è che il modello comprende le relazioni tra le parole e può identificare le parole nella sequenza fino ad ora sono più probabili influenzare quello successivo; e usarlo per prevedere la continuazione più probabile della sequenza.
+
+Si consideri ad esempio la frase seguente:
+
+```txt
+Ho sentito un cane abbaiare ad alta voce a un gatto
+```
+
+Si supponga di aver sentito solo le prime parole: "Ho sentito un cane ...". Si sa che alcune di queste parole sono indizi più utili per quanto riguarda ciò che la parola successiva potrebbe essere di altri. I termini “sentito” e “cane” sono chiari indicatori di quello che seguirà e questo contribuisce a restringere il campo delle probabilità. Sai che c'è una buona probabilità che la frase continuerà come "Ho [sentito]{.underline} un [cane]{.underline} **abbaiare**".
+
+È possibile indovinare la parola successiva perché:
+
+- Hai un grande vocabolario di parole da cui trarre.
+- Si sono apprese strutture linguistiche comuni, in modo da sapere in che modo le parole si riferiscono tra loro in frasi significative.
+- Hai una comprensione dei concetti semantici associati alle parole - sai che qualcosa che hai sentito deve essere un suono di qualche tipo, e sai che ci sono suoni specifici che sono fatti da un cane.
+
+Quindi come si esegue il training di un modello per avere queste stesse abilità?
+
+### Tokenizzazione
+Il primo passaggio consiste nel fornire al modello un ampio vocabolario di parole e frasi; e noi intendiamo grandi. La generazione più recente di LLM include vocabolari costituiti da centinaia di migliaia di token, basati su grandi volumi di dati di training provenienti da Internet e da altre fonti.
+
+Aspetta un attimo. *Token*?
+
+Anche se tendiamo a pensare alla lingua *in termini di parole*, i LLM suddividono il loro vocabolario in token. I token includono parole, ma anche sotto-parole (come "un" in "incredibile" e "improbabile"), punteggiatura e altre sequenze di caratteri comunemente usate. Il primo passaggio del training di un modello linguistico di grandi dimensioni consiste quindi nell'suddividere il testo di training nei token distinti e assegnare un identificatore integer univoco a ognuno di essi, come illustrato di seguito:
+
+- Ho (1)
+- sentito (2)
+- un (3)
+- cane (4)
+- corteccia (5)
+- rumorosamente (6)
+- a (7)
+- un (3) già assegnato
+- gatto (8)
+
+Man mano che si aggiungono altri dati di training, verranno aggiunti altri token al vocabolario e agli identificatori assegnati; così si potrebbe finire con token per parole come *cucciolo*, *skateboard*, *auto* e altri.
+
+:::{.callout-note}
+In questo semplice esempio il testo di esempio è stato tokenizzato in base alle parole. In realtà ci sarebbero anche parole secondarie, punteggiatura e altri token.
+:::
+
+### Trasformazione di token con un *trasformatore*
+
+Ora che è disponibile un set di token con ID univoci, è necessario trovare un modo per correlarli tra loro. A tale scopo, assegnare a ogni token un vettore (matrice di più valori numerici, ad esempio [1, 23, 45]). Ogni vettore ha più elementi numerici o dimensioni ed è possibile usarli per codificare attributi linguistici e semantici del token per fornire una grande quantità di informazioni su cosa significa il token e su come si riferisce ad altri token, in un formato efficiente.
+
+È necessario trasformare le rappresentazioni vettoriali iniziali dei token in nuovi vettori con caratteristiche linguistiche e semantiche incorporate, in base ai contesti in cui vengono visualizzati nei dati di training. Poiché i nuovi vettori includono valori semantici incorporati, vengono chiamati *incorporamenti*.
+
+Per eseguire questa attività, si usa un modello di *trasformatore* . Questo tipo di modello è costituito da due "blocchi":
+
+- Blocco di *codificatore* che crea gli incorporamenti applicando una tecnica chiamata attenzione. Il livello di attenzione esamina a sua volta ogni token e determina il modo in cui è influenzato dai token intorno. Per rendere più efficiente il processo di codifica, viene usata l'attenzione a più teste per valutare più elementi del token in parallelo e assegnare pesi che possono essere usati per calcolare i nuovi valori dell'elemento vettore. I risultati del livello di attenzione vengono inseriti in una rete neurale completamente connessa per trovare la migliore rappresentazione vettoriale dell'incorporamento.
+- Livello *decodificatore* che usa gli incorporamenti calcolati dal codificatore per determinare il token più probabile successivo in una sequenza avviata da un prompt. Il decodificatore usa anche l'attenzione e una rete neurale di feed-forward per effettuare le stime.
+
+![](assets/12_AI.png){fig-align="center" width=70%}
+
+:::{.callout-note}
+L'architettura e il processo del trasformatore sono stati notevolmente semplificati nella descrizione e nel diagramma. Non preoccuparti troppo dei dettagli specifici del funzionamento dell'attenzione: il punto chiave è che consente di acquisire caratteristiche linguistiche e semantiche di ogni token in base ai contesti in cui viene usato. Se vuoi un approfondimento sull'architettura del trasformatore e su come usa l'attenzione, puoi leggere il documento originale Attention is all you need.
+:::
+
+### Vettori iniziali e codifica posizionale
+
+Inizialmente, i valori del vettore del token vengono assegnati in modo casuale, prima di essere inseriti tramite il trasformatore per creare vettori di incorporamento. I vettori di token vengono inseriti nel trasformatore insieme a una codifica posizionale che indica dove appare il token nella sequenza di testo di training (è necessario eseguire questa operazione perché l'ordine in cui i token vengono visualizzati nella sequenza è rilevante per la correlazione tra loro). Ad esempio, i token potrebbero iniziare a apparire così:
+
+| Token | ID del Token | Posizione | Vector |
+| :--- | :---: | :---: | :--- |
+| **I** | 1 | 1 | `[3, 7, 10]` |
+| **sentito** | 2 | 2 | `[2, 15, 1]` |
+| **a** | 3 | 3 | `[9, 11, 1]` |
+| **cane** | 4 | 4 | `[2, 7, 11]` |
+| **corteccia** | 5 | 5 | `[9, 12, 0]` |
+| **voce** | 6 | 6 | `[3, 8, 13]` |
+| **at** | 7 | 7 | `[5, 7, 10]` |
+| **a** | 3 | 8 | `[9, 11, 1]` |
+| **gatto** | 8 | 9 | `[8, -6, 9]` |
+| *...* | *...* | *...* | *...* |
+| **cucciolo** | 127 | 45 | `[7, 7, -2]` |
+| **automobile** | 128 | 56 | `[5, -5, 1]` |
+| **skateboard** | 129 | 67 | `[4, 7, 14]` |
+
+:::{.callout-note}
+Abbiamo mantenuto le cose semplici usando vettori con solo tre elementi (che ci aiuteranno a visualizzarli in tre dimensioni in un secondo momento). In realtà, i vettori hanno migliaia di elementi.
+:::
+
+### Attenzione e incorporamenti
+
+Per determinare le rappresentazioni vettoriali dei token che includono informazioni contestuali incorporate, il trasformatore usa livelli di attenzione . Un livello di attenzione considera ogni token per volta, nel contesto della sequenza di token in cui appare. I token intorno a quello attuale vengono ponderati per riflettere la loro influenza e i pesi vengono usati per calcolare i valori degli elementi per il vettore di embedding del token attuale. Ad esempio, quando si considera il token "abbaiare" nel contesto di "Ho sentito un cane abbaiare", ai token "sentito" e "cane" verrà assegnato un peso maggiore rispetto a "Ho" o "un", poiché sono indicatori più forti in relazione ad "abbaiare".
+
+Inizialmente, il modello non "conosce" quali token influenzano gli altri; ma poiché viene esposto a volumi di testo più grandi, può imparare in modo iterativo quali token vengono comunemente visualizzati insieme e iniziare a trovare modelli che consentono di assegnare valori agli elementi vettoriali che riflettono le caratteristiche linguistiche e semantiche dei token, in base alla loro prossimità e frequenza di utilizzo insieme. Il processo è reso più efficiente usando l'attenzione a più teste per considerare diversi elementi dei vettori in parallelo.
+
+Il risultato del processo di codifica è un set di incorporamenti; vettori che includono informazioni contestuali sulla correlazione tra i token nel vocabolario. Un trasformatore reale produce incorporamenti che includono migliaia di elementi, ma per mantenere le cose semplici, è possibile attenersi ai vettori con solo tre vettori nell'esempio. Il risultato del processo di codifica per il vocabolario potrebbe essere simile al seguente:
+
+| TokenID | Token | Embedding Vector |
+| :---: | :--- | :--- |
+| 1 | **il** | `[2, 0, -1]` |
+| 2 | **sentito** | `[-2, 2, 4]` |
+| 3 | **a** | `[-3, 5, 5]` |
+| 4 | **cane** | `[10, 3, 2]` |
+| 5 | **corteccia** | `[9, 2, 10]` |
+| 6 | **voce** | `[-3, 8, 3]` |
+| 7 | **at** | `[-5, -1, 1]` |
+| 8 | **gatto** | `[10, 3, 1]` |
+| 127 | **cucciolo** | `[5, 3, 2]` |
+| 128 | **automobile** | `[-2, -2, 1]` |
+| 129 | **skateboard** | `[-3, -2, 2]` |
+
+È possibile considerare gli elementi degli incorporamenti come dimensioni in uno spazio vettoriale multidimensionale. Nell'esempio semplice, gli incorporamenti hanno solo tre elementi, in modo da poterli visualizzare come vettori nello spazio tridimensionale, come illustrato di seguito:
+
+![](assets/13_AI.png){fig-align="center" width=60%}
+
+Poiché le dimensioni vengono calcolate in base al modo in cui i token sono correlati in modo linguistico tra loro, i token usati in contesti simili (e quindi hanno significati simili) generano vettori con direzioni simili. Ad esempio, gli incorporamenti per "cane" e "cucciolo" indicano più o meno la stessa direzione, che non è troppo diversa dall'incorporamento per "gatto"; ma molto diverso dall'incorporamento per "skateboard" o "auto". Possiamo misurare quanto siano vicini i token l'uno all'altro semanticamente calcolando la similarità del coseno dei loro vettori.
+
+### Previsione dei completamenti a partire dai prompt
+Ora che è disponibile un set di incorporamenti che incapsulano la relazione contestuale tra i token, è possibile usare il blocco decodificatore di un trasformatore per prevedere in modo iterativo la parola successiva in una sequenza in base a un prompt iniziale.
+
+Ancora una volta, l'attenzione viene usata per considerare ogni token nel contesto; ma questa volta il contesto da considerare può includere solo i token che precedono il token che si sta tentando di stimare. Viene eseguito il training del modello di decodificatore, usando i dati per i quali è già disponibile la sequenza completa, applicando una tecnica denominata attenzione mascherata; in cui i token dopo il token corrente vengono ignorati. Poiché si conosce già il token successivo durante il training, il trasformatore può confrontarlo con il token stimato e regolare i pesi appresi nelle iterazioni di training successive per ridurre l'errore nel modello.
+
+Quando si stima un nuovo completamento, per il quale i token successivi sono sconosciuti, i livelli di attenzione calcolano i possibili vettori per il token successivo e la rete feed-forward aiuta a determinare il candidato più probabile. Il valore stimato viene quindi aggiunto alla sequenza e l'intero processo viene ripetuto per stimare il token successivo ; e così via, fino a quando il decodificatore non prevede che la sequenza sia terminata.
+
+Ad esempio, data la sequenza "When my dog was a ...", il modello valuterà i token nella sequenza finora, usare l'attenzione per assegnare pesi e prevedere che il token più probabile successivo è "cucciolo" anziché, ad esempio, "cat" o "skateboard".
+
+## Suggerimenti
+
+Un prompt è semplicemente l'input che si assegna a un LLM per ottenere una risposta. Potrebbe trattarsi di una domanda o di un comando o semplicemente di un commento casuale per avviare una conversazione. Il modello risponde a una richiesta con un completamento.
+
+### Tipi di richiesta
+
+Esistono due tipi principali di richieste:
+
+- Vengono richieste di sistema che impostano il comportamento e il tono del modello e tutti i vincoli a cui deve attenersi. Ad esempio, "*Sei un assistente utile che risponde in modo allegro e amichevole*". Le richieste di sistema determinano vincoli e stili per le risposte del modello.
+- Le richieste dell'utente che provocano una risposta a una domanda o a un'istruzione specifica. Ad esempio, "*Riepilogare le considerazioni chiave per l'adozione dell'IA generativa descritte in GenAI_Considerations.docx per un dirigente aziendale. Formattare il riepilogo come non più di sei punti elenco con un tono professionale.*".
+
+In genere, il prompt di sistema viene impostato dall'applicazione che usa il modello. Le richieste degli utenti possono essere immesse da un utente umano in un'applicazione di chat; o in alcuni casi generati dall'applicazione per conto dell'utente. Il modello risponde alle richieste degli utenti rispettando al tempo stesso le indicazioni generali nella richiesta di sistema.
+
+### Cronologia conversazioni
+Per mantenere una conversazione coerente e pertinente, le app di intelligenza artificiale generative spesso tengono traccia della cronologia delle conversazioni; e includere versioni riepilogate di esso nelle richieste successive. In questo modo si garantisce un contesto continuo per la conversazione su cui il modello può essere compilato.
+
+Si supponga, ad esempio, che il modello risponda al sistema e alle richieste dell'utente descritte in precedenza con il completamento seguente:
+
+::: {.callout}
+Le considerazioni chiave per l'adozione dell'intelligenza artificiale generativa includono:
+
+- Stabilire una governance chiara e criteri di intelligenza artificiale responsabile
+- Dare priorità ai casi d'uso di alto valore nelle varie funzioni aziendali
+- Attenuare i rischi relativi alla privacy, alla sicurezza e alla conformità
+- Promuovere l'idoneità organizzativa e l'adattamento culturale
+- Misurare l'impatto e creare responsabilità
+- Resta in anticipo rispetto ai turni strategici e competitivi
+:::
+
+È possibile rispondere con una domanda di completamento, ad esempio "*Quali sono i rischi comuni correlati alla privacy?*". La richiesta includerà la nuova domanda, ma anche le richieste e le risposte precedenti; fornendo contesto al modello in modo che comprenda la domanda in relazione all'adozione generativa dell'IA.
+
+### Generazione aumentata di recupero (RAG)
+
+Per aggiungere ancora più contesto, le applicazioni di intelligenza artificiale generative possono usare una tecnica denominata *generazione aumentata di recupero* (RAG). Questo approccio comporta il recupero di informazioni, ad esempio documenti o messaggi di posta elettronica, e l'uso per aumentare la richiesta con i dati pertinenti. La risposta generata dal modello viene quindi basata sulle informazioni fornite.
+
+Si supponga, ad esempio, di inviare una richiesta come "*Qual è il massimo che posso richiedere per le spese di viaggio in un viaggio d'affari?*". Senza altre informazioni, un modello risponderà con una risposta generica, probabilmente indicando di consultare la documentazione dei criteri di spesa dell'organizzazione. Una soluzione migliore consiste nel creare un'app assistente per le spese che inizialmente interroga la documentazione della politica di spesa dell'organizzazione, recuperando sezioni correlate a "spese di viaggio", e successivamente include le informazioni recuperate nel prompt inviato al modello, insieme alla domanda originale. Ora il modello può usare le informazioni sui criteri spese nel prompt per fornire contesto e rispondere con una risposta più pertinente.
+
+### Suggerimenti per richieste migliori
+La qualità delle risposte degli assistenti di intelligenza artificiale generativi non dipende solo dal modello linguistico usato, ma dalle richieste inviate.
+
+Per ottenere risultati migliori dalle indicazioni:
+
+- **Essere chiari e specifici**: le istruzioni o le domande esplicite funzionano meglio del linguaggio vago.
+- **Aggiungi contesto**: menzionare l'argomento, il gruppo di destinatari o il formato desiderato.
+- Usa **esempi**, se vuoi uno stile specifico, fornisci un esempio di ciò che intendi.
+- Richiedere una **struttura**, come punti elenco, tabelle o elenchi numerati.
+
+L'uso di prompt ben progettati può fare una differenza enorme per i risultati ottenuti dal modello di intelligenza artificiale generativa.
+
+## Agenti di intelligenza artificiale
+
+Immagina di avere un assistente digitale che non risponde solo alle domande, ma in realtà ottiene le cose fatte! Benvenuti nel mondo degli agenti di intelligenza artificiale.
+
+Gli agenti sono applicazioni software basate sull'intelligenza artificiale generativa che possono ragionare e generare linguaggio naturale, automatizzare le attività usando gli strumenti e rispondere alle condizioni contestuali per intraprendere azioni appropriate.
+
+### Componenti di un agente di intelligenza artificiale
+
+Gli agenti di intelligenza artificiale hanno tre elementi chiave:
+
+- Un **modello linguistico di grandi dimensioni**: questo è il cervello dell'agente; uso dell'intelligenza artificiale generativa per la comprensione e il ragionamento del linguaggio.
+- **Istruzioni**: richiesta di sistema che definisce il ruolo e il comportamento dell'agente. Pensa a questa come alla descrizione delle mansioni dell'agente.
+- **Strumenti**: si tratta di ciò che l'agente usa per interagire con il mondo. Gli strumenti possono includere:
+  - *Strumenti di conoscenza* che forniscono l'accesso alle informazioni, ad esempio motori di ricerca o database.
+  - *Strumenti di azione* che consentono all'agente di eseguire attività, ad esempio l'invio di messaggi di posta elettronica, l'aggiornamento di calendari o il controllo dei dispositivi.
+
+Con queste funzionalità, gli agenti di intelligenza artificiale possono assumere il ruolo di assistenti digitali che automatizzano in modo intelligente le attività e collaborano con l'utente per lavorare in modo più intelligente ed efficiente.
+
+### Sistemi multiagente
+Gli agenti possono anche lavorare uno con l'altro, nei sistemi multi-agente. Invece di un agente che esegue tutto, più agenti possono collaborare, ognuno con la propria specialità. Uno potrebbe raccogliere dati, un altro potrebbe analizzarlo e un terzo potrebbe intervenire. Insieme formano una forza lavoro basata sull'intelligenza artificiale che può gestire flussi di lavoro complessi, proprio come un team umano.
+
+Gli agenti comunicano tra loro tramite prompt, usando l'intelligenza artificiale generativa per determinare quali attività sono necessarie e quali agenti sono responsabili del loro completamento.
+
+L'intelligenza artificiale agentic è impostata come il prossimo progresso nel modo in cui usiamo la tecnologia per trovare informazioni e svolgere il lavoro.
+
+# Introduzione ai concetti di elaborazione del linguaggio naturale
+
+## Introduzione
+
+All'interno dell'intelligenza artificiale, l'analisi del testo è un subset di elaborazione del linguaggio naturale (NLP) che consente ai computer di estrarre significato, struttura e informazioni dettagliate da testo non strutturato. Le organizzazioni usano l'analisi del testo per trasformare il feedback dei clienti, i ticket di supporto, i contratti e i post sui social media in intelligenza pratica.
+
+Le tecniche per elaborare e analizzare il testo si sono evolute in molti anni, da semplici calcoli statistici basati su frequenza termini a modelli linguistici basati su vettori che incapsulano il significato semantico. Alcuni casi d'uso comuni per l'analisi del testo includono:
+
+- **Rilevamento della lingua**: determinazione della lingua (o delle lingue) in cui viene scritto il testo, spesso come primo passaggio in un flusso di lavoro di elaborazione del testo in più passaggi.
+- **Estrazione di termini chiave**: identificazione di parole e frasi importanti nel testo, per determinare gli argomenti e i temi trattati.
+- **Rilevamento entità**: identificazione di entità denominate menzionate nel testo; ad esempio luoghi, persone, date e organizzazioni.
+- **Rilevamento delle informazioni personali**: identificazione e modifica dei dettagli personali nel testo, ad esempio nomi, indirizzi, numeri di telefono, dettagli del conto finanziario e altre informazioni riservate.
+- **Classificazione del testo**: classificazione dei documenti di testo in base al relativo contenuto. Ad esempio, filtrare la posta elettronica come posta indesiderata o non posta indesiderata.
+- **Analisi del sentiment**: una particolare forma di classificazione del testo che stima il sentiment del testo, ad esempio la categorizzazione dei post di social media come positivi, neutrali o negativi.
+- **Riepilogo del testo**: riduzione del volume del testo mantenendo i punti salienti. Ad esempio, la generazione di un breve riepilogo di un paragrafo da un documento a più pagine.
+
+L'analisi del testo è complessa perché il linguaggio è complesso e i computer lo trovano difficile da comprendere. In definitiva, tutte le tecniche di analisi del testo si basano sul requisito di estrarre significato dal testo in linguaggio naturale.
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+## Tokenizzazione
+
+Il primo passaggio nell'analisi di un corpo del testo (detto corpus) consiste nell'suddividerlo in token. Per semplicità, è possibile considerare ogni parola distinta nel testo come token. In realtà, i token possono essere generati per parole parziali o combinazioni di parole e punteggiatura.
+
+Si consideri ad esempio questa frase di un famoso discorso presidenziale statunitense: "We choose to go to the moon". La frase può essere suddivisa nei token seguenti, con identificatori numerici:
+
+1. `We`
+2. `choose`
+3. `to`
+4. `go`
+5. `to`
+6. `the`
+7. `moon`
+
+Si noti che "`to`" (numero di token 3) viene usato due volte nel corpus. La frase "`We choose to go to the moon`" può essere rappresentata dai token.
+
+Con ogni token assegnato un valore discreto, è possibile contare facilmente la loro frequenza nel testo e usarlo per determinare i termini più usati; che può aiutare a identificare l'oggetto principale del testo.
+
+È stato usato un semplice esempio in cui i token vengono identificati per ogni parola distinta nel testo. Si considerino tuttavia le tecniche di pre-elaborazione seguenti che potrebbero essere applicate alla tokenizzazione a seconda del problema specifico di analisi del testo che si sta tentando di risolvere:
+
+| Tecnica | Descrizione |
+| :--- | :------- |
+| **Normalizzazione del testo** | Prima di generare token, è possibile scegliere di normalizzare il testo rimuovendo la punteggiatura e modificando tutte le parole in lettere minuscole. Per l'analisi che si basa esclusivamente sulla frequenza delle parole, questo approccio migliora le prestazioni complessive. Tuttavia, un significato semantico potrebbe essere perso, ad esempio considerare la frase "`Mr Banks has worked in many banks.`". Potresti volere che la tua analisi distinguissi tra la persona "`Mr Banks`" e quella "`banks`" in cui ha lavorato. È anche possibile considerare "`banks`." come un token separato da "`banks`" perché l'inclusione di un punto fornisce l'informazione che la parola arriva alla fine di una frase |
+| **Eliminazione delle parole non significative** | Le parole non significative sono parole che devono essere escluse dall'analisi. Ad esempio, "`the`", "`a`" o "`it`" semplificano la lettura del testo, ma aggiungono un significato semantico minimo. Escludendo queste parole, una soluzione di analisi del testo potrebbe essere più in grado di identificare le parole importanti. |
+| **Estrazione degli N-grammi** | Ricerca di frasi con più termini, come "`artificial intelligence`" o "n`atural language processing`". Una singola frase è un unigramma, una frase a due parole è un bigram, una frase a tre parole è un trigramma e così via. In molti casi, considerando la visualizzazione frequente di sequenze di parole come gruppi, un algoritmo di analisi del testo può dare un senso migliore del testo. |
+| **Stemming** | Una tecnica usata per consolidare le parole rimuovendo le terminazioni come "`s`", "`ing`", "`ed`" e così via, prima di conteggiarle; in modo che le parole con la stessa radice crittografica, come "`powering`", "`powered`" e "`powerful`", vengano interpretate come lo stesso token ("`power`"). |
+| **Lemmatizzazione** | Un altro approccio alla riduzione delle parole al formato di base o dizionario (chiamato lemma). A differenza dello stemming, che si limita a tagliare le terminazioni di parola, la lemmatizzazione usa regole linguistiche e vocabolario per garantire che la forma risultante sia una parola valida (ad esempio: "`running`" $\rightarrow$ "`run`", "`global`" $\rightarrow$ "`globe`"). |
+| **Tagging delle parti del discorso (POS)** | Assegnazione di etichette a ogni token con la relativa categoria grammaticale, ad esempio sostantivo, verbo, aggettivo o adverb. Questa tecnica usa regole linguistiche e spesso modelli statistici per determinare il tag corretto in base al token stesso e al relativo contesto all'interno della frase. |
+
+
+## Analisi statistica del testo
+
+Avendo suddiviso un corpus di testo nei token costitutivi e preparato per l'analisi; esistono alcune tecniche comuni di analisi statistica che è possibile usare per dedurre significato dal testo.
+
+### Analisi della frequenza
+
+Forse il modo più ovvio per verificare gli argomenti descritti in un documento consiste nel contare semplicemente il numero di volte in cui viene visualizzato ogni token normalizzato. Il presupposto è che i termini usati più frequentemente nel documento possano aiutare a identificare gli argomenti o i temi discussi. In poche parole, se si riesce a determinare le parole più usate in un determinato documento, spesso si può ottenere una buona idea sull'argomento del documento.
+
+Si consideri ad esempio il testo seguente:
+
+```txt
+AI in modern business delivers transformative benefits by
+enhancing efficiency, decision-making, and customer
+experiences. Businesses can leverage AI to automate repetitive
+tasks, freeing employees to focus on strategic work, while
+predictive analytics and machine learning models enable
+data-driven decisions that improve accuracy and speed.
+AI-powered tools like Copilot streamline workflows across
+marketing, finance, and operations, reducing costs and boosting
+productivity. Additionally, intelligent applications
+personalize customer interactions, driving engagement and
+loyalty. By embedding AI into core processes, businesses
+benefit from the ability to innovate faster, adapt to market
+changes, and maintain a competitive edge in an increasingly
+digital economy.
+```
+
+Dopo aver tokenizzato, normalizzato e applicato lemmatizzazione al testo, la frequenza di ogni termine può essere conteggiata e tabulata; produrre i risultati parziali seguenti:
+
+| Termine | Frequenza |
+| --- | --- |
+| `ai` | 4 |
+| `business` | 3 |
+| `benefit` | 2 |
+| `customer` | 2 |
+| `decision` | 2 |
+| `market` | 2 |
+| `ability` | 1 |
+| `accuracy` | 1 |
+| ... | ... |
+
+Da questi risultati, i termini più frequenti indicano che il testo illustra l'intelligenza artificiale e i relativi vantaggi aziendali.
+
+### Frequenza del termine/Frequenza inversa del documento (TF/IDF)
+
+L'analisi della frequenza semplice in cui si conteggia il numero di occorrenze di ogni token può essere un modo efficace per analizzare un singolo documento, ma quando è necessario distinguere più documenti all'interno dello stesso corpus, è necessario un modo per determinare quali token sono più rilevanti in ogni singolo documento.
+
+Si considerino ad esempio i due esempi di testo seguenti:
+
+```{.txt filename="Esempio A"}
+Microsoft Copilot Studio enables declarative AI agent creation
+using natural language, prompts, and templates. With this
+declarative approach, an AI agent is configured rather than
+programmed: makers define intents, actions, and data
+connections, then publish the agent to channels. Microsoft
+Copilot Studio simplifies agent orchestration, governance, and
+lifecycles so an AI agent can be iterated quickly. Using
+Microsoft Copilot Studio helps modern businesses deploy
+Microsoft AI agent solutions fast.
+```
+
+```{.txt filename="Esempio B"}
+Microsoft Foundry enables code‑based AI agent development with
+SDKs and APIs. Developers write code to implement agent
+conversations, tool calling, state management, and custom
+pipelines. In Microsoft Foundry, engineers can use Python or
+Microsoft C#, integrate Microsoft AI services, and manage CI/CD
+to deploy the AI agent. This code-first development model
+supports extensibility and performance while building Microsoft
+Foundry AI agent applications.
+```
+
+I primi tre termini più frequenti in questi esempi sono illustrati nelle tabelle seguenti:
+
+:::: {layout-ncol=2}
+
+::: {}
+**Esempio A**
+
+| Termine | Frequenza |
+| :--- | :--- |
+| agent | 6 |
+| ai | 4 |
+| microsoft | 4 |
+:::
+
+::: {}
+**Esempio B**
+
+| Termine | Frequenza |
+| :--- | :--- |
+| microsoft | 5 |
+| agent | 4 |
+| ai | 4 |
+:::
+
+::::
+
+Come si può notare dai risultati, le parole più comuni in entrambi gli esempi sono le stesse ("`agent`", "`Microsoft`" e "`AI`"). Questo ci dice che entrambi i documenti coprono un tema generale simile, ma non ci aiuta a discriminare tra i singoli documenti. L'esame dei conteggi dei termini usati meno frequentemente può risultare utile, ma è possibile immaginare facilmente un'analisi di un corpus basato sulla documentazione di Intelligenza artificiale di Microsoft, che comporterebbe un numero elevato di termini comuni in tutti i documenti; rendendo difficile determinare gli argomenti specifici trattati in ogni documento.
+
+Per risolvere questo problema, *Frequenza termini - Frequenza documento inversa (TF-IDF)* è una tecnica che calcola i punteggi in base alla frequenza con cui una parola o un termine viene visualizzato in un documento rispetto alla frequenza più generale dell'intera raccolta di documenti. Usando questa tecnica, si presuppone un elevato grado di rilevanza per le parole che appaiono spesso in un particolare documento, ma relativamente raramente in un'ampia gamma di altri documenti. Per calcolare TF-IDF per i termini in un singolo documento, è possibile usare il processo in tre passaggi seguente:
+
+1. **Calcola la frequenza dei termini (TF)**: il numero di volte in cui una parola appare in un documento. Ad esempio, se la parola `"agent"` appare 6 volte, allora $tf(\text{agent}) = 6$.
+
+2. **Calcola la frequenza inversa dei documenti (IDF)**: misura quanto una parola sia comune o rara nell'intera collezione di documenti. Se una parola appare in ogni documento, non è informativa. La formula è:
+   $$idf(t) = \log\left(\frac{N}{df(t)}\right)$$
+   
+   dove $N$ è il numero totale di documenti e $df(t)$ è il numero di documenti che contengono il termine $t$.
+   
+3. **Combina TF e IDF**: moltiplica i due valori per ottenere il punteggio finale:
+   
+   $$tfidf(t, d) = tf(t, d) \cdot \log\left(\frac{N}{df(t)}\right)$$
+
+
+Un punteggio TF-IDF elevato indica che una parola appare spesso in un documento ma raramente negli altri. Un punteggio basso indica che la parola è comune a molti documenti.
+
+In due esempi sugli agenti di intelligenza artificiale, le parole `"AI"`, `"Microsoft"` e `"agent"` compaiono in entrambi i campioni ($N = 2,\ df(t) = 2$), quindi il loro IDF è:
+
+$$idf = \log\!\left(\frac{2}{2}\right) = 0$$
+
+Di conseguenza non hanno alcun peso discriminante nel calcolo TF-IDF. I primi tre termini per punteggio nei due esempi sono:
+
+:::: {layout-ncol=2}
+
+::: {}
+**Esempio A**
+
+| Termine | TF-IDF |
+| :--- | ---: |
+| copilot | 2.0794 |
+| studio | 2.0794 |
+| declarative | 1.3863 |
+:::
+
+::: {}
+**Esempio B**
+
+| Termine | TF-IDF |
+| :--- | ---: |
+| code | 2.0794 |
+| develop | 2.0794 |
+| foundry | 2.0794 |
+:::
+
+::::
+
+Da questi risultati emerge chiaramente che l'**Esempio A** riguarda la creazione di agenti dichiarativi con Copilot Studio, mentre l'**Esempio B** riguarda lo sviluppo di agenti basati sul codice con Microsoft Foundry.
+
+
+### Tecniche di ML basate sul modello Bag-of-Words
+
+**Bag-of-words** è una tecnica di estrazione delle caratteristiche testuali che rappresenta i token come un vettore di frequenze o occorrenze di parole, ignorando grammatica e ordine. Questa rappresentazione diventa l'input per algoritmi come **Naive Bayes**, un classificatore probabilistico che applica il teorema di Bayes per stimare la classe più probabile di un documento in base alla frequenza delle parole.
+
+Un caso d'uso tipico è il **filtro antispam**: parole come `"miracle cure"`, `"lose weight fast"` o `"anti-aging"` compaiono più frequentemente nelle email indesiderate, e un modello addestrato su queste frequenze può contrassegnarle come spam. Lo stesso approccio si applica all'**analisi del sentiment**, classificando il testo come `"positivo"` o `"negativo"`.
+
+
+### TextRank
+
+**TextRank** è un algoritmo non supervisionato basato su grafi che modella il testo come una rete di nodi connessi. Ogni frase diventa un nodo e gli archi tra frasi sono pesati in base alla loro somiglianza lessicale. È comunemente usato per il **riepilogo estrattivo**: selezionare le frasi che meglio rappresentano il contenuto complessivo del documento.
+
+TextRank applica lo stesso principio del **PageRank** di Google al testo: una frase è importante se è simile a molte altre frasi importanti.
+
+1. **Costruzione del grafo**: ogni frase diventa un nodo; gli archi sono pesati in base alla somiglianza (sovrapposizione di parole o similarità coseno tra vettori di frasi).
+
+2. **Calcolo iterativo del punteggio**: il punteggio di ogni nodo dipende dai punteggi dei nodi connessi:
+
+$$TextRank(S_i) = (1 - d) + d \sum_j \frac{w_{ji}}{\sum_k w_{jk}} \cdot TextRank(S_j)$$
+
+dove $d = 0.85$ è il fattore di smorzamento, $w_{ji}$ è il peso dell'arco dalla frase $j$ alla frase $i$, e la somma scorre su tutte le frasi connesse a $i$.
+
+3. **Estrazione delle frasi top**: dopo la convergenza, le frasi con punteggio più alto vengono selezionate come riepilogo.
+
+#### Esempio: cloud computing
+
+Dato il documento:
+
+```
+Cloud computing provides on-demand access to computing resources.
+Computing resources include servers, storage, and networking.
+Azure is Microsoft's cloud computing platform.
+Organizations use cloud platforms to reduce infrastructure costs.
+Cloud computing enables scalability and flexibility.
+```
+
+I pesi degli archi tra le frasi (basati sulla sovrapposizione di parole) sono:
+
+| Coppia | Peso | Parole condivise |
+| :--- | :---: | :--- |
+| Frase 1 ↔ Frase 2 | 0.5 | *computing resources* |
+| Frase 1 ↔ Frase 3 | 0.6 | *cloud computing* |
+| Frase 1 ↔ Frase 4 | 0.2 | *cloud* |
+| Frase 1 ↔ Frase 5 | 0.7 | *cloud computing* |
+| Frase 2 ↔ Frase 3 | 0.2 | sovrapposizione limitata |
+| Frase 2 ↔ Frase 4 | 0.1 | sovrapposizione limitata |
+| Frase 2 ↔ Frase 5 | 0.1 | *computing* |
+| Frase 3 ↔ Frase 4 | 0.5 | *cloud platforms* |
+| Frase 3 ↔ Frase 5 | 0.4 | *cloud computing* |
+| Frase 4 ↔ Frase 5 | 0.3 | sovrapposizione limitata |
+
+Le frasi **1, 3 e 5** ottengono i punteggi più alti perché si connettono bene alle altre tramite terminologia condivisa. Il riepilogo risultante è:
+
+> *"Cloud computing provides on-demand access to computing resources. Azure is Microsoft's cloud computing platform. Cloud computing enables scalability and flexibility."*
+
+::: {.callout-note}
+Selezionare le frasi più rilevanti senza generare nuovo testo è detto **riepilogo estrattivo**. Modelli semantici più recenti permettono anche il **riepilogo astrattivo**, in cui viene generato nuovo linguaggio che sintetizza i temi chiave del documento originale.
+:::
+
+TextRank può essere applicato anche a livello di **parola** per l'estrazione di parole chiave: le parole diventano nodi e gli archi rappresentano la co-occorrenza in una finestra fissa. Le parole con punteggio più alto vengono estratte come termini chiave.
+
+## Modelli linguistici semantici
+
+Man mano che lo stato dell'arte nell'elaborazione del linguaggio naturale è avanzato, la capacità di addestrare modelli che incapsulano le relazioni semantiche tra token ha portato all'emergere di potenti modelli linguistici di deep learning. Al centro di questi modelli vi è la codifica dei token linguistici come vettori — matrici multivalore di numeri — noti come **incorporamenti** (*embeddings*).
+
+Questo approccio vettoriale è diventato comune con tecniche come **Word2Vec** e **GloVe**, in cui i token sono rappresentati come vettori densi con più dimensioni. Durante il training, i valori delle dimensioni vengono assegnati per riflettere le caratteristiche semantiche di ogni token in base al suo utilizzo nel testo di addestramento. Un avanzamento più recente consiste nell'usare la tecnica dell'**attenzione** (*attention*) per considerare ogni token nel suo contesto, calcolando l'influenza dei token circostanti. Gli incorporamenti contestualizzati risultanti — come quelli della famiglia di modelli GPT — costituiscono la base dell'intelligenza artificiale generativa moderna.
+
+
+## Rappresentazione del testo come vettori
+
+I vettori rappresentano punti in uno spazio multidimensionale, definiti dalle coordinate lungo più assi. Ogni vettore descrive una direzione e una distanza dall'origine. Token semanticamente simili producono vettori con orientamento simile — ovvero puntano in direzioni affini.
+
+Considera i seguenti incorporamenti tridimensionali per alcune parole comuni:
+
+| Parola | Vettore |
+| :--- | :--- |
+| dog | `[0.8, 0.6, 0.1]` |
+| puppy | `[0.9, 0.7, 0.4]` |
+| cat | `[0.7, 0.5, 0.2]` |
+| kitten | `[0.8, 0.6, 0.5]` |
+| young | `[0.1, 0.1, 0.3]` |
+| ball | `[0.3, 0.9, 0.1]` |
+| tree | `[0.2, 0.1, 0.9]` |
+
+![](assets/sem_01_all_vectors.png){fig-align="center" width="70%"}
+
+I vettori di *dog* e *cat* sono simili (entrambi animali domestici), così come quelli di *puppy* e *kitten* (entrambi animali giovani). Le parole *tree*, *young* e *ball* hanno orientamenti distinti, riflettendo i loro diversi significati semantici.
+
+
+## Ricerca di termini correlati
+
+Poiché l'orientamento dei vettori è determinato dai valori delle dimensioni, parole con significati simili tendono ad avere orientamenti simili. È quindi possibile usare la **similarità coseno** per confronti significativi:
+
+$$\text{cosine\_similarity}(A, B) = \frac{A \cdot B}{\|A\| \cdot \|B\|}$$
+
+dove $A \cdot B$ è il prodotto scalare e $\|A\|$ è la norma (grandezza) del vettore $A$.
+
+### Esempio: trovare l'elemento dispari tra *dog*, *cat* e *tree*
+
+**dog** $[0.8,\ 0.6,\ 0.1]$ e **cat** $[0.7,\ 0.5,\ 0.2]$:
+
+$$A \cdot B = (0.8 \times 0.7) + (0.6 \times 0.5) + (0.1 \times 0.2) = 0.56 + 0.30 + 0.02 = 0.88$$
+
+$$\|dog\| = \sqrt{0.8^2 + 0.6^2 + 0.1^2} = \sqrt{1.01} \approx 1.005 \qquad \|cat\| = \sqrt{0.78} \approx 0.883$$
+
+$$\text{similarity} = \frac{0.88}{1.005 \times 0.883} \approx \mathbf{0.992} \quad \text{(somiglianza elevata)}$$
+
+**dog** $[0.8,\ 0.6,\ 0.1]$ e **tree** $[0.2,\ 0.1,\ 0.9]$:
+
+$$A \cdot B = (0.8 \times 0.2) + (0.6 \times 0.1) + (0.1 \times 0.9) = 0.31$$
+
+$$\|tree\| = \sqrt{0.86} \approx 0.927$$
+
+$$\text{similarity} = \frac{0.31}{1.005 \times 0.927} \approx \mathbf{0.333} \quad \text{(somiglianza bassa)}$$
+
+**cat** $[0.7,\ 0.5,\ 0.2]$ e **tree** $[0.2,\ 0.1,\ 0.9]$:
+
+$$A \cdot B = (0.7 \times 0.2) + (0.5 \times 0.1) + (0.2 \times 0.9) = 0.37$$
+
+$$\text{similarity} = \frac{0.37}{0.883 \times 0.927} \approx \mathbf{0.452} \quad \text{(somiglianza bassa)}$$
+
+![](assets/sem_02_cosine.png){fig-align="center" width="100%"}
+
+I risultati mostrano che *dog* e *cat* sono molto simili ($0.992$), mentre *tree* ha similarità bassa con entrambi ($0.333$ e $0.452$): è chiaramente l'elemento che non c'entra.
+
+
+## Conversione vettoriale tramite addizione e sottrazione
+
+È possibile sommare o sottrarre vettori per produrre nuovi vettori, da usare per trovare i token corrispondenti. Questa tecnica consente un ragionamento aritmetico intuitivo sulle relazioni linguistiche.
+
+Usando i vettori precedenti:
+
+$$dog + young = [0.8, 0.6, 0.1] + [0.1, 0.1, 0.3] = [0.9, 0.7, 0.4] = \mathbf{puppy}$$
+
+$$cat + young = [0.7, 0.5, 0.2] + [0.1, 0.1, 0.3] = [0.8, 0.6, 0.5] = \mathbf{kitten}$$
+
+![](assets/sem_03_addition.png){fig-align="center" width="85%"}
+
+Queste operazioni funzionano perché il vettore *young* codifica la trasformazione semantica da un animale adulto alla sua controparte giovane.
+
+::: {.callout-note}
+In pratica, l'aritmetica vettoriale produce raramente corrispondenze esatte. È invece necessario cercare la parola il cui vettore è **più vicino** (più simile) al risultato ottenuto.
+:::
+
+L'aritmetica funziona anche in senso inverso:
+
+$$puppy - young = [0.9, 0.7, 0.4] - [0.1, 0.1, 0.3] = [0.8, 0.6, 0.1] = \mathbf{dog}$$
+
+$$kitten - young = [0.8, 0.6, 0.5] - [0.1, 0.1, 0.3] = [0.7, 0.5, 0.2] = \mathbf{cat}$$
+
+
+## Ragionamento analogico
+
+L'aritmetica vettoriale può rispondere a domande analogiche come:
+*"puppy sta a dog come kitten sta a ?"*
+
+Si calcola: $kitten - puppy + dog$
+
+$$
+\begin{aligned}
+&[0.8, 0.6, 0.5] - [0.9, 0.7, 0.4] + [0.8, 0.6, 0.1] \\
+&= [-0.1, -0.1, 0.1] + [0.8, 0.6, 0.1] \\
+&= [0.7, 0.5, 0.2] = \mathbf{cat}
+\end{aligned}
+$$
+
+![](assets/sem_04_analogy.png){fig-align="center" width="60%"}
+
+---
+
+## Uso dei modelli semantici per l'analisi del testo
+
+I modelli semantici basati su vettori offrono potenti funzionalità per molte attività comuni di NLP.
+
+**Riepilogo del testo**
+Gli incorporamenti semantici consentono il riepilogo estrattivo identificando le frasi con vettori più rappresentativi del documento complessivo. Codificando ogni frase come vettore (spesso mediando le incorporazioni delle parole costitutive), è possibile calcolare quali frasi sono più centrali per il significato del documento ed estrarle come riepilogo.
+
+**Estrazione di parole chiave**
+La similarità vettoriale identifica i termini più importanti confrontando l'incorporamento di ogni parola con la rappresentazione semantica complessiva del documento. Le parole i cui vettori sono più simili al vettore del documento sono probabilmente i termini chiave che rappresentano gli argomenti principali.
+
+**Riconoscimento di entità denominate (NER)**
+I modelli semantici possono essere ottimizzati per riconoscere entità denominate (persone, organizzazioni, luoghi, ecc.) imparando rappresentazioni vettoriali che raggruppano tipi di entità simili. Durante l'inferenza, il modello esamina l'incorporamento di ogni token e il suo contesto per classificarlo.
+
+**Classificazione del testo**
+Per attività come l'analisi del sentiment o la categorizzazione degli argomenti, i documenti possono essere rappresentati come vettori aggregati — ad esempio la media di tutti gli incorporamenti di parole. Questi vettori possono essere usati come feature per classificatori ML o confrontati direttamente con vettori prototipo di classe. Poiché documenti semanticamente simili hanno orientamenti vettoriali simili, questo approccio raggruppa efficacemente il contenuto correlato e distingue categorie diverse.
+
+# Introduzione ai concetti relativi al riconoscimento vocale di intelligenza artificiale
+
+## Introduzione
+
+Il riconoscimento vocale è uno dei modi più naturali in cui gli esseri umani comunicano e offrono funzionalità vocali alle applicazioni di intelligenza artificiale che creano esperienze utente più intuitive, accessibili e coinvolgenti. Sia che si stia creando un assistente vocale, creando applicazioni accessibili o sviluppando agenti di intelligenza artificiale conversazionale, la comprensione delle tecnologie vocali è essenziale per le soluzioni di intelligenza artificiale moderne.
+
+In questo modulo verranno esaminate le due funzionalità di riconoscimento vocale fondamentali che alimentano le applicazioni abilitate per la voce: riconoscimento vocale (conversione di parole vocali in testo) e sintesi vocale (conversione di testo in sintesi vocale naturale). Si scoprirà come queste tecnologie interagiscono per creare interazioni vocali senza problemi e scoprire gli scenari reali in cui il riconoscimento vocale può trasformare le esperienze utente.
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+## Soluzioni abilitate per il riconoscimento vocale
+
+Le funzionalità vocali trasformano il modo in cui gli utenti interagiscono con le applicazioni e gli agenti di intelligenza artificiale. Il riconoscimento vocale converte le parole pronunciate in testo, mentre la sintesi vocale genera audio audio naturale dal testo. Insieme, queste tecnologie consentono operazioni senza mani, migliorano l'accessibilità e creano esperienze di conversazione più naturali.
+
+L'integrazione del riconoscimento vocale nelle soluzioni di intelligenza artificiale consente di:
+
+- **Espandere l'accessibilità**: gestire gli utenti con problemi visivi o problemi di mobilità.
+- **Aumentare la produttività**: abilitare il multitasking rimuovendo la necessità di tastiere e schermi.
+- **Migliorare l'esperienza utente**: creare conversazioni naturali che si sentono più umane e coinvolgenti.
+- **Raggiungere i destinatari globali**: supportare più lingue e dialetti regionali.
+
+## Scenari comuni di riconoscimento vocale
+
+Il riconoscimento vocale, detto anche voce a testo, ascolta l'input audio e lo trascrive in testo scritto. Questa funzionalità supporta un'ampia gamma di applicazioni aziendali e consumer.
+
+### Servizio clienti e supporto tecnico
+
+I centri servizi usano il riconoscimento vocale per:
+
+- Trascrivere le chiamate dei clienti in tempo reale per riferimento e garanzia di qualità dell'agente.
+- Instradare i chiamanti al reparto corretto in base a ciò che dicono.
+- Analizzare il sentiment delle chiamate e identificare i problemi comuni dei clienti.
+- Generare record di chiamata ricercabili per la conformità e il training.
+  
+**Valore aziendale**: riduce l'acquisizione manuale delle note, migliora l'accuratezza della risposta e acquisisce informazioni dettagliate che migliorano la qualità del servizio.
+
+### Assistenti e agenti attivati tramite voce
+Gli assistenti virtuali e gli agenti di intelligenza artificiale si basano sul riconoscimento vocale per:
+
+- Accetta comandi vocali per controllo senza mani di dispositivi e applicazioni.
+- Rispondere alle domande usando la comprensione del linguaggio naturale.
+- Completare attività come l'impostazione di promemoria, l'invio di messaggi o la ricerca di informazioni.
+- Controllare i dispositivi smart home, i sistemi automobilistici e la tecnologia indossabile.
+
+**Valore aziendale**: aumenta l'engagement degli utenti, semplifica i flussi di lavoro complessi e abilita l'operazione in situazioni in cui le schermate non sono pratiche.
+
+### Trascrizione di riunioni e colloqui
+
+Le organizzazioni trascrivono le conversazioni in:
+
+- Creare note riunione ricercabili ed elenchi di attività.
+- Fornire sottotitoli in tempo reale per i partecipanti sordi o difficili da ascoltare.
+- Generare riepiloghi di interviste, gruppi di interesse e sessioni di ricerca.
+- Estrarre i punti di discussione chiave per la documentazione e il completamento.
+
+**Valore aziendale**: consente di risparmiare ore di lavoro di trascrizione manuale, garantisce record accurati e rende il contenuto parlato accessibile a tutti.
+
+### Documentazione sanitaria
+I professionisti clinici usano il riconoscimento vocale per:
+
+- Dettare gli appunti del paziente direttamente nei registri sanitari elettronici.
+- Aggiornare i piani di trattamento senza interrompere l'assistenza ai pazienti.
+- Ridurre il carico amministrativo e prevenire il burnout del medico.
+- Migliorare l'accuratezza della documentazione acquisendo i dettagli nel momento.
+
+**Valore aziendale**: aumenta il tempo disponibile per l'assistenza ai pazienti, migliora la completezza dei record e riduce gli errori di documentazione.
+
+## Scenari comuni di sintesi vocale
+La sintesi vocale, detta anche da testo a voce, converte il testo scritto in audio parlato. Questa tecnologia crea voci per applicazioni che devono comunicare le informazioni in modo udibilmente.
+
+### Intelligenza artificiale conversazionale e chatbot
+Gli agenti di intelligenza artificiale usano la sintesi vocale per:
+
+- Rispondere agli utenti con voci audio naturali invece di richiedere loro di leggere il testo.
+- Creare interazioni personalizzate regolando tono, ritmo e stile di pronuncia.
+- Gestire le richieste dei clienti tramite canali vocali come sistemi telefonici.
+- Offrire esperienze di marca coerenti tra interfacce vocali e di testo.
+
+**Valore aziendale**: rende gli agenti di intelligenza artificiale più avvicinabili, riduce il lavoro dei clienti ed estende la disponibilità del servizio ai canali solo vocali.
+
+### Accessibilità e consumo di contenuti
+Applicazioni generano audio in:
+
+- Leggere contenuti Web, articoli e documenti ad alta voce per gli utenti con problemi visivi.
+- Supportare gli utenti con disabilità di lettura come la dislessia.
+- Abilitare il consumo di contenuti durante la guida, l'esercizio o l'esecuzione di altre attività.
+- Fornire alternative audio per le interfacce con testo elevato.
+
+**Valore aziendale**: espande la portata del pubblico, dimostra l'impegno per l'inclusione e migliora la soddisfazione degli utenti.
+
+### Notifiche e avvisi
+I sistemi usano la sintesi vocale per:
+
+- Annunciare avvisi, promemoria e aggiornamenti dello stato importanti.
+- Fornire istruzioni di spostamento nelle applicazioni GPS e mapping.
+- Fornire informazioni sensibili al tempo senza richiedere agli utenti di esaminare le schermate.
+- Comunicare lo stato del sistema in ambienti industriali e operativi.
+
+**Valore aziendale**: assicura che le informazioni critiche raggiungano gli utenti anche quando l'attenzione visiva non è disponibile, migliorando la sicurezza e la velocità di risposta.
+
+### E-learning e formazione
+Le piattaforme didattiche usano la sintesi vocale per:
+
+- Creare lezioni narrate e contenuti del corso senza studi di registrazione.
+- Fornire esempi di pronuncia per l'apprendimento linguistico.
+- Generare versioni audio di materiali scritti per diverse preferenze di apprendimento.
+- Scalare la produzione di contenuti in più lingue.
+
+**Valore aziendale**: riduce i costi di creazione del contenuto, supporta stili di apprendimento diversi e accelera le sequenze temporali di sviluppo dei corsi.
+
+### Intrattenimento e contenuti multimediali
+Gli autori di contenuti usano la sintesi vocale per:
+
+- Generare voci di personaggi per giochi ed esperienze interattive.
+- Produrre bozze podcast e prototipi di audiobook.
+- Creare voiceover per video e presentazioni.
+- Personalizzare il contenuto audio in base alle preferenze dell'utente.
+
+**Valore aziendale**: riduce i costi di produzione, abilita la creazione rapida di prototipi e crea esperienze personalizzate su larga scala.
+
+## Combinazione del riconoscimento vocale e della sintesi vocale
+
+Le applicazioni abilitate per il riconoscimento vocale più potenti combinano entrambe le funzionalità per creare esperienze di conversazione:
+
+- **Servizio clienti basato su voce**: gli agenti ascoltano le domande dei clienti (riconoscimento), elaborano la richiesta e rispondono con risposte utili (sintesi).
+- **Sistemi IVR** (Interactive Voice Response): i chiamanti parlano le loro esigenze e il sistema li guida attraverso le opzioni usando il dialogo naturale.
+- **Applicazioni di apprendimento linguistico**: gli studenti parlano frasi pratiche (riconoscimento) e il sistema fornisce feedback e correzioni (sintesi).
+- **Veicoli con controllo vocale**: i conducenti danno comandi senza mani (riconoscimento) e il sistema conferma le azioni e fornisce aggiornamenti (sintesi).
+
+Questi scenari combinati creano conversazioni fluide e bidirezionali che si sentono naturali e riducono l'esperienza degli utenti con interfacce tradizionali.
+
+:::{.callout-tip}
+Iniziare con una singola funzionalità di riconoscimento vocale incentrata sullo scenario con valori più elevati. Dimostrare che il concetto funziona prima di espandersi a flussi di conversazione più complessi.
+:::
+
+## Considerazioni chiave prima dell'implementazione del riconoscimento vocale
+
+Prima di aggiungere funzionalità vocali all'applicazione, valutare questi fattori:
+
+- **Requisiti di qualità audio**: rumore di fondo, qualità del microfono e larghezza di banda della rete influiscono sull'accuratezza del riconoscimento vocale.
+- **Supporto lingua e dialetto**: verificare che le lingue di destinazione e le varianti regionali siano supportate.
+- **Privacy e conformità**: comprendere come i dati audio vengono elaborati, archiviati e protetti per soddisfare i requisiti normativi.
+- **Aspettative di latenza**: le conversazioni in tempo reale richiedono l'elaborazione a bassa latenza, mentre la trascrizione batch può tollerare ritardi.
+- **Standard di accessibilità**: assicurarsi che l'implementazione del riconoscimento vocale soddisfi le linee guida WCAG e non crei barriere per alcuni utenti.
+
+
+:::{.callout-important}
+Fornire sempre metodi di input e output alternativi. Alcuni utenti possono preferire o richiedere interfacce basate su testo anche quando la voce è disponibile.
+:::
+
+## Riconoscimento vocale
+
+Il riconoscimento vocale, detto anche riconoscimento vocale, consente alle applicazioni di convertire la lingua parlata in testo scritto. Il viaggio tra onda audio e testo prevede sei fasi coordinate: acquisizione di audio, preparazione di caratteristiche, modellazione di modelli acustici, applicazione di regole del linguaggio, decodifica delle parole più probabili e affinamento dell'output finale.
+
+### Acquisizione audio: convertire l'audio analogico in digitale
+
+Il riconoscimento vocale inizia quando un microfono converte le onde audio in un segnale digitale. Il sistema campiona l'audio analogico migliaia di volte al secondo, in genere 16.000 campioni al secondo (16 kHz) per le applicazioni vocali, e archivia ogni misura come valore numerico.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-ai-speech/media/wave-form-spectogram.png){fig-align="center" width=70%}
+
+:::{.callout-note}
+Perché la frequenza di campionamento è importante:
+
+- Frequenze più elevate (ad esempio 44,1 kHz per la musica) acquisiscino più dettagli, ma richiedono più elaborazione.
+- Il riconoscimento vocale bilancia la chiarezza e l'efficienza a 8 kHz a 16 kHz.
+- Rumore di fondo, qualità del microfono e distanza dall'altoparlante influiscono direttamente sull'accuratezza downstream.
+:::
+
+Prima di passare alla fase successiva, il sistema applica spesso filtri di base per rimuovere ronzio, clic o altri rumori di fondo che potrebbero confondere il modello.
+
+### Pre-elaborazione: estrarre funzionalità significative
+
+Gli esempi audio non elaborati contengono troppe informazioni per un riconoscimento efficiente dei modelli. La pre-elaborazione trasforma la forma d'onda in una rappresentazione compatta che evidenzia le caratteristiche vocali rimuovendo dettagli irrilevanti come volume assoluto.
+
+### Coefficiente cepstrale in frequenza di Mel (MFCC)
+MFCC è la tecnica di estrazione delle caratteristiche più comune nel riconoscimento vocale. Simula il modo in cui l'orecchio umano percepisce il suono enfatizzando le frequenze in cui l'energia vocale si concentra e comprime intervalli meno importanti.
+
+#### Funzionamento di MFCC
+
+1. **Dividere l'audio in fotogrammi**: Dividere il segnale in finestre sovrapposte di 20-30 millisecondi.
+2. **Applicare la trasformata di Fourier**: Convertire ogni fotogramma dal dominio temporale al dominio di frequenza, rivelando quali toni sono presenti.
+3. **Eseguire il mapping alla scala mel**: regolare le bande di frequenza in modo che corrispondano alla sensibilità dell'udito umano: i toni bassi vengono distinti meglio di quelli alti.
+4. **Estrarre coefficienti**: Calcolare un piccolo set di numeri (spesso 13 coefficienti) che riepilogano la forma spettrale di ogni fotogramma.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-ai-speech/media/audio-features.png){fig-align="center" width=70%}
+
+Il risultato è una sequenza di vettori di funzionalità, uno per fotogramma, che acquisisce ciò che l'audio suona senza archiviare ogni campione. Questi vettori diventano l'input per la modellazione acustica.
+
+I vettori vengono estratti per colonna, con ogni vettore che rappresenta i valori del coefficiente di funzionalità MFCC 13 per ogni intervallo di tempo:
+
+```txt
+Frame 1: [ -113.2,  45.3,  12.1,  -3.4,  7.8,  ... ]  # 13 coefficients
+Frame 2: [ -112.8,  44.7,  11.8,  -3.1,  7.5,  ... ]
+Frame 3: [ -110.5,  43.9,  11.5,  -2.9,  7.3,  ... ]
+```
+
+### Modellazione acustica: Riconoscere i fonemi
+
+I modelli acustici imparano la relazione tra caratteristiche audio e fonemi, ovvero le unità di suono più piccole che distinguono le parole. L'inglese usa circa 44 fonemi; ad esempio, la parola "cat" comprende tre fonemi: /k/, /æ/, e /t/.
+
+#### Dalle funzionalità ai fonemi
+
+I modelli acustici moderni usano architetture trasformatori, un tipo di rete di Deep Learning che eccelle nelle attività di sequenza. Il trasformatore elabora i vettori di funzionalità MFCC e stima quale fonema è più probabile in ogni momento nel tempo.
+
+I modelli di trasformatori ottengono una predizione dei fonemi efficace tramite:
+
+- **Meccanismo di attenzione**: Il modello esamina i frame circostanti per risolvere l'ambiguità. Ad esempio, il fonema /t/ suona diverso all'inizio di "top" rispetto alla fine di "bat".
+- **Elaborazione parallela**: A differenza dei modelli ricorrenti meno recenti, i trasformatori analizzano più fotogrammi contemporaneamente, migliorando la velocità e l'accuratezza.
+- **Stime contestualizzate**: La rete apprende che alcune sequenze di fonemi si verificano spesso nel parlato naturale.
+
+L'output della modellazione acustica è una distribuzione di probabilità sui fonemi per ciascun frame audio. Ad esempio, il frame 42 potrebbe mostrare 80% confidenza per /æ/, 15% per /ɛ/e 5% per altri fonemi.
+
+:::{.callout-note}
+I fonemi sono specifici della lingua. Un modello sottoposto a training su fonemi inglesi non è in grado di riconoscere toni mandarini senza ripetere il training.
+:::
+
+### Modellazione del linguaggio: stimare le sequenze di parole
+
+Le stime phoneme da sole non garantiscono una trascrizione accurata. Il modello acustico potrebbe confondere "loro" e "lì" perché condividono fonemi identici. I modelli linguistici risolvono l'ambiguità applicando la conoscenza del vocabolario, della grammatica e dei modelli di parola comuni. Alcuni modi in cui il modello guida la stima della sequenza di parole includono:
+
+- **Modelli statistici**: Il modello sa che "Il meteo è bello" appare più spesso nei dati di training rispetto a "The whether is nice".
+- **Consapevolezza del contesto**: Dopo aver sentito "devo", il modello prevede verbi come "andare" o "finire", non sostantivi come "tavolo".
+- **Adattamento del dominio**: I modelli linguistici personalizzati sottoposti a training sulla terminologia medica o legale migliorano l'accuratezza per scenari specializzati.
+
+### Decodifica: selezionare l'ipotesi di testo migliore
+Gli algoritmi di decodifica cercano milioni di possibili sequenze di parole per trovare la trascrizione che meglio corrisponde alle stime del modello acustico e linguistico. Questa fase bilancia due obiettivi concorrenti: rimanere fedeli al segnale audio, producendo testo leggibile e grammaticalmente corretto.
+
+#### Decodifica con beam search
+
+La tecnica più comune, la beam search, mantiene una lista ristretta (“beam”) di trascrizioni parziali con i punteggi migliori durante l'elaborazione di ciascun frame audio. A ogni passaggio, estende ogni ipotesi con la parola più probabile successiva, elimina i percorsi di punteggio basso e mantiene solo i candidati migliori.
+
+Per un'espressione di tre secondi, il decodificatore potrebbe valutare migliaia di ipotesi prima di selezionare "Invia il report entro venerdì" rispetto ad alternative come "Invia il report acquista venerdì".
+
+:::{.callout-warning}
+La decodifica è a elevato utilizzo di calcolo. Le applicazioni in tempo reale bilanciano l'accuratezza e la latenza limitando la larghezza del raggio e la profondità dell'ipotesi.
+:::
+
+### Post-elaborazione: ridefinire l'output
+Il decodificatore produce testo non elaborato che spesso richiede la pulizia prima della presentazione. La post-elaborazione applica regole di formattazione e correzioni per migliorare la leggibilità e l'accuratezza.
+
+#### Attività comuni di post-elaborazione
+
+- **L'uso delle lettere maiuscole**: converte "ciao, il mio nome sam" in "Ciao, il mio nome è Sam".
+- **Ripristino della punteggiatura**: Aggiungere punti, virgole e punti interrogativi in base alla prosodia e alla grammatica.
+- **Formattazione dei numeri**: Cambiare "mille ventitré" in "1.023."
+- Filtro di volgarità: Mascherare o rimuovere parole inappropriate quando richiesto dalla politica.
+- **Normalizzazione del testo inversa**: Convertire le forme pronunciate come "le tre del pomeriggio" in "15:00".
+- **Punteggio di attendibilità**: Contrassegna parole con bassa attendibilità per la revisione umana in applicazioni critiche come la trascrizione medica.
+
+Azure Speech restituisce la trascrizione finale insieme a metadati come timestamp a livello di parola e valutazioni di affidabilità, consentendo alla tua applicazione di evidenziare segmenti incerti o attivare comportamenti di fallback.
+
+### Funzionamento della pipeline
+
+Ogni fase si basa su quella precedente:
+
+1. L'acquisizione audio fornisce il segnale non elaborato.
+2. La pre-elaborazione estrae le funzionalità MFCC che evidenziano i modelli di riconoscimento vocale.
+3. La modellazione acustica consente di stimare le probabilità foneme usando reti trasformatori.
+4. La modellazione del linguaggio applica le conoscenze grammaticali e del vocabolario.
+5. La decodifica cerca la sequenza di parole migliore.
+6. La post-elaborazione formatta il testo per i lettori umani.
+
+Separando le preoccupazioni, i moderni sistemi di riconoscimento vocale ottengono un'accuratezza elevata tra lingue, accenti e condizioni acustiche. Quando la qualità della trascrizione non è all'altezza, è spesso possibile individuare il problema in uno stadio—acquisizione audio insufficiente, training del modello linguistico insufficiente o un'elaborazione post-produzione troppo aggressiva—e regolare di conseguenza.
+
+## Sintesi vocale
+
+La sintesi vocale, detta anche sintesi vocale (TTS), converte il testo scritto in audio parlato. La sintesi vocale si verifica quando gli assistenti virtuali leggono le notifiche, le app di navigazione annunciano indicazioni stradali o gli strumenti di accessibilità consentono agli utenti di utilizzare contenuti scritti in modo udibilmente.
+
+I sistemi di sintesi vocale elaborano il testo attraverso quattro fasi distinte. Ogni fase trasforma l'input in modo incrementale, creando verso una forma d'onda audio finale che suona naturale e intelligibile.
+
+### Normalizzazione del testo: standardizzare il testo
+
+La normalizzazione del testo prepara il testo non elaborato per la pronuncia espandendo abbreviazioni, numeri e simboli in forme parlate.
+
+Si consideri la frase: "*Dr. Smith ha ordinato 3 articoli per $25,50 il 15/12/2023.*"
+
+Un sistema di normalizzazione lo converte in: "Doctor Smith ordinò tre articoli per venticinque dollari e cinquanta centesimi il quindicesimo dicembre, duemila ventiquattro".
+
+Le attività di normalizzazione comuni includono:
+
+- L'espansione delle abbreviazioni ("Dr." diventa "Doctor", "Inc". diventa "Incorporated")
+- La conversione di numeri in parole ("3" diventa "tre", "25,50" diventa "venticinque punti cinque zero")
+- La gestione di date e ore ("15/12/2023" diventa "quindicesimo dicembre, duemila ventiquattro")
+- L'elaborazione di simboli e caratteri speciali ("$" diventa "dollari", "@" diventa "at")
+- Risoluzione degli omografi basata sul contesto ("read" come tempo verbale presente e passato)
+
+La normalizzazione del testo impedisce al sistema di provare a pronunciare simboli o cifre non elaborati, che produrrebbero un output innaturale o incomprensibile.
+
+:::{.callout-tip}
+Domini diversi richiedono regole di normalizzazione specializzate. Il testo medico gestisce i nomi dei farmaci e i dosaggio in modo diverso rispetto al testo finanziario gestisce valuta e percentuali.
+:::
+
+### Analisi linguistica: eseguire il mapping del testo ai fonemi
+L'analisi linguistica suddivide il testo normalizzato in fonemi (le unità di suono più piccole) e determina come pronunciare ogni parola. Fase di analisi linguistica:
+
+1. Segmenta il testo in parole e sillabe.
+2. Cerca le pronunce delle parole nei lessici (dizionari di pronuncia).
+3. Applica regole G2P o modelli neurali per gestire parole sconosciute.
+4. Contrassegna i limiti sillabe e identifica le sillabe sottolineate.
+5. Determina il contesto fonetico per i suoni adiacenti.
+
+#### Conversione da grafema a fonema
+La conversione da grafema a fonema (G2P) esegue il mapping delle lettere scritte (grafemi) ai suoni di pronuncia (fonemi). L'ortografia inglese non indica in modo affidabile la pronuncia, quindi i sistemi G2P usano sia regole che modelli appresi.
+
+Per esempio:
+
+- La parola "though" si converte in /θoʊ/
+- La parola "through" si pronuncia /θruː/.
+- La parola "cough" si converte in /kɔːf/
+
+Ogni parola contiene le lettere "ough", ma la pronuncia differisce notevolmente.
+
+I sistemi G2P moderni usano reti neurali addestrate sui dizionari di pronuncie. Questi modelli imparano modelli tra ortografia e suono, gestendo parole non comuni, nomi appropriati e variazioni regionali in modo più normale rispetto ai sistemi basati su regole.
+
+Quando si determinano i fonemi, l'analisi linguistica usa spesso un modello di trasformatore per considerare il contesto. Ad esempio, la parola "read" viene pronunciata in modo diverso in "I read books" (tempo presente: /riːd/) rispetto a "I read that book yesterday" (tempo passato: /rɛd/).
+
+### Generazione della prosodia: determinare la pronuncia
+
+La prosodia si riferisce al ritmo, allo stress e ai modelli di intonazione che rendono naturale il suono vocale. La generazione della prosodia determina come dire le parole, non solo quali suoni produrre.
+
+#### Elementi della prosodia
+
+La prosodia comprende diverse caratteristiche vocali:
+
+- **Contorni di intonazione**: modelli di intonazione crescente o decrescente che segnalano domande rispetto alle affermazioni
+- **Durata**: per quanto tempo tenere ogni suono, creare enfasi o ritmo naturale
+- **Intensità**: variazioni del volume che evidenziano parole importanti
+- **Pause**: interruzioni tra frasi o frasi che facilitano la comprensione
+- **Modelli di stress**: quali sillabe ricevono enfasi all'interno di parole e frasi
+
+Prosody ha un effetto significativo sul modo in cui viene interpretato il testo parlato. Si consideri ad esempio il modo in cui la frase seguente cambia significato a seconda della parola o della sillaba evidenziata:
+
+- "*Non ho* mai detto che ha mangiato la torta."
+- "Non ho mai detto *che ha* mangiato la torta."
+- "Non ho mai detto che *ha mangiato* la torta."
+- "Non ho mai detto che ha mangiato la *torta*."
+
+### Previsione della prosodia basata su Transformer
+I moderni sistemi di sintesi vocale usano reti neurali trasformatori per prevedere la prosodia. I trasformatori eccelleno nella comprensione del contesto tra intere frasi, non solo parole adiacenti.
+
+#### Processo di generazione della prosodia
+
+1. **Codifica di input**: il trasformatore riceve la sequenza fonema con caratteristiche linguistiche (punteggiatura, parte del parlato, struttura della frase)
+2. **Analisi contestuale**: i meccanismi di auto-attenzione identificano le relazioni tra le parole (ad esempio, quale sostantivo fa riferimento a un pronome, dove i limiti delle frasi rientrano)
+3. **Previsione prosodia**: il modello restituisce valori stimati per passo, durata ed energia a ogni fonema
+4. **Fattori di stile**: il sistema considera lo stile di parlare (neutro, espressivo, conversazionale) e le caratteristiche del parlante
+
+I modelli Transformer prevedono la prosodia imparando da migliaia di ore di discorsi registrati abbinati a trascrizioni. Il modello individua i modelli: le domande aumentano di passo alla fine, le virgole segnalano brevi pause, le parole sottolineate si allungano leggermente e le parole finali spesso diminuiscono in passo.
+
+#### Fattori che influenzano le scelte di prosodia
+
+- **Sintassi**: i limiti della clausola indicano dove sospendere
+- **Semantica**: i concetti importanti ricevono enfasi
+- **Contesto del discorso**: le informazioni o le risposte contrastanti alle domande possono portare stress aggiuntivo
+- **Identità del parlante**: ogni voce ha un intervallo di passo e una frequenza di pronuncia caratteristica
+- **Tono emotivo**: eccitazione, preoccupazione o neutralità modellano i modelli prosodici
+
+Le previsioni di prosodia creano una specifica di destinazione: "Produrre il fonema /æ/ a 180 Hz per 80 millisecondi con intensità moderata, poi fare una pausa di 200 millisecondi".
+
+:::{.callout-important}
+La prosodia influisce drasticamente sulla naturalezza. Il parlato robotico spesso deriva da una prosodia piatta e monotona, non dalla pronuncia imperfetta dei fonemi.
+:::
+
+### Sintesi vocale: generare audio
+La sintesi vocale genera la forma d'onda audio finale in base alla sequenza fonema e alle specifiche della prosodia.
+
+#### Generazione di forme d'onda: approcci
+
+I sistemi moderni usano vocoder neurali, ovvero modelli di Deep Learning che generano direttamente campioni audio. Le architetture vocoder più diffuse includono WaveNet, WaveGlow e HiFi-GAN.
+
+**Processo di sintesi**
+
+1. **Generazione di funzionalità acustiche**: un modello acustico (spesso un trasformatore) converte i fonemi e i target di prosodia in mel-spectrogrammi, rappresentazioni visive delle frequenze audio nel tempo
+2. **Vocoding**: il vocoder neurale converte mel-spectrogrammi in forme d'onda audio non elaborate (sequenze di valori di ampiezza a 16.000-48.000 campioni al secondo)
+3. **Post-elaborazione**: il sistema applica filtri, normalizzazione o effetti audio in base alle specifiche di output di destinazione
+
+:::{.callout-note}
+Ciò che rende efficaci i vocoder neurali:
+
+- **Alta fedeltà**: Generare una qualità audio che si avvicina alle registrazioni in studio
+- **Naturalità**: cattura caratteristiche vocali sottili come la respirazione e la qualità della voce
+- **Efficienza**: generazione in tempo reale su hardware moderno (importante per le applicazioni interattive)
+- **Flessibilità**: adattarsi a diversi parlanti, lingue e stili di pronuncia
+:::
+
+Il vocoder esegue essenzialmente l'inversa di ciò che fa il riconoscimento vocale automatico, mentre il riconoscimento vocale converte l'audio in testo, il vocoder converte le rappresentazioni linguistiche in audio.
+
+### Il flusso di lavoro completo in azione
+Quando si richiede la sintesi vocale per l'appuntamento del dottor Chen alle 17:00:
+
+1. La **normalizzazione del testo** lo espande a "L'appuntamento del Dottore Chen è alle tre
+2. L'**analisi linguistica** lo converte in fonemi: /ˈdɑktər ˈtʃɛnz əˈpɔɪntmənt ɪz æt θri əˈklɑk pi ɛm/
+3. La **generazione della prosodia** prevede un lieve aumento dell'intonazione su "appointment", una pausa dopo "is" e l'enfasi sulla parola "three"
+4. La **sintesi vocale** genera una forma d'onda audio corrispondente a tali specifiche
+
+L'intero processo viene in genere completato in meno di un secondo sull'hardware moderno.
+
+
+# Introduzione ai concetti di Computer Vision
+
+## Introduzione
+
+La Computer Vision è una delle aree principali dell'intelligenza artificiale e si concentra sulla creazione di soluzioni che consentono alle applicazioni di intelligenza artificiale di elaborare informazioni visive.
+
+Considerare questi scenari:
+
+- Un veicolo autonomo deve rilevare e rispondere al traffico e ai pedoni.
+- Uno store usa casse intelligenti dotate di telecamere per determinare i prodotti presenti nel carrello di un cliente.
+- Una videocamera per campanello viene usata per rilevare le persone alla porta d'ingresso.
+
+Questi casi d'uso, e molti altri, si basano sulla Computer Vision.
+
+Naturalmente, i computer non hanno occhi biologici che funzionano come fanno i nostri, ma sono in grado di elaborare immagini; da un feed di fotocamere live o da fotografie o video digitali. Questa capacità di elaborare le immagini è la chiave per la creazione di software che può emulare la percezione visiva umana. In questo modulo verranno esaminati i blocchi predefiniti sottostanti alle moderne soluzioni di Computer Vision.
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+## Attività e tecniche di computer vision
+
+Il termine "computer vision" si riferisce a una serie di attività e tecniche in cui il software di intelligenza artificiale elabora l'input visivo; in genere da immagini, video o flussi di fotocamere live. La computer vision è un campo ben consolidato dell'IA e le tecniche usate per estrarre informazioni dall'input visivo si sono sviluppate in modo significativo nel corso degli anni.
+
+### Classificazione delle immagini
+Una delle soluzioni di visione artificiale meno recenti è una tecnica denominata classificazione delle immagini, in cui viene usato un modello sottoposto a training con un numero elevato di immagini per stimare un'etichetta di testo in base al contenuto di un'immagine.
+
+Si supponga, ad esempio, che un negozio di alimentari voglia implementare un sistema di pagamento intelligente che identifichi automaticamente i prodotti. Ad esempio, il cliente potrebbe posizionare frutta o verdura su una scala al checkout e un'applicazione di intelligenza artificiale connessa a una fotocamera potrebbe identificare automaticamente i tipi di produzione (mela, arancia, banana e così via) e addebitare l'importo appropriato in base al suo peso. Affinché questa soluzione funzioni, è necessario eseguire il training di un modello con un volume elevato di immagini, ognuna con il nome corretto. Il risultato è un modello che può usare le caratteristiche visive di un'immagine per stimare il soggetto principale.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/image-classification.png){fig-align="center" width=50%}
+
+### Rilevamento di oggetti
+Si supponga che il negozio di alimentari voglia un sistema più sofisticato, in cui il checkout può analizzare più elementi al checkout e identificare ognuno di essi. Un approccio comune a questo tipo di problema è denominato "rilevamento di oggetti". I modelli di rilevamento oggetti esaminano più aree in un'immagine per trovare singoli oggetti e le relative posizioni. La previsione risultante del modello include gli oggetti rilevati e le aree specifiche dell'immagine in cui appaiono, indicate dalle coordinate del rettangolo di delimitazione.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/object-detection.png){fig-align="center" width=50%}
+
+### Segmentazione semantica
+Un altro modo più sofisticato per rilevare gli oggetti in un'immagine è denominato "segmentazione semantica". In questo approccio viene eseguito il training di un modello per trovare oggetti e classificare singoli pixel nell'immagine in base all'oggetto a cui appartengono. Il risultato di questo processo è una stima molto più precisa della posizione degli oggetti nell'immagine.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/semantic-segmentation.png){fig-align="center" width=50%}
+
+### Analisi contestuale delle immagini
+I modelli di visione artificiale più recenti vengono sottoposti a training per trovare relazioni contestuali tra gli oggetti nelle immagini e il testo che li descrive. Il risultato è una capacità di interpretare semanticamente un'immagine per determinare quali oggetti e attività rappresenta; e generare descrizioni appropriate o suggerire tag pertinenti.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/image-analysis.png){fig-align="center" width=50%}
+
+## Immagini ed elaborazione delle immagini
+
+Per un computer, un'immagine è una matrice di valori di *pixel* numerici. Si consideri ad esempio la matrice seguente:
+
+```txt
+ 0   0   0   0   0   0   0  
+ 0   0   0   0   0   0   0
+ 0   0  255 255 255  0   0
+ 0   0  255 255 255  0   0
+ 0   0  255 255 255  0   0
+ 0   0   0   0   0   0   0
+ 0   0   0   0   0   0   0
+ ```
+
+ La matrice è costituita da sette righe e sette colonne, che rappresentano i valori pixel per un'immagine di 7x7 pixel (nota come risoluzione dell'immagine). Ogni pixel ha un valore compreso tra 0 (nero) e 255 (bianco); con valori compresi tra questi limiti che rappresentano le sfumature di grigio. L'immagine rappresentata da questa matrice è simile all'immagine di ingrandimento seguente:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/white-square.png){fig-align="center" width=30%}
+
+La matrice di valori di pixel per questa immagine è bidimensionale (che rappresenta righe e colonne o coordinate x e y ) e definisce un singolo rettangolo di valori pixel. Un singolo livello di valori di pixel come questo rappresenta un'immagine in scala di grigi. In realtà, la maggior parte delle immagini digitali sono multidimensionali e sono costituite da tre livelli (noti come canali) che rappresentano tonalità di colore rosso, verde e blu (RGB). Ad esempio, è possibile rappresentare un'immagine a colori definendo tre canali di valori pixel che creano la stessa forma quadrata dell'esempio precedente di gradazioni di grigio:
+
+```txt
+Red:
+ 150  150  150  150  150  150  150  
+ 150  150  150  150  150  150  150
+ 150  150  255  255  255  150  150
+ 150  150  255  255  255  150  150
+ 150  150  255  255  255  150  150
+ 150  150  150  150  150  150  150
+ 150  150  150  150  150  150  150
+
+Green:
+ 0    0    0    0    0    0    0          
+ 0    0    0    0    0    0    0
+ 0    0   255  255  255   0    0
+ 0    0   255  255  255   0    0
+ 0    0   255  255  255   0    0
+ 0    0    0    0    0    0    0
+ 0    0    0    0    0    0    0
+
+Blue:
+ 255  255  255  255  255  255  255  
+ 255  255  255  255  255  255  255
+ 255  255   0    0    0   255  255
+ 255  255   0    0    0   255  255
+ 255  255   0    0    0   255  255
+ 255  255  255  255  255  255  255
+ 255  255  255  255  255  255  255
+```
+
+Ecco l'immagine risultante:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/color-square.png){fig-align="center" width=30%}
+
+I quadrati viola sono rappresentati dalla combinazione:
+
+```txt
+Red: 150 
+Green: 0 
+Blue: 255 
+```
+
+I quadrati gialli al centro sono rappresentati dalla combinazione:
+
+```txt
+Red: 255
+Green: 255
+Blue: 0
+```
+
+### Filtri
+Un modo comune per eseguire attività di elaborazione delle immagini consiste nell'applicare filtri che modificano i valori pixel dell'immagine per creare un effetto visivo. Un filtro viene definito da una o più matrici di valori dei pixel, chiamati kernel di filtro . Ad esempio, è possibile definire il filtro con un kernel 3x3, come illustrato in questo esempio:
+
+```txt
+-1 -1 -1
+-1  8 -1
+-1 -1 -1
+```
+
+Il kernel viene quindi convoluto attraverso l’immagine, calcolando una somma ponderata per ogni patch di 3x3 pixel e assegnando il risultato a una nuova immagine. È più facile comprendere il funzionamento del filtro esplorando un esempio dettagliato.
+
+Si inizierà con l'immagine in scala di grigi esaminata in precedenza:
+
+```txt
+0   0   0   0   0   0   0  
+ 0   0   0   0   0   0   0
+ 0   0  255 255 255  0   0
+ 0   0  255 255 255  0   0
+ 0   0  255 255 255  0   0
+ 0   0   0   0   0   0   0
+ 0   0   0   0   0   0   0
+```
+
+Prima di tutto, applichiamo il kernel del filtro alla patch superiore sinistra dell'immagine, moltiplicando ogni valore pixel per il valore di peso corrispondente nel kernel e aggiungendo i risultati:
+
+```txt
+(0 x -1) + (0 x -1) + (0 x -1) +
+(0 x -1) + (0 x 8) + (0 x -1) +
+(0 x -1) + (0 x -1) + (255 x -1) = -255
+```
+
+Il risultato (-255) diventa il primo valore in una nuova matrice. Si sposta quindi il kernel del filtro lungo un pixel a destra e si ripete l'operazione:
+
+```txt
+(0 x -1) + (0 x -1) + (0 x -1) +
+(0 x -1) + (0 x 8) + (0 x -1) +
+(0 x -1) + (255 x -1) + (255 x -1) = -510
+```
+
+Anche in questo caso, il risultato viene aggiunto alla nuova matrice, che ora contiene due valori:
+
+```txt
+-255  -510
+```
+
+Il processo viene ripetuto fino a quando il filtro non viene convoluto nell'intera immagine, come illustrato in questa animazione:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/filter.gif){fig-align="center" width=60%}
+
+Il filtro viene convoluto nell'immagine, calcolando una nuova matrice di valori. Alcuni valori potrebbero non rientrare nell'intervallo di valori da 0 a 255 pixel, quindi i valori vengono modificati in base a tale intervallo. A causa della forma del filtro, il bordo esterno dei pixel non viene calcolato, quindi viene applicato un valore di riempimento (in genere 0). La matrice risultante rappresenta una nuova immagine in cui il filtro ha trasformato l'immagine originale. In questo caso, il filtro ha avuto l'effetto di evidenziare i bordi di forme nell'immagine.
+
+Per visualizzare più chiaramente l'effetto del filtro, ecco un esempio dello stesso filtro applicato a un'immagine reale:
+
+:::: {layout-ncol=2}
+![Immagine originale](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/dog-grayscale.png){fig-align="center"}
+
+![Immagine filtrata](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/dog-filtered.png){fig-align="center"}
+::::
+
+Poiché il filtro viene convoluto nell'immagine, questo tipo di manipolazione delle immagini viene spesso definito filtro convoluzionale. Il filtro usato in questo esempio è un particolare tipo di filtro (denominato filtro Laplace ) che evidenzia i bordi degli oggetti in un'immagine. Ci sono molti altri tipi di filtro che è possibile usare per creare sfocatura, nitidezza, inversione del colore e altri effetti.
+
+## Reti neurali convoluzionali
+
+La possibilità di usare filtri per applicare effetti alle immagini è utile nelle attività di elaborazione delle immagini, ad esempio con il software di modifica delle immagini. Tuttavia, l'obiettivo della visione artificiale è spesso estrarre significato, o almeno informazioni interattive, dalle immagini; che richiede la creazione di modelli di Machine Learning sottoposti a training per riconoscere le funzionalità in base a grandi volumi di immagini esistenti.
+
+:::{.callout-tip}
+Questa unità presuppone che si abbia familiarità con i principi fondamentali di Machine Learning e che si abbia una conoscenza concettuale dell'apprendimento avanzato con le reti neurali. Se non si ha familiarità con l'apprendimento automatico, è consigliabile completare il modulo [Introduzione ai concetti di Machine Learning](https://learn.microsoft.com/it-it/training/modules/fundamentals-machine-learning/) in Microsoft Learn.
+:::
+
+Una delle architetture di modelli di Machine Learning più comuni per visione artificiale è una rete neurale convoluzionale (CNN), un tipo di architettura di Deep Learning. Le CNN usano filtri per estrarre le mappe delle caratteristiche numeriche dalle immagini e quindi inserire i valori delle caratteristiche in un modello di deep learning per generare una previsione delle etichette. Ad esempio, in uno scenario di classificazione delle immagini , l'etichetta rappresenta il soggetto principale dell'immagine (in altre parole, qual è questa immagine di?). È possibile eseguire il training di un modello CNN con immagini di diversi tipi di frutta (ad esempio mela, banana e arancione) in modo che l'etichetta stimata sia il tipo di frutta in una determinata immagine.
+
+Durante il processo di training per una CNN, i kernel di filtro vengono inizialmente definiti usando valori di peso generati in modo casuale. Quindi, man mano che il processo di training avanza, le stime dei modelli vengono valutate rispetto ai valori di etichetta noti e i pesi del filtro vengono modificati per migliorare l'accuratezza. Infine, il modello di classificazione delle immagini dei frutti sottoposto a training usa i pesi del filtro che consentono di estrarre meglio le caratteristiche che consentono di identificare diversi tipi di frutta.
+
+Il diagramma seguente illustra il funzionamento di una rete CNN per un modello di classificazione delle immagini:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/convolutional-neural-network.png){fig-align="center" width=60%}
+
+1. Le immagini con etichette note (ad esempio, 0: mela, 1: banana o 2: arancione) vengono inserite nella rete per eseguire il training del modello.
+2. Uno o più livelli di filtri vengono usati per estrarre le caratteristiche da ogni immagine man mano che viene alimentato attraverso la rete. I kernel di filtro iniziano con pesi assegnati in modo casuale e generano matrici di valori numerici denominati mappe delle funzionalità. I livelli aggiuntivi possono "pool" o "ridimensionare" le mappe delle funzionalità per creare matrici più piccole che enfatizzano le principali caratteristiche visive estratte dai filtri.
+3. Le mappe delle caratteristiche vengono ridotte in una matrice unidimensionale di valori delle caratteristiche.
+4. I valori delle caratteristiche vengono inseriti in una rete neurale completamente connessa.
+5. Il livello di output della rete neurale usa una funzione softmax o simile per produrre un risultato che contiene un valore di probabilità per ogni classe possibile, ad esempio [0,2, 0,5, 0,3].
+
+Durante il training, le probabilità di output vengono confrontate con l'etichetta di classe effettiva, ad esempio un'immagine di una banana (classe 1) deve avere il valore [0,0, 1,0, 0,0]. La differenza tra i punteggi di classe stimati e effettivi viene usata per calcolare la perdita nel modello e i pesi nella rete neurale completamente connessa e i kernel di filtro nei livelli di estrazione delle caratteristiche vengono modificati per ridurre la perdita.
+
+Il processo di training si ripete in più periodi fino a quando non è stato appreso un set ottimale di pesi. Vengono quindi salvati i pesi e il modello può essere usato per stimare le etichette per le nuove immagini per le quali l'etichetta è sconosciuta.
+
+:::{.callout-note}
+Le architetture CNN in genere includono più livelli di filtro convoluzionali e livelli aggiuntivi per ridurre le dimensioni delle mappe delle funzionalità, vincolare i valori estratti e modificare in caso contrario i valori delle funzionalità. Questi livelli sono stati omessi in questo esempio semplificato per concentrarsi sul concetto chiave, ovvero che i filtri vengono usati per estrarre caratteristiche numeriche dalle immagini, che vengono quindi usate in una rete neurale per stimare le etichette delle immagini.
+:::
+
+## Transformer visivi e modelli multimodali
+
+Le CNN sono alla base delle soluzioni di visione artificiale da molti anni. Anche se vengono comunemente usati per risolvere i problemi di classificazione delle immagini, come descritto in precedenza, sono anche la base per modelli di visione artificiale più complessi. Ad esempio, i modelli di rilevamento oggetti combinano i livelli di estrazione delle funzionalità CNN con l'identificazione delle aree di interesse per le immagini per individuare più classi di oggetti nella stessa immagine. Molti progressi nella visione artificiale nel corso dei decenni sono stati guidati da miglioramenti nei modelli basati su CNN.
+
+Tuttavia, in un'altra disciplina di intelligenza artificiale - elaborazione del linguaggio naturale (NLP), un altro tipo di architettura di rete neurale, chiamato trasformatore ha abilitato lo sviluppo di modelli sofisticati per il linguaggio.
+
+### Modellazione semantica per il linguaggio - Trasformatori
+
+I trasformatori funzionano elaborando enormi volumi di dati e codificando token di linguaggio (che rappresentano singole parole o frasi) come incorporamenti basati su vettori (matrici di valori numerici). Una tecnica chiamata attenzione viene usata per assegnare valori di incorporamento che riflettono aspetti diversi del modo in cui ogni token viene usato nel contesto di altri token. È possibile considerare gli incorporamenti come vettori nello spazio multidimensionale, in cui ogni dimensione incorpora un attributo linguistico di un token in base al contesto nel testo di training, creando relazioni semantiche tra token. I token comunemente usati in contesti simili definiscono vettori più allineati rispetto alle parole non correlate.
+
+![](assets/radial_words_3d_v3.png){fig-align="center" width=60%}
+
+I token semanticamente simili vengono codificati in direzioni simili, creando un modello di linguaggio semantico che consente di creare soluzioni NLP sofisticate per l'analisi del testo, la traduzione, la generazione del linguaggio e altre attività.
+
+:::{.callout-note}
+In realtà, i codificatori nelle reti trasformatori creano vettori con molte più dimensioni, definendo relazioni semantiche complesse tra token basati su calcoli algebrici lineari. La matematica è complessa, così come l'architettura di un modello di trasformatore. L'obiettivo è solo fornire una comprensione concettuale del modo in cui la codifica crea un modello che incapsula le relazioni tra entità.
+:::
+
+### Modello semantico per le immagini - Trasformatori di visione
+Il successo dei trasformatori come modo per creare modelli linguistici ha portato i ricercatori dell'IA a valutare se lo stesso approccio sarebbe efficace per i dati di immagine. Il risultato è lo sviluppo di modelli di trasformatore di visione (ViT), in cui viene eseguito il training di un modello usando un volume elevato di immagini. Anziché codificare token basati su testo, il trasformatore estrae patch di valori pixel dall'immagine e genera un vettore lineare dai valori pixel.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/vision-transformer.png){fig-align="center" width=60%}
+
+La stessa tecnica di *attenzione* usata nei modelli linguistici per incorporare relazioni contestuali tra i token viene usata per determinare le relazioni contestuali tra le patch. La differenza principale è che invece di codificare le caratteristiche linguistiche nei vettori di incorporamento, i valori incorporati sono basati su caratteristiche visive, ad esempio colore, forma, contrasto, trama e così via. Il risultato è un set di vettori di incorporamento che crea una "mappa" multidimensionale delle funzionalità visive in base alla modalità di visualizzazione comune nelle immagini di training.
+
+![](assets/radial_icons_v2.png){fig-align="center" width=50%}
+
+Come per i modelli linguistici, gli incorporamenti generano funzionalità visive usate in un contesto simile a cui vengono assegnate indicazioni vettoriali simili. Ad esempio, le caratteristiche visive comuni in un cappello possono essere contestualmente correlate alle caratteristiche visive comuni in una testa; perché le due cose sono spesso viste insieme. Il modello non ha alcuna comprensione di ciò che è un "cappello" o una "testa" ; ma può dedurre una relazione semantica tra le caratteristiche visive.
+
+### Mettere tutto insieme - Modelli multimodali
+
+Un trasformatore di linguaggio crea incorporamenti che definiscono un vocabolario linguistico che codifica le relazioni semantiche tra parole. Un trasformatore di visione crea un vocabolario visivo che fa lo stesso per le caratteristiche visive. Quando i dati di training includono immagini con descrizioni di testo associate, è possibile combinare i codificatori di entrambi i trasformatori in un modello multimodale; e si usa una tecnica denominata attenzione intermodale per definire una rappresentazione spaziale unificata degli incorporamenti, in questo modo.
+
+![](assets/radial_icons_labels.png){fig-align="center" width=50%}
+
+Questa combinazione di incorporamenti di linguaggio e visione consente al modello di distinguere le relazioni semantiche tra linguaggio e funzionalità visive. Questa funzionalità a sua volta consente al modello di stimare descrizioni complesse per le immagini che non ha visto in precedenza, riconoscendo le funzionalità visive e cercando lo spazio vettoriale condiviso per il linguaggio associato.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/image-description.png){fig-align="center" width=50%}
+
+## Generazione di immagini
+
+La stessa architettura del modello multilingue che consente all'intelligenza artificiale di creare risposte in linguaggio naturale all'input visivo, può essere usata anche per consentire la creazione di immagini in risposta alle richieste del linguaggio naturale. Identificando le funzionalità visive associate al linguaggio, un modello di sintesi delle immagini può assumere una descrizione di un'immagine o di un video desiderato e generarlo.
+
+La maggior parte dei modelli moderni di generazione di immagini usa una tecnica denominata diffusione, in cui viene usata una richiesta per identificare un set di funzionalità visive correlate che possono essere combinate per creare un'immagine. L'immagine viene quindi creata in modo iterativo, a partire da un set casuale di valori pixel e rimuovendo "rumore" per creare la struttura. Dopo ogni iterazione, il modello valuta l'immagine finora per confrontarla con la richiesta, fino a quando non viene prodotta un'immagine finale che rappresenta la scena desiderata.
+
+Ad esempio, il prompt "*Un cane che porta un bastone in bocca*" potrebbe comportare un processo di diffusione con le iterazioni seguenti:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/diffusion.png)
+
+Alcuni modelli possono applicare un processo simile alla generazione di video. Il processo di generazione di video usa la stessa tecnica per identificare le caratteristiche visive associate ai token del linguaggio, ma prende in considerazione anche fattori come il comportamento fisico degli oggetti nel mondo reale (come garantire che un cane cammina con i piedi a terra) e la progressione temporale (in modo che il video ritrae una sequenza logica di attività).
+
+# Introduzione ai concetti relativi all'estrazione di informazioni basate sull'intelligenza artificiale
+
+## Introduzione
+
+Le soluzioni di estrazione delle informazioni di intelligenza artificiale vengono comunemente usate estraggono campi dati strutturati da supporti non strutturati, ad esempio documenti, immagini e persino video e registrazioni audio.
+
+:::{.callout-note}
+Mentre ci concentreremo sull'estrazione di informazioni da documenti e immagini in questo modulo, le soluzioni di intelligenza artificiale stanno emergendo che usano il riconoscimento vocale e altre tecniche avanzate per estrarre informazioni da formati multimediali diversi, ad esempio video e registrazioni audio.
+:::
+
+Gli scenari per l'estrazione delle informazioni variano da semplici app in grado di leggere le informazioni di contatto da una fotografia di un biglietto da visita, a sistemi di automazione del flusso di lavoro aziendali estremamente complessi che analizzano ed elaborano documenti finanziari e legali.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-information-extraction/media/business-card.png){fig-align="center" width=40%}
+
+Alcuni esempi comuni di scenari di estrazione delle informazioni includono:
+
+### Elaborazione di documenti finanziari
+
+Le soluzioni di elaborazione delle fatture possono analizzare le fatture da estrarre:
+
+- **Informazioni sul fornitore**: nomi, indirizzi e dettagli di contatto.
+- **Dettagli transazione**: numeri di fattura, date e termini di pagamento.
+- **Elementi di riga**: descrizioni del prodotto, quantità, prezzi unitari e totali.
+- **Informazioni fiscali**: imposte, importi ed articoli esentati.
+
+Le soluzioni di elaborazione delle ricevute potrebbero dover leggere le ricevute per estrarre:
+
+- **Dettagli commercianti**: nomi, posizioni e ID transazione.
+- **Informazioni sull'acquisto**: articoli acquistati, prezzi e sconti.
+- **Dettagli di pagamento**: metodi di pagamento, modificare gli importi e punti fedeltà.
+
+I rendiconti finanziari possono essere elaborati per estrarre:
+
+- **Informazioni sull'account**: numeri di conto, saldi e cronologie delle transazioni.
+- **Metriche delle prestazioni**: ricavi, spese e margini di profitto.
+- **Dati di conformità**: campi di report normativi e informazioni sui audit trail.
+
+### Documenti legali e di conformità
+
+Le soluzioni di elaborazione dei contratti possono essere usate per estrarre:
+
+- **Informazioni sulle parti**: parti contrattuali, firmatari e testimoni.
+- **Termini e condizioni**: date di validità, termini di rinnovo e clausole di terminazione.
+- **Condizioni finanziarie**: pianificazioni di pagamento, sanzioni e requisiti assicurativi.
+
+I moduli normativi che potrebbero dover essere elaborati includono:
+- **Documenti fiscali**: W-2s, 1099 e altre forme fiscali.
+- **Moduli assicurativi**: numeri di criteri, importi delle richieste e dettagli dell'incidente.
+- **Moduli per enti pubblici**: requisiti di certificazione e dati dell'applicazione.
+
+### Documentazione sanitaria
+Le cartelle cliniche possono essere elaborate per recuperare:
+
+- **Informazioni sui pazienti**: dati demografici, numeri di registrazione medica e dettagli assicurativi.
+- **Dati clinici**: diagnosi, trattamenti, elenchi di farmaci e segni vitali.
+- **Dati amministrativi**: pianificazioni degli appuntamenti, codici di fatturazione e informazioni sul provider.
+
+### Supply chain e logistica
+I documenti di spedizione spesso contengono dettagli essenziali, ad esempio:
+
+- **Dettagli spedizione**: numeri di tracciabilità, pesi e dimensioni.
+- **Informazioni sull'indirizzo**: i dettagli del mittente e del destinatario e le istruzioni di consegna.
+- **Documentazione doganale**: codici, valori e origine geografica.
+
+Gli ordini di acquisto vengono in genere elaborati per estrarre:
+
+- **Informazioni fornitore**: dettagli fornitore e informazioni di contatto.
+- **Specifiche del prodotto**: codici di articolo, descrizioni e quantità.
+- **Requisiti di recapito**: pianificazioni, posizioni e istruzioni speciali.
+
+
+L'uso dell'intelligenza artificiale per estrarre informazioni può essere la base dei sistemi di automazione del carico di lavoro per questi scenari e molti altri ancora.
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+## Panoramica dell'estrazione delle informazioni
+
+L'estrazione delle informazioni è un carico di lavoro che combina più tecniche di intelligenza artificiale per estrarre dati dal contenuto, spesso documenti digitali. Una soluzione completa di estrazione delle informazioni implica elementi della visione artificiale per rilevare il testo nei dati basati su immagini; e Machine Learning, o intelligenza artificiale sempre più generativa, per eseguire il mapping semantico del testo estratto a campi dati specifici.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-information-extraction/media/information-extraction.png){fig-align="center" width=40%}
+
+1. Rilevamento ed estrazione di testo da immagini tramite il riconoscimento ottico dei caratteri (OCR).
+2. Identificazione e mapping dei valori dai risultati OCR ai campi dati.
+
+Ad esempio, una soluzione di elaborazione delle richieste spese basata su intelligenza artificiale potrebbe estrarre automaticamente i campi pertinenti dalle ricevute per elaborare le attestazioni in modo più efficiente.
+
+:::: {layout-ncol=2}
+
+::: {}
+![Ricevuta analizzata](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-information-extraction/media/receipt.png)
+:::
+
+::: {}
+**Dati estratti:**
+
+- Fornitore: Quarto caffè
+- Data: 15-08-2024
+- Subtotale: $ 6,48
+- Imposta: $ 0,49
+- Totale: $ 6,97
+:::
+
+::::
+
+### Scelta dell'approccio corretto
+Quando si pianifica una soluzione di estrazione delle informazioni, è importante considerare i requisiti e i vincoli che il sistema deve soddisfare. Alcune considerazioni chiave includono:
+
+- **Caratteristiche del documento**. I documenti da cui è necessario estrarre i dati sono la base dell'intera soluzione. Si considerino fattori come:
+
+  - **Coerenza del layout**: i moduli standardizzati favoriscono approcci basati su modelli, mentre la necessità di elaborare più formati e layout potrebbe richiedere una soluzione basata su Machine Learning più complessa.
+  - **Requisiti dei volumi**: l'elaborazione a volumi elevati trae vantaggio dai modelli di Machine Learning automatizzati eseguiti su hardware di sistema ottimizzato.
+  - **Requisiti di accuratezza**: le applicazioni critiche potrebbero richiedere una convalida con intervento umano.
+
+- **Requisiti e vincoli dell'infrastruttura tecnica**. La soluzione richiederà un'infrastruttura hardware e software per funzionare. Si considerino fattori come:
+
+  - **Sicurezza e privacy**: i documenti che stai elaborando potrebbero contenere dati sensibili o riservati. La soluzione deve includere misure adeguate per proteggere l'accesso ai dati e la conformità ai requisiti del settore per l'archiviazione e l'elaborazione di dati protetti.
+  - **Potenza di elaborazione**: l'apprendimento avanzato e i modelli generativi di intelligenza artificiale comunemente usati nelle soluzioni di estrazione delle informazioni richiedono risorse di calcolo significative.
+  - **Requisiti di latenza**: l'elaborazione in tempo reale potrebbe limitare la complessità del modello.
+  - **Esigenze di scalabilità**: le soluzioni basate sul cloud offrono una migliore scalabilità per carichi di lavoro variabili.
+  - **Complessità dell'integrazione**: prendere in considerazione i requisiti di compatibilità e formato dei dati delle API.
+
+
+::: {.callout-tip}
+In molti casi, le soluzioni di estrazione delle informazioni possono essere compilate usando servizi software, ad esempio Azure Document Intelligence in Microsoft Foundry Tools e Azure Content Understanding in Microsoft Foundry Tools. L'utilizzo di servizi come questi come base per la tua soluzione può ridurre notevolmente il lavoro di sviluppo richiesto, offrendo prestazioni altamente scalabili e comprovate a livello industriale, precisione e capacità di integrazione.
+:::
+
+## Riconoscimento ottico dei caratteri (OCR)
+
+Il riconoscimento ottico dei caratteri (OCR) è una tecnologia che converte automaticamente il testo visivo nelle immagini, sia che si tratti di documenti digitalizzati, fotografie o file digitali, in dati di testo modificabili e ricercabili. Anziché trascrivere manualmente le informazioni, OCR consente l'estrazione automatica dei dati da:
+
+- Fatture e ricevute analizzate
+- Fotografie digitali di documenti
+- File PDF contenenti immagini di testo
+- Schermate e contenuto catturato
+- Moduli e note scritte a mano
+
+### La pipeline OCR: una procedura dettagliata
+
+La pipeline OCR è costituita da cinque fasi essenziali che interagiscono per trasformare le informazioni visive in dati di testo.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-information-extraction/media/optical-character-recognition.png){fig-align="center" width=60%}
+
+Le fasi del processo OCR sono:
+
+1. Acquisizione e inserimento dell'immagine.
+2. Pre-elaborazione e miglioramento delle immagini.
+3. Rilevamento della regione del testo.
+4. Riconoscimento e classificazione dei caratteri.
+5. Generazione di output e post-elaborazione.
+
+Esaminiamo ogni fase in modo più approfondito.
+
+#### Fase 1: Acquisizione e input dell'immagine
+
+La pipeline inizia quando un'immagine contenente testo entra nel sistema. Potrebbe trattarsi di:
+
+- Una fotografia scattata con una fotocamera per smartphone.
+- Un documento scansionato da uno scanner di documenti o uno scanner flatbed.
+- Frame estratto da un flusso video.
+- Una pagina PDF di cui viene eseguito il rendering come immagine.
+
+:::{.callout-tip}
+La qualità dell'immagine in questa fase influisce significativamente sull'accuratezza finale dell'estrazione del testo.
+:::
+
+#### Fase 2: Pre-elaborazione e miglioramento delle immagini
+Prima dell'inizio del rilevamento del testo, vengono usate le tecniche seguenti per ottimizzare l'immagine per una migliore accuratezza del riconoscimento:
+
+- La **riduzione del rumore** rimuove gli artefatti visivi, le macchie di polvere e le imperfezioni di scansione che possano interferire con il rilevamento del testo. Le tecniche specifiche usate per eseguire la riduzione del rumore includono:
+  - **Algoritmi di filtraggio e elaborazione di immagini**: filtri gaussiani, filtri mediani e operazioni morfologiche.
+  - **Modelli di Machine Learning**: codificatori automatici di riduzione del rumore e reti neurali convoluzionali sottoposti a training in modo specifico per la pulizia delle immagini dei documenti.
+
+- La **regolazione del contrasto** migliora la differenza tra testo e sfondo per rendere i caratteri più distinti. Anche in questo caso, esistono più approcci possibili:
+  - **Metodi classici**: equalizzazione dell'istogramma, soglia adattiva e correzione gamma.
+  - **Machine Learning**: modelli di Deep Learning che apprendono parametri di miglioramento ottimali per diversi tipi di documento.
+
+- La **correzione dell'asimmetria** rileva e corregge la rotazione dei documenti, assicurando che le righe di testo siano allineate correttamente orizzontalmente. Le tecniche per la correzione dell'asimmetria includono:
+  - **Tecniche matematiche**: trasformazione Hough per il rilevamento delle linee, i profili di proiezione e l'analisi dei componenti connessi.
+  - **Modelli di rete neurale**: reti CNN di regressione che stimano gli angoli di rotazione direttamente dalle funzionalità dell'immagine.
+
+- L'**ottimizzazione della risoluzione** regola la risoluzione delle immagini al livello ottimale per gli algoritmi di riconoscimento dei caratteri. È possibile ottimizzare la risoluzione delle immagini con:
+  - **Metodi di interpolazione**: algoritmi di ricampionamento Bicubic, bilinear e Lanczos.
+  - **Modelli a super-risoluzione**: reti generative avversarie (GAN) e reti a residui che potenziano in modo intelligente immagini di testo a bassa risoluzione.
+
+
+#### Fase 3: Rilevamento dell'area di testo
+Il sistema analizza l'immagine pre-elaborata per identificare le aree che contengono testo usando le tecniche seguenti:
+
+- L'**analisi del layout** distingue tra aree di testo, immagini, grafica e spazi vuoti. Le tecniche per l'analisi del layout includono:
+  - **Approcci tradizionali**: analisi dei componenti connessi, codifica a lunghezza di serie e segmentazione basata su proiezioni.
+  - **Modelli di Deep Learning**: reti di segmentazione semantica come U-Net, Mask R-CNN e modelli specializzati di analisi del layout di documenti (ad esempio, LayoutLM o Modelli con training PubLayNet).
+
+- L'**identificazione del blocco di testo** raggruppa singoli caratteri in parole, righe e paragrafi in base alle relazioni spaziali. Gli approcci comuni includono:
+  - **Metodi classici**: clustering basato sulla distanza, analisi degli spazi vuoti e operazioni morfologiche
+  - **Reti neurali**: reti neurali grafiche e modelli transformer che comprendono la struttura spaziale del documento
+
+- La **determinazione dell'ordine di lettura** stabilisce la sequenza in cui deve essere letto il testo (da sinistra a destra, dall'alto verso il basso per l'inglese). L'ordine corretto può essere determinato da:
+  - **Sistemi basati su regole**: algoritmi geometrici that usano coordinate della scatola di delimitazione e euristiche spaziali.
+  - **Modelli di Machine Learning**: modelli di previsione di sequenze e approcci basati su grafo that apprendono i pattern di lettura dai dati di training.
+
+- La **classificazione delle aree** identifica diversi tipi di aree di testo (intestazioni, testo del corpo, didascalie, tabelle).
+  - **Classificatori basati su funzionalità**: supportare macchine a vettori (SVM) usando funzionalità create a mano, ad esempio dimensioni del carattere, posizione e formattazione
+  - **Modelli di Deep Learning**: reti neurali convoluzionali e trasformatori di visione sottoposti a training su set di dati di documenti etichettati
+
+#### Fase 4: Riconoscimento e classificazione dei caratteri
+Questo è il nucleo del processo OCR in cui vengono identificati i singoli caratteri:
+
+- **Estrazione delle caratteristiche**: analizza la forma, le dimensioni e le caratteristiche distintive di ogni carattere o simbolo.
+  - **Metodi tradizionali**: caratteristiche statistiche come momenti, descrittori fourier e caratteristiche strutturali (cicli, endpoint, intersezioni)
+  - **Approcci di Deep Learning**: reti neurali convoluzionali che apprendono automaticamente funzionalità discriminanti dai dati in pixel non elaborati
+
+- **Confronto di modelli**: Confronta le caratteristiche estratte con i modelli addestrati che riconoscono diversi tipi di carattere, dimensioni e stili di scrittura.
+  - **Corrispondenza dei modelli**: confronto diretto con modelli di caratteri archiviati usando tecniche di correlazione
+  - **Classificatori statistici**: modelli di Markov nascosti, macchine a vettori di supporto e algoritmi k-NN che usano vettori di funzionalità
+  - **Reti neurali**: perceptroni multistrato, CNN e architetture specializzate come LeNet per il riconoscimento delle cifre
+  - **Deep Learning avanzato**: reti residui (ResNet), DenseNet ed architetture EfficientNet per una classificazione affidabile dei caratteri
+  
+
+- **Analisi del contesto**: usa caratteri e parole circostanti per migliorare l'accuratezza del riconoscimento tramite ricerche di dizionario e modelli linguistici.
+  - **Modelli N-gram**: modelli linguistici statistici che stimano le sequenze di caratteri in base alle distribuzioni di probabilità.
+  - **Correzione basata su dizionario**: ricerca lessico con algoritmi di modifica distanza (ad esempio Levenshtein distance) per la correzione ortografica.
+  - **Modelli di linguaggio neurale**: modelli LSTM e basati su trasformatore (ad esempio varianti BERT) che comprendono le relazioni contestuali.
+  - **Meccanismi di attenzione**: Modelli Transformer che si concentrano sulle parti rilevanti dell'input durante le previsioni sui caratteri.
+
+
+- **Punteggi di confidenza**: assegna punteggi di probabilità a ogni carattere riconosciuto in base a quanto il sistema è certo della sua identificazione.
+  - **Approcci bayesiani**: modelli probabilistici che quantificano l'incertezza nelle stime dei caratteri.
+  - **Uscite Softmax**: le attivazioni del livello finale della rete neurale vengono convertite in distribuzioni di probabilità.
+  - **Metodi di insieme**: combinazione di stime da più modelli per migliorare le stime di attendibilità.
+
+#### Fase 5: Generazione di output e post-elaborazione
+La fase finale converte i risultati del riconoscimento in dati di testo utilizzabili:
+
+- **Compilazione del testo**: assembla i singoli riconoscimenti di caratteri in parole e frasi complete.
+  - **Assembly basato su regole**: algoritmi deterministici che combinano stime dei caratteri usando la prossimità spaziale e le soglie di attendibilità.
+  - **Modelli di sequenza**: reti neurali ricorrenti (RNN) e reti LSTM (Long Short-Term Memory) che modellano il testo come dati sequenziali.
+  - **Modelli basati sull'attenzione**: architetture trasformatori in grado di gestire sequenze a lunghezza variabile e layout di testo complessi.
+
+
+- **Conservazione del formato**: mantiene la struttura dei documenti, inclusi paragrafi, interruzioni di riga e spaziatura.
+  - **Algoritmi geometrici**: sistemi basati su regole che usano le coordinate del rettangolo delimitatore e l'analisi dello spazio vuoto.
+  - **Modelli di comprensione del layout**: reti neurali a grafo e modelli di intelligenza artificiale per documenti che apprendono le relazioni strutturali.
+  - **Trasformatori multi modali**: modelli come LayoutLM che combinano informazioni sul testo e sul layout per la conservazione della struttura.
+
+
+- **Mapping delle coordinate**: registra la posizione esatta di ogni elemento di testo all'interno dell'immagine originale.
+  - **Trasformazione delle coordinate**: Mappatura matematica tra i pixel dell'immagine e le coordinate del documento.
+  - **Indicizzazione spaziale**: strutture di dati come R-trees e quad-trees per query spaziali efficienti.
+  - **Modelli di regressione**: reti neurali addestrate per predire le coordinate precise di posizionamento del testo.
+
+- **Convalida della qualità**: applica controlli ortografici e grammaticali per identificare potenziali errori di riconoscimento.
+  - **Convalida basata su dizionario**: ricerca in elenchi di parole completi e vocabolari di dominio specializzati.
+  - **Modelli linguistici statistici**: modelli N-gram e parser probabilistici per la convalida grammaticale e del contesto.
+  - **Modelli di linguaggio neurale**: modelli con training preliminare come GPT o BERT ottimizzati per il rilevamento e la correzione degli errori OCR.
+  - **Convalida dell'insieme**: combinazione di più approcci di convalida per migliorare l'accuratezza del rilevamento degli errori.
+
+## Estrazione e mappatura dei campi
+
+L'estrazione dei campi è il processo di acquisizione di output di testo da OCR e il mapping di singoli valori di testo a campi dati specifici etichettati che corrispondono a informazioni aziendali significative. Mentre OCR indica il testo presente in un documento, l'estrazione dei campi indica cosa significa il testo e dove appartiene nei sistemi aziendali.
+
+### Pipeline di estrazione dei campi
+L'estrazione dei campi segue una sequenza sistematica che trasforma l'output OCR in dati strutturati.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-information-extraction/media/field-extraction.png){fig-align="center" width=60%}
+
+Le fasi del processo di estrazione dei campi sono:
+
+1. Inserimento di output OCR.
+2. Rilevamento dei campi e identificazione dei candidati.
+3. Mappatura dei campi e associazione.
+4. Normalizzazione e standardizzazione dei dati.
+5. Integrazione con processi e sistemi aziendali.
+
+Esaminiamo queste fasi in modo più dettagliato.
+
+#### Fase 1: Inserimento di output OCR
+Il processo inizia con l'output strutturato proveniente dalla pipeline OCR, che può includere:
+
+1. **Contenuto di testo non elaborato**: caratteri e parole effettivi estratti dal documento
+2. **Metadati posizionali**: coordinate del riquadro delimitatore, posizioni delle pagine e informazioni sull'ordine di lettura
+3. **Punteggi di attendibilità**: livelli di confidenza del motore OCR per ogni elemento di testo
+4. **Informazioni sul layout**: struttura del documento, interruzioni di riga, limiti di paragrafo
+
+:::{.callout-note}
+A differenza della semplice elaborazione del testo, l'estrazione dei campi si basa principalmente sulla posizione in cui il testo viene visualizzato nel documento, non solo su quello che dice. La posizione di "12345" potrebbe aiutare a determinare se si tratta di un numero di fattura, un ID cliente o un numero di telefono.
+:::
+
+#### Fase 2: Rilevamento dei campi e identificazione dei candidati
+Questa fase identifica il valore potenziale del campo nell'output OCR. Esistono più approcci che possono essere usati, indipendentemente o in combinazione, per determinare i campi probabili nei risultati OCR.
+
+**Rilevamento basato su modello**
+I modelli per il rilevamento dei campi si basano su modelli di corrispondenza basati su regole. L'identificazione dei campi può essere eseguita usando tecniche come:
+
+- Layout di documenti predefiniti con posizioni di campo note e parole chiave di ancoraggio.
+- Cerca coppie etichetta-valore come "Numero fattura:", "Date:", "Total:".
+- Espressioni regolari e algoritmi di corrispondenza di stringhe.
+
+I **vantaggi** di un approccio basato su modello includono un'accuratezza elevata per i tipi di documenti noti, l'elaborazione rapida e i risultati spiegabili.
+
+Le **limitazioni** dell'approccio includono il requisito per la creazione manuale dei modelli e la complessità causata da variazioni di layout o incoerenze di denominazione dei campi.
+
+**Rilevamento basato su Machine Learning**
+
+Anziché la logica hardcoded per estrarre campi in base a nomi e posizioni noti, è possibile usare un corpus di documenti di esempio per eseguire il training di un modello di Machine Learning che estrae i campi in base alle relazioni apprese. I modelli basati sui trasformatori in particolare sono validi per applicare segnali contestuali per identificare i modelli e quindi spesso sono la base di una soluzione di rilevamento dei campi.
+
+Gli approcci di addestramento per i modelli di machine learning per il rilevamento dei campi includono:
+
+- **Apprendimento supervisionato**: addestrato su set di dati etichettati con posizioni di campi note.
+- **Apprendimento auto-supervisionato**: sottoposto a training preliminare su corpora di documenti di grandi dimensioni per comprendere i modelli di layout.
+- **Apprendimento multimodale**: combina caratteristiche testuali, visive e posizionali.
+- **Architetture di modelli avanzate**, ad esempio:
+  - **Reti neurali del grafo (GNN)** che modellano le relazioni spaziali tra gli elementi di testo come connessioni a grafo.
+  - **Meccanismi di attenzione** che si concentrano sulle aree del documento pertinenti durante la stima dei valori dei campi.
+  - **Modelli da sequenza a sequenza** che trasformano sequenze di testo non strutturate in assegnazioni di campo strutturate.
+
+**Intelligenza artificiale generativa per l'estrazione basata su schema**
+
+I recenti progressi nei modelli di linguaggio di grandi dimensioni hanno portato all'emergere di tecniche di rilevamento dei campi basate sull'intelligenza artificiale generative, che consentono un rilevamento dei campi più efficiente ed efficace tramite:
+
+- **Estrazione basata su prompt**: in cui si fornisce all'LLM il testo del documento e una definizione dello schema, e fa corrispondere il testo ai campi dello schema.
+- **Apprendimento con pochi scatti**: in cui è possibile eseguire il training di modelli con esempi minimi per estrarre campi personalizzati.
+- **Ragionamento passo-passo**: che guida i modelli attraverso la logica di identificazione passo dopo passo dei campi.
+
+#### Fase 3: Mappatura dei campi e associazione
+Dopo aver identificato i valori candidati, è necessario eseguirne il mapping a campi dello schema specifici:
+
+**Tecniche di associazione chiave-valore**
+
+In molti casi, i campi dati di un documento o di un modulo sono valori discreti che possono essere mappati alle chiavi, ad esempio il nome del fornitore, la data e l'importo totale in una ricevuta o fattura. Le tecniche comuni usate per l'associazione chiave-valore includono:
+
+- **Analisi di prossimità**:
+  - **Clustering spaziale**: raggruppare gli elementi di testo nelle vicinanze usando algoritmi di distanza.
+  - **Analisi degli ordini di lettura**: seguire il flusso di testo naturale per associare le etichette ai valori.
+  - **Relazioni geometriche**: utilizzare schemi di allineamento, indentazione e posizionamento.
+
+- **Riconoscimento di modelli linguistici**:
+  - **Riconoscimento di entità denominate (NER)**: identificare tipi di entità specifici (date, importi, nomi).
+  - **Annotazione delle parti del discorso**: Comprendere le relazioni grammaticali tra etichette e valori.
+  - **Analisi delle dipendenze**: analizzare le relazioni sintattiche nel testo.
+
+
+**Elaborazione di contenuti strutturati e tabelle**
+
+Alcuni documenti includono strutture di testo più complesse, ad esempio tabelle. Ad esempio, una ricevuta o una fattura può includere una tabella di voci con colonne per il nome dell'articolo, il prezzo e la quantità acquistata.
+
+La presenza di una tabella può essere determinata usando diverse tecniche, tra cui:
+
+- **Architetture specializzate della rete neurale convoluzionale (CNN)** per il riconoscimento della struttura delle tabelle.
+- **Approcci di rilevamento degli oggetti adattati** per l'identificazione delle celle di tabella.
+- **Approcci di analisi basati su grafi** che modellano la struttura della tabella come relazioni tra celle.
+
+Per eseguire il mapping dei valori nelle celle di una tabella ai campi, la soluzione di estrazione dei campi può usare una o più delle tecniche seguenti:
+
+- **Associazione di riga-colonna** per mappare le celle della tabella a schemi di campo specifici.
+- **Rilevamento delle intestazioni** per identificare le intestazioni di colonna e comprendere i significati dei campi.
+- **Elaborazione gerarchica** per gestire strutture di tabelle annidate e sub-totali.
+
+**Punteggio di attendibilità e convalida**
+
+L'accuratezza dell'estrazione dei campi dipende da molti fattori e gli algoritmi e i modelli usati per implementare la soluzione sono soggetti a potenziali errori di identificazione errata o interpretazione del valore. A tale scopo, vengono utilizzate varie tecniche per valutare l'accuratezza dei valori dei campi stimati; comprendente:
+
+- **Attendibilità OCR**: eredita i punteggi di attendibilità dal riconoscimento del testo sottostante.
+- **Attendibilità dei criteri di ricerca**: punteggio basato sul livello di corrispondenza dell'estrazione rispetto ai criteri previsti.
+- **Convalida del contesto**: verifica che i valori dei campi abbiano senso nel contesto del documento.
+- **Convalida tra campi**: controllo delle relazioni tra i campi estratti, ad esempio verificando che i subtotali delle voci si sommino al totale della fattura.
+
+#### Fase 4: Normalizzazione e standardizzazione dei dati
+I valori estratti non elaborati vengono in genere trasformati in formati coerenti (ad esempio per garantire che tutte le date estratte siano espresse nello stesso formato di data) e verificata la validità.
+
+**Standardizzazione del formato**
+
+Esempi di standardizzazione del formato che è possibile implementare includono:
+
+- **Normalizzazione della data**:
+  - **Rilevamento formato**: identificare vari formati di data (MM/GG/AAAA, GG-MM-AAAA e così via).
+  - **Algoritmi di analisi**: convertire in formati ISO standardizzati.
+  - **Risoluzione delle ambiguità**: gestire i casi in cui il formato della data non è chiaro.
+
+- **Gestione di valuta e numeri**
+  - **Riconoscimento dei simboli**: Gestione differente dei simboli di valuta e dei separatori delle migliaia.
+  - **Normalizzazione decimale**: standardizzare la rappresentazione del separatore decimale tra le diverse impostazioni locali.
+  - **Conversione unità**: convertire tra unità di misura diverse in base alle esigenze.
+
+- **Standardizzazione del testo**:
+  - **Normalizzazione maiuscole/minuscole**: applicare regole di utilizzo delle maiuscole/minuscole coerenti.
+  - **Standardizzazione della codifica**: gestire diverse codifiche di caratteri e caratteri speciali.
+  - **Espansione delle abbreviazioni**: convertire le abbreviazioni comuni in formati completi.
+
+**Convalida dei dati e controllo qualità**
+
+
+Oltre a formattare i campi estratti, il processo di standardizzazione consente un'ulteriore convalida dei valori estratti tramite tecniche come:
+
+- **Convalida basata su regole**:
+  - **Controllo del formato**: verificare che i valori estratti corrispondano ai modelli previsti (numeri di telefono, indirizzi di posta elettronica).
+  - **Convalida dell'intervallo**: assicurarsi che i valori numerici rientrano entro limiti ragionevoli.
+  - **Controllo campo obbligatorio**: verificare che siano presenti tutti i campi obbligatori.
+
+- **Convalida statistica**:
+  - **Rilevamento di valori anomali**: identificare valori insolitamente alti o bassi che potrebbero indicare errori di estrazione.
+  - **Analisi della distribuzione**: confrontare i valori estratti rispetto ai modelli cronologici.
+  - **Convalida tra documenti**: verificare la coerenza tra i documenti correlati.
+
+#### Fase 5: Integrazione con processi e sistemi aziendali
+La fase finale del processo prevede in genere l'integrazione dei valori dei campi estratti in un processo aziendale o in un sistema:
+
+**Mapping dello schema**
+
+I campi estratti potrebbero dover essere ulteriormente trasformati o riformattati in modo da allinearli agli schemi dell'applicazione usati per l'inserimento di dati in sistemi downstream. Per esempio:
+
+- **Schemi di database**: eseguire il mapping dei campi estratti a colonne e tabelle di database specifiche.
+- **Payload API**: formattare i dati per l'utilizzo dell'API REST da parte di sistemi downstream.
+- **Code di messaggi**: preparare i messaggi strutturati per l'elaborazione asincrona.
+
+Il processo di mapping dello schema potrebbe comportare trasformazioni come:
+
+- **Ridenominazione dei campi**: eseguire il mapping dei nomi dei campi estratti alle convenzioni di sistema di destinazione.
+- **Conversione dei tipi di dati**: verificare che i valori corrispondano ai tipi di dati previsti nei sistemi di destinazione.
+- **Logica condizionale**: applicare regole business per la trasformazione e la derivazione dei campi.
+
+**Metriche e report di qualità**
+
+Un'altra attività comune al termine del processo di estrazione consiste nel valutare e segnalare la qualità dei dati estratti. Il report può includere informazioni quali:
+
+- **Punteggi di attendibilità a livello di campo**: classificazioni di attendibilità individuali per ogni campo estratto.
+- **Valutazione della qualità a livello di documento**: metriche generali di estrazione riuscita.
+- **Categorizzazione degli errori**: classificare gli errori di estrazione in base al tipo e alla causa.
+
