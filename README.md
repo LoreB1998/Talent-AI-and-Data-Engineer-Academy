@@ -21,17 +21,25 @@ Formare figure professionali nel mondo dell'AI e dei dati attraverso una base te
 
 | Cartella | Contenuto |
 |---|---|
-| `Lezione 1-2 - Python` | Introduzione a Python |
-| `Lezione 3 - Python` | Strutture dati e controllo del flusso |
-| `Lezione 4 - Python Classi` | OOP e classi |
-| `Lezione 5-6-7 - Python Veicoli` | Esercitazione OOP avanzata |
-| `Esame Python` | Esame finale modulo Python |
-| `Esercizio Python Biblioteca` | Esercitazione gestione biblioteca |
-| `Esercizio Promessi sposi` | Esercitazione text processing |
-| `Python Essentials 2` | Modulo Python Essentials 2 |
-| `AZ-900` | Appunti e materiali Azure Fundamentals |
-| `DP-900` | Appunti e materiali Azure Data Fundamentals |
-| `SQL DP-900` | Esercizi SQL modulo DP-900 |
+| `[Esercitazioni Python](./Esercitazioni%20Python)` | Esercitazioni pratiche in Python (classi, biblioteca, rubrica, veicoli, text processing, Tris, Pandas e l'esame di Python) |
+| `[Python Essentials 2](./Python%20Essentials%202)` | Modulo avanzato Python Essentials 2 (moduli, stringhe, eccezioni, OOP, ecc.) |
+| `[AZ-900](./AZ-900)` | Appunti e materiali per la certificazione Microsoft Azure Fundamentals |
+| `[DP-900](./DP-900)` | Appunti e materiali per la certificazione Microsoft Azure Data Fundamentals |
+| `[AI-900](./AI-900)` | Appunti e materiali per la certificazione Microsoft Azure AI Fundamentals |
+| `[SQL DP-900](./SQL%20DP-900)` | Esercizi SQL svolti per il modulo DP-900 |
+| `[Salute e sicurezza nei luogi di lavoro](./Salute%20e%20sicurezza%20nei%20luogi%20di%20lavoro)` | Materiali relativi al modulo sulla sicurezza nei luoghi di lavoro |
+
+### 🐍 Dettaglio Esercitazioni Python
+
+All'interno della cartella `[Esercitazioni Python](./Esercitazioni%20Python)` si trovano:
+- **`[Classi - Introduzione](./Esercitazioni%20Python/Classi%20-%20Introduzione)`**: Basi dell'Object-Oriented Programming (OOP) e utilizzo delle classi.
+- **`[Classi - Biblioteca](./Esercitazioni%20Python/Classi%20-%20Biblioteca)`**: Esercitazione sulla gestione orientata agli oggetti di una biblioteca.
+- **`[Classi - Rubrica](./Esercitazioni%20Python/Classi%20-%20Rubrica)`**: Esercitazione sulla creazione e gestione di una rubrica contatti.
+- **`[Classi - Veicoli](./Esercitazioni%20Python/Classi%20-%20Veicoli)`**: Esercitazione avanzata OOP incentrata sulla logistica, riders e veicoli.
+- **`[Esame Python](./Esercitazioni%20Python/Esame%20Python)`**: Progetto finale del modulo Python (sistema di gestione parcheggio).
+- **`[I-O Promessi sposi](./Esercitazioni%20Python/I-O%20Promessi%20sposi)`**: Operazioni di Input/Output e text processing del celebre romanzo.
+- **`[Pandas](./Esercitazioni%20Python/Pandas)`**: Introduzione all'analisi dei dati con Pandas sui dataset Titanic e Iris.
+- **`[Tris](./Esercitazioni%20Python/Tris)`**: Gioco del Tris implementato con approccio rules-based e algoritmo intelligente Minimax.
 
 ## 🚧 Work in progress
 
