@@ -370,7 +370,7 @@ Osservazioni importanti per i notebook futuri:
 - i **decision tree** costruiscono regole confrontando ogni feature con una soglia,
   producendo confini decisionali paralleli agli assi
 
-### Esercizio M1.1
+### Esercizio M1.01
 
 Immaginiamo di essere interessati a prevedere la specie dei pinguini basandoci su due delle loro misurazioni corporee: la lunghezza del culmine e la profondità del culmine. Per prima cosa, vogliamo fare un po' di esplorazione dei dati per farci un'idea.
 
@@ -574,7 +574,7 @@ In questo notebook abbiamo:
 - introdotto l'API di scikit-learn: `.fit(X, y)`, `.predict(X)`, `.score(X, y)`
 - introdotto i termini *estimator*, *predictor* e *model*
 
-### Esercizio M1.2
+### Esercizio M1.02
 
 
 L'obiettivo di questo esercizio è addestrare un modello simile a quello del notebook precedente, per familiarizzare con gli oggetti di scikit-learn e in particolare con l'API `.fit` / `.predict` / `.score`.
@@ -840,7 +840,7 @@ In questo notebook, abbiamo imparato a:
 - utilizzare la funzione train_test_split di scikit-learn per separare i dati in un set di training e test;
 - addestrare e valutare un modello di regressione logistica.
 
-### Esercizio M1.3
+### Esercizio M1.03
 
 L'obiettivo di questo esercizio è confrontare le prestazioni del nostro classificatore nel notebook precedente (circa 81% di accuratezza con `LogisticRegression`) con alcuni semplici classificatori baseline. Il classificatore baseline più semplice è quello che predice sempre la stessa classe, indipendentemente dai dati di input.
 
@@ -1242,3 +1242,981 @@ In questo caso particolare, solo le prime 2 cifre decimali sembrano affidabili. 
 #### Riepilogo
 
 In questo notebook abbiamo valutato la performance di generalizzazione del nostro modello tramite cross-validation.
+
+## Gestione delle variabili categoriali
+
+### Encoding delle variabili categoriali
+
+In questo notebook presentiamo alcune strategie tipiche per gestire le variabili categoriali tramite encoding: **ordinal encoding** e **one-hot encoding**.
+
+Carichiamo prima il dataset adult completo, che contiene sia dati numerici che categoriali.
+
+```{python}
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/INRIA/scikit-learn-mooc/main/datasets/adult-census.csv"
+adult_census = pd.read_csv(url)
+adult_census = adult_census.drop(columns="education-num")
+
+target_name = "class"
+target = adult_census[target_name]
+data = adult_census.drop(columns=[target_name])
+```
+
+#### Identificare le variabili categoriali
+
+Una variabile numerica è una quantità rappresentata da un numero reale o intero — gestita naturalmente dagli algoritmi di ML tramite operazioni aritmetiche.
+
+Le variabili **categoriali** hanno invece valori discreti, tipicamente rappresentati da stringhe, scelti da un insieme finito di possibilità. Ad esempio, `native-country` è una variabile categoriale perché codifica i dati usando un elenco finito di paesi (più il simbolo `?` per i valori mancanti).
+
+```{python}
+data["native-country"].value_counts().sort_index()
+```
+
+Come riconoscere facilmente le colonne categoriali? Una parte della risposta sta nel tipo di dato della colonna:
+
+```{python}
+data.dtypes
+```
+
+La colonna `native-country` ha tipo `object`, cioè contiene stringhe.
+
+#### Selezionare le feature in base al tipo di dato
+
+Invece di definire manualmente le colonne categoriali, possiamo usare la funzione helper `make_column_selector` di scikit-learn, che seleziona le colonne in base al loro tipo di dato.
+
+```{python}
+from sklearn.compose import make_column_selector as selector
+
+categorical_columns_selector = selector(dtype_include=object)
+categorical_columns = categorical_columns_selector(data)
+categorical_columns
+```
+
+```{python}
+data_categorical = data[categorical_columns]
+data_categorical
+```
+
+```{python}
+print(f"Il dataset è composto da {data_categorical.shape[1]} feature")
+```
+
+#### Strategie di encoding
+
+##### Encoding ordinale
+
+La strategia più intuitiva è assegnare a ogni categoria un numero diverso. `OrdinalEncoder` trasforma i dati in questo modo. Iniziamo codificando una singola colonna per capire come funziona.
+
+```{python}
+from sklearn.preprocessing import OrdinalEncoder
+
+education_column = data_categorical[["education"]]
+
+encoder = OrdinalEncoder().set_output(transform="pandas")
+education_encoded = encoder.fit_transform(education_column)
+education_encoded
+```
+
+Ogni categoria in `education` è stata sostituita da un valore numerico. Possiamo verificare il mapping tra categorie e valori numerici tramite l'attributo `categories_`.
+
+```{python}
+encoder.categories_
+```
+
+Applichiamo ora l'encoding a tutte le feature categoriali.
+
+```{python}
+data_encoded = encoder.fit_transform(data_categorical)
+data_encoded[:5]
+```
+
+```{python}
+print(f"Il dataset codificato contiene {data_encoded.shape[1]} feature")
+```
+
+Le categorie sono state codificate per ciascuna feature in modo indipendente. Il numero di feature prima e dopo l'encoding rimane lo stesso.
+
+::: {.callout-warning}
+Attenzione: usando questa rappresentazione intera, i modelli predittivi a valle assumono che i valori siano **ordinati** (0 < 1 < 2 < 3...).
+
+Per default, `OrdinalEncoder` usa una strategia lessicografica per mappare le etichette alle categorie — spesso arbitraria e priva di significato. Ad esempio, per una variabile `size` con categorie `"S"`, `"M"`, `"L"`, `"XL"`, la strategia alfabetica mapperebbe: `"L"→0`, `"M"→1`, `"S"→2`, `"XL"→3`, ignorando l'ordine semantico.
+
+`OrdinalEncoder` accetta un argomento `categories` per specificare esplicitamente l'ordine desiderato.
+:::
+
+Se una variabile categoriale non ha un ordine significativo, l'ordinal encoding può essere fuorviante — in quel caso è preferibile il **one-hot encoding**.
+
+##### Encoding nominale (senza assumere alcun ordine)
+
+`OneHotEncoder` è un encoder alternativo che evita ai modelli di fare false assunzioni sull'ordinamento delle categorie. Per ogni feature, crea tante nuove colonne quante sono le categorie possibili. Per ogni campione, la colonna corrispondente alla sua categoria viene impostata a 1, tutte le altre a 0.
+
+Codifichiamo prima una singola feature per capire il funzionamento.
+
+```{python}
+from sklearn.preprocessing import OneHotEncoder
+
+encoder = OneHotEncoder(sparse_output=False).set_output(transform="pandas")
+education_encoded = encoder.fit_transform(education_column)
+education_encoded
+```
+
+::: {.callout-note}
+`sparse_output=False` viene usato qui a scopo didattico per facilitare la visualizzazione. Le matrici sparse sono strutture dati efficienti quando la maggior parte degli elementi è zero, ma non verranno approfondite in questo corso.
+:::
+
+Ogni categoria diventa una colonna; per ogni campione viene impostato a 1 il valore corrispondente alla sua categoria.
+
+Applichiamo ora l'encoding all'intero dataset categoriale.
+
+```{python}
+print(f"Il dataset è composto da {data_categorical.shape[1]} feature")
+data_categorical
+```
+
+```{python}
+data_encoded = encoder.fit_transform(data_categorical)
+data_encoded[:5]
+```
+
+```{python}
+print(f"Il dataset codificato contiene {data_encoded.shape[1]} feature")
+```
+
+Il numero di feature dopo l'encoding è più di 10 volte superiore rispetto all'originale, perché alcune variabili come `occupation` e `native-country` hanno molte categorie possibili.
+
+#### Scegliere una strategia di encoding
+
+::: {.callout-note}
+In generale:
+
+- **OneHotEncoder** è la strategia usata con i **modelli lineari**
+- **OrdinalEncoder** è spesso una buona scelta con i **modelli ad albero**
+
+`OrdinalEncoder` produce categorie ordinali (0 < 1 < 2...). L'impatto di violare questa assunzione dipende dal modello a valle: i modelli lineari ne risentono, quelli ad albero no.
+
+Il one-hot encoding su variabili con alta cardinalità può causare inefficienze computazionali nei modelli ad albero — in quel caso non è raccomandato anche se le categorie non hanno un ordine.
+:::
+
+#### Valutare la pipeline predittiva
+
+Integriamo l'encoder in una pipeline di ML e valutiamo la performance con cross-validation.
+
+Prima però, osserviamo la colonna `native-country`:
+
+```{python}
+data["native-country"].value_counts()
+```
+
+La categoria `"Holand-Netherlands"` appare raramente. Questo è un problema durante la cross-validation: se quel campione finisce nel test set, il classificatore non l'avrà mai vista durante il training e non sarà in grado di codificarla.
+
+Soluzioni possibili in scikit-learn:
+
+- passare esplicitamente tutte le categorie possibili via `categories`
+- impostare `handle_unknown="ignore"`: le colonne one-hot di una categoria sconosciuta vengono tutte impostate a 0
+- usare `min_frequency` per raggruppare le categorie più rare in un'unica colonna
+
+In questo notebook usiamo la seconda opzione.
+
+```{python}
+from sklearn.pipeline import make_pipeline
+from sklearn.linear_model import LogisticRegression
+
+model = make_pipeline(
+    OneHotEncoder(handle_unknown="ignore"), LogisticRegression(max_iter=500)
+)
+```
+
+::: {.callout-note}
+Aumentiamo `max_iter` per ottenere una `LogisticRegression` completamente conversa e silenziare un `ConvergenceWarning`. Le feature one-hot encoded sono già sulla stessa scala (valori 0 o 1), quindi non beneficerebbero dello scaling — in questo caso aumentare `max_iter` è la scelta corretta.
+:::
+
+```{python}
+from sklearn.model_selection import cross_validate
+
+cv_results = cross_validate(model, data_categorical, target)
+cv_results
+```
+
+```{python}
+scores = cv_results["test_score"]
+print(f"L'accuracy è: {scores.mean():.3f} ± {scores.std():.3f}")
+```
+
+Come si vede, questa rappresentazione delle variabili categoriali è leggermente più predittiva del reddito rispetto alle variabili numeriche usate in precedenza — questo perché abbiamo più feature categoriali (predittive) che numeriche.
+
+#### Riepilogo
+
+In questo notebook abbiamo:
+
+- visto due strategie comuni per codificare le feature categoriali: **ordinal encoding** e **one-hot encoding**
+- usato una pipeline per applicare il one-hot encoder prima di addestrare una regressione logistica
+
+
+### Esercizio M1.04
+
+L'obiettivo di questo esercizio è valutare l'impatto dell'uso di una codifica intera arbitraria per le variabili categoriali insieme a un modello di classificazione lineare come la Regressione Logistica.
+
+Per farlo, proviamo a usare `OrdinalEncoder` per preprocessare le variabili categoriali. Questo preprocessore viene assemblato in una pipeline con `LogisticRegression`. La performance di generalizzazione della pipeline può essere valutata tramite cross-validation e poi confrontata con il punteggio ottenuto usando `OneHotEncoder`.
+
+#### Caricamento del dataset
+
+```{python}
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/INRIA/scikit-learn-mooc/main/datasets/adult-census.csv"
+adult_census = pd.read_csv(url)
+
+target_name = "class"
+target = adult_census[target_name]
+data = adult_census.drop(columns=[target_name, "education-num"])
+```
+
+Nel notebook precedente abbiamo usato `make_column_selector` per selezionare automaticamente le colonne in base al tipo di dato. Qui lo usiamo per ottenere solo le colonne contenenti stringhe (tipo `object`), che corrispondono alle feature categoriali del nostro dataset.
+
+```{python}
+from sklearn.compose import make_column_selector as selector
+
+categorical_columns_selector = selector(dtype_include=object)
+categorical_columns = categorical_columns_selector(data)
+data_categorical = data[categorical_columns]
+data_categorical.head()
+```
+
+#### Pipeline con `OrdinalEncoder`
+
+Definisci una pipeline scikit-learn composta da un `OrdinalEncoder` e un classificatore `LogisticRegression`.
+
+Poiché `OrdinalEncoder` può sollevare errori se incontra una categoria sconosciuta durante la predizione, imposta i parametri `handle_unknown="use_encoded_value"` e `unknown_value`. Consulta la [documentazione di scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html) per maggiori dettagli.
+
+```{python}
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import OrdinalEncoder
+from sklearn.linear_model import LogisticRegression
+
+model = make_pipeline(
+    OrdinalEncoder(handle_unknown="use_encoded_value",unknown_value=-1),
+    LogisticRegression(max_iter=500)
+)
+```
+
+#### Valutazione con cross-validation
+
+Il modello è ora definito. Valutalo usando `cross_validate`.
+
+::: {.callout-note}
+Se si verifica un errore durante la cross-validation, `cross_validate` restituisce `NaN` come score. Per ottenere invece un'eccezione Python standard con traceback, passa l'argomento `error_score="raise"` alla chiamata di `cross_validate`. L'eccezione viene sollevata al primo problema incontrato — utile quando si sviluppano pipeline complesse.
+:::
+
+```{python}
+from sklearn.model_selection import cross_validate
+
+cv_results = cross_validate(model, data_categorical, target)
+cv_results
+```
+
+Stampa la media e la deviazione standard degli score
+
+```{python}
+scores = cv_results["test_score"]
+print(f"L'accuracy è: {scores.mean():.3f} ± {scores.std():.3f}")
+```
+
+L'utilizzo di una mappatura arbitraria dalle etichette di stringa agli interi, come fatto in questo caso, porta il modello lineare a formulare ipotesi errate sull'ordine relativo delle categorie.
+
+Ciò impedisce al modello di apprendere informazioni sufficientemente predittive e il punteggio ottenuto con la convalida incrociata risulta persino inferiore al valore di riferimento ottenuto ignorando i dati di input e limitandoci a prevedere costantemente la classe più frequente.
+
+```{python}
+from sklearn.dummy import DummyClassifier
+
+cv_results = cross_validate(
+    DummyClassifier(strategy="most_frequent"), data_categorical, target
+)
+scores = cv_results["test_score"]
+print(
+    "The mean cross-validation accuracy is: "
+    f"{scores.mean():.3f} ± {scores.std():.3f}"
+)
+```
+
+#### Pipeline con `OneHotEncoder`
+
+Confronta la performance del modello precedente con un nuovo modello che usa `OneHotEncoder` al posto di `OrdinalEncoder`. Ripeti la valutazione con cross-validation, confronta i punteggi e trai conclusioni sull'impatto della scelta della strategia di encoding con un modello lineare.
+
+```{python}
+from sklearn.preprocessing import OneHotEncoder
+
+model = make_pipeline(
+    OneHotEncoder(handle_unknown="ignore"),
+    LogisticRegression(max_iter=500)
+)
+```
+
+Stampa la media e la deviazione standard degli score
+
+```{python}
+cv_results = cross_validate(model, data_categorical, target)
+cv_results
+```
+
+```{python}
+scores = cv_results["test_score"]
+print(f"L'accuracy è: {scores.mean():.3f} ± {scores.std():.3f}")
+```
+
+#### Conclusioni
+
+Con il classificatore lineare scelto, l'utilizzo di una codifica che non presuppone alcun ordinamento porta a risultati molto migliori.
+
+Il messaggio importante qui è: il modello lineare e `OrdinalEncoder` sono usati insieme solo per caratteristiche categoriali ordinali, cioè caratteristiche che hanno un ordinamento specifico. Altrimenti, il tuo modello funzionerebbe male.
+
+
+### Usare variabili numeriche e categoriali insieme
+
+Nei notebook precedenti abbiamo mostrato il preprocessing necessario per le variabili numeriche e categoriali, trattandole separatamente. In questo notebook mostriamo come combinare questi step di preprocessing.
+
+Carichiamo prima l'intero dataset adult census.
+
+```{python}
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/INRIA/scikit-learn-mooc/main/datasets/adult-census.csv"
+adult_census = pd.read_csv(url)
+adult_census = adult_census.drop(columns="education-num")
+
+target_name = "class"
+target = adult_census[target_name]
+data = adult_census.drop(columns=[target_name])
+```
+
+#### Selezione basata sul tipo di dato
+
+Separiamo le variabili categoriali e numeriche usando il loro tipo di dato per identificarle, come abbiamo visto in precedenza: `object` corrisponde alle colonne categoriali (stringhe). Usiamo l'helper `make_column_selector` per selezionare le colonne corrispondenti.
+
+```{python}
+from sklearn.compose import make_column_selector as selector
+
+numerical_columns_selector   = selector(dtype_exclude=object)
+categorical_columns_selector = selector(dtype_include=object)
+
+numerical_columns   = numerical_columns_selector(data)
+categorical_columns = categorical_columns_selector(data)
+```
+
+::: {.callout-warning}
+Qui sappiamo che il tipo `object` viene usato per rappresentare stringhe e quindi feature categoriali. Attenzione: questo non è sempre vero. A volte il tipo `object` può contenere altri tipi di informazione, come date non formattate correttamente (stringhe) che però rappresentano una quantità di tempo trascorso.
+
+In uno scenario più generale, è opportuno ispezionare manualmente il contenuto del dataframe per non usare `make_column_selector` in modo errato.
+:::
+
+#### Assegnare le colonne a un preprocessore specifico
+
+Nelle sezioni precedenti abbiamo visto che i dati devono essere trattati in modo diverso a seconda della loro natura (numerica o categoriale).
+
+Scikit-learn fornisce la classe `ColumnTransformer`, che invia colonne specifiche a transformer specifici, rendendo semplice addestrare un unico modello predittivo su un dataset che combina entrambi i tipi di variabili (dati tabulari eterogenei).
+
+Definiamo la strategia per ogni tipo di colonna:
+
+- **One-hot encoding** per le colonne categoriali, con `handle_unknown="ignore"` per gestire le categorie rare
+- **Scaling** per le feature numeriche, standardizzandole con `StandardScaler`
+
+```{python}
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+
+categorical_preprocessor = OneHotEncoder(handle_unknown="ignore")
+numerical_preprocessor   = StandardScaler()
+```
+
+Creiamo ora il `ColumnTransformer` associando ogni preprocessore alle rispettive colonne.
+
+```{python}
+from sklearn.compose import ColumnTransformer
+
+preprocessor = ColumnTransformer(
+    [
+        ("one-hot-encoder", categorical_preprocessor, categorical_columns),
+        ("standard_scaler", numerical_preprocessor,   numerical_columns),
+    ]
+)
+```
+
+![](assets/api_diagram-columntransformer.svg)
+
+Un `ColumnTransformer` esegue le seguenti operazioni:
+
+1. **Divide** le colonne del dataset originale in base ai nomi o agli indici forniti, ottenendo tanti subset quanti sono i transformer passati
+2. **Trasforma** ciascun subset applicando il transformer specifico (chiamando internamente `fit_transform` o `transform`)
+3. **Concatena** i dataset trasformati in un unico dataset
+
+Il `ColumnTransformer` è un transformer scikit-learn a tutti gli effetti e può essere combinato con un classificatore in una pipeline:
+
+```{python}
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import make_pipeline
+
+model = make_pipeline(preprocessor, LogisticRegression(max_iter=500))
+model
+```
+
+Il modello finale è più complesso dei precedenti, ma segue la stessa API:
+
+- `fit`: preprocessa i dati e addestra il classificatore
+- `predict`: fa predizioni su nuovi dati
+- `score`: valuta le predizioni sul test set calcolando l'accuracy
+
+Dividiamo i dati in training e test set.
+
+```{python}
+from sklearn.model_selection import train_test_split
+
+data_train, data_test, target_train, target_test = train_test_split(
+    data, target, random_state=42
+)
+```
+
+::: {.callout-warning}
+Qui usiamo `train_test_split` a scopo didattico, per mostrare l'API di scikit-learn. In uno scenario reale è preferibile usare la cross-validation per stimare anche l'incertezza sulla performance di generalizzazione del modello, come mostrato in precedenza.
+:::
+
+Addestriamo il modello sul training set.
+
+```{python}
+_ = model.fit(data_train, target_train)
+```
+
+Possiamo ora passare il dataset grezzo direttamente alla pipeline — non è necessario fare alcun preprocessing manuale, perché viene già gestito internamente quando si chiama `predict`. Facciamo una predizione sui primi 5 campioni del test set.
+
+```{python}
+data_test
+```
+
+```{python}
+model.predict(data_test)[:5]
+```
+
+```{python}
+target_test[:5]
+```
+
+Calcoliamo l'accuracy sull'intero test set.
+
+```{python}
+model.score(data_test, target_test)
+```
+
+#### Valutazione del modello con cross-validation
+
+Come già discusso, un modello predittivo dovrebbe essere valutato tramite cross-validation. Il nostro modello è compatibile con gli strumenti di cross-validation di scikit-learn come qualsiasi altro predictor.
+
+```{python}
+from sklearn.model_selection import cross_validate
+
+cv_results = cross_validate(model, data, target, cv=5)
+cv_results
+```
+
+```{python}
+scores = cv_results["test_score"]
+print(
+    "L'accuracy media in cross-validation è: "
+    f"{scores.mean():.3f} ± {scores.std():.3f}"
+)
+```
+
+Il modello combinato ha un'accuracy predittiva più alta rispetto ai due modelli che usavano variabili numeriche e categoriali in isolamento.
+
+#### Addestrare un modello più potente
+
+I modelli lineari sono utili perché sono generalmente economici da addestrare, leggeri da distribuire, veloci nelle predizioni e forniscono una buona baseline.
+
+Tuttavia, è spesso utile verificare se modelli più complessi — come un ensemble di decision tree — possono portare a performance predittive superiori. In questa sezione usiamo un modello chiamato **gradient boosting** e ne valutiamo la performance di generalizzazione. Più precisamente, il modello scikit-learn che usiamo è `HistGradientBoostingClassifier`. I modelli di boosting verranno trattati in dettaglio in un modulo futuro.
+
+Per i modelli ad albero, la gestione di variabili numeriche e categoriali è più semplice rispetto ai modelli lineari:
+
+- **non** è necessario scalare le feature numeriche
+- usare un **ordinal encoding** per le variabili categoriali va bene, anche se l'encoding produce un ordinamento arbitrario
+
+La pipeline di preprocessing per `HistGradientBoostingClassifier` è quindi leggermente più semplice:
+
+```{python}
+from sklearn.ensemble import HistGradientBoostingClassifier
+from sklearn.preprocessing import OrdinalEncoder
+
+categorical_preprocessor = OrdinalEncoder(
+    handle_unknown="use_encoded_value", unknown_value=-1
+)
+
+preprocessor = ColumnTransformer(
+    [("categorical", categorical_preprocessor, categorical_columns)],
+    remainder="passthrough",  # Le colonne numeriche vengono passate così come sono
+)
+
+model = make_pipeline(preprocessor, HistGradientBoostingClassifier())
+```
+
+Valutiamo la performance di generalizzazione.
+
+```{python}
+_ = model.fit(data_train, target_train)
+model.score(data_test, target_test)
+```
+
+Osserviamo accuracy significativamente più alte con il modello Gradient Boosting. Questo è spesso quello che si osserva quando il dataset ha un numero elevato di campioni e un numero limitato di feature informative (es. meno di 1000), con un mix di variabili numeriche e categoriali.
+
+Questo spiega perché i **Gradient Boosted Machines** sono molto popolari tra i data scientist che lavorano con dati tabulari.
+
+#### Riepilogo
+
+In questo notebook abbiamo:
+
+- usato un `ColumnTransformer` per applicare preprocessing diversi a variabili categoriali e numeriche
+- usato una pipeline per concatenare il preprocessing del `ColumnTransformer` e l'addestramento della regressione logistica
+- osservato che i metodi di gradient boosting possono superare i modelli lineari
+
+### Esercizio M1.05
+
+L'obiettivo di questo esercizio è valutare l'impatto del preprocessing delle feature su una pipeline che usa un classificatore basato su decision tree invece della regressione logistica.
+
+- La prima domanda è valutare empiricamente se scalare le feature numeriche sia utile o meno
+- La seconda domanda è valutare se sia empiricamente meglio (sia dal punto di vista computazionale che statistico) usare categorie codificate con interi oppure con one-hot encoding
+
+```{python}
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/INRIA/scikit-learn-mooc/main/datasets/adult-census.csv"
+adult_census = pd.read_csv(url)
+
+target_name = "class"
+target = adult_census[target_name]
+data = adult_census.drop(columns=[target_name, "education-num"])
+```
+
+Come nei notebook precedenti, usiamo `make_column_selector` per selezionare solo le colonne con un tipo di dato specifico.
+
+```{python}
+from sklearn.compose import make_column_selector as selector
+
+numerical_columns_selector   = selector(dtype_exclude=object)
+categorical_columns_selector = selector(dtype_include=object)
+
+numerical_columns   = numerical_columns_selector(data)
+categorical_columns = categorical_columns_selector(data)
+```
+
+#### Pipeline di riferimento (senza scaling numerico e con categorie codificate con interi)
+
+Prima di tutto, misuriamo i tempi della pipeline usata nel notebook principale come riferimento.
+
+```{python}
+import time
+
+from sklearn.model_selection import cross_validate
+from sklearn.pipeline import make_pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OrdinalEncoder
+from sklearn.ensemble import HistGradientBoostingClassifier
+
+categorical_preprocessor = OrdinalEncoder(
+    handle_unknown="use_encoded_value", unknown_value=-1
+)
+preprocessor = ColumnTransformer(
+    [("categorical", categorical_preprocessor, categorical_columns)],
+    remainder="passthrough",
+)
+
+model = make_pipeline(preprocessor, HistGradientBoostingClassifier())
+
+start = time.time()
+cv_results = cross_validate(model, data, target)
+elapsed_time = time.time() - start
+
+scores = cv_results["test_score"]
+
+print(
+    "L'accuracy media in cross-validation è: "
+    f"{scores.mean():.3f} ± {scores.std():.3f} "
+    f"con un tempo di fitting di {elapsed_time:.3f} secondi"
+)
+```
+
+#### Scaling delle feature numeriche
+
+Scrivi una pipeline simile che scala anche le feature numeriche usando `StandardScaler` (o simile).
+
+```{python}
+import time
+from sklearn.compose import make_column_transformer
+from sklearn.preprocessing import StandardScaler
+
+preprocessor = make_column_transformer(
+    (StandardScaler(), numerical_columns),
+    (
+        OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=-1),
+        categorical_columns,
+    ),
+)
+
+model = make_pipeline(preprocessor, HistGradientBoostingClassifier())
+
+start = time.time()
+cv_results = cross_validate(model, data, target)
+elapsed_time = time.time() - start
+
+scores = cv_results["test_score"]
+
+print(
+    "The mean cross-validation accuracy is: "
+    f"{scores.mean():.3f} ± {scores.std():.3f} "
+    f"with a fitting time of {elapsed_time:.3f}"
+)
+```
+
+#### One-hot encoding delle variabili categoriali
+
+Abbiamo osservato che la codifica intera delle variabili categoriali può essere molto dannosa per i modelli lineari. Tuttavia, non sembra essere il caso per i modelli `HistGradientBoostingClassifier`, poiché il punteggio di cross-validation della pipeline di riferimento con `OrdinalEncoder` è ragionevolmente buono.
+
+Vediamo se riusciamo a ottenere un'accuracy ancora migliore con `OneHotEncoder`.
+
+::: {.callout-tip}
+`HistGradientBoostingClassifier` non supporta ancora input sparsi. Usa `OneHotEncoder(handle_unknown="ignore", sparse_output=False)` per forzare l'uso di una rappresentazione densa.
+:::
+
+```{python}
+import time
+
+from sklearn.preprocessing import OneHotEncoder
+
+categorical_preprocessor = OneHotEncoder(
+    handle_unknown="ignore", sparse_output=False
+)
+preprocessor = make_column_transformer(
+    (categorical_preprocessor, categorical_columns),
+    remainder="passthrough",
+)
+
+model = make_pipeline(preprocessor, HistGradientBoostingClassifier())
+
+start = time.time()
+cv_results = cross_validate(model, data, target)
+elapsed_time = time.time() - start
+
+scores = cv_results["test_score"]
+
+print(
+    "The mean cross-validation accuracy is: "
+    f"{scores.mean():.3f} ± {scores.std():.3f} "
+    f"with a fitting time of {elapsed_time:.3f}"
+)
+```
+
+#### Analisi
+
+Dal punto di vista dell'accuracy, il risultato è quasi identico. Il motivo è che `HistGradientBoostingClassifier` è sufficientemente espressivo e robusto da gestire l'ordinamento fuorviante delle categorie codificate con interi (cosa che non valeva per i modelli lineari).
+
+Dal punto di vista computazionale invece, il tempo di training è molto più lungo: questo è causato dal fatto che `OneHotEncoder` genera più feature rispetto a `OrdinalEncoder` — per ogni valore categoriale unico viene creata una colonna.
+
+Il messaggio principale è che la codifica intera arbitraria delle categorie va perfettamente bene per `HistGradientBoostingClassifier` e produce tempi di training rapidi.
+
+#### Quale encoder usare?
+
+|                    | Ordine significativo       | Ordine non significativo              |
+|--------------------|----------------------------|---------------------------------------|
+| **Modello ad albero** | `OrdinalEncoder`        | `OrdinalEncoder` con profondità adeguata |
+| **Modello lineare**   | `OrdinalEncoder` con cautela | `OneHotEncoder`                  |
+
+::: {.callout-important}
+- **`OneHotEncoder`**: produce sempre un risultato sensato, ma può essere inutilmente lento con gli alberi.
+- **`OrdinalEncoder`**: può essere dannoso per i modelli lineari a meno che la categoria non abbia un ordine significativo e ci si assicuri che l'encoder rispetti questo ordine. I modelli ad albero gestiscono bene `OrdinalEncoder` purché siano sufficientemente profondi. Tuttavia, permettere all'albero di crescere molto in profondità può portare a overfitting su altre feature.
+:::
+
+
+Oltre a one-hot encoding e ordinal encoding, scikit-learn offre il `TargetEncoder`, adatto per feature categoriali nominali con alta cardinalità. Questa strategia va oltre lo scope di questo corso, ma il lettore interessato è incoraggiato a esplorarla.
+
+# Selezionare il modello migliore
+
+## Panoramica del modulo
+
+Questo modulo offre un'introduzione intuitiva ai concetti fondamentali di *overfitting* (sovradattamento) e *underfitting* (sottodattamento) nel machine learning.
+
+I modelli di machine learning non possono mai effettuare previsioni perfette: l'errore sul test set non è mai esattamente pari a zero. Questo limite deriva da un **compromesso fondamentale** tra la **flessibilità del modello** e la **dimensione limitata del dataset di addestramento**.
+
+La prima parte definirà questi problemi e ne analizzerà il come e il perché.
+
+Successivamente, presenteremo una metodologia per quantificare tali problemi, confrontando l'**errore sul set di addestramento** (*train error*) con l'**errore sul set di test** (*test error*) per diverse tipologie di modelli e parametri. Più importante ancora, sottolineeremo l'i**mpatto della dimensione del dataset di addestramento su questo compromesso**.
+
+Infine, metteremo in relazione l'**overfitting** e l'**underfitting** con i concetti statistici di varianza e bias.
+
+## Overfitting e Underfitting
+
+### Framework di cross-validation
+
+Nei notebook precedenti abbiamo introdotto alcuni concetti riguardanti la valutazione dei modelli predittivi. Sebbene questa sezione possa essere leggermente ridondante, intendiamo approfondire nel dettaglio il framework di cross-validation.
+
+Prima di iniziare, concentriamoci sui motivi per cui è sempre necessario avere training e test set. Vediamo prima il limite di usare un dataset senza tenere da parte nessun campione.
+
+Per illustrare i diversi concetti, useremo il dataset California housing.
+
+```{python}
+from sklearn.datasets import fetch_california_housing
+
+housing = fetch_california_housing(as_frame=True)
+data, target = housing.data, housing.target
+```
+
+In questo dataset, l'obiettivo è predire il valore mediano delle case in un'area della California. Le feature raccolte si basano su informazioni generali immobiliari e geografiche.
+
+Il task da risolvere è quindi diverso da quello mostrato nel notebook precedente. Il target da predire è una variabile continua e non più discreta. Questo task si chiama **regressione**.
+
+Useremo quindi un modello predittivo specifico per la regressione e non per la classificazione.
+
+```{python}
+print(housing.DESCR)
+```
+
+```{python}
+data
+```
+
+Per semplificare le visualizzazioni future, trasformiamo i prezzi dal range delle centinaia di migliaia di dollari (100 k$) al range delle migliaia di dollari (k$).
+
+```{python}
+target *= 100
+target
+```
+
+::: {.callout-note}
+Per una panoramica più approfondita di questo dataset, puoi fare riferimento alla sezione Appendice - Descrizione dei dataset alla fine di questo MOOC.
+:::
+
+#### Errore di training vs errore di test
+
+Per risolvere questo task di regressione, useremo un decision tree regressor.
+
+```{python}
+from sklearn.tree import DecisionTreeRegressor
+
+regressor = DecisionTreeRegressor(random_state=0)
+regressor.fit(data, target)
+```
+
+Dopo aver addestrato il regressore, vorremmo conoscere la sua potenziale performance di generalizzazione una volta messo in produzione. A questo scopo, usiamo il **mean absolute error**, che ci fornisce un errore nell'unità nativa, ovvero k$.
+
+```{python}
+from sklearn.metrics import mean_absolute_error
+
+target_predicted = regressor.predict(data)
+score = mean_absolute_error(target, target_predicted)
+print(f"In media, il nostro regressore fa un errore di {score:.2f} k$")
+```
+
+Otteniamo una predizione perfetta senza alcun errore. È troppo ottimistico e rivela quasi sempre un problema metodologico nel machine learning.
+
+Infatti, abbiamo addestrato e predetto sullo stesso dataset. Poiché il nostro decision tree è stato fatto crescere completamente, ogni campione del dataset è memorizzato in un nodo foglia. Il nostro decision tree ha quindi memorizzato completamente il dataset fornito durante il fit e non ha commesso errori nella predizione.
+
+Questo errore calcolato sopra si chiama **errore empirico** o **errore di training**.
+
+::: {.callout-note}
+In questo MOOC useremo sempre il termine "errore di training".
+:::
+
+Abbiamo addestrato un modello predittivo per minimizzare l'errore di training, ma il nostro obiettivo è minimizzare l'errore su dati non visti durante il training.
+
+Questo errore si chiama anche **errore di generalizzazione** o **"vero" errore di test**.
+
+::: {.callout-note}
+In questo MOOC useremo sempre il termine "errore di test".
+:::
+
+La valutazione più basilare prevede quindi:
+
+- dividere il dataset in due subset: un training set e un test set
+- addestrare il modello sul training set
+- stimare l'errore di training sul training set
+- stimare l'errore di test sul test set
+
+Dividiamo quindi il dataset.
+
+```{python}
+from sklearn.model_selection import train_test_split
+
+data_train, data_test, target_train, target_test = train_test_split(
+    data, target, random_state=0
+)
+```
+
+Addestriamo il modello.
+
+```{python}
+regressor.fit(data_train, target_train)
+```
+
+Stimiamo i diversi tipi di errore. Iniziamo calcolando l'errore di training.
+
+```{python}
+target_predicted = regressor.predict(data_train)
+score = mean_absolute_error(target_train, target_predicted)
+print(f"L'errore di training del nostro modello è {score:.2f} k$")
+```
+
+Osserviamo lo stesso fenomeno dell'esperimento precedente: il nostro modello ha memorizzato il training set. Calcoliamo ora l'errore di test.
+
+```{python}
+target_predicted = regressor.predict(data_test)
+score = mean_absolute_error(target_test, target_predicted)
+print(f"L'errore di test del nostro modello è {score:.2f} k$")
+```
+
+Questo errore di test rappresenta ciò che ci aspetteremmo dal nostro modello se venisse usato in un ambiente di produzione.
+
+#### Stabilità delle stime di cross-validation
+
+Facendo un singolo train-test split non forniamo alcuna indicazione sulla robustezza della valutazione del nostro modello predittivo: in particolare, se il test set è piccolo, la stima dell'errore di test sarà instabile e non rifletterà il "vero tasso di errore" che avremmo osservato con lo stesso modello su una quantità illimitata di dati di test.
+
+Ad esempio, potremmo essere stati fortunati quando abbiamo fatto la nostra divisione casuale del dataset limitato e aver isolato per caso alcuni dei casi più facili da predire nel test set: la stima dell'errore di test sarebbe in questo caso eccessivamente ottimistica.
+
+La cross-validation permette di stimare la robustezza di un modello predittivo ripetendo la procedura di divisione. Fornisce diversi errori di training e test e quindi una stima della variabilità della performance di generalizzazione del modello.
+
+Esistono diverse strategie di cross-validation; per ora ci concentriamo su una chiamata **"shuffle-split"**. Ad ogni iterazione di questa strategia:
+
+- mescoliamo casualmente l'ordine dei campioni di una copia dell'intero dataset
+- dividiamo il dataset mescolato in training e test set
+- addestriamo un nuovo modello sul training set
+- valutiamo l'errore di test sul test set
+
+Ripetiamo questa procedura `n_splits` volte. Teniamo presente che il costo computazionale aumenta con `n_splits`.
+
+::: {.callout-note}
+La figura mostra il caso particolare della strategia shuffle-split con `n_splits=5`. Per ogni split di cross-validation, la procedura addestra un modello su tutti i campioni rossi e valuta il punteggio del modello sui campioni blu.
+:::
+
+In questo caso imposteremo `n_splits=40`, il che significa che addestreremo 40 modelli in totale, tutti poi scartati: registriamo solo la loro performance di generalizzazione su ciascuna variante del test set.
+
+Per valutare la performance di generalizzazione del nostro regressore, usiamo `cross_validate` con un oggetto `ShuffleSplit`:
+
+```{python}
+from sklearn.model_selection import cross_validate
+from sklearn.model_selection import ShuffleSplit
+
+cv = ShuffleSplit(n_splits=40, test_size=0.3, random_state=0)
+cv_results = cross_validate(
+    regressor, data, target, cv=cv, scoring="neg_mean_absolute_error"
+)
+```
+
+I risultati `cv_results` sono memorizzati in un dizionario Python. Lo convertiamo in un dataframe pandas per facilitare la visualizzazione e la manipolazione.
+
+```{python}
+import pandas as pd
+
+cv_results = pd.DataFrame(cv_results)
+cv_results
+```
+
+::: {.callout-tip}
+Uno **score** è una metrica per cui valori più alti significano risultati migliori. Al contrario, un **errore** è una metrica per cui valori più bassi significano risultati migliori. Il parametro `scoring` in `cross_validate` si aspetta sempre una funzione che sia uno score.
+
+Per comodità, tutte le metriche di errore in scikit-learn, come `mean_absolute_error`, possono essere trasformate in score da usare in `cross_validate`. Per farlo, è necessario passare una stringa della metrica di errore con il prefisso `neg_` al parametro `scoring`; ad esempio `scoring="neg_mean_absolute_error"`. In questo caso viene calcolato il negativo del mean absolute error, che equivale a uno score.
+:::
+
+Invertiamo la negazione per ottenere l'errore effettivo:
+
+```{python}
+cv_results["test_error"] = -cv_results["test_score"]
+```
+
+Verifichiamo i risultati riportati dalla cross-validation.
+
+```{python}
+cv_results.head(10)
+```
+
+Otteniamo informazioni sui tempi di fit e predict per ogni iterazione di cross-validation. Otteniamo anche il test score, che corrisponde all'errore di test su ciascuno degli split.
+
+```{python}
+len(cv_results)
+```
+
+Otteniamo 40 righe nel dataframe risultante perché abbiamo eseguito 40 split. Possiamo quindi visualizzare la distribuzione dell'errore di test e avere una stima della sua variabilità.
+
+```{python}
+import matplotlib.pyplot as plt
+
+cv_results["test_error"].plot.hist(bins=10, edgecolor="black")
+plt.xlabel("Mean absolute error (k$)")
+_ = plt.title("Distribuzione dell'errore di test")
+```
+
+Osserviamo che l'errore di test è concentrato intorno a 47 k$ e varia da 43 k$ a 50 k$.
+
+```{python}
+print(
+    "L'errore di test medio in cross-validation è: "
+    f"{cv_results['test_error'].mean():.2f} k$"
+)
+print(
+    "La deviazione standard dell'errore di test è: "
+    f"{cv_results['test_error'].std():.2f} k$"
+)
+```
+
+Si noti che la deviazione standard è molto più piccola della media: possiamo riassumere che la nostra stima in cross-validation dell'errore di test è 46.36 ± 1.17 k$.
+
+Se dovessimo addestrare un singolo modello sull'intero dataset (senza cross-validation) e poi avere accesso a una quantità illimitata di dati di test, ci aspetteremmo che il suo vero errore di test cada vicino a quella regione.
+
+Sebbene questa informazione sia interessante di per sé, dovrebbe essere confrontata con la scala della variabilità naturale del vettore target nel nostro dataset.
+
+Visualizziamo la distribuzione della variabile target:
+
+```{python}
+target.plot.hist(bins=20, edgecolor="black")
+plt.xlabel("Median House Value (k$)")
+_ = plt.title("Distribuzione del target")
+```
+
+```{python}
+print(f"La deviazione standard del target è: {target.std():.2f} k$")
+```
+
+La variabile target varia da quasi 0 k$ fino a 500 k$, con una deviazione standard di circa 115 k$.
+
+Notiamo che la stima media dell'errore di test ottenuta dalla cross-validation è un po' più piccola della scala naturale di variazione della variabile target. Inoltre, la deviazione standard della stima in cross-validation dell'errore di test è ancora più piccola.
+
+È un buon punto di partenza, ma non necessariamente sufficiente per decidere se la performance di generalizzazione è abbastanza buona da rendere le nostre predizioni utili in pratica.
+
+Ricordiamo che il nostro modello fa, in media, un errore di circa 47 k$. Con questa informazione e guardando la distribuzione del target, un tale errore potrebbe essere accettabile nel predire case da 500 k$. Tuttavia, sarebbe un problema per una casa dal valore di 50 k$. Questo indica che la nostra metrica (Mean Absolute Error) non è ideale.
+
+Potremmo invece scegliere una metrica relativa al valore target da predire: il **mean absolute percentage error** sarebbe stata una scelta molto migliore.
+
+In ogni caso, un errore di 47 k$ potrebbe essere troppo grande per usare automaticamente il nostro modello per etichettare i valori delle case senza supervisione esperta.
+
+#### Maggiori dettagli su `cross_validate`
+
+Durante la cross-validation, molti modelli vengono addestrati e valutati. Il numero di elementi in ogni array dell'output di `cross_validate` è il risultato di una di queste procedure fit/score. Per rendere esplicito questo aspetto, è possibile recuperare i modelli addestrati per ciascuno degli split passando l'opzione `return_estimator=True` a `cross_validate`.
+
+```{python}
+cv_results = cross_validate(regressor, data, target, return_estimator=True)
+cv_results
+```
+
+```{python}
+cv_results["estimator"]
+```
+
+I cinque decision tree regressors corrispondono ai cinque decision tree addestrati sui diversi fold. Avere accesso a questi regressori è utile perché permette di ispezionare i parametri interni appresi.
+
+Nel caso in cui si sia interessati solo al test score, scikit-learn fornisce la funzione `cross_val_score`. È identica a chiamare `cross_validate` e selezionare solo il `test_score` (come abbiamo fatto estensivamente nei notebook precedenti).
+
+```{python}
+from sklearn.model_selection import cross_val_score
+
+scores = cross_val_score(regressor, data, target)
+scores
+```
+
+#### Riepilogo
+
+In questo notebook abbiamo visto:
+
+- la necessità di dividere i dati in training e test set
+- il significato degli errori di training e di test
+- il framework generale di cross-validation con la possibilità di studiare le variazioni della performance di generalizzazione
