@@ -1237,7 +1237,7 @@ Si supponga, ad esempio, che un negozio di alimentari voglia implementare un sis
 ![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/image-classification.png){fig-align="center" width=50%}
 
 ### Rilevamento di oggetti
-Si supponga che il negozio di alimentari voglia un sistema più sofisticato, in cui il checkout può analizzare più elementi al checkout e identificare ognuno di essi. Un approccio comune a questo tipo di problema è denominato "rilevamento di oggetti". I modelli di rilevamento oggetti esaminano più aree in un'immagine per trovare singoli oggetti e le relative posizioni. La previsione risultante del modello include gli oggetti rilevati e le aree specifiche dell'immagine in cui appaiono, indicate dalle coordinate del rettangolo di delimitazione.
+Si supponga che il negozio di alimentari voglia un sistema più sofisticato, in cui può analizzare più elementi al checkout e identificare ognuno di essi. Un approccio comune a questo tipo di problema è denominato "rilevamento di oggetti". I modelli di rilevamento oggetti esaminano più aree in un'immagine per trovare singoli oggetti e le relative posizioni. La previsione risultante del modello include gli oggetti rilevati e le aree specifiche dell'immagine in cui appaiono, indicate dalle coordinate del rettangolo di delimitazione.
 
 ![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/object-detection.png){fig-align="center" width=50%}
 
@@ -1247,11 +1247,11 @@ Un altro modo più sofisticato per rilevare gli oggetti in un'immagine è denomi
 ![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/semantic-segmentation.png){fig-align="center" width=50%}
 
 ### Analisi contestuale delle immagini
-I modelli di visione artificiale più recenti vengono sottoposti a training per trovare relazioni contestuali tra gli oggetti nelle immagini e il testo che li descrive. Il risultato è una capacità di interpretare semanticamente un'immagine per determinare quali oggetti e attività rappresenta; e generare descrizioni appropriate o suggerire tag pertinenti.
+I modelli di visione artificiale più recenti vengono sottoposti a training per trovare relazioni contestuali tra gli oggetti nelle immagini e il testo che li descrive. Il risultato è una capacità di interpretare semanticamente un'immagine per determinare quali oggetti e attività rappresenta e generare descrizioni appropriate o suggerire tag pertinenti.
 
 ![](https://learn.microsoft.com/it-it/training/wwl-data-ai/introduction-computer-vision/media/image-analysis.png){fig-align="center" width=50%}
 
-## Immagini ed elaborazione delle immagini
+## Immagini e la loro elaborazione
 
 Per un computer, un'immagine è una matrice di valori di *pixel* numerici. Si consideri ad esempio la matrice seguente:
 
@@ -1321,7 +1321,7 @@ Blue: 0
 ```
 
 ### Filtri
-Un modo comune per eseguire attività di elaborazione delle immagini consiste nell'applicare filtri che modificano i valori pixel dell'immagine per creare un effetto visivo. Un filtro viene definito da una o più matrici di valori dei pixel, chiamati kernel di filtro . Ad esempio, è possibile definire il filtro con un kernel 3x3, come illustrato in questo esempio:
+Un modo comune per eseguire attività di elaborazione delle immagini consiste nell'applicare filtri che modificano i valori pixel dell'immagine per creare un effetto visivo. Un filtro viene definito da una o più matrici di valori dei pixel, chiamati kernel di filtro. Ad esempio, è possibile definire il filtro con un kernel 3x3, come illustrato in questo esempio:
 
 ```txt
 -1 -1 -1
@@ -1383,13 +1383,13 @@ Poiché il filtro viene convoluto nell'immagine, questo tipo di manipolazione de
 
 ## Reti neurali convoluzionali
 
-La possibilità di usare filtri per applicare effetti alle immagini è utile nelle attività di elaborazione delle immagini, ad esempio con il software di modifica delle immagini. Tuttavia, l'obiettivo della visione artificiale è spesso estrarre significato, o almeno informazioni interattive, dalle immagini; che richiede la creazione di modelli di Machine Learning sottoposti a training per riconoscere le funzionalità in base a grandi volumi di immagini esistenti.
+Sebbene l'applicazione di filtri estetici sia una pratica consolidata nell'editing fotografico, l'obiettivo primario della visione artificiale (Computer Vision) è radicalmente diverso: essa mira a estrarre significato e informazioni strutturate dai dati visivi. Tale processo richiede l'addestramento di modelli di Machine Learning su vasti dataset, permettendo al sistema di apprendere e riconoscere autonomamente i pattern presenti nelle immagini.
 
 :::{.callout-tip}
 Questa unità presuppone che si abbia familiarità con i principi fondamentali di Machine Learning e che si abbia una conoscenza concettuale dell'apprendimento avanzato con le reti neurali. Se non si ha familiarità con l'apprendimento automatico, è consigliabile completare il modulo [Introduzione ai concetti di Machine Learning](https://learn.microsoft.com/it-it/training/modules/fundamentals-machine-learning/) in Microsoft Learn.
 :::
 
-Una delle architetture di modelli di Machine Learning più comuni per visione artificiale è una rete neurale convoluzionale (CNN), un tipo di architettura di Deep Learning. Le CNN usano filtri per estrarre le mappe delle caratteristiche numeriche dalle immagini e quindi inserire i valori delle caratteristiche in un modello di deep learning per generare una previsione delle etichette. Ad esempio, in uno scenario di classificazione delle immagini , l'etichetta rappresenta il soggetto principale dell'immagine (in altre parole, qual è questa immagine di?). È possibile eseguire il training di un modello CNN con immagini di diversi tipi di frutta (ad esempio mela, banana e arancione) in modo che l'etichetta stimata sia il tipo di frutta in una determinata immagine.
+Una delle architetture di modelli di Machine Learning più comuni per visione artificiale è una rete neurale convoluzionale (CNN), un tipo di architettura di Deep Learning. Le CNN usano filtri per estrarre le mappe delle caratteristiche numeriche dalle immagini e quindi inserire i valori delle caratteristiche in un modello di deep learning per generare una previsione delle etichette. Ad esempio, in uno scenario di classificazione delle immagini, l'etichetta rappresenta il soggetto principale dell'immagine. È possibile eseguire il training di un modello CNN con immagini di diversi tipi di frutta (ad esempio mela, banana e arancione) in modo che l'etichetta stimata sia il tipo di frutta in una determinata immagine.
 
 Durante il processo di training per una CNN, i kernel di filtro vengono inizialmente definiti usando valori di peso generati in modo casuale. Quindi, man mano che il processo di training avanza, le stime dei modelli vengono valutate rispetto ai valori di etichetta noti e i pesi del filtro vengono modificati per migliorare l'accuratezza. Infine, il modello di classificazione delle immagini dei frutti sottoposto a training usa i pesi del filtro che consentono di estrarre meglio le caratteristiche che consentono di identificare diversi tipi di frutta.
 

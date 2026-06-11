@@ -1,0 +1,2128 @@
+---
+title: "Introduzione ad applicazioni e agenti di intelligenza artificiale in Azure"
+subtitle: "AI-900"
+author: "Lorenzo Barbato"
+lang: it
+watch-inputs: true
+embed-resources: true
+format:
+  html:
+    theme: 
+        dark: darkly       # Temi puliti e professionali: cosmo, flatly, lumen, o sandstone per quello scuri darkly, cyborg, slate, solar
+        light: flatly
+    toc: true              # Genera automaticamente l'indice dei contenuti a destra
+    toc-title: "Indice"    # Titolo dell'indice
+    toc-depth: 3           # Profondità dell'indice (fino a ###)
+    number-sections: true  # Numera automaticamente i capitoli (1., 1.1, ecc.)
+    code-fold: true        # Se aggiungi codice Python, lo nasconde dietro un bottone cliccabile
+    smooth-scroll: true    # Rende lo scorrimento cliccando sull'indice più fluido
+    respect-user-color-scheme: true
+    css: style.css
+---
+
+# Introduzione all'intelligenza artificiale in Azure
+
+## Introduzione
+
+L'**intelligenza artificiale** si riferisce a sistemi progettati per eseguire attività che richiedono in genere l'intelligenza umana, ad esempio ragionamento, risoluzione dei problemi, percezione e comprensione del linguaggio.
+
+Un'**applicazione di intelligenza artificiale** è una soluzione software che usa tecniche di intelligenza artificiale, ad esempio Computer Vision, riconoscimento vocale ed estrazione di informazioni, per eseguire attività che in genere richiedono intelligenza simile a quella umana. Queste applicazioni possono comprendere, ragionare, apprendere e rispondere agli input in modo più adattivo rispetto al software tradizionale.
+
+Le applicazioni di intelligenza artificiale sono basate su modelli di *Machine Learning (ML)*, che sono sistemi matematici sottoposti a training per riconoscere i modelli nei dati ed eseguire stime o generare output. I modelli di Machine Learning sono i motori all'interno di un'applicazione di intelligenza artificiale. Quando si interagisce con un'applicazione di intelligenza artificiale, il modello esegue l'*inferenza*, vale a dire applica ciò che ha appreso durante il training a un nuovo input.
+
+Le applicazioni di intelligenza artificiale sono:
+
+- **Basato su modello**: usano modelli sottoposti a training per elaborare gli input e generare output, ad esempio testo, immagini o decisioni.
+- **Dinamico**: a differenza dei programmi statici, le app di intelligenza artificiale possono migliorare nel tempo tramite la ripetizione del training o l'ottimizzazione.
+
+Alcuni esempi di applicazioni di intelligenza artificiale per diversi settori includono:
+- *Sanità*: strumenti di diagnostica basati sull'intelligenza artificiale che analizzano immagini mediche (ad esempio raggi X o MRI) e aiutano i medici a rilevare le malattie in modo più accurato e rapido.
+- *Finanza*: sistemi di rilevamento delle frodi che usano l'IA per monitorare le transazioni in tempo reale e identificare le attività sospette, contribuendo a prevenire i crimini finanziari.
+- *Retail*: motori di raccomandazione personalizzati che analizzano il comportamento dei clienti e le preferenze per suggerire prodotti, migliorando l'esperienza di acquisto.
+- *Produzione*: soluzioni di manutenzione predittiva che usano l'intelligenza artificiale per monitorare le apparecchiature e le previsioni in caso di errori delle macchine, riducendo i tempi di inattività e i costi di manutenzione.
+- *Istruzione*: sistemi di tutoring intelligenti che si adattano allo stile e al ritmo di apprendimento di ogni studente, fornendo feedback e supporto personalizzati per migliorare i risultati di apprendimento.
+
+
+In questo modulo si apprenderà come Microsoft consente di creare applicazioni di intelligenza artificiale con la tecnologia più recente, in modo sicuro e su larga scala. Anche se il modello è il motore, le applicazioni di intelligenza artificiale necessitano anche di sicurezza, rete, hosting, archiviazione dei dati, logica dell'applicazione e interfacce utente. Microsoft fornisce tutti i servizi e l'infrastruttura necessari per supportare lo sviluppo di intelligenza artificiale su scala aziendale. Il modulo offre una base per il modo in cui Azure semplifica lo sviluppo di applicazioni di intelligenza artificiale, si integra con Microsoft Foundry e consente un'innovazione rapida.
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+### Informazioni su Azure
+
+**Microsoft Azure** è una delle principali piattaforme cloud al mondo. Una **piattaforma cloud** è una raccolta di servizi che è possibile usare su Internet invece di eseguire tutto sul proprio computer o server. Attualmente, le applicazioni più moderne vengono eseguite nel cloud, nei data center basati su Internet che consentono di archiviare i dati, eseguire codice e ridimensionare senza preoccuparsi dell'hardware fisico. Invece di acquistare e gestire la propria infrastruttura, si usano i servizi forniti da piattaforme attendibili.
+
+Azure è considerato attendibile dalle organizzazioni a livello globale per creare applicazioni sicure e affidabili. Con Azure è possibile sviluppare applicazioni e agenti di intelligenza artificiale che sfruttano i servizi avanzati di intelligenza artificiale e li distribuiscono su scala globale.
+
+Azure offre quattro categorie di base di servizi:
+
+- **Calcolo**: possibilità di eseguire applicazioni, programmi e carichi di lavoro nel cloud. È possibile considerare le risorse di calcolo come l'affitto di computer nel cloud che è possibile aumentare o ridurre ogni volta che è necessario.
+- **Archiviazione**: servizi che consentono di salvare e gestire i dati nel cloud. L'archiviazione può includere file, database, immagini, backup, tutto ciò che si vuole archiviare e accedere in modo sicuro da qualsiasi posizione.
+- **Rete**: strumenti che connettono le risorse cloud tra loro, a Internet o all'organizzazione. La rete garantisce che le app possano comunicare tra loro in modo sicuro ed efficiente.
+**Servizi app**: piattaforme pronte per la compilazione, l'hosting e l'esecuzione di applicazioni senza gestire i server sottostanti.
+
+### Struttura organizzativa di Azure
+
+Quando un utente inizia a usare Azure, l'accesso deve essere organizzato e gestito. Azure organizza l'accesso e la gestione in base a tenant, sottoscrizioni, gruppi di risorse e risorse.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-ai-in-azure/media/azure-tenant-structure.png){fig-align="center" width=70%}
+
+
+Un **tenant di Azure** è la home base e l'identità di un'organizzazione nel cloud di Microsoft. Avere un tenant è come avere un appartamento in un grande edificio, dove l'edificio è cloud Microsoft. Ogni tenant è separato e protetto dagli altri, ovvero la vostra organizzazione dispone di serrature, stanze e controlli specifici.
+
+Quando un'azienda si iscrive ad Azure o Microsoft 365, Microsoft crea un tenant per loro. Questo tenant è uno spazio dedicato e sicuro in cui vivono tutte le risorse cloud dell'organizzazione. Il tenant include utenti, gruppi, identità e criteri per la gestione dell'accesso sicuro.
+
+Una **sottoscrizione di Azure** è un contenitore di fatturazione per le risorse cloud. Un tenant può contenere una o più sottoscrizioni di Azure. Una sottoscrizione collega l'utilizzo di Azure a un metodo di pagamento (o crediti per account di valutazione/gratuito) e imposta limiti per costi, quote e controllo di accesso.
+
+I **gruppi di risorse** sono cartelle che contengono risorse di Azure correlate, in modo da poterle gestire insieme. Una sottoscrizione può avere più gruppi di risorse. Ogni gruppo di risorse può avere autorizzazioni e criteri personalizzati a livello di gruppo di risorse.
+
+Una **risorsa di Azure** è qualsiasi singolo servizio o oggetto creato in Azure , ad esempio un account di archiviazione, un database o una risorsa Foundry. Ogni risorsa ha un tipo di risorsa, impostazioni di configurazione, nome di risorsa univoco e ID e controlli di accesso facoltativi. Il tipo di risorsa (ad esempio: `Microsoft.Storage/storageAccounts`) definisce il comportamento, le funzionalità e le impostazioni della risorsa.
+
+Quando si configura una risorsa, è possibile sceglierne le impostazioni, ad esempio:
+
+- Area (in cui viene distribuita la risorsa)
+- Livello di prestazioni (associato al costo)
+- Autorizzazioni e sicurezza
+
+La struttura organizzativa di Azure consente di garantire chiarezza, sicurezza e scalabilità negli ambienti cloud. I tenant e le sottoscrizioni consentono una netta separazione delle problematiche tra reparti o progetti. I gruppi di risorse semplificano la gestione raggruppando gli asset correlati, semplificando l'applicazione di criteri, il monitoraggio dell'utilizzo e l'automazione delle distribuzioni. Comprendere 
+
+### Portale di Azure
+
+Il [**portale di Azure**](https://portal.azure.com/?portal=true) è un'interfaccia utente di gestione centralizzata basata sul Web per tutti i servizi di Azure. Può essere usato per:
+
+- Creare e gestire risorse cloud
+- Distribuire e configurare i servizi
+- Monitorare l'utilizzo, le prestazioni e l'integrità
+- Gestire identità, ruoli e criteri di accesso
+- Visualizzare i modelli di fatturazione, costi e spesa
+- Accedere a servizi specializzati come Microsoft Foundry
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-ai-in-azure/media/azure-portal-example.png){fig-align="center" width=80%}
+
+È possibile creare e gestire singole risorse nel portale di Azure. Ogni risorsa contiene informazioni accessibili tramite il riquadro *Tutte le risorse*.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-ai-in-azure/media/example-foundry-resource.png){fig-align="center" width=80%}
+
+:::{.callout-note}
+È anche possibile creare risorse di Azure a livello di codice, ovvero usare codice o script anziché fare clic sull'interfaccia del portale di Azure. Questo approccio è utile quando si vuole ripetere la stessa configurazione in ambienti, automatizzare le distribuzioni o ridurre gli errori manuali. Ad esempio, invece di passare al portale di Azure per creare un account di archiviazione, è possibile eseguire un singolo comando nell'interfaccia della riga di comando di Azure o usare uno script che lo crea allo stesso modo ogni volta. Ciò rende le distribuzioni più veloci, affidabili e più facili da gestire, in particolare per applicazioni di intelligenza artificiale di grandi dimensioni che richiedono molte risorse.
+:::
+
+## Sviluppo di app di intelligenza artificiale in Azure
+
+Le applicazioni di intelligenza artificiale usate e attendibili oggi si basano su solide funzionalità di sicurezza, rete, hosting, scalabilità, archiviazione dei dati e intelligenza artificiale. Azure offre tutto il necessario per creare applicazioni di intelligenza artificiale scalabili e sicure in modo rapido e usando tecnologie comuni a scelta.
+
+### Sicurezza e rete
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-ai-in-azure/media/security-icons.png){fig-align="center" width=50%}
+
+La base delle applicazioni di intelligenza artificiale è la sicurezza e la rete. Azure è sicuro per progettazione, offrendo identità, controllo di accesso e isolamento della rete predefiniti per proteggere le soluzioni di intelligenza artificiale.
+
+Le applicazioni di intelligenza artificiale richiedono una protezione avanzata e una connettività stabile. Gli strumenti di sicurezza di Azure proteggono le applicazioni di intelligenza artificiale da accessi non autorizzati e minacce. Ad esempio, *Azure Entra ID* garantisce che solo le persone e i servizi giusti possano accedere alle risorse di intelligenza artificiale. Consente al controllo degli accessi in base al ruolo di limitare l'accesso alle distribuzioni, alle risorse e ai dati del modello.
+
+Azure protegge anche i segreti di un'applicazione di intelligenza artificiale. Un segreto è qualsiasi valore sensibile che l'applicazione di intelligenza artificiale deve mantenere nascosta perché concede l'accesso a un sistema, a un servizio o a dati. I segreti possono includere chiavi API, stringhe di connessione del database, token OAuth, password e altro ancora. Una chiave è un tipo di segreto che in genere è una stringa lunga e generata in modo casuale, che autentica la richiesta quando si chiama un *endpoint* (un URL). In Azure i segreti vengono in genere archiviati in Azure Key Vault, non nel codice o in GitHub.
+
+Si supponga, ad esempio, di creare un chatbot di intelligenza artificiale con Azure.
+
+1. L'applicazione chiama l'endpoint del modello.
+2. La richiesta include una chiave per autenticare la chiamata.
+3. La chiave viene archiviata in Azure Key Vault come segreto.
+4. L'applicazione recupera il segreto in fase di esecuzione usando un metodo sicuro (identità gestita).
+
+Gli strumenti di sicurezza di Azure riguardano identità, segreti e protezione dei dati, conformità, rilevamento delle minacce, monitoraggio e controlli di sicurezza, ad esempio firewall. I servizi di rete assicurano che l'applicazione venga eseguita in modo affidabile, privato ed efficiente in ambienti cloud e ibridi.
+
+
+### Hosting e scalabilità
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-ai-in-azure/media/hosting-icons.png){fig-align="center" width=50%}
+
+Le applicazioni vengono eseguite su computer o ambienti noti come host. Nei contesti cloud, un host può essere una macchina virtuale (VM), fornendo le risorse di calcolo, memoria e rete necessarie per l'esecuzione dell'applicazione.
+
+Per ospitare e ridimensionare le applicazioni, è possibile usare il servizio Azure Kubernetes per carichi di lavoro in contenitori o il servizio app di Azure per modernizzare e distribuire rapidamente le app Web. AKS orchestra un numero elevato di contenitori, che contengono ciò di cui il tuo codice ha bisogno per essere eseguito. Servizio app di Azure ospita applicazioni Web, API e processi in background. Questi servizi accelerano il time-to-market garantendo al tempo stesso l'affidabilità.
+
+**Ridimensionare** le applicazioni significa modificare automaticamente o manualmente la quantità di potenza di calcolo usata dall'app, in genere aggiungendo o rimuovendo istanze. Nelle applicazioni cloud le "istanze" fanno riferimento a copie dell'applicazione in esecuzione contemporaneamente.
+
+Due tipi di scalabilità:
+
+- **Scalare orizzontalmente**: aggiungere altre istanze
+- **Aumentare le prestazioni** (verticale): aumentare la CPU/memoria nell'istanza esistente
+
+Le piattaforme cloud come Azure rendono automatico il ridimensionamento in base all'utilizzo della CPU, al numero di richieste o alle metriche personalizzate.
+
+### Archiviazione dei dati
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-ai-in-azure/media/data-icons.png){fig-align="center" width=50%}
+
+Le applicazioni di intelligenza artificiale si basano su **più tipi di dati**, ognuno dei quali serve uno scopo diverso nel sistema.
+
+Alcuni esempi includono:
+
+- **Dati di addestramento**: che illustrano i modelli di intelligenza artificiale
+- **Dati di input di inferenza**: input dell'utente o del sistema in tempo reale
+- **Dati di output del modello di intelligenza artificiale**: stime o risposte generate
+- **Stato applicazione**: dati che supportano la continuità specifica dell'utente
+- **Dati di sistema/configurazione**: supporto del comportamento dell'app per intelligenza artificiale
+- **Log e telemetria**: monitoraggio e ottimizzazione
+- **Sicurezza e accesso ai dati**: autenticazione e autorizzazione sicure
+
+Le app di intelligenza artificiale necessitano di un'archiviazione dei dati affidabile. L'archiviazione dei dati è qualsiasi sistema o servizio usato per salvare, organizzare e recuperare i dati in modo che le applicazioni possano usarle in un secondo momento. L'archiviazione svolge un ruolo fondamentale perché consente di conservare in modo sicuro le informazioni necessarie al sistema di intelligenza artificiale per apprendere, operare e migliorare. I dati archiviati possono supportare anche la personalizzazione, l'analisi, il miglioramento della qualità e il debug.
+
+Azure offre più opzioni, tra cui database SQL di Azure per carichi di lavoro cruciali, Azure Cosmos DB per dati distribuiti a livello globale in tempo reale e Database di Azure per PostgreSQL per soluzioni intelligenti e scalabili. Indipendentemente dal tipo, l'archiviazione offre all'applicazione una posizione permanente per mantenere le informazioni.
+
+### Funzionalità di intelligenza artificiale
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-ai-in-azure/media/foundry-icons.png){fig-align="center" width=50%}
+
+Infine, per rendere operativi gli agenti di intelligenza artificiale, è possibile usare Microsoft Foundry, una piattaforma di livello aziendale per sviluppare e gestire agenti di intelligenza artificiale in modo sicuro in Azure.
+
+Gli amministratori possono gestire tutte queste risorse cloud nel portale di Azure o usando script e modelli della shell per automatizzare la distribuzione e la configurazione delle risorse.
+
+L'enorme gamma di servizi e strumenti in Azure significa che, indipendentemente dai requisiti dell'organizzazione per la sicurezza, l'infrastruttura delle applicazioni e la piattaforma di database, è possibile offrire una soluzione di intelligenza artificiale ottimale.
+
+Successivamente, esaminare in modo più approfondito come usare Microsoft Foundry per creare applicazioni di intelligenza artificiale.
+
+## Microsoft Foundry per intelligenza artificiale
+
+**Microsoft Foundry** è una piattaforma distribuita come servizio (PaaS) unificata di livello aziendale per la creazione, la distribuzione e la gestione di applicazioni e agenti di intelligenza artificiale. Consolida i modelli, l'orchestrazione degli agenti, il monitoraggio e gli strumenti di governance in un'unica piattaforma, offrendo infrastruttura e sicurezza di livello di produzione.
+
+Foundry offre potenti funzionalità per gli sviluppatori, tra cui la possibilità di scegliere tra un'ampia gamma di modelli, usare tali modelli per creare agenti, connettere tali agenti agli strumenti e integrare le conoscenze usando Foundry IQ, il punto di connessione centralizzato per le origini dati.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-ai-in-azure/media/foundry-elements.png){fig-align="center" width=80%}
+
+#### Modelli
+
+Foundry supporta migliaia di modelli, tra cui opzioni avanzate di prima parte, di terze parti e open source, direttamente dal catalogo dei modelli unificato. Gli sviluppatori possono accedere ai modelli OpenAI ospitati in Azure, ad esempio la famiglia GPT-5 più recente (GPT-5, GPT-5-mini, GPT-5-nano, GPT-5-chat/5.2-chat) con ampie capacità di ragionamento e multimodalità, insieme a modelli specializzati di Anthropic (ad esempio, Claude Opus 4.6/4.5, Sonnet), Mistral, Cohere, Meta LLaMA, DeepSeek, Grok di xAI, Black Forest Labs e modelli di Hugging Face governati dalle imprese.
+
+Gli utenti possono esplorare migliaia di modelli, da modelli di base di grandi dimensioni a varianti leggere e specifiche del dominio, valutarle tramite classifiche e playground predefiniti e gestire le distribuzioni direttamente in Foundry. Il supporto completo del ciclo di vita consente la distribuzione per regione, i tipi di distribuzione personalizzabili (standard, provisionato, batch), il controllo della versione e il supporto della governance con l'Intelligenza Artificiale Responsabile e la sicurezza dei contenuti.
+
+#### Agenti
+
+Al centro di Microsoft Foundry è un approccio di tipo agent-first che consente agli sviluppatori di creare agenti intelligenti e orientati alle attività direttamente all'interno dei progetti Foundry. Questi agenti possono ragionare sugli input, chiamare strumenti, interagire con i dati e automatizzare i flussi di lavoro usando l'orchestrazione predefinita della piattaforma. Foundry gestisce il coordinamento sottostante, tra cui threading dei messaggi, esecuzione degli strumenti, controlli di sicurezza e osservabilità, in modo che gli sviluppatori possano concentrarsi sulla progettazione degli obiettivi e delle funzionalità dell'agente. Usando flussi di lavoro con poco codice o code-first, i team possono creare sistemi multi-agente che funzionano con risorse di progetto come documenti, set di dati, indici di ricerca e connessioni a sistemi esterni, incluse integrazioni come Funzioni di Azure o Microsoft Fabric.
+
+#### Strumenti
+
+Foundry offre una suite completa di servizi di Azure, ad esempio riconoscimento vocale, visione, linguaggio, intelligence per i documenti e altro ancora. Questi strumenti Foundry offrono funzionalità di intelligenza artificiale che possono essere integrate in applicazioni Web o per dispositivi mobili in modo semplice da implementare. Sono disponibili più di una dozzina di servizi diversi che possono essere usati separatamente o insieme per aggiungere potenza di intelligenza artificiale alle applicazioni. Ad esempio, è possibile usare Visione di Azure per analizzare immagini, linguaggio di Azure per riepilogare testo, classificare informazioni o estrarre frasi chiave e Riconoscimento vocale di Azure per convertire il riconoscimento vocale in testo e testo in voce.
+
+#### Informazioni
+L'IQ di Foundry fornisce un livello di conoscenza consapevole delle autorizzazioni e multi‑sorgente che fornisce agli agenti risposte accurate e fondate utilizzando i propri dati dell'organizzazione. Consente di creare una Knowledge Base configurabile costituita da origini knowledge interne ed esterne, ad esempio Archiviazione BLOB di Azure, SharePoint, OneLake o dati Web pubblici, e gestisce automaticamente l'indicizzazione, la suddivisione in blocchi di documenti, gli incorporamenti vettoriali e l'estrazione di metadati. Quando un agente esegue una query sulla Knowledge Base, Foundry IQ usa il recupero agentico per suddividere la domanda in sottoquery, eseguire ricerche in più origini in parallelo e restituire informazioni pertinenti supportate dalla citazione applicando le autorizzazioni utente e le etichette di riservatezza di Microsoft Purview. In questo modo, gli agenti possono trarre da contenuto attendibile e aggiornato e restituire solo informazioni che l'utente è autorizzato a visualizzare, fornendo una knowledge base affidabile per i flussi di lavoro di intelligenza artificiale aziendale.
+
+Gli asset per la soluzione di intelligenza artificiale sono organizzati all'interno di un progetto. Ogni progetto è contenuto all'interno di una risorsa Foundry, che fornisce l'hosting di modelli e i servizi necessari per le app e gli agenti in Azure.
+
+### Risorse e progetti Foundry
+
+Per iniziare a usare Foundry, è necessario creare una risorsa Foundry, che fornisce l'hosting di modelli e i servizi necessari per le app e gli agenti. È possibile creare una risorsa Foundry nel portale di Azure, nel portale di Foundry o a livello di codice con lo scripting.
+
+Una risorsa Foundry è la risorsa di Azure che fornisce le funzionalità della piattaforma. Una risorsa Foundry consente di accedere a:
+
+- Modelli (compatibili con Microsoft, partner e OpenAI)
+- Servizio agente di Foundry
+- Governance della distribuzione
+- Monitoraggio e osservabilità
+- Limiti di sicurezza
+- Quote e controlli operativi
+
+Un **progetto Foundry** è un'area di lavoro all'interno di tale risorsa in cui si creano app, agenti e valutazioni di intelligenza artificiale. Un progetto Foundry consente di compilare e gestire:
+
+- Agents
+- Valutazioni
+- File e set di dati
+- Indici vettoriali
+- Flussi (logica dell'intelligenza artificiale)
+- Connections
+- Impostazioni specifiche del progetto
+
+È possibile avere una risorsa Foundry per un team o un reparto e molti progetti Foundry al suo interno, ognuno incentrato su un caso d'uso di intelligenza artificiale separato.
+
+### Portale di Foundry
+
+Il portale foundry offre un'interfaccia moderna basata sul Web per lo sviluppo, il test e le soluzioni di intelligenza artificiale operativa. Qui è dove trascorrerai molto del tuo tempo quando lavori con modelli, agenti e altre risorse.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-ai-in-azure/media/new-portal-1.png){fig-align="center" width=80%}
+
+:::{.callout-note}
+Il portale foundry ha un'interfaccia utente *classica* e una *nuova* interfaccia utente. I due offrono esperienze leggermente diverse per gli utenti. Scegliere il *nuovo portale* per un'esperienza semplice che combina semplicità con strumenti avanzati e sicuri per creare, gestire e aumentare le applicazioni multi-agente. Qui sono visibili solo i progetti Foundry. Usare il modello classico per tutti gli altri tipi di risorse. Gli utenti possono alternare le interfacce classiche e nuove in base alle esigenze.
+:::
+
+Nel nuovo portale Foundry è possibile individuare modelli e strumenti, creare agenti, gestire il funzionamento di tali agenti e molto altro ancora. In qualsiasi momento, è possibile ottenere assistenza con l'assistente **Ask AI**. L'esperienza Ask AI usa agenti secondari specializzati per rispondere a domande e assistenza con le attività in Microsoft Foundry. Può guidare l'utente nella documentazione, spiegare le funzionalità del catalogo dei modelli, risolvere i problemi e gestire distribuzioni, quote e operazioni del modello. Confronta e analizza anche i modelli, interpreta i dashboard di monitoraggio e supporta flussi di lavoro di valutazione end-to-end per modelli e agenti linguistici.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-ai-in-azure/media/foundry-docs-page.png){fig-align="center" width=80%}
+
+#### Uso del portale foundry per lo sviluppo di applicazioni
+
+Quando si creano applicazioni in Azure, Foundry offre una piattaforma potente e versatile per lo sviluppo. Un nome generale per le applicazioni (che può o meno avere funzionalità di intelligenza artificiale) è applicazioni client. Un'applicazione client è un programma con cui un utente interagisce sul proprio dispositivo (ad esempio un telefono, un portatile o un browser) che invia richieste a un server e visualizza i risultati.
+
+Si consideri il flusso di lavoro seguente per l'uso del portale foundry per sviluppare un'applicazione di intelligenza artificiale:
+
+1. Accedere al portale di Foundry usando la sottoscrizione di Azure e creare un progetto Foundry.
+2. In Foundry selezionare un modello dal Catalogo modelli e distribuirlo.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-ai-in-azure/media/example-selected-model.png){fig-align="center" width=80%}
+
+3. In Foundry sperimentare con il modello in Playground. È possibile usare Playground per scrivere richieste, testare le risposte del modello, configurare i parametri.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-ai-in-azure/media/example-model-playground.png){fig-align="center" width=80%}
+
+4. Usare il modello configurato nella propria applicazione client.
+
+Un'applicazione client di intelligenza artificiale usa un modello, dati e logica dell'applicazione per elaborare e restituire i risultati. La logica dell'app è il codice o il flusso di lavoro che invia richieste al modello, riceve la risposta e elabora e trasforma i risultati. L'intero processo è noto come interazione client-server . Un sistema client-server fornisce le basi per l'interazione degli utenti con i sistemi di intelligenza artificiale, il modo in cui le richieste vengono elaborate e il modo in cui vengono recapitati i risultati.
+
+Responsabilità del **cliente**:
+
+1. Presentare un'interfaccia utente o un'interfaccia della riga di comando
+2. Raccogliere l'input dell'utente (testo, voce, immagini)
+3. Formattare l'input in un prompt o una richiesta API
+4. Inviare una richiesta al server (endpoint modello)
+5. Visualizzare l'output restituito
+Il client richiede il modello per i risultati, ospitati dal server o dal back-end. In Foundry il server è la distribuzione del modello.
+
+Responsabilità del **server**:
+
+1. Ricevere il prompt
+2. Eseguire l'inferenza nel modello
+3. Applicare istruzioni di sistema, sicurezza, contesto e altro ancora
+4. Restituisce l'output generato ( ad esempio: testo, immagine, audio o JSON strutturato)
+
+Si esaminerà ora il modo in cui i client si connettono ai modelli Foundry e come usare gli endpoint Foundry.
+
+## Uso degli endpoint di Microsoft Foundry
+
+In Foundry è possibile definire i modelli e gli agenti da usare nelle applicazioni di intelligenza artificiale personalizzate. Poiché le risorse foundry sono basate sul cloud, è possibile utilizzarle come API ( Application Programming Interface ) tra connessioni Internet tramite interfacce a livello di codice.
+
+:::{.callout-note}
+Un'API è un set di regole che consente a un'applicazione di comunicare con un'altra applicazione o servizio. Un'API definisce le richieste che è possibile effettuare, i dati restituiti e come formattare la richiesta.
+:::
+
+### Comprendere gli endpoint
+
+Analogamente alla maggior parte dei servizi cloud, le risorse di Microsoft Foundry sono accessibili tramite un endpoint API, che rappresenta un punto di ingresso del servizio. L'endpoint ha un indirizzo HTTP univoco, ad esempio un sito Web, ma è per il codice dell'applicazione client anziché per gli utenti umani con un Web browser. Quando si visualizza l'endpoint per il modello, l'aspetto è simile al seguente:
+
+```
+https://<foundry-project>-resource.cognitiveservices.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2024-05-01-preview
+```
+
+Le interfacce fornite nell'endpoint sono note come interfacce di trasferimento dello stato rappresentazione o interfacce REST per brevità.
+
+Per proteggere le risorse Foundry, l'endpoint è protetto. Le applicazioni possono accedervi solo se presentano la chiave API corretta o un token che conferma che le credenziali dell'ID Microsoft Entra sono valide. L'endpoint e la chiave del modello sono disponibili nella pagina dei dettagli di Foundry Playground.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-ai-in-azure/media/example-model-details.png){fig-align="center" width=80%}
+
+Due tipi comuni di endpoint in Foundry includono:
+
+- **Endpoint del progetto**: per lavorare con il tuo progetto Foundry e le relative risorse
+- **Endpoint del modello**: per l'invio di richieste ai modelli distribuiti
+
+### Uso degli endpoint
+
+Le applicazioni comunicano con l'endpoint inviando richieste REST. Le richieste REST sono costituite da intestazioni contenenti metadati, ad esempio l'autenticazione e le informazioni sul formato dei dati, e un corpo costituito da dati in formato JSON. Ad esempio, una richiesta potrebbe includere una richiesta immessa da un utente in un'applicazione di chat, ad esempio "Che cos'è un'applicazione di intelligenza artificiale?".
+
+```{.rest filename="rest"}
+curl -X POST https://YOUR-FOUNDRY-RESOURCE-NAME.services.ai.azure.com/api/projects/YOUR-PROJECT-NAME/openai/responses?api-version=2025-11-15-preview \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $AUTH_TOKEN" \
+-d '{
+        "model": "gpt-4.1-mini",
+        "input": "What is an AI application?"
+}'
+```
+
+I risultati della richiesta vengono restituiti come risposta, con intestazioni e corpo. Ad esempio, la risposta potrebbe includere la risposta generata da un modello dal prompt. La risposta torna in un formato JSON. Una sezione di tale json può essere simile alla seguente:
+
+```{.json filename="json"}
+{
+    "metadata": {},
+    "temperature": 1,
+    "model": "gpt-4.1-mini",
+    "object": "response",
+    "status": "completed",
+    "output": [
+        {
+            "type": "message",
+            "status": "completed",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "output_text",
+                    "text": "An AI application is a software program or system that utilizes artificial intelligence technologies to perform tasks that typically require human intelligence. These tasks can include recognizing speech, understanding natural language, making decisions, learning from data, recognizing images, and solving complex problems. AI applications are used in various fields such as healthcare, finance, customer service, autonomous vehicles, and more to enhance efficiency, accuracy, and user experience."
+                }
+            ]
+        }
+    ]
+}
+```
+
+Anche se gli sviluppatori possono scrivere codice che funziona direttamente con le interfacce REST, la maggior parte degli sviluppatori preferisce lavorare con gli **SDK (Software Development Kit)** che astraggono le interfacce REST con librerie di codice per il linguaggio di programmazione preferito, ad esempio Python, JavaScript o C#. Questi helper specifici del linguaggio generano le chiamate REST.
+
+L'endpoint per le risorse Foundry è il punto centrale del servizio per le applicazioni client, consentendo di creare soluzioni personalizzate supportate dalla sicurezza, dalla scalabilità e dall'affidabilità della piattaforma cloud di Azure.
+
+Provare quindi a creare una risorsa Foundry e a usare il relativo endpoint.
+
+# Introduzione all'intelligenza artificiale generativa e agli agenti in Azure
+
+## Introduzione
+
+In pochi anni, l'IA generativa, un subset di intelligenza artificiale che si concentra sulla creazione di nuovi contenuti, ha cambiato il modo in cui lavoriamo e rivoluzionato ciò che è possibile con la tecnologia. A volte, gli sviluppi in rapida evoluzione dell'IA generativa possono sentirsi difficili da tenere traccia anche per gli sviluppatori stagionati.
+
+In questo modulo si ottiene un framework per comprendere le applicazioni di intelligenza artificiale generative e il modo in cui Microsoft Foundry supporta l'innovazione. Che aspetto ha l'innovazione di oggi? Considerare questi casi d'uso:
+
+- **Creazione di contenuti di marketing**: le aziende usano l'intelligenza artificiale generativa di Microsoft Copilot per scrivere automaticamente descrizioni dei prodotti, post di blog e contenuti di social media, risparmiando tempo e garantendo la coerenza del marchio tra piattaforme.
+
+- **Supporto clienti**: le aziende distribuiscono agenti virtuali basati sull'intelligenza artificiale in grado di comprendere e rispondere alle richieste dei clienti in linguaggio naturale, offrendo supporto 24/7 e riducendo il carico sugli agenti umani.
+
+- **Generazione di codice**: gli sviluppatori usano strumenti come GitHub Copilot per generare frammenti di codice, suggerire funzioni e persino scrivere interi moduli basati su prompt del linguaggio naturale, accelerando lo sviluppo di software.
+
+- **Generazione di immagini e video**: i progettisti e gli autori di contenuti usano i modelli più recenti nel catalogo dei modelli di Microsoft Foundry per generare oggetti visivi per campagne, storyboard o concept art, spesso da una descrizione di testo.
+
+- **Apprendimento e tutoring personalizzati**: le piattaforme didattiche usano l'intelligenza artificiale generativa per creare quiz personalizzati, spiegazioni e guide di studio personalizzate in base allo stile di apprendimento e allo stato di avanzamento di uno studente.
+
+Microsoft offre un ecosistema di strumenti per l'uso e lo sviluppo di intelligenza artificiale. Questo modulo illustra il catalogo dei modelli Foundry e come individuare, valutare e distribuire un modello appropriato. Scopri come testare e configurare il modello distribuito nel playground di Foundry e richiamarlo tramite codice usando l'API Risposte compatibili con OpenAI. Infine, si vedrà come gli agenti incapsulano un modello, le relative istruzioni e gli strumenti facoltativi in modo che la soluzione sia riutilizzabile e coerente in Playground e nel codice tramite l'API Project.
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+## Modelli di IA generativa
+
+Le soluzioni di intelligenza artificiale generative e agenti sono basate su modelli linguistici. I modelli di linguaggio di grandi dimensioni costituiscono la base di soluzioni di intelligenza artificiale generative che possono offrire un'ampia gamma di risposte. Oggi esiste un'ampia gamma di modelli che servono esigenze diverse. Ad esempio, le funzionalità di intelligenza artificiale in un'applicazione per telefoni leggeri possono essere eseguite meglio in un modello linguistico di piccole dimensioni, mentre un'applicazione per enti pubblici potrebbe richiedere un modello specializzato in un dominio.
+
+**Microsoft Foundry** offre un ambiente integrato per l'individuazione, la valutazione, la distribuzione e il funzionamento di modelli di intelligenza artificiale generativi. Riunisce un catalogo di modelli avanzato, opzioni di distribuzione flessibili e funzionalità di governance predefinite, in modo che i team possano creare copiloti, agenti e applicazioni basate sull'intelligenza artificiale con sicurezza aziendale.
+
+:::{.callout-note}
+Per usare Microsoft Foundry, è necessaria una sottoscrizione di Azure. Per usare le funzionalità di Foundry, iniziare creando un progetto in Foundry. Per altre informazioni, vedere [Introduzione a Microsoft Foundry](https://learn.microsoft.com/it-it/training/modules/get-started-ai-in-foundry/).
+:::
+
+### Individuare i modelli nel catalogo dei modelli di Foundry
+
+Il catalogo dei modelli di Foundry è un hub centrale per l'individuazione e l'uso di una vasta gamma di modelli di intelligenza artificiale generativi da una vasta gamma di provider. In Foundry è possibile filtrare i modelli in base a origine, funzionalità, attività di inferenza e altro ancora. Foundry consente di comprendere e confrontare le funzionalità del modello, nonché di testare e creare soluzioni di intelligenza artificiale scalabili, sicure e responsabili.
+
+:::{.callout-note}
+Il portale Foundry include un'interfaccia utente classica e una nuova. Le immagini del portale Foundry riflettono la nuova interfaccia utente in cui è pertinente.
+:::
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-generative-ai-and-agents/media/model-catalog-1.png){fig-align="center" width=80%}
+
+Il catalogo dei modelli offre una vasta gamma di modelli, inclusi i modelli venduti direttamente da Azure insieme ai modelli di partner e community open source.
+
+- **Modelli venduti direttamente da Azure**: questi modelli sono ospitati da Microsoft in Condizioni per i prodotti Microsoft. Offrono livelli elevati di integrazione con Azure, contratti di servizio di livello aziendale, sicurezza preconfigurata e allineamento della conformità.
+
+- **Modelli di partner e community**: include modelli open source o ospitati dal fornitore integrati tramite il catalogo. Questi modelli supportano una sperimentazione più ampia e un'innovazione rapida e sono spesso adatti per attività specializzate o specifiche del dominio.
+
+Ogni voce del modello include in genere:
+
+- **Descrizioni e funzionalità dei modelli** (generazione di testo, ragionamento, codifica, multimodale, incorporamenti e così via)
+- **Risultati del benchmark e confronti delle prestazioni**
+- **Attività di inferenza supportate e opzioni di ottimizzazione**
+- **Documentazione sull'intelligenza artificiale responsabile** (schede modello, vincoli, avvertenze)
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-generative-ai-and-agents/media/gpt-4-model-details.png){fig-align="center" width=80%}
+
+#### Famiglie di modelli di uso comune
+
+Tra i migliaia di modelli disponibili in Foundry, ci sono molti raggruppati per famiglia di modelli. Una famiglia di modelli fa riferimento a un gruppo di modelli correlati che condividono la stessa architettura o derivazione sottostante, ma differiscono in dimensioni, funzionalità, specializzazione o versione.
+
+Le famiglie di modelli comunemente usate includono:
+
+- **GPT-5.x**: ottimizzato per il ragionamento multi‑passo, logica strutturata, pianificazione e flussi di lavoro agentivi. Funziona bene negli scenari che richiedono un ragionamento ad alta precisione e una comprensione del contesto lungo, ad esempio la generazione di report tecnici, l'analisi del codice o l'orchestrazione di agenti multi-strumento. Supporta livelli di pensiero regolabili, consentendo agli sviluppatori di scambiare velocità per l'accuratezza quando necessario.
+
+- **Claude Opus 4.5 (Anthropic)**: quando è necessario un modello a livello di frontiera per agenti sofisticati, ragionamenti di codice complessi o attività di utilizzo di computer in più passaggi. Opus 4.5 è descritto come il modello più intelligente di Anthropic con prestazioni elevate per codifica, agenti e uso di computer e finestre di contesto/output di grandi dimensioni, utili per specifiche lunghe, diffs multi-file o note di ricerca estese.
+
+- **Mistral Large 3 (Mistral AI)**: è un modello di uso generico all'avanguardia ideale per la qualità elevata con una velocità effettiva efficiente. Il modello funziona bene con attività di creazione multilingue, generazione di report aziendali strutturati o attività agente a media latenza che bilanciano i costi e le prestazioni. Mistral Large 3 è un modello generale "all'avanguardia" e parte del catalogo di Foundry curato, rendendolo un'alternativa pratica ai modelli di punta quando si desidera un'elevata capacità con compromessi flessibili sui costi/latenza.
+
+:::{.callout-note}
+La registrazione è attualmente necessaria per la famiglia di modelli GPT-5, limitandone la disponibilità. Tutti gli utenti di Foundry possono usare GPT-4.1, ideale per chat in tempo reale, supporto clienti e applicazioni interattive che devono rispondere rapidamente e su larga scala. È ottimizzato per la velocità, l'efficienza e l'inferenza a bassa latenza, rendendola migliore rispetto ai modelli con elevato utilizzo di ragionamento per carichi di lavoro di produzione con volumi elevati.
+:::
+
+In Foundry, i **modelli di base** sono modelli di grandi dimensioni, già addestrati, ad esempio GPT, Claude, Mistral e altri, che forniscono funzionalità generiche di linguaggio, ragionamento o multimodali. Questi modelli possono essere distribuiti immediatamente o personalizzati tramite l'ottimizzazione e fungono da livello di base per la creazione di applicazioni di intelligenza artificiale.
+
+### Valutare i modelli in Foundry
+
+La scelta del modello corretto in Foundry inizia con la comprensione del carico di lavoro, del tipo di attività e dei vincoli.
+
+#### Selezionare un modello per tipo di attività
+
+|Attività | Tipi di modello consigliati | Dettagli del modello |
+|:---|:---|:---|
+|Chiacchierare	|Chat GPT-5.x, Claude Sonnet/Opus, Mistral-Large-3, DeepSeek V3.1, modelli linguistici di piccole dimensioni come Phi-4 o Llama	|Ragionamento forte, ottimizzazione della conversazione, sicurezza
+|Scrittura del codice	|GPT-5.1-codex, Claude-Sonnet	|Supporto per flussi di agenti complessi
+|Riepilogo	|Modelli di ragionamento GPT-5.x, Claude Opus/Sonnet	|Compressione di alta qualità con ampio contesto
+|Embeddings	|text-embedding-3-small o altri modelli di embedding	|Compilato per le rappresentazioni vettoriali semantiche
+|Multimodale	|Phi-4-multimodale-instruct, GPT-5.x chat multimodale, Mistral-Large-3	|Supporto per immagini, audio e video nei completamenti della chat
+|Specifico del settore o del dominio	|Modelli ottimizzati per il dominio nel catalogo	|Applicazioni specifiche di un settore come finanza, sanità, legale|
+
+:::{.callout-note}
+Quando il caso d'uso è ben definito, anziché scegliere un modello dal catalogo dei modelli, è possibile scegliere uno strumento Foundry. Gli strumenti di fonderia sono basati su modelli predefiniti che offrono prestazioni prevedibili, conformità integrata e tempi di utilizzo rapidi senza modellazione personalizzata.
+:::
+
+#### Assegnare punteggi e confrontare i modelli in Foundry
+
+Il catalogo dei modelli di Foundry include risultati di benchmarking che mostrano come i modelli eseguono sui set di dati standard. I punteggi di benchmark semplificano la selezione del modello usando criteri di valutazione coerenti.
+
+Tramite il portale di Foundry è anche possibile visualizzare:
+
+- **Classifiche dei modelli**: i tabelloni punteggi classificano i modelli in base a attributi quali qualità, sicurezza e velocità effettiva. Ciò consente di identificare il modello migliore per un'attività. Esempi di attività includono ragionamento, riepilogo, generazione di codice.
+- **Confronti e filtri**: confronto tra modelli side-by-side in base a qualità e accuratezza, costi, sicurezza e conformità e metriche delle prestazioni. È possibile filtrare in base al settore, al caso d'uso, al tipo di modello, alle licenze e altro ancora.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-generative-ai-and-agents/media/model-leaderboard.png){fig-align="center" width=80%}
+
+Un modo comune per valutare consiste nell'iniziare nel catalogo dei modelli di Foundry, scegliere un modello e quindi selezionare *Benchmark* $\rightarrow$ *Provare con i propri dati*. È possibile provare le richieste e verificare se le risposte sono come previsto.
+
+Esistono diversi modi per assegnare punteggi a un modello nel portale foundry, tra cui metriche NLP (Natural Language Processing) e metriche di qualità assistita dall'intelligenza artificiale. Esempi di metriche di qualità NLP classiche sono: accuratezza, precisione, richiamo e F1. Esempi di metriche assistite dall'intelligenza artificiale comprendono fondatezza, rilevanza, coerenza, fluidità e somiglianza GPT. Scegliere metriche assistita dall'intelligenza artificiale per l'assegnazione di punteggi qualitativi oltre le metriche tradizionali.
+
+In Foundry, gli **analizzatori** sono componenti usati per misurare la qualità, la sicurezza e l'efficacia degli output del modello o dell'agente di intelligenza artificiale. Ad esempio, gli analizzatori di sicurezza possono essere usati per garantire l'output responsabile dell'IA. Analizzano contenuti dannosi o non sicuri, pregiudizi e ingiustità, violenza, autolesionismo o danni a classi protette. La libreria analizzatore di Foundry offre analizzatori riutilizzabili per l'assegnazione dei punteggi di qualità, l'analisi della sicurezza e altro ancora.
+
+:::{.callout-note}
+Autonomamente, gli analizzatori di Foundry rilevano, analizzano e valutano i problemi, ma non li risolvono attivamente.
+:::
+
+### Distribuire modelli in Foundry
+
+Dopo aver selezionato un modello, Foundry fornisce meccanismi di distribuzione flessibili che consentono di personalizzare le prestazioni, i costi e la governance. Distribuire un modello comporta l'uso di un modello di intelligenza artificiale rendendolo disponibile per l'uso nell'ambiente di produzione tramite un endpoint stabile, scalabile e sicuro. La distribuzione di un modello configurato trasforma il modello in un servizio che le applicazioni possono chiamare, in genere tramite un'API. La distribuzione di un modello configurato consente di garantire prestazioni e affidabilità coerenti. Consente inoltre agli sviluppatori di impedire l'uso non autorizzato o non sicuro.
+
+I parametri di distribuzione che è possibile personalizzare in Foundry includono:
+
+- **Tipo di distribuzione**: ad esempio velocità effettiva standard, batch globale e con provisioning a livello di area, determinare dove e come viene elaborata l'inferenza in Foundry. I tipi di distribuzione sono associati ai requisiti di velocità effettiva e elaborazione dei dati.
+- **Versione del modello**
+- **Limite di velocità dei token al minuto (TPM)**
+
+:::{.callout-note}
+Un token è l'unità di testo o dati più piccola che un modello di intelligenza artificiale generativa può elaborare. I modelli suddividono l'input in token, come parole, sottoparole, caratteri o punteggiatura, in modo che possano comprendere e generare la lingua in modo efficiente.
+:::
+
+Quando si distribuisce un modello, è possibile assegnargli un'allocazione token al minuto (TPM). TPM determina la velocità e la scalabilità con cui il modello può elaborare gli input e i limiti di velocità, come le richieste al minuto (RPM). Quando si assegna un'allocazione TPM superiore a una distribuzione del modello, si aumenta la capacità di gestire il traffico dei token al minuto. Un TPM inferiore riduce la velocità con cui la distribuzione può usare i token tra richieste.
+
+I limiti variano in base alla famiglia di modelli, ad esempio:
+
+- I modelli di ragionamento di fascia alta (ad esempio: DeepSeek R1, Grok, versioni llama di grandi dimensioni) possono avere soffitti TPM elevati.
+- I modelli specializzati o di immagine spesso operano in unità di capacità anziché TPM.
+
+La limitazione, in un contesto di calcolo, implica intenzionalmente un rallentamento o una limitazione della quantità di lavoro di calcolo che può verificarsi contemporaneamente. Si tratta di un meccanismo protettivo usato quando un sistema è vicino al raggiungimento dei limiti di elaborazione. La limitazione temporanea dell'utilizzo delle risorse consente al sistema di rimanere stabile e reattivo.
+
+Le quote a livello di distribuzione definiscono il numero di token o richieste che possono essere elaborate prima che si verifichi la limitazione. Le richieste più grandi e le impostazioni massime del token di output consumano più TPM, causando errori di limite di frequenza se vengono superati (descritti in maniera dettagliata nei risultati della ricerca sulla descrizione della limitazione). Se viene visualizzata la limitazione, ridurre i token max o ridurre le richieste simultanee nel codice.
+
+Quando si distribuisce un modello in Foundry, si verificano diversi aspetti:
+
+- Le risorse di calcolo vengono allocate: Foundry assegna l'hardware necessario per eseguire il modello, ovvero CPU, GPU, memoria, rete e regole di ridimensionamento.
+- Viene creato un endpoint API: è possibile richiamare in modo sicuro il modello tramite l'API Risposte OpenAI, convalidata tramite i controlli api di gestione.
+- La configurazione (ad esempio la versione del modello, lo stile di risposta, le impostazioni di sicurezza) è bloccata
+- Monitoraggio e registrazione diventano attivi: vengono rilevate metriche di utilizzo, prestazioni, latenza, errori e costi
+
+Successivamente, scopri come configurare questi modelli nel playground del portale Foundry e usarli in un'applicazione client.
+
+
+## Uso di un modello di intelligenza artificiale generativo
+
+Il modo più semplice per interagire con un modello distribuito consiste nell'usare il modello playground nel portale Foundry. È possibile usare Foundry Playgrounds per provare le richieste, confrontare i modelli e acquisire le impostazioni di lavoro prima di scrivere codice.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-generative-ai-and-agents/media/model-playground-example.png){fig-align="center" width=80%}
+
+### Parametri di configurazione chiave
+
+Diversi *argomenti* o *parametri* del modello influenzano il comportamento di runtime, le prestazioni e i costi. Nelle impostazioni del playground è possibile configurare parametri come temperatura, max output token e istruzioni di sistema. Nell'interfaccia della chat del playground è possibile inviare richieste e visualizzare le risposte generate dal modello.
+
+- **Temperatura**: controlla la creatività e il determinismo.
+- **Token di output massimi**: limita la lunghezza delle risposte e influisce sul consumo dei token e sul comportamento di limitazione.
+- **Istruzioni di sistema**: imposta il comportamento e il ruolo del modello.
+
+A differenza del prompt dell'utente, che è la richiesta o la domanda dell'utente finale (ad esempio: Dove devo viaggiare?), un prompt di sistema imposta il comportamento, il tono, gli strumenti e le protezioni per l'assistente. Un esempio di richiesta di sistema è: "Esercitazione utile e dettagliata. Cita fonti. Rifiutare la consulenza medica."
+
+Il playground è un ponte utile tra Foundry e il codice. Dopo aver testato le richieste dei rappresentanti, è possibile usare gli stessi prompt di sistema e utente e i valori dei parametri nel codice. Il playground fornisce codice che può chiamare la distribuzione Foundry tramite l'API Risposte compatibile con OpenAI. Il codice è essenzialmente ciò che viene eseguito quando si usa l'interfaccia di chat per configurare le impostazioni e inviare richieste utente.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-generative-ai-and-agents/media/chat-code-example.png){fig-align="center" width=80%}
+
+È possibile accettare il codice come punto di partenza per creare un client di chat personalizzato.
+
+### Creare un client di chat leggero usando Foundry SDK
+Un'**applicazione client leggera** è una piccola e minima app il cui processo primario consiste nel **raccogliere l'input dell'utente, chiamare un servizio remoto/API** e **visualizzare i risultati**, senza framework dell'interfaccia utente pesanti, logica back-end complessa o dipendenze locali di grandi dimensioni. In pratica, in genere:
+
+- Funziona come interfaccia a riga di comando, piccola utilità desktop o semplice pagina web.
+- Mantiene lo stato e il calcolo principalmente nel server (il modello viene eseguito in modalità remota).
+- Ha un footprint di codice ridotto e una configurazione minima (spesso solo variabili di ambiente e uno script breve).
+- È facile da prototipo, facile da eseguire in locale e facile da estendere in un secondo momento.
+
+Per Foundry, un client di chat leggero è spesso un single Python file che si connette a un endpoint di progetto Foundry e invia messaggi di chat a un modello distribuito. Foundry SDK espone un client di progetto (operazioni native di Foundry) e un client compatibile con OpenAI per chiamare i modelli tramite l'API Risposte. La maggior parte delle app usa entrambe.
+
+#### Creare un client di chat Python
+
+Dopo aver creato un progetto Foundry e aver distribuito un modello di chat (ad esempio, gpt-4.1), è possibile usare Foundry SDK. Nell'esempio l'applicazione client usa l'autenticazione per connettersi all'endpoint per il modello, inviare una richiesta e visualizzare la risposta.
+
+```{.python filename="python"}
+# pip install openai>=1.3.0
+# pip install azure-ai-projects azure-identity openai
+
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    base_url=f"{os.environ['AZURE_OPENAI_ENDPOINT']}/openai",
+    api_key=os.environ["AZURE_OPENAI_API_KEY"]
+)
+
+response = client.responses.create(
+    model=os.environ["DEPLOYMENT_NAME"],          # e.g., "gpt-4o-mini"
+    input=[{"role": "system", "content": "You're a helpful assistant."},
+           {"role": "user", "content": "Summarize the key points from our release notes in 3 bullets."}],
+    max_output_tokens=300,
+    temperature=0.7
+)
+
+print(response.output_text)
+```
+### Comprendere la differenza tra modelli e agenti
+
+In Microsoft Foundry i modelli e gli a**genti di intelligenza artificiale** generativi sono correlati ma servono scopi diversi. È possibile pensarlo in questo modo:
+
+- **Modelli** = **intelligenza non elaborata**
+- **Agenti** = **lavoratori compatti e orientati ai compiti costruiti su quell'intelligenza**
+
+Quando si usa un modello di intelligenza artificiale generativo autonomamente:
+
+- Si vuole inferenza pura: "Accettare questa richiesta e generare l'output".
+- Stai sperimentando in Playground
+- Chiamare il modello tramite l'API Risposte OpenAI
+
+Successivamente, impara come creare un agente in Foundry.
+
+## Creazione di un agente
+
+Gli **agenti** sono applicazioni create con modelli di intelligenza artificiale generativi. L'intelligenza artificiale agente si sposta oltre i prompt occasionali e definisce invece un comportamento coerente e simile al flusso di lavoro che può essere riutilizzato tra app, esperienze e servizi.
+
+Un agente in Microsoft Foundry è un componente di intelligenza artificiale riutilizzabile in pacchetto che riunisce tre elementi:
+
+- Un **modello**: il modello di intelligenza artificiale generativa usato dall'agente per il ragionamento (ad esempio, GPT-4.1)
+- **Istruzioni**: richiesta di sistema che definisce il ruolo, il comportamento, lo stile, i vincoli e le regole di output dell'agente
+- **Strumenti**: le azioni che l'agente può eseguire
+
+Gli agenti possono:
+
+- Chiamare automaticamente strumenti esterni (API, funzioni, recupero)
+- Suddividere gli obiettivi in passaggi strutturati
+- Mantenere la memoria di lavoro durante una conversazione
+- Elaborare l'input dell'utente, decidere le azioni e generare output strutturati
+
+### Creare un agente nel portale Foundry
+
+Per creare un agente in Foundry, è possibile iniziare esplorando un modello o semplicemente passando direttamente allo sviluppo dell'agente. Nel portale di Foundry la creazione di un agente ha un aspetto simile al test di un modello nel playground.
+
+1. Scegliere il modello usato dall'agente.
+2. Scrivere le istruzioni di sistema, ad esempio "Sei un utile assistente di pianificazione che fornisce risposte in punti elenco concisi".
+
+Ciò che distingue l'agente rispetto al solo utilizzo del modello è l'aggiunta di strumenti, che consentono al modello di agire sulle informazioni e conoscenze, fornendo una base al modello con esse.
+
+Strumenti = *azioni*.
+Conoscenza = *context*.
+
+#### Aggiungere strumenti
+
+Gli **strumenti in Foundry** consentono a un modello di eseguire azioni chiamando sistemi esterni. Rappresentano **funzionalità chiamabili**, ad esempio la ricerca sul Web, l'esecuzione di query su un database o l'uso di un server MCP.
+
+Se abilitata nel playground del modello, il modello può esaminare gli strumenti disponibili, quindi chiamarli quando pertinenti a una richiesta utente. Esempi di strumenti includono:
+
+- Interprete del codice (analisi dei dati, gestione dei file)
+- Uso delle origini delle informazioni
+- Funzioni o API personalizzate
+
+Gli strumenti consentono al modello di:
+
+- Eseguire azioni reali (file di lettura/scrittura, ricerca, sistemi di aggiornamento)
+- Eseguire flussi di lavoro
+- Integrare nei sistemi aziendali
+
+
+In Foundry gli strumenti costituiscono la base per gli agenti che eseguono azioni. Possono essere configurati centralmente usando il catalogo degli strumenti foundry, in cui è possibile individuare e gestire gli strumenti.
+
+#### Aggiungere conoscenza
+La **knowledge base** consente al modello di accedere e recuperare contenuto esterno (documenti, set di dati, siti interni) tramite la generazione di recupero aumentata (RAG).
+
+La conoscenza in Foundry fa riferimento a **documenti o set di dati** forniti al modello in modo che possa recuperare un contesto altamente rilevante durante la generazione. I dati possono includere PDF interni, contenuto di SharePoint, file di Archiviazione di Azure e basi di conoscenza multi-sorgente.
+
+Nel playground, Foundry utilizza le pipeline di recupero per:
+
+- Inserire e indicizzare il contenuto
+- Ricerca e risposte a terra
+- Rendere le risposte più accurate, tracciabili e specifiche del dominio
+
+Gli agenti si basano principalmente sulle conoscenze quando rispondono a domande specifiche del dominio. Quando viene usata la conoscenza, la risposta include un riferimento per l'archivio di conoscenze usato dall'agente.
+
+Le conoscenze abilitano:
+
+- Domande e risposte a base di documenti
+- Assistenza ricca di contesto
+- Recupero sicuro per aziende
+
+Nel portale foundry è possibile salvare il modello, le istruzioni e gli strumenti come agente. È possibile continuare a testare e perfezionare l'agente in Playground.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-generative-ai-and-agents/media/save-create-agent.png){fig-align="center" width=80%}
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-generative-ai-and-agents/media/continue-testing-agent.png)
+
+### Uso di un agente
+
+È possibile usare un agente da un'applicazione client usando Foundry Projects SDK per connettersi al progetto e chiamarlo da un client usando l'API Project.
+
+L'API Project consente di:
+
+- Integrare agenti in app Web, bot o flussi di lavoro back-end
+- Orchestrare attività in più passaggi
+- Passare input strutturati o chiamate di strumenti
+- Eseguire gli agenti su vasta scala con le distribuzioni Foundry
+
+### Creare un'applicazione client per un agente
+
+Per chiamare l'agente a livello di codice usando l'API Project di Foundry, è necessario disporre dell'agente `agent-id`. È possibile trovare `agent-id` nella visualizzazione Playground dell'agente quando si seleziona la visualizzazione del codice e si aprono le variabili `.env`.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-with-generative-ai-and-agents/media/agent-id.png){fig-align="center" width=80%}
+
+Di seguito viene illustrato un esempio di codice Python per usare un agente:
+
+```{.python filename="python"}
+# Before running the sample, install the packages:
+#    pip install --pre azure-ai-projects>=2.0.0b1
+#    pip install azure-identity
+
+from azure.identity import DefaultAzureCredential
+from azure.ai.projects import AIProjectClient
+
+myEndpoint = "https://<resource>.services.ai.azure.com/api/projects/<resource-name>"
+
+project_client = AIProjectClient(
+    endpoint=myEndpoint,
+    credential=DefaultAzureCredential(),
+)
+
+myAgent = "learning-agent"
+# Get an existing agent
+agent = project_client.agents.get(agent_name=myAgent)
+print(f"Retrieved agent: {agent.name}")
+
+openai_client = project_client.get_openai_client()
+
+# Reference the agent to get a response
+response = openai_client.responses.create(
+    input=[{"role": "user", "content": "Tell me what you can help with."}],
+    extra_body={"agent": {"name": agent.name, "type": "agent_reference"}},
+)
+
+print(f"Response output: {response.output_text}")
+```
+
+Esplorare quindi un modello di intelligenza artificiale generativo nel nuovo portale foundry.
+
+# Introduzione all'analisi del testo in Azure
+
+## Introduzione
+
+In questo modulo viene illustrato come usare l'intelligenza artificiale per comprendere il testo nei documenti e in altri asset scritti.
+
+L'elaborazione e l'analisi del testo sono possibili tramite l'**elaborazione del linguaggio naturale (NLP)**. L'elaborazione del linguaggio naturale consente ai computer di comprendere, interpretare e rispondere al linguaggio umano. L'obiettivo di NLP è analizzare ed estrarre significato o struttura dal testo esistente.
+
+L'**analisi del testo** è il processo di analisi automatica del testo scritto per estrarre informazioni utili, ad esempio sentiment, parole chiave, entità o argomenti. L'analisi del testo si basa su NLP per trasformare il testo non strutturato in informazioni dettagliate significative.
+
+Si considerino alcune di queste applicazioni di analisi del testo:
+
+- **Analisi dei commenti e suggerimenti dei clienti**: le aziende devono analizzare volumi elevati di recensioni dei clienti, ticket di supporto e risposte ai sondaggi. Con le tecniche di analisi del testo, possono identificare le tendenze, rilevare l'insoddisfazione precoce e migliorare le esperienze dei clienti.
+
+- **Analisi del testo sanitario**: i sistemi sanitari devono estrarre informazioni cliniche da documenti medici non strutturati. Le tecniche di analisi del testo possono aiutare a identificare sintomi, farmaci e diagnosi, supportando decisioni più veloci e più accurate.
+
+- **Elaborazione documenti finanziari**: le banche e gli istituti finanziari gestiscono grandi volumi di contratti, richieste di prestito e documenti normativi. Le tecniche di analisi del testo consentono di estrarre automaticamente i dettagli chiave, ad esempio i tassi di interesse, le informazioni sui mutuatari e i rischi di conformità, consentendo di ridurre il tempo di revisione manuale e migliorare l'accuratezza.
+
+- **Riepilogo documenti legali**: gli studi legali gestiscono lunghi fascicoli di casi, sentenze e accordi. Le tecniche di analisi del testo possono aiutare a riepilogare testi legali complessi, evidenziare clausole importanti e classificare i documenti in base all'argomento, consentendo agli avvocati di lavorare in modo più efficiente e prendere decisioni informate più velocemente.
+
+Verranno ora esaminate le funzionalità di analisi del testo in Microsoft Foundry.
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+## Informazioni sull'analisi del testo in Foundry
+
+**Microsoft Foundry** è la piattaforma per la creazione di app e agenti di intelligenza artificiale in Azure. Il portale di Foundry offre due approcci all'analisi del testo: modelli di intelligenza artificiale per utilizzo generico che gestiscono un'ampia gamma di attività tramite prompt del linguaggio naturale e strumenti di linguaggio appositamente creati che restituiscono risultati strutturati e deterministici per attività specifiche.
+
+:::{.callout-note}
+Foundry ha un portale basato sul Web in cui è possibile compilare, testare e distribuire applicazioni di intelligenza artificiale. Il portale dispone di due interfacce utente, un'interfaccia utente classica e una nuova interfaccia utente, il nuovo portale Foundry. Questo contenuto descrive le funzionalità nel nuovo portale Foundry.
+:::
+
+Per iniziare a usare l'analisi del testo nel nuovo portale foundry, è necessario creare una risorsa Foundry e un progetto Foundry.
+
+Una risorsa Foundry è una risorsa Azure che fornisce l'accesso ai servizi di intelligenza artificiale e ai modelli distribuiti. Un progetto Foundry è un'area di lavoro all'interno di tale risorsa in cui è possibile organizzare il lavoro, distribuire modelli e accedere a strumenti come il playground di chat e i servizi di intelligenza artificiale.
+
+### Uso di modelli di intelligenza artificiale per utilizzo generico per l'analisi del testo
+
+Dal progetto nel portale Foundry è possibile distribuire un modello di intelligenza artificiale per utilizzo generico. Un **modello di intelligenza artificiale per utilizzo generico** è un modello linguistico sottoposto a training su grandi quantità di dati di testo, offrendo una conoscenza approfondita del linguaggio e la possibilità di gestire molte attività diverse. Un modello per utilizzo generico può seguire le istruzioni del linguaggio naturale per analizzare il sentiment, estrarre entità, riepilogare il testo, tradurre contenuto, rispondere alle domande e molto altro ancora, senza alcuna configurazione o training da parte dell'utente.
+
+È possibile usare un modello di intelligenza artificiale per utilizzo generico per gestire attività di analisi del testo, ad esempio:
+
+- **L'estrazione di frasi chiave** elenca i concetti principali del testo non strutturato.
+- **Entity linking** consente di identificare entità note e di collegarle a Wikipedia.
+- **Analisi del sentiment ed estrazione delle opinioni** identifica se il testo è positivo o negativo.
+- **Il riepilogo** riepiloga il testo identificando le informazioni più importanti.
+
+È possibile esplorare le funzionalità di analisi del testo dei modelli di intelligenza artificiale nel playground della chat del portale Foundry. Dopo la distribuzione di un modello, il playground offre un'interfaccia di chat in cui si digita un prompt e il modello risponde. Poiché il modello comprende il contesto, è anche possibile seguire domande aggiuntive o perfezionare l'analisi nella stessa conversazione. Questo rende il playground un modo utile per esplorare ciò che è possibile prima di creare un'applicazione completa.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-text-analysis-azure/media/foundry-playground-key-phrases.png){fig-align="center" width=80%}
+
+Verranno ora esaminate più in dettaglio alcune delle risposte che un modello di intelligenza artificiale per utilizzo generico può fornire quando viene fornita un'attività di analisi del testo.
+
+#### Estrazione di frasi chiave
+
+È possibile usare un modello linguistico per estrarre le parole chiave e le frasi usate in un testo, che può essere utile nei processi come l'indicizzazione e la ricerca di documenti pertinenti. L'estrazione di frasi chiave identifica i punti principali del testo.
+
+Ad esempio, è possibile ricevere una revisione, ad esempio:
+
+:::{.callout}
+Ho avuto un pasto fantastico alla tavola calda a Seattle sabato. Il risotto ai funghi era perfettamente preparato e davvero gustoso. Il nostro cameriere, Pete, era cordiale ed efficiente; e ci ha dato un'ottima raccomandazione per un dessert (cheesecake alla fragola). Consiglierei sicuramente questo posto per una cena informale.
+:::
+
+L'estrazione di frasi chiave può fornire un contesto a questa recensione estraendo le frasi seguenti:
+
+- cena casuale
+- dessert
+- pasto fantastico
+- tavola calda
+- ottima raccomandazione
+- risotto ai funghi
+- Pete
+- posto
+- Sabato
+- Seattle
+- cheesecake alla fragola
+- Cameriere
+
+#### Riconoscimento delle entità
+
+È anche possibile usare il riconoscimento delle entità denominate per trovare persone, luoghi, date e altre entità specifiche menzionate nel testo.
+
+È possibile fornire un modello linguistico con testo non strutturato e recuperare un elenco di entità nel testo riconosciuto. Un'entità è un elemento di un particolare tipo o di una categoria; e in alcuni casi, sottotipo.
+
+Si consideri questo breve testo:
+
+:::{.callout}
+"*Il 2 maggio 2017, John Smith ha visitato New York per partecipare a una conferenza ospitata da Microsoft. L'evento è iniziato alle 8:00 e ha durato 3 ore. Oltre 25% dei 40 partecipanti hanno viaggiato più di 10 miglia per partecipare.*"
+:::
+
+Le entità rilevate includono:
+
+|Tipo di entità	|Sottotipo/Categoria	|Valore|
+|:---|:---|:---|
+|Persona	|-	|John Smith|
+|Posizione	|-	|New York|
+|Organizzazione	|-	|Microsoft|
+|Data e ora	|Date	|2 maggio 2017|
+|Data e ora	|Time	|8.00 AM|
+|Data e ora	|Durata	|3 ore|
+|Quantità	|Percentuale	|25%|
+|Quantità	|Number	|40|
+|Quantità	|Dimensione	|10 miglia|
+
+#### Analisi del sentiment e opinion mining
+È anche possibile usare l'analisi del sentiment per classificare un documento come positivo, negativo o neutro. Questo è utile per rilevare il sentiment nei social media, le recensioni dei clienti, i forum di discussione e altro ancora.
+
+Si consideri la recensione del ristorante seguente:
+
+
+::: {.callout}
+"Ho avuto una cena meravigliosa in un accogliente bistrot a Portland il venerdì sera. Il salmone alla griglia è stato cucinato perfettamente e pieno di sapore, e le verdure stagionali erano un ottimo complemento. Il nostro server, Maria, era attento e personalmente, e lei ha suggerito la torta di limone per dessert- che era eccellente. Vorrei assolutamente consigliare questo posto per una serata rilassata e piacevole fuori."
+:::
+
+:::{.callout-note}
+Poiché un modello di intelligenza artificiale per utilizzo generico risponde ai prompt del linguaggio naturale, l'output dipende dalla frase della richiesta. Ad esempio, è possibile richiedere un punteggio del sentiment complessivo oppure richiedere una suddivisione di frasi per frase. Quanto più specifico è il prompt, tanto più strutturata e dettagliata sarà la risposta.
+:::
+
+L'analisi della recensione del ristorante potrebbe restituire:
+
+- Analisi del sentiment per singola frase
+
+    "Ho avuto una cena meravigliosa in un accogliente bistrot a Portland il venerdì sera." Sentiment: spiegazione positiva: le parole "cena meravigliosa" e "accogliente bistro" trasmettono un'esperienza altamente positiva.
+
+    "Il salmone alla griglia è stato cucinato perfettamente e pieno di sapore, e le verdure stagionali erano un ottimo complemento." Sentiment: Spiegazione positiva: "Cucinato perfettamente", "pieno di sapore" e "grande complemento" indicano una forte soddisfazione con il cibo.
+
+    "Il nostro server, Maria, era attento e personalmente, e lei ha suggerito la torta di limone per dessert - che era eccellente." Sentiment: spiegazione positiva: descrizioni positive delle qualità del server e del dessert ("attento", "personabile", "eccellente") riflettono un cliente molto felice."
+
+    Consiglio assolutamente questo posto per una notte rilassata e piacevole fuori. Spiegazione del sentimento: positivo. Una raccomandazione chiara con le parole "assolutamente", "rilassata" e "piacevole" mostrano un forte sentimento positivo.
+
+- Sentiment complessivo del documento: fortemente positivo. La recensione è ricca di linguaggio elogiativo sul cibo, l'atmosfera, il servizio e l'esperienza complessiva. Non sono presenti istruzioni neutre o negative.
+
+#### Quando usare un modello di intelligenza artificiale per utilizzo generico per l'analisi del testo
+
+Oltre all'estrazione di frasi chiave, al riconoscimento delle entità e all'analisi del sentiment, i modelli di intelligenza artificiale per utilizzo generico possono anche riepilogare lunghi documenti in paragrafi concisi, tradurre testo tra lingue, classificare il contenuto in categorie definite, rispondere a domande su un passaggio e altro ancora. Poiché queste funzionalità sono tutte guidate dai prompt del linguaggio naturale, è possibile combinarle liberamente, ad esempio chiedendo al modello di tradurre una revisione lunga e quindi riepilogarla in una singola conversazione.
+
+### Uso di Azure Language negli strumenti Foundry
+
+Anche se un modello linguistico di grandi dimensioni sottoposto a training per carichi di lavoro di intelligenza artificiale generativi generali può spesso eseguire un ottimo lavoro di analisi del testo, a volte uno strumento più specializzato ottiene risultati più prevedibili.
+
+**Azure Language in Foundry Tools** è un servizio di elaborazione del linguaggio naturale con analizzatori appositamente creati per attività di analisi del testo specifiche. Questi analizzatori usano tecniche statistiche per restituire output strutturati deterministici, rendendoli particolarmente adatti per le pipeline automatizzate in cui i risultati coerenti sono importanti.
+
+Nel portale di new Foundry è possibile esplorare alcune delle funzionalità di Azure Language nel playground della chat. Per testare le funzionalità dei servizi di intelligenza artificiale, passare alla pagina Compila , quindi a Modelli e quindi alla scheda Servizi di intelligenza artificiale . Nella scheda è possibile trovare una selezione di servizi di intelligenza artificiale disponibili per i test.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-text-analysis-azure/media/foundry-ai-services.png){fig-align="center" width=80%}
+
+Prendere in considerazione le funzionalità del linguaggio di Azure seguenti:
+
+- Il **rilevamento della lingua** valuta il testo e rileva la lingua e il dialetto.
+- Il **rilevamento delle informazioni personali (PII)** identifica le informazioni sensibili personali, incluse le informazioni sanitarie personali( PHI).
+
+#### Rilevamento della lingua
+In un flusso di lavoro multilingue, il primo passaggio consiste spesso nell'identificare la lingua in cui viene scritto un documento, in modo che il testo possa essere indirizzato al modello o al processo più appropriato. Il rilevamento della lingua valuta il testo e identifica la lingua primaria insieme a un punteggio di attendibilità. Azure lingua supporta un'ampia gamma di lingue e dialetti regionali.
+
+Ad esempio, dato il testo seguente:
+
+::: {.callout}
+"¡Hola! Me llamo Josefina y vivo en Madrid, España."
+:::
+
+Il rilevamento della lingua restituisce il risultato seguente:
+
+| Lingua   | Codice ISO 6391 | Punteggio di attendibilità |
+| -------- | --------------- | -------------------------- |
+| Spagnolo | es              | 1,00                       |
+
+Nel portale Foundry è possibile testare la funzionalità di rilevamento della lingua di Azure nella chat Playground.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-text-analysis-azure/media/language-detection.png){fig-align="center" width=80%}
+
+#### Rilevamento delle informazioni personali identificabili
+Le organizzazioni spesso devono identificare e redactare i dettagli personali sensibili dal testo prima che vengano archiviati o condivisi, per rispettare le normative sulla privacy. Il rilevamento delle informazioni personali identifica i dettagli personali nel testo, ad esempio nomi, numeri di telefono, indirizzi di posta elettronica e indirizzi stradali, e può eventualmente redigirli.
+
+Ad esempio, dato il testo seguente:
+
+:::{.callout}
+"Maria Garcia ha chiamato dal 020 7946 0958 e ha chiesto di inviare documenti a 42 Market Road, Londra, Regno Unito, SW1A 1AA."
+:::
+
+Il rilevamento delle informazioni personali identifica le entità seguenti:
+
+| Text                                          | Categoria          |
+| --------------------------------------------- | ------------------ |
+| Maria Garcia                                  | Persona            |
+| 020 7946 0958                                 | Numero di telefono |
+| 42 Market Road, Londra, Regno Unito, SWIA 1AA | Address            |
+
+Nel portale foundry è possibile testare la funzionalità di rilevamento delle informazioni personali di Azure language in Language Playground.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-text-analysis-azure/media/pii-redaction.png){fig-align="center" width=80%}
+
+Informazioni su come creare un'applicazione client con funzionalità di analisi del testo usando sia l'API risposte OpenAI che l'SDK del linguaggio Azure.
+
+## Creare un'applicazione client che analizza il testo
+
+Un'**applicazione client** è un programma scritto che si connette a un servizio o a un modello e ne usa le funzionalità. Il codice invia richieste al servizio e riceve automaticamente i risultati, consentendo di elaborare grandi volumi di testo o integrare l'analisi di intelligenza artificiale in un flusso di lavoro.
+
+Per connettersi a un servizio di intelligenza artificiale, l'applicazione usa un'API (Application Programming Interface). Un'API è un set di regole che definisce il modo in cui due parti del software comunicano. Una libreria client è un set di codice pronto che gli sviluppatori possono usare nell'applicazione per comunicare facilmente con un servizio o un'API. È possibile esaminare il materiale di base sulle applicazioni e usare gli endpoint in: [Introduzione all'intelligenza artificiale in Azure](https://learn.microsoft.com/it-it/training/modules/get-started-with-ai-in-azure/5-endpoints?pivots=text%3Fazure-portal%3Dtrue).
+
+### Uso di modelli di intelligenza artificiale per utilizzo generico per l'analisi del testo
+Iniziare con una risorsa Microsoft Foundry e creare un progetto Foundry all'interno della risorsa. Nel nuovo portale foundry è possibile esplorare il catalogo dei modelli e distribuire un modello per utilizzo generico.
+
+È possibile compilare un'applicazione client che interagisce con Microsoft Modelli Foundry usando l'API Azure API OpenAI. L'API OpenAI consente al codice di comunicare con un modello distribuito inviando richieste a un endpoint, insieme a una chiave API per dimostrare di essere autorizzati.
+
+L'API Responses è l'API moderna unificata all'interno di Azure OpenAI per interagire con i modelli linguistici. È progettato per gestire interazioni complete di intelligenza artificiale, non solo per la generazione di testo.
+
+È possibile usare l'API delle risposte per inviare richieste in linguaggio naturale a un modello linguistico distribuito. È utile quando è necessaria un'analisi flessibile e in stile conversazionale che non richiede un output strutturato fisso.
+
+#### Uso della libreria Python OpenAI
+La libreria OpenAI Python è un sdk ufficiale Python software che consente agli sviluppatori di compilare applicazioni Python che interagiscono con modelli e servizi OpenAI tramite codice anziché richieste HTTP non elaborate.
+
+Per usare la libreria di Python OpenAI, è necessario lavorare all'interno di un editor di codice. Il codice dell'applicazione viene scritto in editor code, ad esempio Visual Studio Code. Il terminale di un editor di codice è una finestra della riga di comando predefinita all'interno dell'editor in cui è possibile eseguire comandi senza uscire dall'ambiente di sviluppo.
+
+**1. Installare i pacchetti necessari**
+
+La libreria di Python OpenAI può essere installata nel Visual Studio Code terminal tramite:
+
+```{.bash filename="bash"}
+pip install openai
+```
+
+**2. Creare un file di configurazione**
+
+Successivamente, è possibile creare un file di configurazione (tipo `.env`) per archiviare le variabili di ambiente, ad esempio l'endpoint, la chiave e il nome della distribuzione del modello.
+
+Considerare le variabili seguenti:
+
+```{.bash filename="env"}
+AZURE_OPENAI_ENDPOINT=https://<your-resource>.openai.azure.com/openai/v1/
+MODEL_DEPLOYMENT_NAME=gpt-4.1-mini
+API_KEY=<your-foundry-key>
+```
+
+Si noti che la variabile endpoint contiene il nome della risorsa Foundry e `openai.azure.com/openai/v1`. La chiave API è la chiave del progetto Foundry.
+
+Il nome della distribuzione del modello è il nome assegnato al modello durante la distribuzione. Ad esempio, quando si distribuisce il modello gpt-4.1 , è possibile denominarlo gpt-demo-model. Il nome della distribuzione è gpt-demo-model. Tuttavia, se non si personalizza il nome del modello, il nome della distribuzione corrisponderà al nome del modello, come nel frammento di codice precedente.
+
+**3. Creare un file contenente la logica dell'applicazione**
+
+Esaminare l'esempio di codice dell'applicazione seguente:
+
+```{.python filename="python"}
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+
+# Load environment variables from .env file
+load_dotenv()
+endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+api_key = os.getenv("API_KEY")
+deployment_name = os.getenv("MODEL_DEPLOYMENT_NAME")
+
+# Create the client object
+client = OpenAI(
+    base_url=endpoint,
+    api_key=api_key
+)
+
+# Make a request using the client
+message = client.responses.create(
+    model=deployment_name,
+    input="",
+)
+
+# Print the results
+print(f"Sentiment: {message.output[0]}")
+```
+
+:::{.callout-note}
+Caricamento delle variabili di ambiente: in questo esempio (`dotenvload_dotenv()`) legge il `.env` file e carica tali valori nell'ambiente dell'app. Il os pacchetto recupera quindi ogni valore per nome con `os.getenv()`, ad esempio `os.getenv("AZURE_OPENAI_ENDPOINT")`.
+
+Ogni chiave in `.env` deve corrispondere esattamente al nome nel codice. Ad esempio, se il file usa `API_KEY`, il codice deve anche richiedere `API_KEY`. Mantenere coerenti i nomi delle variabili per evitare valori mancanti in fase di esecuzione.
+:::
+
+Per creare un **oggetto client** autenticato, vengono usati l'endpoint della risorsa Foundry e la chiave. La OpenAI classe è definita dall'SDK e funge da progetto per la connessione all'API OpenAI. Un oggetto client autenticato in Python è un oggetto specifico del servizio che può effettuare chiamate API autorizzate in modo sicuro senza che il codice gestisca manualmente i token o i segreti.
+
+:::{.callout-note}
+In Python, un class è un progetto che definisce un tipo di elemento, ovvero quali dati contiene e quali azioni possono eseguire. Un oggetto è un'istanza specifica creata da tale progetto. Ad esempio, una Car classe può definire che ogni automobile ha un colore e può drive() o stop(). Quando si crea un'auto specifica, ad esempio una rossa, si tratta di un oggetto .
+:::
+
+Dopo aver creato un **oggetto client**, configurato con l'endpoint e la chiave, è possibile chiamare i metodi per interagire con il modello. Ad esempio, è possibile usare il metodo `responses` per inviare un prompt a una distribuzione del modello specifica.
+
+È possibile visualizzare i risultati dell'analisi eseguendo il codice dell'applicazione nel terminale con il comando python `<file_name>.py`.
+
+L'API OpenAI è semplice da usare, ma i risultati possono variare tra le chiamate perché il modello genera testo probabilisticamente. In pratica, due chiamate con la stessa richiesta possono restituire parole o formattazioni leggermente diverse. Quando l'app necessita di valori coerenti e strutturati, ad esempio codice linguistico, punteggio di attendibilità o testo scritto, Azure Language SDK è una scelta migliore.
+
+### Uso di Azure Language SDK
+
+**Azure Language SDK** è una libreria client per *Azure Language in Foundry Tools*. L'SDK semplifica agli sviluppatori l'aggiunta di funzionalità NLP, ad esempio il rilevamento del linguaggio e la modifica delle informazioni personali (PII) alle applicazioni.
+
+Vediamo come usare Azure Language Python SDK per compilare un'applicazione che analizza il testo. Per usare Azure Language Python SDK, è necessario disporre di una risorsa Foundry. È quindi necessario installare una versione compatibile di Python e Azure Language Python SDK.
+
+È possibile installare Python SDK nel Visual Studio Code terminal usando:
+
+```{.bash filename="bash"}
+pip install azure-ai-textanalytics
+```
+
+Si consideri l'esempio di file di configurazione seguente:
+
+```{.bash filename="env"}
+AZURE_LANGUAGE_ENDPOINT=https://<your-resource>.cognitiveservices.azure.com/
+API_KEY=<your-foundry-key>
+```
+Si consideri l'esempio di codice dell'applicazione seguente:
+
+```{.python filename="python"}
+# Import packages
+import os
+from dotenv import load_dotenv
+from azure.core.credentials import AzureKeyCredential
+from azure.ai.textanalytics import TextAnalyticsClient
+
+# Load environment variables from .env file
+load_dotenv()
+endpoint = os.getenv("AZURE_LANGUAGE_ENDPOINT")
+key = os.getenv("API_KEY")
+
+# Create the client
+client = TextAnalyticsClient(endpoint=endpoint, credential=AzureKeyCredential(key))
+
+# Make a request using the client for language detection
+text = "¡Hola! Me llamo Josefina y vivo en Madrid, España."
+result = client.detect_language([text])[0]
+```
+
+Usiamo i metodi del client per chiamare le** funzioni linguaggio di Azure**, ad esempio `detect_language` e `recognize_pii_entities`.
+
+**Rilevamento lingua**: il metodo `detect_language()` accetta un elenco di stringhe di testo e restituisce la lingua rilevata, il codice ISO 639-1 e un punteggio di attendibilità compreso tra 0 e 1.
+
+```{.python filename="python"}
+text = "¡Hola! Me llamo Josefina y vivo en Madrid, España."
+result = client.detect_language([text])[0]
+
+# Print the results
+print(f"Language      : {result.primary_language.name}")
+print(f"ISO code      : {result.primary_language.iso6391_name}")
+print(f"Confidence    : {result.primary_language.confidence_score:.2f}")
+```
+
+**Rilevamento delle informazioni personali**: il metodo `recognize_pii_entities()` identifica i dettagli personali nel testo e restituisce sia la versione redattita del testo che un elenco delle entità trovate, inclusi la categoria e il punteggio di attendibilità di ogni entità.
+
+```{.python filename="python"}
+text = "Maria Garcia called from 020 7946 0958 and asked to send documents to 42 Market Road, London, UK, SW1A 1AA."
+
+result = client.recognize_pii_entities([text])[0]
+
+# Print the results
+print("Redacted text:", result.redacted_text)
+print("\nEntities found:")
+for entity in result.entities:
+    print(f"  {entity.text} | category={entity.category} | confidence={entity.confidence_score}")
+```
+
+Con l'API OpenAI e Azure Language SDK, è possibile scrivere codice per le applicazioni di intelligenza artificiale che elaborano il linguaggio naturale e generano informazioni dettagliate dal testo.
+
+Si esaminerà ora come includere le funzionalità del linguaggio di Azure negli agenti di intelligenza artificiale.
+
+## Usare Azure Language con un agente
+
+Gli agenti di intelligenza artificiale usano strumenti e modelli per eseguire attività quali ragionamento, pianificazione, recupero e chiamata di servizi esterni. Anche se un agente può usare un modello di intelligenza artificiale generativo per comprendere e generare il linguaggio, tale modello da solo non può eseguire attività di analisi del testo che richiedono analisi deterministiche e strutturate. L'aggiunta di Azure Language in Foundry Tools a un agente offre funzionalità di analisi del testo coerenti e prevedibili.
+
+### Informazioni su MCP
+
+Il **protocollo MCP (Model Context Protocol)** è uno standard aperto che definisce il modo in cui gli agenti di intelligenza artificiale si connettono a strumenti esterni e origini dati. Si pensi a MCP come a un adattatore universale: invece di scrivere codice di integrazione personalizzato per ogni servizio necessario per un agente, è possibile connettere l'agente a un server MCP che espone già tali funzionalità in modo standard.
+
+MCP usa un'architettura client-server:
+
+- Il client MCP è l'agente di intelligenza artificiale (o l'applicazione host che esegue l'agente). Invia richieste e riceve risposte.
+- Il server MCP è il servizio che espone strumenti, dati o azioni. Rimane in ascolto delle richieste, esegue la funzionalità appropriata e restituisce un risultato strutturato.
+
+Quando un agente si connette a un server MCP, può individuare gli strumenti offerti dal server e richiamarli in base alle esigenze, senza alcun lavoro di integrazione personalizzato. Il server potrebbe rispondere a una richiesta tramite:
+
+- Fornendo *dati* (ad esempio: punteggi del sentiment, frasi chiave o record di entità)
+- Esecuzione di *azioni* (ad esempio: elaborazione di un batch di documenti)
+
+Questa separazione dei problemi mantiene pulita la logica dell'agente e semplifica lo scambio o l'estensione delle funzionalità connettendosi a server MCP diversi.
+
+### Server MCP del linguaggio Azure
+
+Il server MCP di Azure Language è un servizio gestito che, tramite MCP, espone le funzionalità di Azure Language in Foundry Tools. Funge da ponte tra l'agente e la suite completa di funzionalità del linguaggio di Azure, denominate riconoscimento delle entità, analisi del sentiment, rilevamento della lingua e altro ancora.
+
+Poiché il server segue lo standard MCP, l'agente può chiamare questi strumenti di analisi del linguaggio usando lo stesso protocollo usato per qualsiasi altro server MCP. Non è necessario chiamare direttamente l'API REST del linguaggio Azure o gestire i token di autenticazione nel codice dell'agente.
+
+### Usare il server MCP Azure Language nel portale Foundry
+
+Per compilare un agente che usa Azure Language, è possibile iniziare nel portale foundry distribuendo un modello e salvandolo come agente.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-text-analysis-azure/media/save-agent.png){fig-align="center" width=80%}
+
+È possibile aggiungere il server MCP del linguaggio Azure come strumento nel playground Foundry cercando strumenti per Azure Language in Foundry Tools. Per connettersi al server MCP del linguaggio Azure, configurare la connessione con il nome della risorsa Foundry. Dopo aver connesso il server MCP all'agente, usare le istruzioni per indicare all'agente di analizzare il testo usando lo strumento .
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-text-analysis-azure/media/connect-tool.png){fig-align="center" width=80%}
+
+Con il server MCP connesso, l'agente può combinare la funzionalità di ragionamento del modello linguistico con la precisione delle funzionalità di analisi del testo della lingua di Azure, in modo da adattarla alle attività come il routing dei ticket di supporto tramite il rilevamento della lingua o l'identificazione e la modifica delle informazioni personali personali.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-text-analysis-azure/media/language-agent-example.png){fig-align="center" width=80%}
+
+:::{.callout-note}
+Una risorsa Foundry fornisce un ambiente unificato che include già l'accesso agli strumenti di linguaggio. Non è necessario creare una risorsa Azure Language separata per accedere al server MCP Azure Language.
+:::
+
+# Introduzione al riconoscimento vocale in Azure
+
+## Introduzione
+
+Le funzionalità vocali di intelligenza artificiale consentono di gestire i sistemi con istruzioni vocali, ottenere risposte dai computer per domande vocali, generare sottotitoli dall'audio e molto altro ancora. Le interfacce basate su voce offrono un modo più naturale per interagire con il software di intelligenza artificiale. La possibilità di interagire attraverso la lingua parlata può aumentare l'accessibilità e l'inclusione di applicazioni e agenti.
+
+Per abilitare questo tipo di interazione, il sistema di intelligenza artificiale deve supportare almeno due funzionalità:
+
+- **Riconoscimento vocale**: possibilità di rilevare e interpretare l'input parlato
+- **Sintesi vocale**: la possibilità di generare l'output parlato
+
+Ecco alcuni esempi di queste funzionalità:
+
+- **Dettatura medica e presa di appunti nel settore sanitari**o: i medici possono dire ad alta voce le note dei pazienti durante o dopo gli appuntamenti. Un'app di riconoscimento vocale di intelligenza artificiale converte l'audio in testo medico accurato, riducendo la digitazione manuale e risparmiando tempo.
+- **Trascrizione delle chiamate nel supporto tecnico**: i centri contatti trascrivono le chiamate dei clienti in tempo reale, semplificando la revisione delle conversazioni, il rilevamento dei problemi e l'analisi del sentiment.
+- **Sottotitoli automatizzati in media e intrattenimento**: le piattaforme video generano sottotitoli in diretta o registrati per spettacoli e flussi, migliorando l'accessibilità e supportando i destinatari multilingue.
+- **Feedback sull'apprendimento della lingua e della pronuncia nell'istruzione**: le app di apprendimento usano le funzionalità vocali di intelligenza artificiale per ascoltare gli studenti a parlare e fornire feedback sulla pronuncia, aiutando gli studenti a praticare e migliorare le competenze linguistiche.
+- **Assistenti vocali nel commercio al dettaglio e nell'e-commerce**: gli assistenti per lo shopping virtuale usano il riconoscimento vocale per comprendere le richieste dei clienti vocali e la sintesi vocale per rispondere con informazioni sul prodotto o lo stato dell'ordine.
+
+**Azure Speech in Microsoft Foundry Tools** offre funzionalità di conversione del parlato in testo, testo in parlato e traduzione vocale tramite riconoscimento e sintesi vocale. È possibile usare modelli predefiniti e personalizzati del servizio Voce per un'ampia gamma di attività, dalla trascrizione dell'audio in testo con accuratezza elevata, all'identificazione degli interlocutori delle conversazioni, alla creazione di voci personalizzate e altro ancora. Scopri come incorporare il riconoscimento vocale in un'applicazione utilizzando Azure Speech.
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+## Riconoscimento vocale
+
+Il riconoscimento vocale, spesso detto riconoscimento vocale (STT), è una funzionalità di intelligenza artificiale che consente alle app e agli agenti di rispondere all'input parlato. Il riconoscimento vocale accetta la parola pronunciata e lo converte in dati, in genere testo. Il software riconoscimento vocale usa in genere più modelli, tra cui:
+
+- Modello **acustico** che converte l'audio in fonemi (rappresentazioni di suoni specifici).
+- Modello **linguistico** che esegue il mapping dei fonemi alle parole.
+
+Le parole che il riconoscimento vocale AI riconosce vengono convertite in testo. È possibile usare il testo per vari scopi, ad esempio fornire sottotitoli, creare trascrizioni delle chiamate, automatizzare la dettatura delle note e molto altro ancora.
+
+### Voce di Azure - Da Voce a Testo
+
+Riconoscimento vocale di Azure include un'API riconoscimento vocale che è possibile usare per elaborare l'input vocale da un microfono o da un file audio.
+
+:::{.callout-note}
+Un'API (Application Programming Interface) è un set di regole ed endpoint che consente a un'applicazione software di comunicare con e usare le funzionalità o i dati di un'altra applicazione.
+:::
+
+Microsoft Foundry è una piattaforma Microsoft che consente agli sviluppatori di creare, testare e distribuire applicazioni e agenti di intelligenza artificiale combinando modelli, strumenti, dati e servizi in un'unica posizione.
+
+Nel nuovo portale di Microsoft Foundry è possibile esplorare le funzionalità di riconoscimento vocale di Azure nel playground Foundry. Per accedere al playground, passare alla pagina Compila, quindi a Modelli e quindi alla scheda Servizi di intelligenza artificiale. Nella scheda è possibile trovare una selezione di servizi di intelligenza artificiale disponibili per i test, tra cui Riconoscimento vocale di Azure - Riconoscimento vocale in testo.
+
+Nel playground è possibile caricare un file audio o registrare se stessi parlando. Azure Speech trascrive ciò che viene detto, fornendoti una percezione di come la tua applicazione risponderebbe all'input audio.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-speech-azure/media/speech-to-text-playground.png){fig-align="center" width=80%}
+
+Il playground nel portale Foundry è un ottimo punto di riferimento per sperimentare Il riconoscimento vocale di Azure, ma per usare il riconoscimento vocale in un'applicazione, è necessario scrivere codice.
+
+### Uso dell'SDK riconoscimento vocale di Azure
+
+**Speech - Speech-to-Text SDK di Azure** è una libreria client che consente alle applicazioni di convertire l'audio parlato in testo scritto. L'SDK per la sintesi vocale è progettato per semplificare l'aggiunta del riconoscimento vocale alle applicazioni.
+
+:::{.callout-note}
+Una libreria client è un set di codice pronto per l'uso da parte degli sviluppatori nell'applicazione per comunicare facilmente con un servizio o un'API.
+:::
+
+L'SDK consente all'applicazione di:
+
+- Acquisire o inviare audio da un microfono, un file audio o un flusso audio
+- Inviare l'audio a Riconoscimento vocale di Azure in modo sicuro
+- Ricevere testo trascritto quasi in tempo reale o dopo il completamento dell'elaborazione
+- L'SDK gestisce l'analisi di rete, autenticazione, streaming audio e risposta in modo che gli sviluppatori possano concentrarsi sulla logica dell'applicazione.
+
+### Sviluppo di un'applicazione
+
+Speech-to-Text SDK viene in genere usato nel livello client o di servizio di un'applicazione. L'SDK funge da ponte tra il codice dell'applicazione e il servizio Voce di Azure.
+
+Per usare Azure Speech Python SDK, è necessario avere una versione compatibile di Python e Azure Speech Python SDK installata.
+
+Python SDK può essere installato nel terminale di Visual Studio Code usando:
+
+```{.bash filename="bash"}
+pip install azure-cognitiveservices-speech
+```
+
+:::{.callout-note}
+Il codice dell'applicazione viene scritto negli editor di codice, ad esempio Visual Studio Code. Il terminale di un editor di codice è una finestra della riga di comando predefinita all'interno dell'editor in cui è possibile eseguire comandi senza uscire dall'ambiente di sviluppo.
+:::
+
+Per usare Riconoscimento vocale di Azure, è anche necessario creare una risorsa Foundry. L'endpoint e la chiave della risorsa Foundry vengono usati nel codice per autenticare la connessione.
+
+Dopo aver installato Python SDK e aver creato una risorsa Foundry, è possibile creare ed eseguire il programma. Prendere in considerazione il codice Python seguente. Quando esegui il programma:
+
+1. **L'app inizializza Speech SDK**: fornisce un endpoint e un'autenticazione (chiave o ID Microsoft Entra)
+2. **L'audio viene acquisito o caricato**: input del microfono o un file audio/streaming
+3. **L'audio viene inviato ad Azure Speech**: l'SDK trasmette o carica l'audio in modo sicuro
+4. **Riconoscimento vocale eseguito nel cloud**: i modelli vocali di Azure analizzano l'audio
+5. **Vengono restituiti risultati di testo**: l'app riceve testo riconosciuto e metadati facoltativi
+
+```{.python filename="python"}
+import azure.cognitiveservices.speech as speechsdk
+
+# Set up the speech config using resource endpoint
+endpoint_url = "ENDPOINT"
+speech_key = "FOUNDRY_KEY"
+
+speech_config = speechsdk.SpeechConfig(
+    subscription=speech_key,
+    endpoint=endpoint_url
+)
+
+# Create a recognizer with microphone input
+audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
+speech_recognizer = speechsdk.SpeechRecognizer(
+    speech_config=speech_config, 
+    audio_config=audio_config
+)
+
+# Event handlers
+def recognized_handler(evt):
+    print(f"Recognized: {evt.result.text}")
+
+def recognizing_handler(evt):
+    print(f"Recognizing: {evt.result.text}")
+
+# Connect event handlers
+speech_recognizer.recognized.connect(recognized_handler)
+speech_recognizer.recognizing.connect(recognizing_handler)
+
+# Start continuous recognition
+speech_recognizer.start_continuous_recognition()
+print("Say something...")
+
+# Keep the program running
+input("Press Enter to stop...")
+speech_recognizer.stop_continuous_recognition()
+```
+#### Esempio di app client
+
+Si supponga, ad esempio, di voler sviluppare un'app leggera che trascriva automaticamente i messaggi vocali. Nell'editor di codice è disponibile un file audio e un file Python che contiene il codice dell'applicazione.
+
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-speech-azure/media/audio-file-in-vs-code.png){fig-align="center" width=80%}
+
+Immagina di avere un file audio contenente una registrazione della segreteria telefonica. Per trascrivere il messaggio, iniziare specificando l'endpoint e la chiave e l'origine audio da trascrivere. Usare quindi un oggetto `SpeechRecognizer` per eseguire la trascrizione, prima di visualizzare i risultati.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-speech-azure/media/speech-to-text-python.png){fig-align="center" width=80%}
+
+Dopo aver eseguito il codice, è possibile visualizzare il testo della trascrizione.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-speech-azure/media/language-client-1.png){fig-align="center" width=80%}
+
+#### Opzioni di elaborazione audio
+È possibile usare l'API Riconoscimento vocale di Azure per eseguire la trascrizione in tempo reale o batch dell'audio in un formato di testo. L'origine audio per la trascrizione può essere un flusso audio in tempo reale da un microfono o un file audio.
+
+Trascrizione in tempo reale: il riconoscimento vocale in tempo reale consente di trascrivere flussi audio in testo. È possibile usare la trascrizione in tempo reale per presentazioni, dimostrazioni o qualsiasi altro scenario in cui una persona parla.
+
+Per il funzionamento della trascrizione in tempo reale, è necessario che l'applicazione sia in ascolto dell'audio in ingresso da un microfono o da altre origini di input audio, ad esempio un file audio. Il codice dell'applicazione trasmette l'audio al servizio, che restituisce il testo trascritto.
+
+:::{.callout}
+## Trascrizione batch
+Non tutti gli scenari di conversione da voce a testo sono in tempo reale. Potrebbero essere presenti registrazioni audio archiviate in una condivisione file, in un server remoto o anche in una risorsa di archiviazione di Azure. È possibile puntare a file audio con un URI di firma di accesso condiviso (SAS) e ricevere in modo asincrono i risultati della trascrizione.
+:::
+
+La trascrizione batch deve essere eseguita in modo asincrono, perché i processi batch sono pianificati secondo il principio del best effort. In genere l'esecuzione di un processo si avvia entro pochi minuti dalla richiesta, ma non è prevista alcuna stima in relazione al momento della modifica di un processo nello stato in esecuzione.
+
+Riconoscimento vocale in Azure Speech è un ottimo modo per creare soluzioni che trascrivono audio registrato o automatizzano la didascalia vocale. Informazioni su come incorporare la sintesi vocale in un'applicazione.
+
+## Sintesi vocale
+
+La **sintesi vocale**, spesso chiamata **sintesi testo-voce (TTS)**, riguarda il vocalizzare i dati, di solito convertendo il testo in parlato. La sintesi vocale genera in genere una voce udibile da un'origine basata su testo.
+
+Una soluzione di sintesi vocale richiede in genere le informazioni seguenti:
+
+- Testo da recitare
+- La voce da usare per vocalizzare il discorso
+
+Per sintetizzare il parlato, il sistema in *genere tokenzza* il testo da suddividere in singole parole e assegna suoni fonetici a ogni parola. Suddivide quindi la trascrizione fonetica in unità *prosodice* (ad esempio frasi, clausole o frasi). Il sistema crea fonemi dalle unità prosodice. Questi fonemi vengono quindi sintetizzati come audio e possono essere assegnati a una particolare voce, velocità di pronuncia, passo e volume.
+
+È possibile usare l'output della sintesi vocale per molti scopi, ad esempio:
+
+- Generazione di risposte vocali all'input dell'utente.
+- Lettura dei messaggi ad alta voce.
+- Annunci di trasmissione.
+
+### Voce di Azure - Sintesi vocale
+
+Voce di Azure include un'**API di sintesi vocale** che si può esplorare nel portale di Microsoft Foundry.
+
+L'API sintesi vocale consente di convertire l'input di testo in voce udibile, che può essere riprodotto direttamente tramite un altoparlante del computer o scritto in un file audio. Il servizio include più voci predefinite con supporto per più lingue e pronuncia a livello di area, incluse le voci neurali che usano reti neurali. Le voci neurali possono superare le limitazioni comuni nella sintesi vocale, ad esempio problemi di intonazione, causando una voce più naturale. È anche possibile sviluppare voci personalizzate e usarle con l'API sintesi vocale.
+
+Nel nuovo portale di Microsoft Foundry è possibile esplorare le funzionalità di sintesi vocale di Azure nel playground Foundry. Nel playground Foundry Voce di Azure - Sintesi vocale, è possibile scegliere una voce sintetica dalla selezione disponibile. Puoi anche regolare alcuni parametri per controllare la distribuzione dell'audio, ad esempio velocità e inclinazione. L'output audio viene generato dal testo sintetizzato.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-speech-azure/media/text-to-speech-playground.png){fig-align="center" width=80%}
+
+### Uso di Azure text-to-speech SDK
+
+È possibile usare Riconoscimento vocale di Azure per sviluppare un'applicazione che usa la sintesi vocale. **Azure Text-to-Speech SDK** consente alle applicazioni di convertire testo scritto in audio parlato naturale.
+
+L'SDK consente all'applicazione di:
+
+- Inviare testo a Riconoscimento vocale di Azure
+- Generare audio parlato usando voci neurali
+- Riprodurre o salvare l'audio negli altoparlanti o in un file audio
+
+L'SDK gestisce l'autenticazione, la comunicazione di rete, la formattazione audio e la riproduzione in modo da poter concentrarsi sull'esperienza dell'app.
+
+### Sviluppo di un'applicazione
+
+L'SDK di sintesi vocale viene in genere usato in:
+
+- **Applicazioni client**: per convertire il testo in sintesi vocale e riprodurlo immediatamente (ad esempio, un'app desktop o per dispositivi mobili)
+- **Servizi back-end**: per generare file audio per la riproduzione successiva
+
+Dopo aver installato Python SDK, è possibile creare ed eseguire il programma. Prendere in considerazione il codice Python seguente. Quando esegui il programma:
+
+1. **L'app inizializza Speech SDK**: fornisce un endpoint e un'autenticazione (chiave o ID Microsoft Entra)
+2. **Viene fornito testo**
+3. **Il testo viene inviato ad Azure Speech**: l'SDK gestisce la richiesta e la formattazione
+4. **La sintesi vocale viene eseguita nel cloud**: i modelli neurali generano audio
+5. **Viene restituito l'audio**: l'app riproduce, trasmette o salva temporaneamente l'audio
+
+```{.python filename="python"}
+import os
+import azure.cognitiveservices.speech as speechsdk
+
+# This example requires environment variables named "FOUNDRY_KEY" and "ENDPOINT"
+speech_config = speechsdk.SpeechConfig(subscription=os.environ.get('FOUNDRY_KEY'), endpoint=os.environ.get('ENDPOINT'))
+audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
+
+# The neural multilingual voice can speak different languages based on the input text.
+speech_config.speech_synthesis_voice_name='en-US-Ava:DragonHDLatestNeural'
+
+speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
+
+# Get text from the console and synthesize to the default speaker.
+print("Enter some text that you want to speak >")
+text = input()
+
+speech_synthesis_result = speech_synthesizer.speak_text_async(text).get()
+
+if speech_synthesis_result.reason == speechsdk.ResultReason.SynthesizingAudioCompleted:
+    print("Speech synthesized for text [{}]".format(text))
+elif speech_synthesis_result.reason == speechsdk.ResultReason.Canceled:
+    cancellation_details = speech_synthesis_result.cancellation_details
+    print("Speech synthesis canceled: {}".format(cancellation_details.reason))
+    if cancellation_details.reason == speechsdk.CancellationReason.Error:
+        if cancellation_details.error_details:
+            print("Error details: {}".format(cancellation_details.error_details))
+            print("Did you set the speech resource key and endpoint values?")
+```
+
+#### Esempio di app client
+
+Si supponga, ad esempio, di creare un'app che vocalizzi i messaggi di testo. Nell'editor di codice è presente un file di testo e un file Python che contiene il codice dell'applicazione.
+
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-speech-azure/media/text-file-in-vs-code.png){fig-align="center" width=80%}
+
+Prima di tutto, connettersi all'endpoint per Riconoscimento vocale di Azure. Creare quindi un `SpeechSynthesizer` oggetto. L'applicazione elabora quindi il file di testo contenente il messaggio e usa l'oggetto per generare l'audio `SpeechSynthesizer` parlato.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-speech-azure/media/text-to-speech-python.png#lightbox){fig-align="center" width=80%}
+
+Quando si esegue l'applicazione, il testo verrà trasformato in un output audio del messaggio.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-speech-azure/media/text-to-speech-result.png){fig-align="center" width=80%}
+
+Informazioni su come incorporare le funzionalità di riconoscimento vocale in un'applicazione con Riconoscimento vocale di Azure - Voice Live.
+
+## Creazione di un agente con supporto vocale
+
+Gli **agenti di intelligenza artificial**e sono programmi software che possono comprendere le informazioni, prendere decisioni e intraprendere azioni da soli per aiutare gli utenti a raggiungere obiettivi specifici. Un obiettivo comune per gli agenti di intelligenza artificiale è quello di poter condurre conversazioni vocali in tempo reale proprio come si farebbe con un essere umano.
+
+**Riconoscimento vocale** è una funzionalità che consente a un'applicazione di accettare l'audio parlato come input e produrre audio parlato come output, senza richiedere all'utente di leggere o digitare testo. L'esperienza utente si sente come una conversazione vocale naturale.
+
+Il riconoscimento vocale consente ai sistemi di:
+
+- Ascoltare una persona che parla
+- Comprendere o trasformare ciò che è stato detto
+- Rispondere con voce sintetica
+
+La tecnologia da voce a voce combina la tecnologia da voce a testo e da testo a voce in un'unica esperienza di conversazione. Il sistema di conversione da voce a voce è costruito come una pipeline di capacità vocali e linguistiche. La pipeline è completata.
+
+1. **Riconoscimento vocale**: conversione dell'audio parlato dell'utente in testo.
+2. **Elaborazione o ragionamento**: analisi, traduzione e riepilogo del testo o usata da un agente di intelligenza artificiale per decidere cosa dire dopo.
+3. **Sintesi vocale**: Conversione del testo della risposta in audio parlato.
+
+Gli scenari comuni di riconoscimento vocale includono:
+
+- **Assistenti vocali e agenti di intelligenza artificiale**: gli utenti parlano con un agente e ascoltano le risposte pronunciate.
+- **Traduzione vocale**: un utente parla in una lingua e sente la risposta in un'altra lingua.
+- **Applicazioni senza mani**: sistemi di navigazione, chioschi multimediali o strumenti industriali in cui la digitazione non è pratica.
+- **Accessibilità**: interazione basata su voce per gli utenti che preferiscono o richiedono input e output audio.
+- **Bot di supporto clienti**: i chiamanti parlano naturalmente e ricevono risposte vocali.
+
+### Voce di Azure - Voice Live
+
+Azure Voce include un servizio **VoiceLive** che semplifica la creazione di agenti di conversazione. L'API Voice Live consente alle applicazioni di avere conversazioni vocali in tempo reale. Consente a un agente vocale di ascoltare qualcuno che parla e di rispondere con audio parlato in modo rapido e naturale.
+
+Invece di creare e connettere molte parti separate, come il riconoscimento vocale, il ragionamento dell'intelligenza artificiale e la sintesi vocale, l'API Voice Live combina tutto in un unico servizio. L'API Voice Live semplifica e velocizza la creazione di esperienze basate su voce da parte degli sviluppatori.
+
+Azure gestisce completamente VoiceLive, il che significa che non è necessario configurare o gestire manualmente i sistemi back-end. Quando si invia l'audio a VoiceLive, restituisce risposte pronunciate. VoiceLive può anche restituire oggetti visivi, ad esempio avatar, e attivare azioni quando necessario. Azure gestisce i modelli e l'infrastruttura in background, in modo da potersi concentrare sulla creazione dell'esperienza vocale.
+
+Azure soluzioni di riconoscimento vocale usano:
+
+- Azure Voce che offre funzionalità di riconoscimento vocale e sintesi vocale.
+- Agenti o logica dell'applicazione che prende decisioni sulle risposte.
+- Strumenti Foundry o server MCP che possono esporre la voce come strumenti richiamabili affinché gli agenti non gestiscano direttamente gli SDK o le API.
+
+È possibile esplorare Voice Live in un playground nel portale di Foundry. Il playground Foundry include alcuni esempi di voce preconfigurati che è possibile provare oppure è possibile creare una nuova soluzione personalizzata. Quando si crea una soluzione, importante, è necessario scegliere un modello di intelligenza artificiale generativo da usare per l'agente. Azure Speech Voice Live usa il modello di intelligenza artificiale generativo alongside i propri modelli acustici per avere una conversazione in tempo reale con l'utente. È possibile configurare molte impostazioni nel playground. Ad esempio, è possibile abilitare il coinvolgimento proattivo, in modo che l'agente possa avviare conversazioni.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-speech-azure/media/voice-live-playground.png){fig-align="center" width=80%}
+
+È anche possibile abilitare la modalità Voce per un agente di Microsoft Foundry nel playground, che integra Azure Speech Voice Live nella definizione dell'agente. Questo approccio significa che la configurazione vocale viene incapsulata nell'agente stesso, riducendo il codice client necessario per usarlo.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-speech-azure/media/voice-live-agent.png){fig-align="center" width=80%}
+
+### Uso di Voice Live in un'applicazione
+Per sviluppare un'app personalizzata che usa l'agente, è necessario scrivere codice. Per creare un'applicazione in Python, è necessario il pacchetto azure-ai-voicelive.
+
+Il pacchetto può essere installato nel Visual Studio Code terminal usando:
+
+```{.bash filename="bash"}
+pip install azure-ai-voicelive
+```
+
+:::{.callout-note}
+È anche necessario installare pyaudio, python-dotenve azure-identity per eseguire l'applicazione Voice Live.
+:::
+
+È possibile trovare il codice di esempio per un'applicazione di riconoscimento vocale nel portale foundry. Il codice di esempio gestisce tutta la logica necessaria per avviare la sessione, connettersi a dispositivi audio come microfoni e altoparlanti, elaborare i flussi audio in ingresso e in uscita, gestire le interruzioni e così via. Il codice di esempio è un buon punto di partenza per la creazione di un'applicazione personalizzata.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-speech-azure/media/voice-live-playground-code.png){fig-align="center" width=80%}
+
+È possibile inserire il codice di esempio nel proprio editor di codice e installare i pacchetti appropriati. Quando si esegue l'applicazione, un assistente vocale in tempo reale trasmette l'audio del microfono a Azure Voice Live, riceve la risposta audio vocale dell'assistente e lo riproduce attraverso gli altoparlanti.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-speech-azure/media/voice-live-result.png){fig-align="center" width=80%}
+
+Voice Live in Azure Voce offre un modo efficace per creare agenti di conversazione con supporto vocale che interagiscono naturalmente con gli utenti. Quindi, prova tu stesso Azure Speech - Voce dal vivo in Foundry.
+
+# Introduzione alla Computer Vision in Azure
+
+## Introduzione
+
+Computer Vision è un campo di intelligenza artificiale che consente alle macchine di interpretare e comprendere le informazioni visive provenienti dal mondo, ad esempio immagini, video e feed di fotocamere live. Le funzionalità di Computer Vision sono basate su modelli di intelligenza artificiale e supportano l'automazione di tutti i tipi di attività a elevato utilizzo di tempo.
+
+Questo modulo illustra i modelli di intelligenza artificiale in grado di identificare e analizzare oggetti, riconoscere modelli, leggere testo all'interno delle immagini e interpretare scene molto simili a un essere umano. Il modulo illustra anche i modelli di intelligenza artificiale visiva che possono andare oltre l'analisi delle immagini per generare nuovo contenuto visivo. Insieme, queste funzionalità consentono un'ampia gamma di applicazioni, dalla ricerca di immagini e dall'analisi dei documenti, agli strumenti creativi e alle esperienze interattive di intelligenza artificiale, consentendo ai sistemi di visualizzare e creare informazioni visive.
+
+Si considerino queste applicazioni di Computer Vision:
+
+- **Rilevamento dei difetti nella produzione**: i sistemi di Computer Vision controllano i prodotti sulle linee di montaggio in tempo reale. Rilevano difetti di superficie, disallineamenti o componenti mancanti usando il rilevamento degli oggetti e la segmentazione delle immagini, riducendo gli sprechi e migliorando il controllo della qualità.
+
+- **Analisi dell'imaging medico**: la Computer Vision aiuta i radiosti ad analizzare i raggi X, le risonanze magnetiche e le scansioni CT. I modelli di intelligenza artificiale possono evidenziare anomalie come tumori o fratture, assistere nella diagnosi precoce e ridurre l'errore umano.
+
+- **Monitoraggio degli scaffali nella vendita al dettaglio**: i rivenditori usano la Computer Vision per monitorare gli scaffali dei negozi. Le fotocamere rilevano quando i prodotti non sono disponibili o fuori posto, consentendo aggiornamenti dell'inventario in tempo reale e migliorando l'esperienza del cliente.
+
+- **Veicoli autonomi**: le auto a guida autonoma si basano sulla Computer Vision per riconoscere i segnali stradali, i contrassegni delle corsie, i pedoni e altri veicoli. Ciò consente la navigazione sicura e il processo decisionale in ambienti dinamici.
+
+Successivamente, esplorare i modellimultidimensionali in Microsoft Foundry, l'offerta unificata di piattaforma distribuita come servizio in Azure per le operazioni di intelligenza artificiale aziendale e lo sviluppo di applicazioni.
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+## Modelli multifunzionali per l'analisi delle immagini
+
+Sempre più spesso i nuovi modelli di intelligenza artificiale sono multimodo. In altre parole, supportano più tipi di dati di input, tra cui immagini e testo. Modelli multimodali sono modelli di intelligenza artificiale che possono comprendere e usare più tipi di dati contemporaneamente, ad esempio testo, immagini, audio o video. Ad esempio, il modello multilingue potrebbe descrivere un'immagine in linguaggio naturale o rispondere a una domanda su una foto.
+
+I modelli multimodali sono comunemente usati come parte di:
+
+- **Applicazioni di intelligenza artificiale**, in cui la comprensione delle immagini migliora i flussi di lavoro degli utenti
+- **Agenti di intelligenza artificiale**, in cui l'input visivo aiuta l'agente a prendere decisioni migliori
+Alcuni esempi:
+
+- Agente che esamina i documenti e gli screenshot caricati
+- Un'app di supporto che analizza le foto inviate dai clienti
+- Strumento di apprendimento che illustra diagrammi o grafici in linguaggio normale
+
+Poiché i modellimultidimensionali accettano sia testo che immagini, riducono la necessità di pipeline di visione separate e semplificano la creazione di esperienze intelligenti end-to-end.
+
+La possibilità per i modelli di combinare la comprensione visiva con le risposte in linguaggio naturale è definita m**odello GPT abilitato per la visione** o **GPT con visione**. I modelli abilitati per la visione sono progettati per ragionamenti visivi flessibili e per utilizzo generico. Possono analizzare l'input visivo e rispondere in linguaggio naturale, semplificando la creazione di applicazioni intelligenti senza bisogno di competenze approfondite per la visione artificiale.
+
+### Modelli multifunzionali in Microsoft Foundry
+
+Microsoft Foundry include molti modelli che accettano input basato su immagini, consentendo di creare soluzioni intelligenti basate su visione. I modelli multimodali in Microsoft Foundry consentono ad applicazioni e agenti di comprendere, analizzare e ragionare su immagini e contenuti visivi.
+
+Ad esempio, i modelli GPT dotati di capacità visive in Foundry possono:
+
+- Descrivere il contenuto di un'immagine nel linguaggio naturale
+- Rispondere a domande su oggetti, testo o scene in un'immagine
+- Estrarre significato da grafici, screenshot, documenti o foto
+- Combinare la comprensione delle immagini con le istruzioni di testo in un singolo prompt
+
+Il catalogo dei modelli di Foundry contiene molti modelli multifunzionali, tra cui:
+
+- **GPT-4.1 / GPT-4.1-mini / GPT-4.1-nano**: questi modelli GPT per utilizzo generico possono elaborare testo e immagini insieme. Vengono comunemente usati per la descrizione dell'immagine e la risposta visiva alle domande, l'analisi di documenti e screenshot e l'interpretazione del grafico e del diagramma.
+
+- **Serie GPT-5 (ad esempio GPT-5.1, GPT-5.2)**: la famiglia GPT-5 disponibile in Foundry include modelli multimodali avanzati progettati per scenari aziendali e intelligenti. Questi modelli supportano input bidirezionali (inclusi testo e immagini), output strutturati e uso di strumenti, ragionamento di contesto di grandi dimensioni tra le modalità. I modelli di serie GPT-5 vengono in genere usati negli agenti di intelligenza artificiale di livello produttivo e in applicazioni multimodali complesse.
+
+Foundry ospita anche modelli multimodali forniti dai partner nel catalogo dei modelli, inclusi modelli di provider come Anthropic e altri che supportano la comprensione di testi e immagini.
+
+### Analisi delle immagini nel Foundry Playground
+
+:::{.callout-note}
+Il portale foundry ha un'interfaccia utente classica e una nuova interfaccia utente.
+:::
+
+Nel nuovo portale di Microsoft Foundry è possibile usare il playground del modello per chattare con un modello distribuito. È possibile selezionare un modello abilitato per la visione, caricare immagini e richieste di test in modo interattivo per comprendere in che modo il modello interpreta le informazioni visive.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-vision-azure/media/playground-upload-image.png){fig-align="center" width=80%}
+
+Ad esempio, è possibile allegare un file di immagine e ottenere il modellomultidimensionale (ad esempio gpt-4.1 mini) per analizzarlo e descriverlo.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-vision-azure/media/image-analysis-result-playground.png){fig-align="center" width=80%}
+
+Dopo la convalida, è possibile accedere alle stesse funzionalità a livello di codice usando le API, consentendo l'invio delle immagini insieme alle richieste di testo nel codice dell'applicazione.
+
+### Uso dell'API OpenAI di Azure per l'analisi delle immagini
+
+Per sviluppare un'applicazione, è necessario passare dal Foundry Playground al codice. In un editor di codice è possibile scrivere il codice dell'applicazione usando l'API Risposte OpenAI in Foundry. L'API Risposte OpenAI è progettata per le app agentiche e supporta input multipli nativi (incluse le immagini).
+
+In generale:
+
+- Una singola richiesta può includere l'input di testo e l'input dell'immagine insieme
+- Le immagini possono essere fornite come URL o come dati immagine con codifica Base64
+- Il modello elabora entrambi gli input contemporaneamente per generare una risposta
+
+Concettualmente, la struttura del prompt è simile alla seguente:
+
+- Istruzione di testo (ad esempio, Quali oggetti sono visibili in questa immagine?)
+- Uno o più input di immagine collegati alla stessa richiesta
+
+Questo approccio consente agli sviluppatori di creare applicazioni in cui gli utenti caricano immagini e fanno domande su di essi in tempo reale.
+
+### Uso di Azure OpenAI Python SDK
+È possibile usare una risorsa Microsoft Foundry con l'API OpenAI per eseguire l'analisi delle immagini, inclusa l'invio di immagini in richieste e il recupero di risposte di testo, usando l'API Risposte con una distribuzione del modello con funzionalità di visione.
+
+Python SDK può essere installato nel terminale di Visual Studio Code usando:
+
+```{.bash filename="bash"}
+pip install openai
+```
+Nell'editor di codice è possibile creare un file Python che contiene il codice dell'applicazione. È importante avere la chiave della risorsa Foundry, l'endpoint e il nome del modello distribuito.
+
+:::{.callout-note}
+Quando si distribuisce un modello in Foundry, ha un nome di base o originale e un nome di distribuzione originale assegnato. Foundry ospita il modello distribuito (ad esempio, modelli di classe GPT con visione) e fornisce un endpoint.
+:::
+
+Nell'esempio di codice, si crea il client, lo si indirizza verso l'endpoint e si passa il nome della distribuzione del modello (il nome assegnato al modello) come `MODEL_NAME`.
+
+
+```{.python filename="python"}
+import os
+from openai import OpenAI
+
+# Environment variables you set locally or in your app service:
+FOUNDRY_KEY = "... your key ..."
+ENDPOINT = "https://YOUR-RESOURCE-NAME.openai.azure.com/openai/v1/"
+MODEL_NAME = "your-model-deployment-name"  # e.g., "gpt-4.1-mini" deployed as "my-vision-deploy"
+
+client = OpenAI(
+    api_key=os.getenv("FOUNDRY_KEY"),
+    base_url=os.getenv("ENDPOINT"),
+)
+
+image_url = ""
+
+response = client.responses.create(
+    model=os.getenv("MODEL_NAME"),  # your deployment name 
+    input=[
+        {
+            "role": "user",
+            "content": [
+                {"type": "input_text", "text": "What is in this image? Provide 3 bullet points."},
+                {"type": "input_image", "image_url": image_url}
+            ],
+        }
+    ],
+)
+
+print(response.output_text)
+```
+
+#### Esempio di app client
+
+È possibile creare un'applicazione personalizzata che usa un modello abilitato per la visione per analizzare un'immagine con OpenAI Python SDK. Si supponga, ad esempio, di voler creare un'app in grado di identificare gli animali fotografati in Safari. È possibile caricare le foto e creare un file Python nell'editor di codice.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-vision-azure/media/image-example-vs-code.png){fig-align="center" width=80%}
+
+È quindi possibile scrivere codice dell'applicazione che usa l'API OpenAI per connettersi all'endpoint del modello in Foundry.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-vision-azure/media/vision-analysis-python.png){fig-align="center" width=80%}
+
+Il codice dell'applicazione deve caricare i dati dell'immagine e ottenere un prompt del linguaggio naturale da un utente. Per inviare l'input al modello, è necessario creare un messaggio in più parti che includa sia l'immagine che i dati di testo. Il modello può rispondere con un output appropriato in base al testo e all'immagine nel prompt.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-vision-azure/media/image-analysis-result-vs-code.png){fig-align="center" width=80%}
+
+
+Informazioni su come usare i modelli Foundry e Azure OpenAI SDK per la generazione di immagini.
+
+## Modelli di generazione di immagini
+
+I modelli con funzionalità di visione spesso corrispondono alle informazioni visive in un'immagine al testo corrispondente appropriato. Alcuni modelli sono progettati per eseguire questo processo inverso, generando immagini che corrispondono alle descrizioni di testo.
+
+### Uso dei modelli di generazione di immagini da Foundry
+
+Microsoft Foundry include modelli che supportano l'inferenza da testo a immagine, che è possibile usare per generare l'output visivo.
+
+Per la maggior parte dei nuovi progetti, Microsoft consiglia di iniziare con la famiglia GPT-Image-1, in particolare GPT-Image-1.5, grazie alla qualità migliorata, al supporto per la modifica e all'idoneità aziendale.
+
+Esempi comuni di modelli di generazione di immagini in Foundry includono:
+
+- **GPT-Image-1.5**: GPT-Image-1.5 è il modello di generazione di immagini più recente e avanzato disponibile in Microsoft Foundry. È progettato per la creazione e la modifica di immagini di qualità elevata adatta all'uso aziendale, con un forte allineamento delle richieste e una maggiore coerenza tra le iterazioni. Il modello supporta la modifica da testo a immagine, da immagine a immagine e precisione delle immagini, rendendola particolarmente adatta ai flussi di lavoro di personalizzazione, marketing e progettazione in cui l'accuratezza visiva è importante.
+
+- **GPT-Image-1**: GPT-Image-1 è un potente modello di generazione di immagini per utilizzo generico basato sulle funzionalità dei modelli di DALL-E precedenti. Supporta la generazione da testo a immagine, le variazioni delle immagini e la modifica precisa delle immagini. Viene comunemente usato per applicazioni creative, prototipi e generazione di contenuti visivi. GPT-Image-1 è ampiamente supportato tra gli strumenti e le API Foundry, tra cui la Responses API e gli strumenti dell'agente.
+
+- **GPT-Image-1-Mini**: GPT-Image-1-Mini è una versione più leggera e più conveniente di GPT-Image-1. Supporta le stesse attività di generazione di immagini principali, ma è ottimizzata per gli scenari in cui la latenza inferiore o un costo ridotto è più importante della massima fedeltà visiva. Questo modello è una buona scelta per la sperimentazione, gli strumenti interni o la generazione di immagini ad alto volume.
+
+Tutti questi modelli di generazione di immagini possono essere:
+
+- Distribuito in una risorsa Foundry (Azure OpenAI)
+- Testato in Foundry Playground
+- Accesso a livello di codice tramite l'API Risposte OpenAI o le API di generazione di immagini
+
+:::{.callout-note}
+È anche possibile accedere ai modelli di generazione di immagini di terze parti in Foundry. Ad esempio, FLUX è una famiglia di modelli di generazione di immagini open source creati da Black Forest Labs. Sono progettati per produrre immagini di alta qualità, fotorealistiche e stilisticamente flessibili da input di testo.
+:::
+
+#### Generazione di immagini nel playground Foundry
+È possibile distribuire un modello abilitato per la visione e testarlo nel playground del portale Foundry. Per testare il modello, è possibile descrivere l'immagine da creare. E dopo alcuni minuti viene generata un'immagine corrispondente alla descrizione.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-vision-azure/media/image-generation-playground.png){fig-align="center" width=80%}
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-vision-azure/media/image-generation-playground-code.png#lightbox){fig-align="center" width=80%}
+
+### Uso di OpenAI Python SDK per la generazione di immagini
+È possibile scrivere codice per compilare un'applicazione che usa un modello di generazione di immagini usando la classe images dell'API OpenAI di Azure. La classe di immagini OpenAI in OpenAI Python SDK consente di generare nuove immagini e modificare le immagini esistenti. È possibile usare OpenAI Python SDK chiamando l'endpoint dell'API OpenAI Images tramite un'interfaccia Python.
+
+La possibilità di generare in modo dinamico immagini originali dalle descrizioni può essere estremamente utile negli scenari che includono contenuti multimediali, pubblicazione e creazione di contenuti.
+
+Per generare immagini con OpenAI Python SDK, è necessario:
+
+- Una **risorsa di Foundry**
+- Un **modello con funzionalità di visione distribuito** (il nome della distribuzione è quello che si passa come `MODEL_NAME`)
+- Autenticazione tramite **chiave API** o **MICROSOFT Entra ID**
+- Chiamate delle API di Risposte di OpenAI che includono input immagine (URL o URL di dati base64)
+
+:::{.callout-note}
+**Base64** fa riferimento a file come immagini binarie (byte non elaborati). GLI URL e JSON sono solo testo. La codifica Base64 converte i dati binari in testo ASCII sicuro, consente di incorporare file binari all'interno di JSON o URL.
+:::
+
+Si consideri ad esempio il codice Python seguente:
+
+```{.python filename="python"}
+import os
+import base64
+from openai import OpenAI
+
+# Required environment variables (example names)
+FOUNDRY_KEY="..."
+ENDPOINT="https://YOUR-RESOURCE-NAME.openai.azure.com/openai/v1/"
+MODEL_NAME="your-gpt-image-deployment-name"  # e.g., "gpt-image-1"
+
+client = OpenAI(
+    api_key=os.environ["FOUNDRY_KEY"],
+    base_url=os.environ["ENDPOINT"],
+)
+
+prompt = "A modern flat illustration of a robot holding a potted plant, clean vector style, pastel colors."
+
+response = client.responses.create(
+    model=os.environ["MODEL_NAME"],  # your deployment name in Foundry
+    input=prompt,
+    tools=[{"type": "image_generation"}],
+)
+
+image_base64 = next(
+    item.result for item in response.output
+    if item.type == "image_generation_call"
+)
+
+with open("foundry_generated.png", "wb") as f:
+    f.write(base64.b64decode(image_base64))
+
+print("Saved: foundry_generated.png")
+```
+
+Di seguito viene descritto come usare i modelli di generazione di video di Foundry.
+
+## Modelli di generazione di video
+
+Oltre alle immagini statiche, ci aspettiamo sempre più di usare contenuto visivo come video.
+
+### Uso di modelli di generazione video di Foundry
+Microsoft Foundry include modelli per la generazione di video, che è possibile usare per creare contenuti video originali.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-vision-azure/media/video-generation-playground.png){fig-align="center" width=80%}
+
+I modelli di generazione di video in Foundry includono:
+
+- **Sora 1**: Sora è il primo modello da testo a video di OpenAI reso disponibile in Microsoft Foundry. Genera brevi clip video da richieste di testo e può anche usare le immagini come input per guidare la creazione di video. Sora 1 supporta più risoluzioni e durate ed è esposto tramite il servizio Azure OpenAI e Foundry Video Playground per la sperimentazione.
+
+    Usi tipici:
+    - Video e storyboard di concetto
+    - Animazioni brevi da descrizioni di testo
+    - Creazione di prototipi visivi per flussi di lavoro creativi
+
+- **Sora 2** (anteprima pubblica): Sora2 è il modello di generazione video di nuova generazione in Foundry e rappresenta un aggiornamento significativo rispetto a Sora 1. Supporta più modalità, tra cui: Testo → video, Video →, Video → video (remix). Sora 2 introduce anche la generazione audio, il realismo migliorato e le funzionalità di remixing che consentono modifiche mirate invece di rigenerare un intero video. È disponibile tramite l'API OpenAI di Azure v1 e Foundry Video Playground, con misure di sicurezza di intelligenza artificiale responsabili predefinite.
+
+    Usi tipici:
+    - Video promozionali e di marketing
+    - Anteprime del concetto e trailer cinematografici
+    - Contenuto multimediale didattico e immersivo
+
+:::{.callout-important}
+I modelli Sora sono attualmente gli unici modelli di generazione di video nativi forniti direttamente tramite Foundry. Gli altri modelli Foundry possono essere multimodali (testo, immagine, audio), ma non generano l'output video. Sia Sora 1 che Sora 2 includono restrizioni di IA responsabile, ad esempio limiti per persone reali, caratteri protetti da copyright e determinati tipi di contenuto.
+:::
+
+#### Generazione di video nell'ambiente di prova Foundry
+
+Dopo aver distribuito un modello di generazione video appropriato, è possibile testarlo nel playground del portale foundry. Nel playground è anche possibile specificare parametri come dimensioni video e durata.
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-vision-azure/media/video-prompt-playground.png#lightbox){fig-align="center" width=80%}
+
+Le richieste al modello di generazione video devono includere una descrizione del contenuto nel video desiderato. Dopo alcuni minuti, il modello produce un video.
+
+È possibile esaminare il codice di esempio nel playground.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-vision-azure/media/video-code-sample-playground.png#lightbox){fig-align="center" width=80%}
+
+Il codice di esempio usa l'interfaccia REST per la generazione di video.
+
+### Uso dell'interfaccia REST per la generazione di video
+È possibile usare l'interfaccia REST Foundry per richiedere un processo di generazione di video e recuperare il file MP4 completato a livello di codice. La generazione di video a livello di codice consente di automatizzare il processo di generazione di video.
+
+:::{.callout-note}
+Un'API REST (API Di trasferimento dello stato rappresentazione) è un'interfaccia Web che consente ai programmi di comunicare tramite HTTP. Un SDK come toolkit intuitivo per gli sviluppatori basato su tale interfaccia. È sempre possibile usare l'API REST sottostante, soprattutto se non esiste un SDK nel linguaggio di programmazione con cui si ha familiarità. È possibile usare curl (abbreviazione di URL client) per chiamare o comunicare con l'API REST. Curl è uno strumento da riga di comando usato per inviare e ricevere dati tramite Internet. Al suo centro curl: effettua richieste HTTP (e altri protocolli), invia i dati a un server e riceve e stampa la risposta del server.
+:::
+
+La generazione di video è a elevato utilizzo di risorse e in genere viene eseguita come processo asincrono.
+
+Asincrono significa che:
+
+1. Crea un lavoro
+2. Eseguire il poll sullo stato del processo
+3. Scarica il video al termine del lavoro.
+
+I tempi di generazione dei video sono spesso di 1-5 minuti, a seconda delle impostazioni. Per eseguire un processo asincrono usando l'interfaccia REST Foundry, è necessario:
+
+- Una risorsa OpenAI/Foundry di Azure in un'area supportata e in una distribuzione Sora (si distribuisce Sora dai modelli e dagli endpoint di Foundry).
+- Metodo di autorizzazione: chiave API o ID Microsoft Entra
+
+Si esaminerà ora l'uso dell'API OpenAI v1 di Azure con il modello Sora 2.
+
+L'API Sora 2 fornisce endpoint distinti per:
+
+- Avvio di un processo di rendering
+- Polling dello stato del processo
+- Download del video
+
+#### 1. Creare un lavoro video
+
+Nell'esempio lo script avvia un processo di rendering asincrono e restituisce una risposta che include un ID video di cui eseguire il polling.
+
+:::{.callout-note}
+Bash è una shell della riga di comando e un linguaggio di scripting. Curl è un comando eseguito all'interno di Bash.
+:::
+
+```{.bash filename="bash"}
+curl -X POST "https://YOUR-RESOURCE-NAME.openai.azure.com/openai/v1/videos" \
+  -H "Content-Type: application/json" \
+  -H "api-key: $AZURE_OPENAI_API_KEY" \
+  -d '{
+    "model": "sora-2",
+    "prompt": "A cinematic close-up of raindrops sliding down a neon-lit window at night.",
+    "size": "1280x720",
+    "seconds": "8"
+  }'
+```
+
+#### 2. Eseguire il poll dello stato del processo fino al completamento
+Nell'esempio, lo script effettua il polling dell'endpoint finché il processo non raggiunge completed (o failed).
+
+```{.bash filename="bash"}
+curl -X GET "https://YOUR-RESOURCE-NAME.openai.azure.com/openai/v1/videos/{video_id}" \
+  -H "api-key: $AZURE_OPENAI_API_KEY"
+```
+
+#### 3. Scaricare il video completato
+Il video viene scaricato solo dopo che lo stato è completed.
+
+```{.bash filename="bash"}
+curl -L "https://YOUR-RESOURCE-NAME.openai.azure.com/openai/v1/videos/{video_id}/content?variant=video" \
+  -H "api-key: $AZURE_OPENAI_API_KEY" \
+  --output output.mp4
+```
+
+I modelli video stanno migliorando tutto il tempo e Microsoft Foundry semplifica l'integrazione in soluzioni creative. Successivamente, provare in autonomia i modelli abilitati per la visione, la generazione di immagini e la generazione di video in Foundry.
+
+# Introduzione all'estrazione di informazioni basate sull'intelligenza artificiale in Azure
+
+## Introduzione
+
+Chiunque abbia elaborato manualmente fatture o moduli sa quanto sia difficile. La grande notizia è che possiamo usare l'IA per eliminare il lavoro manuale e creare i sistemi informativi del futuro. L'estrazione e l'analisi delle informazioni basate sull'intelligenza artificiale consentono alle organizzazioni di ottenere informazioni interattive dai dati che potrebbero altrimenti essere bloccati in documenti, immagini, audio, video o altri asset.
+
+Esempi di scenari di estrazione delle informazioni includono:
+
+- **Elaborazione richiesta spese**: un'azienda deve estrarre le descrizioni delle spese e gli importi dalle ricevute analizzate.
+- **Assistenza clienti**: un'agenzia deve analizzare le chiamate di supporto registrate per identificare problemi e soluzioni comuni.
+- **Pianificazione della capacità**: un'organizzazione turistica deve stimare i volumi dei visitatori analizzando video e immagini.
+
+**Comprensione dei contenuti di Microsoft Azure in Foundry Tools** utilizza l'intelligenza artificiale per estrarre informazioni strutturate da contenuti non strutturati. Azure Content Understanding consente alle applicazioni di comprendere cosa si trova nel contenuto identificando entità, campi, relazioni e significato nel contenuto.
+
+Azure Content Understanding estrae dati strutturati da più tipi di contenuto, tra cui:
+
+- **Documenti e immagini**: ad esempio PDF, moduli, fatture, ricevute, contratti
+- **Audio**: ad esempio registrazioni o chiamate
+- **Video**: ad esempio video di riunioni o altri file multimediali
+
+
+L'estrazione di informazioni basate sull'intelligenza artificiale di Azure Content Understanding automatizza il processo di trasformazione di contenuto non strutturato in dati leggibili dal computer che possono essere ricercati e analizzati. Informazioni su come estrarre dati strutturati da documenti e moduli non strutturati.
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+## Estrarre informazioni dai documenti
+
+I processi aziendali di oggi dipendono principalmente dai dati contenuti in documenti come moduli, ricevute e fatture. L'elaborazione manuale può introdurre ritardi ed errori, rendendo l'automazione dell'estrazione dei dati più importante che mai.
+
+### Comprensione di Informazioni sul contenuto di Azure
+
+Azure Content Understanding segue un flusso di lavoro di estrazione basato su modello in cui il contenuto non strutturato viene inserito, analizzato e restituito come dati strutturati.
+
+1. **Inserire contenuto**: si invia contenuto ad Azure Content Understanding.
+
+2. **Analisi basata sull'intelligenza artificiale**: il servizio usa una combinazione di: Riconoscimento ottico dei caratteri (OCR), riconoscimento vocale, comprensione del linguaggio naturale e modelli di intelligenza artificiale bidirezionale per analizzare il contenuto.
+
+3. **Output strutturato**: il servizio restituisce risultati strutturati ,ad esempio in JSON, che corrispondono al modello, semplificando l'archiviazione, la ricerca o l'integrazione dei dati nei sistemi downstream.
+
+:::{.callout-note}
+JSON (JavaScript Object Notation) è un formato di dati basato su testo usato per archiviare e scambiare dati strutturati tra sistemi. È facile per gli esseri umani leggere e scrivere e per le macchine analizzare e generare.
+:::
+
+#### Comprendere gli schemi
+OCR (riconoscimento ottico dei caratteri) consente a un computer di "leggere" testo da immagini, ad esempio documenti digitalizzati, foto di ricevute o immagini di pagine stampate, e trasformare il testo in testo digitale modificabile e ricercabile. L'OCR di base consente di riconoscere il testo stampato, è incentrato sull'estrazione di testo e non comprende significato, contesto o relazioni tra parole.
+
+Le funzionalità di analisi dei documenti di Azure Content Understanding vanno oltre la semplice estrazione di testo basata su OCR per includere l'estrazione basata su schema dei campi e i relativi valori. L'approccio basato su schema è ciò che differenzia Azure Content Understanding dai servizi di trascrizione o OCR di base.
+
+Uno schema descrive le informazioni da estrarre e il modo in cui tali informazioni devono essere strutturate. Quando si definisce uno schema, si specificano i campi da estrarre. Uno schema elenca i campi o le entità specifiche di cui ti interessa.
+
+Si supponga, ad esempio, di definire uno schema che includa i campi comuni in genere presenti in una fattura, ad esempio:
+
+- Nome fornitore
+- Numero fattura
+- Data di fattura
+- Nome cliente
+- Indirizzo personalizzato
+- Elementi: gli elementi ordinati, ognuno dei quali include:
+  - Descrizione articolo
+  - Prezzo unitario
+  - Quantità ordinata
+  - Totale voce
+- Subtotale fattura
+- Imposta
+- Addebito di spedizione
+- Totale fattura
+
+Si supponga ora di dover estrarre queste informazioni dalla fattura seguente:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-information-extraction/media/invoice.png){fig-align="center" width=50%}
+
+Azure Content Understanding può applicare lo schema della fattura alla fattura e identificare i campi corrispondenti, anche quando vengono etichettati con nomi diversi (o non etichettati affatto). L'analisi risultante produce un risultato simile al seguente:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-information-extraction/media/analyzed-invoice.png){fig-align="center" width=50%}
+
+Lo schema definisce anche la struttura dei campi. Gli schemi supportano campi strutturati e annidati, non solo testo flat. Per esempio:
+
+- `Items` è una raccolta
+- Ogni elemento ha `description`, `unit price`, `quantity` e `line total`
+
+L'identificazione di campi strutturati consente a informazioni sul contenuto di Azure di comprendere le relazioni tra i valori, ma solo un OCR non può fare.
+
+
+
+Azure Content Understanding estrae il significato previsto, non solo le etichette. Gli schemi vengono applicati semanticamente, ovvero:
+
+- I campi possono essere estratti anche se le etichette differiscono
+- I campi possono essere estratti anche se mancano etichette
+
+#### Comprendere gli analizzatori
+
+Un analizzatore è un'unità di Informazioni sul contenuto di Azure che accetta input, applica l'analisi di intelligenza artificiale e produce risultati strutturati. Gli analizzatori applicano in modo coerente la stessa logica di estrazione a tutto il contenuto in ingresso. Dopo la configurazione, un analizzatore garantisce che uno schema venga riutilizzato in modo coerente per ogni richiesta di analisi. Gli analizzatori producono anche risultati JSON prevedibili. I risultati strutturati semplificano l'elaborazione downstream (archiviazione, ricerca, automazione).
+
+Azure Content Understanding offre analizzatori predefiniti per scenari comuni e supporta analizzatori personalizzati in base alle proprie esigenze. In generale:
+
+1. Si sceglie o si crea un analizzatore.
+2. L'analizzatore include uno schema che definisce campi e struttura.
+3. Inviare contenuto per l'analisi
+4. Il servizio applica lo schema
+5. Si ricevono risultati JSON strutturati corrispondenti allo schema
+
+### Uso della comprensione dei contenuti di Azure nel portale Foundry
+
+:::{.callout-note}
+Il portale foundry ha un'interfaccia utente classica e una nuova interfaccia utente.
+:::
+
+Dopo aver creato una risorsa Microsoft Foundry, è possibile usare l'interfaccia new foundry portal per testare Azure Content Understanding. Il portale foundry fornisce esempi di contenuto e consente di caricare materiale personalizzato per l'analisi.
+
+È possibile usare l'interfaccia visiva per selezionare un documento di origine ed estrarre i campi predefiniti delle informazioni. Ad esempio, quando si prova Azure Content Understanding su un'immagine di un documento, il servizio restituisce il testo del documento e le informazioni sul layout del testo.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-information-extraction/media/document-analysis-playground.png){fig-align="center" width=80%}
+
+Gli analizzatori di Azure Content Understanding identificano i valori di testo nei documenti ed eseguono il mapping a campi specifici. Ad esempio, data una fattura, il servizio restituisce i campi (ad esempio indirizzo fornitore) e i dati nei campi (ad esempio 123 456th Street).
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-information-extraction/media/invoice-playground.png){fig-align="center" width=80%}
+
+Nel portale di Foundry è anche possibile visualizzare i risultati JSON dell'elaborazione.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-information-extraction/media/invoice-json-result-playground.png){fig-align="center" width=80%}
+
+### Compilazione di un'applicazione client con Azure Content Understanding
+È possibile usare l'API Content Understanding per compilare un'applicazione client leggera che estrae i dati a livello di codice.
+
+:::{.callout-note}
+Un'applicazione client è un programma software che viene eseguito sul dispositivo di un utente e richiede servizi o dati da un altro sistema, in genere un server, su una rete. Il client fa parte di un'applicazione con cui gli utenti interagiscono, mentre il server esegue il lavoro pesante dietro le quinte. Le applicazioni possono richiedere dati o azioni da un servizio e ricevere una risposta strutturata usando un'API.
+:::
+
+Quando si usa l'API Content Understanding, è possibile scegliere un analizzatore predefinito o creare un analizzatore personalizzato. Gli analizzatori predefiniti includono: `prebuilt-invoice`, `prebuilt-imageSearch`, `prebuilt-audioSearch` e `prebuilt-videoSearch`. Quando si invia contenuto per l'analisi all'analizzatore, l'analisi è asincrona, il che significa che si ottiene il risultato in un secondo momento quando è pronto. Poiché l'analisi è asincrona, è necessario eseguire il polling dell'URL Operation-Location (o `analyzerResults`) fino a quando l'operazione non viene completata con successo.
+
+#### Uso di Azure Content Understanding Python SDK
+Si esaminerà ora il processo di uso di Python SDK per analizzare una fattura da un URL.
+
+1. Installare Azure Content Understanding Python SDK.
+```{.bash filename="bash"}
+python -m pip install azure-ai-contentunderstanding
+```
+2. Identificare l'endpoint della risorsa Foundry e la chiave API o Microsoft Entra ID. L'endpoint è in genere simile al seguente: `https://<your-resource-name>.services.ai.azure.com/`
+3. Creare ed eseguire il codice dell'applicazione client. analzyer_id è l'ID dell'analizzatore predefinito. È possibile trovare un elenco di valori di ID di analizzatore predefiniti qui.
+
+```{.python filename="python"}
+import os
+from azure.ai.contentunderstanding import ContentUnderstandingClient
+from azure.core.credentials import AzureKeyCredential
+
+endpoint = os.environ["FOUNDRY_ENDPOINT"]
+key = os.environ["FOUNDRY_KEY"]
+
+client = ContentUnderstandingClient(endpoint=endpoint, credential=AzureKeyCredential(key))
+
+# 1) start analysis with analyzer id + inputs
+analyzer_id = "prebuilt-invoice"
+inputs = [
+    {"url": "https://github.com/Azure-Samples/azure-ai-content-understanding-python/raw/refs/heads/main/data/invoice.pdf"}
+]
+
+# 2) wait for the Long Running Operation (LRO) to complete
+poller = client.begin_analyze(analyzer_id=analyzer_id, inputs=inputs)  # starts LRO
+result = poller.result()  # waits for completion (polling handled by SDK)
+
+# 3) read structured fields + markdown
+# The result typically includes extracted "fields" and "markdown" per input content item.
+for content in result.contents:
+    print(content.markdown)
+    print(content.fields)
+```
+
+L'output risultante è JSON che mostra il markdown estratto, i campi, i dati nei campi e il punteggio di attendibilità. Per esempio:
+
+```{.json filename="JSON"}
+{
+	"status": "Succeeded",
+	"result": {
+		"analyzerId": "prebuilt-invoice",
+		"apiVersion": "2025-05-01-preview",
+		"contents": [
+			{
+				"markdown": "# INVOICE\n\nCONTOSO LTD.\n\nContoso Headquarters\n123 456th St\nNew York, NY, 10001\n\nINVOICE: INV-100\n\nINVOICE DATE: 11/15/2019\n\nDUE DATE: 12/15/2019\n\nCUSTOMER NAME: MICROSOFT CORPORATION\n",
+				"fields": {
+					"CustomerName": {
+						"type": "string",
+						"valueString": "MICROSOFT CORPORATION",
+						"confidence": 0.95,
+					},
+					"InvoiceDate": {
+						"type": "date",
+						"valueDate": "2019-11-15",
+						"confidence": 0.994,
+					}
+                }
+            }
+        ]
+    }
+}
+```
+
+Informazioni su come usare gli analizzatori di Azure Content Understanding per estrarre dati strutturati dall'audio e dal video.
+
+## Estrarre informazioni da audio e video
+
+Le informazioni aziendali si trovano sempre più in formati multimediali, ad esempio file audio e video. Ad esempio, le aziende registrano spesso chiamate per analizzarle in un secondo momento. La crescita delle videoconferenze significa che le informazioni utili vengono spesso acquisite nelle riunioni registrate. Azure Content Understanding supporta l'estrazione e l'analisi dei dati audio e video.
+
+### Estrazione di dati strutturati dall'audio
+
+È possibile usare Informazioni sul contenuto di Azure per fornire trascrizioni, riepiloghi e altre informazioni chiave dai file audio.
+
+Si supponga di voler fare in modo che l'intelligenza artificiale riepiloghi la segreteria telefonica. È possibile definire uno schema di informazioni dettagliate chiave da estrarre da ogni chiamata registrata, come illustrato di seguito:
+
+- Chiamante
+- Riepilogo messaggi
+- Azioni richieste
+- Numero di callback
+- Dettagli contatto alternativi
+
+Si supponga ora che un chiamante lasci il messaggio vocale seguente:
+
+```{.txt filename="txt"}
+Hi, this is Ava from Contoso.
+
+Just calling to follow up on our meeting last week.
+
+I wanted to let you know that I've run the numbers and I think we can meet your price expectations.
+
+Please call me back on 555-12345 or send me an e-mail at Ava@contoso.com and we'll discuss next steps.
+
+Thanks, bye!
+```
+
+L'uso di Azure Content Understanding per analizzare la registrazione audio e applicare lo schema produce i risultati seguenti:
+
+- **Chiamante**: Ava di Contoso
+- **Riepilogo** del messaggio: Ava di Contoso ha chiamato per seguire una riunione e ha menzionato che possono soddisfare le aspettative di prezzo. Hanno richiesto un callback o un messaggio di posta elettronica per discutere i passaggi successivi.
+- **Azioni richieste**: eseguire il callback o inviare un messaggio di posta elettronica per discutere i passaggi successivi.
+- **Numero di callback**: 555-12345
+- **Dettagli contatto alternativo**: Ava@contoso.com
+
+#### Analisi dell'audio nel portale foundry
+Come per l'analisi dei documenti, l'uso di Content Understanding nel nuovo portale foundry è un modo rapido per verificare che l'analizzatore restituisca i campi previsti prima di automatizzare il flusso di lavoro nel codice.
+
+Nel portale è possibile:
+
+- Selezionare un analizzatore audio o video ed eseguirlo in un file multimediale.
+- Esaminare gli output, ad esempio le trascrizioni (per l'audio) e le informazioni estratte in base allo schema.
+- Visualizzare i risultati JSON restituiti per un'ulteriore elaborazione nei sistemi downstream.
+
+Di seguito viene illustrato come usare la comprensione del contenuto per analizzare una registrazione delle chiamate. Invece di ascoltare l'intera chiamata, è possibile eseguire l'analizzatore audio predefinito per estrarre informazioni dall'audio. Al termine dell'analisi, è possibile visualizzare una trascrizione scritta della chiamata.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-information-extraction/media/audio-extraction-playground.png){fig-align="center" width=80%}
+
+Nei risultati restituiti è possibile visualizzare informazioni specifiche dalla chiamata. Come per altri analizzatori nella comprensione del contenuto, i risultati sono in formato JSON per un'ulteriore elaborazione.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-information-extraction/media/audio-json-result.png){fig-align="center" width=80%}
+
+### Estrazione di dati strutturati dal video
+Azure Content Understanding supporta anche l'analisi video. Ad esempio, è possibile analizzare una video conferenza registrata per estrarre i dettagli della partecipazione, della posizione e di altre informazioni.
+
+Esaminiamo prima di tutto un'immagine dalla fotocamera della sala riunioni. Si supponga di aver definito lo schema seguente:
+
+- Posizione
+- Partecipanti in presenza
+- Partecipanti remoti
+- Totale partecipanti
+
+È possibile usare Azure Content Understanding per analizzare un'immagine dalla fotocamera della sala riunioni:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/get-started-information-extraction/media/conference-call.jpg){fig-align="center" width=50%}
+
+Dopo aver applicato lo schema all'immagine, Azure Content Understanding ha restituito dati strutturati:
+
+- **Posizione**: Sala riunioni
+- **Partecipanti in presenza**: 1
+- **Partecipanti remoti**: 3
+- **Totale partecipanti**: 4
+
+Prendere in considerazione ciò che è possibile aggiungere allo schema per una registrazione video della riunione. È possibile includere i conteggi delle presenze a intervalli di tempo diversi, i dettagli di chi ha parlato durante la chiamata e ciò che hanno detto, un riepilogo della discussione e un elenco di azioni assegnate dalla riunione.
+
+### Creazione di un'applicazione client con analizzatori audio o video
+Per analizzare l'audio o il video a livello di codice, è possibile creare un'applicazione client leggera usando l'API Content Understanding.
+
+Di seguito viene illustrato un esempio relativo all'uso di Python SDK. Quando si esegue il codice seguente, analizza un file audio usando un analizzatore predefinito. L'analizzatore predefinito viene identificato come prebuilt-audioSearch.
+
+```{.python filename="python"}
+import os
+from azure.ai.contentunderstanding import ContentUnderstandingClient
+from azure.core.credentials import AzureKeyCredential
+
+# Endpoint and key for your Foundry resource
+endpoint = os.environ["FOUNDRY_ENDPOINT"]  # e.g., "https://<resource>.services.ai.azure.com/"
+key = os.environ["FOUNDRY_KEY"]
+
+client = ContentUnderstandingClient(
+    endpoint=endpoint,
+    credential=AzureKeyCredential(key)
+)
+
+# Choose a prebuilt analyzer for audio
+# (The documents module lists examples like prebuilt-audioSearch / prebuilt-videoSearch.)
+analyzer_id = "prebuilt-audioSearch"
+
+# Provide an input audio file (URL shown here; you can swap in your own accessible media URL)
+inputs = [
+    {"url": "https://<your-host>/samples/voicemail.wav"}
+]
+
+# Start analysis (asynchronous long-running operation)
+poller = client.begin_analyze(analyzer_id=analyzer_id, inputs=inputs)
+
+# Wait for completion (SDK polls under the hood)
+result = poller.result()
+
+# Inspect the structured output (JSON-like objects)
+for content in result.contents:
+    # Some analyzers may return a transcript and/or extracted fields depending on the analyzer and schema
+    print("=== MARKDOWN / TRANSCRIPT (if provided) ===")
+    print(getattr(content, "markdown", None))
+
+    print("\n=== EXTRACTED FIELDS ===")
+    print(getattr(content, "fields", None))
+```
+
+L'analisi audio e video con la comprensione dei contenuti in Microsoft Foundry apre un'intera gamma di opportunità per sbloccare il potenziale dei dati aziendali in qualsiasi formato. Provare quindi Content Understanding per se stessi.
+
