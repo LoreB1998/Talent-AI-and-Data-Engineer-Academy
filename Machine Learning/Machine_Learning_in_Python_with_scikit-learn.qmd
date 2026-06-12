@@ -2585,3 +2585,4 @@ Osserviamo che l'aggiunta di nuovi campioni al set di dati di addestramento non 
 Potrebbe essere che le caratteristiche di input non siano fondamentalmente molto informative e che il problema di classificazione sia intrinsecamente impossibile da risolvere con un'accuratezza elevata. Ma potrebbe anche essere che la nostra scelta di utilizzare il valore predefinito degli iperparametri della classe `SVC` sia stata una cattiva idea, o che la scelta della classe `SVC` sia di per sé sub-ottimale.
 
 Più avanti in questo MOOC vedremo come ottimizzare meglio gli iperparametri di un modello ed esploreremo come confrontare le prestazioni predittive di diverse classi di modelli in modo più sistematico.
+

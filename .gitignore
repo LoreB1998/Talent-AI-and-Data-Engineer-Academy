@@ -8,9 +8,12 @@
 # Cartelle di configurazione degli IDE da ignorare nella root
 .idea/
 .vscode/
+.env
 .DS_Store
 Salute e sicurezza nei luogi di lavoro/
 AI-900/assets
 test.py
 Esercitazioni Python/Pandas e Scikit-Learn e PyTorch/data
 Esercitazioni Python/Pandas e Scikit-Learn e PyTorch/flower_photos
+__pycache__/
+*.pyc

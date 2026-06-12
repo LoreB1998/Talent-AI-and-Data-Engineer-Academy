@@ -1,0 +1,8 @@
+python-dotenv
+azure-core
+azure-ai-textanalytics
+azure-identity
+azure-ai-contentsafety
+azure-ai-documentintelligence
+azure-ai-translation-text
+openai
