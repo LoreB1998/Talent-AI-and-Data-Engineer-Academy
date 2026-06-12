@@ -1977,7 +1977,7 @@ print(housing.DESCR)
 data
 ```
 
-Per semplificare le visualizzazioni future, trasformiamo i prezzi dal range delle centinaia di migliaia di dollari (100 k$) al range delle migliaia di dollari (k$).
+Per semplificare le visualizzazioni future, trasformiamo i prezzi dal range delle centinaia di migliaia di dollari al range delle migliaia di dollari.
 
 ```{python}
 target *= 100
@@ -2085,6 +2085,8 @@ Esistono diverse strategie di cross-validation; per ora ci concentriamo su una c
 
 Ripetiamo questa procedura `n_splits` volte. Teniamo presente che il costo computazionale aumenta con `n_splits`.
 
+![](assets/shufflesplit_diagram.png){fig-align="center" width=70%}
+
 ::: {.callout-note}
 La figura mostra il caso particolare della strategia shuffle-split con `n_splits=5`. Per ogni split di cross-validation, la procedura addestra un modello su tutti i campioni rossi e valuta il punteggio del modello sui campioni blu.
 :::
@@ -2146,7 +2148,7 @@ plt.xlabel("Mean absolute error (k$)")
 _ = plt.title("Distribuzione dell'errore di test")
 ```
 
-Osserviamo che l'errore di test è concentrato intorno a 47 k$ e varia da 43 k$ a 50 k$.
+Osserviamo che l'errore di test è concentrato intorno a $47k\$$ e varia da $43 k\$$ a $50k\$$.
 
 ```{python}
 print(
@@ -2159,7 +2161,7 @@ print(
 )
 ```
 
-Si noti che la deviazione standard è molto più piccola della media: possiamo riassumere che la nostra stima in cross-validation dell'errore di test è 46.36 ± 1.17 k$.
+Si noti che la deviazione standard è molto più piccola della media: possiamo riassumere che la nostra stima in cross-validation dell'errore di test è $46.36 \pm 1.17 k\$$.
 
 Se dovessimo addestrare un singolo modello sull'intero dataset (senza cross-validation) e poi avere accesso a una quantità illimitata di dati di test, ci aspetteremmo che il suo vero errore di test cada vicino a quella regione.
 
@@ -2177,13 +2179,13 @@ _ = plt.title("Distribuzione del target")
 print(f"La deviazione standard del target è: {target.std():.2f} k$")
 ```
 
-La variabile target varia da quasi 0 k$ fino a 500 k$, con una deviazione standard di circa 115 k$.
+La variabile target varia da quasi $0k\$$ fino a $500k\$$, con una deviazione standard di circa $115k\$$.
 
 Notiamo che la stima media dell'errore di test ottenuta dalla cross-validation è un po' più piccola della scala naturale di variazione della variabile target. Inoltre, la deviazione standard della stima in cross-validation dell'errore di test è ancora più piccola.
 
 È un buon punto di partenza, ma non necessariamente sufficiente per decidere se la performance di generalizzazione è abbastanza buona da rendere le nostre predizioni utili in pratica.
 
-Ricordiamo che il nostro modello fa, in media, un errore di circa 47 k$. Con questa informazione e guardando la distribuzione del target, un tale errore potrebbe essere accettabile nel predire case da 500 k$. Tuttavia, sarebbe un problema per una casa dal valore di 50 k$. Questo indica che la nostra metrica (Mean Absolute Error) non è ideale.
+Ricordiamo che il nostro modello fa, in media, un errore di circa $47 k\$$. Con questa informazione e guardando la distribuzione del target, un tale errore potrebbe essere accettabile nel predire case da $500k\$$. Tuttavia, sarebbe un problema per una casa dal valore di $50 k\$$. Questo indica che la nostra metrica (Mean Absolute Error) non è ideale.
 
 Potremmo invece scegliere una metrica relativa al valore target da predire: il **mean absolute percentage error** sarebbe stata una scelta molto migliore.
 
@@ -2220,3 +2222,366 @@ In questo notebook abbiamo visto:
 - la necessità di dividere i dati in training e test set
 - il significato degli errori di training e di test
 - il framework generale di cross-validation con la possibilità di studiare le variazioni della performance di generalizzazione
+
+
+## Validation e learning curve
+
+### Overfit, generalizzazione e underfit
+
+Nel notebook precedente abbiamo presentato il framework generale di cross-validation e come ci aiuta a quantificare gli errori di training e test e le loro fluttuazioni.
+
+In questo notebook mettiamo questi due errori in prospettiva e mostriamo come possono aiutarci a capire se il nostro modello generalizza, va in overfitting o in underfitting.
+
+Carichiamo prima i dati e creiamo lo stesso modello del notebook precedente.
+
+```{python}
+from sklearn.datasets import fetch_california_housing
+
+housing = fetch_california_housing(as_frame=True)
+data, target = housing.data, housing.target
+target *= 100  # ridimensioniamo il target in k$
+```
+
+::: {.callout-note}
+Per una panoramica più approfondita di questo dataset, puoi fare riferimento alla sezione Appendice - Descrizione dei dataset alla fine di questo MOOC.
+:::
+
+```{python}
+from sklearn.tree import DecisionTreeRegressor
+
+regressor = DecisionTreeRegressor()
+```
+
+#### Overfitting vs. underfitting
+
+Per comprendere meglio la performance di generalizzazione del nostro modello e trovare spunti su come migliorarla, confrontiamo l'errore di test con l'errore di training. È necessario quindi calcolare l'errore sul training set, il che è possibile usando la funzione `cross_validate`.
+
+```{python}
+import pandas as pd
+from sklearn.model_selection import cross_validate, ShuffleSplit
+
+cv = ShuffleSplit(n_splits=30, test_size=0.2, random_state=0)
+cv_results = cross_validate(
+    regressor,
+    data,
+    target,
+    cv=cv,
+    scoring="neg_mean_absolute_error",
+    return_train_score=True,
+    n_jobs=2,
+)
+cv_results = pd.DataFrame(cv_results)
+```
+
+La cross-validation ha usato il negative mean absolute error. Trasformiamo il negative mean absolute error in un positive mean absolute error.
+
+```{python}
+scores = pd.DataFrame()
+scores[["train error", "test error"]] = -cv_results[
+    ["train_score", "test_score"]
+]
+```
+
+```{python}
+import matplotlib.pyplot as plt
+
+scores.plot.hist(bins=50, edgecolor="black")
+plt.xlabel("Mean absolute error (k$)")
+_ = plt.title("Distribuzione degli errori di train e test via cross-validation")
+```
+
+Visualizzando la distribuzione degli errori di training e test, otteniamo informazioni su se il nostro modello va in over-fitting, under-fitting (o entrambi contemporaneamente).
+
+Qui osserviamo un errore di training piccolo (praticamente zero), il che significa che il modello non va in under-fitting: è sufficientemente flessibile da catturare qualsiasi variazione presente nel training set.
+
+Tuttavia, l'errore di test significativamente più grande ci dice che il modello va in over-fitting: il modello ha memorizzato molte variazioni del training set che potrebbero essere considerate "rumore" perché non si generalizzano e non ci aiutano a fare buone predizioni sul test set.
+
+#### Validation curve
+
+Chiamiamo **iperparametri** quei parametri che potenzialmente influenzano il risultato dell'apprendimento e le successive predizioni di un predictor. Per esempio:
+
+- il numero di vicini in un modello k-nearest neighbors
+- il grado del polinomio
+
+Alcuni iperparametri del modello sono solitamente la chiave per passare da un modello che va in underfitting a uno che va in overfitting, passando auspicabilmente per una regione in cui si trova un buon bilanciamento tra i due. Possiamo acquisire questa conoscenza tracciando una curva chiamata **validation curve**. Questa curva può essere applicata all'esperimento precedente e varia il valore di un iperparametro.
+
+Per il decision tree, l'iperparametro `max_depth` viene usato per controllare il trade-off tra under-fitting e over-fitting.
+
+```{python}
+import numpy as np
+from sklearn.model_selection import ValidationCurveDisplay
+
+max_depth = np.array([1, 5, 10, 15, 20, 25])
+disp = ValidationCurveDisplay.from_estimator(
+    regressor,
+    data,
+    target,
+    param_name="max_depth",
+    param_range=max_depth,
+    cv=cv,
+    scoring="neg_mean_absolute_error",
+    negate_score=True,
+    std_display_style="errorbar",
+    n_jobs=2,
+)
+_ = disp.ax_.set(
+    xlabel="Maximum depth of decision tree",
+    ylabel="Mean absolute error (k$)",
+    title="Validation curve per decision tree",
+)
+```
+
+La validation curve può essere divisa in tre aree:
+
+- Per `max_depth < 10`, il decision tree va in underfitting. Sia l'errore di training che quello di test sono alti. Il modello è troppo vincolato e non riesce a catturare gran parte della variabilità della variabile target.
+- La regione intorno a `max_depth = 10` corrisponde al parametro per cui il decision tree generalizza meglio. È sufficientemente flessibile da catturare una parte della variabilità del target che si generalizza, senza memorizzare tutto il rumore nel target.
+- Per `max_depth > 10`, il decision tree va in overfitting. L'errore di training diventa molto piccolo, mentre l'errore di test aumenta. In questa regione, i modelli creano decisioni specifiche per campioni rumorosi, compromettendo la capacità di generalizzare sui dati di test.
+
+Si noti che per `max_depth = 10`, il modello va leggermente in overfitting perché c'è un gap tra l'errore di training e quello di test. Potrebbe anche andare leggermente in underfitting allo stesso tempo, perché l'errore di training è ancora lontano da zero (più di 30 k$), il che significa che il modello potrebbe essere ancora troppo vincolato per modellare parti interessanti dei dati. Tuttavia, l'errore di test è minimo, ed è questo che conta davvero. Questo è il miglior compromesso raggiungibile regolando solo questo parametro.
+
+:::{.callout-important}
+Guardare solo gli errori medi è abbastanza limitante. Dovremmo anche guardare la deviazione standard per valutare la dispersione dello score. A questo scopo, possiamo usare il parametro `std_display_style` per mostrare anche la deviazione standard degli errori. In questo caso, la varianza degli errori è piccola rispetto ai rispettivi valori, e quindi le conclusioni sopra sono abbastanza chiare. Non è necessariamente sempre così.
+:::
+
+#### Cos'è il rumore?
+
+In questo notebook abbiamo parlato del fatto che i dataset possono contenere rumore.
+
+Esistono diversi tipi di rumore, tra cui possiamo identificare:
+
+- imprecisione di misura da un sensore fisico (es. temperatura)
+- errori di rilevazione da parte di raccoglitori umani
+
+Questi errori imprevedibili di acquisizione dati possono verificarsi sia sulle feature di input che sulla variabile target (nel qual caso spesso li chiamiamo **label noise**).
+
+In pratica, la fonte più comune di "rumore" non è necessariamente un rumore reale, ma piuttosto l'assenza della misurazione di una feature rilevante.
+
+Consideriamo il seguente esempio: nel predire il prezzo di una casa, la superficie sicuramente influenzerà il prezzo. Tuttavia, il prezzo sarà influenzato anche dal fatto che il venditore abbia fretta e decida di vendere la casa sotto il prezzo di mercato. Un modello sarà in grado di fare predizioni basandosi sul primo fattore ma non sul secondo, quindi la "fretta del venditore" è una fonte di rumore poiché non sarà presente nelle feature.
+
+Poiché questa feature mancante/non osservata varia casualmente da un campione all'altro, sembra che la variabile target cambi a causa dell'impatto di una perturbazione casuale o rumore, anche se non ci sono stati errori significativi durante il processo di raccolta dati (se non quello di non misurare la feature di input non osservata).
+
+Un caso estremo potrebbe verificarsi se nel dataset ci fossero campioni con esattamente gli stessi valori delle feature di input ma valori diversi per la variabile target. È molto improbabile in situazioni reali, ma potrebbe accadere se tutte le feature sono categoriali o se le feature numeriche sono state discretizzate o arrotondate ingenuamente. Nel nostro esempio, possiamo immaginare due case con le stesse feature nel dataset ma prezzi diversi a causa della (non misurata) fretta del venditore.
+
+A parte questi casi estremi, è difficile sapere con certezza cosa debba qualificarsi o meno come rumore e quale tipo di "rumore" stia dominando. Ma in pratica, i modi migliori per rendere i nostri modelli predittivi robusti al rumore sono evitare l'overfitting:
+
+- selezionando modelli sufficientemente semplici o con iperparametri ottimizzati, come spiegato in questo modulo
+- raccogliendo un numero maggiore di campioni etichettati per il training set
+
+#### Riepilogo
+
+In questo notebook abbiamo visto:
+
+- come identificare se un modello sta generalizzando, andando in overfitting o in underfitting
+- come verificare l'influenza di un iperparametro sul trade-off underfit/overfit
+
+### Effetto della dimensione del campione nella cross-validation
+
+Nel notebook precedente abbiamo presentato il framework generale di cross-validation e come valutare se un modello predittivo va in underfitting, overfitting o generalizza. Oltre a questi aspetti, è importante capire come i diversi errori sono influenzati dal numero di campioni disponibili.
+
+In questo notebook mostreremo questo aspetto guardando la variabilità dei diversi errori.
+
+Carichiamo prima i dati e creiamo lo stesso modello del notebook precedente.
+
+```{python}
+from sklearn.datasets import fetch_california_housing
+
+housing = fetch_california_housing(as_frame=True)
+data, target = housing.data, housing.target
+target *= 100  # ridimensioniamo il target in k$
+```
+
+::: {.callout-note}
+Per una panoramica più approfondita di questo dataset, puoi fare riferimento alla sezione Appendice - Descrizione dei dataset alla fine di questo MOOC.
+:::
+
+```{python}
+from sklearn.tree import DecisionTreeRegressor
+
+regressor = DecisionTreeRegressor()
+```
+
+#### Learning curve
+
+Per capire l'impatto del numero di campioni disponibili per il training sulla performance di generalizzazione di un modello predittivo, è possibile ridurre sinteticamente il numero di campioni usati per addestrare il modello e verificare gli errori di training e test.
+
+Possiamo quindi variare il numero di campioni nel training set e ripetere l'esperimento. Gli score di training e test possono essere visualizzati in modo simile alla validation curve, ma invece di variare un iperparametro, variamo il numero di campioni di training. Questa curva si chiama **learning curve**.
+
+Fornisce informazioni sul beneficio di aggiungere nuovi campioni di training per migliorare la performance di generalizzazione di un modello.
+
+Calcoliamo la learning curve per un decision tree, variando la proporzione del training set dal 10% al 100%.
+
+```{python}
+import numpy as np
+
+train_sizes = np.linspace(0.1, 1.0, num=5, endpoint=True)
+train_sizes
+```
+
+Useremo una cross-validation `ShuffleSplit` per valutare il nostro modello predittivo.
+
+```{python}
+from sklearn.model_selection import ShuffleSplit
+
+cv = ShuffleSplit(n_splits=30, test_size=0.2)
+```
+
+Siamo ora pronti per eseguire l'esperimento.
+
+```{python}
+from sklearn.model_selection import LearningCurveDisplay
+
+display = LearningCurveDisplay.from_estimator(
+    regressor,
+    data,
+    target,
+    train_sizes=train_sizes,
+    cv=cv,
+    score_type="both",
+    scoring="neg_mean_absolute_error",
+    negate_score=True,
+    score_name="Mean absolute error (k$)",
+    std_display_style="errorbar",
+    n_jobs=2,
+)
+_ = display.ax_.set(xscale="log", title="Learning curve per decision tree")
+```
+
+Guardando solo l'errore di training, vediamo che otteniamo un errore di 0 k$. Significa che il modello addestrato (ovvero il decision tree) sta chiaramente andando in overfitting sui dati di training.
+
+Guardando solo l'errore di test, osserviamo che più campioni vengono aggiunti al training set, più l'errore di test diminuisce. Cerchiamo anche il plateau dell'errore di test, oltre il quale non c'è più beneficio nell'aggiungere campioni, oppure valutiamo il potenziale guadagno di aggiungerne altri.
+
+Se l'errore di test raggiunge un plateau nonostante l'aggiunta di nuovi campioni di training, è possibile che il modello abbia raggiunto la sua performance ottimale. In questo caso, usare un modello più espressivo potrebbe aiutare a ridurre ulteriormente l'errore. Altrimenti, l'errore potrebbe aver raggiunto il **Bayes error rate**, il minimo teorico dell'errore dovuto all'incertezza intrinseca non risolvibile dai dati disponibili. Questo errore minimo è diverso da zero ogni volta che una parte della variazione della variabile target $y$ dipende da fattori esterni non completamente osservati nelle feature disponibili in $X$, il che è quasi sempre il caso in pratica.
+
+#### Riepilogo
+
+In questo notebook abbiamo visto:
+
+- l'influenza del numero di campioni in un dataset, in particolare sulla variabilità degli errori riportati durante la cross-validation
+- la learning curve, che è una rappresentazione visiva della capacità di un modello di migliorare aggiungendo nuovi campioni
+
+---
+
+### Esercizio M2.01
+
+L'obiettivo di questo esercizio è fare i seguenti esperimenti:
+
+- addestrare e testare un classificatore support vector machine tramite cross-validation
+- studiare l'effetto del parametro `gamma` di questo classificatore usando una validation curve
+- usare una learning curve per determinare l'utilità di aggiungere nuovi campioni al dataset nella costruzione di un classificatore
+
+Per fare questi esperimenti carichiamo prima il dataset blood transfusion.
+
+::: {.callout-note}
+Per una panoramica più approfondita di questo dataset, puoi fare riferimento alla sezione Appendice - Descrizione dei dataset alla fine di questo MOOC.
+:::
+
+```{python}
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/INRIA/scikit-learn-mooc/main/datasets/blood_transfusion.csv"
+blood_transfusion = pd.read_csv(url)
+data   = blood_transfusion.drop(columns="Class")
+target = blood_transfusion["Class"]
+```
+
+Qui usiamo un classificatore support vector machine (SVM). Nella sua forma più semplice, un classificatore SVM è un classificatore lineare che si comporta in modo simile a una regressione logistica. L'ottimizzazione usata per trovare i pesi ottimali del modello lineare è diversa, ma non è necessario conoscere questi dettagli per l'esercizio.
+
+Questo classificatore può diventare più flessibile/espressivo usando un cosiddetto **kernel** che rende il modello non lineare. Anche in questo caso, non è necessaria nessuna comprensione della matematica per completare l'esercizio.
+
+Useremo un kernel RBF dove un parametro `gamma` permette di regolare la flessibilità del modello.
+
+Prima di tutto, crea una pipeline predittiva composta da:
+
+- uno `sklearn.preprocessing.StandardScaler` con parametri di default
+- uno `sklearn.svm.SVC` dove il parametro `kernel` può essere impostato a `"rbf"` (che è anche il default)
+
+```{python}
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
+
+model = make_pipeline(StandardScaler(), SVC())
+```
+
+Valuta la performance di generalizzazione del modello tramite cross-validation con uno schema `ShuffleSplit`. Usa `cross_validate` e passa un oggetto `ShuffleSplit` al parametro `cv`. Imposta solo `random_state=0` nello `ShuffleSplit` e lascia gli altri parametri al default.
+
+```{python}
+from sklearn.model_selection import cross_validate, ShuffleSplit
+
+cv = ShuffleSplit(random_state=0)
+cv_results = cross_validate(model, data, target, cv=cv, n_jobs=2)
+cv_results = pd.DataFrame(cv_results)
+cv_results
+```
+
+```{python}
+print(
+    "Accuracy score of our model:\n"
+    f"{cv_results['test_score'].mean():.3f} ± "
+    f"{cv_results['test_score'].std():.3f}"
+)
+```
+
+Come accennato in precedenza, il parametro `gamma` è uno dei parametri che controllano under/over-fitting in un support vector machine con kernel RBF.
+
+Valuta l'effetto del parametro `gamma` usando `ValidationCurveDisplay`. Puoi lasciare il default `scoring=None`, equivalente a `scoring="accuracy"` per i problemi di classificazione. Varia `gamma` tra `10e-3` e `10e2` generando campioni su scala logaritmica con `np.logspace(-3, 2, num=30)`.
+
+Poiché stiamo manipolando una `Pipeline`, il nome del parametro è `svc__gamma` invece di solo `gamma`. Puoi recuperare il nome del parametro usando `model.get_params().keys()`. Approfondiremo l'accesso e l'impostazione degli iperparametri nella prossima sezione.
+
+```{python}
+import numpy as np
+
+from sklearn.model_selection import ValidationCurveDisplay
+
+gammas = np.logspace(-3, 2, num=30)
+param_name = "svc__gamma"
+disp = ValidationCurveDisplay.from_estimator(
+    model,
+    data,
+    target,
+    param_name=param_name,
+    param_range=gammas,
+    cv=cv,
+    scoring="accuracy",  # this is already the default for classifiers
+    score_name="Accuracy",
+    std_display_style="errorbar",
+    errorbar_kw={"alpha": 0.7},  # transparency for better visualization
+    n_jobs=2,
+)
+
+_ = disp.ax_.set(
+    xlabel=r"Value of hyperparameter $\gamma$",
+    title="Validation curve of support vector machine",
+)
+```
+
+Osservando la curva, possiamo identificare chiaramente il regime di overfitting del classificatore SVC quando `gamma > 1`. L'impostazione migliore si trova intorno a `gamma = 1`, mentre per `gamma < 1` non è molto chiaro se il classificatore sia in underfitting, ma il punteggio di test è peggiore rispetto a quello ottenuto con `gamma = 1`.
+
+Ora puoi eseguire un'analisi per verificare se aggiungere nuovi campioni al dataset potrebbe aiutare il modello a generalizzare meglio. Calcola la learning curve usando `LearningCurveDisplay`, calcolando gli score di train e test per diverse dimensioni del dataset di training. Visualizza gli score di train e test in funzione del numero di campioni.
+
+```{python}
+from sklearn.model_selection import LearningCurveDisplay
+
+train_sizes = np.linspace(0.1, 1, num=10)
+LearningCurveDisplay.from_estimator(
+    model,
+    data,
+    target,
+    train_sizes=train_sizes,
+    cv=cv,
+    score_type="both",
+    scoring="accuracy",  # this is already the default for classifiers
+    score_name="Accuracy",
+    std_display_style="errorbar",
+    errorbar_kw={"alpha": 0.7},  # transparency for better visualization
+    n_jobs=2,
+)
+
+_ = disp.ax_.set(title="Learning curve for support vector machine")
+```
+
+Osserviamo che l'aggiunta di nuovi campioni al set di dati di addestramento non sembra migliorare i punteggi di addestramento e di test. In particolare, il punteggio di test oscilla attorno al 76% di accuratezza. Infatti, circa il 76% dei campioni appartiene alla classe `not donated`. Si noti quindi che un classificatore che prevede sempre la classe `not donated` otterrebbe un'accuratezza del 76% senza utilizzare alcuna informazione dai dati stessi. Ciò potrebbe significare che la nostra piccola pipeline non è in grado di utilizzare le caratteristiche di input per migliorare rispetto a quella baseline semplicistica, e aumentare la dimensione del set di addestramento non aiuta.
+
+Potrebbe essere che le caratteristiche di input non siano fondamentalmente molto informative e che il problema di classificazione sia intrinsecamente impossibile da risolvere con un'accuratezza elevata. Ma potrebbe anche essere che la nostra scelta di utilizzare il valore predefinito degli iperparametri della classe `SVC` sia stata una cattiva idea, o che la scelta della classe `SVC` sia di per sé sub-ottimale.
+
+Più avanti in questo MOOC vedremo come ottimizzare meglio gli iperparametri di un modello ed esploreremo come confrontare le prestazioni predittive di diverse classi di modelli in modo più sistematico.
