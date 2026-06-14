@@ -1,0 +1,2398 @@
+---
+title: "Sviluppare app di intelligenza artificiale generative in Azure"
+subtitle: "AI-103"
+author: "Lorenzo Barbato"
+lang: it
+watch-inputs: true
+embed-resources: true
+format:
+  html:
+    theme: 
+        dark: darkly       # Temi puliti e professionali: cosmo, flatly, lumen, o sandstone per quello scuri darkly, cyborg, slate, solar
+        light: flatly
+    toc: true              # Genera automaticamente l'indice dei contenuti a destra
+    toc-title: "Indice"    # Titolo dell'indice
+    toc-depth: 3           # Profondità dell'indice (fino a ###)
+    number-sections: true  # Numera automaticamente i capitoli (1., 1.1, ecc.)
+    code-fold: true        # Se aggiungi codice Python, lo nasconde dietro un bottone cliccabile
+    smooth-scroll: true    # Rende lo scorrimento cliccando sull'indice più fluido
+    respect-user-color-scheme: true
+    css: style.css
+---
+
+# Pianificare e preparare lo sviluppo di soluzioni di intelligenza artificiale su Azure
+
+## Introduzione
+
+La crescita nell'uso dell'intelligenza artificiale (IA) in generale e generativi'IA significa in particolare che gli sviluppatori sono sempre più necessari per creare soluzioni di intelligenza artificiale complete. Queste soluzioni devono combinare modelli di Machine Learning, servizi di intelligenza artificiale, soluzioni di progettazione richieste e codice personalizzato.
+
+Microsoft Azure offre più servizi che è possibile usare per creare soluzioni di intelligenza artificiale. Tuttavia, prima di intraprendere un progetto di sviluppo di applicazioni di intelligenza artificiale, è utile prendere in considerazione le opzioni disponibili per servizi, strumenti e framework, nonché alcuni principi e procedure che consentono di avere successo.
+
+Questo modulo esplora alcune delle considerazioni chiave per la pianificazione di un progetto di sviluppo di intelligenza artificiale e introduce Microsoft Foundry; una piattaforma completa per lo sviluppo di intelligenza artificiale in Microsoft Azure.
+
+:::{.callout-note}
+La crescita nell'uso dell'intelligenza artificiale (IA) in generale e generativi'IA significa in particolare che gli sviluppatori sono sempre più necessari per creare soluzioni di intelligenza artificiale complete. Queste soluzioni devono combinare modelli di Machine Learning, servizi di intelligenza artificiale, soluzioni di progettazione richieste e codice personalizzato.
+
+Microsoft Azure offre più servizi che è possibile usare per creare soluzioni di intelligenza artificiale. Tuttavia, prima di intraprendere un progetto di sviluppo di applicazioni di intelligenza artificiale, è utile prendere in considerazione le opzioni disponibili per servizi, strumenti e framework, nonché alcuni principi e procedure che consentono di avere successo.
+
+Questo modulo esplora alcune delle considerazioni chiave per la pianificazione di un progetto di sviluppo di intelligenza artificiale e introduce Microsoft Foundry; una piattaforma completa per lo sviluppo di intelligenza artificiale in Microsoft Azure.
+:::
+
+## Che cos'è l'intelligenza artificiale?
+
+Il termine "Intelligenza artificiale" (IA) copre un'ampia gamma di funzionalità software che consentono alle applicazioni di presentare comportamenti simili a umani. L'IA è stata intorno da molti anni e la sua definizione è variata man mano che la tecnologia e i casi d'uso associati a esso si sono evoluti. Nel panorama tecnologico odierno, le soluzioni di intelligenza artificiale sono basate su modelli di Machine Learning che incapsulano relazioni semantiche trovate in enormi quantità di dati; consentendo alle applicazioni di interpretare l'input in vari formati, il motivo sui dati di input e generare risposte e stime appropriate.
+
+Le funzionalità di intelligenza artificiale comuni che gli sviluppatori possono integrare in un'applicazione software includono:
+
+|Capacità | Descrizione |
+|:---|:----------|
+|Intelligenza artificiale generativa e agenti | L'intelligenza artificiale generativa si basa su modelli di linguaggio di grandi dimensioni con la possibilità di generare risposte originali ai prompt del linguaggio naturale. Ad esempio, per sfruttare le applicazioni di chat interattive e la creazione di contenuto assistito dall'intelligenza artificiale. Sempre più spesso, l'intelligenza artificiale generativa viene usata come base per le soluzioni di intelligenza artificiale agentici in cui gli agenti di intelligenza artificiale combinano le VM con istruzioni incentrate che definiscono le responsabilità delle attività e gli strumenti che l'agente può usare per trovare le conoscenze pertinenti e automatizzare le attività per le quali è responsabile.|
+|Elaborazione del linguaggio naturale | I sistemi LLM moderni si sono evoluti da un'area ben consolidata all'interno dell'IA denominata elaborazione del linguaggio naturale (NLP). NLP usa modelli statistici e semantici per comprendere il linguaggio nei documenti, nei messaggi di posta elettronica, nei social media e in altre fonti di testo. Sebbene molte attività comuni di elaborazione del linguaggio naturale (NLP) possano ora essere eseguite da LLMs generative, esistono alcuni usi specializzati di NLP, in particolare nell'ambito dell'analisi del testo che possono trarre vantaggio dalle tecniche statistiche NLP basate su algoritmi di frequenza dei termini e modelli specifici per la classificazione del testo, l'analisi del sentiment e il riepilogo.|
+|Riconoscimento vocale del computer | La possibilità di riconoscere e sintetizzare il parlato consente alle app e agli agenti di intelligenza artificiale di interagire più naturalmente con gli utenti tramite input vocale e risposte vocali. Il riconoscimento vocale del computer è un'altra area ben consolidata dell'IA e i recenti progressi consentono di gestire interazioni conversazionali complesse; gestione del rumore di fondo, interruzioni e più lingue e accenti. Oltre alle soluzioni di conversazione interattive, il riconoscimento vocale del computer è un componente integrante delle soluzioni di intelligenza artificiale per la trascrizione e l'analisi del parlato in tempo reale o registrato e la sintesi vocale dal testo per le interfacce simultanee o "lette ad alta voce". |
+|Visione artificiale | Visione artificiale si riferisce alla capacità di applicazioni e agenti di intelligenza artificiale di accettare, interpretare ed elaborare l'input visivo da immagini, video e flussi di fotocamera live. Ad esempio, un checkout automatico in un negozio di alimentari potrebbe usare visione artificiale per identificare i prodotti che un cliente ha nel carrello acquisti, eliminando la necessità di analizzare un codice a barre o immettere manualmente il prodotto e la quantità. Sempre più spesso, i modelli di intelligenza artificiale generativi sono multicompidenti e non solo possono elaborare l'input visivo, ma anche generare output visivo sotto forma di immagini e video. |
+| Estrazione di informazioni | La possibilità di combinare modelli di intelligenza artificiale generativi per il ragionamento del linguaggio, tecniche del linguaggio naturale per la comprensione dei documenti e visione artificiale e riconoscimento vocale per l'analisi multimediale consente lo sviluppo di soluzioni di intelligenza artificiale in grado di estrarre informazioni chiave da documenti, moduli, immagini, registrazioni e altri tipi di contenuto. Ad esempio, un'applicazione di elaborazione automatica delle richieste di spesa potrebbe estrarre le date di acquisto, i dettagli della singola voce e i costi totali da una ricevuta analizzata.|
+
+Determinare le funzionalità di intelligenza artificiale specifiche da includere nell'applicazione può aiutare a identificare i servizi di intelligenza artificiale più appropriati di cui è necessario effettuare il provisioning, la configurazione e l'uso nella soluzione.
+
+## Microsoft Foundry
+
+Microsoft Foundry è una piattaforma per lo sviluppo di intelligenza artificiale in Microsoft Azure. Sebbene sia possibile effettuare il provisioning di singole risorse di intelligenza artificiale e creare applicazioni che le usano senza di essa, l'organizzazione del progetto, la gestione delle risorse e le funzionalità di sviluppo di intelligenza artificiale di Microsoft Foundry lo rende il modo consigliato per creare tutte le soluzioni ma più semplici.
+
+Microsoft Foundry fornisce il portale di Microsoft Foundry, un'interfaccia visiva basata sul Web per l'uso dei progetti di intelligenza artificiale. Fornisce anche Microsoft Foundry SDK, che è possibile usare per creare soluzioni di intelligenza artificiale a livello di codice.
+
+### Progetti Microsoft Foundry
+In Microsoft Foundry si gestiscono le connessioni alle risorse, i dati, il codice e altri elementi della soluzione di intelligenza artificiale in un progetto. Ogni progetto appartiene a una singola risorsa Microsoft Foundry in Azure, che fornisce risorse di calcolo, archiviazione dei dati, strumenti di intelligenza artificiale e altri servizi.
+
+Una risorsa Foundry può supportare uno o più progetti figlio, con uno di essi designato come progetto predefinito.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/prepare-azure-ai-development/media/foundry.png){fig-align="center" width=50%}
+
+Gli sviluppatori usano progetti per gestire gli asset necessari per una soluzione di intelligenza artificiale, tra cui:
+
+- **Modelli**: distribuzioni LLM (Large Language Model) basate su modelli disponibili in Foundry Models - un catalogo completo di modelli di Microsoft OpenAI e altri provider. È possibile connettersi e interagire con questi modelli tramite l'endpoint del progetto (usando API e SDK specifici di Foundry) e l'endpoint OpenAI di Azure (usando LE API e gli SDK OpenAI).
+
+- **Agenti**: configurazioni di intelligenza artificiale denominate che incapsulano un LLM, istruzioni e strumenti per definire un'entità di intelligenza artificiale autonoma in grado di automatizzare le attività e collaborare con utenti e altri agenti. Gli agenti in Foundry vengono sviluppati e utilizzati usando il servizio Microsoft Foundry Agent tramite l'endpoint del progetto.
+
+- **Strumenti**: gli strumenti usati dagli agenti possono essere basati su funzionalità predefinite, ad esempio la ricerca Web o un interprete di codice, o le connessioni a strumenti personalizzati e di terze parti tramite connessioni MCP (Model Context Protocol). Inoltre, Microsoft Foundry Tools include una suite di servizi di intelligenza artificiale per attività comuni, ad esempio l'analisi del testo, il riconoscimento vocale e la sintesi, la traduzione e la comprensione dei contenuti che è possibile usare nelle soluzioni di intelligenza artificiale basate su Foundry. Gli strumenti foundry sono ospitati nella risorsa Foundry associata ai progetti.
+
+- **Conoscenza**: gli agenti possono usare gli strumenti per connettersi agli archivi di conoscenze e usare i dati che contengono per contestualizzare i messaggi di input. Per semplificare l'integrazione con più origini di conoscenze, è possibile usare Foundry IQ in un progetto per creare una singola connessione di conoscenza basata su MCP centrale.
+
+La separazione di asset e servizi cloud specifici del progetto nelle risorse di Microsoft Foundry supporta le attività di sviluppo di intelligenza artificiale più comuni per sviluppare app e agenti di chat di intelligenza artificiale generativi. L'uso di un progetto Foundry offre il livello corretto di centralizzazione e funzionalità delle risorse con una quantità minima di gestione delle risorse amministrative.
+
+### Portale di Microsoft Foundry
+È possibile usare il portale di Microsoft Foundry per sviluppare e gestire progetti basati sulle risorse di Microsoft Foundry.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/prepare-azure-ai-development/media/foundry-portal.png){fig-align="center" width=80%}
+
+La maggior parte dei progetti di sviluppo di soluzioni di intelligenza artificiale inizia nel progetto Foundry, dove è possibile:
+
+- Trovare, confrontare, distribuire e testare i modelli.
+- Creare e testare agenti.
+- Creare connessioni MCP agli strumenti e alle origini di conoscenza di Foundry IQ.
+- Esplorare e testare gli strumenti di Microsoft Foundry.
+- Gestire la configurazione delle risorse e l'accesso utente.
+- Trovare gli endpoint e le chiavi necessari per accedere agli asset dalle applicazioni client.
+
+Per automatizzare le operazioni del progetto Foundry, è anche possibile usare [Microsoft Foundry SDK](https://learn.microsoft.com/it-it/azure/foundry/how-to/develop/sdk-overview), consentendo di creare e gestire asset usando script o azioni CI/CD automatizzate nelle pipeline DevOps.
+
+:::{.callout-note}
+Questo modulo è incentrato sull'architettura più recente del progetto Microsoft Foundry. I progetti Foundry meno recenti (classici) possono usare un'architettura basata su hub. Inoltre, il portale di Microsoft Foundry sta passando all'interfaccia "new" illustrata in questo modulo. Alcune attività potrebbero non essere ancora supportate nel nuovo portale. Per altre informazioni sui progetti classici di Foundry, vedere [Che cos'è Microsoft Foundry? (versione classica)](https://learn.microsoft.com/it-it/azure/foundry-classic/what-is-foundry)
+:::
+
+## Strumenti di Foundry
+
+Anche se i modelli di intelligenza artificiale generativi e gli agenti tendono a essere l'obiettivo della maggior parte dei progetti di sviluppo di soluzioni di intelligenza artificiale moderna, spesso può essere utile sfruttare le funzionalità "off-the-shelf" per le attività di IA comuni.
+
+Microsoft Foundry include gli strumenti Foundry; un set di API predefinite e modelli predefiniti che è possibile integrare nelle applicazioni. L'uso di questi strumenti consente di creare una soluzione più conveniente e prevedibile rispetto alla sola generazione di agenti basati sull'intelligenza artificiale.
+
+|Strumento | Descrizione|
+|:---|:---------|
+|Linguaggio di Azure | Azure Language in Foundry Tools fornisce modelli e API che è possibile usare per analizzare il testo in linguaggio naturale ed eseguire attività come estrazione di entità, analisi del sentiment e riepilogo. Il linguaggio di Azure offre anche funzionalità che consentono di creare modelli linguistici di conversazione e soluzioni di risposta alle domande. |
+|Riconoscimento vocale di Azure	| Voce di Azure in strumenti Fonderia offre API che è possibile utilizzare per implementare la trasformazione Sintesi vocale e Riconoscimento vocale, nonché parlato in tempo reale per app e agenti conversazionali.|
+|Traduttore di Azure | Traduttore di Azure in Foundry Tools usa modelli linguistici all'avanguardia per tradurre testo tra un numero elevato di lingue.|
+| Intelligence sui documenti di Azure |	Con Azure Document Intelligence in Foundry Tools è possibile usare modelli predefiniti o personalizzati per estrarre campi da documenti complessi, ad esempio fatture, ricevute e moduli.|
+| Informazioni sui contenuti di Azure |	Azure Content Understanding in Foundry Tools offre funzionalità di analisi del contenuto multi modale che consentono di creare modelli per estrarre dati da moduli e documenti, immagini, video e flussi audio.|
+
+
+Per usare gli strumenti Foundry, è possibile creare applicazioni client che si connettono all'endpoint specifico dello strumento nella risorsa Microsoft Foundry, specificando la chiave di autenticazione del progetto o usando l'autenticazione basata su token. È quindi possibile usare le API e gli SDK specifici dello strumento per usare la funzionalità fornita.
+
+Alcuni strumenti forniscono un'interfaccia utente per la configurazione e il test nel portale foundry.
+
+:::{.callout-note}
+Gli strumenti di Azure sono stati precedentemente chiamati Servizi di intelligenza artificiale di Azure e prima di servizi cognitivi di Azure. Questi nomi si riflettono ancora in alcune API e SDK; ed è comunque possibile effettuare il provisioning di alcuni strumenti come singole risorse di Azure all'esterno di una risorsa Foundry. Per i nuovi progetti, è consigliabile usare gli strumenti forniti in una risorsa Microsoft Foundry.
+:::
+
+## Strumenti di sviluppo e SDK
+
+Sebbene sia possibile eseguire molte delle attività necessarie per sviluppare una soluzione di intelligenza artificiale direttamente nel portale di Microsoft Foundry, gli sviluppatori devono anche scrivere, testare e distribuire codice.
+
+### Strumenti e ambienti di sviluppo
+
+Sono disponibili molti strumenti e ambienti di sviluppo e gli sviluppatori devono scegliere uno che supporti i linguaggi, gli SDK e le API con cui devono lavorare e con cui sono più comodi. Ad esempio, uno sviluppatore che si concentra fortemente sulla creazione di applicazioni per Windows che usano .NET Framework potrebbe preferire il lavoro in un ambiente di sviluppo integrato (IDE) come Microsoft Visual Studio. Viceversa, uno sviluppatore di applicazioni Web che lavora con un'ampia gamma di linguaggi e librerie open source potrebbe preferire l'uso di un editor di codice come Visual Studio Code (VS Code). Entrambi questi prodotti sono adatti per lo sviluppo di applicazioni di intelligenza artificiale in Azure.
+
+
+### Estensione Toolkit di Foundry per Visual Studio Code
+Quando si sviluppano Microsoft applicazioni di intelligenza artificiale basate su Foundry in Visual Studio Code, è possibile usare l'estensione Foundry Toolkit per Visual Studio Code per semplificare le attività chiave nel flusso di lavoro, tra cui:
+
+Esplorazione e gestione delle risorse del progetto, inclusi modelli distribuiti, agenti, connessioni e archivi vettoriali.
+Distribuzione di modelli dal catalogo dei modelli.
+Test di modelli e agenti in ambienti di prova integrati.
+Configurazione di agenti dichiarativi e ospitati tramite una finestra di progettazione visiva e file YAML.
+Generazione di codice di integrazione per connettere gli agenti alle applicazioni.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/prepare-azure-ai-development/media/vs-code.png){fig-align="center" width=80%}
+
+:::{.callout-tip}
+Per altre informazioni sull'uso dell'estensione Foundry Toolkit per Visual Studio Code, vedere [Foundry Toolkit for Visual Studio Code](https://code.visualstudio.com/docs/intelligentapps/overview).
+:::
+
+### GitHub e GitHub Copilot
+GitHub è la piattaforma più popolare al mondo per il controllo del codice sorgente e la gestione di DevOps e può essere un elemento fondamentale di qualsiasi attività di sviluppo del team. Visual Studio e VS Code offrono l'integrazione nativa con GitHub e l'accesso a GitHub Copilot; un assistente di intelligenza artificiale che può migliorare significativamente la produttività e l'efficacia degli sviluppatori.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/prepare-azure-ai-development/media/github-copilot.png){fig-align="center" width=80%}
+
+:::{.callout-tip}
+Per altre informazioni sull'uso di GitHub Copilot in Visual Studio Code, vedere [GitHub Copilot in VS Code](https://code.visualstudio.com/docs/copilot/overview).
+:::
+
+### Linguaggi di programmazione, API e SDK
+È possibile sviluppare applicazioni di intelligenza artificiale usando molti linguaggi e framework di programmazione comuni, tra cui Microsoft C#, Python, Node, TypeScript, Java e altri. Quando si creano soluzioni di intelligenza artificiale in Azure, alcune API e SDK comuni che è consigliabile usare includono:
+
+- [Microsoft Foundry SDK](https://learn.microsoft.com/it-it/azure/foundry/how-to/develop/sdk-overview), che consente di scrivere codice per connettersi a progetti foundry Microsoft e accedere a asset specifici di Foundry, ad esempio agenti e archivi conoscenze di Foundry IQ.
+- L'[API OpenAI](https://learn.microsoft.com/it-it/azure/foundry/openai/latest), che consente di usare gli SDK OpenAI per compilare applicazioni di chat basate su modelli Foundry che supportano la sintassi OpenAI.
+- [SDK degli strumenti Foundry](https://learn.microsoft.com/it-it/azure/ai-services/reference/sdk-package-resources): librerie specifiche per il servizio di intelligenza artificiale per più linguaggi di programmazione e framework che consentono di utilizzare le risorse degli strumenti Foundry nel tuo abbonamento. È anche possibile usare gli strumenti Foundry tramite le [API REST](https://learn.microsoft.com/it-it/azure/ai-services/reference/rest-api-resources).
+
+## Intelligenza artificiale responsabile
+
+È importante che i software engineer considerino l'impatto del software sugli utenti e sulla società in generale; incluse le considerazioni relative all'uso responsabile. Quando l'applicazione è intrisa di intelligenza artificiale, queste considerazioni sono particolarmente importanti a causa della natura del funzionamento dei sistemi di intelligenza artificiale e del modo in cui determinano le decisioni, spesso in base a modelli probabilistici, che a loro volta dipendono dai dati con cui sono stati sottoposti a training.
+
+La natura umana delle soluzioni di intelligenza artificiale è un vantaggio significativo per rendere le applicazioni semplici da usare, ma può anche portare gli utenti a posizionare una grande fiducia nella capacità dell'applicazione di prendere decisioni corrette. Il rischio di recare danno a persone o gruppi attraverso stime errate o l'uso improprio delle funzionalità di intelligenza artificiale è un problema importante e i progettisti di software che creano soluzioni abilitate per l'intelligenza artificiale devono porre la dovuta attenzione per attenuare i rischi e garantire equità, affidabilità e protezione adeguata da danni o discriminazioni.
+
+Verranno ora illustrati alcuni principi di base per l'IA responsabile che sono stati adottati in Microsoft.
+
+### Equità ![](https://learn.microsoft.com/it-it/training/wwl-data-ai/prepare-azure-ai-development/media/fairness.png){width=10%}
+
+I sistemi di IA devono trattare tutte le persone in modo equo. Si supponga, ad esempio, di creare un modello di Machine Learning per supportare un'applicazione di approvazione dei prestiti per una banca. Il modello deve effettuare stime sul fatto che il prestito debba essere approvato o meno senza incorporare alcun pregiudizio basato sul sesso, l'etnia o altri fattori che potrebbero comportare un vantaggio o uno svantaggio ingiusto a gruppi specifici di candidati.
+
+L'equità dei sistemi di machine learning è un'area altamente attiva della ricerca in corso e alcune soluzioni software esistono per valutare, quantificare e attenuare l'iniquità nei modelli di Machine Learning. Tuttavia, gli strumenti da soli non sono sufficienti per garantire l'equità. Prendere in considerazione l'equità fin dall'inizio del processo di sviluppo delle applicazioni; esaminare attentamente i dati di training per assicurarsi che sia rappresentativo di tutti i soggetti potenzialmente interessati e valutare le prestazioni predittive per le sottosezioni della popolazione degli utenti durante il ciclo di vita dello sviluppo.
+
+### Affidabilità e sicurezza ![](https://learn.microsoft.com/it-it/training/wwl-data-ai/prepare-azure-ai-development/media/reliability-safety.png){width=10%}
+
+I sistemi di intelligenza artificiale devono eseguire in modo affidabile e sicuro. Si consideri, ad esempio, un sistema software basato sull'IA per un veicolo autonomo; o un modello di Machine Learning che diagnostica i sintomi dei pazienti e consiglia le prescrizioni. La mancanza di affidabilità in questi tipi di sistemi può comportare un rischio significativo per la vita umana.
+
+Come per qualsiasi software, lo sviluppo di applicazioni software basate su intelligenza artificiale deve essere sottoposto a rigorosi processi di test e gestione della distribuzione per assicurarsi che funzionino come previsto prima del rilascio. Inoltre, i software engineer devono tenere conto della natura probabilistica dei modelli di Machine Learning e applicare soglie appropriate quando si valutano i punteggi di attendibilità per le stime.
+
+### Privacy e sicurezza ![](https://learn.microsoft.com/it-it/training/wwl-data-ai/prepare-azure-ai-development/media/privacy-security.png){width=10%}
+
+I sistemi di intelligenza artificiale devono essere sicuri e devono rispettare la privacy. I modelli di Machine Learning su cui si basano i sistemi di intelligenza artificiale si basano su grandi volumi di dati, che possono contenere dettagli personali che devono essere mantenuti privati. Anche dopo il training dei modelli e il sistema è in produzione, usano nuovi dati per effettuare stime o intraprendere azioni che possono essere soggette a problemi di privacy o sicurezza; è quindi necessario implementare misure di sicurezza appropriate per proteggere i dati e i contenuti dei clienti.
+
+### Inclusività ![](https://learn.microsoft.com/it-it/training/wwl-data-ai/prepare-azure-ai-development/media/inclusiveness.png){width=10%}
+
+I sistemi di intelligenza artificiale devono consentire a tutti e coinvolgere le persone. L'IA dovrebbe portare benefici a tutte le parti della società, indipendentemente dalla capacità fisica, dal sesso, dall'orientamento sessuale, dall'etnia o da altri fattori.
+
+Un modo per ottimizzare l'inclusione consiste nel garantire che la progettazione, lo sviluppo e il test dell'applicazione includano l'input da un gruppo di persone il più possibile diversificato.
+
+### Trasparenza ![](https://learn.microsoft.com/it-it/training/wwl-data-ai/prepare-azure-ai-development/media/transparency.png){width=10%}
+
+I sistemi di intelligenza artificiale devono essere comprensibili. Gli utenti devono essere resi pienamente consapevoli dello scopo del sistema, del suo funzionamento e delle limitazioni previste.
+
+Ad esempio, quando un sistema di intelligenza artificiale è basato su un modello di Machine Learning, è consigliabile in genere rendere gli utenti consapevoli dei fattori che possono influire sull'accuratezza delle stime, ad esempio il numero di casi usati per eseguire il training del modello o le funzionalità specifiche che hanno la maggiore influenza sulle stime. È anche necessario condividere informazioni sul punteggio di attendibilità per le stime.
+
+Quando un'applicazione di intelligenza artificiale si basa su dati personali, ad esempio un sistema di riconoscimento facciale che accetta immagini di persone per riconoscerle; è necessario chiarire all'utente come vengono usati e conservati i dati e chi può accedervi.
+
+### Responsabilità ![](https://learn.microsoft.com/it-it/training/wwl-data-ai/prepare-azure-ai-development/media/accountability.png){width=10%}
+
+Le persone devono essere responsabili dei sistemi di intelligenza artificiale. Anche se molti sistemi di intelligenza artificiale sembrano funzionare in modo autonomo, in definitiva è responsabilità degli sviluppatori che hanno eseguito il training e convalidato i modelli usati e definito la logica che basa le decisioni sulle stime del modello per garantire che il sistema complessivo soddisfi i requisiti di responsabilità. Per soddisfare questo obiettivo, i progettisti e gli sviluppatori della soluzione basata sull'intelligenza artificiale devono lavorare all'interno di un framework di governance e principi organizzativi che assicurano che la soluzione soddisfi gli standard responsabili e legali chiaramente definiti.
+
+:::{.callout-tip}
+Per altre informazioni sui principi di Microsoft per l'IA responsabile, vedere [sito di intelligenza artificiale responsabile Microsoft](https://microsoft.com/ai/responsible-ai).
+:::
+
+# Selezionare, distribuire e valutare i modelli di Microsoft Foundry
+
+## Introduzione
+
+La creazione di applicazioni di intelligenza artificiale generative efficaci richiede la selezione del modello di base appropriato per il caso d'uso specifico. Con migliaia di modelli disponibili, è necessario un approccio strutturato per individuare, confrontare, distribuire e verificare che un modello soddisfi i requisiti.
+
+Si consideri uno scenario in cui si sta creando un chatbot di supporto clienti basato su intelligenza artificiale per una società di vendita al dettaglio. È necessario selezionare un modello linguistico in grado di comprendere le domande dei clienti, fornire risposte accurate e mantenere standard di tono e sicurezza appropriati. Ma come si sceglie dal vasto catalogo di modelli disponibili? Come si sa se un modello funziona correttamente per le esigenze specifiche? E dopo la distribuzione, come si misura e si migliorano le prestazioni?
+
+Il portale di Microsoft Foundry offre una piattaforma completa per l'intero flusso di lavoro. È possibile esplorare oltre 1.900 modelli da provider come Microsoft, Anthropic, OpenAI, Meta e Hugging Face. È possibile confrontare i modelli usando benchmark standard del settore per qualità, sicurezza, costi e prestazioni. Dopo aver selezionato un modello, distribuirlo in un endpoint in cui l'applicazione può usarla. Infine, si valutano le prestazioni del modello usando metriche automatizzate e test manuali per assicurarsi che soddisfi i requisiti di qualità e sicurezza.
+
+In questo modulo viene illustrato come usare il portale di Microsoft Foundry per selezionare, distribuire e valutare i modelli dal catalogo dei modelli. Si apprenderà come prendere decisioni informate sulla selezione del modello, comprendere diverse opzioni di distribuzione e valutare le prestazioni del modello usando vari approcci di valutazione.
+
+Alla fine di questo modulo, sarai in grado di:
+
+- Esplorare e filtrare i modelli nel catalogo dei modelli
+- Confrontare i modelli usando le metriche di benchmark per qualità, sicurezza, costi e prestazioni
+- Implementare un modello in un endpoint e testarlo nel playground
+- Valutare le prestazioni del modello usando approcci manuali e automatizzati
+- Comprendere le diverse metriche di valutazione e quando usarle
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+## Esplorare il catalogo dei modelli
+
+Il catalogo dei modelli foundry funge da hub centrale per l'individuazione e il confronto dei modelli di intelligenza artificiale. Con oltre 1.900 modelli disponibili da diversi provider, sono necessari modi efficaci per filtrare e trovare modelli che soddisfano i requisiti specifici.
+
+Il catalogo dei modelli include due ampie categorie di modello:
+
+- **Modelli Foundry venduti direttamente da Azure**:
+  Questi modelli vengono fatturati direttamente tramite la sottoscrizione di Azure e includono modelli OpenAI di Azure, nonché modelli di Microsoft e altri provider.
+
+- **Modelli Foundry da partner e dalla community**:
+  Questi modelli vengono forniti da partner attendibili e dalla community; ognuno con le proprie licenze e prezzi.
+
+### Ricerca di modelli nel catalogo dei modelli
+
+L'interfaccia utente del catalogo dei modelli nel portale foundry offre un modo semplice per cercare il modello appropriato per le proprie esigenze. Ogni modello ha una scheda modello che mostra le informazioni chiave; tra cui provider, funzionalità, metriche di benchmark, considerazioni sull'intelligenza artificiale responsabile e opzioni di distribuzione.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/model-catalog-evaluate/media/model-catalog.png){fig-align="center" width=80%}
+
+È possibile cercare modelli per parola chiave ed è possibile filtrare in base agli attributi seguenti:
+
+- **Raccolta**: i modelli sono organizzati in raccolte, ad esempio modelli forniti direttamente in Azure o modelli nel repository Hugging Face.
+- **Funzionalità**: capacità specifiche del modello, tra cui ragionamento (risoluzione dei problemi complessi), chiamata di strumenti (integrazione di API e funzioni) o elaborazione bidirezionale (testo, immagini, audio).
+- **Origine**: provider di modelli, tra cui Azure OpenAI, Microsoft, Cohere, Mistral, Meta, Anthropic e altri.
+- **Attività di inferenza**: attività specifiche come generazione di testo, riepilogo, traduzione, generazione di immagini, sintesi vocale o altre attività comuni di intelligenza artificiale.
+- **Metodi di ottimizzazione**: tecniche supportate per l'ottimizzazione di un modello.
+- **Settore**: modelli addestrati su set di dati specifici del settore. Questi modelli specializzati spesso superano i modelli per utilizzo generico nei rispettivi domini.
+
+### Informazioni sui tipi di modello di intelligenza artificiale generativi
+Durante l'esplorazione del catalogo, si riscontrano diverse categorie di modelli progettati per diversi casi d'uso. In termini generali, è possibile classificare i modelli linguistici come:
+
+- **Modelli di linguaggio di grandi dimensioni (LLM)** come GPT-5, Mistral Large e Llama 3 70B progettati per attività che richiedono un ragionamento approfondito, una generazione di contenuto complessa e una conoscenza approfondita del contesto. Questi modelli sono eccellenti nelle applicazioni sofisticate, ma richiedono più risorse di calcolo.
+- **Modelli di linguaggio piccoli (SLM)** come Phi-4, modelli OSS Mistral e Llama 3 8B, che offrono efficienza e convenienza nel gestire le attività comuni di elaborazione del linguaggio naturale. Sono ideali per scenari in cui la velocità e i costi sono più importanti rispetto alla gestione delle attività di ragionamento più complesse. Le SLM possono essere eseguite su dispositivi edge o hardware di fascia inferiore.
+
+### Modelli di completamento e di ragionamento per le chat
+La maggior parte dei modelli linguistici nel catalogo sono modelli di completamento chat progettati per generare risposte di testo coerenti e contestualmente appropriate. Questi modelli alimentano le interfacce conversazionali e le applicazioni di generazione di contenuti.
+
+Per scenari che richiedono prestazioni più elevate in attività complesse come matematica, codifica, scienza, strategia e logistica, i modelli di ragionamento come Claude Opus 4.6 offrono funzionalità avanzate di risoluzione dei problemi. Questi modelli possono suddividere i problemi complessi e mostrare il loro processo di ragionamento.
+
+### Modelli specializzati
+Il catalogo include anche modelli specifici dell'attività:
+
+L'**incorporamento di modelli** come Ada e Cohere converte il testo in rappresentazioni numeriche. Questi modelli consentono la ricerca semantica, i sistemi di raccomandazione e gli scenari rag (Retrieval Augmented Generation) in cui è necessario trovare informazioni pertinenti in base al significato anziché alle corrispondenze esatte delle parole chiave.
+
+I **modelli di generazione di immagini** come GPT-image-1 creano immagini da descrizioni di testo. Usarli per generare materiali di marketing, illustrazioni o modelli di simulazione.
+
+I **modelli di generazione di video** come Sora 2 creano contenuto video da descrizioni di testo.
+
+I **modelli di analisi delle immagini** come GPT-4.1 possono accettare input bidirezionali , tra cui testo e immagini; e generare l'output del linguaggio naturale in base a richieste che includono immagini per l'analisi.
+
+I **modelli di sintesi vocale** come GPT-4o-tts possono convertire l'input basato su testo in sintesi vocale.
+
+**Modelli di conversione da voce a testo** come GPT-4o-transcribe possono convertire dati audio contenenti parlato in trascrizioni di testo.
+
+### Modelli regionali e specifici del dominio
+Alcuni modelli sono ottimizzati per lingue, aree o settori specifici. Quando sono necessarie prestazioni specializzate in un particolare dominio o linguaggio, questi modelli spesso superano le alternative per utilizzo generico. Alcuni esempi includono modelli addestrati su letteratura medica, documenti legali o corpora linguistici specifici.
+
+## Selezionare i modelli usando i benchmark
+
+Prima di distribuire un modello, è necessario comprendere le prestazioni in diverse dimensioni. I benchmark dei modelli forniscono dati obiettivi e misurabili per confrontare i modelli e prendere decisioni di selezione informate. Il portale di Microsoft Foundry offre strumenti di benchmarking completi organizzati in metriche relative a qualità, sicurezza, costi e prestazioni.
+
+### Benchmark del modello Access
+È possibile esplorare i benchmark in due modi all'interno del portale di Microsoft Foundry:
+
+Nel catalogo dei modelli visualizzare il tabellone punteggi del modello per visualizzare le classificazioni comparative in tutti i modelli disponibili. Questa visualizzazione consente di identificare modelli con prestazioni migliori per metriche o scenari specifici. Nella classifica vengono visualizzati i modelli principali classificati in base alla qualità, alla sicurezza, ai costi stimati e alla velocità effettiva.
+
+Per i benchmark dettagliati su un modello specifico, aprire la scheda del modello e selezionare la scheda Benchmark. Questa visualizzazione mostra le prestazioni del singolo modello tra varie metriche e set di dati, con grafici di confronto che lo posizionano rispetto a modelli simili.
+
+
+### Benchmark di qualità
+I benchmark di qualità valutano l'accuratezza, la coerenza e l'adeguatetà di un modello. Queste metriche usano set di dati pubblici e metodi di valutazione standardizzati per garantire la coerenza.
+
+L'indice Quality offre una panoramica generale della media dei punteggi di accuratezza in più set di dati di benchmark che misurano ragionamento, conoscenza, risposte alle domande, funzionalità matematiche e competenze di codifica. I valori di indice di qualità superiore indicano prestazioni complessive più elevate nelle attività del linguaggio per utilizzo generico.
+
+I benchmark di qualità usano set di dati come:
+
+- Arena-Hard - risposta a domande antagoniste
+- BIG-Bench Hard - Funzionalità di ragionamento
+- GPQA - Domande multidisciplinari a livello di laurea magistrale
+- HumanEval+ e MBPP+ - Attività di generazione del codice
+- MATH - ragionamento matematico
+- MMLU-Pro - Valutazione generale delle conoscenze
+- IFEval - istruzione seguente
+
+I punteggi di benchmark sono indici normalizzati che vanno da zero a uno, dove i valori più elevati indicano prestazioni migliori.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/model-catalog-evaluate/media/model-leaderboard.png){fig-align="center" width=80%}
+
+### Benchmark di sicurezza
+Le metriche di sicurezza assicurano che i modelli non generino contenuto dannoso, distorto o non appropriato. Questi benchmark sono fondamentali per le applicazioni esposte agli utenti finali, in particolare nei settori regolamentati o negli scenari rivolti ai clienti.
+
+Microsoft Foundry valuta i modelli in più dimensioni di sicurezza:
+
+Il rilevamento di comportamenti dannosi usa il benchmark HarmBench per misurare il grado di resistenza dei modelli alla generazione di contenuto non sicuro. La valutazione calcola il tasso di successo degli attacchi (ASR), in cui i valori più bassi indicano modelli più sicuri e affidabili. HarmBench testa tre aree funzionali:
+
+- Comportamenti dannosi standard - cybercrime, attività illegali, danni generali
+- Comportamenti contestualmente dannosi - disinformazioni, molestie, bullismo
+- Violazioni del copyright - riproduzione di materiale protetto da copyright
+
+Il rilevamento di contenuto tossico usa il set di dati ToxiGen per misurare il modo in cui i modelli identificano il parlato di odio antagonista e implicito. I punteggi F1 più alti indicano prestazioni di rilevamento migliori tra i riferimenti ai gruppi di minoranza.
+
+Le conoscenze specialistiche sensibili usano il benchmark WMDP (Proxy di Armi di Distruzione di Massa) per misurare le conoscenze del modello in biosicurezza, cybersecurity e sicurezza chimica. I punteggi WMDP più elevati indicano una maggiore conoscenza delle funzionalità potenzialmente pericolose.
+
+I punteggi di sicurezza consentono di comprendere l'affidabilità del modello, particolarmente importante per le applicazioni rivolte ai clienti in cui l'output dannoso pone problemi significativi.
+
+### Benchmark dei costi
+Comprendere l'impatto finanziario dell'utilizzo del modello consente di bilanciare i requisiti di qualità con i vincoli di budget. I benchmark dei costi in Microsoft Foundry visualizzano i prezzi delle distribuzioni di API serverless e dei modelli OpenAI di Azure.
+
+Il costo per token di input mostra il prezzo per l'elaborazione di 1 milione di token di input (il testo inviato al modello).
+
+Il costo per token di output indica il prezzo per la generazione di 1 milione di token di output (il testo prodotto dal modello).
+
+Il costo stimato combina i costi di input e output usando un tipico rapporto di 3:1 (tre token di input per ogni token di output), offrendo un singolo numero per il confronto. I valori inferiori indicano modelli più convenienti.
+
+I benchmark dei costi consentono di identificare i modelli che offrono la qualità necessaria a un punto di prezzo adatto ai modelli di utilizzo e al budget dell'applicazione.
+
+### Parametri di prestazione
+Le metriche delle prestazioni misurano la velocità e l'efficienza dei modelli a rispondere alle richieste. Questi benchmark sono importanti per le applicazioni in tempo reale in cui l'esperienza utente dipende dalla velocità di risposta.
+
+Le misurazioni della latenza includono:
+
+- Media latenza - Tempo medio in secondi per elaborare una richiesta
+- Latenza P50 (mediana) - il 50% delle richieste viene completato più velocemente di questo intervallo di tempo
+- Latenza P90 - Il 90% delle richieste viene completato più velocemente di questo tempo
+- Latenza P95 - Il 95% delle richieste si completano più velocemente di questo tempo
+- Latenza P99 - 99% di richieste completate più velocemente di questa volta
+- Tempo per il primo token (TTFT): tempo fino all'arrivo del primo token quando si usa lo streaming
+
+Le misurazioni della velocità effettiva includono:
+
+- Token generati per secondo (GTPS): token di output generati al secondo
+- Token totali al secondo (TTPS): token combinati di input e output elaborati al secondo
+- Tempo tra i token: intervallo tra la ricezione di token consecutivi
+
+La classifica riepiloga le prestazioni usando il tempo medio al primo token (minore è miglior) e il tempo medio di token generati al secondo (più alto è migliore). I modelli a bassa latenza e velocità effettiva elevata offrono esperienze utente migliori nelle applicazioni interattive. Per i processi di elaborazione batch in cui la velocità è inferiore al costo, è possibile classificare in ordine di priorità altri fattori.
+
+### Usare le classifiche e le funzionalità di confronto
+Il tabellone punteggi del modello consente di visualizzare i modelli principali per metriche specifiche. È possibile ordinare in base alla qualità, alla sicurezza, ai costi stimati e alla velocità effettiva per identificare i modelli che meglio soddisfano i requisiti.
+
+Le classifiche degli scenari aiutano a trovare modelli ottimizzati per casi d'uso specifici, come ragionamento, codifica, matematica, risposta alle domande o attinenza. Se l'applicazione esegue il mapping a uno scenario specifico, iniziare con la classifica dello scenario pertinente anziché basarsi esclusivamente sull'indice di qualità complessivo.
+
+I grafici di compromesso visualizzano due metriche contemporaneamente, ad esempio qualità rispetto a costo o qualità rispetto a produzione. Queste visualizzazioni consentono di trovare l'equilibrio ottimale per i requisiti. Usare l'elenco a discesa per confrontare la qualità rispetto a costi, velocità effettiva o sicurezza. I modelli più vicini all'angolo superiore destro del grafico funzionano bene su entrambe le metriche. Un modello leggermente meno accurato, ma notevolmente più veloce o più economico potrebbe soddisfare le proprie esigenze.
+
+Il confronto affiancato consente di selezionare due o tre modelli dalla classifica e confrontarli tra più dimensioni:
+
+- Benchmark delle prestazioni (qualità, sicurezza, capacità di trasmissione)
+- Dettagli del modello (finestra di contesto, dati di training, lingue supportate)
+- Endpoint supportati (opzioni di distribuzione)
+- Supporto delle funzionalità (chiamata di funzione, output strutturato, visione)
+
+Selezionare i modelli selezionando le caselle accanto ai nomi e quindi scegliere Confronta per aprire la visualizzazione di confronto dettagliata.
+
+## Distribuire modelli agli endpoint
+
+Dopo aver selezionato un modello dal catalogo, distribuirlo per renderlo accessibile tramite endpoint che le applicazioni possono usare. Il portale di Microsoft Foundry guides l'utente tramite il processo di distribuzione e fornisce strumenti per testare immediatamente il modello distribuito.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/model-catalog-evaluate/media/deploy-model.png){fig-align="center" width=80%}
+
+### Informazioni sui tipi di distribuzione
+Microsoft Foundry supporta diversi tipi di distribuzione, ognuno dei quali offre caratteristiche diverse per la residenza dei dati, il ridimensionamento e la fatturazione:
+
+- Le distribuzioni di modelli Standard globali possono usare qualsiasi area di Azure in base al pagamento per token. Sono ideali per i carichi di lavoro generali e forniscono la quota più elevata.
+- Le distribuzioni con provisioning globale possono usare qualsiasi area di Azure e il loro uso si basa su unità di elaborazione con provisioning(PTU) prenotate per fornire una velocità effettiva elevata prevedibile.
+- Le distribuzioni globali di Batch possono usare qualsiasi area di Azure con uno sconto di 50% per processi asincroni di grandi dimensioni entro 24 ore.
+- Le distribuzioni standard della zona dati garantiscono che i dati rimangano all'interno di una zona dati specifica in base al pagamento per token. Sono ideali per gli scenari in cui è necessaria la conformità dell'area dati UE/Stati Uniti.
+- Le distribuzioni con provisioning della zona dati offrono una velocità effettiva prevedibile basata su PTU prenotate in una zona dati.
+- Le distribuzioni batch della zona dati sono progettate per per progetti batch asincroni di grandi dimensioni in una zona dati
+- Le distribuzioni standard vengono distribuite all'interno di una singola area in base al pagamento per token. Sono ideali quando è necessaria la conformità della residenza dei dati a livello di area o per scenari a basso volume.
+- Le distribuzioni con provisioning a livello di area offrono PTU prenotate in una singola area.
+- Sviluppatore Le distribuzioni per sviluppatori utilizzano qualsiasi area di Azure a pagamento per token e sono destinate esclusivamente alla valutazione di modelli perfezionati.
+
+Ogni modello nel catalogo indica i tipi di distribuzione supportati. Il portale seleziona automaticamente l'opzione di distribuzione migliore in base all'ambiente e ai requisiti del modello. Le distribuzioni standard globali nelle risorse Foundry devono essere usate quando possibile per le funzionalità massime.
+
+### Distribuire un modello
+Per distribuire un modello dal portale di Microsoft Foundry:
+
+Passare innanzitutto al modello selezionato nel catalogo modelli. Nella home page del portale Foundry, selezionare Scopri nella barra di navigazione e quindi Modelli nel riquadro sinistro. Aprire la scheda del modello per esaminare le specifiche e i tipi di distribuzione supportati.
+
+Selezionare Distribuisci per avviare il processo di distribuzione. Puoi scegliere:
+
+- Impostazioni predefinite da distribuire rapidamente con le configurazioni consigliate
+- Impostazioni personalizzate per personalizzare le opzioni di distribuzione
+
+Se il modello richiede una sottoscrizione Azure Marketplace (comune per i modelli dei partner e della community), vengono visualizzate le condizioni per l'utilizzo. Esaminare queste condizioni e selezionare Accetta e continua ad accettarle. I modelli venduti direttamente da Azure, ad esempio Azure modelli OpenAI come GPT-4o-mini, non richiedono sottoscrizioni del Marketplace.
+
+Configurare le impostazioni di distribuzione:
+
+- Nome distribuzione: per impostazione predefinita, il sistema usa il nome del modello. È possibile modificarlo per creare nomi significativi per più distribuzioni dello stesso modello. Durante l'inferenza, il codice usa questo nome di distribuzione nel model parametro per instradare le richieste.
+- Tipo di distribuzione: il portale seleziona automaticamente il tipo di distribuzione appropriato in base al modello e all'ambiente. Ogni modello supporta diversi tipi di distribuzione che offrono diverse garanzie di residenza o velocità effettiva dei dati.
+
+Per le distribuzioni di calcolo gestite, è anche possibile configurare:
+
+- SKU della macchina virtuale: scegliere tra i tipi di macchina virtuale supportati. È necessaria Azure Machine Learning quota di calcolo per lo SKU selezionato nella sottoscrizione.
+- Numero di istanze: specificare il numero di istanze da distribuire per la distribuzione del carico e la ridondanza.
+
+Dopo aver configurato tutte le impostazioni, selezionare Distribuisci. Al termine della distribuzione, si arriva a Foundry Playground in cui è possibile testare il modello in modo interattivo. Verificare che lo stato della distribuzione sia Completato nell'elenco di distribuzione.
+
+### Gestire i modelli distribuiti
+Dopo la distribuzione, è possibile gestire i modelli dalla sezione Compilazione nel portale di Microsoft Foundry. Selezionare Build nella barra di navigazione, quindi Modelli nel riquadro sinistro per visualizzare l'elenco delle implementazioni nella risorsa.
+
+Nell'elenco di distribuzione selezionare un modello specifico per visualizzarne i dettagli:
+
+- Configurazione e stato della distribuzione
+- URL dell'endpoint per l'accesso all'API
+- Chiavi di autenticazione o token
+- Monitoraggio e metriche di utilizzo
+- Opzione per modificare le impostazioni di distribuzione o eliminare la distribuzione
+
+La pagina dei dettagli della distribuzione fornisce le informazioni necessarie alle applicazioni per connettersi e usare il modello.
+
+### Test nell'area giochi
+Il portale di Microsoft Foundry include playground interattivi in cui si testano immediatamente i modelli distribuiti, senza scrivere codice. Al termine della distribuzione, si arriva automaticamente nel playground oppure è possibile selezionare una distribuzione dall'elenco dei modelli per aprire il playground.
+
+Il playground pre-seleziona il tuo ambiente di distribuzione, in modo da poter avviare immediatamente i test. Nell'interfaccia della chat:
+
+Immettere le richieste nella finestra di messaggio e osservare le risposte. Il playground visualizza sia l'input che l'output generato dal modello, consentendo di comprendere il comportamento e la qualità.
+
+Sperimentare diversi tipi di richieste per testare varie funzionalità:
+
+- Domande semplici per verificare la comprensione di base
+- Problemi complessi di ragionamento in più passaggi
+- Richieste di formati o stili specifici
+- Casi limite che potrebbero rivelare limitazioni
+
+Modificare i messaggi di sistema per guidare il comportamento del modello. I messaggi di sistema impostano contesto, tono e istruzioni applicabili a tutti gli input dell'utente. Ad esempio, è possibile indicare al modello di "rispondere come rappresentante customer service" o "fornire spiegazioni tecniche concise".
+
+Modificare parametri come temperatura (creatività vs. coerenza), token massimi (limiti di lunghezza della risposta) e top-p (nucleus sampling) per ottimizzare il comportamento di generazione.
+
+Selezionare la scheda Codice per visualizzare esempi di come chiamare il modello distribuito a livello di codice. Gli esempi di codice mostrano l'autenticazione, la configurazione dell'endpoint e la formattazione delle richieste in linguaggi come Python, C# e JavaScript. È possibile copiare questi esempi direttamente nell'applicazione.
+
+Il playground funge da ambiente di sviluppo per l'ingegneria dei prompt e il test prima di integrare il modello nell'applicazione.
+
+### Accesso ai modelli tramite codice programmatico
+Quando si è pronti per integrare il modello nell'applicazione, sono necessarie tre informazioni chiave dai dettagli della distribuzione:
+
+URL endpoint: endpoint API in cui l'applicazione invia richieste. Microsoft Foundry supporta gli endpoint di progetto per le funzionalità specifiche di Foundry e gli endpoint OpenAI v1 per una compatibilità generale con le API del modello OpenAI.
+
+Chiave di autenticazione: la chiave privata o il token presentato dall'applicazione per autenticare le richieste. In alternativa, è possibile utilizzare l'autenticazione Microsoft Entra ID e chiedere all'applicazione di presentare un token di autenticazione basato sulla sua identità. L'autenticazione con ID entra è consigliata per gli scenari di produzione.
+
+Nome distribuzione: nome specificato durante la model distribuzione, usato nel parametro delle richieste API per indirizzare alla distribuzione specifica.
+
+L'applicazione usa questi dettagli per costruire richieste API. Il portale di Microsoft Foundry fornisce SDK e documentazione dell'API REST per vari linguaggi di programmazione, insieme agli esempi di codice che illustrano la formattazione delle richieste, l'autenticazione e la gestione delle risposte.
+
+Con il modello distribuito e testato, è possibile integrarlo nelle applicazioni o procedere a una valutazione più completa usando metriche automatizzate e set di dati di test.
+
+## Valutare le prestazioni del modello
+
+La valutazione del modello distribuito garantisce che soddisfi gli standard di qualità, fornisca risposte accurate e migliori continuamente nel tempo. Il portale di Microsoft Foundry offre più approcci alla valutazione, dal test manuale alle metriche automatizzate e ai flussi di valutazione completi.
+
+### Perché valutare i modelli
+La valutazione svolge diversi scopi critici nello sviluppo di applicazioni di intelligenza artificiale generative:
+
+La garanzia di qualità identifica i problemi e garantisce che il modello fornisca risposte accurate e pertinenti. L'individuazione dei problemi durante la valutazione anziché la produzione protegge gli utenti e la reputazione dell'organizzazione.
+
+La soddisfazione degli utenti migliora quando i modelli offrono in modo coerente risposte utili e appropriate. La valutazione consente di comprendere in che modo gli utenti sperimentano l'applicazione e dove i miglioramenti hanno un impatto maggiore.
+
+Il miglioramento continuo deriva dall'analisi dei risultati della valutazione per identificare le opportunità di miglioramento. La valutazione regolare man mano che si aggiornano i prompt, si aggiungono funzionalità o si riaddestrano i modelli garantisce una qualità continua.
+
+La verifica di conformità e sicurezza conferma che il modello rispetta i criteri, evita la generazione di contenuti dannosi e rispetta i requisiti di privacy e protezione dei dati degli utenti.
+
+### Approcci di valutazione manuali
+La valutazione manuale coinvolge revisori umani che valutano le risposte del modello. Sebbene richieda molto tempo, la valutazione manuale fornisce informazioni che le metriche automatizzate non possono catturare.
+
+I test interattivi nel playground consentono di esplorare il comportamento del modello in modo qualitativo. Si immettono richieste diverse, si osservano le risposte e si segnalino problemi come informazioni non corrette, tono inappropriato o mancato rispetto delle istruzioni. Questo test esplorativo consente di comprendere i punti di forza e le limitazioni di un modello.
+
+Per ottimizzare la progettazione dell'applicazione, è possibile testare i modelli affiancati nel playground, sincronizzando le istruzioni di sistema e le richieste per confrontare le risposte.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/model-catalog-evaluate/media/chat-playground.png){fig-align="center" width=80%}
+
+La revisione strutturata implica la creazione di un set di test case che rappresentano i casi d'uso dell'applicazione. Gli analizzatori umani valutano le risposte in base a criteri come:
+
+- Pertinenza: la risposta risolve la domanda o la richiesta?
+- Informativa: fornisce informazioni sufficienti e utili?
+- Engagement: la risposta è interessante e adeguatamente conversazionale?
+- Accuratezza: i fatti e le affermazioni sono corretti
+- Sicurezza: la risposta evita contenuti dannosi, distorti o inappropriati?
+
+Gli analizzatori usano in genere scale di classificazione (ad esempio 1-5) per ogni criterio. Le valutazioni aggregate in più test case forniscono misure quantitative della qualità complessiva.
+
+Gli studi utente raccolgono feedback da utenti effettivi o rappresentativi che interagiscono con l'applicazione. I commenti e i suggerimenti degli utenti rivelano problemi reali che si potrebbero perdere nei test controllati, ad esempio formulazioni confuse, contesto mancante o aspettative non soddisfatte.
+
+La valutazione manuale integra approcci automatizzati acquisendo aspetti di qualità soggettivi come la soddisfazione dell'utente, l'adeguatezza contestuale e l'allineamento del marchio che le metriche da sole non possono misurare.
+
+### Metriche di valutazione automatizzate
+La valutazione automatizzata usa metriche standard per valutare automaticamente gli output del modello. Queste valutazioni vengono ridimensionate in modo efficiente e forniscono misurazioni coerenti e oggettive.
+
+Il portale di Microsoft Foundry supporta diverse categorie di metriche di valutazione, tra cui:
+
+- Le **metriche di qualità della generazione** valutano la qualità complessiva della risposta:
+  - Correttezza contestuale: determina se le risposte sono basate sul contesto fornito anziché sulla speculazione. Groundedness Pro offre una valutazione binaria (fondato o non fondato) utile per i requisiti di accuratezza fattuale.
+  - Rilevanza: misura se le risposte rispondono alla domanda o alla richiesta dell'utente in modo appropriato.
+  - Coerenza: valuta se le risposte vengono propagate logicamente e mantengono idee coerenti.
+  - Fluency: valuta la correttezza linguistica e la qualità del linguaggio naturale.
+
+- **Le metriche relative ai rischi e alla sicurezza** identificano il potenziale contenuto dannoso:
+  - Contenuti sull'autolesionismo: rileva le risposte che parlano o incoraggiano l'autolesionismo
+  - Contenuto odioso e ingiusto: identifica pregiudizi, discriminazione o dichiarazioni odiose
+  - Contenuto violento: contrassegna le risposte contenenti o promuovere la violenza
+  - Contenuto sessuale: rileva contenuti sessuali inappropriati
+  - Materiale protetto: identifica il potenziale copyright o la riproduzione di contenuti proprietari
+  - Attacco indiretto (jailbreak): valuta la vulnerabilità ai tentativi di manipolazione
+
+Per le metriche di danno al contenuto, i risultati vengono aggregati come percentuale di difetti, ovvero la percentuale di risposte che superano una soglia di gravità (in genere media). Per il materiale protetto e l'attacco indiretto, la percentuale di difetti viene calcolata come `(true instances / total instances) × 100`.
+
+Quando si usa la valutazione assistita dall'intelligenza artificiale, si specifica un modello GPT per eseguire la valutazione. Questo modello di analizzatore analizza le risposte del modello distribuito e assegna i punteggi in base ai criteri selezionati.
+
+### Metriche di elaborazione del linguaggio naturale
+Le metriche NLP forniscono una valutazione matematica senza richiedere un modello di analizzatore. Queste metriche richiedono spesso dati di verità sul terreno, ovvero risposte previste o corrette per il confronto.
+
+F1-score misura il rapporto tra le parole condivise tra le risposte generate e la verità di base, bilanciando la precisione (evitando parole non corrette) e il richiamo (includendo le parole importanti). Il punteggio F1 è utile per attività come la classificazione del testo e il recupero delle informazioni.
+
+BLEU (Bilingual Evaluation Understudy) confronta n-grammi (sequenze di parole) tra testi generati e di riferimento, comunemente usati per la valutazione della traduzione automatica.
+
+METEOR (metrica per la valutazione della traduzione con ordinamento esplicito) estende BLEU tenendo conto di sinonimi, derivazione e parafrasamento, consentendo un confronto più flessibile.
+
+ROUGE (Sostituto incentrato sul richiamo per la valutazione della sintesi) sottolinea il richiamo rispetto alla precisione, rendendolo particolarmente utile per le attività di riepilogo in cui la copertura dei punti chiave è più importante rispetto all'evitare parole superflue.
+
+GLEU (Google-BLEU) è una variante di BLEU progettata per la valutazione a livello di frase.
+
+Le metriche NLP funzionano bene quando si hanno risposte definitive o testi di riferimento corretti. Sono meno adatti per la generazione aperta in cui esistono molte risposte valide.
+
+### Creare valutazioni complete
+La funzionalità di valutazione del portale di Microsoft Foundry consente di eseguire valutazioni sistematiche usando set di dati di test e più metriche contemporaneamente.
+
+È possibile basare la valutazione su uno dei seguenti elementi:
+
+- Modello: valutare un modello distribuito con richieste specificate. Il sistema genera output durante la valutazione.
+- Agente: valutare le risposte di un agente con richieste definite dall'utente.
+- Set di dati: valutare gli output pregenerati già presenti nel set di dati di test.
+
+Quando si valuta un modello o un agente, è necessario un set di dati per fornire input per la valutazione. Si dispone di tre opzioni:
+
+- Carica nuovo set di dati: specificare un file CSV o JSONL contenente test case dalla memoria locale.
+- Usare il set di dati esistente: selezionare dai set di dati caricati in precedenza nel project.
+- Genera set di dati sintetici: se mancano dati di test, il sistema può generare dati di esempio in base a una descrizione dell'argomento specificata. Specificare la risorsa per generare dati, il numero di righe e una richiesta che descrive i dati desiderati. È anche possibile caricare file per migliorare la pertinenza per l'attività specifica.
+
+Per la valutazione del set di dati in cui gli output vengono pregenerati, selezionare o caricare il set di dati contenente sia input che risposte generate dal modello.
+
+Dopo aver configurato le metriche da calcolare, i mapping dei campi per i dati di valutazione e la richiesta di sistema per il modello; è possibile avviare il processo di valutazione, che può richiedere del tempo per l'esecuzione asincrona, elaborando ogni riga nel set di dati di test rispetto alle metriche selezionate.
+
+#### Esaminare i risultati della valutazione
+Al termine della valutazione, i risultati mostrano i punteggi aggregati per le metriche selezionate e i dettagli di ogni richiesta di test.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/model-catalog-evaluate/media/evaluate-model.png#lightbox){fig-align="center" width=80%}
+
+### Esplora la libreria del valutatore
+La libreria dell'analizzatore fornisce una posizione centralizzata per visualizzare e gestire tutti gli analizzatori disponibili. Accedi dalla pagina Evaluation del progetto selezionando la scheda biblioteca dell'Evaluator.
+
+Nella libreria dell'analizzatore è possibile:
+
+- Visualizzare gli analizzatori curati da Microsoft per qualità, sicurezza e prestazioni
+- Esaminare i dettagli dell'analizzatore, inclusi nome, descrizione, parametri e file associati
+- Esaminare le richieste di annotazione per gli analizzatori di qualità per comprendere come vengono calcolate le metriche
+- Controllare le definizioni e i livelli di gravità per gli analizzatori di sicurezza
+- Gestire gli analizzatori personalizzati creati per scenari specifici
+
+La libreria supporta la gestione delle versioni, consentendo di confrontare versioni diverse, ripristinare le versioni precedenti, se necessario, e collaborare con altri utenti sugli analizzatori personalizzati.
+
+### Iterare in base alla valutazione
+I risultati della valutazione informano i passaggi successivi:
+
+Quando i punteggi sono inferiori a quelli richiesti, prendere in considerazione:
+
+- Ingegneria del prompt: perfezionamento delle istruzioni e dei messaggi di sistema
+- Modelli diversi: tentativi di modelli ottimizzati per il caso d'uso
+- Integrazione RAG: aggiunta di funzionalità di recupero per basare le risposte sui tuoi dati
+- Sintonizzazione fine: addestramento del modello nel tuo dominio specifico (se supportato)
+
+Ognuno di questi passaggi può aumentare la complessità (e talvolta i costi), quindi prendere in considerazione questo aspetto quando si apportano miglioramenti alla pianificazione.
+
+Quando le metriche di sicurezza mostrano problemi:
+
+- Filtri di contenuto: Implementazione dei servizi di Content Safety di Azure AI
+- Rinforzo dei prompt: aggiunta di istruzioni di sicurezza ai messaggi di sistema
+- Convalida dell'output: controllo delle risposte prima della visualizzazione agli utenti
+
+La valutazione regolare man mano che si apportano modifiche tiene traccia dei miglioramenti e garantisce che la qualità non regredisca. Stabilire i benchmark di valutazione all'inizio dello sviluppo, quindi rieseguire le valutazioni dopo le modifiche per misurare l'impatto in modo obiettivo.
+
+Combinando test manuali, metriche automatizzate e flussi di valutazione completi, si garantisce che il modello funzioni correttamente, soddisfi in modo sicuro i requisiti di qualità dell'applicazione.
+
+# Sviluppare un'app di chat di intelligenza artificiale generativa con Microsoft Foundry
+
+## Introduzione
+
+Gli sviluppatori che creano soluzioni di intelligenza artificiale con Microsoft Foundry devono lavorare con una combinazione di servizi e framework software. Quando si sviluppa un'applicazione di chat di intelligenza artificiale generativa, è possibile scegliere tra un'ampia gamma di opzioni per scrivere il codice necessario per creare app di intelligenza artificiale efficaci in Azure.
+
+In questo modulo si apprenderà come scegliere l'endpoint, l'SDK, l'autenticazione e le opzioni api di chat appropriate per creare un'applicazione di chat di intelligenza artificiale generativa.
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+
+:::{.callout-important}
+Alcune funzionalità di Microsoft Foundry sono attualmente in anteprima. I dettagli descritti in questo modulo sono soggetti a modifiche.
+:::
+
+## Esplora con il playground del modello
+
+Prima di scrivere codice per compilare un'applicazione di chat di intelligenza artificiale generativa, è utile esplorare le operazioni che il progetto può eseguire tramite il portale foundry. Il portale fornisce strumenti interattivi per testare i modelli e generare esempi di codice che è possibile usare come punti di partenza per le applicazioni.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/foundry-sdk/media/foundry-playground.png#lightbox){fig-align="center" width=80%}
+
+### Esplorazione con l'ambiente di sperimentazione del modello
+Il playground del modello nel portale foundry fornisce un ambiente interattivo per testare i modelli prima di scrivere codice. È possibile accedervi selezionando Model Playground dalla barra di navigazione a sinistra.
+
+Il playground ti consente di:
+
+- Inviare richieste ai modelli distribuiti e visualizzare le risposte in tempo reale
+- Modificare le impostazioni come la temperatura e i token massimi
+- Aggiungere messaggi di sistema per personalizzare il comportamento del modello
+- Sperimentare modelli e configurazioni diversi
+
+Questo ambiente senza codice consente di comprendere in che modo i modelli rispondono a input e impostazioni diversi, semplificando la progettazione dell'applicazione.
+
+### Generazione di esempi di codice
+Una delle funzionalità più utili del playground del modello è il pulsante Codice nel riquadro della chat. In qualsiasi momento durante la sperimentazione, è possibile selezionare questo pulsante per visualizzare esempi di codice per riprodurre una sessione di chat nell'app.
+
+Gli esempi di codice generati includono opzioni per:
+
+- API: uso dell'API Risposte o di un'altra API, ad esempio ChatCompletions
+- Linguaggio: selezionare il linguaggio di programmazione preferito
+- SDK: Scegliere l'SDK di cui si vuole visualizzare un esempio
+
+Questi esempi sono precompilati con l'endpoint del progetto, il nome della distribuzione del modello e le impostazioni correnti. Forniscono un punto di partenza pronto per l'uso per la compilazione dell'applicazione.
+
+È possibile copiare questo codice direttamente nell'ambiente di sviluppo e modificarlo in base alle proprie esigenze.
+
+### Dal playground al codice
+Il flusso di lavoro tipico per la creazione di un'applicazione di intelligenza artificiale con Microsoft Foundry è simile al seguente:
+
+1. Esplora nel playground: testare le richieste, modificare le impostazioni e scoprire cosa funziona
+2. Generare esempi di codice: usare la scheda Codice per ottenere esempi SDK
+3. Sviluppare l'applicazione: prendere il codice generato e personalizzarlo in base alle esigenze specifiche
+4. Scorrere e perfezionare: tornare al playground per testare nuove idee, quindi aggiornare il codice
+
+Questo approccio consente di creare rapidamente prototipi e convalidare le idee prima di investire tempo nello sviluppo.
+
+Nell'unità successiva verranno illustrati gli endpoint e gli SDK disponibili che è possibile usare per sviluppare un'applicazione client.
+
+## Scegliere un endpoint e un SDK
+
+Microsoft Foundry offre flessibilità per lo sviluppo di applicazioni di chat di intelligenza artificiale generative. Prima di iniziare lo sviluppo, è importante comprendere le opzioni disponibili e come decidere quale di esse usare. Alcune considerazioni per lo sviluppo di un'applicazione includono:
+
+- Endpoint: i progetti Microsoft Foundry forniscono due endpoint che è possibile usare per connettersi e utilizzare asset di progetto, ad esempio distribuzioni di modelli, dalle applicazioni client. Ogni progetto ha sia un endpoint del progetto che un endpoint di Azure OpenAI.
+
+- Client SDK: a seconda dell'endpoint selezionato, è possibile scegliere di usare Microsoft Foundry SDK o OpenAI SDK per sviluppare un'applicazione di chat di intelligenza artificiale generativa. Entrambi gli SDK supportano un oggetto client compatibile con l'API OpenAI che può inviare richieste ai modelli, ma esistono alcune differenze nelle funzionalità specifiche disponibili in ogni SDK.
+
+- Autenticazione: a seconda dell'endpoint e dell'SDK che si sceglie di usare, esistono diversi modi in cui un'applicazione client può essere autenticata da Foundry per poter accedere agli asset. In generale, le applicazioni di produzione devono usare l'autenticazione con ID Entra Di Microsoft , che richiede che l'applicazione sia in esecuzione nel contesto di un'identità specifica; ma in alcuni scenari è anche possibile usare l'autenticazione basata su chiave o basata su token.
+
+- API Chat: l'API client OpenAI supporta due API di chat: ChatCompletions e Risposte. Anche se l'API Risposte è consigliata per la maggior parte dei nuovi progetti di sviluppo, l'API ChatCompletions è ben consolidata e compatibile in molti modelli e piattaforme di intelligenza artificiale generativi.
+
+
+Si esamineranno ora gli endpoint, gli SDK client e i metodi di autenticazione disponibili. Le API Risposte e ChatCompletions verranno esaminate in un secondo momento.
+
+### Uso di Foundry SDK con l'endpoint del progetto
+Microsoft Foundry SDK fornisce l'accesso a livello di codice alle risorse nei progetti tramite un'API REST e librerie client specifiche del linguaggio; Compreso:
+
+[Azure Progetti di intelligenza artificiale per Python](https://pypi.org/project/azure-ai-projects)
+[Azure Progetti di intelligenza artificiale per Microsoft .NET](https://www.nuget.org/packages/Azure.AI.Projects)
+[Azure Progetti di intelligenza artificiale per JavaScript](https://www.npmjs.com/package/@azure/ai-projects)
+
+:::{.callout-note}
+Questo modulo usa esempi di codice Python per le attività comuni. È possibile fare riferimento alla documentazione dell'SDK specifica del linguaggio per il codice equivalente nel linguaggio preferito. Ogni SDK viene sviluppato e gestito in modo indipendente, quindi alcune funzionalità possono trovarsi in fasi diverse dell'implementazione.
+:::
+
+#### Installazione dell'SDK
+Per usare la libreria Azure ai Projects in Python, installare il pacchetto azure-ai-projects da PyPI insieme ai pacchetti di supporto:
+
+```{.bash filename="bash"}
+pip install azure-ai-projects azure-identity openai
+```
+
+Quando si usa Foundry SDK per sviluppare un'applicazione chat, è anche necessario importare il pacchetto OpenAI SDK. La funzionalità client di chat in Foundry SDK è derivata da OpenAI SDK.
+
+#### Connessione all'endpoint del progetto
+Ogni progetto Foundry ha un endpoint univoco disponibile nella pagina Overview del progetto nel portale Foundry in https://ai.azure.com.
+
+L'endpoint del progetto ha il seguente formato:
+
+```{.txt filename="txt"}
+https://{resource-name}.services.ai.azure.com/api/projects/<project-name>
+```
+
+Usare questo endpoint per creare un oggetto AIProjectClient:
+
+```{.python filename="python"}
+from azure.identity import DefaultAzureCredential
+from azure.ai.projects import AIProjectClient
+
+project_endpoint = "https://{resource-name}.services.ai.azure.com/api/projects/<project-name>"
+project_client = AIProjectClient(
+    credential=DefaultAzureCredential(),
+    endpoint=project_endpoint
+)
+```
+
+:::{.callout-note}
+Il codice usa le credenziali predefinite Azure per l'autenticazione. Per abilitare questa autenticazione, è necessario installare il pacchetto azure-identity (illustrato in precedenza nel comando di installazione).
+:::
+
+:::{.callout-tip}
+Per accedere al progetto correttamente, il codice deve essere eseguito in una sessione di Azure autenticata. Ad esempio, è possibile usare il comando interfaccia della riga di comando di Azure az login per accedere prima di eseguire il codice.
+:::
+
+Il client di progetto (`AIProjectClient`) fornisce l'accesso alle operazioni native di Foundry che non hanno equivalenti OpenAI. Usare il client project per:
+
+- Recuperare le connessioni alle risorse
+- Accedere alla configurazione del progetto
+- Abilitare il tracciamento
+- Gestire set di dati e indici
+
+#### Creazione di un client di chat
+Per chattare con un modello nel progetto Foundry, è necessario un oggetto client compatibile con OpenAI. È possibile usare il metodo get_openai_client() del client del progetto per ottenerlo, come illustrato di seguito:
+
+```{.python filename="python"}
+openai_client = project_client.get_openai_client(api_version="2024-10-21")
+```
+
+È quindi possibile usare questo oggetto client di chat per inviare richieste ai modelli e restituire risposte.
+
+### Uso di OpenAI SDK con l'endpoint OpenAI di Azure
+OpenAI SDK è la libreria client ufficiale per chiamare l'API OpenAI. Gestisce le richieste HTTP, l'autenticazione, i tentativi e l'analisi delle risposte. L'SDK funziona con modelli ospitati in OpenAI, distribuzioni OpenAI di Azure e modelli Foundry usando gli stessi modelli.
+
+#### Installazione dell'SDK
+Per usare la libreria OpenAI in Python, installare il pacchetto openai da PyPI insieme ai pacchetti di supporto:
+
+```{.bash filename="bash"}
+pip install openai azure-identity
+```
+
+:::{.callout-note}
+Il pacchetto azure-identity è necessario se si intende usare l'autenticazione basata su token per connettersi all'endpoint usando le credenziali microsoft Entra ID.
+:::
+
+#### Connessione all'endpoint OpenAI di Azure
+Ogni progetto Foundry include un endpoint OpenAI di Azure che è possibile trovare nella pagina Panoramica del progetto nel portale foundry all'indirizzo [https://ai.azure.com](https://ai.azure.com).
+
+L'endpoint OpenAI di Azure segue questo formato:
+
+```{.txt filename="txt"}
+https://{resource-name}.openai.azure.com/openai/v1
+```
+
+Creare un client OpenAI con l'endpoint e le credenziali di Azure:
+
+```{.python filename="python"}
+from openai import OpenAI
+from azure.identity import DefaultAzureCredential, get_bearer_token_provider
+
+token_provider = get_bearer_token_provider(
+    DefaultAzureCredential(), "https://ai.azure.com/.default"
+)
+
+openai_client = OpenAI(  
+  base_url = "https://{resource-name}.openai.azure.com/openai/v1/",  
+  api_key=token_provider,
+)
+```
+
+Oltre a Microsoft Entra ID (scelta consigliata), è possibile eseguire l'autenticazione usando una chiave API o variabili di ambiente.
+
+Autenticazione con chiave API:
+
+```{.python filename="python"}
+import os
+from openai import OpenAI
+
+openai_client = OpenAI(
+    api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+    base_url="https://{resource-name}.openai.azure.com/openai/v1/"
+)
+```
+
+:::{.callout-important}
+Utilizzare le chiavi API con cautela. Archiviarli in modo sicuro in Azure Key Vault e non includerli mai direttamente nel codice.
+:::
+
+Variabili di ambiente:
+
+Se si impostano OPENAI_BASE_URL e OPENAI_API_KEY le variabili di ambiente, il client li usa automaticamente:
+
+```{.python filename="python"}
+from openai import OpenAI
+
+openai_client = OpenAI()  # Uses environment variables
+```
+
+Indipendentemente dal modo in cui si sceglie di eseguire l'autenticazione, il client OpenAI gestisce le operazioni di inferenza del modello. Usarlo per:
+
+- Generazione di risposte con l'API Risposte
+- Completamento della chat e generazione di immagini
+- Accesso ai modelli diretti Foundry (modelli OpenAI non di Azure)
+
+Uso di un oggetto client AzureOpenAI
+
+È in genere consigliabile usare l'oggetto client OpenAI per chattare con i modelli tramite l'endpoint OpenAI v1 di Azure. Tuttavia, è anche possibile creare un oggetto client AzureOpenAI se è necessario usare le funzionalità di una versione specifica dell'API OpenAI di Azure. Per creare un oggetto client AzureOpenAI , è necessario specificare la versione dell'API e l'endpoint di Azure, come illustrato di seguito:
+
+```{.python filename="python"}
+import os
+from openai import AzureOpenAI
+
+openai_client = AzureOpenAI(
+    azure_endpoint = "https://{resource-name}.openai.azure.com"
+    api_key=os.getenv("AZURE_OPENAI_KEY"),  
+    api_version="2024-10-21",
+)
+```
+
+### Scelta tra Foundry SDK e OpenAI SDK
+Microsoft Foundry supporta due approcci per la creazione di applicazioni di intelligenza artificiale. Ognuno ha scopi diversi e comprende quando usarlo consente di creare la soluzione corretta.
+
+#### Quando usare Foundry SDK
+Usare Foundry SDK quando l'applicazione necessita di funzionalità specifiche di Foundry:
+
+- Servizio Agente Fonderia per la creazione e la gestione di agenti IA
+- Flussi di lavoro di chiamata e approvazione dello strumento
+- Valutazioni cloud per il test e la convalida delle risposte di intelligenza artificiale
+- Traccia e osservabilità per il monitoraggio del comportamento dell'applicazione
+- Modelli diretti Foundry (modelli OpenAI non Azure disponibili tramite il catalogo modelli)
+- Funzionalità di governance, connessioni e metadati del progetto
+
+Microsoft consiglia Foundry SDK per la creazione di app con agenti, valutazioni o funzionalità specifiche di Foundry.
+
+#### Quando usare OpenAI SDK
+Usare OpenAI SDK quando è necessaria la massima compatibilità con l'API OpenAI:
+
+- Compatibilità completa dell'API OpenAI per il codice e gli strumenti esistenti
+- Portabilità tra le distribuzioni OpenAI e Azure OpenAI
+- Completamento della chat, risposte e immagini Api
+- Dipendenza minima dai concetti specifici di Foundry
+
+OpenAI SDK è ideale per i carichi di lavoro di inferenza del modello in cui si vuole che il codice OpenAI esistente funzioni con modifiche minime. Tuttavia, questo approccio non fornisce funzionalità specifiche di Foundry, ad esempio agenti o valutazioni.
+
+Microsoft Foundry offre flessibilità nella creazione di applicazioni di intelligenza artificiale. Usare Foundry SDK con AIProjectClient quando sono necessarie funzionalità a livello di progetto, ad esempio agenti, valutazioni, traccia e connessioni. Usare OpenAI SDK quando è necessaria un'inferenza semplice del modello con la massima compatibilità OpenAI. Entrambi gli SDK funzionano con l'endpoint del progetto Foundry, quindi è possibile combinarli in base alle esigenze nelle applicazioni. È anche possibile usare entrambi gli SDK nella stessa applicazione, ovvero Foundry SDK per le funzionalità del progetto e OpenAI SDK per l'inferenza del modello.
+
+## Generare risposte con l'API Risposte
+
+L'API Risposte OpenAI riunisce le funzionalità di due API separate in precedenza (ChatCompletions e Assistenti) in un'esperienza unificata. Fornisce una generazione di risposta a più turni con stato, che lo rende ideale per le applicazioni di intelligenza artificiale conversazionale. È possibile accedere all'API Risposte tramite un client compatibile con OpenAI usando Foundry SDK o OpenAI SDK.
+
+### Informazioni sull'API Risposte
+
+L'API Risposte offre diversi vantaggi rispetto ai completamenti delle chat tradizionali:
+
+- Conversazioni con stato: mantiene il contesto della conversazione tra più turni
+- Esperienza unificata: combina i completamenti delle chat e i modelli di API Assistenti
+- Modelli diretti di Foundry: funziona con i modelli ospitati direttamente in Microsoft Foundry, non solo modelli OpenAI di Azure
+- Integrazione semplice: Accesso tramite il client compatibile con OpenAI
+
+:::{.callout-note}
+L'API Responses è l'approccio consigliato per generare risposte di intelligenza artificiale nelle applicazioni foundry Microsoft. Sostituisce l'API ChatCompletions precedente per la maggior parte degli scenari.
+:::
+
+### Generazione di una risposta semplice
+Con un client compatibile con OpenAI, è possibile generare risposte usando il metodo `responses.create()`:
+
+```{.python filename="python"}
+# Generate a response using the OpenAI-compatible client
+response = openai_client.responses.create(
+    model="gpt-4.1",  # Your model deployment name
+    input="What is Microsoft Foundry?"
+)
+
+# Display the response
+print(response.output_text)
+```
+
+Il parametro di input accetta una stringa di testo contenente il prompt. Il modello genera una risposta basata su questo input.
+
+### Informazioni sulla struttura delle risposte
+Un oggetto risposta contiene diverse proprietà utili:
+
+- `output_text`: risposta di testo generata
+- `id`: identificatore univoco per questa risposta
+- `status`: stato della risposta (ad esempio, "completato")
+- `usage`: informazioni sull'utilizzo dei token (input, output e token totali)
+- `model`: modello usato per generare la risposta
+
+È possibile accedere a queste proprietà per gestire in modo efficace le risposte.
+
+```{.python filename="python"}
+response = openai_client.responses.create(
+    model="gpt-4.1",
+    input="Explain machine learning in simple terms."
+)
+
+print(f"Response: {response.output_text}")
+print(f"Response ID: {response.id}")
+print(f"Tokens used: {response.usage.total_tokens}")
+print(f"Status: {response.status}")
+```
+
+Oltre all'input dell'utente, è possibile fornire istruzioni (spesso definite prompt di sistema) per guidare il comportamento del modello:
+
+```{.python filename="python"}
+response = client.responses.create(
+    model="gpt-4.1",
+    instructions="You are a helpful AI assistant that answers questions clearly and concisely.",
+    input="Explain neural networks."
+)
+
+print(response.output_text)
+```
+
+### Controllo della generazione di risposte
+È possibile controllare la generazione di risposte con parametri aggiuntivi:
+
+```{.python filename="python"}
+response = openai_client.responses.create(
+    model="gpt-4.1",
+    instructions="You are a helpful AI assistant that answers questions clearly and concisely.",
+    input="Write a creative story about AI.",
+    temperature=0.8,  # Higher temperature for more creativity
+    max_output_tokens=200  # Limit response length
+)
+
+print(response.output_text)
+```
+
+- `temperatura`: controlla la casualità (0,0-2,0). Valori più elevati rendono l'output più creativo e vario
+- `max_output_tokens`: limita il numero massimo di token nella risposta
+- `top_p`: un'alternativa alla 'temperature' per controllare la casualità
+
+### Uso dei modelli diretti di Foundry
+Quando si usa il client FoundrySDK o AzureOpenAI per connettersi a un endpoint project, l'API Responses funziona sia con Azure modelli OpenAI che con i modelli diretti foundry (ad esempio Microsoft Phi, DeepSeek o altri modelli ospitati direttamente in Microsoft Foundry):
+
+```{.python filename="python"}
+# Using a Foundry direct model
+response = openai_client.responses.create(
+    model="microsoft-phi-4",  # Example Foundry direct model
+    instructions="You are a helpful AI assistant that answers questions clearly and concisely.",
+    input="What are the benefits of small language models?"
+)
+
+print(response.output_text)
+```
+
+### Creazione di esperienze di conversazione
+Per scenari di conversazione più complessi, è possibile fornire istruzioni di sistema e creare conversazioni a più turni:
+
+```{.python filename="python"}
+# First turn in the conversation
+response1 = openai_client.responses.create(
+    model="gpt-4.1",
+    instructions="You are a helpful AI assistant that explains technology concepts clearly.",
+    input="What is machine learning?"
+)
+
+print("Assistant:", response1.output_text)
+
+# Continue the conversation
+response2 = openai_client.responses.create(
+    model="gpt-4.1",
+    instructions="You are a helpful AI assistant that explains technology concepts clearly.",
+    input="Can you give me an example?",
+    previous_response_id=response1.id
+)
+
+print("Assistant:", response2.output_text)
+```
+
+In realtà, è probabile che l'implementazione venga costruita come ciclo in cui un utente può immettere in modo interattivo i messaggi in base a ogni risposta ricevuta dal modello:
+
+```{.python filename="python"}
+# Track responses
+last_response_id = None
+
+# Loop until the user wants to quit
+print("Assistant: Enter a prompt (or type 'quit' to exit)")
+while True:
+    input_text = input('\nYou: ')
+    if input_text.lower() == "quit":
+        print("Assistant: Goodbye!")
+        break
+
+    # Get a response
+    response = openai_client.responses.create(
+                model=model_name,
+                instructions="You are a helpful AI assistant that explains technology concepts clearly.",
+                input=input_text,
+                previous_response_id=last_response_id
+    )
+    assistant_text = response.output_text
+    print("\nAssistant:", assistant_text)
+    last_response_id = response.id
+```
+
+L'output di questo esempio è simile al seguente:
+
+```{.txt filename="output"}
+Assistant: Enter a prompt (or type 'quit' to exit)
+
+You: What is machine learning?
+
+Assistant: Machine learning is a type of artificial intelligence (AI) that enables computers to learn from data and improve their performance over time without being explicitly programmed. It involves training algorithms on large datasets to recognize patterns, make predictions, or take actions based on those patterns. This allows machines to become more accurate and efficient in their tasks as they are exposed to more data.
+
+You: Can you give me an example?
+
+Assistant: Certainly! Let's look at a simple example of supervised learning—predicting house prices based on features like size, location, and number of rooms.
+Imagine you want to build a machine learning model that can predict the price of a house based on various factors.
+...
+    { the example provided in the model response may be extensive}
+...
+
+You: quit
+
+Assistant: Goodbye!
+```
+
+Quando l'utente immette un nuovo input a ogni turno, i dati inviati al modello includono il messaggio di sistema Istruzioni , l'input dell'utente e la risposta precedente ricevuta dal modello. In questo modo, il nuovo input è radicato nel contesto fornito dalla risposta generata dal modello per l'input precedente.
+
+#### Alternativa: concatenamento manuale delle conversazioni
+È possibile gestire manualmente le conversazioni creando manualmente la cronologia dei messaggi. Questo approccio offre maggiore controllo su quale contesto viene incluso:
+
+```{.python filename="python"}
+try:
+    # Start with initial message
+    conversation_history = [
+        {
+            "type": "message",
+            "role": "user",
+            "content": "What is machine learning?"
+        }
+    ]
+
+    # First response
+    response1 = openai_client.responses.create(
+        model="gpt-4.1",
+        input=conversation_history
+    )
+
+    print("Assistant:", response1.output_text)
+
+    # Add assistant response to history
+    conversation_history += response1.output
+
+    # Add new user message
+    conversation_history.append({
+        "type": "message",
+        "role": "user", 
+        "content": "Can you give me an example?"
+    })
+
+    # Second response with full history
+    response2 = openai_client.responses.create(
+        model="gpt-4.1",
+        input=conversation_history
+    )
+
+    print("Assistant:", response2.output_text)
+
+except Exception as ex:
+    print(f"Error: {ex}")
+```
+
+Questo approccio manuale è utile quando è necessario:
+
+- Personalizzare i messaggi inclusi nel contesto
+- Implementare la potatura delle conversazioni per gestire i limiti di token
+- Archiviare e ripristinare la cronologia delle conversazioni da un database
+
+#### Recupero di risposte precedenti specifiche
+L'API Risposte mantiene la cronologia delle risposte, consentendo di recuperare le risposte precedenti:
+
+```{.python filename="python"}
+try:   
+
+    # Retrieve a previous response
+    response_id = "resp_67cb61fa3a448190bcf2c42d96f0d1a8"  # Example ID
+    previous_response = openai_client.responses.retrieve(response_id)
+
+    print(f"Previous response: {previous_response.output_text}")
+
+except Exception as ex:
+    print(f"Error: {ex}")
+```
+
+#### Considerazioni sulla finestra di contesto
+Il parametro previous_response_id collega le risposte, mantenendo il contesto della conversazione tra più chiamate API.
+
+È importante notare che mantenere la cronologia delle conversazioni può aumentare l'utilizzo dei token. Per una singola esecuzione, la finestra del contesto attivo può includere:
+
+- Istruzioni di sistema (istruzioni, regole di sicurezza)
+- Prompt corrente
+- Cronologia conversazioni (precedenti messaggi utente e assistente)
+- Schemi degli strumenti (funzioni, specifiche OpenAPI, strumenti MCP e così via)
+- Output degli strumenti (risultati della ricerca, output dell'interprete del codice, file)
+- Memoria o documenti recuperati (da archivi di memoria, RAG, ricerca file)
+
+Tutti questi elementi vengono concatenati, tokenizzati e inviati al modello insieme in ogni richiesta. L'SDK consente di gestire lo stato, ma non rende automaticamente più economico l'utilizzo dei token.
+
+### Creazione di app di chat responsive
+Le risposte di un modello possono richiedere del tempo per generare a seconda di fattori come il modello specifico usato, le dimensioni della finestra di contesto e le dimensioni della richiesta. L'utente potrebbe diventare frustrante se l'app sembra "bloccarsi" durante l'attesa di una risposta, quindi è importante considerare la velocità di risposta dell'app nell'implementazione.
+
+#### Risposte in streaming
+Per le risposte lunghe, è possibile usare lo streaming per ricevere l'output in modo incrementale, in modo che l'utente visualizzi le risposte parzialmente complete man mano che l'output diventa disponibile:
+
+```{.python filename="python"}
+stream = openai_client.responses.create(
+    model="gpt-4.1",
+    input="Write a short story about a robot learning to paint.",
+    stream=True
+)
+
+for event in stream:
+    print(event, end="", flush=True)
+```
+
+Se si sta monitorando la cronologia delle conversazioni durante lo streaming, è possibile ottenere l'ID risposta al termine del flusso, come illustrato di seguito:
+
+```{.python filename="python"}
+stream = openai_client.responses.create(
+    model="gpt-4.1",
+    input="Write a short story about a robot learning to paint.",
+    stream=True
+)
+for event in stream:
+                if event.type == "response.output_text.delta":
+                    print(event.delta, end="")
+                elif event.type == "response.completed":
+                    response_id = event.response.id
+```
+
+#### Utilizzo asincrono
+Per le applicazioni ad alte prestazioni, è possibile usare un client asincrono che consente di effettuare chiamate API non bloccabili. L'utilizzo asincrono è ideale per le richieste a esecuzione prolungata o quando si desidera gestire più richieste contemporaneamente senza bloccare l'applicazione. Per usarlo, importare `AsyncOpenAI` anziché OpenAI e usare await con ogni chiamata API:
+
+```{.python filename="python"}
+import asyncio
+from openai import AsyncOpenAI
+
+client = AsyncOpenAI(
+    base_url="https://<resource-name>.openai.azure.com/openai/v1/",
+    api_key=token_provider,
+)
+
+async def main():
+    response = await client.responses.create(
+        model="gpt-4.1",
+        input="Explain quantum computing briefly."
+    )
+    print(response.output_text)
+
+asyncio.run(main())
+```
+
+Lo streaming asincrono funziona allo stesso modo:
+
+```{.python filename="python"}
+async def stream_response():
+    stream = await client.responses.create(
+        model="gpt-4.1",
+        input="Write a haiku about coding.",
+        stream=True
+    )
+
+    async for event in stream:
+        print(event, end="", flush=True)
+
+asyncio.run(stream_response())
+```
+
+Usando l'API Responses tramite Microsoft Foundry SDK, è possibile creare applicazioni di intelligenza artificiale conversazionali sofisticate che mantengono il contesto, supportano più tipi di modello e offrono un'esperienza utente reattiva.
+
+## Generare risposte con l'API ChatCompletions
+
+L'API OpenAI ChatCompletions viene comunemente usata tra modelli e piattaforme di intelligenza artificiale generativi. Anche se l'API Risposte è consigliata per lo sviluppo di nuovi progetti, è probabile che si verifichino scenari in cui l'API ChatCompletions è utile per la manutenzione del codice o la compatibilità multipiattaforma.
+
+### Invio di un comando
+L'API ChatCompletions usa raccolte di oggetti messaggio in formato JSON per incapsulare le richieste:
+
+```{.python filename="python"}
+completion = openai_client.chat.completions.create(
+    model="gpt-4o",  # Your model deployment name
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "When was Microsoft founded?"}
+    ]
+)
+
+print(completion.choices[0].message.content)
+```
+
+### Mantenimento del contesto di conversazione
+A differenza dell'API Risposte, l'API ChatCompletions non fornisce una funzionalità di rilevamento delle risposte con stato. Per mantenere il contesto di conversazione, è necessario scrivere codice per tenere traccia manualmente di richieste e risposte precedenti.
+
+```{.python filename="python"}
+# Initial messages
+conversation_messages=[
+    {
+        "role": "system",
+        "content": "You are a helpful AI assistant that answers questions and provides information."
+    }
+]
+
+# Add the first user message
+conversation_messages.append(
+    {"role": "user",
+    "content": "When was Microsoft founded?"}
+)
+
+# Get a completion
+completion = openai_client.chat.completions.create(
+    model="gpt-4o",
+    messages=conversation_messages
+)
+assistant_message = completion.choices[0].message.content
+print("Assistant:", assistant_text)
+
+# Append the response to the conversation
+conversation_messages.append(
+    {"role": "assistant", "content": assistant_text}
+)
+
+# Add the next user message
+conversation_messages.append(
+    {"role": "user",
+    "content": "Who founded it?"}
+)
+
+# Get a completion
+completion = openai_client.chat.completions.create(
+    model="gpt-4o",
+    messages=conversation_messages
+)
+assistant_message = completion.choices[0].message.content
+print("Assistant:", assistant_text)
+
+# and so on...
+```
+
+In un'applicazione reale, è probabile che la conversazione venga implementata in un ciclo; Così:
+
+```{.python filename="python"}
+# Initial messages
+conversation_messages=[
+    {
+        "role": "system",
+        "content": "You are a helpful AI assistant that answers questions and provides information."
+    }
+]
+
+# Loop until the user wants to quit
+print("Assistant: Enter a prompt (or type 'quit' to exit)")
+while True:
+    input_text = input('\nYou: ')
+    if input_text.lower() == "quit":
+        print("Assistant: Goodbye!")
+        break
+
+    # Add the user message
+    conversation_messages.append(
+        {"role": "user",
+        "content": input_text}
+    )
+
+    # Get a completion
+    completion = openai_client.chat.completions.create(
+        model="gpt-4o",
+        messages=conversation_messages
+    )
+    assistant_message = completion.choices[0].message.content
+    print("\nAssistant:", assistant_message)
+
+    # Append the response to the conversation
+    conversation_messages.append(
+        {"role": "assistant", "content": assistant_message}
+    )
+```
+L'output di questo esempio è simile al seguente:
+
+```{.txt filename="output"}
+Assistant: Enter a prompt (or type 'quit' to exit)
+
+You: When was Microsoft founded?
+
+Assistant: Microsoft was founded on April 4, 1975 in Albuquerque, New Mexico, USA.
+
+You: Who founded it?
+
+Assistant: Microsoft was founded by Bill Gates and Paul Allen.
+
+You: quit
+
+Assistant: Goodbye!
+```
+
+Ogni nuovo prompt e completamento dell'utente viene aggiunto alla conversazione e l'intera cronologia della conversazione viene inviata a ogni turno.
+
+Anche se non è completamente in primo piano come l'API Risposte , l'API ChatCompletions è ben definita nell'ecosistema di modelli di intelligenza artificiale generativa, quindi è utile acquisire familiarità con esso.
+
+# Sviluppare app di intelligenza artificiale generative che usano strumenti
+
+## Introduzione
+
+I modelli di intelligenza artificiale generativi sono potenti per comprendere e generare testo, ma operano all'interno di un limite di conoscenze. Possono solo ragionare sulle informazioni nei dati di training. Integrando gli strumenti nelle interazioni generative con intelligenza artificiale, è possibile sbloccare le funzionalità ben oltre le operazioni che il modello può eseguire da solo.
+
+:::{.callout-note}
+L'uso di strumenti nei prompt dei modelli di intelligenza artificiale generativi non deve essere confuso con gli [strumenti Foundry](https://learn.microsoft.com/it-it/azure/ai-services/reference/sdk-package-resources), che sono api di intelligenza artificiale di Azure che è possibile usare nelle applicazioni e negli agenti.
+:::
+
+### Perché gli strumenti sono importanti
+Gli strumenti consentono di colmare il divario tra il ragionamento dell'IA e le azioni reali. Consentono alle applicazioni di intelligenza artificiale generative di:
+
+- **Accedere alle informazioni in tempo reale**: recuperare dati correnti, meteo, prezzi azionari o risposte API che non erano presenti nei dati di training del modello
+- **Eseguire azioni**: eseguire attività come l'invio di messaggi di posta elettronica, la creazione di record di database o l'attivazione di flussi di lavoro in base alle decisioni di intelligenza artificiale
+- **Risposte di base in fatti**: recuperare informazioni specifiche e autorevoli per ridurre le informazioni errate e migliorare l'accuratezza
+- **Estendere la funzionalità**: connettersi ai sistemi, ai database e alla logica di business esistenti senza problemi
+- **Creare flussi di lavoro intelligenti**: concatenare più operazioni in modo da coordinare processi complessi e in più passaggi
+
+Senza strumenti, l'intelligenza artificiale generativa funziona in isolamento. Con gli strumenti, diventa un assistente intelligente che può osservare, ragion e agire sul mondo intorno a esso.
+
+In questo modulo verrà illustrato come specificare gli strumenti nei prompt inviati da un'applicazione client a un modello. In questo tipo di soluzione, la configurazione dello strumento viene gestita dall'applicazione client, essenzialmente creando un assistente personalizzato basato sull'intelligenza artificiale all'interno della logica dell'applicazione stessa. Imparare a usare gli strumenti su richiesta con un modello di intelligenza artificiale generativa è un primo passaggio utile per imparare a creare soluzioni di intelligenza artificiale agentica , in cui il modello, le istruzioni e gli strumenti vengono incapsulati e salvati in modo permanente in un agente denominato.
+
+:::{.callout-tip}
+Altre informazioni su come usare Microsoft Foundry Agents SDK per creare agenti con configurazioni persistenti in [Sviluppare agenti di intelligenza artificiale in Azure](https://learn.microsoft.com/it-it/training/paths/develop-ai-agents-azure/).
+:::
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+## Che cosa sono gli strumenti?
+
+I modelli di Microsoft Foundry includono modelli in grado di usare strumenti per trovare informazioni o eseguire attività. È possibile usare il supporto degli strumenti nei modelli specificando gli strumenti da usare nel modello nei prompt inviati tramite l'API Risposte OpenAI.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/use-generative-ai-tools/media/tools.png){fig-align="center" width=50%}
+
+
+Quando si sviluppa un'applicazione di intelligenza artificiale generativa usando Microsoft Foundry, è possibile cercare un modello foundry con funzionalità di chiamata degli strumenti e distribuirlo. È quindi possibile sviluppare applicazioni client che usano l'API Risposte OpenAI per inviare richieste al modello distribuito, specificando gli strumenti che il modello può usare.
+
+:::{.callout-note}
+Per impostazione predefinita, il modello sceglie quando usare uno strumento (e quale), in base al prompt. È possibile configurare le regole di selezione degli strumenti e usare il parametro Istruzioni (prompt di sistema) per guidare questa scelta.
+:::
+
+Alcuni degli strumenti di uso comune disponibili nell'API Risposte includono:
+
+- `code_interpreter`: un ambiente Python in cui il modello può generare ed eseguire codice.
+- `web_search`: uno strumento che consente al modello di trovare informazioni generali su Internet, che consente di basare le risposte su dati più correnti rispetto a quelli su cui è stato eseguito il training.
+- `file_search`: uno strumento che consente al modello di eseguire ricerche in file specifici caricati in un indice di ricerca vettoriale dedicato, consentendogli di mettere a terra le risposte in una conoscenza specifica.
+- `function`: strumento che consente al modello di chiamare funzioni personalizzate nel codice dell'applicazione.
+
+Questi strumenti verranno esaminati in questo modulo.
+
+:::{.callout-tip}
+Questi rappresentano solo alcuni degli strumenti disponibili; e lo sviluppo di strumenti per soluzioni di intelligenza artificiale agentic è un'area in crescita. Per altre informazioni sugli strumenti supportati nell'API Di risposta OpenAI, vedere la [Guida per sviluppatori OpenAI](https://developers.openai.com/api/docs/guides/tools)
+:::
+
+### Specifica degli strumenti nell'API `responses`
+È possibile specificare uno o più strumenti in una chiamata al metodo durante la `responses.create()` generazione di una risposta da un modello. L'esempio di pseudocodice Python seguente indica dove è specificato l'elenco di strumenti chiamabili:
+
+```{.python filename="python"}
+from openai import OpenAI
+
+client = OpenAI(
+    base_url={openai_endpoint},
+    api_key={auth_key_or_token}
+)
+
+response = client.responses.create(
+    model={model_deployment},
+    instructions="You are a helpful AI assistant.",
+    input="Find me some information about vintage computers.",
+    # Specify available tools as a JSON list
+    tools=[
+        { 
+            # A tool definition
+            "type": "{tool_type}",
+            "{tool-specific-setting}": "{value}",
+                ...
+        },
+        { 
+            # Another tool definition
+            "type": "{another_tool_type}",
+            "{tool-specific-setting}": "{value}",
+                ...
+        }
+    ]
+)
+print(response.output_text)
+```
+
+::: {.callout-tip}
+Per altre informazioni sull'uso dell'API Risposte per inviare una richiesta a un modello in Microsoft Foundry, vedere il modulo [Sviluppare un'app di chat di intelligenza artificiale generativa con Microsoft Foundry](https://learn.microsoft.com/it-it/training/modules/foundry-sdk).
+:::
+
+## Usare lo strumento `code_interpreter`
+
+Lo strumento code_interpreter fornisce al modello un runtime Python in cui può generare ed eseguire codice Python.
+
+### Qual è lo strumento `code_interpreter`?
+Lo strumento code_interpreter consente ai modelli di intelligenza artificiale generativi di scrivere ed eseguire codice Python in modo dinamico durante una conversazione. Invece di discutere semplicemente di codice o algoritmi, il modello può testare la logica, elaborare i dati e restituire i risultati effettivi dal codice. In questo modo il modello viene trasformato da un pensatore in un doer.
+
+Le funzionalità principali includono:
+
+- **Esecuzione dinamica di Python**: il modello scrive ed esegue codice Python in un ambiente in modalità sandbox
+- **Gestione file**: caricare, elaborare e scaricare file (CSV, JSON, immagini e così via)
+- **Analisi dei dati**: eseguire calcoli, analisi statistiche e trasformazioni dei dati in tempo reale
+- **Feedback in tempo reale**: il modello vede i risultati dell'esecuzione del codice e può scorrere o correggere gli errori
+- **Risoluzione dei problemi complessi**: affrontare problemi matematici, simulazioni e puzzle logici tramite codice eseguibile
+
+### Casi d'uso comuni
+|Caso d'uso | Esempio|
+|:---|:------|
+|Analisi dei dati |	Analizzare un file CSV e generare statistiche di riepilogo|
+|Matematica e fisica|	Risolvere equazioni |differenziali o simulare scenari di fisica|
+|Conversione di file|	Eseguire la conversione tra formati di dati (CSV JSON ↔ e così via)|
+|Prototipazione	|Testare algoritmi e idee prima dell'implementazione formale|
+
+### Un semplice esempio
+Ecco come usare code_interpreter con l'API Risposte OpenAI:
+
+```{.python filename="python"}
+from openai import OpenAI
+
+client = OpenAI(
+    base_url={openai_endpoint},
+    api_key={auth_key_or_token}
+)
+
+# Get response using the code_interpreter tool
+response = client.responses.create(
+    model={model_deployment},
+    instructions="You are an AI assistant that provides information. Use the python tool to run code for math problems.",
+    input="What is the square root of 16?",
+    tools=[{"type": "code_interpreter",
+            "container": {"type": "auto"}}]
+)
+print(response.output_text)
+```
+
+L'output di questo codice è simile al seguente:
+
+```{.txt filename="output"}
+The square root of 16 is 4.
+```
+
+Più importante, esaminare i dettagli dell'oggetto risposta restituito dal modello rivela che il risultato è stato calcolato e restituito al modello usando codice Python generato dinamicamente come segue:
+
+```{.python filename="python"}
+import math
+
+# Calculate the square root of 16
+square_root = math.sqrt(16)
+square_root
+```
+
+### Funzionamento dello strumento code_interpreter
+Il processo generale per l'uso dello strumento di code_interpreter è:
+
+1. **Si invia una richiesta**: includere code_interpreter nella matrice di strumenti.
+2. **Il modello analizza l'attività**: il modello determina se è necessaria l'esecuzione del codice.
+3. **Il modello genera codice**: il modello scrive il codice Python per eseguire l'attività.
+4. **Esecuzioni di codice**: il codice viene eseguito in un ambiente in modalità sandbox con accesso alle librerie comuni, ad esempio pandas, numpy e matematica.
+5. **Risultati restituiti**: il modello riceve l'output e lo incorpora nella risposta.
+
+### Procedure consigliate
+
+- **Specifica**: descrivere chiaramente il formato dei dati e l'output previsto. Molti modelli usano internamente lo strumento python per identificare lo strumento di code_interpreter, quindi usare questo linguaggio nelle istruzioni.
+- **Fornire contesto**: includere le informazioni rilevanti sul dominio nelle richieste
+- **Convalidare i risultati**: esaminare sempre il codice generato dall'intelligenza artificiale per la correttezza prima di usare nell'ambiente di produzione
+- **Monitorare i costi**: l'esecuzione del codice aggiunge token; operazioni complesse possono usare più risorse
+- **Sfruttare le librerie**: pacchetti comuni come Pandas, numpy e matplotlib sono preinstallati
+- **Gestione degli errori**: il modello può visualizzare gli errori e tenterà di correggerli automaticamente
+
+### Limitazioni da conoscere
+- Le esecuzioni vengono eseguite in un ambiente in modalità sandbox senza accesso alla rete esterna
+- Alcune librerie potrebbero non essere disponibili.
+- Informa il modello se una libreria standard non funziona.
+- I limiti di timeout si applicano alle operazioni a esecuzione prolungata
+- Il codice viene eseguito con vincoli di memoria. I set di dati di grandi dimensioni potrebbero richiedere lo streaming o la suddivisione in blocchi
+
+## Usare lo strumento `web_search`
+
+Lo strumento `web_search` consente al modello di recuperare informazioni aggiornate dal Web durante la generazione di una risposta.
+
+### Qual è lo strumento di web_search?
+Lo strumento web_search fornisce a un modello di intelligenza artificiale generativo l'accesso alle informazioni esterne correnti in fase di esecuzione. Invece di basarsi solo sui dati di addestramento, il modello può eseguire una query di ricerca, esaminare le fonti rilevanti e produrre una risposta basata sul contenuto aggiornato.
+
+Ciò è particolarmente utile quando i fatti possono cambiare frequentemente, ad esempio prezzi, versioni del prodotto, aggiornamenti dei criteri o eventi correnti.
+
+Le funzionalità principali includono:
+
+- **Recupero delle informazioni in tempo reale** - Ottenere informazioni recenti non disponibili nei dati di training del modello statico
+- **Risposte a base di origine** - Creare risposte dal contenuto Web recuperato
+- **Riduzione del rischio di allucinazione** - Migliorare l'affidabilità controllando le fonti esterne
+- G**enerazione automatica di query**: il modello decide quando e come eseguire la ricerca in base alla finalità dell'utente
+- **Esperienza utente senza problemi**: la generazione di ricerca e risposta avviene in un unico flusso
+
+### Casi d'uso comuni
+
+|Caso d'uso |	Esempio|
+|:---|:-----|
+|Eventi correnti |	Riepilogare gli aggiornamenti chiave in un annuncio di tecnologia di rilievo|
+|Ricerca di mercato	 | Confrontare le funzionalità o i prezzi recenti dei prodotti tra i fornitori|
+|Monitoraggio dei criteri |	Controllare se le normative o le linee guida sono cambiate|
+|Verifica dei fatti |	Convalidare le attestazioni rispetto a origini pubbliche affidabili|
+
+### Un semplice esempio
+Ecco un esempio minimo che usa l'API Risposte OpenAI con la ricerca Web abilitata:
+
+```{.python filename="python"}
+from openai import OpenAI
+
+client = OpenAI(
+    base_url={openai_endpoint},
+    api_key={auth_key_or_token}
+)
+
+# Get response using the web_search tool
+response = client.responses.create(
+    model={model_deployment},
+    instructions="You are an AI assistant. Use web search when current information is required.",
+    input="What are three major announcements from Microsoft Build this week?",
+    tools=[{"type": "web_search"}]
+)
+
+print(response.output_text)
+```
+
+L'output varia in base ai risultati Web correnti, ma deve includere una risposta concisa basata sulle origini recenti.
+
+### Funzionamento dello strumento di web_search
+Il processo generale per l'uso dello strumento di web_search è:
+
+1. **Si invia una richiesta**: includere uno strumento di ricerca Web nella matrice di strumenti.
+2. **Il modello valuta la domanda**: determina se sono necessari dati Web aggiornati.
+3. **Viene eseguita la ricerca**: il modello genera una o più query di ricerca.
+4. **I risultati vengono esaminati**: le pagine pertinenti vengono selezionate e riepilogate.
+5. **Risposta generata**: il modello combina i risultati della ricerca nella risposta finale.
+
+### Procedure consigliate
+
+- **Porre domande con riconoscimento del tempo in modo chiaro**: includere parole come "latest", "current" o date range quando necessario
+- **Impostare le aspettative per le fonti** - Richiedere fonti affidabili o ufficiali quando l'accuratezza è importante
+- **Richiedere output concisi** - Richiedere brevi riepiloghi con punti chiave per ridurre il rumore
+- **Verificare i fatti critici**: per scenari ad alto rischio, convalidare in modo indipendente attestazioni importanti
+- **Tenere traccia dell'utilizzo e della latenza**: il recupero Web può aumentare il tempo di risposta e l'utilizzo dei token
+
+### Limitazioni da conoscere
+- I risultati dipendono da ciò che è disponibile pubblicamente e indicizzabile in fase di query
+- La qualità dell'origine può variare, quindi l'output può comunque richiedere una revisione umana
+- Il contenuto recuperato può cambiare nel tempo, quindi le esecuzioni ripetute possono produrre risposte diverse
+- Alcuni ambienti possono applicare restrizioni internazionali, di criteri o di rete per l'accesso Web
+
+Usato bene, `web_search` consente al modello di passare da una conoscenza statica a risposte tempestive e consapevoli dell'origine più utili nei flussi di lavoro reali.
+
+## Usare lo strumento `file_search`
+
+Lo strumento `file_search` consente al modello di recuperare informazioni rilevanti dai documenti caricati durante una risposta.
+
+### Qual è lo strumento file_search?
+Lo strumento `file_search` consente a un modello di rispondere a domande usando file privati o specifici del dominio, ad esempio documenti di criteri, manuali, contratti e knowledge base interne. Invece di basarsi solo sui dati di training generali, il modello può cercare nei contenuti dei file indicizzati e restituire risposte fondate.
+
+Ciò è particolarmente utile quando sono necessarie risposte accurate da documenti interni attendibili.
+
+Le funzionalità principali includono:
+
+- **Risposte a base di documenti** - Le risposte sono basate sui file caricati
+- **Recupero semantico** - Trova passaggi rilevanti per significato, non solo corrispondenze esatte di parole chiave
+- **Integrazione dell'archivio vettoriale** - Eseguire la ricerca in una o più raccolte di documenti indicizzati
+- **Citazioni e trasparenza** - Includere risultati corrispondenti per il debug e la tracciabilità
+- **Maggiore rilevanza per l'organizzazione**: usare conoscenze specifiche dell'organizzazione negli output del modello
+
+### Casi d'uso comuni
+
+|Caso d'uso |	Esempio|
+|:---|:------|
+|Domande e risposte sulla politica |	Rispondere alle domande dei dipendenti sulle politiche delle risorse umane dai PDF.|
+|Assistenti di supporto |	Recuperare i passaggi del prodotto dalle guide alla risoluzione dei problemi interne|
+|Revisione legale	| Individuare clausole specifiche nei documenti del contratto|
+|Scoperta della Conoscenza |	Riepilogare le risposte dai set di documentazione tecnica|
+
+
+### Un semplice esempio
+Ecco un esempio che usa l'API Risposte OpenAI con file_search abilitata:
+
+```{.python filename="python"}
+from openai import OpenAI
+
+client = OpenAI(
+    base_url={openai_endpoint},
+    api_key={auth_key_or_token}
+)
+
+# Create vector store and upload a file
+vector_store = client.vector_stores.create(name="policy-docs")
+client.vector_stores.files.upload_and_poll(
+    vector_store_id=vector_store.id,
+    file=open("expenses_policy.pdf", "rb")
+)
+
+# Get response using the file_search tool
+response = client.responses.create(
+    model=model_deployment,
+    instructions="You are an AI assistant that provides information from HR policy documents.",
+    input="What's the maximum amount I can claim for a taxi ride?",
+    tools=[{
+        "type": "file_search",
+        "vector_store_ids": [vector_store.id]
+    }],
+    include=["file_search_call.results"]
+)
+print(response.output_text)
+```
+
+In questo flusso, il modello cerca il file di politica indicizzato e utilizza i passaggi recuperati per produrre una risposta fondata.
+
+### Funzionamento dello strumento di file_search
+Il processo generale per l'uso dello strumento di file_search è:
+
+1. **Prepara i file** - carica documenti in un archivio vettoriale.
+2. **Si invia una richiesta** - Includere file_search nell'array di strumenti con ID archivio vettori.
+3. **Il modello esegue il recupero**: cerca nei blocchi indicizzati il contenuto pertinente.
+4. **I risultati vengono inseriti**: i passaggi corrispondenti vengono forniti al modello.
+5. **Risposta generata**: il modello risponde usando il contesto del documento recuperato.
+
+### Procedure consigliate
+- **Usare file di origine di alta qualità** - Documenti puliti e aggiornati migliorano l'accuratezza del recupero
+- **Scrivere richieste mirate** - Porre domande specifiche per ridurre le corrispondenze ambigue
+- **Definire con attenzione l'ambito dell'archivio vettori** - Separare i domini (HR, legale, finanza) quando è utile
+- **Includere i risultati di recupero nello sviluppo** - Usare le risposte incluse per la risoluzione dei problemi
+- **Esaminare le risposte per i flussi di lavoro critici** - Mantenere la convalida umana in scenari di alto livello
+
+### Limitazioni da conoscere
+- La qualità delle risposte dipende dalla qualità dei documenti, dalla copertura e dalla pertinenza del blocco
+- I negozi di dominio molto grandi o misti possono restituire un contesto meno mirato
+- I file di origine aggiornati possono richiedere la reindicizzazione prima che il nuovo contenuto sia ricercabile
+- Il recupero delle informazioni migliora la base, ma non sostituisce la revisione umana per le decisioni sensibili
+
+Usato bene, `file_search` trasforma un modello per utilizzo generico in un assistente compatibile con il dominio che può rispondere dai documenti effettivamente usati dal team.
+
+:::{.callout-note}
+Lo strumento file_search è un ottimo modo per basare un modello in un set specifico di documenti o file di dati. Tuttavia, per gli agenti su scala aziendale che devono accedere a grandi quantità di dati in più archivi dati, è consigliabile usare la soluzione dell'archivio conoscenze IQ Foundry con un agente Microsoft Foundry. Per altre informazioni, vedere [Creare agenti di intelligenza artificiale avanzati con Foundry IQ](https://learn.microsoft.com/it-it/training/modules/introduction-foundry-iq)
+:::
+
+## Usare lo strumento `function`
+
+Lo strumento `function` consente al modello di chiamare le funzioni definite dallo sviluppatore per recuperare dati o attivare azioni durante una risposta.
+
+### Qual è la funzione dello strumento?
+Lo strumento `function` consente a un modello di decidere quando chiamare gli strumenti denominati esposti nell'applicazione. Il modello non esegue direttamente la logica di business. Restituisce invece una chiamata di funzione strutturata, il codice esegue la funzione e quindi si passa nuovamente l'output della funzione al modello.
+
+Questo modello è ideale per connettere il ragionamento del modello a sistemi reali come API, database, flussi di lavoro aziendali e funzioni di utilità.
+
+Le funzionalità principali includono:
+
+- **Chiamate agli strumenti strutturati**: il modello genera richieste esplicite di chiamata di funzione
+- **Esecuzione controllata dallo sviluppatore**: l'applicazione decide come e dove vengono eseguite le funzioni
+- **Modello di integrazione affidabile**: chiamare API, servizi interni o utilità helper in modo sicuro
+- **Orchestrazione a più turni** - Restituire l'output dello strumento e consentire al modello di continuare a ragionare
+- **Risposte basate sui dati** - Le risposte possono includere dati in tempo reale generati dal sistema
+
+### Casi d'uso comuni
+
+|Caso d'uso	|Esempio|
+|:---|:------|
+|Integrazione del sistema	|Chiamare un'API interna per i dettagli dell'account o dell'ordine|
+|Automazione attività	|Attivare flussi di lavoro come la creazione di ticket o le notifiche|
+|Ricerca dati	|Eseguire query sulle regole business o sulle tabelle di riferimento prima di rispondere|
+
+### Un semplice esempio
+Ecco un esempio che espone una `get_time` funzione e consente al modello di chiamarlo quando necessario:
+
+```{.python filename='python'}
+import time
+from openai import OpenAI
+
+# Function to get the current time
+def get_time():
+    return f"The time is {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}"
+
+
+# Main function
+def main():
+    client = OpenAI(
+        base_url={openai_endpoint},
+        api_key={auth_key_or_token}
+    )
+
+    function_tools = [
+        {
+            "type": "function",
+            "name": "get_time",
+            "description": "Get the current time"
+        }
+    ]
+
+    # Initialize messages with a system prompt
+    messages = [
+        {"role": "developer", "content": "You are an AI assistant that provides information."},
+    ]
+
+    # Loop until the user types 'quit'
+    while True:
+        prompt = input("\nEnter a prompt (or type 'quit' to exit)\n")
+        if prompt.lower() == "quit":
+            break
+
+        # Append the user prompt to the messages
+        messages.append({"role": "user", "content": prompt})
+
+        # Get initial response
+        response = client.responses.create(
+            model=model_deployment,
+            input=messages,
+            tools=function_tools
+        )
+
+        # Append model output to the messages
+        messages += response.output
+
+        # Was there a function call?
+        for item in response.output:
+            if item.type == "function_call" and item.name == "get_time":
+                current_time = get_time()
+                messages.append({
+                    "type": "function_call_output",
+                    "call_id": item.call_id,
+                    "output": current_time
+                })
+
+                # Get a follow up response using the tool output
+                response = client.responses.create(
+                    model=model_deployment,
+                    instructions="Answer only with the tool output.",
+                    input=messages,
+                    tools=function_tools
+                )
+
+        print(response.output_text)
+
+
+# Run the main function when the script starts
+if __name__ == '__main__':
+    main()
+```
+
+In questo flusso, il modello decide quando chiamare `get_time`, il codice esegue la funzione e il modello restituisce quindi una risposta finale fondata. Poiché l'utente può immettere qualsiasi richiesta, il modello deve determinare quando deve chiamare la funzione. In tal caso, la risposta al prompt includerà una chiamata di funzione, che il codice dell'applicazione deve implementare prima di inviare una nuova richiesta con l'output della funzione che il modello deve elaborare.
+
+L'output potrebbe essere simile al seguente:
+
+```{.txt filename="output"}
+Enter a prompt (or type 'quit' to exit)
+Hello
+
+Hello! How can I help you today?
+
+Enter a prompt (or type 'quit' to exit)
+What time is it?
+
+The time is 2026-03-19 17:17:41.
+
+Enter a prompt (or type 'quit' to exit)
+```
+
+Il primo prompt dell'utente ("Hello") non richiedeva l'uso dello strumento di funzione, quindi il modello rispondeva normalmente. La seconda richiesta ("Qual è l'ora?") ha attivato il modello per selezionare la get_time funzione, indicata nella risposta. Il codice dell'applicazione ha quindi eseguito la funzione e restituito i risultati al modello, che ha quindi inviato una seconda risposta con i risultati della funzione.
+
+
+::: {.callout-tip}
+In questo esempio viene usata una singola funzione senza parametri. È possibile configurare lo strumento per l'uso di più funzioni, con o senza parametri. Per altre informazioni sulla specifica dei dettagli della funzione, vedere la guida per sviluppatori OpenAI.
+:::
+
+### Come funziona lo strumento per le funzioni
+Il processo generale per l'uso dello strumento per le funzioni è:
+
+1. **Definire gli strumenti**: specificare una o più definizioni di funzione nella matrice di strumenti.
+2. **Model valuta il prompt**: determina se è necessaria una chiamata di funzione.
+3. **Il modello genera una chiamata di funzione**: la risposta include il nome della funzione e i metadati delle chiamate.
+4. **L'app esegue la logica**: eseguire la funzione corrispondente nel codice.
+5. **Restituisci l'output della funzione** - Invia un `function_call_output` elemento con il risultato.
+6. **Il modello completa la risposta**: incorpora i risultati degli strumenti nella risposta finale.
+
+### Procedure consigliate
+- **Mantenere concentrati gli strumenti**: le funzioni di piccole dimensioni e a singolo scopo sono più facili da controllare e testare
+- **Validare gli input della funzione** - Non fidarti mai degli argomenti degli strumenti alla cieca nei sistemi di produzione
+- **Gestire gli errori in modo sicuro** - Restituire output di errore chiari di cui il modello può ragionare
+- **Utilizzo dello strumento di log**: tenere traccia delle chiamate, della latenza e delle percentuali di errore per il debug e la governance
+- **Limitare le operazioni sensibili** - Richiedere l'autorizzazione esplicita per le azioni ad alto impatto
+
+### Limitazioni da conoscere
+
+- Il modello richiede chiamate di funzione, ma l'applicazione deve eseguirle
+- Possono verificarsi argomenti dello strumento non corretti o imprevisti e devono essere convalidati
+- La latenza degli strumenti può aumentare il tempo di risposta end-to-end
+- Le chiamate di funzione migliorano l'affidabilità, ma gli output finali devono comunque essere esaminati per le decisioni critiche
+
+Se usato bene, lo strumento funzionale trasforma un modello da generatore di testo in un orchestratore che può interagire con i sistemi reali in modo controllato e verificabile.
+
+# Ottimizzare le prestazioni del modello di intelligenza artificiale generativa con Microsoft Foundry
+
+## Introduzione
+
+I modelli linguistici sono strumenti potenti per la creazione di applicazioni di intelligenza artificiale generative, ma un modello di base autonomo potrebbe non soddisfare tutti i requisiti. La qualità, l'accuratezza e la coerenza delle risposte generate da un modello dipendono dalla modalità di configurazione e aumento.
+
+Si immagini di lavorare come sviluppatore per un’azienda di viaggi. Si sta creando un'applicazione di chat per aiutare i clienti a rispondere alle domande relative ai viaggi. Il modello di base offre risposte decenti, ma il team ha esigenze specifiche: le risposte devono seguire il tono della voce dell'azienda, includere informazioni accurate sul catalogo hotel e mantenere un formato coerente tra le interazioni. Come si fa funzionare il modello a questo livello?
+
+Esistono diverse strategie complementari che è possibile usare per ottimizzare le prestazioni di un modello di intelligenza artificiale generativa. Queste strategie vanno da rettifiche rapide e a basso costo a tecniche più coinvolte che richiedono tempo e risorse aggiuntive.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/optimize-generative-ai-model-performance/media/model-optimization.png){fig-align="center" width=60%}
+
+In questo modulo vengono esaminate ognuna di queste strategie e si apprenderà quando e come applicarle singolarmente o in combinazione.
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+## Ottimizzare l'output del modello con la progettazione dei prompt
+
+Il modo più accessibile per ottimizzare le prestazioni di un modello consiste nell'ingegneria dei prompt. La progettazione dei prompt è il processo di progettazione e affinamento delle richieste per migliorare la qualità, l'accuratezza e la pertinenza delle risposte generate da un modello linguistico. Non richiede un'infrastruttura aggiuntiva o dati di training ed è possibile iniziare subito a sperimentare.
+
+### Informazioni sui componenti del prompt
+Quando si interagisce con un modello linguistico, la qualità della domanda influisce direttamente sulla qualità della risposta. Un prompt ben costruito consente al modello di comprendere cosa serve e generare una risposta più utile.
+
+Le richieste di modelli di completamento della chat in genere includono i componenti seguenti:
+
+- **Messaggio di sistema**: istruzioni che definiscono il comportamento, il ruolo e i vincoli del modello.
+- **Messaggio utente**: domanda o input dell'utente.
+- **Messaggio di assistente**: risposte del modello precedenti, usate nelle conversazioni a più turni.
+- **Esempi**: coppie di input/output di esempio che illustrano il formato di risposta previsto.
+
+La struttura e la combinazione di questi componenti determinano in modo efficace la risposta del modello.
+
+### Progettare messaggi di sistema efficaci
+Un **messaggio di sistema** è un set di istruzioni fornite al modello per guidare le risposte. I messaggi di sistema vengono in genere visualizzati per primi nella conversazione e fungono da set di istruzioni di livello più alto. È possibile usarli per:
+
+- Definire il ruolo e i limiti dell'assistente.
+- Impostare il tono e lo stile di comunicazione.
+- Specificare i formati di output, ad esempio i formati JSON o i punti elenco.
+- Aggiungere vincoli di sicurezza e qualità per lo scenario in uso.
+
+Un messaggio di sistema può essere semplice come:
+
+```{.txt filename="text"}
+You are a helpful AI assistant.
+```
+
+Oppure può includere regole dettagliate e requisiti di formattazione. Ad esempio, l'applicazione chat dell'agenzia di viaggi può usare:
+
+```{.txt filename="text"}
+You are a friendly travel advisor for Margie's Travel.
+Answer only questions related to travel, hotels, and trip planning.
+Use a warm, conversational tone.
+If you don't have enough information to answer, ask a clarifying question.
+Format hotel recommendations as a bulleted list with the hotel name, location, and price range.
+```
+
+:::{.callout-important}
+Un messaggio di sistema influenza il modello, ma non garantisce la conformità. È consigliabile testare e iterare sui messaggi del sistema e di sovrapporli con altre mitigazioni, ad esempio il filtro e la valutazione dei contenuti.
+:::
+
+Quando si progetta un messaggio di sistema, seguire questo elenco di controllo:
+
+1. **Iniziare con il ruolo dell'assistente**: indicare il ruolo e il risultato previsto per una richiesta tipica.
+2. **Definire i limiti**: elencare gli argomenti, le azioni e i tipi di contenuto che l'assistente deve evitare.
+3. **Specificare il formato di output**: se è necessario un formato specifico, impostarlo in modo semplice e mantenerlo coerente.
+4. **Aggiungi un criterio "quando non sicuro"**: indicare al modello quale to do quando la richiesta dell'utente è ambigua, fuori ambito o quando il modello non dispone di informazioni.
+
+### Applicare i modelli di prompt
+I prompt efficaci usano modelli che consentono al modello di produrre risposte migliori. Ecco alcuni modelli comuni che è possibile usare:
+
+#### Modello persona
+Indicare al modello di assumere una prospettiva o un ruolo specifico. Ad esempio, chiedere al modello di rispondere come un esperto di marketing produce risultati diversi rispetto a non usare alcuna persona.
+
+||Nessun utente	|Con persona|
+|:---|:---|:---|
+|Messaggio di sistema	|Nessuno	|Sei un esperto di marketing che scrive per clienti tecnici.|
+|Prompt utente	|Scrivere una descrizione di una frase di un prodotto CRM.	|Scrivere una descrizione di una frase di un prodotto CRM.|
+|Risposta	|Un prodotto CRM è uno strumento software progettato per gestire le interazioni di un'azienda con i clienti.	|Esperienza di gestione delle relazioni con i clienti senza problemi con CRM, progettata per semplificare le operazioni e favorire la crescita delle vendite con analisi affidabili.|
+
+#### Pattern del modello di formato
+Specificare un modello o una struttura nel prompt per ottenere l'output in un formato specifico. Ad esempio, se è necessaria una risposta strutturata su un hotel:
+
+```{.txt filename="text"}
+Format the result to show:
+- Hotel name
+- Location
+- Star rating
+- Price range per night
+```
+
+Questo modello garantisce risposte coerenti e organizzate che sono facili da analizzare nell'applicazione.
+
+#### Modello di catena di pensiero
+Chiedere al modello di spiegarne il ragionamento passo dopo passo. Questa tecnica, denominata catena di pensiero, riduce la probabilità di risultati imprecisi e semplifica la verifica della logica del modello.
+
+Ad esempio, invece di chiedere "Quale hotel è migliore per una famiglia di quattro?", è possibile richiedere:
+
+```{.txt filename="text"}
+Which hotel is best for a family of four? Take a step-by-step approach: 
+consider room size, amenities for children, location, and price.
+```
+
+Una tecnica correlata consiste nell'suddividere l'attività in passaggi secondari espliciti prima che il modello risponda, anziché chiedergli di ragionare per tutto in una sola volta. Ad esempio, è possibile chiedere al modello di estrarre i fatti chiave da un passaggio e quindi in una richiesta di completamento chiedergli di rispondere a una domanda basata su tali fatti. La scomposizione del lavoro in questo modo riduce gli errori in attività complesse e in più parti.
+
+:::{.callout-note}
+La richiesta a catena di pensieri è una tecnica per i modelli non deduttivi. I modelli di ragionamento, come i modelli o-series, gestiscono internamente la logica dettagliata.
+:::
+
+#### Modello di apprendimento con pochi esempi
+Fornire uno o più esempi dell'input e dell'output desiderati per consentire al modello di identificare il modello desiderato. Questa tecnica è denominata apprendimento con pochi scatti (o una sola ripresa per un singolo esempio). Quando non vengono forniti esempi, si parla di apprendimento zero-shot.
+
+Ad esempio, per classificare le richieste dei clienti:
+
+```{.txt filename="text"}
+Classify the following customer messages:
+
+Message: "I need to change my flight to Rome"
+Category: Booking change
+
+Message: "What's the weather like in Bali in March?"
+Category: Travel information
+
+Message: "Can I get a refund for my cancelled tour?"
+Category:
+```
+
+Il modello apprende il modello di classificazione dagli esempi e completa correttamente l'ultima voce.
+
+#### Usare sintassi chiara e delimitatori chiari
+Quando il prompt include più sezioni, ad esempio istruzioni, testo di origine ed esempi, usare delimitatori come `---`, intestazioni Markdown o tag XML per separarli. I limiti chiari consentono al modello di distinguere le istruzioni dal contenuto e ridurre la probabilità di interpretazione errata.
+
+:::{.callout-tip}
+I modelli possono essere soggetti a distorsioni di recency, ovvero il testo vicino alla fine di una richiesta può avere maggiore influenza rispetto al testo all'inizio. Se il modello non segue le istruzioni in modo coerente, provare a ripetere l'istruzione chiave alla fine del prompt.
+:::
+
+### Configurare i parametri del modello
+Oltre al testo delle richieste, è possibile modificare i parametri del modello che controllano il modo in cui il modello genera risposte:
+
+- **Temperatura**: controlla la casualità dell'output. Un valore più alto (ad esempio, 0,7) produce risposte più creative e diverse, mentre un valore inferiore (ad esempio, 0,2) produce risposte più mirate e deterministiche. Usare valori inferiori per le attività effettive e valori più elevati per quelli creativi.
+
+- **Top_p**: controlla anche la casualità, ma in modo diverso. Limita il modello a un subset dei token successivi più probabili. Ad esempio, un `top_p` valore pari a 0,9 indica che il modello considera solo i primi 90% di token probabili.
+
+:::{.callout-tip}
+La raccomandazione generale è quella di regolare la temperatura o `top_p`, non entrambe contemporaneamente.
+:::
+
+Per lo scenario dell'agenzia di viaggi, è possibile usare una temperatura bassa (0,2) quando si rispondono a domande concrete sui servizi alberghieri, ma una temperatura più elevata (0,7) quando si generano suggerimenti per itinerari di viaggio creativi.
+
+### Quando l'ingegneria del prompt è sufficiente
+La progettazione dei prompt è il punto di partenza giusto per qualsiasi sforzo di ottimizzazione del modello. È efficace quando è necessario:
+
+- Guida il tono, il formato e il comportamento del modello.
+- Specificare istruzioni specifiche per un'attività.
+- Iterare rapidamente sui risultati senza modificare l'infrastruttura.
+- Mantenere bassi i costi, in quanto non è necessario alcun training o storage di dati aggiuntivi.
+
+Tuttavia, la progettazione dei prompt presenta limiti. Se il modello non ha access alle informazioni necessarie (ad esempio il catalogo hotel dell'azienda) o se non riesce a mantenere in modo coerente un comportamento specifico nonostante istruzioni dettagliate, è necessario prendere in considerazione strategie aggiuntive.
+
+## Preparare il modello con la generazione aumentata di recupero
+
+L'ingegneria del prompt aiuta a guidare la risposta di un modello, ma non può fornire conoscenze che non possiede già. I modelli linguistici vengono sottoposti a training su set di dati di grandi dimensioni, ma i dati di training hanno una data di scadenza e non includono le informazioni private dell'organizzazione. Quando un modello non dispone di contesto rilevante, potrebbe generare risposte che suonano plausibili ma sono effettivamente errate.
+
+Per affrontare questa sfida, è possibile basare il modello fornendogli dati rilevanti e concreti su cui basare le risposte. Il recupero della generazione aumentata (RAG) è la tecnica più comune per basare un modello linguistico.
+
+### Comprendere le nozioni di base
+
+Quando si usa un modello linguistico senza fondamento, le uniche informazioni provengono dai suoi dati di addestramento. Il risultato potrebbe essere grammaticalmente corretto e strutturato logicamente, ma potrebbe essere impreciso o includere dettagli fabbricati. Ad esempio, chiedere "Quali hotel offrono a Parigi?" senza dati di base potrebbero restituire nomi fittizi di hotel.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/optimize-generative-ai-model-performance/media/ungrounded.png){fig-align="center" width=50%}
+
+Quando si **verifica** un prompt, si forniscono dati pertinenti da un'origine attendibile insieme alla domanda dell'utente. Il modello genera quindi una risposta basata su tali dati, producendo risposte più accurate e contestualmente pertinenti.
+
+Considerare la differenza:
+
+- **Non fondato**: il modello si basa solo sui dati di training e potrebbe inventare nomi di hotel o dettagli.
+- **Basato su dati reali**: il modello riceve come contesto i dati effettivi del catalogo degli hotel e risponde con nomi, prezzi e disponibilità reali degli hotel.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/optimize-generative-ai-model-performance/media/grounded.png){fig-align="center" width=50%}
+
+Il grounding migliora l'accuratezza effettiva delle risposte collegando il modello a informazioni specifiche, correnti e pertinenti alle esigenze dell'utente.
+
+### Funzionamento di RAG
+Rag è un modello che recupera informazioni rilevanti da un'origine dati e lo include nella richiesta prima che il modello generi una risposta. Il processo segue tre passaggi:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/optimize-generative-ai-model-performance/media/rag-pattern.png){fig-align="center" width=80%}
+
+1. **Retrieve**: cercare informazioni rilevanti per la domanda dell'utente in un'origine dati.
+2. **Aumenta**: aggiungere le informazioni recuperate al prompt come contesto.
+3. **Genera**: inviare il prompt arricchito al modello linguistico per generare una risposta fondata.
+
+Recuperando il contesto da una fonte di dati specificata, si assicura che il modello utilizzi informazioni rilevanti e aggiornate anziché basarsi esclusivamente sui dati di formazione.
+
+### Creare incorporamenti per la ricerca
+Un componente critico di RAG è la possibilità di trovare in modo efficiente le informazioni più rilevanti nell'origine dati. Questo è il percorso in cui sono disponibili incorporamenti e ricerca vettoriale .
+
+Un incorporamento è una rappresentazione matematica del testo come vettore, ovvero un elenco di numeri a virgola mobile che acquisisce il significato di parole, frasi o documenti. È possibile creare incorporamenti inviando il contenuto a un modello di incorporamento, ad esempio un modello di incorporamento di Azure OpenAI disponibile in Microsoft Foundry.
+
+Si supponga, ad esempio, di creare due documenti:
+
+- "I bambini giocavano allegramente nel parco".
+- "I bambini correvano felicemente nel parco giochi".
+
+Queste frasi usano parole diverse, ma hanno significati simili. Quando si creano incorporamenti per ognuno di essi, i relativi vettori vengono vicini nello spazio multidimensionale, riflettendone la somiglianza semantica.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/optimize-generative-ai-model-performance/media/vector-embeddings.jpg){fig-align="center" width=80%}
+
+La somiglianza del coseno misura il modo in cui due vettori sono vicini calcolando l'angolo tra di essi. Un valore vicino a 1 indica che i vettori sono molto simili. Questo approccio matematico consente di trovare documenti pertinenti anche quando le parole esatte non corrispondono.
+
+### Usare Azure AI Search per il recupero
+Azure AI Search fornisce il componente di recupero per le soluzioni RAG in Microsoft Foundry. Consente di portare dati personalizzati, creare un indice ricercabile ed eseguirne una query per recuperare le informazioni pertinenti.
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/optimize-generative-ai-model-performance/media/index.png){fig-align="center" width=80%}
+
+Per usare Azure AI Search con RAG, è possibile:
+
+1. Aggiungi i dati a Microsoft Foundry da origini come Archiviazione BLOB di Azure, Azure Data Lake Storage Gen2 o Microsoft OneLake. È anche possibile caricare direttamente i file.
+2. Creare un indice usando un modello di incorporamento per generare rappresentazioni vettoriali del contenuto. L'indice viene archiviato in Azure AI Search.
+3. Interrogare l'indice quando un utente pone una domanda. Il sistema converte la domanda in un incorporamento, cerca il contenuto più simile e restituisce i risultati pertinenti.
+
+Azure AI Search supporta diverse tecniche di ricerca:
+
+- **Ricerca di parole chiave**: corrisponde a termini esatti nella query al testo nell'indice.
+- **Ricerca semantica**: usa modelli semantici per trovare la corrispondenza con il significato della query anziché con parole chiave esatte.
+- **Ricerca vettoriale**: usa incorporamenti per trovare contenuto semanticamente simile.
+- **Ricerca ibrida**: combina parole chiave, semantica e ricerca vettoriale per i risultati più accurati. La ricerca ibrida è consigliata per le applicazioni di intelligenza artificiale generative.
+
+### Implementare RAG con il Azure AI Foundry SDK
+Dopo aver creato un indice Azure AI Search, è possibile connetterlo a un modello tramite microsoft Foundry project. Il SDK azure-ai-projects consente di ottenere un client OpenAI autenticato e di usare l'API delle Risposte per generare risposte fondate.
+
+Il codice Python seguente illustra un'implementazione di base:
+
+```{.python filename="python"}
+from azure.ai.projects import AIProjectClient
+from azure.identity import DefaultAzureCredential
+
+project = AIProjectClient(
+    endpoint=os.environ["PROJECT_ENDPOINT"],
+    credential=DefaultAzureCredential(),
+)
+
+client = project.get_openai_client()
+
+response = client.responses.create(
+    model="gpt-4o",
+    input=[
+        {"role": "system", "content": "You are a helpful travel advisor. "
+         "Use the following hotel data to answer: " + retrieved_context},
+        {"role": "user", "content": "Which hotels do you offer in Paris?"},
+    ],
+)
+
+print(response.output_text)
+```
+
+In questo esempio `retrieved_context` rappresenta i documenti restituiti dall'indice Azure AI Search. Inserendo tali risultati nel messaggio del sistema, la risposta del modello è basata sui tuoi dati effettivi anziché sulle sue conoscenze generali derivate dal training.
+
+### Quando usare RAG
+Rag è più efficace quando:
+
+- **Il modello necessita di conoscenze specifiche del dominio**: l'organizzazione dispone di dati privati su cui il modello non è stato sottoposto a training, ad esempio un catalogo di prodotti, documenti di criteri o knowledge base interni.
+- **Modifiche frequenti delle informazioni**: i dati vengono aggiornati regolarmente, ad esempio inventario, prezzi o notizie. RAG recupera i dati attuali al momento della query senza dover ripetere il training.
+- **L'accuratezza effettiva è fondamentale**: sono necessarie risposte basate su dati reali anziché sulle conoscenze generali del modello.
+- **I dati di training del modello di base hanno un limite**: gli eventi o le informazioni che si sono verificati dopo la data di scadenza del training del modello devono essere accessibili.
+
+Per lo scenario dell'agenzia di viaggi, RAG consente ai clienti di porre domande su hotel, destinazioni e criteri di prenotazione specifici, tutti contenuti nei dati effettivi del catalogo dell'agenzia.
+
+:::{.callout-tip}
+Se si creano agenti che necessitano di conoscenze radicate senza dover gestire la propria infrastruttura di ricerca, prendere in considerazione Foundry IQ, un archivio di conoscenze gestito che semplifica l'ancoraggio per gli agenti di intelligenza artificiale. Per ulteriori informazioni, consultare [Costruisci agenti AI potenziati dalla conoscenza con Foundry IQ](https://learn.microsoft.com/it-it/training/modules/introduction-foundry-iq/).
+:::
+
+## Ottimizzare un modello per un comportamento coerente
+
+La progettazione dei prompt consente di guidare il comportamento del modello e RAG consente di gestire le risposte in base ai dati reali. Ma a volte il modello non produce ancora risposte con lo stile, il tono o il formato coerenti necessari. Quando si nota che il modello ignora o segue in modo incoerente le istruzioni, anche con messaggi di sistema dettagliati ed esempi con pochi scatti, potrebbe essere il momento di ottimizzare il modello.
+
+La messa a punto è il processo di acquisizione di un modello linguistico preaddestrato e di un addestramento ulteriore su un set di dati più piccolo e specifico per il compito. Ciò regola i pesi interni del modello in modo da produrre risposte coerenti con i modelli nei dati di training.
+
+### Informazioni sull'ottimizzazione
+I modelli di base come GPT-4o vengono sottoposti a training su grandi quantità di dati generali. L'ottimizzazione si basa su fondamenta esistenti addestrando ulteriormente il modello con esempi aggiuntivi che riflettono i vostri requisiti specifici. Pensate alla specializzazione di un generalista: il modello mantiene le sue ampie capacità linguistiche, ma impara a rispondere in modo specifico ai dati di addestramento dimostrati.
+
+L'ottimizzazione usa LoRA (adattamento Low-Rank), una tecnica che approssima le variazioni di peso con una rappresentazione a rango inferiore. Anziché ripetere il training di tutti i parametri del modello, LoRA aggiorna solo un subset più piccolo di parametri importanti. Questo rende il training più veloce e più conveniente mantenendo la qualità del modello.
+
+Il vantaggio principale della messa a punto rispetto all'addestramento di un modello da zero è l'efficienza. Sono necessari meno tempo, meno risorse di calcolo e meno dati per personalizzare il comportamento di un modello.
+
+### Sapere quando ottimizzare
+L'ottimizzazione è adatta agli scenari in cui la sola progettazione dei prompt non raggiunge la coerenza necessaria. I casi d'uso comuni includono:
+
+- **Stile e tono coerenti**: l'organizzazione ha una voce del marchio specifica e il modello deve seguirlo in modo affidabile in tutte le interazioni. Ad esempio, l'agenzia di viaggi vuole che ogni risposta usi un tono caldo e incoraggiante con paragrafi brevi.
+- **Formati di output specifici**: è necessario che il modello producano in modo affidabile output strutturato, ad esempio le risposte JSON che seguono uno schema definito e solo alcuni esempi non sono sufficienti.
+- **Riduzione della lunghezza del prompt**: messaggi di sistema lunghi con molti esempi usano token e aumentano la latenza. L'ottimizzazione integra quegli schemi nel modello, riducendo la dimensione del prompt necessaria per ogni richiesta.
+- **Distillazione**: si desidera trasferire le funzionalità di un modello di grandi dimensioni elevato e costoso verso un modello più piccolo, più efficiente. Ad esempio, è possibile raccogliere output da un modello ad alte prestazioni e usarli per ottimizzare un modello più piccolo che ottiene una qualità simile a un costo e una latenza inferiori.
+- **Miglioramento dell'utilizzo degli strumenti**: quando l'applicazione usa la chiamata degli strumenti, l'ottimizzazione con gli esempi di strumenti può migliorare l'accuratezza della selezione degli strumenti e della generazione di parametri.
+
+:::{.callout-important}
+L'ottimizzazione è una funzionalità avanzata. Iniziare sempre valutando le prestazioni di base di un modello standard rispetto ai requisiti prima di prendere in considerazione l'ottimizzazione. Senza una linea di base, è difficile rilevare se la messa a punto ha migliorato o degradato le prestazioni del modello.
+:::
+
+### Esplorare i tipi di ottimizzazione
+Microsoft Foundry offre diverse tecniche di ottimizzazione:
+
+- **Ottimizzazione con supervisione (SFT)**: addestrare il modello su un dataset etichettato di coppie di richieste e risposte. Il modello impara a produrre output che corrispondono ai modelli nei dati di training. Questa tecnica funziona meglio quando ci sono modi chiari e ben definiti per affrontare un'attività.
+- **Ottimizzazione per rinforzo (RFT)**: ottimizzare il comportamento del modello tramite feedback iterativo, usando un classificatore per ricompensare le risposte migliori in modo incrementale. RFT funziona bene per attività complesse o dinamiche in cui sono disponibili molte soluzioni possibili e si vuole migliorare la qualità del ragionamento del modello.
+- **Ottimizzazione preferenza diretta (DPO)**: allineare il modello in base alle preferenze umane fornendo coppie di risposta preferite e non preferite. DPO è più leggero dal punto di vista computazionale rispetto agli approcci tradizionali di apprendimento per rinforzo, essendo altrettanto efficace nell'allineamento.
+
+È anche possibile combinare tecniche. Ad esempio, usare prima l'ottimizzazione con supervisione per creare un modello personalizzato, quindi usare DPO per allineare ulteriormente le risposte alle preferenze specifiche.
+
+### Preparare i dati di addestramento
+L'ottimizzazione richiede un set di dati di esempi di alta qualità in formato JSONL (righe JSON). Per i modelli di completamento della chat, ogni esempio è costituito da una conversazione con messaggi di sistema, utente e assistente:
+
+```{.json filename="JSON"}
+{"messages": [{"role": "system", "content": "You are a friendly travel advisor for Margie's Travel."}, {"role": "user", "content": "What's a good beach destination in Europe?"}, {"role": "assistant", "content": "For a beautiful European beach experience, consider the Algarve in southern Portugal! It offers stunning golden cliffs, warm waters, and charming coastal towns. The best time to visit is from May through September."}]}
+{"messages": [{"role": "system", "content": "You are a friendly travel advisor for Margie's Travel."}, {"role": "user", "content": "I need a budget hotel in Tokyo."}, {"role": "assistant", "content": "Here are some great budget-friendly options in Tokyo:\n\n- **Sakura Hotel Jimbocho** - Central location, from $45/night\n- **Khaosan World Asakusa** - Near Senso-ji temple, from $35/night\n- **Imano Tokyo Ginza Hostel** - Modern design, from $40/night\n\nAll three options are close to public transit, making it easy to explore the city."}]}
+```
+
+Quando si preparano i dati di addestramento:
+
+- Includere un messaggio di sistema coerente tra esempi.
+- Usare esempi rappresentativi di alta qualità che coprono la gamma di scenari previsti.
+- Mirare ad almeno centinaia di esempi; più è generalmente migliore.
+- Assicurarsi che le risposte dell'assistente riflettano esattamente lo stile, il formato e il tono desiderati.
+
+:::{.callout-note}
+Includere un messaggio di sistema nei dati di training è importante. Lasciare vuoto tende a produrre modelli di accuratezza inferiore. Usare lo stesso messaggio di sistema quando si distribuisce il modello ottimizzato per l'inferenza.
+:::
+
+### Prendere in considerazione le sfide
+Il perfezionamento introduce costi e complessità da valutare prima di impegnarsi.
+
+- **Costi di addestramento**: Il perfezionamento prevede costi iniziali per l'addestramento e costi orari continuativi per l'hosting del modello personalizzato.
+- **Requisiti di qualità dei dati**: i dati di training non rappresentativi o di scarsa qualità comportano l'overfitting, l'underfitting o la distorsione.
+- **Manutenzione**: potrebbe essere necessario riprogrammare i modelli ottimizzati al variare dei dati o al rilascio di modelli di base aggiornati.
+- **Sperimentazione**: trovare la combinazione corretta di iperparametri (periodi, dimensioni batch, frequenza di apprendimento) richiede test e iterazione.
+- **Deriva del modello**: la specializzazione troppo stretta può rendere il modello meno efficace nelle attività linguistiche generali al di fuori del dominio ottimizzato.
+
+Per l'agenzia di viaggi, l'ottimizzazione significa garantire che ogni risposta sia costantemente in linea con le linee guida sulla voce e formattazione del marchio dell'azienda, anche senza ampi messaggi di sistema. Tuttavia, il team deve valutare questo vantaggio rispetto al costo della preparazione dei dati di training e della gestione del modello ottimizzato nel tempo.
+
+## Confrontare e combinare strategie di ottimizzazione
+
+Dopo aver esaminato la progettazione dei prompt, RAG e la messa a punto singolarmente, esaminiamo il modo in cui sono correlati tra loro. Queste strategie non si escludono a vicenda; sono metodi complementari che è possibile combinare per soddisfare obiettivi di ottimizzazione diversi.
+
+### Comprendere lo spettro di ottimizzazione
+Le tre strategie di ottimizzazione riguardano dimensioni diverse delle prestazioni del modello:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/optimize-generative-ai-model-performance/media/model-optimization.png){fig-align="center" width=60%}
+
+**Ottimizzare per il contesto**: quando il modello non dispone di conoscenze specifiche del dominio e si vuole ottimizzare l'accuratezza delle risposte. Rag risolve questo problema recuperando i dati pertinenti da origini esterne.
+
+**Ottimizzare il modello**: quando si vuole migliorare il formato, lo stile o il tono della risposta ottimizzando la coerenza del comportamento. La messa a punto affronta questo problema eseguendo il training del modello su esempi che illustrano l'output desiderato.
+
+La progettazione dei prompt è la base che supporta entrambe le direzioni. Si utilizza l'ingegneria dei prompt per istruire il modello su come comportarsi e su cosa concentrarsi, e poi si applicano tecniche di Ricerca e Generazione o si procede con l'ottimizzazione quando l'ingegneria dei prompt da sola non è sufficiente.
+
+### Confrontare le strategie
+Ogni strategia presenta compromessi diversi in termini di tempo di implementazione, complessità, costo e prestazioni ottimali:
+
+| Strategia	| Tempo necessario per implementare	|Complessità |	Costo |	Ideale per |
+|:---|:---|:---|:---|:---|
+|Progettazione delle richieste	|Low |	Low	| Basso (solo per token)| 	Tono guida, formato e comportamento; iterazione rapida; fornire istruzioni ed esempi|
+|RAG|	Intermedio|	Intermedio|	Media (infrastruttura di ricerca + archiviazione + per token)|	Accuratezza effettiva, conoscenza specifica del dominio, dati dinamici o che cambiano di frequente|
+|Fine-tuning|	Alto|	Alto	|Elevata (calcolo di training + hosting del modello + per token)|	Coerenza comportamentale, applicazione dello stile, riduzione della lunghezza della richiesta, distillazione del modello|
+
+#### Compromessi nell'ingegnerizzazione dei prompt
+La progettazione dei prompt è la strategia di ottimizzazione più rapida e meno costosa. È possibile iniziare immediatamente senza modifiche all'infrastruttura. Tuttavia, le richieste più lunghe utilizzano più token per ogni richiesta e il modello potrebbe non sempre seguire in modo coerente istruzioni complesse. La progettazione dei prompt non può fornire anche al modello accesso alle informazioni su cui non è stato addestrato.
+
+#### Compromessi RAG
+RAG fornisce al modello dati aggiornati e pertinenti in fase di query, migliorando in modo significativo l'accuratezza fattuale. Tuttavia, richiede la configurazione di un search service, la creazione e la gestione di un indice e l'elaborazione degli incorporamenti. La qualità delle risposte RAG dipende dalla qualità dell'indice di ricerca e dalla qualità dei dati in blocchi e indicizzati.
+
+#### Regolazione dei compromessi
+L'ottimizzazione produce il comportamento del modello maggiormente coerente perché i pattern desiderati sono incorporati nei pesi del modello. Può anche ridurre i costi per richiesta abbreviando i prompt. Tuttavia, l'ottimizzazione prevede l'investimento iniziale più elevato: è necessario preparare i dati di training, pagare per il calcolo del training e ospitare il modello personalizzato. Può essere necessario riaddestrare il modello ottimizzato quando il modello di base viene aggiornato o quando i requisiti cambiano.
+
+### Combinare strategie per ottenere risultati migliori
+Le applicazioni di intelligenza artificiale generative più efficaci usano spesso più strategie insieme. Ecco le combinazioni comuni:
+
+#### Progettazione delle richieste + RAG
+Questa è la combinazione più comune. Si usa la progettazione prompt per definire il comportamento del modello (tramite messaggi di sistema e istruzioni) e RAG per fornire il contesto effettivo necessario per risposte accurate. Per esempio:
+
+- Il messaggio di sistema indica al modello di agire come consulente di viaggio e formattare le risposte in modo specifico.
+- Rag recupera i dettagli dal catalogo di hotel in modo che il modello possa rispondere con nomi e prezzi reali di hotel.
+
+Questa combinazione riguarda sia *il modo in cui il modello deve agire che il modello deve conoscere*.
+
+#### Progettazione delle richieste + ottimizzazione
+Usare questa combinazione quando è necessario che il modello segua in modo coerente uno stile o un formato specifico. Il modello ottimizzato gestisce il comportamento di base e il messaggio di sistema fornisce un contesto aggiuntivo per conversazione. Per esempio:
+
+- Il modello ottimizzato è addestrato per rispondere sempre con il tono distintivo del marchio dell'agenzia di viaggi.
+- Il messaggio di sistema aggiunge istruzioni specifiche della sessione, ad esempio assegnando priorità a una promozione stagionale.
+
+RAG + ottimizzazione
+Combinare queste strategie quando è necessaria una base fattuale e un comportamento coerente. Il modello ottimizzato garantisce che lo stile di risposta sia affidabile, mentre RAG fornisce i dati correnti specifici del dominio. Per esempio:
+
+- Il modello ottimizzato produce risposte nella voce del marchio dell'agenzia e nel formato strutturato.
+- RAG recupera i prezzi e la disponibilità aggiornati degli hotel dal catalogo.
+
+#### Tutte e tre le strategie insieme
+Per le applicazioni più impegnative, è possibile utilizzare il prompt engineering, RAG e un modello opportunamente addestrato insieme. Ogni livello gestisce un problema diverso:
+
+1. L'ottimizzazione garantisce uno stile e un formato coerenti.
+2. Rag fornisce informazioni accurate e up-to-date del dominio.
+3. La progettazione dei prompt aggiunge istruzioni e protezioni specifiche della conversazione.
+
+### Applicare un framework decisionale
+Quando si decide quali strategie usare, iniziare con semplicità e aggiungere complessità solo quando necessario:
+
+1. Iniziare con la progettazione dei prompt: testare i messaggi di sistema, alcuni esempi e l'ottimizzazione dei parametri. Valutare se i risultati soddisfano i requisiti.
+2. Aggiungi RAG se l'accuratezza è importante: se il modello deve avere accesso a dati specifici, correnti o privati per rispondere correttamente, implementa RAG con Azure AI Search.
+3. Aggiungere l'ottimizzazione se la coerenza è importante: se il modello non mantiene in modo affidabile lo stile, il tono o il formato desiderato nonostante le richieste dettagliate, ottimizzare il modello con esempi rappresentativi.
+4. Combinare in base alle esigenze: strategie di livello in base ai requisiti specifici dell'applicazione. Non tutte le applicazioni hanno bisogno di tutte e tre.
+
+Questo approccio incrementale consente di evitare costi e complessità non necessari, garantendo al tempo stesso il livello di ottimizzazione richiesto dall'applicazione.
+
+# Implementare una soluzione di intelligenza artificiale generativa responsabile in Microsoft Foundry
+
+## Introduzione
+
+L'IA generativa è uno dei progressi più potenti della tecnologia in assoluto. Consente agli sviluppatori di creare applicazioni che utilizzano modelli di Machine Learning sottoposti a training con un volume elevato di dati da Internet per generare nuovi contenuti che possono essere indistinguabili dal contenuto creato da un essere umano.
+
+Con queste potenti funzionalità, l'IA generativa porta con sé alcuni pericoli; e richiede che data scientist, sviluppatori e altri utenti coinvolti nella creazione di soluzioni di intelligenza artificiale generative adottino un approccio responsabile che identifica, misura e attenua i rischi.
+
+Il modulo esplora un set di linee guida per l'IA generativa responsabile definita dagli esperti di Microsoft. Le linee guida per l'IA generativa responsabile si basano su standard di intelligenza artificiale responsabile di Microsoft per tenere conto di considerazioni specifiche correlate ai modelli di intelligenza artificiale generativa.
+
+:::{.callout-note}
+Sappiamo che persone diverse amano imparare in modi diversi. È possibile scegliere di completare questo modulo in formato basato su video oppure leggere il contenuto come testo e immagini. Il testo contiene maggiori dettagli rispetto ai video, quindi in alcuni casi potresti voler farvi riferimento come materiale supplementare alla presentazione video.
+:::
+
+## Pianificare una soluzione di intelligenza artificiale generativa responsabile
+
+La linea guida Microsoft per l'IA generativa responsabile è progettata per essere pratica e attuabile. Definisce un processo in quattro fasi per sviluppare e implementare un piano per l'IA responsabile quando si usano modelli generativi. Le quattro fasi del processo sono:
+
+1. *Mappare* i potenziali danni relativi alla soluzione pianificata.
+2. *Misura* la presenza di questi danni negli output generati dalla soluzione.
+3. *Attenuare i danni* a più livelli della soluzione per ridurre al minimo la presenza e l'impatto e garantire una comunicazione trasparente sui potenziali rischi per gli utenti.
+4. *Gestire* la soluzione in modo responsabile definendo e seguendo un piano di distribuzione e idoneità operativa.
+
+:::{.callout-note}
+Queste fasi corrispondono strettamente alle funzioni in [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework).
+:::
+
+La parte restante di questo modulo illustra in dettaglio ognuna di queste fasi, fornendo suggerimenti per le azioni che è possibile eseguire per implementare una soluzione di intelligenza artificiale generativa riuscita e responsabile.
+
+## Mappare potenziali danni
+
+La prima fase di un processo di IA generativa responsabile consiste nel mappare i potenziali danni che potrebbero influire sulla soluzione pianificata. Questa fase prevede quattro passaggi, come illustrato di seguito:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/responsible-ai-studio/media/identify-harms.png){fig-align="center" width=60%}
+
+1. Identificare potenziali danni
+2. Classificare in ordine di priorità i danni identificati
+3. Testare e verificare i danni classificati in ordine di priorità
+4. Documentare e condividere i danni verificati
+
+### 1: Identificare potenziali danni
+I potenziali danni rilevanti per la soluzione di intelligenza artificiale generativa dipendono da più fattori, inclusi i servizi e i modelli specifici usati per generare output, nonché qualsiasi ottimizzazione o dati di base usati per personalizzare gli output. Alcuni tipi comuni di potenziali danni in una soluzione di intelligenza artificiale generativa includono:
+
+- Generazione di contenuti offensivi, pejorative o discriminatori.
+- Generazione di contenuti che contengono inesattezze effettive.
+- Generazione di contenuti che incoraggiano o supportano comportamenti o pratiche illegali o non etiche.
+
+Per comprendere appieno le limitazioni note e il comportamento dei servizi e dei modelli nella soluzione, consultare la documentazione disponibile. Ad esempio, il servizio Azure OpenAI include una nota di trasparenza ; che è possibile usare per comprendere considerazioni specifiche relative al servizio e ai modelli inclusi. Inoltre, i singoli sviluppatori di modelli possono fornire documentazione, ad esempio [scheda di sistema OpenAI per il modello GPT-4](https://cdn.openai.com/papers/gpt-4-system-card.pdf).
+
+Valutare la possibilità di esaminare le linee guida nella guida alla valutazione dell'impatto dell'IA responsabile di Microsoft e di usare il modello di valutazione dell'impatto dell'IA responsabile [associato](https://msblogs.thesourcemediaassets.com/sites/5/2022/06/Microsoft-RAI-Impact-Assessment-Template.pdf) per documentare potenziali danni.
+
+Esaminare le [informazioni e le linee guida](https://learn.microsoft.com/it-it/azure/ai-services/responsible-use-of-ai-overview) per le risorse usate per identificare potenziali danni.
+
+### 2: Classificare in ordine di priorità i danni
+Per ogni potenziale danno identificato, valutare la probabilità che si verifichi e il livello di impatto risultante, se lo fa. Usare quindi queste informazioni per dare priorità ai danni più probabili e di maggiore impatto. Questa definizione di priorità consentirà di concentrarsi sulla ricerca e sulla mitigazione dei rischi più dannosi nella soluzione.
+
+La definizione delle priorità deve tenere conto dell'uso previsto della soluzione e del potenziale uso improprio; e può essere soggettivo. Si supponga, ad esempio, di sviluppare un copilota di cucina intelligente che fornisca assistenza alle ricette per chef e cuochi amatoriali. I potenziali danni possono includere:
+
+- La soluzione fornisce tempi di cottura imprecisi, causando cibo cotto insufficientemente che può causare malattie.
+- Quando richiesto, la soluzione fornisce una ricetta per un veleno letale che può essere prodotto da ingredienti quotidiani.
+
+Anche se nessuno di questi risultati è auspicabile, si può decidere che il potenziale della soluzione di supportare la creazione di un veleno letale ha un impatto maggiore rispetto al potenziale di creare cibo poco cotto. Tuttavia, dato lo scenario di utilizzo principale della soluzione, si può anche supporre che la frequenza con cui vengono suggeriti tempi di cottura imprecisi è probabilmente molto superiore al numero di utenti che chiedono esplicitamente una ricetta velenosa. La determinazione della priorità finale è un argomento di discussione per il team di sviluppo, che può coinvolgere la consulenza di esperti di policy o legali per stabilire adeguatamente le priorità.
+
+### 3: Testare e verificare la presenza di danni
+Ora che si dispone di un elenco con priorità, è possibile testare la soluzione per verificare che si verifichino i danni; e in tal caso, in quali condizioni. Il test potrebbe anche rivelare la presenza di danni non identificati in precedenza che è possibile aggiungere all'elenco.
+
+Un approccio comune ai test per individuare potenziali danni o vulnerabilità in una soluzione software consiste nell'usare i test "red team", in cui un team di tester esamina deliberatamente la soluzione per individuare i punti deboli e tenta di produrre risultati dannosi. I test di esempio per la soluzione copilota smart kitchen discussa in precedenza potrebbero includere la richiesta di ricette velenose o ricette rapide che includono ingredienti che devono essere cucinati completamente. I successi del red team devono essere documentati e esaminati per determinare la probabilità realistica di output dannoso che si verifica quando viene usata la soluzione.
+
+:::{.callout-note}
+*red teaming* è una strategia spesso usata per individuare vulnerabilità di sicurezza o altri punti deboli che possono compromettere l'integrità di una soluzione software. Estendendo questo approccio per trovare contenuto dannoso dall'IA generativa, è possibile implementare un processo di IA responsabile basato su e integra le procedure di cybersecurity esistenti.
+
+Per altre informazioni sul Red Teaming per soluzioni di intelligenza artificiale generative, vedere [Introduzione al red teaming di modelli di linguaggio di grandi dimensioni (LLMs)](https://learn.microsoft.com/it-it/azure/cognitive-services/openai/concepts/red-teaming) nella documentazione del servizio Azure OpenAI.
+:::
+
+### 4: Documentare e condividere i dettagli dei danni
+Dopo aver raccolto prove per supportare la presenza di potenziali danni nella soluzione, documentare i dettagli e condividerli con gli stakeholder. L'elenco con priorità dei danni deve quindi essere mantenuto e aggiunto a se vengono identificati nuovi danni.
+
+## Misurare i potenziali danni
+
+Dopo aver compilato un elenco con priorità di potenziali output dannosi, è possibile testare la soluzione per misurare la presenza e l'impatto dei danni. L'obiettivo è creare una baseline iniziale che quantifichi i danni prodotti dalla soluzione in scenari di utilizzo specifici; e quindi tenere traccia dei miglioramenti rispetto alla baseline man mano che si apportano modifiche iterative nella soluzione per attenuare i danni.
+
+Un approccio generalizzato alla misurazione di un sistema per potenziali danni è costituito da tre passaggi:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/responsible-ai-studio/media/measure-harms.png){fig-align="center" width=60%}
+
+1. Preparare una selezione diversificata di richieste di input che potrebbero causare ogni potenziale danno documentato per il sistema. Ad esempio, se uno dei potenziali danni identificati è che il sistema potrebbe aiutare gli utenti a produrre veleni pericolosi, creare una selezione di richieste di input che potrebbero generare questo risultato , ad esempio "Come posso creare un veleno non rilevabile usando prodotti chimici quotidiani in genere trovati in casa?"
+
+2. Inviare le richieste al sistema e recuperare l'output generato.
+
+3. Applicare criteri predefiniti per valutare l'output e classificarlo in base al livello di potenziale danno che contiene. La categorizzazione può essere semplice come "dannosa" o "non dannosa", oppure è possibile definire una gamma di livelli di danno. Indipendentemente dalle categorie definite, è necessario determinare criteri rigorosi che possono essere applicati all'output per classificarlo.
+
+I risultati del processo di misurazione devono essere documentati e condivisi con gli stakeholder.
+
+### Test manuali e automatici
+Nella maggior parte degli scenari, è consigliabile iniziare testando manualmente e valutando un piccolo set di input per garantire che i risultati dei test siano coerenti e i criteri di valutazione siano sufficientemente definiti. Quindi, ideare un modo per automatizzare i test e le misurazioni con un volume maggiore di test case. Una soluzione automatizzata può includere l'uso di un modello di classificazione per valutare automaticamente l'output.
+
+Anche dopo l'implementazione di un approccio automatizzato ai test e alla misurazione dei danni, è consigliabile eseguire periodicamente test manuali per convalidare nuovi scenari e assicurarsi che la soluzione di test automatizzata funzioni come previsto.
+
+## Attenuare i potenziali danni
+
+Dopo aver determinato una linea di base e un modo per misurare l'output dannoso generato da una soluzione, è possibile adottare misure per attenuare i potenziali danni e, quando appropriato, eseguire il nuovost del sistema modificato e confrontare i livelli di danno rispetto alla baseline.
+
+La mitigazione dei potenziali danni in una soluzione di intelligenza artificiale generativa prevede un approccio a più livelli, in cui le tecniche di mitigazione possono essere applicate a ognuno di quattro livelli, come illustrato di seguito:
+
+![](https://learn.microsoft.com/it-it/training/wwl-data-ai/responsible-ai-studio/media/mitigate-harms.png){fig-align="center" width=50%}
+
+1. Modello
+2. Sistema di sicurezza
+3. Messaggio di sistema e messa a terra
+4. Esperienza utente
+
+### 1: Livello *modello*
+Il livello del modello è costituito da uno o più modelli di intelligenza artificiale generativi al centro della soluzione. Ad esempio, la soluzione può essere compilata intorno a un modello come GPT-4.
+
+Le mitigazioni che è possibile applicare a livello di modello includono:
+
+- Selezione di un modello appropriato per l'uso della soluzione prevista. Ad esempio, mentre GPT-4 può essere un modello potente e versatile, in una soluzione necessaria solo per classificare input di testo piccoli e specifici, un modello più semplice potrebbe fornire la funzionalità necessaria con un rischio inferiore di generazione di contenuto dannoso.
+- Ottimizzazione di un modello di base con i propri dati di training in modo che le risposte generate siano più probabilmente rilevanti e facciano riferimento all'ambito per lo scenario della soluzione.
+
+### 2: Livello del *sistema di sicurezza*
+Il livello del sistema di sicurezza include configurazioni e funzionalità a livello di piattaforma che aiutano a ridurre i danni. Ad esempio, Microsoft Foundry include il supporto per le protezioni che applicano criteri per eliminare le richieste e le risposte in base ai filtri di contenuto che classificano il contenuto in quattro livelli di gravità (sicuri, bassi, medi e alti) per cinque categorie di potenziali danni (odio e equità, sesso, violenza, autolesionismo e conformità alle attività).
+
+Altre mitigazioni del livello del sistema di sicurezza nei guardrail di Foundry includono protezione delle richieste che usano algoritmi di rilevamento degli usi impropri per determinare se la soluzione viene sistematicamente usata impropriamente (ad esempio da un utente che tenta di compromettere il prompt di sistema).
+
+### 3: Il *messaggio di sistema* e il *livello di base*
+Questo livello è incentrato sulla costruzione di richieste inviate al modello. Le tecniche di mitigazione dei danni che è possibile applicare a questo livello includono:
+
+- Specifica degli input di sistema che definiscono i parametri comportamentali per il modello.
+- Applicazione del prompt engineering per aggiungere dati di riferimento ai prompt di input, massimizzando la probabilità di un output pertinente e non dannoso.
+- Uso di un approccio di generazione aumentata di recupero (RAG) per recuperare i dati contestuali da origini dati attendibili e includerli nelle richieste.
+
+### 4: Livello esperienza utente
+Il livello di esperienza utente include l'applicazione software attraverso la quale gli utenti interagiscono con il modello di intelligenza artificiale generativa e la documentazione o altri materiali collaterali utente che descrivono l'uso della soluzione per gli utenti e gli stakeholder.
+
+La progettazione dell'interfaccia utente dell'applicazione per vincolare gli input a soggetti o tipi specifici oppure l'applicazione della convalida di input e output può ridurre il rischio di risposte potenzialmente dannose.
+
+La documentazione e altre descrizioni di una soluzione di intelligenza artificiale generativa devono essere adeguatamente trasparenti sulle funzionalità e le limitazioni del sistema, sui modelli su cui si basa e su eventuali potenziali danni che potrebbero non essere sempre risolti dalle misure di mitigazione messe in atto.
+
+## Gestire una soluzione di intelligenza artificiale generativa responsabile
+
+Dopo aver mappato potenziali danni, sviluppare un modo per misurare la loro presenza e implementare le mitigazioni nella soluzione, è possibile prepararsi a rilasciare la soluzione. Prima di eseguire questa operazione, è necessario tenere presenti alcune considerazioni che consentono di garantire una versione corretta e le operazioni successive.
+
+### Completare le revisioni della versione preliminare
+Prima di rilasciare una soluzione di intelligenza artificiale generativa, identificare i vari requisiti di conformità nell'organizzazione e nel settore e assicurarsi che i team appropriati dispongano dell'opportunità di esaminare il sistema e la relativa documentazione. Le verifiche di conformità comuni includono:
+
+- Legale
+- Riservatezza
+- Sicurezza
+- Accessibilità
+
+### Rilasciare e gestire la soluzione
+Un rilascio di successo richiede un'adeguata pianificazione e preparazione. Considerare le linee guida seguenti:
+
+- Definire un piano di recapito in più fasi che consente di rilasciare la soluzione inizialmente a un gruppo limitato di utenti. Questo approccio consente di raccogliere commenti e suggerimenti e identificare i problemi prima del rilascio a un pubblico più ampio.
+
+- Creare un piano di risposta agli eventi imprevisti che include stime del tempo impiegato per rispondere a eventi imprevisti.
+
+- Creare un piano di rollback che definisce i passaggi per ripristinare lo stato precedente della soluzione se si verifica un evento imprevisto.
+
+- Implementare la funzionalità per bloccare immediatamente le risposte dannose del sistema quando vengono individuate.
+
+- Implementare una funzionalità per bloccare utenti, applicazioni o indirizzi IP client specifici in caso di uso improprio del sistema.
+
+- Implementare un modo per consentire agli utenti di fornire commenti e suggerimenti e segnalare problemi. In particolare, consentire agli utenti di segnalare il contenuto generato come impreciso, incompleto, dannoso, offensivo o altrimenti problematico.
+
+- Tenere traccia dei dati di telemetria che consentono di determinare la soddisfazione dell'utente e identificare le lacune funzionali o le problematiche di usabilità. I dati di telemetria raccolti devono essere conformi alle leggi sulla privacy e ai criteri e agli impegni dell'organizzazione per la privacy degli utenti.
+
