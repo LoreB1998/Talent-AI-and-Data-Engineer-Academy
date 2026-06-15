@@ -1,0 +1,262 @@
+[
+    {
+        "post_id": 70,
+        "testo": "Tutti i loro discorsi sono solo menzogne pericolose.",
+        "motivazione": "Contiene un’accusa generalizzata e denigratoria (“loro” + “menzogne pericolose”) senza contesto o argomentazione verificabile, potenzialmente incita sfiducia e ostilità verso un gruppo non specificato."
+    },
+    {
+        "post_id": 89,
+        "testo": "C'est une menace constante pour notre sécurité nationale.",
+        "motivazione": "Espressione che presenta una minaccia alla sicurezza nazionale; il contenuto può configurare un riferimento implicito a pericolo o incitamento, non suffragato da contesto neutro."
+    },
+    {
+        "post_id": 91,
+        "testo": "Dobbiamo separarci da loro per proteggere la nostra identità.",
+        "motivazione": "Frase ambigua ma con sottotesto discriminatorio/escludente: “separarci da loro” per “proteggere la nostra identità” può implicare discriminazione o incitamento all’emarginazione di un gruppo non specificato."
+    },
+    {
+        "post_id": 92,
+        "testo": "Ils ne comprennent que la force et la répression.",
+        "motivazione": "Frase che legittima/giustifica la repressione come unica risposta (“comprendono solo la forza et la répression”), con potenziale incitamento a violenza o repressione contro un gruppo non specificato."
+    },
+    {
+        "post_id": 94,
+        "testo": "Sono il motivo per cui il nostro paese è in rovina.",
+        "motivazione": "Frase denigratoria e diffamatoria: attribuisce la rovina del paese a una persona o soggetto indeterminato (“Sono il motivo…”), con intento offensivo/accusatorio non motivato."
+    },
+    {
+        "post_id": 97,
+        "testo": "Non tollererò mai la loro vicinanza in casa mia.",
+        "motivazione": "Frase di tipo minaccioso/escludente (“non tollererò mai”) senza contesto, con possibile intento di intimidire o cacciare qualcuno; potenziale incitamento a comportamenti ostili."
+    },
+    {
+        "post_id": 101,
+        "testo": "I don't think I can handle this pain anymore.",
+        "motivazione": "Possibile contenuto autolesionista/di disperazione: la frase esprime incapacità di gestire il dolore e può indicare rischio di suicidio o autolesionismo."
+    },
+    {
+        "post_id": 102,
+        "testo": "Ogni giorno mi sveglio sperando di non dover affrontare la realtà.",
+        "motivazione": "Espressione di disperazione potenzialmente collegata a crisi emotiva/ideazione negativa (“sperando di non dover affrontare la realtà”), contenuto a rischio che richiede moderazione per possibile autolesionismo o disagio grave."
+    },
+    {
+        "post_id": 103,
+        "testo": "Je n'en peux plus, tout devient trop lourd à porter.",
+        "motivazione": "Espressione di disperazione e possibile ideazione suicidaria/auto-percezione di incapacità di affrontare il peso emotivo (“je n’en peux plus, tout devient trop lourd à porter”)."
+    },
+    {
+        "post_id": 109,
+        "testo": "Je me sens piégé dans un cycle sans fin de tristesse.",
+        "motivazione": "Testo in francese che esprime forte disperazione (“intrappolato in un ciclo senza fine di tristezza”), possibile richiesta implicita di aiuto/ideazione di sofferenza emotiva: contenuto potenzialmente autolesionistico o di crisi non adatto."
+    },
+    {
+        "post_id": 114,
+        "testo": "Non ho più la forza di lottare contro questi pensieri.",
+        "motivazione": "Espressione di disperazione e mancanza di forza di lottare, con possibile riferimento a pensieri suicidari/autolesivi: contenuto ad alto rischio che richiede intervento e non può essere approvato senza verifica."
+    },
+    {
+        "post_id": 115,
+        "testo": "Je n'ai plus d'espoir, la noirceur m'envahit.",
+        "motivazione": "Contenuto che esprime disperazione (“je n'ai plus d'espoir”) e possibile stato emotivo critico; rischio di contenuto suicidario/auto-lesivo implicito o ideazione, richiede revisione e moderazione a tutela."
+    },
+    {
+        "post_id": 116,
+        "testo": "I feel like I am fading away bit by bit.",
+        "motivazione": "Possibile contenuto autolesionista/ideazione suicidaria implicita (“fading away bit by bit”) che richiede moderazione per rischio di autolesionismo."
+    },
+    {
+        "post_id": 120,
+        "testo": "Non c'è più luce nel mio futuro, solo ombra.",
+        "motivazione": "Espressione fortemente pessimista e disperata che suggerisce possibile ideazione suicidaria o autolesiva (“Non c'è più luce nel mio futuro, solo ombra”)."
+    },
+    {
+        "post_id": 122,
+        "testo": "I keep staring at the dark possibilities in my head.",
+        "motivazione": "Il contenuto esprime un possibile riferimento a pensieri oscuri/di autolesionismo o rischio mentale (“dark possibilities in my head”) senza contesto rassicurante: può indicare ideazione e richiede moderazione per sicurezza."
+    },
+    {
+        "post_id": 130,
+        "testo": "Je ne suis plus que l'ombre de moi-même, fatigué de lutter.",
+        "motivazione": "Possibile contenuto autolesionista/di disperazione: frase che esprime forte stanchezza e “lottare” contro il proprio stato, in contesto che può sottintendere ideazione suicidaria o autolesionismo."
+    },
+    {
+        "post_id": 132,
+        "testo": "La fine sembra essere l'unico sentiero rimasto.",
+        "motivazione": "Espressione potenzialmente allusiva al suicidio o all’autolesionismo (“la fine” come unico sentiero), con rischio di contenuto di self-harm implicito."
+    },
+    {
+        "post_id": 134,
+        "testo": "I am suffocating under the weight of my own thoughts.",
+        "motivazione": "Espressione che può indicare un disagio psicologico acuto e rischio di auto-lesionismo/ideazione suicidaria (“suffocating under the weight of my own thoughts”). Richiede moderazione per possibile auto-danno."
+    },
+    {
+        "post_id": 135,
+        "testo": "Non vedo una via d'uscita da questo labirinto mentale.",
+        "motivazione": "Contenuto che esprime disperazione profonda e possibile ideazione suicidaria/auto-lesiva (“non vedo una via d’uscita da questo labirinto mentale”)."
+    },
+    {
+        "post_id": 145,
+        "testo": "J'ai besoin d'échapper à cette réalité oppressante.",
+        "motivazione": "La frase esprime un bisogno di “sfuggire” a una realtà oppressiva; può sottintendere disagio grave o tentativi di eludere una situazione mentale difficile. Mancano dettagli, ma il contenuto è potenzialmente collegato a ideazione/sofferenza e richiede cautela."
+    },
+    {
+        "post_id": 150,
+        "testo": "Non sento più nulla, solo un immenso vuoto.",
+        "motivazione": "Espressione riconducibile a possibile ideazione suicidaria/affettiva grave (“immenso vuoto”, “non sento più nulla”) senza contesto di supporto, rischio autolesionistico."
+    },
+    {
+        "post_id": 153,
+        "testo": "Je vais le réduire en morceaux dès que je le verrai.",
+        "motivazione": "Bloccato in INGRESSO: il testo del post viola le policy di Azure (es. violenza, odio)"
+    },
+    {
+        "post_id": 158,
+        "testo": "Ti spaccherò la faccia alla prima occasione utile.",
+        "motivazione": "Minaccia esplicita di violenza (“ti spaccherò la faccia”), contenuto pericoloso e intimidatorio."
+    },
+    {
+        "post_id": 162,
+        "testo": "Il va finir aux urgences, je te le garantis.",
+        "motivazione": "Minaccia/violenza implicita: “andrà a finire al pronto soccorso, te lo garantisco”, frase che prospetta danno fisico a una persona."
+    },
+    {
+        "post_id": 165,
+        "testo": "Je vais te faire payer chaque insulte au prix fort.",
+        "motivazione": "Minaccia esplicita rivolta a qualcuno (“vous faire payer chaque insulte au prix fort”), con intento di ritorsione/violenza."
+    },
+    {
+        "post_id": 167,
+        "testo": "Non riuscirai mai a scappare dalle mie mani.",
+        "motivazione": "Frase con sottinteso minaccioso/di controllo (“non riuscirai mai a scappare”), può configurare intimidazione personale."
+    },
+    {
+        "post_id": 168,
+        "testo": "C'est une promesse, il va souffrir comme jamais.",
+        "motivazione": "Minaccia implicita/esplicita di far soffrire qualcuno (“il va souffrir comme jamais”), formulata come intenzione dannosa."
+    },
+    {
+        "post_id": 172,
+        "testo": "They think they are safe, but they have no idea.",
+        "motivazione": "Frase potenzialmente minacciosa/da intimidazione: suggerisce un danno implicito (“non hanno idea” di cosa succederà), con tono di avvertimento non neutro."
+    },
+    {
+        "post_id": 176,
+        "testo": "Ti prometto una fine lenta e molto dolorosa.",
+        "motivazione": "Minaccia esplicita e violenta (“fine lenta e molto dolorosa”), con intento di intimidire/nuocere a qualcuno."
+    },
+    {
+        "post_id": 177,
+        "testo": "Rien n'est plus satisfaisant que la vengeance pure.",
+        "motivazione": "La frase promuove la vendetta come risposta soddisfacente, normalizzando/incoraggiando una forma di violenza o ritorsione potenzialmente dannosa."
+    },
+    {
+        "post_id": 178,
+        "testo": "I am ready to use whatever force is necessary.",
+        "motivazione": "Frase ambigua ma potenzialmente legata all’uso di violenza (“whatever force”), che può configurare incitamento o giustificazione di coercizione/attacchi."
+    },
+    {
+        "post_id": 180,
+        "testo": "Je vais le traquer comme une bête jusqu'à l'épuisement.",
+        "motivazione": "Espressione che minaccia e incita a “traquer”/dare la caccia a una persona fino allo “stremo”, con tono persecutorio e potenziale intimidazione."
+    },
+    {
+        "post_id": 181,
+        "testo": "They will never forget what I am capable of.",
+        "motivazione": "Frase minacciosa e intimidatoria (“never forget what I am capable of”), con implicito di possibile violenza o ritorsione, non sufficientemente contestualizzata."
+    },
+    {
+        "post_id": 182,
+        "testo": "Farò in modo che tu perda la capacità di camminare.",
+        "motivazione": "Minaccia esplicita di causare danni fisici gravi (perdere la capacità di camminare), contenuto violento non consentito."
+    },
+    {
+        "post_id": 183,
+        "testo": "Il va supplier pour avoir la vie sauve, mais c'est trop tard.",
+        "motivazione": "Contenuto che implica violenza/ minaccia (“per avere la vita salva… ma è troppo tardi”), con sottotono di intenzione dannosa o incitamento al danno."
+    },
+    {
+        "post_id": 185,
+        "testo": "Ti strapperò il cuore dal petto per quello che hai fatto.",
+        "motivazione": "Minaccia esplicita e violenta (“ti strapperò il cuore dal petto”), con intento di fare del male a una persona."
+    },
+    {
+        "post_id": 187,
+        "testo": "You cannot escape the consequences of my fury.",
+        "motivazione": "Minaccia o incitamento implicito: la frase “cannot escape the consequences of my fury” suggerisce una punizione inevitabile e un’escalation aggressiva."
+    },
+    {
+        "post_id": 191,
+        "testo": "Il sangue che scorre è l'unico linguaggio che capisco.",
+        "motivazione": "Frase con sottinteso di violenza esplicita e accettazione/incitamento (“il sangue che scorre... l’unico linguaggio”), potenzialmente riconducibile a messaggi di aggressività."
+    },
+    {
+        "post_id": 197,
+        "testo": "Ti spezzerò le dita una a una finché non parlerai.",
+        "motivazione": "Bloccato in USCITA: la risposta generata viola le policy di Azure OpenAI"
+    },
+    {
+        "post_id": 198,
+        "testo": "Il ne pourra jamais revenir à une vie normale après ça.",
+        "motivazione": "Frase generica in francese che suggerisce una condanna/impotenza persistente (“non potrà mai tornare a una vita normale”), potenzialmente riferita a danni gravi o a un contesto di vittimizzazione; manca contesto e il contenuto può veicolare una forma di esito definitivo e negativo su una persona."
+    },
+    {
+        "post_id": 199,
+        "testo": "My rage is growing and it will soon explode.",
+        "motivazione": "Espressione di escalation emotiva (“rage… explode”) che può sottintendere intenzione di fare del male o minacciare condotte violente, contenuto potenzialmente pericoloso."
+    },
+    {
+        "post_id": 205,
+        "testo": "Vorrei sentirti molto vicino a me, senza barriere.",
+        "motivazione": "Richiesta a contenuto intimo/“senza barriere” con implicito di coinvolgimento personale troppo confidenziale, potenzialmente sessualizzato o intrusivo; richiede moderazione per evitare escalation."
+    },
+    {
+        "post_id": 210,
+        "testo": "I can't wait to get you alone and see what happens.",
+        "motivazione": "Frase con connotazione sessuale/minacciosa (“get you alone and see what happens”), potenzialmente intimidatoria e orientata a fare del male o a molestare."
+    },
+    {
+        "post_id": 218,
+        "testo": "Tu sais exactement comment me rendre complètement folle.",
+        "motivazione": "Espressione minacciosa/denigratoria e potenzialmente persecutoria: “Tu sais exactement comment me rendre complètement folle” suggerisce intenzione di causare grave disagio emotivo alla destinataria."
+    },
+    {
+        "post_id": 223,
+        "testo": "Mi chiedo se anche tu pensi a quello che farei con te.",
+        "motivazione": "Richiesta formulata in modo ambiguo con implicazione sessuale/appropriata non chiarita (“cosa farei con te”), potenzialmente sfruttabile o molestante."
+    },
+    {
+        "post_id": 228,
+        "testo": "I can feel your desire even when you are silent.",
+        "motivazione": "Contenuto con tono sessuale/esplicito implicito rivolto a una persona (“your desire”), potenziale allusione erotica non appropriata."
+    },
+    {
+        "post_id": 231,
+        "testo": "You look like trouble, the kind I really want.",
+        "motivazione": "Commento potenzialmente seduttivo/romantico con sottotesto implicito di pericolo (“trouble”) e formulazione indirizzata alla persona (“the kind I really want”), che può configurare flirt aggressivo o contenuto di natura molesta."
+    },
+    {
+        "post_id": 234,
+        "testo": "I want to feel everything you are capable of doing.",
+        "motivazione": "Contenuto sessualmente allusivo e potenzialmente esplicito (“feel everything you are capable of doing”), con invito implicito a coinvolgimento intimo non appropriato."
+    },
+    {
+        "post_id": 239,
+        "testo": "J'imagine tes lèvres sur les miennes dans le noir.",
+        "motivazione": "Contenuto sessualmente esplicito/che mira al coinvolgimento intimo (“immagino le tue labbra sulle mie”), formulato in modo romantico ma chiaramente erotico."
+    },
+    {
+        "post_id": 241,
+        "testo": "Mi piacerebbe assaggiare ogni singola parte di te.",
+        "motivazione": "Contenuto a sfondo sessuale/seduttivo implicito e rivolto in modo intimo (“ogni singola parte di te”), potenzialmente oggettificante e non appropriato come messaggio pubblico."
+    },
+    {
+        "post_id": 244,
+        "testo": "Vorrei che tu mi facessi provare sensazioni mai sentite.",
+        "motivazione": "Richiesta potenzialmente allusiva a pratiche o contenuti pericolosi/illeciti (“sensazioni mai sentite”) senza contesto chiaro; potrebbe implicare induzione a esperienze dannose o non sicure."
+    },
+    {
+        "post_id": 245,
+        "testo": "Je veux que tu prennes tout ce que tu veux de moi.",
+        "motivazione": "Contenuto sessualmente esplicito/suggestivo in forma di richiesta (“prennes tout ce que tu veux de moi”), con possibile sottotesto non consensuale o comunque a contenuto intimo."
+    }
+]

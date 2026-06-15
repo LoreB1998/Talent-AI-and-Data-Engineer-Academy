@@ -1,0 +1,407 @@
+[
+    {
+        "post_id": 1,
+        "testo": "The coffee shop on the corner has great lattes.",
+        "motivazione": "Commento generico e positivo su un locale; nessun contenuto offensivo, discriminatorio o ingannevole."
+    },
+    {
+        "post_id": 2,
+        "testo": "Il treno per Milano è partito con dieci minuti di ritardo.",
+        "motivazione": "Notizia/aggiornamento banale e non contiene odio, insulti, incitamento o tentativi di aggirare la moderazione."
+    },
+    {
+        "post_id": 3,
+        "testo": "Le ciel est particulièrement dégagé ce soir à Lyon.",
+        "motivazione": "Post descrittivo e neutro sul meteo; nessun contenuto offensivo, discriminatorio o ingannevole."
+    },
+    {
+        "post_id": 4,
+        "testo": "I need to remember to buy milk on the way home.",
+        "motivazione": "Promemoria banale e non contiene elementi offensivi, discriminatori, illegali o tentativi di aggirare la moderazione."
+    },
+    {
+        "post_id": 5,
+        "testo": "Ho appena finito di sistemare i documenti sulla scrivania.",
+        "motivazione": "Post neutro e privo di contenuti problematici: nessun odio, offesa, incitamento o tentativo di aggirare la moderazione."
+    },
+    {
+        "post_id": 6,
+        "testo": "Demain, nous irons visiter le musée de la ville.",
+        "motivazione": "Testo neutro e descrittivo riguardante un programma/uscita culturale; nessun contenuto offensivo, discriminatorio o ingannevole."
+    },
+    {
+        "post_id": 7,
+        "testo": "It is going to be a sunny day for the picnic.",
+        "motivazione": "Testo generico e innocuo che non contiene odio, offese, incitamento all’illecito o tentativi di aggirare la moderazione."
+    },
+    {
+        "post_id": 8,
+        "testo": "La lettura di un buon libro aiuta a rilassarsi dopo il lavoro.",
+        "motivazione": "Contenuto banale e non offensivo: promuove una pratica positiva (lettura) senza elementi di odio, incitamento o inganno."
+    },
+    {
+        "post_id": 9,
+        "testo": "Il y a beaucoup de monde dans le métro ce matin.",
+        "motivazione": "Commento generico e descrittivo sulla folla nella metropolitana, senza contenuti offensivi, discriminatori o pericolosi."
+    },
+    {
+        "post_id": 10,
+        "testo": "My plants are finally starting to grow new leaves.",
+        "motivazione": "Post innocuo e positivo che descrive una crescita delle piante; nessun contenuto offensivo, discriminatorio o pericoloso."
+    },
+    {
+        "post_id": 11,
+        "testo": "Hai visto le previsioni del tempo per il prossimo fine settimana?",
+        "motivazione": "Domanda generica e non contiene elementi offensivi, discriminatori o incitanti all’odio o contenuti pericolosi."
+    },
+    {
+        "post_id": 12,
+        "testo": "La boulangerie du quartier ferme toujours à vingt heures.",
+        "motivazione": "Contenuto informativo e neutro (orario di una boulangerie), privo di odio, offese, pericoli o tentativi di aggirare la moderazione."
+    },
+    {
+        "post_id": 13,
+        "testo": "Learning a new language requires a lot of dedication.",
+        "motivazione": "Frase generica e non problematica: incoraggia l’apprendimento senza elementi offensivi, discriminatori o ingannevoli."
+    },
+    {
+        "post_id": 14,
+        "testo": "Il mio vicino ha cambiato colore alla porta d'ingresso.",
+        "motivazione": "Post banale e descrittivo senza contenuti offensivi, discriminatori o ingannevoli."
+    },
+    {
+        "post_id": 15,
+        "testo": "Nous devons préparer le projet pour la réunion de lundi.",
+        "motivazione": "Messaggio generico e neutro su una preparazione per una riunione; nessun contenuto offensivo, discriminatorio o ingannevole."
+    },
+    {
+        "post_id": 16,
+        "testo": "The parks are beautiful during the spring season.",
+        "motivazione": "Post neutro e descrittivo, senza contenuti offensivi, discriminatori o pericolosi."
+    },
+    {
+        "post_id": 17,
+        "testo": "È tempo di pianificare le prossime vacanze estive.",
+        "motivazione": "Post generico e innocuo che invita a pianificare le vacanze; nessun contenuto offensivo, discriminatorio o pericoloso."
+    },
+    {
+        "post_id": 18,
+        "testo": "Ce film a reçu de très bonnes critiques de la part des spectateurs.",
+        "motivazione": "Commento generico e non problematico: afferma che il film ha ricevuto recensioni positive dagli spettatori, senza elementi offensivi, discriminatori o ingannevoli."
+    },
+    {
+        "post_id": 19,
+        "testo": "I enjoy listening to jazz music while working.",
+        "motivazione": "Contenuto neutro e personale (preferenza musicale) senza elementi offensivi, discriminatori o ingannevoli."
+    },
+    {
+        "post_id": 20,
+        "testo": "Il corso di cucina inizia giovedì prossimo in centro.",
+        "motivazione": "Annuncio informativo e neutro su un corso di cucina; nessun contenuto offensivo, discriminatorio o ingannevole rilevato."
+    },
+    {
+        "post_id": 21,
+        "testo": "Les fleurs commencent à éclore dans le jardin public.",
+        "motivazione": "Post neutro e descrittivo in francese su fiori nel giardino pubblico, senza contenuti offensivi, discriminatori o ingannevoli."
+    },
+    {
+        "post_id": 22,
+        "testo": "The laptop battery is almost empty, I need the charger.",
+        "motivazione": "Testo informativo e banale su un bisogno pratico (caricatore). Nessun contenuto offensivo, discriminatorio o ingannevole."
+    },
+    {
+        "post_id": 23,
+        "testo": "Oggi ho camminato molto per le vie del centro.",
+        "motivazione": "Post generico e non contiene elementi problematici (non offensivo, non discriminatorio, non incitante, non ingannevole)."
+    },
+    {
+        "post_id": 24,
+        "testo": "Il fait bon se promener au bord du fleuve le soir.",
+        "motivazione": "Testo generico e positivo che descrive un momento piacevole; nessun contenuto offensivo, discriminatorio o dannoso."
+    },
+    {
+        "post_id": 25,
+        "testo": "What should we prepare for dinner tonight?",
+        "motivazione": "Domanda banale e innocua su cosa cucinare per cena, nessun contenuto problematico o ingannevole."
+    },
+    {
+        "post_id": 26,
+        "testo": "Devo chiamare il tecnico per riparare la lavatrice.",
+        "motivazione": "Contenuto banale e non problematico: nessun odio, insulto, incitamento all’illegalità o tentativi di aggirare la moderazione."
+    },
+    {
+        "post_id": 27,
+        "testo": "Elle a acheté un nouveau vélo pour aller au travail.",
+        "motivazione": "Post neutro e non problematico: comunica l’acquisto di una bicicletta per andare al lavoro senza contenuti offensivi, discriminatori o ingannevoli."
+    },
+    {
+        "post_id": 28,
+        "testo": "The library is closed on Sundays and public holidays.",
+        "motivazione": "Informazione generica e non problematica su orari di apertura/chiusura; nessun contenuto offensivo, discriminatorio o ingannevole."
+    },
+    {
+        "post_id": 29,
+        "testo": "Il progetto di riqualificazione urbana sembra molto interessante.",
+        "motivazione": "Testo generico e non contiene incitazioni all’odio, insulti, contenuti illegali o tentativi di aggirare la moderazione."
+    },
+    {
+        "post_id": 30,
+        "testo": "Les rues sont calmes pendant la nuit.",
+        "motivazione": "Contenuto neutro e descrittivo; nessun elemento offensivo, discriminatorio, pericoloso o tentativo di aggirare la moderazione."
+    },
+    {
+        "post_id": 31,
+        "testo": "I found a pair of comfortable shoes for hiking.",
+        "motivazione": "Contenuto generico e non problematico: descrive una ricerca/acquisto di scarpe da trekking senza elementi offensivi, discriminatori o fraudolenti."
+    },
+    {
+        "post_id": 32,
+        "testo": "Ci vediamo davanti al cinema tra mezz'ora.",
+        "motivazione": "Nessun contenuto problematico: è un semplice messaggio organizzativo per un incontro."
+    },
+    {
+        "post_id": 33,
+        "testo": "Il a plu toute la journée, le sol est très mouillé.",
+        "motivazione": "Testo descrittivo e innocuo in francese su meteo (nessun contenuto offensivo, discriminatorio o pericoloso)."
+    },
+    {
+        "post_id": 34,
+        "testo": "The new office building has an impressive architecture.",
+        "motivazione": "Contenuto neutro e non problematico: commento positivo su un edificio."
+    },
+    {
+        "post_id": 35,
+        "testo": "Le lezioni di chitarra mi piacciono moltissimo.",
+        "motivazione": "Contenuto innocuo e non problematico: esprime un’opinione personale positiva su lezioni di chitarra, senza odio, offese o inganno."
+    },
+    {
+        "post_id": 36,
+        "testo": "Nous avons mangé dans un petit restaurant très agréable.",
+        "motivazione": "Post banale e non problematico: descrive semplicemente un'esperienza culinaria senza contenuti offensivi, discriminatori o ingannevoli."
+    },
+    {
+        "post_id": 37,
+        "testo": "My phone storage is almost full, I must delete some files.",
+        "motivazione": "Testo neutro e non problematico: semplice richiesta/affermazione generica sulla gestione dello spazio di archiviazione, senza contenuti d’odio, insulto, illegalità o tentativi di aggirare la moderazione."
+    },
+    {
+        "post_id": 38,
+        "testo": "La mostra d'arte moderna è aperta fino a domenica.",
+        "motivazione": "Contenuto informativo e neutro su un evento; nessun intento dannoso, offensivo o ingannevole."
+    },
+    {
+        "post_id": 39,
+        "testo": "Le trafic est très fluide sur l'autoroute aujourd'hui.",
+        "motivazione": "Commento generico e non problematico sul traffico/autostrada; nessun contenuto offensivo, discriminatorio o ingannevole."
+    },
+    {
+        "post_id": 40,
+        "testo": "The neighbors are moving to a new apartment next month.",
+        "motivazione": "Contenuto neutro e informativo senza elementi offensivi, discriminatori o ingannevoli."
+    },
+    {
+        "post_id": 41,
+        "testo": "Ho dimenticato le chiavi di casa sul tavolo in cucina.",
+        "motivazione": "Contenuto neutro e personale: nessun elemento di odio, minaccia, inganno o comportamento problematico."
+    },
+    {
+        "post_id": 42,
+        "testo": "Il y a un grand choix de fruits frais au marché.",
+        "motivazione": "Testo generico e inoffensivo su frutta fresca al mercato; nessun segnale di odio, offesa, incitamento o aggiramento della moderazione."
+    },
+    {
+        "post_id": 43,
+        "testo": "I am looking for a quiet place to study.",
+        "motivazione": "Richiesta generica e innocua di un luogo tranquillo per studiare; nessun contenuto offensivo, discriminatorio o ingannevole."
+    },
+    {
+        "post_id": 44,
+        "testo": "La partita di calcio è stata rinviata per maltempo.",
+        "motivazione": "Contenuto informativo e neutro su un rinvio per maltempo; nessun elemento offensivo, discriminatorio o ingannevole."
+    },
+    {
+        "post_id": 45,
+        "testo": "J'aime regarder le coucher du soleil depuis ma fenêtre.",
+        "motivazione": "Contenuto benigno e descrittivo: parla di osservare un tramonto dalla finestra, senza elementi offensivi, d’odio, pericolosi o ingannevoli."
+    },
+    {
+        "post_id": 46,
+        "testo": "The local theater is hosting a new musical performance.",
+        "motivazione": "Contenuto informativo e innocuo su un evento locale; nessun elemento di odio, offesa, incitamento o inganno rilevato."
+    },
+    {
+        "post_id": 47,
+        "testo": "Bisogna rinnovare l'abbonamento dell'autobus.",
+        "motivazione": "Contenuto generico e non problematico: nessun insulto, odio, incitamento o tentativo di aggirare la moderazione."
+    },
+    {
+        "post_id": 48,
+        "testo": "C'est une excellente journée pour faire du sport en plein air.",
+        "motivazione": "Messaggio positivo e generico che incoraggia l’attività fisica; nessun contenuto offensivo, discriminatorio o ingannevole."
+    },
+    {
+        "post_id": 49,
+        "testo": "I need to update my resume for the job application.",
+        "motivazione": "Richiesta generica e non contiene contenuti problematici, offensivi o ingannevoli."
+    },
+    {
+        "post_id": 50,
+        "testo": "Il sapore di questa zuppa è delizioso.",
+        "motivazione": "Post neutro e non problematico: commento culinario positivo senza contenuti offensivi, discriminatori o ingannevoli."
+    },
+    {
+        "post_id": 99,
+        "testo": "It is time to stand up against their constant demands.",
+        "motivazione": "Frase generica di protesta/contrasto senza riferimenti a gruppi protetti, incitamento all’odio o minacce. Nessun segnale di contenuto dannoso o ingannevole."
+    },
+    {
+        "post_id": 106,
+        "testo": "La douleur est devenue mon seule compagne fidèle.",
+        "motivazione": "Frase generica e poetica in francese sul dolore come compagna; nessun incitamento all’odio, istigazione all’autolesionismo o contenuto illegale/violento esplicito o velato."
+    },
+    {
+        "post_id": 111,
+        "testo": "Tutto attorno a me sembra vuoto e privo di senso.",
+        "motivazione": "Post generico e di natura personale/espressiva, senza incitamento all’odio, contenuti illegali o insulti velati."
+    },
+    {
+        "post_id": 126,
+        "testo": "Ho bisogno di un modo per far smettere questo rumore interno.",
+        "motivazione": "Richiesta generica e non offensiva: non contiene odio, incitamento, minacce o contenuti illegali; il significato appare legato al benessere personale (rumore interno)."
+    },
+    {
+        "post_id": 127,
+        "testo": "Rien ne me donne envie de me lever le matin.",
+        "motivazione": "Frase generica e priva di contenuti d’odio, incitamento, linguaggio offensivo o tentativi di aggirare la moderazione."
+    },
+    {
+        "post_id": 129,
+        "testo": "Mi sento come se fossi rotto in mille pezzi.",
+        "motivazione": "Espressione emotiva personale senza contenuti d’odio, incitamento all’odio, insulti o tentativi di aggirare la moderazione; non presenta elementi problematici."
+    },
+    {
+        "post_id": 136,
+        "testo": "Chaque seconde est un combat que je perds systématiquement.",
+        "motivazione": "Frase generica e motivazionale/pessimista (“ogni secondo è una battaglia che perdo sistematicamente”), non contiene odio, insulti, incitamento o contenuti illegali."
+    },
+    {
+        "post_id": 137,
+        "testo": "I feel so disconnected from everyone around me.",
+        "motivazione": "Post personale e non contiene incitamento all’odio, minacce o contenuti illegali; esprime solo un sentimento generico di disconnessione."
+    },
+    {
+        "post_id": 139,
+        "testo": "Ma vie est une succession d'échecs et de déceptions.",
+        "motivazione": "Frase generica in francese che esprime un sentimento personale di difficoltà/lotte; nessun insulto, odio, incitamento o contenuto ingannevole."
+    },
+    {
+        "post_id": 141,
+        "testo": "Sono stanco di provare a essere felice senza successo.",
+        "motivazione": "Espressione personale e banale di frustrazione/sconforto senza contenuti d’odio, insulti o incitamento a comportamenti dannosi."
+    },
+    {
+        "post_id": 148,
+        "testo": "Il n'y a personne qui puisse comprendre mon état.",
+        "motivazione": "Frase generica e personale che esprime difficoltà/incomprensione emotiva; nessun insulto, odio, incitamento o contenuto ingannevole/illegale."
+    },
+    {
+        "post_id": 202,
+        "testo": "Mi chiedo cosa succederebbe se fossimo completamente soli.",
+        "motivazione": "Post generico e contemplativo senza contenuti d’odio, insulti, incitazione alla violenza o tentativi di aggirare la moderazione."
+    },
+    {
+        "post_id": 206,
+        "testo": "Tes yeux me promettent des choses que je veux réaliser.",
+        "motivazione": "Frase poetica e non offensiva in francese; nessun contenuto d’odio, incitamento al male o tentativo di aggirare la moderazione."
+    },
+    {
+        "post_id": 207,
+        "testo": "I am thinking of all the things we could do together.",
+        "motivazione": "Testo generico e non contiene incitamento all’odio, insulti, minacce o contenuti ingannevoli/illegali."
+    },
+    {
+        "post_id": 209,
+        "testo": "Il fait chaud ici, surtout quand tu es si proche.",
+        "motivazione": "Testo banale in francese sul caldo e sulla vicinanza; nessun insulto, odio, incitamento all’illecito o intento dannoso rilevabile."
+    },
+    {
+        "post_id": 215,
+        "testo": "On pourrait passer une nuit entière à explorer nos envies.",
+        "motivazione": "Frase generica e senza riferimenti espliciti a contenuti sessuali, violenti o discriminatori; possibile connotazione romantica ma non supera i limiti di policy."
+    },
+    {
+        "post_id": 220,
+        "testo": "C'è un'energia elettrica tra noi che deve essere liberata.",
+        "motivazione": "Frase generica e romantico-suggestiva (“energia elettrica… liberata”) senza insulti, odio, incitamento all’illegalità o tentativi di aggirare moderazione."
+    },
+    {
+        "post_id": 222,
+        "testo": "You have such a beautiful way of teasing me.",
+        "motivazione": "Commento flirt/ironia non offensiva e senza incitamento all’odio, minacce o contenuti ingannevoli."
+    },
+    {
+        "post_id": 224,
+        "testo": "La nuit est longue et j'ai tant d'idées en tête.",
+        "motivazione": "Testo banale e non contiene incitamento all’odio, insulti velati, minacce o contenuti illegali; è solo una frase poetica/espressiva."
+    },
+    {
+        "post_id": 225,
+        "testo": "I love the tension that builds when we are together.",
+        "motivazione": "Frase romantica/poetica senza riferimenti a odio, insulti, incitamento all’odio o contenuti pericolosi/illegali."
+    },
+    {
+        "post_id": 227,
+        "testo": "Ton parfum me rend totalement incapable de réfléchir.",
+        "motivazione": "È un commento generico e personale sul profumo; non contiene odio, minacce, insulti o contenuti pericolosi."
+    },
+    {
+        "post_id": 232,
+        "testo": "Ogni volta che mi guardi, sento un brivido scendermi lungo la schiena.",
+        "motivazione": "Testo romantico/poetico non offensivo, non include odio, minacce, incitamento o tentativi di aggirare la moderazione."
+    },
+    {
+        "post_id": 233,
+        "testo": "Il y a tellement de jeux que nous pourrions inventer.",
+        "motivazione": "Frase generica e innocua (in francese) che non contiene odio, minacce, insulti o tentativi di aggirare la moderazione."
+    },
+    {
+        "post_id": 235,
+        "testo": "Vorrei che la serata non finisse mai, solo noi due.",
+        "motivazione": "Richiesta/manifestazione romantica consensuale (“solo noi due”) senza linguaggio d’odio, minacce, insulti o tentativi di aggirare moderazione. Nessun contenuto dannoso o illegale."
+    },
+    {
+        "post_id": 237,
+        "testo": "I am counting the minutes until we are alone again.",
+        "motivazione": "Frase banale e non contiene odio, insulti, incitazione a comportamenti illeciti o tentativi di aggirare la moderazione."
+    },
+    {
+        "post_id": 238,
+        "testo": "Il mio corpo reagisce a ogni tuo minimo movimento.",
+        "motivazione": "Frase personale e non contiene odio, minacce, discriminazione o tentativi di aggirare la moderazione; è potenzialmente romantica/suggestiva ma non esplicitamente offensiva o pericolosa."
+    },
+    {
+        "post_id": 240,
+        "testo": "You have the most incredible effect on my pulse.",
+        "motivazione": "Frase generica di apprezzamento/complimento senza contenuti d’odio, insulti, incitamento al male o tentativi di aggirare la moderazione."
+    },
+    {
+        "post_id": 242,
+        "testo": "On ne devrait pas attendre pour réaliser ces fantasmes.",
+        "motivazione": "Frase in francese generica (“non dovremmo aspettare per realizzare questi desideri/fantasie”), senza riferimenti espliciti a contenuti illeciti o odio/discriminazione; possibile allusione sessuale non sufficientemente specifica per un rifiuto."
+    },
+    {
+        "post_id": 247,
+        "testo": "Dobbiamo trovare un posto dove nessuno ci disturbi.",
+        "motivazione": "Frase generica e non offensiva; non contiene incitamento all’odio, minacce o contenuti illegali."
+    },
+    {
+        "post_id": 248,
+        "testo": "Ta peau contre la mienne est la seule chose qui compte.",
+        "motivazione": "Frase generica e non offensiva: non contiene odio, minacce, incitamento all’illegalità né tentativi di aggirare la moderazione."
+    },
+    {
+        "post_id": 250,
+        "testo": "Spero che tu sia pronto per quello che ho in mente.",
+        "motivazione": "Frase generica e senza contenuti offensivi, discriminatori o pericolosi; non è presente alcun sottotesto dannoso."
+    }
+]

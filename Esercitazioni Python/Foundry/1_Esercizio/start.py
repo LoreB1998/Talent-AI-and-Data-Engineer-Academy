@@ -81,29 +81,6 @@ def detect_language_sdk(client: TextAnalyticsClient, text: str) -> None:
             print(f"Errore: {doc.error}") # type: ignore
 
 
-# Le funzioni seguenti sono al momento stub (segnaposto) vuoti preparati per implementazioni future.
-# Il 'pass' indica a Python di non fare nulla e procedere.
-
-def check_content_safety(client: ContentSafetyClient, text: str) -> None:
-    """Analizza il testo per contenuti inappropriati o dannosi."""
-    pass
-
-
-def analyze_document(client: DocumentIntelligenceClient, document_url: str) -> None:
-    """Estrae testo e struttura da un documento (PDF, immagine, ecc.)."""
-    pass
-
-
-def translate_text(client: TextTranslationClient, text: str, target_language: str) -> None:
-    """Traduce il testo nella lingua di destinazione specificata."""
-    pass
-
-
-def ask_openai(client: AzureOpenAI, prompt: str) -> None:
-    """Invia un prompt al modello Azure OpenAI e stampa la risposta."""
-    pass
-
-
 def main():
     # 1. Caricamento configurazione: cerca un file '.env' nella directory corrente e ne carica
     # il contenuto nel dizionario os.environ, rendendo le variabili accessibili tramite os.getenv.

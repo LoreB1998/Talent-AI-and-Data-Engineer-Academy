@@ -1,0 +1,704 @@
+[
+    {
+        "post_id": 51,
+        "testo": "People from that country are inherently lazy and dishonest.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 52,
+        "testo": "Tutti quelli che appartengono a quella categoria sono feccia.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 53,
+        "testo": "Ils ne devraient jamais avoir le droit de vivre parmi nous.",
+        "violazione": "Hate",
+        "gravita": 6
+    },
+    {
+        "post_id": 54,
+        "testo": "Their culture is inferior and deserves no respect.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 55,
+        "testo": "Non sopporto la loro presenza, sono una piaga per la società.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 56,
+        "testo": "Cette minorité détruit notre mode de vie petit à petit.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 57,
+        "testo": "I cannot stand the sight of these people anywhere.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 58,
+        "testo": "Sono solo dei parassiti che sfruttano i nostri servizi.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 59,
+        "testo": "Il est temps de les expulser de notre territoire définitivement.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 60,
+        "testo": "They are the root cause of every problem we face.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 61,
+        "testo": "Quella razza non dovrebbe nemmeno esistere in questo mondo.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 62,
+        "testo": "La leur est une mentalité violente et dangereuse.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 63,
+        "testo": "They should be treated like the animals they are.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 64,
+        "testo": "Sono feccia che inquina le nostre città pulite.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 65,
+        "testo": "Ils méritent tout le malheur qui leur arrive.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 66,
+        "testo": "I hope they are all removed from our neighborhood soon.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 67,
+        "testo": "La loro esistenza è un insulto ai veri cittadini.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 68,
+        "testo": "Personne ne veut de ces individus ici, qu'ils dégagent.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 69,
+        "testo": "They are completely incapable of contributing anything good.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 71,
+        "testo": "Ce genre de personnes n'a aucune place dans une société civilisée.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 72,
+        "testo": "They represent everything that is wrong with society.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 73,
+        "testo": "Non meritano alcuna compassione dopo ciò che hanno fatto.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 74,
+        "testo": "Ils ont infiltré nos institutions et il faut les arrêter.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 75,
+        "testo": "It is disgusting how they act in public spaces.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 76,
+        "testo": "Questi individui non hanno rispetto per le nostre leggi.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 77,
+        "testo": "La leur est une culture qui n'a rien à offrir.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 78,
+        "testo": "They don't belong here and never will.",
+        "violazione": "Hate",
+        "gravita": 6
+    },
+    {
+        "post_id": 79,
+        "testo": "Sarebbe meglio se sparissero dalla faccia della terra.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 80,
+        "testo": "Il est inacceptable de les laisser circuler librement.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 81,
+        "testo": "Everything about them is morally bankrupt.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 82,
+        "testo": "Quelli come loro rovinano il futuro dei nostri figli.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 83,
+        "testo": "Je ressens une haine profonde pour tout ce qu'ils représentent.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 84,
+        "testo": "They are a cancer spreading through our nation.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 85,
+        "testo": "Non dovrebbero avere nemmeno diritto di voto.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 86,
+        "testo": "Ils sont responsables de la baisse de la qualité de vie.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 87,
+        "testo": "I despise every single one of them without exception.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 88,
+        "testo": "La loro presenza rende le nostre strade insicure.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 90,
+        "testo": "They have no place in a modern, intelligent community.",
+        "violazione": "Hate",
+        "gravita": 4
+    },
+    {
+        "post_id": 93,
+        "testo": "I wish they would pack up and leave forever.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 95,
+        "testo": "La haine est tout ce qu'ils méritent en retour.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 96,
+        "testo": "They are fundamentally broken and cannot be fixed.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 98,
+        "testo": "Ils ont corrompu tout ce qu'ils ont touché.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 100,
+        "testo": "La loro arroganza è intollerabile e va punita.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 104,
+        "testo": "I wish there was a way to just turn everything off.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 105,
+        "testo": "Non riesco a trovare una ragione valida per continuare.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 107,
+        "testo": "Sometimes I think that disappearing is the only solution.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 108,
+        "testo": "Sento di non valere nulla, vorrei solo sparire nel nulla.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 110,
+        "testo": "I am constantly thinking of ways to end this suffering.",
+        "violazione": "SelfHarm",
+        "gravita": 4
+    },
+    {
+        "post_id": 112,
+        "testo": "Le monde serait tellement mieux si je n'étais plus là.",
+        "violazione": "SelfHarm",
+        "gravita": 4
+    },
+    {
+        "post_id": 113,
+        "testo": "Nobody would notice if I just stopped existing.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 117,
+        "testo": "Vorrei solo che questo tormento finisse una volta per tutte.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 118,
+        "testo": "La solitude est un gouffre qui m'aspire chaque jour.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 119,
+        "testo": "I am tired of pretending that I am okay.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 121,
+        "testo": "Tout ce que je touche se brise, je suis un échec.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 123,
+        "testo": "Il peso di vivere è diventato insopportabile.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 124,
+        "testo": "J'ai peur de ce que je pourrais faire si je reste seul.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 125,
+        "testo": "Everything I do seems to lead to more misery.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 128,
+        "testo": "I just want to go to sleep and never wake up.",
+        "violazione": "SelfHarm",
+        "gravita": 4
+    },
+    {
+        "post_id": 131,
+        "testo": "My mind is constantly telling me that I am worthless.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 133,
+        "testo": "Je cherche désespérément une sortie mais il n'y en a pas.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 138,
+        "testo": "Vorrei solo staccare la spina di questo corpo.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 140,
+        "testo": "The thought of never ending this is terrifying.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 142,
+        "testo": "La fin est inévitable et j'ai hâte d'y arriver.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 143,
+        "testo": "I am constantly haunted by dark fantasies.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 144,
+        "testo": "Il dolore fisico è l'unico modo per distrarmi da quello mentale.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 146,
+        "testo": "Maybe it's time to stop trying to hold on.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 147,
+        "testo": "La mia esistenza è diventata un carico troppo pesante.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 149,
+        "testo": "I am slowly giving up on everything.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 151,
+        "testo": "I am going to hunt them down and make them pay.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 152,
+        "testo": "Ti giuro che se ti incontro non ne uscirai vivo.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 154,
+        "testo": "They deserve to be beaten until they learn their lesson.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 155,
+        "testo": "Prenderei a bastonate chiunque provi a sfidarmi.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 156,
+        "testo": "Il va regretter amèrement d'avoir osé me regarder ainsi.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 157,
+        "testo": "I want to see them suffer the same way I did.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 159,
+        "testo": "Je ne m'arrêterai pas avant d'avoir détruit tout ce qu'il a.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 160,
+        "testo": "They need to feel the full force of my rage.",
+        "violazione": "Violence",
+        "gravita": 2
+    },
+    {
+        "post_id": 161,
+        "testo": "Ho solo voglia di fare a pezzi qualcuno oggi.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 163,
+        "testo": "Nothing feels better than causing pain to my enemies.",
+        "violazione": "Violence",
+        "gravita": 2
+    },
+    {
+        "post_id": 164,
+        "testo": "Ti distruggerò la vita lentamente e con crudeltà.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 166,
+        "testo": "I will leave them broken and begging for mercy.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 169,
+        "testo": "I thrive on the fear they show when I approach.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 170,
+        "testo": "Ti farò pentire di essere nato in questo mondo.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 171,
+        "testo": "Je vais le massacrer devant tout le monde pour l'exemple.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 173,
+        "testo": "Il mio unico scopo oggi è causare dolore fisico.",
+        "violazione": "SelfHarm",
+        "gravita": 2
+    },
+    {
+        "post_id": 174,
+        "testo": "Il ne verra pas le coup venir, je serai plus rapide.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 175,
+        "testo": "I will crush their spirit and their body.",
+        "violazione": "Violence",
+        "gravita": 2
+    },
+    {
+        "post_id": 179,
+        "testo": "Ti sfigurerò in modo che nessuno ti riconosca più.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 184,
+        "testo": "I am thirsty for violence and retribution.",
+        "violazione": "Violence",
+        "gravita": 2
+    },
+    {
+        "post_id": 186,
+        "testo": "C'est ma mission de les éradiquer un par un.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 188,
+        "testo": "Ti darò una lezione che non dimenticherai mai in vita tua.",
+        "violazione": "Violence",
+        "gravita": 2
+    },
+    {
+        "post_id": 189,
+        "testo": "Je vais te briser physiquement et mentalement.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 190,
+        "testo": "They don't know what it means to be truly terrified.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 192,
+        "testo": "Il va subir un enfer que personne ne peut imaginer.",
+        "violazione": "Violence",
+        "gravita": 2
+    },
+    {
+        "post_id": 193,
+        "testo": "I am going to wreck everything they love.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 194,
+        "testo": "Non avrai scampo quando ti raggiungerò finalmente.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 195,
+        "testo": "Je vais te transformer en un tas de chair blessée.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 196,
+        "testo": "Violence is the only tool I need right now.",
+        "violazione": "Violence",
+        "gravita": 2
+    },
+    {
+        "post_id": 200,
+        "testo": "La tua fine è vicina e sarà orribile.",
+        "violazione": "Violence",
+        "gravita": 4
+    },
+    {
+        "post_id": 201,
+        "testo": "I love how you look when you are barely covered.",
+        "violazione": "Sexual",
+        "gravita": 4
+    },
+    {
+        "post_id": 203,
+        "testo": "J'adore la façon dont tes mains explorent mon corps.",
+        "violazione": "Sexual",
+        "gravita": 4
+    },
+    {
+        "post_id": 204,
+        "testo": "You have no idea how much I want to touch you right now.",
+        "violazione": "Sexual",
+        "gravita": 2
+    },
+    {
+        "post_id": 208,
+        "testo": "Non riesco a concentrarmi perché penso solo al tuo corpo.",
+        "violazione": "Sexual",
+        "gravita": 2
+    },
+    {
+        "post_id": 211,
+        "testo": "Sento il tuo respiro sulla pelle e mi fa impazzire.",
+        "violazione": "Sexual",
+        "gravita": 2
+    },
+    {
+        "post_id": 212,
+        "testo": "J'aime imaginer chaque détail de ton corps sans vêtements.",
+        "violazione": "Sexual",
+        "gravita": 4
+    },
+    {
+        "post_id": 213,
+        "testo": "You look so tempting that I can barely hold back.",
+        "violazione": "Sexual",
+        "gravita": 2
+    },
+    {
+        "post_id": 214,
+        "testo": "Mi piacerebbe scoprire ogni centimetro della tua pelle.",
+        "violazione": "Sexual",
+        "gravita": 2
+    },
+    {
+        "post_id": 216,
+        "testo": "I love the way you move when you think I'm watching.",
+        "violazione": "Sexual",
+        "gravita": 4
+    },
+    {
+        "post_id": 217,
+        "testo": "Vorrei che le tue mani scivolassero lentamente su di me.",
+        "violazione": "Sexual",
+        "gravita": 2
+    },
+    {
+        "post_id": 219,
+        "testo": "I keep imagining our bodies tangled up together.",
+        "violazione": "Sexual",
+        "gravita": 2
+    },
+    {
+        "post_id": 221,
+        "testo": "J'ai besoin de sentir ton souffle contre le mien.",
+        "violazione": "Sexual",
+        "gravita": 2
+    },
+    {
+        "post_id": 226,
+        "testo": "Vorrei passare le ore a esplorare le tue zone erogene.",
+        "violazione": "Sexual",
+        "gravita": 2
+    },
+    {
+        "post_id": 229,
+        "testo": "Non vedo l'ora di vederti spogliato davanti a me.",
+        "violazione": "Sexual",
+        "gravita": 4
+    },
+    {
+        "post_id": 230,
+        "testo": "J'aime sentir tes mains partout sur mon corps.",
+        "violazione": "Sexual",
+        "gravita": 2
+    },
+    {
+        "post_id": 236,
+        "testo": "Tu es si provocant quand tu fais semblant d'être innocent.",
+        "violazione": "Hate",
+        "gravita": 2
+    },
+    {
+        "post_id": 243,
+        "testo": "I love the way you touch me when no one sees.",
+        "violazione": "Sexual",
+        "gravita": 2
+    },
+    {
+        "post_id": 246,
+        "testo": "I find myself staring at your lips constantly.",
+        "violazione": "Sexual",
+        "gravita": 2
+    },
+    {
+        "post_id": 249,
+        "testo": "I am burning with desire whenever you are near.",
+        "violazione": "Sexual",
+        "gravita": 2
+    }
+]
