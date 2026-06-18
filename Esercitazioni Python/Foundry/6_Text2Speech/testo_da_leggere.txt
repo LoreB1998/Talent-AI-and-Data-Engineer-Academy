@@ -1,0 +1,1 @@
+Benvenuto in questo test di sintesi vocale con Azure AI Speech. Se riesci a sentire questa frase con un'intonazione naturale, significa che la configurazione funziona correttamente. Questo servizio supporta voci neurali in italiano e in molte altre lingue, perfette per applicazioni di accessibilità, assistenti vocali o narrazione automatica di contenuti.
