@@ -1,0 +1,168 @@
+{
+  "cancello": {
+    "apertura": 50
+  },
+  "stanze": {
+    "soggiorno": {
+      "nome": "soggiorno",
+      "porta_aperta": {
+        "stanza": "soggiorno",
+        "aperta": false
+      },
+      "finestra_aperta": {
+        "stanza": "soggiorno",
+        "apertura": 0
+      },
+      "luce_accesa": {
+        "stanza": "soggiorno",
+        "accesa": false,
+        "intensita": 0,
+        "colore": "bianco"
+      },
+      "clima_acceso": {
+        "stanza": "soggiorno",
+        "acceso": false,
+        "temperatura": 24,
+        "modalita": "auto"
+      }
+    },
+    "cucina": {
+      "nome": "cucina",
+      "porta_aperta": {
+        "stanza": "cucina",
+        "aperta": false
+      },
+      "finestra_aperta": {
+        "stanza": "cucina",
+        "apertura": 0
+      },
+      "luce_accesa": {
+        "stanza": "cucina",
+        "accesa": true,
+        "intensita": 45,
+        "colore": "bianco"
+      },
+      "clima_acceso": {
+        "stanza": "cucina",
+        "acceso": false,
+        "temperatura": 24,
+        "modalita": "auto"
+      }
+    },
+    "camera": {
+      "nome": "camera",
+      "porta_aperta": {
+        "stanza": "camera",
+        "aperta": false
+      },
+      "finestra_aperta": {
+        "stanza": "camera",
+        "apertura": 0
+      },
+      "luce_accesa": {
+        "stanza": "camera",
+        "accesa": false,
+        "intensita": 0,
+        "colore": "bianco"
+      },
+      "clima_acceso": {
+        "stanza": "camera",
+        "acceso": true,
+        "temperatura": 21,
+        "modalita": "relax"
+      }
+    },
+    "bagno": {
+      "nome": "bagno",
+      "porta_aperta": {
+        "stanza": "bagno",
+        "aperta": false
+      },
+      "finestra_aperta": {
+        "stanza": "bagno",
+        "apertura": 0
+      },
+      "luce_accesa": {
+        "stanza": "bagno",
+        "accesa": true,
+        "intensita": 35,
+        "colore": "rosso"
+      },
+      "clima_acceso": {
+        "stanza": "bagno",
+        "acceso": true,
+        "temperatura": 22,
+        "modalita": "relax"
+      }
+    },
+    "cameretta": {
+      "nome": "cameretta",
+      "porta_aperta": {
+        "stanza": "cameretta",
+        "aperta": false
+      },
+      "finestra_aperta": {
+        "stanza": "cameretta",
+        "apertura": 0
+      },
+      "luce_accesa": {
+        "stanza": "cameretta",
+        "accesa": false,
+        "intensita": 0,
+        "colore": "bianco"
+      },
+      "clima_acceso": {
+        "stanza": "cameretta",
+        "acceso": false,
+        "temperatura": 24,
+        "modalita": "auto"
+      }
+    },
+    "camera da letto": {
+      "nome": "camera da letto",
+      "porta_aperta": {
+        "stanza": "camera da letto",
+        "aperta": false
+      },
+      "finestra_aperta": {
+        "stanza": "camera da letto",
+        "apertura": 0
+      },
+      "luce_accesa": {
+        "stanza": "camera da letto",
+        "accesa": true,
+        "intensita": 100,
+        "colore": "rosso"
+      },
+      "clima_acceso": {
+        "stanza": "camera da letto",
+        "acceso": true,
+        "temperatura": 50,
+        "modalita": "auto"
+      }
+    },
+    "studio": {
+      "nome": "studio",
+      "porta_aperta": {
+        "stanza": "studio",
+        "aperta": false
+      },
+      "finestra_aperta": {
+        "stanza": "studio",
+        "apertura": 0
+      },
+      "luce_accesa": {
+        "stanza": "studio",
+        "accesa": false,
+        "intensita": 0,
+        "colore": "bianco"
+      },
+      "clima_acceso": {
+        "stanza": "studio",
+        "acceso": false,
+        "temperatura": 23,
+        "modalita": "auto"
+      }
+    }
+  }
+}

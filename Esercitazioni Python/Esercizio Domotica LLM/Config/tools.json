@@ -1,0 +1,231 @@
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "apri_porta",
+            "description": "Apre la porta interna di una stanza specifica.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "stanza": {"type": "string", "description": "Nome della stanza, es. camera, cucina, soggiorno, bagno."}
+                },
+                "required": ["stanza"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "chiudi_porta",
+            "description": "Chiude la porta interna di una stanza specifica.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "stanza": {"type": "string", "description": "Nome della stanza."}
+                },
+                "required": ["stanza"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "apri_cancello",
+            "description": "Apre il cancello o il garage della casa.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "percentuale": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 100,
+                        "description": "Percentuale di apertura desiderata, default 100."
+                    }
+                }
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "chiudi_cancello",
+            "description": "Chiude il cancello o il garage della casa.",
+            "parameters": {"type": "object", "properties": {}}
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "stato_cancello",
+            "description": "Restituisce lo stato attuale del cancello/garage (chiuso, aperto o percentuale).",
+            "parameters": {"type": "object", "properties": {}}
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "accendi_luce",
+            "description": "Accende la luce di una stanza, opzionalmente con un'intensità specifica (0-100).",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "stanza": {"type": "string", "description": "Nome della stanza."},
+                    "intensita": {"type": "integer", "description": "Intensità da 0 a 100, default 100.", "minimum": 0, "maximum": 100}
+                },
+                "required": ["stanza"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "spegni_luce",
+            "description": "Spegne la luce di una stanza.",
+            "parameters": {
+                "type": "object",
+                "properties": {"stanza": {"type": "string", "description": "Nome della stanza."}},
+                "required": ["stanza"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "imposta_intensita_luce",
+            "description": "Imposta un valore assoluto di intensità (0-100) per la luce di una stanza.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "stanza": {"type": "string", "description": "Nome della stanza."},
+                    "intensita": {"type": "integer", "minimum": 0, "maximum": 100, "description": "Valore assoluto desiderato."}
+                },
+                "required": ["stanza", "intensita"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "varia_intensita_luce",
+            "description": "Aumenta o diminuisce l'intensità della luce di un valore relativo. Usa questa funzione per richieste come 'alza un po' la luce' o 'abbassa la luce', dove non viene dato un valore assoluto.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "stanza": {"type": "string", "description": "Nome della stanza."},
+                    "delta": {"type": "integer", "description": "Variazione, positiva per aumentare, negativa per diminuire (es. 20 o -20)."}
+                },
+                "required": ["stanza", "delta"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "imposta_colore_luce",
+            "description": "Imposta il colore della luce di una stanza.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "stanza": {
+                        "type": "string",
+                        "description": "Nome della stanza."
+                    },
+                    "colore": {
+                        "type": "string",
+                        "description": "Colore desiderato, ad esempio rosso, blu, bianco, verde."
+                    }
+                },
+                "required": ["stanza", "colore"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "apri_finestra",
+            "description": "Apre la finestra di una stanza, totalmente o parzialmente in base alla percentuale indicata.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "stanza": {"type": "string", "description": "Nome della stanza."},
+                    "percentuale": {"type": "integer", "minimum": 0, "maximum": 100, "description": "Percentuale di apertura, default 100 (tutta aperta)."}
+                },
+                "required": ["stanza"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "chiudi_finestra",
+            "description": "Chiude completamente la finestra di una stanza.",
+            "parameters": {
+                "type": "object",
+                "properties": {"stanza": {"type": "string", "description": "Nome della stanza."}},
+                "required": ["stanza"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "imposta_climatizzatore",
+            "description": "Imposta temperatura e modalità del climatizzatore di una stanza.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "stanza": {"type": "string", "description": "Nome della stanza."},
+                    "temperatura": {"type": "integer", "description": "Temperatura desiderata in gradi, default 22."},
+                    "modalita": {"type": "string", "description": "Modalità, es. auto, relax, raffreddamento, riscaldamento."}
+                },
+                "required": ["stanza"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "spegni_climatizzatore",
+            "description": "Spegne il climatizzatore di una stanza.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "stanza": {"type": "string", "description": "Nome della stanza."}
+                },
+                "required": ["stanza"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "stato_stanza",
+            "description": "Restituisce lo stato attuale di tutti i dispositivi di una stanza (porta, finestra, luce, clima).",
+            "parameters": {
+                "type": "object",
+                "properties": {"stanza": {"type": "string", "description": "Nome della stanza."}},
+                "required": ["stanza"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "stato_casa",
+            "description": "Restituisce lo stato completo della casa: cancello e stato di tutte le stanze.",
+            "parameters": {"type": "object", "properties": {}}
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "crea_ambiente_romantico",
+            "description": "Attiva la modalità 'ambiente romantico' in una stanza: luci rosse soffuse, climatizzazione, porta chiusa e musica.",
+            "parameters": {
+                "type": "object",
+                "properties": {"stanza": {"type": "string", "description": "Nome della stanza, tipicamente la camera."}},
+                "required": ["stanza"]
+            }
+        }
+    }
+]

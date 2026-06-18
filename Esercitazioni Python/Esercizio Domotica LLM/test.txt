@@ -1,0 +1,72 @@
+def test_openai():
+    print("\n--- TEST 1: Azure OpenAI ---")
+    client = OpenAI(api_key=AZ_OPENAI_KEY, base_url=AZ_OPENAI_ENDPOINT)
+    try:
+        response = client.chat.completions.create(
+            model=AZ_OPENAI_DEPLOYMENT,
+            messages=[{"role": "user", "content": "Rispondi solo con: OK, funziona."}],
+            max_completion_tokens=20
+        )
+        print("✅ OpenAI OK:", response.choices[0].message.content)
+        return True
+    except AuthenticationError as e:
+        print("❌ Chiave o endpoint errati:", e)
+    except APIConnectionError as e:
+        print("❌ Problema di rete/endpoint:", e)
+    except BadRequestError as e:
+        print("❌ Richiesta non valida (controlla nome deployment):", e)
+    return False
+
+
+def test_tts():
+    print("\n--- TEST 2: Text-to-Speech ---")
+    speech_config = speechsdk.SpeechConfig(subscription=AZ_SPEECH_KEY, region=AZ_SPEECH_REGION)
+    speech_config.speech_synthesis_voice_name = AZ_SPEECH_VOICE
+
+    audio_config = speechsdk.audio.AudioOutputConfig(filename="test_output.wav")
+    synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
+
+    result = synthesizer.speak_text_async("Test del sistema di domotica completato.").get()
+
+    if result.reason == speechsdk.ResultReason.SynthesizingAudioCompleted:
+        print("✅ TTS OK: file test_output.wav generato")
+        return True
+    elif result.reason == speechsdk.ResultReason.Canceled:
+        details = result.cancellation_details
+        print("❌ TTS Cancellato:", details.reason, details.error_details)
+    return False
+
+
+def test_stt():
+    print("\n--- TEST 3: Speech-to-Text (parla nel microfono) ---")
+    speech_config = speechsdk.SpeechConfig(subscription=AZ_SPEECH_KEY, region=AZ_SPEECH_REGION)
+    speech_config.speech_recognition_language = "it-IT"
+
+    audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
+    recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
+
+    print("🎤 Parla ora (hai qualche secondo)...")
+    result = recognizer.recognize_once_async().get()
+
+    if result.reason == speechsdk.ResultReason.RecognizedSpeech:
+        print("✅ STT OK, hai detto:", result.text)
+        return True
+    elif result.reason == speechsdk.ResultReason.NoMatch:
+        print("⚠️  Nessun parlato riconosciuto, ma la connessione funziona.")
+        return True
+    elif result.reason == speechsdk.ResultReason.Canceled:
+        details = result.cancellation_details
+        print("❌ STT Cancellato:", details.reason, details.error_details)
+    return False
+
+
+if __name__ == "__main__":
+    results = {
+        "OpenAI": test_openai(),
+        "TTS": test_tts(),
+        "STT": test_stt(),
+    }
+
+    print("\n=== RIEPILOGO ===")
+    for name, ok in results.items():
+        print(f"{name}: {'✅ OK' if ok else '❌ FALLITO'}")
