@@ -1,4 +1,6 @@
 import os
+import platform
+import subprocess
 import azure.cognitiveservices.speech as speechsdk
 from dotenv import load_dotenv
 
@@ -73,7 +75,7 @@ def sintetizza_audio(testo: str, percorso_output: str) -> bool:
         )
     speech_config.speech_synthesis_voice_name = VOICE_NAME  # Imposta la voce da usare per la sintesi (es. "it-IT-IsabellaNeural" per italiano, "en-US-JennyNeural" per inglese, ecc.)
 
-    audio_config = speechsdk.audio.AudioOutputConfig(filename=percorso_output)  # Configura l'output audio per salvare su file (puoi anche configurarlo per riprodurre direttamente l'audio o per restituire un flusso di dati in memoria)
+    audio_config = speechsdk.audio.AudioOutputConfig(filename=percorso_output)  # Configura l'output audio per salvare su file
 
     synthesizer = speechsdk.SpeechSynthesizer(  # Crea un sintetizzatore di testo in voce usando la configurazione specificata
         speech_config=speech_config,
@@ -81,17 +83,17 @@ def sintetizza_audio(testo: str, percorso_output: str) -> bool:
     )
 
     print(f"Sintesi in corso (voce: {VOICE_NAME})...")
-    risultato = synthesizer.speak_text_async(testo).get()  # Avvia la sintesi del testo e aspetta il risultato (puoi anche usare speak_text() per una chiamata sincrona, ma speak_text_async() è più flessibile e non blocca il thread principale)
+    risultato = synthesizer.speak_text_async(testo).get()
 
-    if risultato is None:  # In teoria non dovrebbe mai essere None, ma è sempre buona pratica controllare che abbiamo effettivamente ricevuto un risultato prima di accedere alle sue proprietà
-        print("Sintesi fallita: nessun risultato restituito dal servizio.")  # Questo potrebbe indicare un problema di connessione, credenziali errate, o un errore interno del servizio
+    if risultato is None:
+        print("Sintesi fallita: nessun risultato restituito dal servizio.")
         return False
 
-    if risultato.reason == speechsdk.ResultReason.SynthesizingAudioCompleted:  # Se la sintesi è stata completata con successo, il risultato avrà reason=SynthesizingAudioCompleted e conterrà anche informazioni sul file audio generato (se usiamo AudioOutputConfig con filename)
+    if risultato.reason == speechsdk.ResultReason.SynthesizingAudioCompleted:
         print(f"Audio generato correttamente: {percorso_output}")
         return True
 
-    elif risultato.reason == speechsdk.ResultReason.Canceled:  # Se la sintesi è stata annullata (ad esempio per credenziali errate, endpoint non raggiungibile, testo troppo lungo, ecc.), il risultato avrà reason=Canceled e conterrà dettagli sull'annullamento
+    elif risultato.reason == speechsdk.ResultReason.Canceled:
         cancellation = risultato.cancellation_details
         print(f"Sintesi annullata: {cancellation.reason}")
         if cancellation.reason == speechsdk.CancellationReason.Error:
@@ -102,6 +104,30 @@ def sintetizza_audio(testo: str, percorso_output: str) -> bool:
     else:
         print(f"Esito inatteso: {risultato.reason}")
         return False
+
+
+def riproduci_audio(percorso_file: str) -> None:
+    """
+    Riproduce un file audio usando il player da riga di comando del sistema operativo.
+    - macOS: usa 'afplay', incluso di default, nessuna dipendenza aggiuntiva richiesta.
+    - Windows / Linux: tentativi alternativi (winsound / aplay), con avviso se non disponibili.
+    """
+    sistema = platform.system()
+
+    try:
+        if sistema == "Darwin":  # macOS
+            subprocess.run(["afplay", percorso_file], check=True)
+        elif sistema == "Windows":
+            import winsound
+            winsound.PlaySound(percorso_file, winsound.SND_FILENAME) # type: ignore
+        elif sistema == "Linux":
+            subprocess.run(["aplay", percorso_file], check=True)  # richiede alsa-utils
+        else:
+            print(f"Riproduzione automatica non supportata su questo sistema ({sistema}).")
+    except FileNotFoundError:
+        print("Player audio di sistema non trovato. Apri il file manualmente per ascoltarlo.")
+    except subprocess.CalledProcessError as e:
+        print(f"Errore durante la riproduzione: {e}")
 
 
 def scegli_sorgente_testo(base_dir: str) -> str | None:
@@ -138,8 +164,8 @@ def scegli_sorgente_testo(base_dir: str) -> str | None:
 
 
 def main():
-    base_dir = os.path.dirname(os.path.abspath(__file__))  # Ottieni la directory in cui si trova lo script, in modo da poter costruire percorsi relativi per input e output
-    file_output = os.path.join(base_dir, "output_audio.wav")  # Il file audio di output che verrà generato dalla sintesi
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_output = os.path.join(base_dir, "output_audio.wav")
 
     testo = scegli_sorgente_testo(base_dir)
     if testo is None:
@@ -148,7 +174,12 @@ def main():
     print(f"Testo da sintetizzare ({len(testo)} caratteri):")
     print(f"  {testo[:100]}{'...' if len(testo) > 100 else ''}")
 
-    sintetizza_audio(testo, file_output)
+    successo = sintetizza_audio(testo, file_output)
+
+    if successo:
+        risposta = input("Vuoi ascoltare l'audio generato? [s/n]: ").strip().lower()
+        if risposta == "s":
+            riproduci_audio(file_output)
 
 
 if __name__ == "__main__":
