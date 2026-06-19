@@ -26,20 +26,20 @@ MAX_INTERVALLO_DOCUMENTO = 30.0
 TENTATIVI_PER_AVVISO_VOCALE = 3
 
 CARTELLA_SALVATAGGI = Path(__file__).resolve().parent / "documenti_letti"
-SALVA_DEBUG_CROP = True
-CARTELLA_DEBUG = Path(__file__).resolve().parent / "debug_ritagli"
 
 BLU = (255, 0, 0)
 VERDE = (0, 200, 0)
 ARANCIO = (0, 165, 255)
 GRIGIO = (180, 180, 180)
 
-PROMPT_DOCUMENTO = """Sei un sistema OCR specializzato in documenti d'identità.
-Analizza l'immagine e restituisci SOLO un oggetto JSON (nessun testo aggiuntivo, nessun markdown) con i campi del documento.
-Usa sempre questi nomi di chiave in inglese:
-  FirstName, LastName, DocumentNumber, DateOfBirth, DateOfExpiry, Nationality, Sex, Address
-Includi solo i campi effettivamente leggibili nell'immagine. Se un campo non è visibile o leggibile, omettilo.
-Se nell'immagine non vedi nessun documento d'identità valido, restituisci: {"error": "nessun documento rilevato"}"""
+PROMPT_DOCUMENTO = """
+    Sei un sistema OCR specializzato in documenti d'identità.
+    Analizza l'immagine e restituisci SOLO un oggetto JSON (nessun testo aggiuntivo, nessun markdown) con i campi del documento.
+    Usa sempre questi nomi di chiave in Inglese:
+    FirstName, LastName, DocumentNumber, DateOfBirth, DateOfExpiry, Nationality, Sex, Address
+    Includi solo i campi effettivamente leggibili nell'immagine. Se un campo non è visibile o leggibile, omettilo.
+    Se nell'immagine non vedi nessun documento d'identità valido, restituisci: {"error": "nessun documento rilevato"}
+    """
 
 stato = {
     "nome": None,
@@ -240,7 +240,6 @@ def leggi_id_gpt(openai_client, deployment, immagine_jpg):
     )
 
     testo = (risposta.choices[0].message.content or "").strip()
-    print(f"[GPT] risposta raw: {testo!r}")
     if not testo:
         raise ValueError("Il modello ha restituito una risposta vuota. "
                          "Verifica che il deployment supporti input visivi (es. gpt-4o).")
@@ -248,7 +247,6 @@ def leggi_id_gpt(openai_client, deployment, immagine_jpg):
     dati = json.loads(testo)
 
     if "error" in dati:
-        print(f"[GPT] nessun documento rilevato: {dati['error']}")
         return None, None, {}
 
     nome = dati.get("FirstName")
@@ -272,15 +270,6 @@ def salva_documento(crop_jpg, nome, cognome, tutti_i_campi):
 
 
 def worker_documento(openai_client, deployment, speech_config, crop_jpg):
-    if SALVA_DEBUG_CROP:
-        try:
-            CARTELLA_DEBUG.mkdir(exist_ok=True)
-            nome_file = CARTELLA_DEBUG / f"crop_{time.strftime('%Y%m%d_%H%M%S')}.jpg"
-            nome_file.write_bytes(crop_jpg)
-            print(f"[debug] Ritaglio salvato in: {nome_file}")
-        except Exception as errore:
-            print(f"[debug] Impossibile salvare il ritaglio di debug: {errore}")
-
     try:
         nome, cognome, tutti_i_campi = leggi_id_gpt(openai_client, deployment, crop_jpg)
     except Exception as errore:
