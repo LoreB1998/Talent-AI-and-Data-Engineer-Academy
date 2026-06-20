@@ -60,19 +60,6 @@ analisi_stato = {
 analisi_lock = threading.Lock()
 
 
-def _val(oggetto, *nomi, default=None):
-    for nome in nomi:
-        valore = getattr(oggetto, nome, None)
-        if valore is not None:
-            return valore
-        try:
-            if oggetto[nome] is not None:
-                return oggetto[nome]
-        except (TypeError, KeyError, IndexError):
-            pass
-    return default
-
-
 def configura():
     load_dotenv(Path(__file__).resolve().parent / ".env")
 
@@ -88,7 +75,6 @@ def configura():
     az_openai_key = os.getenv("AZ_OPENAI_KEY")
     az_openai_endpoint = os.getenv("AZ_OPENAI_ENDPOINT")
     az_openai_deployment = os.getenv("AZ_OPENAI_DEPLOYMENT")
-    az_openai_version = os.getenv("AZ_OPENAI_API_VERSION", "2024-02-01")
     if not az_openai_key or not az_openai_endpoint or not az_openai_deployment:
         raise SystemExit("Mancano AZ_OPENAI_KEY / AZ_OPENAI_ENDPOINT / AZ_OPENAI_DEPLOYMENT nel .env.")
 
@@ -153,15 +139,11 @@ def rileva_volti(face_client, immagine_jpg):
         return_face_landmarks=False,
         return_face_attributes=None,
     )
-    riquadri = []
-    for volto in volti:
-        box = _val(volto, "face_rectangle", "faceRectangle", default={})
-        x = _val(box, "left", "x", default=0)
-        y = _val(box, "y", "top", default=0)
-        w = _val(box, "width", "w", default=0)
-        h = _val(box, "height", "h", default=0)
-        riquadri.append((int(x), int(y), int(w), int(h)))
-    return riquadri
+    return [
+        (int(v.face_rectangle.left), int(v.face_rectangle.top),
+         int(v.face_rectangle.width), int(v.face_rectangle.height))
+        for v in volti
+    ]
 
 
 def _parola_documento(testo):
@@ -176,26 +158,18 @@ def rileva_documento(image_client, immagine_jpg):
         visual_features=[VisualFeatures.OBJECTS, VisualFeatures.TAGS, VisualFeatures.CAPTION],
     )
 
-    oggetti = _val(risultato.objects, "list", "values", default=[]) if risultato.objects else []
-    for oggetto in oggetti:
-        tags = _val(oggetto, "tags", default=[]) or []
-        nome = _val(tags[0], "name", default="") if tags else ""
+    for oggetto in (risultato.objects.list if risultato.objects else []):
+        nome = oggetto.tags[0].name if oggetto.tags else ""
         if _parola_documento(nome):
-            box = _val(oggetto, "bounding_box", "boundingBox", default={})
-            x = _val(box, "x", "left", default=0)
-            y = _val(box, "y", "top", default=0)
-            w = _val(box, "w", "width", default=0)
-            h = _val(box, "h", "height", default=0)
-            return nome, (int(x), int(y), int(w), int(h))
+            box = oggetto.bounding_box
+            return nome, (int(box.x), int(box.y), int(box.w), int(box.h))
 
-    tags = _val(risultato.tags, "list", "values", default=[]) if risultato.tags else []
-    for tag in tags:
-        nome = _val(tag, "name", default="")
-        if _parola_documento(nome):
-            return nome, None
+    for tag in (risultato.tags.list if risultato.tags else []):
+        if _parola_documento(tag.name):
+            return tag.name, None
 
-    if risultato.caption and _parola_documento(_val(risultato.caption, "text", default="")):
-        return _val(risultato.caption, "text"), None
+    if risultato.caption and _parola_documento(risultato.caption.text):
+        return risultato.caption.text, None
 
     return None, None
 
@@ -214,8 +188,6 @@ def ritaglia(frame, box, margine=0.18):
 
 
 def leggi_id_gpt(openai_client, deployment, immagine_jpg):
-    """Manda il ritaglio a GPT-4o come immagine base64 e restituisce
-    (nome, cognome, tutti_i_campi) estratti dal JSON di risposta."""
     b64 = base64.b64encode(immagine_jpg).decode("utf-8")
 
     risposta = openai_client.chat.completions.create(
@@ -263,8 +235,7 @@ def salva_documento(crop_jpg, nome, cognome, tutti_i_campi):
     percorso_json = CARTELLA_SALVATAGGI / f"{base}.json"
 
     percorso_jpg.write_bytes(crop_jpg)
-    with open(percorso_json, "w", encoding="utf-8") as file_json:
-        json.dump(tutti_i_campi, file_json, ensure_ascii=False, indent=2)
+    percorso_json.write_text(json.dumps(tutti_i_campi, ensure_ascii=False, indent=2), encoding="utf-8")
 
     return CARTELLA_SALVATAGGI / base
 
@@ -416,9 +387,11 @@ def main():
 
         adesso = time.time()
 
-        # Face + Image Analysis in background
         with analisi_lock:
             analisi_in_corso = analisi_stato["analisi_in_corso"]
+            volti = list(analisi_stato["volti"])
+            documento = analisi_stato["documento"]
+
         if not analisi_in_corso and adesso - ultimo_scan >= INTERVALLO_ANALISI:
             ultimo_scan = adesso
             ok_jpg, dati = cv2.imencode(".jpg", frame)
@@ -431,10 +404,6 @@ def main():
                     daemon=True,
                 ).start()
 
-        with analisi_lock:
-            volti = list(analisi_stato["volti"])
-            documento = analisi_stato["documento"]
-
         documento_presente = documento[0] is not None
 
         with lock:
@@ -442,14 +411,9 @@ def main():
             lettura_in_corso = stato["lettura_in_corso"]
             tentativi_falliti = stato["tentativi_falliti"]
 
-        intervallo_corrente = min(
-            INTERVALLO_DOCUMENTO + tentativi_falliti * 3.0,
-            MAX_INTERVALLO_DOCUMENTO,
-        )
-
-        # Manda il crop a GPT solo se Image Analysis ha rilevato un documento
         if (not doc_letto and not lettura_in_corso
-                and (forza_doc or (documento_presente and adesso - ultimo_doc >= intervallo_corrente))):
+                and (forza_doc or (documento_presente and adesso - ultimo_doc >= min(
+                    INTERVALLO_DOCUMENTO + tentativi_falliti * 3.0, MAX_INTERVALLO_DOCUMENTO)))):
             ultimo_doc = adesso
             forza_doc = False
             crop = ritaglia(frame, documento[1])
