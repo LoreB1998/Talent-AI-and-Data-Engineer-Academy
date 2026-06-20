@@ -18,7 +18,8 @@ from openai import OpenAI
 PAROLE_ATTIVAZIONE = ("attiva", "apri", "accendi", "webcam", "telecamera", "via", "start")
 
 PAROLE_DOCUMENTO = ("card", "credit", "identity", "id card", "document",
-                    "passport", "license", "driver", "paper", "badge")
+                    "passport", "license", "driver", "paper", "badge", "carta", 
+                    "identità", "documento", "patente", "passaporto", "tessera")
 
 INTERVALLO_ANALISI = 2.0
 INTERVALLO_DOCUMENTO = 5.0
@@ -61,6 +62,7 @@ analisi_lock = threading.Lock()
 
 
 def configura():
+    """Carica configurazioni e inizializza client Azure e OpenAI."""
     load_dotenv(Path(__file__).resolve().parent / ".env")
 
     endpoint = os.getenv("AZ_ENDPOINT")
@@ -95,6 +97,7 @@ def configura():
 
 
 def parla(speech_config, testo):
+    """Usa la sintesi vocale per parlare un testo, se la configurazione è presente."""
     if speech_config is None:
         return
     audio = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
@@ -103,6 +106,7 @@ def parla(speech_config, testo):
 
 
 def ascolta_attivazione(speech_config):
+    """Ascolta comandi vocali per attivare la webcam. Se la voce non è configurata, attiva da tastiera."""
     if speech_config is None:
         input("Voce non configurata. Premi INVIO per attivare la webcam... ")
         return
@@ -131,6 +135,7 @@ def ascolta_attivazione(speech_config):
 
 
 def rileva_volti(face_client, immagine_jpg):
+    """Rileva i volti in un'immagine."""
     volti = face_client.detect(
         image_content=immagine_jpg,
         detection_model="detection_03",
@@ -147,11 +152,13 @@ def rileva_volti(face_client, immagine_jpg):
 
 
 def _parola_documento(testo):
+    """Controlla se il testo contiene parole chiave indicative di un documento."""
     testo = (testo or "").lower()
     return any(parola in testo for parola in PAROLE_DOCUMENTO)
 
 
 def rileva_documento(image_client, immagine_jpg):
+    """Rileva la presenza di un documento in un'immagine e restituisce il nome e la posizione (se disponibile)."""
     risultato = image_client.analyze(
         image_data=immagine_jpg,
         language="en",
@@ -175,6 +182,7 @@ def rileva_documento(image_client, immagine_jpg):
 
 
 def ritaglia(frame, box, margine=0.18):
+    """Ritaglia l'area del documento dall'immagine, aggiungendo un margine. Se il box non è valido, restituisce l'immagine originale."""
     if not box:
         return frame
     h_img, w_img = frame.shape[:2]
@@ -188,6 +196,7 @@ def ritaglia(frame, box, margine=0.18):
 
 
 def leggi_id_gpt(openai_client, deployment, immagine_jpg):
+    """Usa un modello GPT con capacità visive per leggere i dati da un documento d'identità in un'immagine."""
     b64 = base64.b64encode(immagine_jpg).decode("utf-8")
 
     risposta = openai_client.chat.completions.create(
@@ -227,6 +236,7 @@ def leggi_id_gpt(openai_client, deployment, immagine_jpg):
 
 
 def salva_documento(crop_jpg, nome, cognome, tutti_i_campi):
+    """Salva il ritaglio del documento e i dati estratti su disco, usando un nome file basato su nome, cognome e timestamp."""
     CARTELLA_SALVATAGGI.mkdir(exist_ok=True)
     timestamp = time.strftime("%Y%m%d_%H%M%S")
     base = f"{timestamp}_{nome or 'sconosciuto'}_{cognome or 'sconosciuto'}".replace(" ", "_")
@@ -241,6 +251,7 @@ def salva_documento(crop_jpg, nome, cognome, tutti_i_campi):
 
 
 def worker_documento(openai_client, deployment, speech_config, crop_jpg):
+    """Thread worker per analizzare il documento, aggiornare lo stato e parlare il risultato."""
     try:
         nome, cognome, tutti_i_campi = leggi_id_gpt(openai_client, deployment, crop_jpg)
     except Exception as errore:
@@ -288,6 +299,7 @@ def worker_documento(openai_client, deployment, speech_config, crop_jpg):
 
 
 def worker_analisi(face_client, image_client, immagine_jpg):
+    """Thread worker per analizzare l'immagine, rilevare volti e documenti, e aggiornare lo stato."""
     volti = None
     documento = None
     try:
@@ -308,6 +320,7 @@ def worker_analisi(face_client, image_client, immagine_jpg):
 
 
 def _banner(frame, testo, x, y_alto, colore):
+    """Disegna un banner con testo sopra o sotto un volto, assicurandosi che rimanga all'interno dell'immagine."""
     font = cv2.FONT_HERSHEY_SIMPLEX
     scala, spessore = 0.7, 2
     (tw, th), base = cv2.getTextSize(testo, font, scala, spessore)
@@ -318,6 +331,7 @@ def _banner(frame, testo, x, y_alto, colore):
 
 
 def pannello(frame, righe, colore):
+    """Disegna un pannello informativo con più righe di testo nell'angolo in alto a sinistra dell'immagine."""
     font = cv2.FONT_HERSHEY_SIMPLEX
     scala, spessore, h_riga = 0.6, 2, 28
     larghezza = max(cv2.getTextSize(t, font, scala, spessore)[0][0] for t in righe) + 20
@@ -327,6 +341,7 @@ def pannello(frame, righe, colore):
 
 
 def disegna(frame, volti, documento, snapshot):
+    """Disegna i volti rilevati, il box del documento (se presente) e un pannello con lo stato corrente."""
     doc_letto = snapshot["doc_letto"]
     nome, cognome = snapshot["nome"], snapshot["cognome"]
 
@@ -358,6 +373,7 @@ def disegna(frame, volti, documento, snapshot):
 
 
 def apri_webcam():
+    """Prova ad aprire la webcam usando diversi indici, restituendo il primo funzionante."""
     for indice in (int(os.getenv("CAM_INDEX", "0")), 0, 1):
         cam = cv2.VideoCapture(indice)
         if cam.isOpened():
@@ -367,6 +383,7 @@ def apri_webcam():
 
 
 def main():
+    """Funzione principale: configura client, attiva webcam, analizza frame e aggiorna stato in un loop."""
     face_client, image_client, openai_client, deployment, speech_config = configura()
 
     ascolta_attivazione(speech_config)
