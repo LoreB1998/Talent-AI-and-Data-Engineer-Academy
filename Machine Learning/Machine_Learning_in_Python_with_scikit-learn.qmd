@@ -2586,3 +2586,789 @@ Potrebbe essere che le caratteristiche di input non siano fondamentalmente molto
 
 Più avanti in questo MOOC vedremo come ottimizzare meglio gli iperparametri di un modello ed esploreremo come confrontare le prestazioni predittive di diverse classi di modelli in modo più sistematico.
 
+# Ottimizzazione degli iperparametri
+
+## Tuning manuale
+
+### Impostare e ottenere gli iperparametri in scikit-learn
+
+Ricordiamo che gli iperparametri si riferiscono ai parametri che controllano il processo di apprendimento di un modello predittivo e sono specifici per ciascuna famiglia di modelli. Inoltre, l'insieme ottimale di iperparametri è specifico per ciascun dataset e quindi devono sempre essere ottimizzati.
+
+Questo notebook mostra come è possibile ottenere e impostare il valore di un iperparametro in uno stimatore scikit-learn.
+
+Non vanno confusi con i parametri stimati (*fitted parameters*), risultanti dall'addestramento. Questi parametri stimati sono riconoscibili in scikit-learn perché sono scritti con un underscore finale `_`, ad esempio `model.coef_`.
+
+Iniziamo caricando il dataset adult census e utilizzando solo le feature numeriche.
+
+```{python}
+import pandas as pd
+
+adult_census = pd.read_csv("https://raw.githubusercontent.com/INRIA/scikit-learn-mooc/main/datasets/adult-census.csv")
+
+target_name = "class"
+numerical_columns = ["age", "capital-gain", "capital-loss", "hours-per-week"]
+
+target = adult_census[target_name]
+data = adult_census[numerical_columns]
+```
+
+I nostri dati sono solo numerici.
+
+```{python}
+data
+```
+
+Creiamo un semplice modello predittivo composto da uno scaler seguito da un classificatore di regressione logistica. Come accennato nei notebook precedenti, molti modelli, inclusi quelli lineari, funzionano meglio se tutte le feature hanno una scala simile. Per questo scopo, utilizziamo uno `StandardScaler`, che trasforma i dati riscalando le feature.
+
+```{python}
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+
+model = Pipeline(
+    steps=[
+        ("preprocessor", StandardScaler()),
+        ("classifier", LogisticRegression()),
+    ]
+)
+```
+
+Possiamo valutare la performance di generalizzazione del modello tramite cross-validation.
+
+```{python}
+from sklearn.model_selection import cross_validate
+
+cv_results = cross_validate(model, data, target)
+scores = cv_results["test_score"]
+print(
+    "Accuracy score via cross-validation:\n"
+    f"{scores.mean():.3f} ± {scores.std():.3f}"
+)
+```
+
+Abbiamo creato un modello con il valore `C` predefinito che è uguale a 1. Se volessimo utilizzare un valore diverso dell'iperparametro `C` avremmo potuto farlo creando l'oggetto `LogisticRegression` con qualcosa come `LogisticRegression(C=1e-3)`.
+
+::: {.callout-note}
+Per maggiori informazioni sull'iperparametro del modello `C`, consultare la documentazione. Da notare che ci concentreremo sui modelli lineari in un modulo successivo.
+:::
+
+Possiamo anche modificare l'iperparametro di un modello dopo che è stato creato con il metodo `set_params`, disponibile per tutti gli stimatori scikit-learn. Ad esempio, possiamo impostare `C=1e-3`, addestrare e valutare il modello:
+
+```{python}
+model.set_params(classifier__C=1e-3)
+cv_results = cross_validate(model, data, target)
+scores = cv_results["test_score"]
+print(
+    "Accuracy score via cross-validation:\n"
+    f"{scores.mean():.3f} ± {scores.std():.3f}"
+)
+```
+
+Quando il modello di interesse è una `Pipeline`, i nomi degli iperparametri hanno la forma `<model_name>__<hyperparameter_name>` (notare il doppio underscore al centro). Nel nostro caso, `classifier` proviene dalla definizione della `Pipeline` e `C` è il nome dell'iperparametro di `LogisticRegression`.
+
+In generale, si può usare il metodo `get_params` sui modelli scikit-learn per elencare tutti gli iperparametri con i loro valori. Ad esempio, se si vogliono ottenere tutti i nomi degli iperparametri, si può usare:
+
+```{python}
+for parameter in model.get_params():
+    print(parameter)
+```
+
+`.get_params()` restituisce un dict le cui chiavi sono i nomi degli iperparametri e i cui valori sono i valori degli iperparametri. Se si vuole ottenere il valore di un singolo iperparametro, ad esempio `classifier__C`, si può usare:
+
+```{python}
+model.get_params()["classifier__C"]
+```
+
+Possiamo variare sistematicamente il valore di `C` per vedere se esiste un valore ottimale.
+
+```{python}
+for C in [1e-3, 1e-2, 1e-1, 1, 10]:
+    model.set_params(classifier__C=C)
+    cv_results = cross_validate(model, data, target)
+    scores = cv_results["test_score"]
+    print(
+        f"Accuracy score via cross-validation with C={C}:\n"
+        f"{scores.mean():.3f} ± {scores.std():.3f}"
+    )
+```
+
+Possiamo osservare che, fintanto che `C` è sufficientemente alto, il modello sembra avere buone prestazioni.
+
+Quello che abbiamo fatto qui è molto manuale: comporta scandire i valori di `C` e scegliere manualmente quello migliore. Nella prossima lezione, vedremo come fare questo automaticamente.
+
+::: {.callout-warning}
+Quando valutiamo una famiglia di modelli sui dati di test e scegliamo il migliore, non possiamo fidarci della corrispondente accuratezza di predizione, e dobbiamo applicare il modello selezionato a nuovi dati. Infatti, i dati di test sono stati usati per selezionare il modello, e quindi non sono più indipendenti da questo modello.
+:::
+
+### Esercizio M3.01
+
+L'obiettivo è scrivere una ricerca esaustiva per trovare la migliore combinazione di parametri che massimizzi la performance di generalizzazione del modello.
+
+Qui utilizziamo un piccolo sottoinsieme del dataset Adult Census per rendere il codice più rapido da eseguire. Una volta che il codice funziona sul piccolo sottoinsieme, provate a cambiare `train_size` a un valore più grande (ad esempio 0.8 per 80% invece di 20%).
+
+```{python}
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+
+adult_census = pd.read_csv("https://raw.githubusercontent.com/INRIA/scikit-learn-mooc/main/datasets/adult-census.csv")
+
+target_name = "class"
+target = adult_census[target_name]
+data = adult_census.drop(columns=[target_name, "education-num"])
+
+data_train, data_test, target_train, target_test = train_test_split(
+    data, target, train_size=0.2, random_state=42
+)
+```
+
+```{python}
+from sklearn.compose import make_column_transformer
+from sklearn.compose import make_column_selector as selector
+from sklearn.preprocessing import OrdinalEncoder
+
+categorical_preprocessor = OrdinalEncoder(
+    handle_unknown="use_encoded_value", unknown_value=-1
+)
+preprocessor = make_column_transformer(
+    (categorical_preprocessor, selector(dtype_include=object)),
+    remainder="passthrough",
+)
+```
+
+```{python}
+from sklearn.ensemble import HistGradientBoostingClassifier
+from sklearn.pipeline import Pipeline
+
+model = Pipeline(
+    [
+        ("preprocessor", preprocessor),
+        ("classifier", HistGradientBoostingClassifier(random_state=42)),
+    ]
+)
+```
+
+Usando il modello precedentemente definito (chiamato `model`) e utilizzando due cicli `for` annidati, fate una ricerca delle migliori combinazioni dei parametri `learning_rate` e `max_leaf_nodes`. A questo proposito, dovete addestrare e testare il modello impostando i parametri. La valutazione del modello dovrebbe essere effettuata usando `cross_val_score` sul training set. Usate la seguente ricerca dei parametri:
+
+- `learning_rate` per i valori 0.01, 0.1, 1 e 10. Questo parametro controlla la capacità di un nuovo albero di correggere l'errore della sequenza precedente di alberi
+- `max_leaf_nodes` per i valori 3, 10, 30. Questo parametro controlla la profondità di ciascun albero.
+
+```{python}
+# solution
+from sklearn.model_selection import cross_val_score
+
+learning_rate = [0.01, 0.1, 1, 10]
+max_leaf_nodes = [3, 10, 30]
+
+best_score = 0
+best_params = {}
+for lr in learning_rate:
+    for mln in max_leaf_nodes:
+        print(
+            (
+                f"Evaluating model with learning rate {lr:.3f}"
+                f" and max leaf nodes {mln}... "
+            ),
+            end="",
+        )
+        model.set_params(
+            classifier__learning_rate=lr, classifier__max_leaf_nodes=mln
+        )
+        scores = cross_val_score(model, data_train, target_train, cv=2)
+        mean_score = scores.mean()
+        print(f"score: {mean_score:.3f}")
+        if mean_score > best_score:
+            best_score = mean_score
+            best_params = {"learning_rate": lr, "max_leaf_nodes": mln}
+            print(f"Found new best model with score {best_score:.3f}!")
+
+print(f"The best accuracy obtained is {best_score:.3f}")
+print(f"The best parameters found are:\n {best_params}")
+```
+
+Ora usate il test set per valutare il modello usando i migliori parametri trovati tramite cross-validation. Dovrete riaddestrare il modello sull'intero training set.
+
+```{python}
+# solution
+best_lr = best_params["learning_rate"]
+best_mln = best_params["max_leaf_nodes"]
+
+model.set_params(
+    classifier__learning_rate=best_lr, classifier__max_leaf_nodes=best_mln
+)
+model.fit(data_train, target_train)
+test_score = model.score(data_test, target_test)
+
+print(f"Test score after the parameter tuning: {test_score:.3f}")
+```
+
+## Tuning automatizzato
+
+### Ottimizzazione degli iperparametri tramite randomized-search
+
+Nel notebook precedente, abbiamo mostrato come usare un approccio di grid-search per cercare i migliori iperparametri che massimizzano la performance di generalizzazione di un modello predittivo.
+
+Tuttavia, un approccio di grid-search ha dei limiti. Non scala bene quando il numero di parametri da ottimizzare aumenta. Inoltre, la griglia impone una regolarità durante la ricerca che potrebbe far perdere valori dei parametri migliori tra due valori consecutivi sulla griglia.
+
+In questo notebook, presentiamo un metodo diverso per ottimizzare gli iperparametri chiamato randomized search.
+
+#### Il nostro modello predittivo
+
+Ricarichiamo il dataset come fatto precedentemente:
+
+```{python}
+import pandas as pd
+
+adult_census = pd.read_csv("https://raw.githubusercontent.com/INRIA/scikit-learn-mooc/main/datasets/adult-census.csv")
+```
+
+Estraiamo la colonna contenente il target.
+
+```{python}
+target_name = "class"
+target = adult_census[target_name]
+target
+```
+
+Eliminiamo dai nostri dati il target e la colonna `"education-num"` che duplica le informazioni con la colonna `"education"`.
+
+```{python}
+data = adult_census.drop(columns=[target_name, "education-num"])
+data
+```
+
+Una volta caricato il dataset, lo dividiamo in training e testing set.
+
+```{python}
+from sklearn.model_selection import train_test_split
+
+data_train, data_test, target_train, target_test = train_test_split(
+    data, target, random_state=42
+)
+```
+
+Creiamo la stessa pipeline predittiva fatta per la sezione di grid-search.
+
+```{python}
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OrdinalEncoder
+from sklearn.compose import make_column_selector as selector
+
+categorical_columns_selector = selector(dtype_include=object)
+categorical_columns = categorical_columns_selector(data)
+
+categorical_preprocessor = OrdinalEncoder(
+    handle_unknown="use_encoded_value", unknown_value=-1
+)
+preprocessor = ColumnTransformer(
+    [("cat_preprocessor", categorical_preprocessor, categorical_columns)],
+    remainder="passthrough",
+)
+```
+
+```{python}
+from sklearn.ensemble import HistGradientBoostingClassifier
+from sklearn.pipeline import Pipeline
+
+model = Pipeline(
+    [
+        ("preprocessor", preprocessor),
+        (
+            "classifier",
+            HistGradientBoostingClassifier(random_state=42, max_leaf_nodes=4),
+        ),
+    ]
+)
+
+model
+```
+
+#### Ottimizzazione usando una randomized-search
+
+Con lo stimatore `GridSearchCV`, i parametri devono essere specificati esplicitamente. Abbiamo già menzionato che esplorare un grande numero di valori per parametri diversi diventa rapidamente intrattabile.
+
+Possiamo invece generare casualmente i candidati dei parametri. Infatti, tale approccio evita la regolarità della griglia. Quindi, aggiungere più valutazioni può aumentare la risoluzione in ogni direzione. Questo è il caso nella situazione frequente in cui la scelta di alcuni iperparametri non è molto importante, come per l'iperparametro 2 nella figura sotto.
+
+![](https://cloud-mooc.inria.fr/user/161036bc473720ff99924e41ea50ff6d/notebooks/figures/grid_vs_random_search.svg)
+
+Infatti, il numero di punti di valutazione deve essere diviso tra i due diversi iperparametri. Con una griglia, il pericolo è che la regione dei buoni iperparametri possa cadere tra le linee della griglia. Nella figura tale regione è allineata con la griglia dato che l'iperparametro 2 ha una debole influenza. Invece, la ricerca stocastica campiona l'iperparametro 1 indipendentemente dall'iperparametro 2 e trova la regione ottimale.
+
+La classe `RandomizedSearchCV` permette tale ricerca stocastica. Viene usata in modo simile a `GridSearchCV` ma è necessario specificare le distribuzioni di campionamento invece dei valori dei parametri. Ad esempio, possiamo estrarre i candidati usando una distribuzione log-uniforme perché i parametri a cui siamo interessati assumono valori positivi con una naturale scala logaritmica (.1 è tanto vicino a 1 quanto 10 lo è).
+
+::: {.callout-note}
+La ricerca casuale (con `RandomizedSearchCV`) è tipicamente preferibile rispetto alla grid-search (con `GridSearchCV`) per ottimizzare 3 o più iperparametri.
+:::
+
+Ora ottimizziamo altri 3 parametri in aggiunta a quelli che abbiamo ottimizzato nel notebook che presenta `GridSearchCV`:
+
+- `l2_regularization`: corrisponde alla forza della regolarizzazione;
+- `min_samples_leaf`: corrisponde al numero minimo di campioni richiesti in una foglia;
+- `max_bins`: corrisponde al numero massimo di bin per costruire gli istogrammi.
+
+Ricordiamo il significato dei 2 parametri rimanenti:
+
+- `learning_rate`: corrisponde alla velocità con cui il gradient-boosting corregge i residui a ogni iterazione di boosting;
+- `max_leaf_nodes`: corrisponde al numero massimo di foglie per ciascun albero nell'ensemble.
+
+::: {.callout-note}
+`scipy.stats.loguniform` può essere usato per generare numeri in virgola mobile. Per generare valori casuali per parametri a valori interi (ad esempio `min_samples_leaf`) possiamo adattarlo come segue:
+:::
+
+```{python}
+from scipy.stats import loguniform
+
+
+class loguniform_int:
+    """Integer valued version of the log-uniform distribution"""
+
+    def __init__(self, a, b):
+        self._distribution = loguniform(a, b)
+
+    def rvs(self, *args, **kwargs):
+        """Random variable sample"""
+        return self._distribution.rvs(*args, **kwargs).astype(int)
+```
+
+Ora, possiamo definire la randomized search usando le diverse distribuzioni. Eseguire 10 iterazioni di 5-fold cross-validation per parametrizzazioni casuali di questo modello su questo dataset può richiedere da 10 secondi a diversi minuti, in base alla velocità del computer host e al numero di processori disponibili.
+
+```{python}
+%%time
+from sklearn.model_selection import RandomizedSearchCV
+
+param_distributions = {
+    "classifier__l2_regularization": loguniform(1e-6, 1e3),
+    "classifier__learning_rate": loguniform(0.001, 10),
+    "classifier__max_leaf_nodes": loguniform_int(2, 256),
+    "classifier__min_samples_leaf": loguniform_int(1, 100),
+    "classifier__max_bins": loguniform_int(2, 255),
+}
+
+model_random_search = RandomizedSearchCV(
+    model,
+    param_distributions=param_distributions,
+    n_iter=10,
+    cv=5,
+    verbose=1,
+)
+model_random_search.fit(data_train, target_train)
+```
+
+Successivamente, possiamo calcolare l'accuracy score sul test set.
+
+```{python}
+accuracy = model_random_search.score(data_test, target_test)
+
+print(f"The test accuracy score of the best model is {accuracy:.2f}")
+```
+
+```{python}
+from pprint import pprint
+
+print("The best parameters are:")
+pprint(model_random_search.best_params_)
+```
+
+Possiamo ispezionare i risultati usando gli attributi `cv_results` come fatto precedentemente.
+
+```{python}
+# get the parameter names
+column_results = [f"param_{name}" for name in param_distributions.keys()]
+column_results += ["mean_test_score", "std_test_score", "rank_test_score"]
+
+cv_results = pd.DataFrame(model_random_search.cv_results_)
+cv_results = cv_results[column_results].sort_values(
+    "mean_test_score", ascending=False
+)
+
+
+def shorten_param(param_name):
+    if "__" in param_name:
+        return param_name.rsplit("__", 1)[1]
+    return param_name
+
+
+cv_results = cv_results.rename(shorten_param, axis=1)
+cv_results
+```
+
+Tenete presente che l'ottimizzazione è limitata dal numero di combinazioni diverse di parametri che vengono valutate dalla randomized search. Infatti, potrebbero esistere altri set di parametri che portano a performance di generalizzazione simili o migliori ma che non sono stati testati nella ricerca. In pratica, una ricerca casuale di iperparametri viene solitamente eseguita con un grande numero di iterazioni. Per evitare il costo computazionale e fare comunque un'analisi decente, carichiamo i risultati ottenuti da una ricerca simile con 500 iterazioni.
+
+```{python}
+# model_random_search = RandomizedSearchCV(
+#     model, param_distributions=param_distributions, n_iter=500,
+#     n_jobs=2, cv=5)
+# model_random_search.fit(data_train, target_train)
+# cv_results =  pd.DataFrame(model_random_search.cv_results_)
+# cv_results.to_csv("https://raw.githubusercontent.com/INRIA/scikit-learn-mooc/main/figures/randomized_search_results.csv")
+```
+
+```{python}
+cv_results = pd.read_csv(
+    "https://raw.githubusercontent.com/INRIA/scikit-learn-mooc/main/figures/randomized_search_results.csv", index_col=0
+)
+
+(
+    cv_results[column_results]
+    .rename(shorten_param, axis=1)
+    .sort_values("mean_test_score", ascending=False)
+)
+```
+
+In questo caso i modelli con le prestazioni migliori hanno punteggi di test con un'ampia sovrapposizione tra loro, il che significa che, in effetti, l'insieme dei parametri che porta alla migliore performance di generalizzazione non è unico.
+
+In questo notebook, abbiamo visto come una randomized search offra una valida alternativa alla grid-search quando il numero di iperparametri da ottimizzare è superiore a due. Allevia inoltre la regolarità imposta dalla griglia che a volte può essere problematica.
+
+Nel seguito, vedremo come usare strumenti di plotting interattivi per esplorare i risultati di sessioni di ricerca di iperparametri di grandi dimensioni e ottenere alcune intuizioni sull'intervallo di valori dei parametri che portano ai modelli con le prestazioni più elevate e su come i diversi iperparametri siano correlati o meno.
+
+### Valutazione e ottimizzazione degli iperparametri
+
+Nel notebook precedente, abbiamo visto due approcci per ottimizzare gli iperparametri. Tuttavia, non abbiamo presentato un framework adeguato per valutare i modelli ottimizzati. Invece, ci siamo concentrati sul meccanismo usato per trovare il miglior set di parametri.
+
+In questo notebook, riutilizziamo alcune conoscenze presentate nel modulo "Selezionare il modello migliore" per mostrare come valutare modelli in cui gli iperparametri devono essere ottimizzati.
+
+Quindi, prima carichiamo il dataset e creiamo il modello predittivo che vogliamo ottimizzare e successivamente, valutare.
+
+#### Caricamento del dataset
+
+Come nel notebook precedente, carichiamo il dataset Adult census. Il dataframe caricato viene prima diviso per separare le feature di input e il target in due variabili separate. Inoltre, eliminiamo la colonna `"education-num"` come fatto precedentemente.
+
+```{python}
+import pandas as pd
+
+target_name = "class"
+adult_census = pd.read_csv("https://raw.githubusercontent.com/INRIA/scikit-learn-mooc/main/datasets/adult-census.csv")
+target = adult_census[target_name]
+data = adult_census.drop(columns=[target_name, "education-num"])
+```
+
+#### Il nostro modello predittivo
+
+Ora creiamo il modello predittivo che vogliamo ottimizzare. Da notare che questa pipeline è identica a quella usata nel notebook precedente.
+
+```{python}
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OrdinalEncoder
+from sklearn.compose import make_column_selector as selector
+
+categorical_columns_selector = selector(dtype_include=object)
+categorical_columns = categorical_columns_selector(data)
+
+categorical_preprocessor = OrdinalEncoder(
+    handle_unknown="use_encoded_value", unknown_value=-1
+)
+preprocessor = ColumnTransformer(
+    [
+        ("cat_preprocessor", categorical_preprocessor, categorical_columns),
+    ],
+    remainder="passthrough",
+)
+```
+
+```{python}
+from sklearn.ensemble import HistGradientBoostingClassifier
+from sklearn.pipeline import Pipeline
+
+model = Pipeline(
+    [
+        ("preprocessor", preprocessor),
+        (
+            "classifier",
+            HistGradientBoostingClassifier(random_state=42, max_leaf_nodes=4),
+        ),
+    ]
+)
+model
+```
+
+#### Valutazione
+
+##### Senza ottimizzazione degli iperparametri
+
+Nel modulo "Selezionare il modello migliore", abbiamo visto che bisogna usare la cross-validation per valutare un tale modello. La cross-validation permette di ottenere una distribuzione dei punteggi del modello. Quindi, avendo questa distribuzione a disposizione, possiamo valutare la variabilità della nostra stima della performance di generalizzazione del modello. Qui, richiamiamo gli strumenti scikit-learn necessari per ottenere la media e la deviazione standard dei punteggi.
+
+```{python}
+from sklearn.model_selection import cross_validate
+
+cv_results = cross_validate(model, data, target, cv=5)
+cv_results = pd.DataFrame(cv_results)
+cv_results
+```
+
+I punteggi di cross-validation provengono da una 5-fold cross-validation. Quindi possiamo calcolare la media e la deviazione standard del punteggio di generalizzazione.
+
+```{python}
+print(
+    "Generalization score without hyperparameters"
+    f" tuning:\n{cv_results['test_score'].mean():.3f} ±"
+    f" {cv_results['test_score'].std():.3f}"
+)
+```
+
+Ora presentiamo come valutare il modello con l'ottimizzazione degli iperparametri, dove è richiesto un passo extra per selezionare il miglior set di parametri.
+
+##### Con ottimizzazione degli iperparametri
+
+Come mostrato nel notebook precedente, si può usare una strategia di ricerca che utilizza la cross-validation per trovare il miglior set di parametri. Qui, usiamo una strategia di grid-search e riproduciamo i passaggi fatti nel notebook precedente.
+
+Per prima cosa, dobbiamo incorporare il nostro modello in una grid-search e specificare i parametri e i valori dei parametri che vogliamo esplorare.
+
+```{python}
+from sklearn.model_selection import GridSearchCV
+
+param_grid = {
+    "classifier__learning_rate": (0.05, 0.5),
+    "classifier__max_leaf_nodes": (10, 30),
+}
+model_grid_search = GridSearchCV(model, param_grid=param_grid, n_jobs=2, cv=2)
+model_grid_search.fit(data, target)
+```
+
+Come visto precedentemente, quando si chiama il metodo `fit`, il modello incorporato nella grid-search viene addestrato con ogni possibile combinazione di parametri risultante dalla griglia di parametri. La migliore combinazione viene selezionata mantenendo la combinazione che porta al miglior punteggio medio di cross-validation.
+
+```{python}
+cv_results = pd.DataFrame(model_grid_search.cv_results_)
+cv_results[
+    [
+        "param_classifier__learning_rate",
+        "param_classifier__max_leaf_nodes",
+        "mean_test_score",
+        "std_test_score",
+        "rank_test_score",
+    ]
+]
+```
+
+```{python}
+model_grid_search.best_params_
+```
+
+Un'avvertenza importante riguarda qui la valutazione della performance di generalizzazione. Infatti, la media e la deviazione standard dei punteggi calcolati dalla cross-validation nella grid-search potenzialmente non sono buone stime della performance di generalizzazione che otterremmo riaddestrando un modello con la miglior combinazione di valori di iperparametri sull'intero dataset. Da notare che scikit-learn esegue automaticamente questo riaddestramento per default quando si chiama `model_grid_search.fit`. Questo modello riaddestrato viene addestrato con più dati rispetto ai diversi modelli addestrati internamente durante la cross-validation della grid-search.
+
+Abbiamo quindi usato la conoscenza dell'intero dataset sia per decidere gli iperparametri del nostro modello sia per addestrare il modello riaddestrato.
+
+Per questo motivo, bisogna mantenere un test set esterno, tenuto da parte, per la valutazione finale del modello riaddestrato. Qui evidenziamo il processo usando una singola divisione train-test.
+
+```{python}
+from sklearn.model_selection import train_test_split
+
+data_train, data_test, target_train, target_test = train_test_split(
+    data, target, test_size=0.2, random_state=42
+)
+
+model_grid_search.fit(data_train, target_train)
+accuracy = model_grid_search.score(data_test, target_test)
+print(f"Accuracy on test set: {accuracy:.3f}")
+```
+
+Il punteggio misurato sul test set finale è quasi all'interno dell'intervallo del punteggio di CV interno per la migliore combinazione di iperparametri. Questo è rassicurante poiché significa che la procedura di ottimizzazione non ha causato un overfitting significativo di per sé (altrimenti il punteggio di test finale sarebbe stato inferiore ai punteggi di CV interni). Questo è previsto perché la nostra grid-search ha esplorato pochissime combinazioni di iperparametri per motivi di velocità. Il punteggio di test del modello finale è in realtà un po' più alto di quanto avremmo potuto aspettarci dalla cross-validation interna. Anche questo è previsto perché il modello riaddestrato viene addestrato su un dataset più grande rispetto ai modelli valutati nel loop interno di CV della procedura di grid-search. Questo è spesso il caso in cui i modelli addestrati su un numero maggiore di campioni tendono a generalizzare meglio.
+
+Nel codice sopra, la selezione dei migliori iperparametri è stata effettuata solo sul training set proveniente dalla divisione train-test iniziale. Successivamente, abbiamo valutato la performance di generalizzazione del nostro modello ottimizzato sul test set lasciato da parte. Questo può essere mostrato schematicamente come segue
+
+![](https://cloud-mooc.inria.fr/user/161036bc473720ff99924e41ea50ff6d/notebooks/figures/cross_validation_train_test_diagram.png)
+
+::: {.callout-note}
+Questa figura mostra il caso particolare di una strategia di K-fold cross-validation usando `n_splits=5` per dividere ulteriormente il training set proveniente da una divisione train-test. Per ciascuna divisione di cross-validation, la procedura addestra un modello su tutti i campioni rossi, valuta il punteggio di un dato set di iperparametri sui campioni verdi. I migliori iperparametri vengono selezionati in base a questi punteggi intermedi.
+
+Quindi un modello finale ottimizzato con questi iperparametri viene addestrato sulla concatenazione dei campioni rossi e verdi e valutato sui campioni blu.
+
+I campioni verdi sono talvolta chiamati *validation set* per distinguerli dal test set finale in blu.
+:::
+
+Tuttavia, questa valutazione ci fornisce solo una singola stima puntuale della performance di generalizzazione. Come ricorderete dall'inizio di questo notebook, è utile avere un'idea approssimativa dell'incertezza della nostra stima della performance di generalizzazione. Pertanto, dovremmo invece usare una cross-validation aggiuntiva per questa valutazione.
+
+Questo schema si chiama **nested cross-validation**. Usiamo una cross-validation interna per la selezione degli iperparametri e una cross-validation esterna per la valutazione della performance di generalizzazione del modello ottimizzato riaddestrato.
+
+In pratica, dobbiamo solo incorporare la grid-search nella funzione `cross_validate` per effettuare tale valutazione.
+
+```{python}
+cv_results = cross_validate(
+    model_grid_search, data, target, cv=5, n_jobs=2, return_estimator=True
+)
+```
+
+```{python}
+cv_results = pd.DataFrame(cv_results)
+cv_test_scores = cv_results["test_score"]
+print(
+    "Generalization score with hyperparameters tuning:\n"
+    f"{cv_test_scores.mean():.3f} ± {cv_test_scores.std():.3f}"
+)
+```
+
+Questo risultato è compatibile con il punteggio di test misurato con la singola divisione train-test esterna.
+
+Tuttavia, in questo caso, possiamo cogliere la variabilità della nostra stima della performance di generalizzazione grazie alla misura della deviazione standard dei punteggi misurati nella cross-validation esterna.
+
+Ecco una rappresentazione schematica della procedura completa di nested cross-validation:
+
+![](https://cloud-mooc.inria.fr/user/161036bc473720ff99924e41ea50ff6d/notebooks/figures/nested_cross_validation_diagram.png)
+
+::: {.callout-note}
+Questa figura illustra la strategia di nested cross-validation usando `cv_inner = KFold(n_splits=4)` e `cv_outer = KFold(n_splits=5)`.
+
+Per ciascuna divisione di cross-validation interna (indicizzata sul lato destro), la procedura addestra un modello su tutti i campioni rossi e valuta la qualità degli iperparametri sui campioni verdi.
+
+Per ciascuna divisione di cross-validation esterna (indicizzata sul lato sinistro), i migliori iperparametri vengono selezionati in base ai punteggi di validazione (calcolati sui campioni verdi) e un modello viene riaddestrato sulla concatenazione dei campioni rossi e verdi per quella iterazione di CV esterna.
+
+La performance di generalizzazione dei 5 modelli riaddestrati dal loop di CV esterno viene poi valutata sui campioni blu per ottenere i punteggi finali.
+:::
+
+Inoltre, passando il parametro `return_estimator=True`, possiamo controllare il valore dei migliori iperparametri ottenuti per ciascuna divisione della cross-validation esterna.
+
+```{python}
+for cv_fold, estimator_in_fold in enumerate(cv_results["estimator"]):
+    print(
+        f"Best hyperparameters for fold #{cv_fold + 1}:\n"
+        f"{estimator_in_fold.best_params_}"
+    )
+```
+
+È interessante vedere se la procedura di ottimizzazione degli iperparametri seleziona sempre valori simili per gli iperparametri. Se è il caso, allora tutto va bene. Significa che possiamo distribuire un modello addestrato con quegli iperparametri e aspettarci che abbia una performance predittiva effettiva vicina a quella che abbiamo misurato nella cross-validation esterna.
+
+Ma è anche possibile che alcuni iperparametri non contino affatto, e di conseguenza in diverse sessioni di tuning diano risultati diversi. In questo caso, qualsiasi valore va bene. Questo può tipicamente essere confermato facendo un parallel coordinate plot dei risultati di una grande ricerca di iperparametri come visto negli esercizi.
+
+Da un punto di vista del deployment, si potrebbe anche scegliere di distribuire tutti i modelli trovati dal loop di cross-validation esterno e farli votare per ottenere le predizioni finali. Tuttavia questo può causare problemi operativi perché usa più memoria e rende il calcolo della predizione più lento, risultando in un maggior utilizzo di risorse computazionali per predizione.
+
+In questo notebook, abbiamo visto come valutare la performance predittiva di un modello con iperparametri ottimizzati usando la procedura di nested cross-validation.
+
+---
+
+### Esercizio M3.02
+
+L'obiettivo è trovare il miglior set di iperparametri che massimizzi la performance di generalizzazione su un training set.
+
+```{python}
+from sklearn.datasets import fetch_california_housing
+from sklearn.model_selection import train_test_split
+
+data, target = fetch_california_housing(return_X_y=True, as_frame=True)
+target *= 100  # rescale the target in k$
+
+data_train, data_test, target_train, target_test = train_test_split(
+    data, target, random_state=42
+)
+```
+
+In questo esercizio, definiamo progressivamente la pipeline di regressione e successivamente ottimizziamo i suoi iperparametri.
+
+Iniziate definendo una pipeline che:
+
+- usa uno `StandardScaler` per normalizzare i dati numerici;
+- usa un `sklearn.neighbors.KNeighborsRegressor` come modello predittivo.
+
+```{python}
+# solution
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsRegressor
+
+scaler = StandardScaler()
+model = make_pipeline(scaler, KNeighborsRegressor())
+```
+
+Usate `RandomizedSearchCV` con `n_iter=20` e `scoring="neg_mean_absolute_error"` per ottimizzare i seguenti iperparametri del modello:
+
+- il parametro `n_neighbors` di `KNeighborsRegressor` con valori `np.logspace(0, 3, num=10).astype(np.int32)`;
+- il parametro `with_mean` di `StandardScaler` con possibili valori `True` o `False`;
+- il parametro `with_std` di `StandardScaler` con possibili valori `True` o `False`.
+
+La funzione di scoring deve restituire valori più alti per i modelli migliori, poiché gli oggetti grid/random search la massimizzano. Per questo motivo, le metriche di errore come `mean_absolute_error` devono essere negate (usando il prefisso `neg_`) per funzionare correttamente (ricordate che errori più bassi rappresentano modelli migliori).
+
+Notate che nel notebook "Ottimizzazione degli iperparametri tramite randomized-search" passiamo distribuzioni da campionare tramite `RandomizedSearchCV`. In questo caso definiamo una griglia fissa di iperparametri da esplorare. Usare invece una `GridSearchCV` esplorerebbe tutte le possibili combinazioni sulla griglia, il che può essere costoso da calcolare per griglie grandi, mentre il parametro `n_iter` di `RandomizedSearchCV` controlla il numero di diverse combinazioni casuali che vengono valutate. Notate che impostare `n_iter` più grande del numero di possibili combinazioni in una griglia (in questo caso 10 x 2 x 2 = 40) porterebbe a ripetere combinazioni già esplorate.
+
+Una volta completato il calcolo, stampate la migliore combinazione di parametri memorizzata nell'attributo `best_params_`.
+
+```{python}
+# solution
+import numpy as np
+from sklearn.model_selection import RandomizedSearchCV
+
+param_distributions = {
+    "kneighborsregressor__n_neighbors": (
+        np.logspace(0, 3, num=10).astype(np.int32)
+    ),
+    "standardscaler__with_mean": [True, False],
+    "standardscaler__with_std": [True, False],
+}
+
+model_random_search = RandomizedSearchCV(
+    model,
+    param_distributions=param_distributions,
+    scoring="neg_mean_absolute_error",
+    n_iter=20,
+    n_jobs=2,
+    verbose=1,
+    random_state=1,
+)
+model_random_search.fit(data_train, target_train)
+model_random_search.best_params_
+```
+
+Quindi i migliori iperparametri danno un modello in cui le feature sono scalate ma non centrate.
+
+Ottenere la migliore combinazione di parametri è il principale risultato della procedura di ottimizzazione degli iperparametri. Tuttavia è anche interessante valutare la sensibilità dei migliori modelli alla scelta di quei parametri. Il codice seguente, non richiesto per rispondere alla domanda del quiz, mostra come condurre tale analisi interattiva per questa pipeline usando un parallel coordinate plot tramite la libreria `plotly`.
+
+Potremmo usare `cv_results = model_random_search.cv_results_` per fare un parallel coordinate plot come fatto nel notebook precedente (siete più che benvenuti a provare!).
+
+```{python}
+import pandas as pd
+
+cv_results = pd.DataFrame(model_random_search.cv_results_)
+```
+
+Poiché abbiamo usato `neg_mean_absolute_error` come metrica di punteggio, dovremmo moltiplicare i risultati del punteggio per meno uno per ottenere i valori di mean absolute error:
+
+```{python}
+cv_results["mean_test_score"] *= -1
+```
+
+Per semplificare l'asse del grafico, rinominiamo la colonna del dataframe e selezioniamo solo il punteggio medio di test e il valore degli iperparametri.
+
+```{python}
+column_name_mapping = {
+    "param_kneighborsregressor__n_neighbors": "n_neighbors",
+    "param_standardscaler__with_mean": "centering",
+    "param_standardscaler__with_std": "scaling",
+    "mean_test_score": "mean test score",
+}
+
+cv_results = cv_results.rename(columns=column_name_mapping)
+cv_results = cv_results[column_name_mapping.values()].sort_values(
+    "mean test score"
+)
+```
+
+Inoltre, il parallel coordinate plot di plotly si aspetta che tutti i dati siano numerici. Quindi, convertiamo l'indicatore booleano che informa se i dati siano stati centrati o scalati in un intero, dove `True` viene mappato a 1 e `False` viene mappato a 0. Poiché `n_neighbors` ha `dtype=object`, lo convertiamo esplicitamente anche in un intero.
+
+```{python}
+column_scaler = ["centering", "scaling"]
+cv_results[column_scaler] = cv_results[column_scaler].astype(np.int64)
+cv_results["n_neighbors"] = cv_results["n_neighbors"].astype(np.int64)
+cv_results
+```
+
+```{python}
+import plotly.express as px
+
+fig = px.parallel_coordinates(
+    cv_results,
+    color="mean test score",
+    dimensions=["n_neighbors", "centering", "scaling", "mean test score"],
+    color_continuous_scale=px.colors.diverging.Tealrose,
+)
+fig.show(renderer="notebook")
+```
+
+Ricordiamo che è possibile selezionare un intervallo di risultati cliccando e mantenendo premuto su qualsiasi asse del parallel coordinate plot. Potete poi far scorrere (spostare) la selezione dell'intervallo e incrociare due selezioni per vedere le intersezioni.
+
+Selezionando i modelli con le prestazioni migliori (cioè con punteggio MAE inferiore a circa 47 k$), osserviamo che in questo caso:
+
+- scalare i dati è importante. Tutti i modelli con le migliori prestazioni usano feature scalate;
+- centrare i dati non ha un impatto forte. Entrambi gli approcci, centrare e non centrare, possono portare a buoni modelli;
+- usare alcuni vicini va bene ma usarne troppi è un problema. In particolare nessuna pipeline con `n_neighbors=1` può essere trovata tra i modelli migliori. Tuttavia, scalare le feature ha un impatto ancora più forte rispetto alla scelta di `n_neighbors` in questo problema.
+
+La ragione è che adattare dati scalati porta a un modello KNeighbors completamente diverso: se avete due variabili A e B dove A ha valori che variano tra 0 e 10.000 (ad esempio la variabile "Population") e B è una feature che varia tra 1 e 10 (ad esempio la variabile "AveRooms"), allora le distanze tra i campioni (righe del dataframe) sono per lo più influenzate dalle differenze nei valori della colonna A, mentre i valori della colonna B vengono relativamente ignorati. Se si applica `StandardScaler` a tale dataset, sia i valori di A che di B saranno approssimativamente tra -3 e 3 e la struttura dei vicini sarà influenzata più o meno equamente da entrambe le variabili.
+
+Da notare che in questo caso i modelli con feature scalate hanno prestazioni migliori rispetto ai modelli con feature non scalate perché tutte le variabili sono previste essere predittive e si preferisce evitare che alcune di esse vengano relativamente ignorate.
+
+Se le variabili su scale più basse non fossero predittive si potrebbe sperimentare un calo della performance dopo aver scalato le feature: le feature rumorose contribuirebbero di più alla predizione dopo lo scaling e quindi lo scaling aumenterebbe l'overfitting.
