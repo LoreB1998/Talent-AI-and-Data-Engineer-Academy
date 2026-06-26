@@ -1,0 +1,7 @@
+azure-ai-voicelive>=1.2.0b4
+azure-core
+azure-identity
+sounddevice
+numpy
+python-dotenv
+gradio

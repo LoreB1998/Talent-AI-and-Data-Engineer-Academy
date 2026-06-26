@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-06-26T15:12:24.838770",
+  "stato": "pagato",
+  "articoli": [
+    {
+      "codice": "ART-035",
+      "descrizione": "Saldatrice inverter MMA 200A",
+      "quantita": 1,
+      "prezzo_unitario": 420.0,
+      "unita_misura": "pz",
+      "totale_riga": 420.0
+    }
+  ],
+  "totale": 420.0
+}
