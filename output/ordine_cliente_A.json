@@ -1,0 +1,83 @@
+{
+  "tipo_documento": "ordine",
+  "intervento_umano_necessario": false,
+  "motivo_intervento_umano": null,
+  "cliente": {
+    "id_cliente_match": "CLI-001",
+    "ragione_sociale": "Meccanica Precisione S.r.l.",
+    "partita_iva": "IT01234567890",
+    "indirizzo": "Via dell'Industria 12",
+    "citta": "Casalecchio di Reno",
+    "provincia": "BO",
+    "email": "ordini@meccanicaprecisione.it",
+    "telefono": "051 1234567",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "ODA-2026/0547",
+  "data_ordine": "19/05/2026",
+  "data_consegna_richiesta": "Entro 10 giorni lavorativi dalla data dell'ordine",
+  "condizioni_pagamento": "Bonifico bancario 60 giorni D.F.",
+  "note_generali": "Si prega di confermare l'ordine entro 48 ore. Merce conforme alle specifiche tecniche concordate.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-015",
+      "descrizione_dichiarata": "Sensore di prossimità induttivo M18 PNP",
+      "codice_articolo_match": "ART-015",
+      "descrizione_match": "Sensore di prossimità induttivo M18 PNP",
+      "quantita": 10,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 42,
+      "prezzo_listino_catalogo": 42.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-016",
+      "descrizione_dichiarata": "Relè industriale 24VDC 4 contatti",
+      "codice_articolo_match": "ART-016",
+      "descrizione_match": "Relè industriale 24VDC 4 contatti",
+      "quantita": 8,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 28.5,
+      "prezzo_listino_catalogo": 28.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-010",
+      "descrizione_dichiarata": "Cavo elettrico H07V-K 2.5mm² blu (100m)",
+      "codice_articolo_match": "ART-010",
+      "descrizione_match": "Cavo elettrico H07V-K 2.5mm² blu (100m)",
+      "quantita": 200,
+      "unita_misura": "m",
+      "prezzo_dichiarato": 0.85,
+      "prezzo_listino_catalogo": 0.85,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-013",
+      "descrizione_dichiarata": "Morsettiera 12 poli 16mm²",
+      "codice_articolo_match": "ART-013",
+      "descrizione_match": "Morsettiera 12 poli 16mm²",
+      "quantita": 25,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 3.2,
+      "prezzo_listino_catalogo": 3.2,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-043",
+      "descrizione_dichiarata": "Nastro isolante PVC 19mm nero (25m)",
+      "codice_articolo_match": "ART-043",
+      "descrizione_match": "Nastro isolante PVC 19mm nero (25m)",
+      "quantita": 50,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 2.4,
+      "prezzo_listino_catalogo": 2.4,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ]
+}

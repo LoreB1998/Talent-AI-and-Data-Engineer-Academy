@@ -1,0 +1,98 @@
+{
+  "tipo_documento": "ordine",
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Riga 'ART-011': nota che richiede valutazione — Per gli interruttori magnetotermici (ART-011) vi chiediamo di fornire la version",
+    "Riga 'ART-017': nota che richiede valutazione — Per i connettori M12 (ART-017), serve il tipo con cavo da 5m già intestato. Prez"
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-002",
+    "ragione_sociale": "Elettronica Adriatica S.p.A.",
+    "partita_iva": "IT02345678901",
+    "indirizzo": "Viale Europa 45",
+    "citta": "Cesena",
+    "provincia": "FC",
+    "email": "acquisti@elettronicaadriatica.it",
+    "telefono": "0547 234567",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "ODA-EA/2026-0183",
+  "data_ordine": "lunedì 20 maggio 2026 09:34",
+  "data_consegna_richiesta": "30/05/2026",
+  "condizioni_pagamento": "come da accordi quadro (RiBa 90 gg FM).",
+  "note_generali": "Vi preghiamo di consegnare entro e non oltre il 30/05/2026 presso il nostro magazzino di Viale Europa 45, 47521 Cesena (FC). In caso di impossibilità a rispettare la data, contattateci prima della conferma.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-011",
+      "descrizione_dichiarata": "Interruttore magnetotermico 16A 1P",
+      "codice_articolo_match": "ART-011",
+      "descrizione_match": "Interruttore magnetotermico 16A 1P",
+      "quantita": 20,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 18.5,
+      "prezzo_listino_catalogo": 18.5,
+      "confidenza_match": "alta",
+      "note_anomalia": "Nota nel documento: Per gli interruttori magnetotermici (ART-011) vi chiediamo di fornire la versione con curva C, come da accordi telefonici con il vs. sig. Rossi del 17/05. Se non disponibile la curva C, accettiamo anche curva B purché certificata."
+    },
+    {
+      "codice_dichiarato": "ART-012",
+      "descrizione_dichiarata": "Presa industriale CEE 32A 3P+T",
+      "codice_articolo_match": "ART-012",
+      "descrizione_match": "Presa industriale CEE 32A 3P+T",
+      "quantita": 6,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 24.9,
+      "prezzo_listino_catalogo": 24.9,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-017",
+      "descrizione_dichiarata": "Connettore circolare M12 4 pin",
+      "codice_articolo_match": "ART-017",
+      "descrizione_match": "Connettore circolare M12 4 pin",
+      "quantita": 40,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 9.8,
+      "prezzo_listino_catalogo": 9.8,
+      "confidenza_match": "alta",
+      "note_anomalia": "Nota nel documento: Per i connettori M12 (ART-017), serve il tipo con cavo da 5m già intestato. Prezzo da confermare se diverso dal listino standard."
+    },
+    {
+      "codice_dichiarato": "ART-014",
+      "descrizione_dichiarata": "Guaina spiralata D=16mm nera (25m)",
+      "codice_articolo_match": "ART-014",
+      "descrizione_match": "Guaina spiralata D=16mm nera (25m)",
+      "quantita": 10,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 15.4,
+      "prezzo_listino_catalogo": 15.4,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-047",
+      "descrizione_dichiarata": "Fascette cablaggio 200x4.8mm bianche (100pz)",
+      "codice_articolo_match": "ART-047",
+      "descrizione_match": "Fascette cablaggio 200x4.8mm bianche (100pz)",
+      "quantita": 15,
+      "unita_misura": "conf",
+      "prezzo_dichiarato": 4.2,
+      "prezzo_listino_catalogo": 4.2,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-033",
+      "descrizione_dichiarata": "Pinza amperometrica digitale 600A",
+      "codice_articolo_match": "ART-033",
+      "descrizione_match": "Pinza amperometrica digitale 600A",
+      "quantita": 2,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 125.0,
+      "prezzo_listino_catalogo": 125.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ]
+}

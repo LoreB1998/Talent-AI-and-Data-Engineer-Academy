@@ -1,0 +1,58 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Meccanica Precisione S.r.l.",
+  "cliente_partita_iva": "IT01234567890",
+  "cliente_indirizzo": "Via dell'Industria 12",
+  "cliente_citta": "Casalecchio di Reno",
+  "cliente_provincia": "BO",
+  "cliente_email": "ordini@meccanicaprecisione.it",
+  "cliente_telefono": "051 1234567",
+  "riferimento_ordine": "ODA-2026/0547",
+  "data_ordine": "19/05/2026",
+  "data_consegna_richiesta": "Entro 10 giorni lavorativi dalla data dell'ordine",
+  "condizioni_pagamento": "Bonifico bancario 60 giorni D.F.",
+  "note_generali": "Si prega di confermare l'ordine entro 48 ore. Merce conforme alle specifiche tecniche concordate.",
+  "righe": [
+    {
+      "codice_articolo": "ART-015",
+      "descrizione": "Sensore di prossimità induttivo M18 PNP",
+      "quantita": 10,
+      "unita_misura": "pz",
+      "prezzo_unitario": 42,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-016",
+      "descrizione": "Relè industriale 24VDC 4 contatti",
+      "quantita": 8,
+      "unita_misura": "pz",
+      "prezzo_unitario": 28.5,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-010",
+      "descrizione": "Cavo elettrico H07V-K 2.5mm² blu (100m)",
+      "quantita": 200,
+      "unita_misura": "m",
+      "prezzo_unitario": 0.85,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-013",
+      "descrizione": "Morsettiera 12 poli 16mm²",
+      "quantita": 25,
+      "unita_misura": "pz",
+      "prezzo_unitario": 3.2,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-043",
+      "descrizione": "Nastro isolante PVC 19mm nero (25m)",
+      "quantita": 50,
+      "unita_misura": "pz",
+      "prezzo_unitario": 2.4,
+      "nota": null
+    }
+  ]
+}

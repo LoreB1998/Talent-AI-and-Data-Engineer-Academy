@@ -1,0 +1,172 @@
+[
+  {
+    "file": "email_001.pdf",
+    "tipo": "B_email",
+    "id_cliente_atteso": "C013",
+    "ragione_sociale": "Idraulica Marchigiana S.r.l.",
+    "riferimento_cliente": "ordine fornitura 22/02/2026",
+    "data_ordine": "2026-02-22",
+    "righe": [
+      {
+        "codice": "UT005",
+        "descrizione": "Smerigliatrice angolare 750W disco 125mm",
+        "qta": 2,
+        "unita": "PZ"
+      },
+      {
+        "codice": "MC008",
+        "descrizione": "Sacchetto rivetti in alluminio 4x10mm conf. 100pz",
+        "qta": 10,
+        "unita": "CONF"
+      },
+      {
+        "codice": "FE003",
+        "descrizione": "Bullone esagonale M10x80 classe 8.8",
+        "qta": 20,
+        "unita": "PZ"
+      },
+      {
+        "codice": "MC002",
+        "descrizione": "Disco abrasivo per smerigliatrice 125mm grana 60",
+        "qta": 15,
+        "unita": "PZ"
+      },
+      {
+        "codice": "MI005",
+        "descrizione": "Saracinesca a flangia DN50",
+        "qta": 30,
+        "unita": "PZ"
+      },
+      {
+        "codice": "CE005",
+        "descrizione": "Morsetto di derivazione 4 vie 6mm2",
+        "qta": 30,
+        "unita": "PZ"
+      }
+    ],
+    "nota": "presente nota libera nel testo (vedi PDF), non strutturata"
+  },
+  {
+    "file": "email_002.pdf",
+    "tipo": "B_email",
+    "id_cliente_atteso": "C016",
+    "ragione_sociale": "Impiantistica Elettrica Ferrarese S.r.l.",
+    "riferimento_cliente": "ordine fornitura 16/03/2026",
+    "data_ordine": "2026-03-16",
+    "righe": [
+      {
+        "codice": "FE003",
+        "descrizione": "Bullone esagonale M10x80 classe 8.8",
+        "qta": 30,
+        "unita": "PZ"
+      },
+      {
+        "codice": "MC002",
+        "descrizione": "Disco abrasivo per smerigliatrice 125mm grana 60",
+        "qta": 30,
+        "unita": "PZ"
+      },
+      {
+        "codice": "CE008",
+        "descrizione": "Pressacavo PG16 in nylon nero",
+        "qta": 10,
+        "unita": "PZ"
+      },
+      {
+        "codice": "MI001",
+        "descrizione": "Tubo multistrato 16x2 mm per impianti idraulici",
+        "qta": 5,
+        "unita": "MT"
+      },
+      {
+        "codice": "UT005",
+        "descrizione": "Smerigliatrice angolare 750W disco 125mm",
+        "qta": 1,
+        "unita": "PZ"
+      },
+      {
+        "codice": "UT007",
+        "descrizione": "Chiave a brugola set 9 pezzi 1.5-10mm",
+        "qta": 2,
+        "unita": "SET"
+      }
+    ],
+    "nota": "presente nota libera nel testo (vedi PDF), non strutturata"
+  },
+  {
+    "file": "email_003.pdf",
+    "tipo": "B_email",
+    "id_cliente_atteso": "C014",
+    "ragione_sociale": "Carpenteria Industriale Lariana S.r.l.",
+    "riferimento_cliente": "ordine fornitura 09/04/2026",
+    "data_ordine": "2026-04-09",
+    "righe": [
+      {
+        "codice": "CE005",
+        "descrizione": "Morsetto di derivazione 4 vie 6mm2",
+        "qta": 2,
+        "unita": "PZ"
+      },
+      {
+        "codice": "FE008",
+        "descrizione": "Catena zincata maglia 5mm",
+        "qta": 20,
+        "unita": "MT"
+      },
+      {
+        "codice": "MI007",
+        "descrizione": "Collettore complanare 3 vie per riscaldamento",
+        "qta": 30,
+        "unita": "PZ"
+      },
+      {
+        "codice": "CE001",
+        "descrizione": "Interruttore magnetotermico 16A unipolare",
+        "qta": 20,
+        "unita": "PZ"
+      }
+    ],
+    "nota": "presente nota libera nel testo (vedi PDF), non strutturata"
+  },
+  {
+    "file": "email_004.pdf",
+    "tipo": "B_email",
+    "id_cliente_atteso": "C007",
+    "ragione_sociale": "Elettrotecnica Adriatica S.n.c.",
+    "riferimento_cliente": "ordine fornitura 21/03/2026",
+    "data_ordine": "2026-03-21",
+    "righe": [
+      {
+        "codice": "MI003",
+        "descrizione": "Valvola a sfera in ottone 1 pollice",
+        "qta": 30,
+        "unita": "PZ"
+      },
+      {
+        "codice": "MI006",
+        "descrizione": "Curva 90 gradi in PVC per scarico 110mm",
+        "qta": 1,
+        "unita": "PZ"
+      },
+      {
+        "codice": "UT006",
+        "descrizione": "Livella a bolla in alluminio 60cm",
+        "qta": 15,
+        "unita": "PZ"
+      },
+      {
+        "codice": "CE008",
+        "descrizione": "Pressacavo PG16 in nylon nero",
+        "qta": 2,
+        "unita": "PZ"
+      },
+      {
+        "codice": "MI007",
+        "descrizione": "Collettore complanare 3 vie per riscaldamento",
+        "qta": 30,
+        "unita": "PZ"
+      }
+    ],
+    "nota": "presente nota libera nel testo (vedi PDF), non strutturata"
+  }
+]
