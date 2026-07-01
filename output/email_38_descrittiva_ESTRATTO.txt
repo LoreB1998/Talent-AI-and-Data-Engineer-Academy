@@ -1,0 +1,82 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Tecnologie Laser Alto Adige S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "a.mueller@techlaser-bz.it",
+  "cliente_telefono": "+39 0471 8901234",
+  "riferimento_ordine": null,
+  "data_ordine": "venerdì 22 maggio 2026",
+  "data_consegna_richiesta": null,
+  "condizioni_pagamento": "Pagamento bonifico come sempre.",
+  "note_generali": "confermo l'ordine come da telefonata di ieri: I prezzi che mi avete fatto sul listino di marzo dovrebbero essere ancora validi, fatemi sapere se cambia qualcosa. Vi chiedo cortesemente la conferma ordine via mail.",
+  "righe": [
+    {
+      "codice_articolo": null,
+      "descrizione": "3 set chiavi a bussola 1/2 (gli scatoli da 21 pezzi)",
+      "quantita": 3,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "2 chiavi dinamometriche range 20-200 Nm",
+      "quantita": 2,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "4 morse parallele da 150mm",
+      "quantita": 4,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "1 trapano a colonna da banco",
+      "quantita": 1,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "50 dischi taglio inox 125 da 1mm",
+      "quantita": 50,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "2 set punte HSS rettificate (i kit da 25 pezzi)",
+      "quantita": 2,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "una decina di latte di olio lubrificante",
+      "quantita": 10,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "4 bombolette di grasso al litio",
+      "quantita": 4,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    }
+  ]
+}

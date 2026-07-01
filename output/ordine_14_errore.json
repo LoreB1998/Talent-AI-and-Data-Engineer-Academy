@@ -1,0 +1,59 @@
+{
+  "intervento_umano_necessario": false,
+  "motivo_intervento_umano": null,
+  "cliente": {
+    "id_cliente_match": "CLI-002",
+    "ragione_sociale": "Elettronica Adriatica S.p.A.",
+    "partita_iva": "IT02345678901",
+    "indirizzo": "Viale Europa 45",
+    "citta": "Cesena",
+    "provincia": "FC",
+    "email": "acquisti@elettronicaadriatica.it",
+    "telefono": "0547 234567",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "EA-ORD/2026-0245",
+  "data_ordine": "20/05/2026",
+  "data_consegna_richiesta": "27/05/2026",
+  "condizioni_pagamento": "RiBa 90 gg FM.",
+  "note_generali": "Consegna richiesta: Entro 27/05/2026. Sede di consegna: Viale Europa 45, 47521 Cesena (FC).\nNOTA: Materiale per intervento di manutenzione programmata.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-024",
+      "descrizione_dichiarata": "Manometro radiale 0-10 bar D=63mm",
+      "codice_articolo_match": "ART-024",
+      "descrizione_match": "Manometro radiale 0-10 bar D=63mm",
+      "quantita": 5,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 12.5,
+      "prezzo_listino_catalogo": 12.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-027",
+      "descrizione_dichiarata": "Valvola a sfera 1\" ottone",
+      "codice_articolo_match": "ART-027",
+      "descrizione_match": "Filtro a Y 3/4\" ottone",
+      "quantita": 8,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 22.5,
+      "prezzo_listino_catalogo": 22.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-025",
+      "descrizione_dichiarata": "Guarnizione piatta 1\" in fibra",
+      "codice_articolo_match": "ART-025",
+      "descrizione_match": "Guarnizione piatta 1\" in fibra",
+      "quantita": 10,
+      "unita_misura": "conf",
+      "prezzo_dichiarato": 3.8,
+      "prezzo_listino_catalogo": 3.8,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

@@ -8,32 +8,16 @@
   "cliente_provincia": "BO",
   "cliente_email": null,
   "cliente_telefono": null,
-  "riferimento_ordine": "Offerta N. OFF-3421 del 15/05/2026",
-  "data_ordine": "19/05/2026",
-  "data_consegna_richiesta": "Entro 10 giorni lavorativi dalla data dell'ordine",
-  "condizioni_pagamento": "Bonifico bancario 60 giorni D.F.",
-  "note_generali": "Si prega di confermare l'ordine entro 48 ore. Merce conforme alle specifiche tecniche concordate.",
+  "riferimento_ordine": "ODA-CIV/2026-0312",
+  "data_ordine": "20/05/2026",
+  "data_consegna_richiesta": "Entro 10 giorni lavorativi",
+  "condizioni_pagamento": "Bonifico anticipato 50% / saldo alla consegna",
+  "note_generali": "Imballi a perdere. Indicare numero ordine in fattura.",
   "righe": [
-    {
-      "codice_articolo": "ART-015",
-      "descrizione": "Sensore di prossimità induttivo M18 PNP",
-      "quantita": 10,
-      "unita_misura": "pz",
-      "prezzo_unitario": 42.0,
-      "nota": null
-    },
-    {
-      "codice_articolo": "ART-016",
-      "descrizione": "Relè industriale 24VDC 4 contatti",
-      "quantita": 8,
-      "unita_misura": "pz",
-      "prezzo_unitario": 28.5,
-      "nota": null
-    },
     {
       "codice_articolo": "ART-010",
       "descrizione": "Cavo elettrico H07V-K 2.5mm² blu (100m)",
-      "quantita": 200,
+      "quantita": 300,
       "unita_misura": "m",
       "prezzo_unitario": 0.85,
       "nota": null
@@ -41,15 +25,31 @@
     {
       "codice_articolo": "ART-013",
       "descrizione": "Morsettiera 12 poli 16mm²",
-      "quantita": 25,
+      "quantita": 40,
       "unita_misura": "pz",
       "prezzo_unitario": 3.2,
       "nota": null
     },
     {
+      "codice_articolo": "ART-015",
+      "descrizione": "Sensore di prossimità induttivo M18 PNP",
+      "quantita": 8,
+      "unita_misura": "pz",
+      "prezzo_unitario": 42.0,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-016",
+      "descrizione": "Relè industriale 24VDC 4 contatti",
+      "quantita": 12,
+      "unita_misura": "pz",
+      "prezzo_unitario": 28.5,
+      "nota": null
+    },
+    {
       "codice_articolo": "ART-043",
       "descrizione": "Nastro isolante PVC 19mm nero (25m)",
-      "quantita": 50,
+      "quantita": 30,
       "unita_misura": "pz",
       "prezzo_unitario": 2.4,
       "nota": null

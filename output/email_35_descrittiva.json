@@ -1,0 +1,8 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Documento non automatizzabile: Il testo contiene una richiesta di fornitura con quantità e specifiche, ma non include prezzi né chiarisce se si tratti di un ordine di acquisto con richiesta di quotazione."
+  ],
+  "note_generali": "Consegna fine mese, niente fretta.",
+  "tipo_documento": "non_determinabile"
+}

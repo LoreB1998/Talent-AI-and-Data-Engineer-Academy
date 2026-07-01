@@ -1,0 +1,114 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Riga '': Unità di misura dichiarata ('litri') diversa da quella di vendita a catalogo ('lt')",
+    "Riga '': Unità di misura dichiarata ('confezioni') diversa da quella di vendita a catalogo ('conf')",
+    "Riga '': Unità di misura dichiarata ('panni') diversa da quella di vendita a catalogo ('pz')",
+    "Riga '': Unità di misura dichiarata ('nastri') diversa da quella di vendita a catalogo ('pz')",
+    "Riga '': Unità di misura dichiarata ('scatola') diversa da quella di vendita a catalogo ('conf')",
+    "Riga '': Unità di misura dichiarata ('spray') diversa da quella di vendita a catalogo ('pz')"
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-002",
+    "ragione_sociale": "Elettronica Adriatica S.p.A.",
+    "partita_iva": "IT02345678901",
+    "indirizzo": "Viale Europa 45",
+    "citta": "Cesena",
+    "provincia": "FC",
+    "email": "acquisti@elettronicaadriatica.it",
+    "telefono": "0547 234567",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": null,
+  "data_ordine": "giovedì 21 maggio 2026 17:12",
+  "data_consegna_richiesta": null,
+  "condizioni_pagamento": "Pagamento come da accordi.",
+  "note_generali": "Buonasera, ordine periodico materiale consumo: Buona serata",
+  "righe": [
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "20 litri di olio lubrificante (4 latte da 5 litri)",
+      "codice_articolo_match": "ART-040",
+      "descrizione_match": "Olio lubrificante universale 5L",
+      "quantita": 20,
+      "unita_misura": "litri",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 28.5,
+      "confidenza_match": "media",
+      "note_anomalia": "Unità di misura dichiarata ('litri') diversa da quella di vendita a catalogo ('lt')"
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "15 confezioni guanti nitrile taglia L",
+      "codice_articolo_match": "ART-044",
+      "descrizione_match": "Guanti da lavoro nitrile tg. L (100pz)",
+      "quantita": 15,
+      "unita_misura": "confezioni",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 14.5,
+      "confidenza_match": "alta",
+      "note_anomalia": "Unità di misura dichiarata ('confezioni') diversa da quella di vendita a catalogo ('conf')"
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "6 panni puliziaa industriale a rotolo",
+      "codice_articolo_match": "ART-045",
+      "descrizione_match": "Panno pulizia industriale rotolo (500 strappi)",
+      "quantita": 6,
+      "unita_misura": "panni",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 22.0,
+      "confidenza_match": "media",
+      "note_anomalia": "Unità di misura dichiarata ('panni') diversa da quella di vendita a catalogo ('pz')"
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "10 silicone trasparente da 310 ml",
+      "codice_articolo_match": "ART-046",
+      "descrizione_match": "Silicone sigillante trasparente 310ml",
+      "quantita": 10,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 5.6,
+      "confidenza_match": "media",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "30 nastri isolanti pvc neri da 25m",
+      "codice_articolo_match": "ART-043",
+      "descrizione_match": "Nastro isolante PVC 19mm nero (25m)",
+      "quantita": 30,
+      "unita_misura": "nastri",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 2.4,
+      "confidenza_match": "media",
+      "note_anomalia": "Unità di misura dichiarata ('nastri') diversa da quella di vendita a catalogo ('pz')"
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "una scatola da 100 fascette bianche 200x4.8",
+      "codice_articolo_match": "ART-047",
+      "descrizione_match": "Fascette cablaggio 200x4.8mm bianche (100pz)",
+      "quantita": 1,
+      "unita_misura": "scatola",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 4.2,
+      "confidenza_match": "alta",
+      "note_anomalia": "Unità di misura dichiarata ('scatola') diversa da quella di vendita a catalogo ('conf')"
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "5 spray sgrassante",
+      "codice_articolo_match": "ART-042",
+      "descrizione_match": "Spray sgrassante industriale 500ml",
+      "quantita": 5,
+      "unita_misura": "spray",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 7.9,
+      "confidenza_match": "media",
+      "note_anomalia": "Unità di misura dichiarata ('spray') diversa da quella di vendita a catalogo ('pz')"
+    }
+  ],
+  "tipo_documento": "ordine"
+}

@@ -1,0 +1,119 @@
+{
+  "intervento_umano_necessario": false,
+  "motivo_intervento_umano": null,
+  "cliente": {
+    "id_cliente_match": "CLI-018",
+    "ragione_sociale": "Tecnologie Laser Alto Adige S.r.l.",
+    "partita_iva": "IT18901234567",
+    "indirizzo": "Via Galvani 15",
+    "citta": "Bolzano",
+    "provincia": "BZ",
+    "email": "order@techlaser-bz.it",
+    "telefono": "0471 8901234",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": null,
+  "data_ordine": "venerdì 22 maggio 2026",
+  "data_consegna_richiesta": null,
+  "condizioni_pagamento": "Pagamento bonifico come sempre.",
+  "note_generali": "confermo l'ordine come da telefonata di ieri: I prezzi che mi avete fatto sul listino di marzo dovrebbero essere ancora validi, fatemi sapere se cambia qualcosa. Vi chiedo cortesemente la conferma ordine via mail.",
+  "righe": [
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "3 set chiavi a bussola 1/2 (gli scatoli da 21 pezzi)",
+      "codice_articolo_match": "ART-030",
+      "descrizione_match": "Set chiavi a bussola 1/2\" 10-32mm (21pz)",
+      "quantita": 3,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 89.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "2 chiavi dinamometriche range 20-200 Nm",
+      "codice_articolo_match": "ART-030",
+      "descrizione_match": "Set chiavi a bussola 1/2\" 10-32mm (21pz)",
+      "quantita": 2,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 89.0,
+      "confidenza_match": "media",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "4 morse parallele da 150mm",
+      "codice_articolo_match": "ART-037",
+      "descrizione_match": "Morsa da banco parallela 150mm",
+      "quantita": 4,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 98.0,
+      "confidenza_match": "media",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "1 trapano a colonna da banco",
+      "codice_articolo_match": "ART-031",
+      "descrizione_match": "Trapano a colonna da banco 500W",
+      "quantita": 1,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 385.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "50 dischi taglio inox 125 da 1mm",
+      "codice_articolo_match": "ART-032",
+      "descrizione_match": "Disco da taglio inox 125x1.0mm",
+      "quantita": 50,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 2.1,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "2 set punte HSS rettificate (i kit da 25 pezzi)",
+      "codice_articolo_match": "ART-036",
+      "descrizione_match": "Set punte HSS rettificate 1-13mm (25pz)",
+      "quantita": 2,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 34.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "una decina di latte di olio lubrificante",
+      "codice_articolo_match": "ART-040",
+      "descrizione_match": "Olio lubrificante universale 5L",
+      "quantita": 10,
+      "unita_misura": "lt",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 28.5,
+      "confidenza_match": "media",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "4 bombolette di grasso al litio",
+      "codice_articolo_match": "ART-041",
+      "descrizione_match": "Grasso al litio multiuso 400g",
+      "quantita": 4,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 6.8,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

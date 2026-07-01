@@ -1,0 +1,73 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Cliente non identificato in anagrafica"
+  ],
+  "cliente": {
+    "id_cliente_match": null,
+    "ragione_sociale": "Acme Manufacturing S.r.l.",
+    "partita_iva": null,
+    "indirizzo": "Via Bologna 100",
+    "citta": "Casalecchio di Reno",
+    "provincia": "BO",
+    "email": null,
+    "telefono": null,
+    "fonte_cliente": "documento_non_verificato"
+  },
+  "riferimento_ordine": "ODA-IV/2026-0091",
+  "data_ordine": "18/05/2026",
+  "data_consegna_richiesta": "Entro 15 giorni lavorativi",
+  "condizioni_pagamento": "Bonifico bancario 30 giorni D.F.",
+  "note_generali": "Merce in pronta consegna. Conferma via email entro 24 ore.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-020",
+      "descrizione_dichiarata": "Tubo multistrato 20x2 (barra 5m)",
+      "codice_articolo_match": "ART-020",
+      "descrizione_match": "Tubo multistrato 20x2 (barra 5m)",
+      "quantita": 30,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 18.9,
+      "prezzo_listino_catalogo": 18.9,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-021",
+      "descrizione_dichiarata": "Raccordo a pressare 20x1/2\" maschio",
+      "codice_articolo_match": "ART-021",
+      "descrizione_match": "Raccordo a pressare 20x1/2\" maschio",
+      "quantita": 60,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 5.4,
+      "prezzo_listino_catalogo": 5.4,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-022",
+      "descrizione_dichiarata": "Valvola a sfera 1\" ottone",
+      "codice_articolo_match": "ART-022",
+      "descrizione_match": "Valvola a sfera 1\" ottone",
+      "quantita": 12,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 14.8,
+      "prezzo_listino_catalogo": 14.8,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-025",
+      "descrizione_dichiarata": "Guarnizione piatta 1\" in fibra",
+      "codice_articolo_match": "ART-025",
+      "descrizione_match": "Guarnizione piatta 1\" in fibra",
+      "quantita": 8,
+      "unita_misura": "conf",
+      "prezzo_dichiarato": 3.8,
+      "prezzo_listino_catalogo": 3.8,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

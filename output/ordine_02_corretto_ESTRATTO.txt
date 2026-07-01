@@ -1,0 +1,42 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Tecnomeccanica Lombarda S.p.A.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "ufficio.acquisti@tecnomeccanica.it",
+  "cliente_telefono": "02 5678901",
+  "riferimento_ordine": "ODA-TL/2026-0455",
+  "data_ordine": "19/05/2026",
+  "data_consegna_richiesta": "Entro venerdì 29/05/2026",
+  "condizioni_pagamento": "RiBa 60 gg DF FM.",
+  "note_generali": "Sede di consegna: Via Bergamo 23, 20135 Milano (MI). Materiale destinato al reparto montaggio linea B. Per cortesia indicare ddt il riferimento commessa 26-118.",
+  "righe": [
+    {
+      "codice_articolo": "ART-001",
+      "descrizione": "Bullone esagonale M8x40 zincato",
+      "quantita": 500,
+      "unita_misura": null,
+      "prezzo_unitario": 0.45,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-002",
+      "descrizione": "Dado autobloccante M8 inox",
+      "quantita": 500,
+      "unita_misura": null,
+      "prezzo_unitario": 0.32,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-004",
+      "descrizione": "Rondella piana M10 zincata",
+      "quantita": 800,
+      "unita_misura": null,
+      "prezzo_unitario": 0.12,
+      "nota": null
+    }
+  ]
+}

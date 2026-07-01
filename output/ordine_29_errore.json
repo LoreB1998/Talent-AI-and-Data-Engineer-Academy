@@ -1,0 +1,61 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Riga 'ART-026': Prezzo dichiarato (86.0) diverso dal listino (68.0), scostamento 26%"
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-012",
+    "ragione_sociale": "Termoidraulica Centro Italia S.r.l.",
+    "partita_iva": "IT12345678901",
+    "indirizzo": "Via Flaminia 234",
+    "citta": "Spoleto",
+    "provincia": "PG",
+    "email": "acquisti@termoidraulicaci.it",
+    "telefono": "0743 2345678",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "ODA-TCI/2026-0166",
+  "data_ordine": "28/05/2026",
+  "data_consegna_richiesta": "Entro 12 giorni",
+  "condizioni_pagamento": "Bonifico 30 gg FM",
+  "note_generali": "Collegamento caldaia condominiale.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-026",
+      "descrizione_dichiarata": "Collettore distribuzione 1\" 4 uscite",
+      "codice_articolo_match": "ART-026",
+      "descrizione_match": "Collettore distribuzione 1\" 4 uscite",
+      "quantita": 3,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 86.0,
+      "prezzo_listino_catalogo": 68.0,
+      "confidenza_match": "alta",
+      "note_anomalia": "Prezzo dichiarato (86.0) diverso dal listino (68.0), scostamento 26%"
+    },
+    {
+      "codice_dichiarato": "ART-024",
+      "descrizione_dichiarata": "Manometro radiale 0-10 bar D=63mm",
+      "codice_articolo_match": "ART-024",
+      "descrizione_match": "Manometro radiale 0-10 bar D=63mm",
+      "quantita": 8,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 12.5,
+      "prezzo_listino_catalogo": 12.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-022",
+      "descrizione_dichiarata": "Valvola a sfera 1\" ottone",
+      "codice_articolo_match": "ART-022",
+      "descrizione_match": "Valvola a sfera 1\" ottone",
+      "quantita": 12,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 14.8,
+      "prezzo_listino_catalogo": 14.8,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

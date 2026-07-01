@@ -1,0 +1,50 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Cliente non identificato in anagrafica",
+    "Riga 'ART-035': Prezzo dichiarato (240.0) diverso dal listino (420.0), scostamento 43%"
+  ],
+  "cliente": {
+    "id_cliente_match": null,
+    "ragione_sociale": "Acme Manufacturing S.r.l.",
+    "partita_iva": null,
+    "indirizzo": "Via Bologna 100",
+    "citta": "Casalecchio di Reno",
+    "provincia": "BO",
+    "email": null,
+    "telefono": null,
+    "fonte_cliente": "documento_non_verificato"
+  },
+  "riferimento_ordine": "ODA-SM/2026-0067",
+  "data_ordine": "19/05/2026",
+  "data_consegna_richiesta": "Entro 12 giorni",
+  "condizioni_pagamento": "Bonifico 60 gg DF",
+  "note_generali": "Imballi standard.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-035",
+      "descrizione_dichiarata": "Saldatrice inverter MMA 200A",
+      "codice_articolo_match": "ART-035",
+      "descrizione_match": "Saldatrice inverter MMA 200A",
+      "quantita": 1,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 240.0,
+      "prezzo_listino_catalogo": 420.0,
+      "confidenza_match": "alta",
+      "note_anomalia": "Prezzo dichiarato (240.0) diverso dal listino (420.0), scostamento 43%"
+    },
+    {
+      "codice_dichiarato": "ART-032",
+      "descrizione_dichiarata": "Disco da taglio inox 125x1.0mm",
+      "codice_articolo_match": "ART-032",
+      "descrizione_match": "Disco da taglio inox 125x1.0mm",
+      "quantita": 200,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 2.1,
+      "prezzo_listino_catalogo": 2.1,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

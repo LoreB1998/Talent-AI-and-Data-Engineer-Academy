@@ -1,0 +1,50 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Riga 'ART-O15': nota che richiede valutazione — Verificare codici prima di registrare l'ordine, sono stati ricopiati a mano.",
+    "Riga 'ART-016': nota che richiede valutazione — Verificare codici prima di registrare l'ordine, sono stati ricopiati a mano."
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-005",
+    "ragione_sociale": "Tecnomeccanica Lombarda S.p.A.",
+    "partita_iva": "IT05678901234",
+    "indirizzo": "Via Bergamo 23",
+    "citta": "Milano",
+    "provincia": "MI",
+    "email": "ufficio.acquisti@tecnomeccanica.it",
+    "telefono": "02 5678901",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "TL-ORD/2026-0512",
+  "data_ordine": "25/05/2026",
+  "data_consegna_richiesta": "01/06/2026",
+  "condizioni_pagamento": "RiBa 60 gg DF FM.",
+  "note_generali": "Sede di consegna: Via Bergamo 23, 20135 Milano (MI). NOTA: Verificare codici prima di registrare l'ordine, sono stati ricopiati a mano.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-O15",
+      "descrizione_dichiarata": "Sensore di prossimità induttivo M18 PNP",
+      "codice_articolo_match": "ART-015",
+      "descrizione_match": "Sensore di prossimità induttivo M18 PNP",
+      "quantita": 6,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 42.0,
+      "prezzo_listino_catalogo": 42.0,
+      "confidenza_match": "alta",
+      "note_anomalia": "Nota nel documento: Verificare codici prima di registrare l'ordine, sono stati ricopiati a mano."
+    },
+    {
+      "codice_dichiarato": "ART-016",
+      "descrizione_dichiarata": "Relè industriale 24VDC 4 contatti",
+      "codice_articolo_match": "ART-016",
+      "descrizione_match": "Relè industriale 24VDC 4 contatti",
+      "quantita": 10,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 28.5,
+      "prezzo_listino_catalogo": 28.5,
+      "confidenza_match": "alta",
+      "note_anomalia": "Nota nel documento: Verificare codici prima di registrare l'ordine, sono stati ricopiati a mano."
+    }
+  ],
+  "tipo_documento": "ordine"
+}

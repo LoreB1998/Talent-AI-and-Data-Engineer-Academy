@@ -1,0 +1,42 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Sistemi Pneumatici Liguria S.p.A.",
+  "cliente_partita_iva": "IT14567890123",
+  "cliente_indirizzo": "Via Lungomare 78 — 16126 Genova (GE)",
+  "cliente_citta": "Genova",
+  "cliente_provincia": "GE",
+  "cliente_email": "purchasing@spliguria.it",
+  "cliente_telefono": "010 4567890",
+  "riferimento_ordine": "ODA-SPL/2026-0421",
+  "data_ordine": "21/05/2026",
+  "data_consegna_richiesta": "Entro 8 giorni lavorativi",
+  "condizioni_pagamento": "Bonifico 45 gg DF",
+  "note_generali": "Settore pneumatica/oleodinamica.\nIng. Marina Repetto",
+  "righe": [
+    {
+      "codice_articolo": "ART-033",
+      "descrizione": "Pinza amperometrica digitale 600A",
+      "quantita": 2,
+      "unita_misura": "pz",
+      "prezzo_unitario": 156,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-034",
+      "descrizione": "Chiave dinamometrica 1/2\" 20-200Nm",
+      "quantita": 3,
+      "unita_misura": "pz",
+      "prezzo_unitario": 125,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-036",
+      "descrizione": "Set punte HSS rettificate 1-13mm (25pz)",
+      "quantita": 4,
+      "unita_misura": "pz",
+      "prezzo_unitario": 34.5,
+      "nota": null
+    }
+  ]
+}

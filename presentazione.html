@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acme Manufacturing — Intelligent Order Intake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0C10;
+    --bg-panel:#12151B;
+    --bg-panel-2:#171B23;
+    --line:#252A33;
+    --ink:#ECEDEF;
+    --ink-dim:#8B92A0;
+    --ink-faint:#565D6B;
+    --bronze:#C2875A;
+    --bronze-glow:#C2875A55;
+    --silver:#C7CDD6;
+    --silver-glow:#C7CDD655;
+    --gold:#D9AE53;
+    --gold-glow:#D9AE5355;
+    --teal:#4FD8C4;
+    --teal-glow:#4FD8C455;
+    --radius:14px;
+  }
+  html[data-theme="light"]{
+    --bg:#F5F3EF;
+    --bg-panel:#FFFFFF;
+    --bg-panel-2:#F7F5F1;
+    --line:#DEDAD2;
+    --ink:#1C1C1A;
+    --ink-dim:#5C5A54;
+    --ink-faint:#8B8880;
+    --bronze:#A5673D;
+    --bronze-glow:#A5673D33;
+    --silver:#6B7280;
+    --silver-glow:#6B728033;
+    --gold:#A67C2E;
+    --gold-glow:#A67C2E33;
+    --teal:#0F9C8B;
+    --teal-glow:#0F9C8B33;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
+    transition:background .35s ease, color .35s ease;
+  }
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;margin:0;letter-spacing:-0.01em;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  p{margin:0;}
+  ::selection{background:var(--gold-glow);}
+
+  /* ambient background grain */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:0.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .progress{
+    position:fixed; top:0; left:0; height:2px; background:linear-gradient(90deg,var(--bronze),var(--silver),var(--gold));
+    width:0%; z-index:100; transition:width .5s cubic-bezier(.65,0,.35,1);
+  }
+
+  /* ---------- SLIDES SYSTEM ---------- */
+  .slides-viewport{ position:fixed; inset:0; overflow:hidden; z-index:1; }
+  .slides-track{
+    display:flex; height:100%; width:100%;
+    transition:transform .75s cubic-bezier(.65,0,.35,1);
+  }
+  .slide{
+    flex:0 0 100vw; width:100vw; height:100%;
+    overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin; scrollbar-color:var(--line) transparent;
+  }
+  .slide::-webkit-scrollbar{ width:6px; }
+  .slide::-webkit-scrollbar-thumb{ background:var(--line); border-radius:99px; }
+
+  .slide-arrow{
+    position:fixed; top:50%; transform:translateY(-50%); z-index:60;
+    width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
+    background:rgba(255,255,255,0.03); backdrop-filter:blur(6px);
+    color:var(--ink-dim); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:16px; transition:border-color .25s, color .25s, opacity .25s;
+  }
+  .slide-arrow:hover{ border-color:var(--gold); color:var(--gold); }
+  .slide-arrow.disabled{ opacity:.25; pointer-events:none; }
+  .slide-arrow.prev{ left:18px; }
+  .slide-arrow.next{ right:18px; }
+  @media(max-width:640px){ .slide-arrow{ width:36px; height:36px; } .slide-arrow.prev{ left:8px;} .slide-arrow.next{ right:8px;} }
+
+  .slide-footer-nav{
+    position:fixed; left:0; right:0; bottom:22px; z-index:60;
+    display:flex; align-items:center; justify-content:center; gap:18px;
+  }
+  .slide-dots{ display:flex; align-items:center; gap:9px; }
+  .slide-dot{
+    width:7px; height:7px; border-radius:50%; background:var(--ink-faint); opacity:.5;
+    cursor:pointer; transition:background .25s, opacity .25s, transform .25s; border:none; padding:0;
+  }
+  .slide-dot:hover{ opacity:.9; }
+  .slide-dot.active{ background:var(--gold); opacity:1; transform:scale(1.3); box-shadow:0 0 8px var(--gold-glow); }
+  .slide-counter{
+    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint); letter-spacing:.08em;
+    position:fixed; right:24px; bottom:24px; z-index:60;
+  }
+  @media(max-width:640px){ .slide-counter{ display:none; } }
+
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 5vw; backdrop-filter:blur(10px);
+    background:linear-gradient(to bottom, rgba(10,12,16,.85), rgba(10,12,16,0));
+  }
+  nav .brand{display:flex; align-items:center; gap:10px; font-size:13px; color:var(--ink-dim); letter-spacing:.04em;}
+  nav .dot{width:7px;height:7px;border-radius:50%;background:var(--gold); box-shadow:0 0 10px var(--gold-glow);}
+  nav .tags{display:flex; gap:18px; font-size:12px; color:var(--ink-faint); font-family:'JetBrains Mono',monospace;}
+  nav .tags span{display:none;}
+  @media(min-width:720px){ nav .tags span{display:inline;} }
+
+  section{
+    position:relative; z-index:1;
+    padding:140px 5vw 120px;
+    max-width:1280px; margin:0 auto;
+    min-height:100%;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100%; display:flex; flex-direction:column; justify-content:center;
+    padding-top:90px;
+  }
+  .hero-grid{ display:flex; align-items:center; gap:64px; width:100%; }
+  .hero-text{ flex:1 1 480px; min-width:0; }
+  @media(max-width:980px){ .hero-grid{ flex-direction:column; align-items:flex-start; } }
+  .hero-glow{
+    position:absolute; top:8%; left:50%; width:900px; height:900px; transform:translateX(-50%);
+    background:radial-gradient(circle, var(--bronze-glow) 0%, transparent 60%);
+    filter:blur(40px); z-index:0; pointer-events:none; animation:pulse 9s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{opacity:.6; transform:translateX(-50%) scale(1);} 50%{opacity:1; transform:translateX(-50%) scale(1.08);} }
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace; font-size:12.5px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--ink-dim); display:flex; align-items:center; gap:10px; margin-bottom:28px;
+  }
+  .eyebrow::before{ content:''; width:28px; height:1px; background:var(--ink-faint); }
+
+  .hero h1{
+    font-size:clamp(44px,8vw,98px); font-weight:700; line-height:1.0; color:var(--ink);
+  }
+  .hero h1 .accent{
+    background:linear-gradient(95deg, var(--bronze), var(--gold) 55%, var(--silver));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero .sub{
+    margin-top:26px; max-width:560px; font-size:18px; line-height:1.6; color:var(--ink-dim);
+  }
+  .hero .client{
+    margin-top:48px; display:flex; align-items:center; gap:14px; font-size:14px; color:var(--ink-faint);
+  }
+  .hero .client .badge{
+    width:34px;height:34px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center; font-family:'Space Grotesk'; font-weight:700; font-size:13px; color:var(--gold);
+  }
+  .pillrow{ margin-top:36px; display:flex; gap:10px; flex-wrap:wrap; }
+  .pill{
+    font-family:'JetBrains Mono',monospace; font-size:12px; padding:8px 14px; border:1px solid var(--line);
+    border-radius:99px; color:var(--ink-dim); background:rgba(255,255,255,0.02);
+  }
+  .scroll-cue{
+    margin-top:56px; font-family:'JetBrains Mono',monospace; font-size:11px;
+    color:var(--ink-faint); display:flex; align-items:center; gap:10px; letter-spacing:.08em;
+  }
+  .scroll-cue .arrow-pulse{ display:inline-flex; animation:nudge 1.6s ease-in-out infinite; }
+  @keyframes nudge{ 0%,100%{ transform:translateX(0); opacity:.5; } 50%{ transform:translateX(5px); opacity:1; } }
+
+  /* ---------- HERO ILLUSTRATION (prima / dopo, verticale) ---------- */
+  .hero-illustration{
+    flex:0 0 300px; width:300px; max-width:300px;
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+  }
+  @media(max-width:980px){ .hero-illustration{ width:100%; max-width:320px; margin-top:44px; align-items:flex-start; } }
+  .chaos-illustration{ width:100%; height:auto; }
+  .illustration-caption{
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--ink-faint); text-align:center;
+  }
+  @media(max-width:980px){ .illustration-caption{ text-align:left; } }
+  .paper-bob{ animation:paperBob 3.4s ease-in-out infinite; transform-origin:center; }
+  @keyframes paperBob{ 0%,100%{ transform:translateY(0) rotate(0deg); } 50%{ transform:translateY(-5px) rotate(3deg); } }
+  .connector-spark-v{ animation:connectorSparkV 2.4s cubic-bezier(.4,0,.2,1) infinite; }
+  @keyframes connectorSparkV{
+    0%{ transform:translateY(0); opacity:0; }
+    15%{ opacity:1; }
+    85%{ opacity:1; }
+    100%{ transform:translateY(100px); opacity:0; }
+  }
+  .connector-badge{ animation:connectorPulse 2.4s ease-in-out infinite; transform-origin:center; }
+  @keyframes connectorPulse{ 0%,100%{ filter:drop-shadow(0 0 4px var(--gold-glow)); } 50%{ filter:drop-shadow(0 0 12px var(--gold-glow)); } }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .sec-head{ margin-bottom:64px; max-width:760px; }
+  .sec-num{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); letter-spacing:.1em; margin-bottom:14px; display:block;}
+  .sec-head h2{ font-size:clamp(30px,4.2vw,46px); font-weight:600; }
+  .sec-head .desc{ margin-top:16px; font-size:16.5px; color:var(--ink-dim); line-height:1.6; }
+
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- PIPELINE (section 2) ---------- */
+  .pipeline{ position:relative; }
+  .pipeline-track{
+    position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+  }
+  @media(max-width:880px){ .pipeline-track{grid-template-columns:1fr;} }
+  .pipeline-line{
+    position:absolute; top:34px; left:0; right:0; height:2px; z-index:0;
+    background:var(--line);
+  }
+  .pipeline-line .fill{
+    position:absolute; inset:0; width:0%; background:linear-gradient(90deg,var(--bronze),var(--teal),var(--gold));
+    transition:width 1.4s cubic-bezier(.2,.7,.2,1);
+  }
+  @media(max-width:880px){ .pipeline-line{display:none;} }
+  .step{
+    position:relative; z-index:1; background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 22px 24px; transition:border-color .3s, transform .3s;
+  }
+  .step:hover{ transform:translateY(-4px); border-color:var(--ink-faint); }
+  .step .num{
+    width:36px;height:36px;border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk'; font-weight:700; font-size:14px; margin-bottom:18px;
+    border:1px solid var(--line); color:var(--ink);
+  }
+  .step:nth-child(1) .num{ color:var(--bronze); border-color:var(--bronze); box-shadow:0 0 16px var(--bronze-glow); }
+  .step:nth-child(2) .num{ color:var(--teal); border-color:var(--teal); box-shadow:0 0 16px var(--teal-glow); }
+  .step:nth-child(3) .num{ color:var(--silver); border-color:var(--silver); box-shadow:0 0 16px var(--silver-glow); }
+  .step:nth-child(4) .num{ color:var(--gold); border-color:var(--gold); box-shadow:0 0 16px var(--gold-glow); }
+  .step h3{ font-size:17px; font-weight:600; margin-bottom:10px; }
+  .step ul{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:7px; }
+  .step li{ font-size:13.5px; color:var(--ink-dim); line-height:1.5; padding-left:14px; position:relative; }
+  .step li::before{ content:'•'; position:absolute; left:0; color:var(--gold); font-weight:700; }
+
+  .trigger-note{
+    margin-top:34px; display:flex; align-items:center; gap:14px; padding:16px 20px;
+    border:1px solid var(--line); border-radius:var(--radius); background:rgba(79,216,196,0.04);
+    font-size:14px; color:var(--ink-dim);
+  }
+  .trigger-note .bolt{ color:var(--teal); font-size:18px; flex-shrink:0; }
+
+  /* ---------- MEDALLION strata (section 3) ---------- */
+  .strata-wrap{ display:flex; flex-direction:column; gap:0; }
+  .strata{
+    border-radius:var(--radius); border:1px solid var(--line); padding:30px 28px;
+    position:relative; overflow:hidden;
+  }
+  .strata.bronze{ background:linear-gradient(135deg, #1a140d, var(--bg-panel) 60%); }
+  .strata.silver{ background:linear-gradient(135deg, #15171a, var(--bg-panel) 60%); margin-top:18px;}
+  .strata-tag{
+    display:inline-flex; align-items:center; gap:10px; font-family:'Space Grotesk'; font-weight:700; font-size:14px;
+    padding:6px 14px 6px 6px; border-radius:99px; margin-bottom:18px;
+  }
+  .strata-tag .coin{ width:26px;height:26px;border-radius:50%; display:flex;align-items:center;justify-content:center; font-size:12px; font-weight:700; }
+  .bronze .strata-tag{ color:var(--bronze); background:rgba(194,135,90,0.08); }
+  .bronze .strata-tag .coin{ background:var(--bronze); color:#1a140d; }
+  .silver .strata-tag{ color:var(--silver); background:rgba(199,205,214,0.08); }
+  .silver .strata-tag .coin{ background:var(--silver); color:#15171a; }
+  .strata-title{ font-size:14px; color:var(--ink-dim); margin-bottom:22px; max-width:560px; line-height:1.5;}
+
+  .field-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+  .field{ border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:rgba(255,255,255,0.015); }
+  .field .fname{ font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--ink); }
+  .field .fdesc{ font-size:12.5px; color:var(--ink-faint); margin-top:5px; line-height:1.4; }
+
+  .table-card{ border:1px solid var(--line); border-radius:10px; padding:16px 18px; background:rgba(255,255,255,0.015); }
+  .table-card .src{ font-size:11px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; font-family:'JetBrains Mono',monospace;}
+  .table-card .tname{ font-family:'JetBrains Mono',monospace; font-size:13.5px; color:var(--silver); line-height:1.6; }
+
+  .silver-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; }
+
+  .pour-connector{
+    display:flex; align-items:center; gap:14px; justify-content:center; padding:14px 0; position:relative;
+  }
+  .pour-connector .arrow{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); letter-spacing:.05em; }
+  .pour-connector svg{ width:2px; height:30px; }
+
+  .footnote{ margin-top:18px; font-size:12.5px; color:var(--ink-faint); font-family:'JetBrains Mono',monospace; }
+
+  /* ---------- STAR SCHEMA (section 4) ---------- */
+  .star-wrap{ position:relative; padding:30px 0 10px; }
+  .star-svg{ position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+  .star-svg path{ fill:none; stroke:var(--gold); stroke-width:1.4; opacity:.55; stroke-dasharray:6 6; stroke-dashoffset:300; transition:stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1); }
+  .star-grid{
+    position:relative; z-index:1; display:grid; grid-template-columns:1fr 1.2fr 1fr; gap:24px; align-items:center;
+  }
+  @media(max-width:880px){ .star-grid{ grid-template-columns:1fr; } }
+  .dim-col{ display:flex; flex-direction:column; gap:18px; }
+  .dim-card{
+    border:1px solid var(--line); border-radius:12px; padding:18px 20px; background:var(--bg-panel);
+  }
+  .dim-card .dtitle{ font-family:'JetBrains Mono',monospace; font-size:13.5px; color:var(--silver); margin-bottom:10px; }
+  .dim-card .dfield{ font-size:12.5px; color:var(--ink-dim); line-height:1.7; font-family:'JetBrains Mono',monospace;}
+  .fact-card{
+    border:1px solid var(--gold); border-radius:14px; padding:26px 24px; background:linear-gradient(160deg,#1c1607,var(--bg-panel) 55%);
+    box-shadow:0 0 40px var(--gold-glow);
+  }
+  .fact-card .dtitle{ font-family:'JetBrains Mono',monospace; font-size:15px; color:var(--gold); margin-bottom:14px; font-weight:600;}
+  .fact-card .dfield{ font-size:12.8px; color:var(--ink); line-height:1.85; font-family:'JetBrains Mono',monospace;}
+  .fact-card .dfield .fk{ color:var(--teal); }
+  .star-note{
+    margin-top:30px; font-size:13.5px; color:var(--ink-dim); display:flex; gap:10px; align-items:flex-start;
+    border-top:1px solid var(--line); padding-top:20px;
+  }
+  .star-note .star{ color:var(--gold); flex-shrink:0; }
+
+  /* ---------- BUILT (section 5) ---------- */
+  .built-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  @media(max-width:980px){ .built-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:560px){ .built-grid{ grid-template-columns:1fr; } }
+  .built-card{
+    border:1px solid var(--line); border-radius:var(--radius); padding:22px 20px; background:var(--bg-panel);
+    transition:transform .3s, border-color .3s;
+  }
+  .built-card:hover{ transform:translateY(-4px); }
+  .built-card h4{ font-family:'Space Grotesk'; font-size:16px; font-weight:600; margin-bottom:12px; }
+  .built-card p{ font-size:13px; color:var(--ink-dim); line-height:1.55; }
+  .built-card.ordine{ border-color:#3a2f1f; } .built-card.ordine h4{ color:var(--bronze); }
+  .built-card.quot{ border-color:#3a351f; } .built-card.quot h4{ color:var(--gold); }
+  .built-card.info{ border-color:#1f3835; } .built-card.info h4{ color:var(--teal); }
+  .built-card.nd{ border-color:#352323; } .built-card.nd h4{ color:#d97373; }
+
+  .stat-grid{ margin-top:60px; display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+  @media(max-width:780px){ .stat-grid{ grid-template-columns:repeat(2,1fr); } }
+  .stat{ background:var(--bg); padding:28px 22px; }
+  .stat .num{ font-family:'Space Grotesk'; font-size:26px; font-weight:700; color:var(--ink); }
+  .stat .label{ font-size:13px; color:var(--ink-dim); margin-top:8px; }
+  .stat .micro{ margin-top:10px; font-size:11.5px; color:var(--ink-faint); font-family:'JetBrains Mono',monospace; line-height:1.5;}
+
+  footer{
+    padding:50px 5vw 60px; border-top:1px solid var(--line); display:flex; justify-content:space-between;
+    flex-wrap:wrap; gap:14px; color:var(--ink-faint); font-size:12.5px; font-family:'JetBrains Mono',monospace;
+  }
+
+  /* ---------- THEME TOGGLE ---------- */
+  .theme-toggle{
+    display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.03);
+    border:1px solid var(--line); border-radius:99px; padding:5px; cursor:pointer;
+    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-dim);
+    transition:border-color .3s, background .3s;
+  }
+  .theme-toggle:hover{ border-color:var(--ink-faint); }
+  .theme-toggle .track{
+    position:relative; width:38px; height:20px; border-radius:99px; background:var(--bg-panel-2);
+    border:1px solid var(--line);
+  }
+  .theme-toggle .knob{
+    position:absolute; top:1px; left:1px; width:16px; height:16px; border-radius:50%;
+    background:var(--gold); box-shadow:0 0 8px var(--gold-glow); transition:transform .3s cubic-bezier(.2,.7,.2,1);
+    display:flex; align-items:center; justify-content:center; font-size:9px;
+  }
+  html[data-theme="light"] .theme-toggle .knob{ transform:translateX(18px); background:var(--bronze); box-shadow:0 0 8px var(--bronze-glow); }
+
+  /* ---------- LIGHT THEME OVERRIDES ---------- */
+  html[data-theme="light"] .grain{ opacity:0.02; }
+  html[data-theme="light"] nav{
+    background:linear-gradient(to bottom, rgba(245,243,239,.9), rgba(245,243,239,0));
+  }
+  html[data-theme="light"] .strata.bronze{ background:linear-gradient(135deg, #F1E6DA, var(--bg-panel) 60%); }
+  html[data-theme="light"] .strata.silver{ background:linear-gradient(135deg, #EFEFEF, var(--bg-panel) 60%); }
+  html[data-theme="light"] .fact-card{ background:linear-gradient(160deg,#F3E9D2,var(--bg-panel) 55%); }
+  html[data-theme="light"] .field{ background:rgba(0,0,0,0.02); }
+  html[data-theme="light"] .table-card{ background:rgba(0,0,0,0.02); }
+  html[data-theme="light"] .pill{ background:rgba(0,0,0,0.02); }
+  html[data-theme="light"] .stat{ background:var(--bg); }
+  html[data-theme="light"] .step:nth-child(1) .num{ color:var(--bronze); border-color:var(--bronze); }
+  html[data-theme="light"] .strata-tag .coin{ color:#fff; }
+
+  /* ================= CHOREOGRAPHED ANIMATIONS ================= */
+
+  /* slide-level settle: content fades/lifts in slightly after the horizontal move */
+  .slide{ transition:opacity .55s cubic-bezier(.2,.7,.2,1), transform .55s cubic-bezier(.2,.7,.2,1); }
+
+  /* container-level reveal classes now only act as JS triggers — visuals live on their children */
+  .sec-head.reveal, .pipeline.reveal, .strata-wrap.reveal, .star-wrap.reveal, .built-grid.reveal, .stat-grid.reveal{
+    opacity:1; transform:none; transition:none;
+  }
+
+  /* ---- hero choreography ---- */
+  .hero .eyebrow.reveal{ transition-delay:.02s; }
+  .hero h1.reveal{ transition-delay:.12s; }
+  .hero .sub.reveal{ transition-delay:.28s; }
+  .hero .pillrow.reveal{ transition-delay:.4s; }
+  .hero .client.reveal{ transition-delay:.52s; }
+  .hero .hero-illustration.reveal{ transition-delay:.64s; }
+  .hero .scroll-cue.reveal{ transition-delay:1s; }
+  .pillrow .pill{
+    opacity:0; transform:translateY(10px);
+    transition:opacity .5s cubic-bezier(.2,.7,.2,1), transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .pillrow.in .pill{ opacity:1; transform:translateY(0); }
+  .pillrow.in .pill:nth-child(1){ transition-delay:.44s; }
+  .pillrow.in .pill:nth-child(2){ transition-delay:.52s; }
+  .pillrow.in .pill:nth-child(3){ transition-delay:.6s; }
+
+  /* ---- section header choreography ---- */
+  .sec-head .sec-num, .sec-head h2, .sec-head .desc{
+    opacity:0; transform:translateY(16px);
+    transition:opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .sec-head.in .sec-num{ opacity:1; transform:translateY(0); transition-delay:0s; }
+  .sec-head.in h2{ opacity:1; transform:translateY(0); transition-delay:.09s; }
+  .sec-head.in .desc{ opacity:1; transform:translateY(0); transition-delay:.19s; }
+
+  /* ---- pipeline: icon pop with slight overshoot ---- */
+  .step .num{ transition:transform .5s cubic-bezier(.34,1.56,.64,1); }
+
+  /* ---- strata choreography ---- */
+  .strata-wrap .strata{
+    opacity:0; transform:translateY(24px);
+    transition:opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .strata-wrap.in .strata.bronze{ opacity:1; transform:translateY(0); transition-delay:0s; }
+  .strata-wrap.in .strata.silver{ opacity:1; transform:translateY(0); transition-delay:.5s; }
+  .strata-wrap .field, .strata-wrap .table-card{
+    opacity:0; transform:translateY(14px) scale(.97);
+    transition:opacity .5s cubic-bezier(.2,.7,.2,1), transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .strata-wrap.in .field, .strata-wrap.in .table-card{ opacity:1; transform:translateY(0) scale(1); }
+  .strata-wrap.in .field:nth-child(1){ transition-delay:.14s; }
+  .strata-wrap.in .field:nth-child(2){ transition-delay:.2s; }
+  .strata-wrap.in .field:nth-child(3){ transition-delay:.26s; }
+  .strata-wrap.in .field:nth-child(4){ transition-delay:.32s; }
+  .strata-wrap.in .field:nth-child(5){ transition-delay:.38s; }
+  .strata-wrap.in .field:nth-child(6){ transition-delay:.44s; }
+  .strata-wrap.in .table-card:nth-child(1){ transition-delay:.68s; }
+  .strata-wrap.in .table-card:nth-child(2){ transition-delay:.74s; }
+  .strata-wrap.in .table-card:nth-child(3){ transition-delay:.8s; }
+  .strata-wrap.in .table-card:nth-child(4){ transition-delay:.86s; }
+  .strata-wrap.in .table-card:nth-child(5){ transition-delay:.92s; }
+  .strata-wrap.in .table-card:nth-child(6){ transition-delay:.98s; }
+  .pour-connector svg line{
+    stroke-dasharray:30; stroke-dashoffset:30;
+    transition:stroke-dashoffset .55s cubic-bezier(.2,.7,.2,1); transition-delay:.3s;
+  }
+  .strata-wrap.in .pour-connector svg line{ stroke-dashoffset:0; }
+  .pour-connector .arrow{
+    opacity:0; transition:opacity .4s ease; transition-delay:.5s;
+  }
+  .strata-wrap.in .pour-connector .arrow{ opacity:1; }
+
+  /* ---- star schema choreography ---- */
+  .star-wrap .dim-card, .star-wrap .fact-card{
+    opacity:0; transform:translateY(20px) scale(.95);
+    transition:opacity .55s cubic-bezier(.2,.7,.2,1), transform .55s cubic-bezier(.3,1.3,.6,1);
+  }
+  .star-wrap.in .dim-card, .star-wrap.in .fact-card{ opacity:1; transform:translateY(0) scale(1); }
+  .star-wrap.in .star-grid > *:nth-child(1) .dim-card:nth-child(1){ transition-delay:.04s; }
+  .star-wrap.in .star-grid > *:nth-child(1) .dim-card:nth-child(2){ transition-delay:.16s; }
+  .star-wrap.in .fact-card{ transition-delay:.28s; }
+  .star-wrap.in .star-grid > *:nth-child(3) .dim-card{ transition-delay:.4s; }
+  @keyframes factGlowPulse{
+    0%{ box-shadow:0 0 0 var(--gold-glow); }
+    55%{ box-shadow:0 0 58px var(--gold-glow); }
+    100%{ box-shadow:0 0 40px var(--gold-glow); }
+  }
+  .star-wrap.in .fact-card{ animation:factGlowPulse 1s ease-out .28s; }
+  .star-wrap .star-note{
+    opacity:0; transform:translateY(10px);
+    transition:opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1); transition-delay:.85s;
+  }
+  .star-wrap.in .star-note{ opacity:1; transform:translateY(0); }
+
+  /* ---- built results choreography ---- */
+  .built-grid .built-card{
+    opacity:0; transform:translateY(22px) scale(.96);
+    transition:opacity .55s cubic-bezier(.2,.7,.2,1), transform .55s cubic-bezier(.28,1.2,.55,1);
+  }
+  .built-grid.in .built-card{ opacity:1; transform:translateY(0) scale(1); }
+  .built-grid.in .built-card:nth-child(1){ transition-delay:.04s; }
+  .built-grid.in .built-card:nth-child(2){ transition-delay:.14s; }
+  .built-grid.in .built-card:nth-child(3){ transition-delay:.24s; }
+  .built-grid.in .built-card:nth-child(4){ transition-delay:.34s; }
+
+  .stat-grid .stat{
+    position:relative; overflow:hidden;
+    opacity:0; transform:translateY(16px);
+    transition:opacity .5s cubic-bezier(.2,.7,.2,1), transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .stat-grid.in .stat{ opacity:1; transform:translateY(0); }
+  .stat::before{
+    content:''; position:absolute; top:0; left:0; height:2px; width:0;
+    background:linear-gradient(90deg,var(--bronze),var(--gold));
+    transition:width .55s cubic-bezier(.2,.7,.2,1);
+  }
+  .stat-grid.in .stat::before{ width:100%; }
+  .stat .num{
+    display:inline-block; transform:scale(.7); opacity:0;
+    transition:transform .45s cubic-bezier(.34,1.56,.64,1), opacity .4s ease;
+  }
+  .stat-grid.in .stat .num{ transform:scale(1); opacity:1; }
+  .stat-grid.in .stat:nth-child(1){ transition-delay:.5s; }
+  .stat-grid.in .stat:nth-child(2){ transition-delay:.6s; }
+  .stat-grid.in .stat:nth-child(3){ transition-delay:.7s; }
+  .stat-grid.in .stat:nth-child(4){ transition-delay:.8s; }
+  .stat-grid.in .stat:nth-child(1)::before, .stat-grid.in .stat:nth-child(1) .num{ transition-delay:.62s; }
+  .stat-grid.in .stat:nth-child(2)::before, .stat-grid.in .stat:nth-child(2) .num{ transition-delay:.72s; }
+  .stat-grid.in .stat:nth-child(3)::before, .stat-grid.in .stat:nth-child(3) .num{ transition-delay:.82s; }
+  .stat-grid.in .stat:nth-child(4)::before, .stat-grid.in .stat:nth-child(4) .num{ transition-delay:.92s; }
+
+  @media(prefers-reduced-motion:reduce){
+    .slide, .reveal, .pillrow .pill, .sec-head .sec-num, .sec-head h2, .sec-head .desc,
+    .strata-wrap .strata, .strata-wrap .field, .strata-wrap .table-card, .pour-connector svg line, .pour-connector .arrow,
+    .star-wrap .dim-card, .star-wrap .fact-card, .star-wrap .star-note,
+    .built-grid .built-card, .stat-grid .stat, .stat::before, .stat .num, .paper-bob, .connector-spark, .connector-spark-v, .connector-badge{
+      transition-duration:.01ms !important; animation-duration:.01ms !important; transition-delay:0s !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="progress" id="progress"></div>
+
+<nav>
+  <div class="brand"><span class="dot"></span> ACME MANUFACTURING — ORDER INTAKE</div>
+  <div style="display:flex; align-items:center; gap:22px;">
+    <div class="tags"><span>FOUNDRY</span><span>FABRIC</span><span>MEDALLION + STAR SCHEMA</span></div>
+    <div class="theme-toggle" id="themeToggle" role="button" aria-label="Cambia tema chiaro/scuro">
+      <span class="track"><span class="knob" id="themeKnob"></span></span>
+      <span id="themeLabel">DARK</span>
+    </div>
+  </div>
+</nav>
+
+<button class="slide-arrow prev" id="prevBtn" aria-label="Slide precedente">‹</button>
+<button class="slide-arrow next" id="nextBtn" aria-label="Slide successiva">›</button>
+
+<div class="slides-viewport">
+  <div class="slides-track" id="slidesTrack">
+
+  <!-- SLIDE 1: HERO -->
+  <div class="slide">
+  <section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-grid">
+  <div class="hero-text">
+  <div class="eyebrow reveal">Project Work — Data Engineering &amp; AI</div>
+  <h1 class="reveal">Intelligent<br><span class="accent">Order Intake</span></h1>
+  <p class="sub reveal">Pipeline automatizzata su Microsoft Fabric. Dal PDF al dato strutturato e analitico, senza intervento manuale.</p>
+
+  <div class="pillrow reveal">
+    <span class="pill">Microsoft Foundry</span>
+    <span class="pill">Microsoft Fabric</span>
+    <span class="pill">Medallion + Star Schema</span>
+  </div>
+
+  <div class="client reveal">
+    <div class="badge">A</div>
+    <span>Acme Manufacturing S.r.l.</span>
+  </div>
+
+  <div class="scroll-cue reveal"><span class="arrow-pulse">↓</span>USA LE FRECCE PER NAVIGARE</div>
+  </div>
+
+  <div class="hero-illustration reveal">
+    <svg class="chaos-illustration" viewBox="0 0 460 940" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <g id="paperDoc">
+          <rect x="-11" y="-14" width="22" height="28" rx="2" fill="var(--bg-panel)" stroke="var(--ink-faint)" stroke-width="1.4"/>
+          <line x1="-6" y1="-6" x2="6" y2="-6" stroke="var(--ink-faint)" stroke-width="1.2"/>
+          <line x1="-6" y1="-1" x2="6" y2="-1" stroke="var(--ink-faint)" stroke-width="1.2"/>
+          <line x1="-6" y1="4" x2="2" y2="4" stroke="var(--ink-faint)" stroke-width="1.2"/>
+        </g>
+        <g id="paperDocGold">
+          <rect x="-11" y="-14" width="22" height="28" rx="2" fill="var(--bg-panel)" stroke="var(--gold)" stroke-width="1.6"/>
+          <line x1="-6" y1="-6" x2="6" y2="-6" stroke="var(--gold)" stroke-width="1.2" opacity=".8"/>
+          <line x1="-6" y1="-1" x2="6" y2="-1" stroke="var(--gold)" stroke-width="1.2" opacity=".8"/>
+          <line x1="-6" y1="4" x2="2" y2="4" stroke="var(--gold)" stroke-width="1.2" opacity=".8"/>
+        </g>
+        <g id="docLg">
+          <rect x="-28" y="-36" width="56" height="72" rx="3" fill="var(--bg-panel)" stroke="var(--ink-faint)" stroke-width="1.6"/>
+          <line x1="-16" y1="-18" x2="16" y2="-18" stroke="var(--ink-faint)" stroke-width="1.3"/>
+          <line x1="-16" y1="-6" x2="16" y2="-6" stroke="var(--ink-faint)" stroke-width="1.3"/>
+          <line x1="-16" y1="6" x2="8" y2="6" stroke="var(--ink-faint)" stroke-width="1.3"/>
+          <line x1="-16" y1="18" x2="12" y2="18" stroke="var(--ink-faint)" stroke-width="1.3"/>
+        </g>
+        <g id="docLgGold">
+          <rect x="-28" y="-36" width="56" height="72" rx="3" fill="var(--bg-panel)" stroke="var(--gold)" stroke-width="1.8"/>
+          <line x1="-16" y1="-18" x2="16" y2="-18" stroke="var(--gold)" stroke-width="1.3" opacity=".8"/>
+          <line x1="-16" y1="-6" x2="16" y2="-6" stroke="var(--gold)" stroke-width="1.3" opacity=".8"/>
+          <line x1="-16" y1="6" x2="8" y2="6" stroke="var(--gold)" stroke-width="1.3" opacity=".8"/>
+          <line x1="-16" y1="18" x2="12" y2="18" stroke="var(--gold)" stroke-width="1.3" opacity=".8"/>
+        </g>
+        <linearGradient id="connectorGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="var(--bronze)"/>
+          <stop offset="55%" stop-color="var(--gold)"/>
+          <stop offset="100%" stop-color="var(--teal)"/>
+        </linearGradient>
+      </defs>
+
+      <!-- ================= LEFT PANEL — PRIMA (caos) ================= -->
+      <g transform="translate(20,0)">
+        <line x1="10" y1="372" x2="400" y2="372" stroke="var(--line)" stroke-width="2"/>
+
+        <g transform="translate(58,320) rotate(-6)">
+          <rect x="0" y="0" width="78" height="50" rx="4" fill="none" stroke="var(--ink-faint)" stroke-width="1.6"/>
+          <line x1="10" y1="14" x2="60" y2="14" stroke="var(--ink-faint)" stroke-width="1.2"/>
+          <line x1="10" y1="24" x2="50" y2="24" stroke="var(--ink-faint)" stroke-width="1.2"/>
+          <line x1="10" y1="34" x2="55" y2="34" stroke="var(--ink-faint)" stroke-width="1.2"/>
+        </g>
+
+        <g transform="translate(320,336) rotate(35)">
+          <rect x="0" y="0" width="26" height="20" rx="3" fill="none" stroke="var(--bronze)" stroke-width="1.6"/>
+          <path d="M26 6 q9 2 9 8 q0 5 -7 5" fill="none" stroke="var(--bronze)" stroke-width="1.4"/>
+        </g>
+        <path d="M346 356 q11 6 6 16 q-5 9 -15 10" fill="none" stroke="var(--bronze)" stroke-width="1.4" opacity=".5"/>
+
+        <!-- disordered document pile -->
+        <g transform="translate(205,168)">
+          <g transform="translate(-20,12) rotate(-15)"><use href="#docLg"/></g>
+          <g transform="translate(16,-4) rotate(10)"><use href="#docLg"/></g>
+          <g transform="translate(-3,-16) rotate(-4)"><use href="#docLgGold"/></g>
+        </g>
+
+        <!-- disconnected fragments floating near the pile -->
+        <line x1="132" y1="118" x2="144" y2="108" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity=".5"/>
+        <line x1="272" y1="116" x2="260" y2="106" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity=".5"/>
+        <line x1="150" y1="242" x2="140" y2="252" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity=".4"/>
+
+        <!-- unknown-format badge -->
+        <g transform="translate(205,68)">
+          <circle r="17" fill="var(--bg-panel)" stroke="var(--bronze)" stroke-width="1.6" stroke-dasharray="3 4"/>
+          <text x="0" y="6" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-weight="700" font-size="15" fill="var(--bronze)">?</text>
+        </g>
+
+        <g transform="translate(140,86) rotate(-18)"><g class="paper-bob" style="animation-delay:.1s"><use href="#paperDoc"/></g></g>
+        <g transform="translate(310,132) rotate(22)"><g class="paper-bob" style="animation-delay:.6s"><use href="#paperDoc"/></g></g>
+        <g transform="translate(86,190) rotate(-30)"><g class="paper-bob" style="animation-delay:1.1s"><use href="#paperDocGold"/></g></g>
+        <g transform="translate(350,208) rotate(16)"><g class="paper-bob" style="animation-delay:.35s"><use href="#paperDoc"/></g></g>
+        <g transform="translate(225,58) rotate(-4)"><g class="paper-bob" style="animation-delay:.8s"><use href="#paperDoc"/></g></g>
+        <g transform="translate(54,264) rotate(12)"><use href="#paperDoc"/></g>
+        <g transform="translate(370,278) rotate(-14)"><use href="#paperDocGold"/></g>
+
+        <text x="205" y="405" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="13" letter-spacing="2" fill="var(--ink-faint)">PRIMA</text>
+      </g>
+
+      <!-- ================= CONNECTOR (verticale) ================= -->
+      <g transform="translate(225,420)">
+        <line x1="0" y1="0" x2="0" y2="100" stroke="url(#connectorGrad)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M-7,88 L0,102 L7,88 Z" fill="var(--teal)"/>
+        <circle class="connector-spark-v" cx="0" cy="0" r="3.4" fill="var(--gold)"/>
+        <circle class="connector-badge" cx="0" cy="50" r="30" fill="var(--bg-panel)" stroke="var(--gold)" stroke-width="2"/>
+        <path d="M4,37 L-7,53 L-1,53 L-4,63 L9,46 L2,46 Z" fill="var(--gold)"/>
+        <text x="46" y="46" text-anchor="start" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1.2" fill="var(--ink-faint)">FABRIC</text>
+        <text x="46" y="60" text-anchor="start" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1.2" fill="var(--ink-faint)">+ AI</text>
+      </g>
+
+      <!-- ================= BOTTOM PANEL — DOPO (ordine) ================= -->
+      <g transform="translate(20,520)">
+        <line x1="10" y1="372" x2="400" y2="372" stroke="var(--line)" stroke-width="2"/>
+
+        <g transform="translate(58,320) rotate(-3)">
+          <rect x="0" y="0" width="78" height="50" rx="4" fill="none" stroke="var(--ink-faint)" stroke-width="1.6"/>
+          <line x1="10" y1="16" x2="64" y2="16" stroke="var(--ink-faint)" stroke-width="1.2"/>
+          <line x1="10" y1="25" x2="64" y2="25" stroke="var(--ink-faint)" stroke-width="1.2"/>
+          <line x1="10" y1="34" x2="64" y2="34" stroke="var(--ink-faint)" stroke-width="1.2"/>
+          <circle cx="64" cy="10" r="6" fill="none" stroke="var(--teal)" stroke-width="1.4"/>
+          <path d="M61 10 l2 3 l5 -6" fill="none" stroke="var(--teal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+
+        <g transform="translate(310,330)">
+          <rect x="0" y="0" width="22" height="22" rx="3" fill="none" stroke="var(--bronze)" stroke-width="1.6"/>
+          <path d="M22 7 q8 1 8 7 q0 5 -6 6" fill="none" stroke="var(--bronze)" stroke-width="1.4"/>
+          <path d="M6 -6 q4 -6 0 -12 q-4 -6 0 -12" stroke="var(--ink-faint)" stroke-width="1.2" opacity=".5" fill="none"/>
+          <path d="M14 -6 q4 -6 0 -12 q-4 -6 0 -12" stroke="var(--ink-faint)" stroke-width="1.2" opacity=".5" fill="none"/>
+        </g>
+
+        <!-- aligned document stack -->
+        <g transform="translate(205,155)">
+          <g transform="translate(6,10)"><use href="#docLg"/></g>
+          <g transform="translate(3,5)"><use href="#docLg"/></g>
+          <g><use href="#docLgGold"/></g>
+        </g>
+
+        <!-- validated badge -->
+        <g transform="translate(243,116)">
+          <circle r="17" fill="var(--bg-panel)" stroke="var(--teal)" stroke-width="1.8"/>
+          <path d="M-7,0 L-2,6 L8,-7" fill="none" stroke="var(--teal)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+
+        <!-- structured pipeline -->
+        <g transform="translate(205,234)">
+          <line x1="-70" y1="0" x2="70" y2="0" stroke="var(--teal)" stroke-width="2" opacity=".65"/>
+          <circle cx="-70" cy="0" r="7" fill="var(--bg-panel)" stroke="var(--bronze)" stroke-width="2"/>
+          <circle cx="0" cy="0" r="7" fill="var(--bg-panel)" stroke="var(--teal)" stroke-width="2"/>
+          <circle cx="70" cy="0" r="7" fill="var(--bg-panel)" stroke="var(--gold)" stroke-width="2"/>
+        </g>
+
+        <g transform="translate(350,300)">
+          <rect x="0" y="0" width="22" height="28" rx="2" fill="var(--bg-panel)" stroke="var(--ink-faint)" stroke-width="1.2"/>
+          <rect x="-2" y="-3" width="22" height="28" rx="2" fill="var(--bg-panel)" stroke="var(--ink-faint)" stroke-width="1.2"/>
+          <rect x="-4" y="-6" width="22" height="28" rx="2" fill="var(--bg-panel)" stroke="var(--gold)" stroke-width="1.6"/>
+          <path d="M-1 3 l3 4 l7 -8" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+
+        <text x="205" y="405" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="13" letter-spacing="2" fill="var(--ink-faint)">DOPO</text>
+      </g>
+    </svg>
+    <div class="illustration-caption">Dal caos dei documenti sparsi a una pipeline ordinata e automatica</div>
+  </div>
+  </div>
+  </section>
+  </div>
+
+
+
+  <!-- SLIDE 2: PIPELINE -->
+  <div class="slide">
+  <section id="arch">
+  <div class="sec-head reveal">
+    <span class="sec-num">01 — ARCHITETTURA</span>
+    <h2>Architettura Fabric end-to-end</h2>
+    <p class="desc">Dal documento PDF alle tabelle Gold, in automatico. Quattro stadi in sequenza, ognuno con una responsabilità precisa.</p>
+  </div>
+
+  <div class="pipeline reveal">
+    <div class="pipeline-track" id="pipelineTrack">
+      <div class="pipeline-line"><div class="fill" id="pipelineFill"></div></div>
+
+      <div class="step">
+        <div class="num">1</div>
+        <h3>PDF in arrivo</h3>
+        <ul>
+          <li>Ordini, quotazioni, richieste info</li>
+          <li>→ pdf_inbox/ (OneLake)</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Agente AI (Foundry)</h3>
+        <ul>
+          <li>Estrae JSON strutturato</li>
+          <li>Classifica il tipo (ordine / quotazione / info)</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Notebook PySpark</h3>
+        <ul>
+          <li>Validazione vs catalogo</li>
+          <li>Matching cliente/articolo</li>
+          <li>Flag intervento umano</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="num">4</div>
+        <h3>Lakehouse (Medallion)</h3>
+        <ul>
+          <li>Bronze → Silver → Gold</li>
+          <li>Tabelle Delta su OneLake</li>
+          <li>Star Schema analitico</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trigger-note">
+      <span class="bolt">⚡</span>
+      <span>Pipeline schedulata su Microsoft Fabric — ogni nuovo PDF in <span class="mono" style="color:var(--ink)">pdf_inbox/</span> attiva automaticamente il flusso completo.</span>
+    </div>
+  </div>
+  </section>
+  </div>
+
+  <!-- SLIDE 3: BRONZE & SILVER -->
+  <div class="slide">
+  <section id="strata">
+  <div class="sec-head reveal">
+    <span class="sec-num">02 — LAKEHOUSE</span>
+    <h2>Bronze &amp; Silver</h2>
+    <p class="desc">Ingestione grezza e pulizia tipizzata su Microsoft Fabric Lakehouse. Ogni livello del Medallion raffina il dato di un grado.</p>
+  </div>
+
+  <div class="strata-wrap reveal">
+    <div class="strata bronze">
+      <div class="strata-tag"><span class="coin">B</span>BRONZE</div>
+      <p class="strata-title">Raw — così come arriva. Schema flessibile: nessuna predefinizione per tipo documento.</p>
+      <div class="field-grid">
+        <div class="field"><div class="fname">bronze_documenti_estratti</div><div class="fdesc">tabella unica di ingestione</div></div>
+        <div class="field"><div class="fname">pdf_nome</div><div class="fdesc">nome del file sorgente</div></div>
+        <div class="field"><div class="fname">tipo_documento</div><div class="fdesc">ordine / quotazione / richiesta_informazioni / non_determinabile</div></div>
+        <div class="field"><div class="fname">intervento_umano_necessario</div><div class="fdesc">flag boolean</div></div>
+        <div class="field"><div class="fname">data_elaborazione</div><div class="fdesc">timestamp del processing</div></div>
+        <div class="field"><div class="fname">json_completo</div><div class="fdesc">JSON grezzo dell'intero risultato</div></div>
+      </div>
+    </div>
+
+    <div class="pour-connector">
+      <svg viewBox="0 0 2 30" preserveAspectRatio="none"><line x1="1" y1="0" x2="1" y2="30" stroke="var(--ink-faint)" stroke-width="1"/></svg>
+      <span class="arrow">cleanse &amp; parse</span>
+      <svg viewBox="0 0 2 30" preserveAspectRatio="none"><line x1="1" y1="0" x2="1" y2="30" stroke="var(--ink-faint)" stroke-width="1"/></svg>
+    </div>
+
+    <div class="strata silver">
+      <div class="strata-tag"><span class="coin">S</span>SILVER</div>
+      <p class="strata-title">Cleaned — scomposto e tipizzato per tipo documento. Date multi-formato gestite via UDF Python (dd/MM/yyyy + yyyy-MM-dd).</p>
+      <div class="silver-grid">
+        <div class="table-card"><div class="src">da PDF</div><div class="tname">silver_ordini<br>silver_ordini_righe</div></div>
+        <div class="table-card"><div class="src">da PDF</div><div class="tname">silver_quotazioni<br>silver_quotazioni_righe</div></div>
+        <div class="table-card"><div class="src">da PDF</div><div class="tname">silver_richieste_info</div></div>
+        <div class="table-card"><div class="src">da Assets</div><div class="tname">silver_clienti_assets</div></div>
+        <div class="table-card"><div class="src">da Assets</div><div class="tname">silver_articoli_assets</div></div>
+        <div class="table-card"><div class="src">da Assets</div><div class="tname">silver_ordini_storici<br>silver_ordini_righe_storiche</div></div>
+      </div>
+    </div>
+  </div>
+  </section>
+  </div>
+
+<!-- SLIDE 4: GOLD STAR SCHEMA -->
+  <div class="slide">
+  <section id="gold">
+  <div class="sec-head reveal">
+    <span class="sec-num">03 — GOLD</span>
+    <h2>Gold — Star Schema</h2>
+    <p class="desc">Modello dimensionale analitico su Microsoft Fabric Lakehouse. Tre dimensioni convergono su un'unica tabella dei fatti.</p>
+  </div>
+
+  <div class="star-wrap reveal" id="starWrap">
+    <svg class="star-svg" id="starSvg"></svg>
+    <div class="star-grid">
+      <div class="dim-col">
+        <div class="dim-card" id="dimCliente">
+          <div class="dtitle">dim_cliente</div>
+          <div class="dfield">id_cliente<br>ragione_sociale<br>partita_iva<br>citta · provincia</div>
+        </div>
+        <div class="dim-card" id="dimArticolo">
+          <div class="dtitle">dim_articolo</div>
+          <div class="dfield">codice_articolo<br>descrizione<br>categoria<br>prezzo_listino ★</div>
+        </div>
+      </div>
+
+      <div class="fact-card" id="factOrdini">
+        <div class="dtitle">fact_ordini</div>
+        <div class="dfield">
+          id_ordine<br>
+          <span class="fk">id_cliente (FK)</span><br>
+          <span class="fk">id_data (FK)</span><br>
+          <span class="fk">codice_articolo (FK)</span><br>
+          quantita<br>
+          valore_riga<br>
+          prezzo_dichiarato<br>
+          fonte_dato <span style="color:var(--ink-faint)">→ storico_assets / pdf_estratto</span>
+        </div>
+      </div>
+
+      <div class="dim-col">
+        <div class="dim-card" id="dimData">
+          <div class="dtitle">dim_data</div>
+          <div class="dfield">id_data (yyyyMMdd)<br>anno · mese · trimestre<br>giorno_settimana<br>settimana_anno</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="star-note">
+      <span class="star">★</span>
+      <span>valore_riga = quantità × prezzo_listino — calcolato sempre da dim_articolo (Assets), mai preso dal documento originale.</span>
+    </div>
+  </div>
+  </section>
+  </div>
+
+  <!-- SLIDE 5: COSA È STATO COSTRUITO -->
+  <div class="slide">
+  <section id="built">
+  <div class="sec-head reveal">
+    <span class="sec-num">04 — RISULTATO</span>
+    <h2>Cosa è stato costruito</h2>
+    <p class="desc">Quattro percorsi di classificazione, un'architettura a tre notebook, un modello analitico unificato.</p>
+  </div>
+
+  <div class="built-grid reveal">
+    <div class="built-card ordine">
+      <h4>Ordine</h4>
+      <p>Validazione cliente e articoli vs catalogo, verifica prezzo e unità di misura, flag intervento umano.</p>
+    </div>
+    <div class="built-card quot">
+      <h4>Quotazione</h4>
+      <p>Bozza di offerta con prezzi calcolati automaticamente dal listino ufficiale Assets.</p>
+    </div>
+    <div class="built-card info">
+      <h4>Richiesta info</h4>
+      <p>Ricerca articoli nel catalogo e generazione bozza di risposta da inoltrare all'operatore.</p>
+    </div>
+    <div class="built-card nd">
+      <h4>Non determinabile</h4>
+      <p>Documenti ambigui o non leggibili → flag intervento_umano_necessario = true, archiviati in silver_documenti_non_gestiti per revisione manuale.</p>
+    </div>
+  </div>
+
+  <div class="stat-grid reveal">
+    <div class="stat">
+      <div class="num">3</div>
+      <div class="label">Notebook PySpark</div>
+      <div class="micro">01 estrai · 02 Bronze→Silver · 03 Silver→Gold</div>
+    </div>
+    <div class="stat">
+      <div class="num">B·S·G</div>
+      <div class="label">Medallion su OneLake</div>
+      <div class="micro">Bronze · Silver · Gold in tabelle Delta</div>
+    </div>
+    <div class="stat">
+      <div class="num">3+1</div>
+      <div class="label">Star Schema</div>
+      <div class="micro">3 dim · 1 fact (storico + PDF unificati)</div>
+    </div>
+    <div class="stat">
+      <div class="num">24/7</div>
+      <div class="label">Pipeline schedulata</div>
+      <div class="micro">Trigger automatico su nuovi PDF in arrivo</div>
+    </div>
+  </div>
+
+  <footer>
+    <span>Acme Manufacturing S.r.l. — Intelligent Order Intake</span>
+    <span>Project Work — Data Engineering &amp; AI</span>
+  </footer>
+  </section>
+  </div>
+
+  </div><!-- /slides-track -->
+</div><!-- /slides-viewport -->
+
+<div class="slide-footer-nav">
+  <div class="slide-dots" id="slideDots"></div>
+</div>
+<div class="slide-counter" id="slideCounter">01 / 05</div>
+
+<script>
+  // theme toggle (dark/light), persisted locally
+  (function(){
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const label = document.getElementById('themeLabel');
+    const saved = localStorage.getItem('acme-theme');
+    const initial = saved || 'dark';
+    if(initial === 'light'){ root.setAttribute('data-theme','light'); }
+    label.textContent = initial === 'light' ? 'LIGHT' : 'DARK';
+
+    toggle.addEventListener('click', () => {
+      const isLight = root.getAttribute('data-theme') === 'light';
+      if(isLight){
+        root.removeAttribute('data-theme');
+        label.textContent = 'DARK';
+        localStorage.setItem('acme-theme','dark');
+      } else {
+        root.setAttribute('data-theme','light');
+        label.textContent = 'LIGHT';
+        localStorage.setItem('acme-theme','light');
+      }
+    });
+  })();
+
+  // star schema connector lines — build + play helpers (re-triggerable)
+  const starWrap = document.getElementById('starWrap');
+  const starSvg = document.getElementById('starSvg');
+  const factOrdini = document.getElementById('factOrdini');
+  const dimEls = [
+    document.getElementById('dimCliente'),
+    document.getElementById('dimArticolo'),
+    document.getElementById('dimData')
+  ];
+
+  function starCenterOf(el, wrapRect){
+    const r = el.getBoundingClientRect();
+    return {
+      x: r.left + r.width/2 - wrapRect.left,
+      y: r.top + r.height/2 - wrapRect.top,
+      left: r.left - wrapRect.left,
+      right: r.right - wrapRect.left
+    };
+  }
+
+  function buildStarLines(){
+    const stacked = window.matchMedia('(max-width:880px)').matches;
+    starSvg.innerHTML = '';
+    if(stacked) return;
+
+    const wrapRect = starWrap.getBoundingClientRect();
+    starSvg.setAttribute('viewBox', `0 0 ${wrapRect.width} ${wrapRect.height}`);
+    const f = starCenterOf(factOrdini, wrapRect);
+
+    dimEls.forEach(dim=>{
+      const d = starCenterOf(dim, wrapRect);
+      const onLeft = d.x < f.x;
+      const startX = onLeft ? d.right : d.left;
+      const endX = onLeft ? f.left : f.right;
+      const midX = (startX + endX) / 2;
+      const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d', `M ${startX} ${d.y} C ${midX} ${d.y}, ${midX} ${f.y}, ${endX} ${f.y}`);
+      starSvg.appendChild(path);
+    });
+
+    starSvg.querySelectorAll('path').forEach(p=>{
+      let len = 260;
+      try{ len = p.getTotalLength(); }catch(e){}
+      p.style.transition = 'none';
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = len;
+    });
+  }
+
+  function playStarLines(){
+    starSvg.querySelectorAll('path').forEach(p=>{
+      void p.getBoundingClientRect(); // reflow
+      p.style.transition = '';
+      requestAnimationFrame(()=>{
+        p.style.strokeDashoffset = 0;
+        p.addEventListener('transitionend', ()=>{ p.style.strokeDasharray = '5 6'; }, { once:true });
+      });
+    });
+  }
+
+  window.addEventListener('resize', buildStarLines);
+
+  // pipeline elements
+  const pipelineTrack = document.getElementById('pipelineTrack');
+  const pipelineFill = document.getElementById('pipelineFill');
+  const stepEls = Array.from(pipelineTrack.querySelectorAll('.step'));
+
+  function resetPipeline(){
+    pipelineFill.style.transition = 'none';
+    pipelineFill.style.width = '0%';
+    stepEls.forEach(el=>{
+      el.style.transition = 'none';
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      const num = el.querySelector('.num');
+      if(num){ num.style.transition = 'none'; num.style.transform = 'scale(0)'; }
+    });
+    void pipelineFill.getBoundingClientRect(); // reflow
+  }
+
+  function playPipeline(){
+    pipelineFill.style.transition = '';
+    pipelineFill.style.width = '100%';
+    stepEls.forEach((el,i)=>{
+      el.style.transition = 'opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1)';
+      el.style.transitionDelay = (i*120)+'ms';
+      el.style.opacity = 1;
+      el.style.transform = 'translateY(0)';
+      const num = el.querySelector('.num');
+      if(num){
+        num.style.transition = 'transform .5s cubic-bezier(.34,1.56,.64,1)';
+        num.style.transitionDelay = (i*120 + 260)+'ms';
+        num.style.transform = 'scale(1)';
+      }
+    });
+  }
+
+  resetPipeline();
+
+  // slide navigation system
+  const slidesTrack = document.getElementById('slidesTrack');
+  const slideEls = Array.from(document.querySelectorAll('.slide'));
+  const totalSlides = slideEls.length;
+  const dotsWrap = document.getElementById('slideDots');
+  const counterEl = document.getElementById('slideCounter');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const progressBar = document.getElementById('progress');
+  let current = 0;
+
+  slideEls.forEach((_, i)=>{
+    const dot = document.createElement('button');
+    dot.className = 'slide-dot' + (i===0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Vai alla slide ' + (i+1));
+    dot.addEventListener('click', ()=> goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+  const dotEls = Array.from(dotsWrap.children);
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function updateUI(){
+    dotEls.forEach((d,i)=> d.classList.toggle('active', i===current));
+    counterEl.textContent = pad(current+1) + ' / ' + pad(totalSlides);
+    progressBar.style.width = ((current+1)/totalSlides*100) + '%';
+    prevBtn.classList.toggle('disabled', current===0);
+    nextBtn.classList.toggle('disabled', current===totalSlides-1);
+  }
+
+  // reset every animatable element inside a slide to its "before" state
+  function resetSlideAnimations(index){
+    const slide = slideEls[index];
+    slide.style.transition = 'none';
+    slide.style.opacity = '0';
+    slide.style.transform = 'translateY(16px)';
+    slide.querySelectorAll('.reveal').forEach(el=> el.classList.remove('in'));
+    if(slide.contains(pipelineTrack)){ resetPipeline(); }
+    if(slide.contains(starWrap)){ buildStarLines(); }
+    void slide.getBoundingClientRect(); // reflow
+  }
+
+  // play every animatable element inside a slide
+  function playSlideAnimations(index){
+    const slide = slideEls[index];
+    slide.style.transition = '';
+    slide.style.opacity = '1';
+    slide.style.transform = 'translateY(0)';
+    slide.querySelectorAll('.reveal').forEach(el=> el.classList.add('in'));
+    if(slide.contains(pipelineTrack)){ playPipeline(); }
+    if(slide.contains(starWrap)){
+      buildStarLines();
+      setTimeout(playStarLines, 420); // let the dim/fact cards pop in first
+    }
+  }
+
+  function goTo(index){
+    const next = Math.max(0, Math.min(totalSlides-1, index));
+    if(next === current){ return; }
+    current = next;
+    resetSlideAnimations(current);
+    slidesTrack.style.transform = 'translateX(-' + (current*100) + 'vw)';
+    updateUI();
+    // double rAF: guarantees the reset paints before we retrigger transitions
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=> playSlideAnimations(current));
+    });
+  }
+
+  prevBtn.addEventListener('click', ()=> goTo(current-1));
+  nextBtn.addEventListener('click', ()=> goTo(current+1));
+
+  window.addEventListener('keydown', (e)=>{
+    if(['ArrowRight','ArrowDown','PageDown'].includes(e.key)){ e.preventDefault(); goTo(current+1); }
+    else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); goTo(current-1); }
+    else if(e.key === 'Home'){ e.preventDefault(); goTo(0); }
+    else if(e.key === 'End'){ e.preventDefault(); goTo(totalSlides-1); }
+  });
+
+  // trackpad horizontal gesture
+  let wheelLock = false;
+  window.addEventListener('wheel', (e)=>{
+    if(Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 35){
+      if(wheelLock) return;
+      wheelLock = true;
+      goTo(current + (e.deltaX > 0 ? 1 : -1));
+      setTimeout(()=> wheelLock = false, 650);
+    }
+  }, { passive:true });
+
+  // touch swipe
+  let touchStartX = 0, touchStartY = 0;
+  window.addEventListener('touchstart', (e)=>{
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive:true });
+  window.addEventListener('touchend', (e)=>{
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if(Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5){
+      goTo(current + (dx < 0 ? 1 : -1));
+    }
+  }, { passive:true });
+
+  // initial paint: same lifecycle as goTo — reset then play, so the hero settles in too
+  updateUI();
+  resetSlideAnimations(0);
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=> playSlideAnimations(0));
+  });
+</script>
+
+</body>
+</html>

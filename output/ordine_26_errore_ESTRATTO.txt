@@ -1,0 +1,42 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Fonderia Marchigiana S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "ordini@fonderiamarchigiana.it",
+  "cliente_telefono": "071 5678901",
+  "riferimento_ordine": "FM-ORD-2026/0147",
+  "data_ordine": "27/05/2026",
+  "data_consegna_richiesta": "03/06/2026",
+  "condizioni_pagamento": "Bonifico 30 gg DF.",
+  "note_generali": "NOTA: Consegna ore mattino.",
+  "righe": [
+    {
+      "codice_articolo": "ART-041",
+      "descrizione": "Grasso al litio multiuso 400g",
+      "quantita": 30,
+      "unita_misura": null,
+      "prezzo_unitario": 6.8,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-014",
+      "descrizione": "Olio lubrificante universale 5L",
+      "quantita": 40,
+      "unita_misura": null,
+      "prezzo_unitario": 28.5,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-042",
+      "descrizione": "Spray sgrassante industriale 500ml",
+      "quantita": 20,
+      "unita_misura": null,
+      "prezzo_unitario": 7.9,
+      "nota": null
+    }
+  ]
+}

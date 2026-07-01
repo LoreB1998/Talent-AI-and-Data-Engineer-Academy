@@ -3,7 +3,7 @@
   "motivo_non_determinabile": null,
   "cliente_ragione_sociale": "Elettronica Adriatica S.p.A.",
   "cliente_partita_iva": null,
-  "cliente_indirizzo": null,
+  "cliente_indirizzo": "Viale Europa 45",
   "cliente_citta": "Cesena",
   "cliente_provincia": "FC",
   "cliente_email": "l.ferri@elettronicaadriatica.it",
@@ -12,7 +12,7 @@
   "data_ordine": "lunedì 20 maggio 2026 09:34",
   "data_consegna_richiesta": "30/05/2026",
   "condizioni_pagamento": "come da accordi quadro (RiBa 90 gg FM).",
-  "note_generali": "Vi preghiamo di consegnare entro e non oltre il 30/05/2026 presso il nostro magazzino di Viale Europa 45, 47521 Cesena (FC). In caso di impossibilità a rispettare la data, contattateci prima della conferma.",
+  "note_generali": "Vi preghiamo di consegnare entro e non oltre il 30/05/2026 presso il nostro magazzino di Viale Europa 45, 47521 Cesena (FC). In caso di impossibilità a rispettare la data, contattateci prima della conferma.\nNOTA IMPORTANTE: Per gli interruttori magnetotermici (ART-011) vi chiediamo di fornire la versione con curva C, come da accordi telefonici con il vs. sig. Rossi del 17/05. Se non disponibile la curva C, accettiamo anche curva B purché certificata.\nPer i connettori M12 (ART-017), serve il tipo con cavo da 5m già intestato. Prezzo da confermare se diverso dal listino standard.",
   "righe": [
     {
       "codice_articolo": "ART-011",

@@ -1,0 +1,104 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Bozza di risposta a richiesta informazioni: richiede revisione e invio da parte di un operatore"
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-016",
+    "ragione_sociale": "Materiali Edili Friuli S.r.l.",
+    "partita_iva": "IT16789012345",
+    "indirizzo": "Viale Palmanova 90",
+    "citta": "Udine",
+    "provincia": "UD",
+    "email": "info@materialiedili-fvg.it",
+    "telefono": "0432 6789012",
+    "fonte_cliente": "backend_verificato"
+  },
+  "domanda_o_richiesta": "Consegna entro mercoledì prossimo se possibile, urge.",
+  "articoli_trovati_in_catalogo": [
+    {
+      "richiesto_come": "15 barre da 5 metri di multistrato 20x2",
+      "codice": "ART-020",
+      "descrizione": "Tubo multistrato 20x2 (barra 5m)",
+      "categoria": "Materiale Idraulico",
+      "unita_misura": "pz",
+      "prezzo_listino": 18.9,
+      "confidenza_match": "media"
+    },
+    {
+      "richiesto_come": "40 raccordi pressare 20x1/2 maschio",
+      "codice": "ART-021",
+      "descrizione": "Raccordo a pressare 20x1/2\" maschio",
+      "categoria": "Materiale Idraulico",
+      "unita_misura": "pz",
+      "prezzo_listino": 5.4,
+      "confidenza_match": "alta"
+    },
+    {
+      "richiesto_come": "6 valvole sfera 1\" ottone",
+      "codice": "ART-022",
+      "descrizione": "Valvola a sfera 1\" ottone",
+      "categoria": "Materiale Idraulico",
+      "unita_misura": "pz",
+      "prezzo_listino": 14.8,
+      "confidenza_match": "alta"
+    },
+    {
+      "richiesto_come": "2 collettori distribuzione 1\" 4 uscite",
+      "codice": "ART-026",
+      "descrizione": "Collettore distribuzione 1\" 4 uscite",
+      "categoria": "Materiale Idraulico",
+      "unita_misura": "pz",
+      "prezzo_listino": 68.0,
+      "confidenza_match": "alta"
+    },
+    {
+      "richiesto_come": "4 manometri 0-10 bar diametro 63",
+      "codice": "ART-024",
+      "descrizione": "Manometro radiale 0-10 bar D=63mm",
+      "categoria": "Materiale Idraulico",
+      "unita_misura": "pz",
+      "prezzo_listino": 12.5,
+      "confidenza_match": "alta"
+    },
+    {
+      "richiesto_come": "1 pompa di circolazione 25-60 (per il riscaldamento)",
+      "codice": "ART-023",
+      "descrizione": "Pompa di circolazione 25-60",
+      "categoria": "Materiale Idraulico",
+      "unita_misura": "pz",
+      "prezzo_listino": 245.0,
+      "confidenza_match": "alta"
+    },
+    {
+      "richiesto_come": "3 filtri Y 3/4 ottone",
+      "codice": "ART-027",
+      "descrizione": "Filtro a Y 3/4\" ottone",
+      "categoria": "Materiale Idraulico",
+      "unita_misura": "pz",
+      "prezzo_listino": 22.5,
+      "confidenza_match": "alta"
+    },
+    {
+      "richiesto_come": "10 confezioni guarnizioni piatte 1\" fibra",
+      "codice": "ART-025",
+      "descrizione": "Guarnizione piatta 1\" in fibra",
+      "categoria": "Materiale Idraulico",
+      "unita_misura": "conf",
+      "prezzo_listino": 3.8,
+      "confidenza_match": "media"
+    },
+    {
+      "richiesto_come": "silicone trasparente, diciamo 12 cartucce",
+      "codice": "ART-046",
+      "descrizione": "Silicone sigillante trasparente 310ml",
+      "categoria": "Materiale di Consumo",
+      "unita_misura": "pz",
+      "prezzo_listino": 5.6,
+      "confidenza_match": "media"
+    }
+  ],
+  "articoli_non_trovati": [],
+  "bozza_risposta": "Gentile Materiali Edili Friuli S.r.l.,\n\nin risposta alla Sua richiesta, Le forniamo le informazioni disponibili sui prodotti indicati:\n\n- ART-020: Tubo multistrato 20x2 (barra 5m) — 18.90 EUR / pz\n- ART-021: Raccordo a pressare 20x1/2\" maschio — 5.40 EUR / pz\n- ART-022: Valvola a sfera 1\" ottone — 14.80 EUR / pz\n- ART-026: Collettore distribuzione 1\" 4 uscite — 68.00 EUR / pz\n- ART-024: Manometro radiale 0-10 bar D=63mm — 12.50 EUR / pz\n- ART-023: Pompa di circolazione 25-60 — 245.00 EUR / pz\n- ART-027: Filtro a Y 3/4\" ottone — 22.50 EUR / pz\n- ART-025: Guarnizione piatta 1\" in fibra — 3.80 EUR / conf\n- ART-046: Silicone sigillante trasparente 310ml — 5.60 EUR / pz\n\nRestiamo a disposizione per ulteriori chiarimenti.\n\n[BOZZA — da rivedere e completare a cura dell'operatore prima dell'invio]",
+  "tipo_documento": "richiesta_informazioni"
+}

@@ -1,0 +1,66 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Termoidraulica Centro Italia S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "g.sereni@termoidraulicaci.it",
+  "cliente_telefono": null,
+  "riferimento_ordine": null,
+  "data_ordine": "sabato 23 maggio 2026 08:15",
+  "data_consegna_richiesta": "lunedì",
+  "condizioni_pagamento": "Pago a fine mese.",
+  "note_generali": "Niente fretta sulla bolla, urgenza solo per la merce.",
+  "righe": [
+    {
+      "codice_articolo": null,
+      "descrizione": "pompe circolazione 25-60",
+      "quantita": 2,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "manometri 0-10 bar (i piccoli diametro 63 mm)",
+      "quantita": 10,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "collettori 1 pollice 4 uscite",
+      "quantita": 5,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "raccordi 20x1/2",
+      "quantita": 20,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "confezioni guarnizioni 1\"",
+      "quantita": 3,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "filtri Y da 3/4",
+      "quantita": 4,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    }
+  ]
+}

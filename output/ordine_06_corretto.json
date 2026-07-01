@@ -1,0 +1,71 @@
+{
+  "intervento_umano_necessario": false,
+  "motivo_intervento_umano": null,
+  "cliente": {
+    "id_cliente_match": "CLI-010",
+    "ragione_sociale": "Impianti Elettrici del Nord S.r.l.",
+    "partita_iva": "IT10123456789",
+    "indirizzo": "Via Marconi 56",
+    "citta": "Trento",
+    "provincia": "TN",
+    "email": "ordini@iednord.it",
+    "telefono": "0461 0123456",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "IEN/2026/ACQ/0094",
+  "data_ordine": "22/05/2026",
+  "data_consegna_richiesta": "Entro 28/05/2026",
+  "condizioni_pagamento": "Bonifico 60 gg DF.",
+  "note_generali": "Cantiere Trento Nord. Ddt intestato al cantiere con riferimento commessa CT-2026-44.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-011",
+      "descrizione_dichiarata": "Interruttore magnetotermico 16A 1P",
+      "codice_articolo_match": "ART-011",
+      "descrizione_match": "Interruttore magnetotermico 16A 1P",
+      "quantita": 1,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 18.5,
+      "prezzo_listino_catalogo": 18.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-012",
+      "descrizione_dichiarata": "Presa industriale CEE 32A 3P+T",
+      "codice_articolo_match": "ART-012",
+      "descrizione_match": "Presa industriale CEE 32A 3P+T",
+      "quantita": 8,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 24.9,
+      "prezzo_listino_catalogo": 24.9,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-014",
+      "descrizione_dichiarata": "Guaina spiralata D=16mm nera (25m)",
+      "codice_articolo_match": "ART-014",
+      "descrizione_match": "Guaina spiralata D=16mm nera (25m)",
+      "quantita": 6,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 15.4,
+      "prezzo_listino_catalogo": 15.4,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-017",
+      "descrizione_dichiarata": "Connettore circolare M12 4 pin",
+      "codice_articolo_match": "ART-017",
+      "descrizione_match": "Connettore circolare M12 4 pin",
+      "quantita": 25,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 9.8,
+      "prezzo_listino_catalogo": 9.8,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

@@ -1,10 +1,15 @@
+import os
 from pathlib import Path
 
-ENDPOINT = "https://lorenzobarbato-resource.services.ai.azure.com/api/projects/lorenzobarbato"
-AGENT_NAME = "PDF-Analyzer"
-AGENT_VERSION = "5"
+from dotenv import load_dotenv
 
-BACKEND_BASE_URL = "http://ja.4labs.it:8080"
+load_dotenv()
+
+ENDPOINT = os.environ["ENDPOINT"]
+AGENT_NAME = os.environ["AGENT_NAME"]
+AGENT_VERSION = os.environ["AGENT_VERSION"]
+
+BACKEND_BASE_URL = os.environ["BACKEND_BASE_URL"]
 
 PDF_DIR = Path("pdf_da_processare")
 OUTPUT_DIR = Path("output")

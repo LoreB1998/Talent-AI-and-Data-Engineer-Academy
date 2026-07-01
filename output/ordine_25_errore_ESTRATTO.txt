@@ -1,0 +1,34 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Carpenteria Metallica Toscana S.r.l.",
+  "cliente_partita_iva": "IT07890123456",
+  "cliente_indirizzo": "Via Pisana 34 — 50142 Firenze (FI)",
+  "cliente_citta": "Firenze",
+  "cliente_provincia": "FI",
+  "cliente_email": "ordini@cmt-firenze.it",
+  "cliente_telefono": "055 7890123",
+  "riferimento_ordine": "ODA-CMT/2026-0588",
+  "data_ordine": "27/05/2026",
+  "data_consegna_richiesta": "Entro 7 giorni",
+  "condizioni_pagamento": "Bonifico 45 gg DF",
+  "note_generali": "Trapano destinato a sostituzione macchinario guasto.",
+  "righe": [
+    {
+      "codice_articolo": "ART-031",
+      "descrizione": "Trapano a colonna da banco 500W",
+      "quantita": 1,
+      "unita_misura": "pz",
+      "prezzo_unitario": 38.5,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-037",
+      "descrizione": "Morsa da banco parallela 150mm",
+      "quantita": 2,
+      "unita_misura": "pz",
+      "prezzo_unitario": 98.0,
+      "nota": null
+    }
+  ]
+}

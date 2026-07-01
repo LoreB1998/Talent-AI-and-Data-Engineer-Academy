@@ -1,0 +1,42 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Automazione Industriale Piemonte S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "acquisti@aipautomazione.it",
+  "cliente_telefono": "011 6789012",
+  "riferimento_ordine": "AIP-ORD/2026-0177",
+  "data_ordine": "19/05/2026",
+  "data_consegna_richiesta": "Entro 25/05/2026",
+  "condizioni_pagamento": "RiBa 60 gg DF FM.",
+  "note_generali": "Sede di consegna: Corso Francia 189, 10138 Torino (TO).",
+  "righe": [
+    {
+      "codice_articolo": "ART-016",
+      "descrizione": "Relè industriale 24VDC 4 contatti",
+      "quantita": 20,
+      "unita_misura": null,
+      "prezzo_unitario": 28.5,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-031",
+      "descrizione": "Morsettiera 12 poli 16mm²",
+      "quantita": 50,
+      "unita_misura": "16mm²",
+      "prezzo_unitario": 3.2,
+      "nota": "Per le morsettiere serve la versione con sezione 16mm² come da listino."
+    },
+    {
+      "codice_articolo": "ART-010",
+      "descrizione": "Cavo elettrico H07V-K 2.5mm² blu (100m)",
+      "quantita": 200,
+      "unita_misura": "(100m)",
+      "prezzo_unitario": 0.85,
+      "nota": null
+    }
+  ]
+}

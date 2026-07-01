@@ -1,0 +1,158 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Riga '': Unità di misura dichiarata ('metri') diversa da quella di vendita a catalogo ('m')",
+    "Riga '': Unità di misura dichiarata ('l') diversa da quella di vendita a catalogo ('lt')"
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-001",
+    "ragione_sociale": "Meccanica Precisione S.r.l.",
+    "partita_iva": "IT01234567890",
+    "indirizzo": "Via dell'Industria 12",
+    "citta": "Casalecchio di Reno",
+    "provincia": "BO",
+    "email": "ordini@meccanicaprecisione.it",
+    "telefono": "051 1234567",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "26-MP-302",
+  "data_ordine": "lunedì 25 maggio 2026 11:30",
+  "data_consegna_richiesta": "prima settimana di giugno",
+  "condizioni_pagamento": null,
+  "note_generali": "Vi confermo per ddt: causale \"MERCE PER PRODUZIONE\", commessa 26-MP-302.\nConsegna possibilmente la prima settimana di giugno. Prezzi listino in vigore, eventuali variazioni segnalatemele.",
+  "righe": [
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "bulloni esagonali M8x40 zincati",
+      "codice_articolo_match": "ART-001",
+      "descrizione_match": "Bullone esagonale M8x40 zincato",
+      "quantita": 1500,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 0.45,
+      "confidenza_match": "bassa",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "dadi autobloccanti M8 inox",
+      "codice_articolo_match": "ART-002",
+      "descrizione_match": "Dado autobloccante M8 inox",
+      "quantita": 1000,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 0.32,
+      "confidenza_match": "media",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "rondelle M10",
+      "codice_articolo_match": "ART-004",
+      "descrizione_match": "Rondella piana M10 zincata",
+      "quantita": 2000,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 0.12,
+      "confidenza_match": "bassa",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "confezioni rivetti 4.8x12 alluminio",
+      "codice_articolo_match": "ART-006",
+      "descrizione_match": "Rivetto a strappo 4.8x12 alluminio",
+      "quantita": 30,
+      "unita_misura": "conf",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 12.9,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "sensori prossimità induttivi M18 (PNP)",
+      "codice_articolo_match": "ART-015",
+      "descrizione_match": "Sensore di prossimità induttivo M18 PNP",
+      "quantita": 12,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 42.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "metri di cavo H07V-K 2.5 blu",
+      "codice_articolo_match": "ART-010",
+      "descrizione_match": "Cavo elettrico H07V-K 2.5mm² blu (100m)",
+      "quantita": 200,
+      "unita_misura": "metri",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 0.85,
+      "confidenza_match": "alta",
+      "note_anomalia": "Unità di misura dichiarata ('metri') diversa da quella di vendita a catalogo ('m')"
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "nastri isolanti neri 25m",
+      "codice_articolo_match": "ART-014",
+      "descrizione_match": "Guaina spiralata D=16mm nera (25m)",
+      "quantita": 50,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 15.4,
+      "confidenza_match": "bassa",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "fascette cablaggio bianche (le confezioni da 100)",
+      "codice_articolo_match": "ART-047",
+      "descrizione_match": "Fascette cablaggio 200x4.8mm bianche (100pz)",
+      "quantita": 20,
+      "unita_misura": "conf",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 4.2,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "l latte olio lubrificante 5L",
+      "codice_articolo_match": "ART-040",
+      "descrizione_match": "Olio lubrificante universale 5L",
+      "quantita": 6,
+      "unita_misura": "l",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 28.5,
+      "confidenza_match": "alta",
+      "note_anomalia": "Unità di misura dichiarata ('l') diversa da quella di vendita a catalogo ('lt')"
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "spray sgrassante 500ml",
+      "codice_articolo_match": "ART-042",
+      "descrizione_match": "Spray sgrassante industriale 500ml",
+      "quantita": 10,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 7.9,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "cartucce silicone trasparente",
+      "codice_articolo_match": "ART-046",
+      "descrizione_match": "Silicone sigillante trasparente 310ml",
+      "quantita": 8,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 5.6,
+      "confidenza_match": "media",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

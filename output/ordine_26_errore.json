@@ -1,0 +1,61 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Riga 'ART-014': Prezzo dichiarato (28.5) diverso dal listino (15.4), scostamento 85%"
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-015",
+    "ragione_sociale": "Fonderia Marchigiana S.r.l.",
+    "partita_iva": "IT15678901234",
+    "indirizzo": "Via Industriale 22",
+    "citta": "Ancona",
+    "provincia": "AN",
+    "email": "ordini@fonderiamarchigiana.it",
+    "telefono": "071 5678901",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "FM-ORD-2026/0147",
+  "data_ordine": "27/05/2026",
+  "data_consegna_richiesta": "03/06/2026",
+  "condizioni_pagamento": "Bonifico 30 gg DF.",
+  "note_generali": "NOTA: Consegna ore mattino.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-041",
+      "descrizione_dichiarata": "Grasso al litio multiuso 400g",
+      "codice_articolo_match": "ART-041",
+      "descrizione_match": "Grasso al litio multiuso 400g",
+      "quantita": 30,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 6.8,
+      "prezzo_listino_catalogo": 6.8,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-014",
+      "descrizione_dichiarata": "Olio lubrificante universale 5L",
+      "codice_articolo_match": "ART-014",
+      "descrizione_match": "Guaina spiralata D=16mm nera (25m)",
+      "quantita": 40,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 28.5,
+      "prezzo_listino_catalogo": 15.4,
+      "confidenza_match": "alta",
+      "note_anomalia": "Prezzo dichiarato (28.5) diverso dal listino (15.4), scostamento 85%"
+    },
+    {
+      "codice_dichiarato": "ART-042",
+      "descrizione_dichiarata": "Spray sgrassante industriale 500ml",
+      "codice_articolo_match": "ART-042",
+      "descrizione_match": "Spray sgrassante industriale 500ml",
+      "quantita": 20,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 7.9,
+      "prezzo_listino_catalogo": 7.9,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

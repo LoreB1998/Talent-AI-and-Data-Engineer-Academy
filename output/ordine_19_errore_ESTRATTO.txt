@@ -1,0 +1,42 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Acme Manufacturing S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": "Via Bologna 100",
+  "cliente_citta": "Casalecchio di Reno",
+  "cliente_provincia": "BO",
+  "cliente_email": null,
+  "cliente_telefono": null,
+  "riferimento_ordine": "OFF-2299 del 17/05/2026",
+  "data_ordine": "24/05/2026",
+  "data_consegna_richiesta": "Entro 10 giorni",
+  "condizioni_pagamento": "Bonifico 30 gg DF",
+  "note_generali": "Conferma offerta in scadenza.",
+  "righe": [
+    {
+      "codice_articolo": "ART-023",
+      "descrizione": "Pompa di circolazione 25-60",
+      "quantita": 1,
+      "unita_misura": "pz",
+      "prezzo_unitario": 254,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-024",
+      "descrizione": "Manometro radiale 0-10 bar D=63mm",
+      "quantita": 4,
+      "unita_misura": "pz",
+      "prezzo_unitario": 12.5,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-026",
+      "descrizione": "Collettore distribuzione 1\" 4 uscite",
+      "quantita": 2,
+      "unita_misura": "pz",
+      "prezzo_unitario": 6.8,
+      "nota": null
+    }
+  ]
+}

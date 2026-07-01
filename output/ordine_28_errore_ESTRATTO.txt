@@ -1,0 +1,42 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Isolamenti Termici Calabria S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "info@isolamentitermici.it",
+  "cliente_telefono": "0984 0123456",
+  "riferimento_ordine": "ITC/ORD/2026-088",
+  "data_ordine": "28/05/2026",
+  "data_consegna_richiesta": "04/06/2026",
+  "condizioni_pagamento": "Bonifico 60 gg FM.",
+  "note_generali": "Materiale DPI per nuova commessa.\nSede di consegna: Via Nazionale 56, 87100 Cosenza (CS).",
+  "righe": [
+    {
+      "codice_articolo": "ART-048",
+      "descrizione": "Mascherina FFP2 (50pz)",
+      "quantita": 10,
+      "unita_misura": null,
+      "prezzo_unitario": 24.5,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-044",
+      "descrizione": "Guanti da lavoro nitrile tg. L (100pz)",
+      "quantita": 15,
+      "unita_misura": null,
+      "prezzo_unitario": 14.5,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-045",
+      "descrizione": "Panno pulizia industriale rotolo (500 strappi)",
+      "quantita": 8,
+      "unita_misura": null,
+      "prezzo_unitario": 22.0,
+      "nota": null
+    }
+  ]
+}

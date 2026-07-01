@@ -1,0 +1,90 @@
+{
+  "tipo_documento": "richiesta_informazioni",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Materiali Edili Friuli S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "s.toniolo@materialiedili-fvg.it",
+  "cliente_telefono": null,
+  "riferimento_ordine": null,
+  "data_ordine": "venerdì 22 maggio 2026 10:50",
+  "data_consegna_richiesta": "mercoledì prossimo",
+  "condizioni_pagamento": null,
+  "note_generali": "Consegna entro mercoledì prossimo se possibile, urge.",
+  "righe": [
+    {
+      "codice_articolo": null,
+      "descrizione": "15 barre da 5 metri di multistrato 20x2",
+      "quantita": 15,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "40 raccordi pressare 20x1/2 maschio",
+      "quantita": 40,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "6 valvole sfera 1\" ottone",
+      "quantita": 6,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "2 collettori distribuzione 1\" 4 uscite",
+      "quantita": 2,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "4 manometri 0-10 bar diametro 63",
+      "quantita": 4,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "1 pompa di circolazione 25-60 (per il riscaldamento)",
+      "quantita": 1,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "3 filtri Y 3/4 ottone",
+      "quantita": 3,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "10 confezioni guarnizioni piatte 1\" fibra",
+      "quantita": 10,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "silicone trasparente, diciamo 12 cartucce",
+      "quantita": 12,
+      "unita_misura": "cartucce",
+      "prezzo_unitario": null,
+      "nota": "diciamo"
+    }
+  ]
+}

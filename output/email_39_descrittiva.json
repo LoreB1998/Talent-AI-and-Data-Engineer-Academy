@@ -1,0 +1,95 @@
+{
+  "intervento_umano_necessario": false,
+  "motivo_intervento_umano": null,
+  "cliente": {
+    "id_cliente_match": "CLI-012",
+    "ragione_sociale": "Termoidraulica Centro Italia S.r.l.",
+    "partita_iva": "IT12345678901",
+    "indirizzo": "Via Flaminia 234",
+    "citta": "Spoleto",
+    "provincia": "PG",
+    "email": "acquisti@termoidraulicaci.it",
+    "telefono": "0743 2345678",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": null,
+  "data_ordine": "sabato 23 maggio 2026 08:15",
+  "data_consegna_richiesta": "lunedì",
+  "condizioni_pagamento": "Pago a fine mese.",
+  "note_generali": "Niente fretta sulla bolla, urgenza solo per la merce.",
+  "righe": [
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "pompe circolazione 25-60",
+      "codice_articolo_match": "ART-023",
+      "descrizione_match": "Pompa di circolazione 25-60",
+      "quantita": 2,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 245.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "manometri 0-10 bar (i piccoli diametro 63 mm)",
+      "codice_articolo_match": "ART-024",
+      "descrizione_match": "Manometro radiale 0-10 bar D=63mm",
+      "quantita": 10,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 12.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "collettori 1 pollice 4 uscite",
+      "codice_articolo_match": "ART-026",
+      "descrizione_match": "Collettore distribuzione 1\" 4 uscite",
+      "quantita": 5,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 68.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "raccordi 20x1/2",
+      "codice_articolo_match": "ART-021",
+      "descrizione_match": "Raccordo a pressare 20x1/2\" maschio",
+      "quantita": 20,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 5.4,
+      "confidenza_match": "media",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "confezioni guarnizioni 1\"",
+      "codice_articolo_match": "ART-022",
+      "descrizione_match": "Valvola a sfera 1\" ottone",
+      "quantita": 3,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 14.8,
+      "confidenza_match": "bassa",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "filtri Y da 3/4",
+      "codice_articolo_match": "ART-027",
+      "descrizione_match": "Filtro a Y 3/4\" ottone",
+      "quantita": 4,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 22.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

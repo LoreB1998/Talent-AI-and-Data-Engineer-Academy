@@ -1,0 +1,59 @@
+{
+  "intervento_umano_necessario": false,
+  "motivo_intervento_umano": null,
+  "cliente": {
+    "id_cliente_match": "CLI-020",
+    "ragione_sociale": "Isolamenti Termici Calabria S.r.l.",
+    "partita_iva": "IT20123456789",
+    "indirizzo": "Via Nazionale 56",
+    "citta": "Cosenza",
+    "provincia": "CS",
+    "email": "info@isolamentitermici.it",
+    "telefono": "0984 0123456",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "ITC/ORD/2026-058",
+  "data_ordine": "27/05/2026",
+  "data_consegna_richiesta": "02/06/2026",
+  "condizioni_pagamento": "Bonifico 60 gg FM.",
+  "note_generali": "Spedizione a mezzo corriere espresso, contrassegno NO.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-042",
+      "descrizione_dichiarata": "Spray sgrassante industriale 500ml",
+      "codice_articolo_match": "ART-042",
+      "descrizione_match": "Spray sgrassante industriale 500ml",
+      "quantita": 36,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 7.9,
+      "prezzo_listino_catalogo": 7.9,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-044",
+      "descrizione_dichiarata": "Guanti da lavoro nitrile tg. L (100pz)",
+      "codice_articolo_match": "ART-044",
+      "descrizione_match": "Guanti da lavoro nitrile tg. L (100pz)",
+      "quantita": 20,
+      "unita_misura": "conf",
+      "prezzo_dichiarato": 14.5,
+      "prezzo_listino_catalogo": 14.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-045",
+      "descrizione_dichiarata": "Panno pulizia industriale rotolo (500 strappi)",
+      "codice_articolo_match": "ART-045",
+      "descrizione_match": "Panno pulizia industriale rotolo (500 strappi)",
+      "quantita": 12,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 22.0,
+      "prezzo_listino_catalogo": 22.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

@@ -1,5 +1,4 @@
 {
-  "tipo_documento": "ordine",
   "intervento_umano_necessario": true,
   "motivo_intervento_umano": [
     "Riga 'ART-011': nota che richiede valutazione — Per gli interruttori magnetotermici (ART-011) vi chiediamo di fornire la version",
@@ -20,7 +19,7 @@
   "data_ordine": "lunedì 20 maggio 2026 09:34",
   "data_consegna_richiesta": "30/05/2026",
   "condizioni_pagamento": "come da accordi quadro (RiBa 90 gg FM).",
-  "note_generali": "Vi preghiamo di consegnare entro e non oltre il 30/05/2026 presso il nostro magazzino di Viale Europa 45, 47521 Cesena (FC). In caso di impossibilità a rispettare la data, contattateci prima della conferma.",
+  "note_generali": "Vi preghiamo di consegnare entro e non oltre il 30/05/2026 presso il nostro magazzino di Viale Europa 45, 47521 Cesena (FC). In caso di impossibilità a rispettare la data, contattateci prima della conferma.\nNOTA IMPORTANTE: Per gli interruttori magnetotermici (ART-011) vi chiediamo di fornire la versione con curva C, come da accordi telefonici con il vs. sig. Rossi del 17/05. Se non disponibile la curva C, accettiamo anche curva B purché certificata.\nPer i connettori M12 (ART-017), serve il tipo con cavo da 5m già intestato. Prezzo da confermare se diverso dal listino standard.",
   "righe": [
     {
       "codice_dichiarato": "ART-011",
@@ -94,5 +93,6 @@
       "confidenza_match": "alta",
       "note_anomalia": null
     }
-  ]
+  ],
+  "tipo_documento": "ordine"
 }

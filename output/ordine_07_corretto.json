@@ -1,0 +1,61 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Cliente non identificato in anagrafica"
+  ],
+  "cliente": {
+    "id_cliente_match": null,
+    "ragione_sociale": "Acme Manufacturing S.r.l.",
+    "partita_iva": null,
+    "indirizzo": "Via Bologna 100",
+    "citta": "Casalecchio di Reno",
+    "provincia": "BO",
+    "email": null,
+    "telefono": null,
+    "fonte_cliente": "documento_non_verificato"
+  },
+  "riferimento_ordine": "ODA-CMT/2026-0521",
+  "data_ordine": "23/05/2026",
+  "data_consegna_richiesta": "Entro 7 giorni lavorativi",
+  "condizioni_pagamento": "Bonifico 45 gg DF",
+  "note_generali": "Materiale per attività di carpenteria pesante. Garanzia minima 24 mesi.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-035",
+      "descrizione_dichiarata": "Saldatrice inverter MMA 200A",
+      "codice_articolo_match": "ART-035",
+      "descrizione_match": "Saldatrice inverter MMA 200A",
+      "quantita": 2,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 420,
+      "prezzo_listino_catalogo": 420.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-031",
+      "descrizione_dichiarata": "Trapano a colonna da banco 500W",
+      "codice_articolo_match": "ART-031",
+      "descrizione_match": "Trapano a colonna da banco 500W",
+      "quantita": 1,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 385,
+      "prezzo_listino_catalogo": 385.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-037",
+      "descrizione_dichiarata": "Morsa da banco parallela 150mm",
+      "codice_articolo_match": "ART-037",
+      "descrizione_match": "Morsa da banco parallela 150mm",
+      "quantita": 3,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 98,
+      "prezzo_listino_catalogo": 98.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

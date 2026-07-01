@@ -1,0 +1,71 @@
+{
+  "intervento_umano_necessario": false,
+  "motivo_intervento_umano": null,
+  "cliente": {
+    "id_cliente_match": "CLI-013",
+    "ragione_sociale": "Utensileria Bergamasca S.r.l.",
+    "partita_iva": "IT13456789012",
+    "indirizzo": "Via Seriate 45",
+    "citta": "Bergamo",
+    "provincia": "BG",
+    "email": "ordini@utensileriabg.it",
+    "telefono": "035 3456789",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "UB-ORD/2026-227",
+  "data_ordine": "21/05/2026",
+  "data_consegna_richiesta": "Urgente, entro 3 gg lavorativi",
+  "condizioni_pagamento": "Come da accordo quadro - RiBa 90 gg.",
+  "note_generali": "Materiale per cliente finale, imballi singoli per ciascun pezzo.\nSede di consegna: Via Seriate 45, 24121 Bergamo (BG).",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-030",
+      "descrizione_dichiarata": "Set chiavi a bussola 1/2\" 10-32mm (21pz)",
+      "codice_articolo_match": "ART-030",
+      "descrizione_match": "Set chiavi a bussola 1/2\" 10-32mm (21pz)",
+      "quantita": 4,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 89,
+      "prezzo_listino_catalogo": 89.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-034",
+      "descrizione_dichiarata": "Chiave dinamometrica 1/2\" 20-200Nm",
+      "codice_articolo_match": "ART-034",
+      "descrizione_match": "Chiave dinamometrica 1/2\" 20-200Nm",
+      "quantita": 2,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 156,
+      "prezzo_listino_catalogo": 156.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-036",
+      "descrizione_dichiarata": "Set punte HSS rettificate 1-13mm (25pz)",
+      "codice_articolo_match": "ART-036",
+      "descrizione_match": "Set punte HSS rettificate 1-13mm (25pz)",
+      "quantita": 6,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 34.5,
+      "prezzo_listino_catalogo": 34.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-032",
+      "descrizione_dichiarata": "Disco da taglio inox 125x1.0mm",
+      "codice_articolo_match": "ART-032",
+      "descrizione_match": "Disco da taglio inox 125x1.0mm",
+      "quantita": 100,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 2.1,
+      "prezzo_listino_catalogo": 2.1,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

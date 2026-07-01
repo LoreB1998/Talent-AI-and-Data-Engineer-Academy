@@ -57,11 +57,40 @@ def trova_articolo_per_descrizione(descrizione: str, articoli: list[dict]) -> tu
     return migliore, "bassa"
 
 
+def trova_articolo(codice_dichiarato: str, descrizione_dichiarata: str, articoli: list[dict]) -> tuple[dict | None, str, str | None]:
+    """Trova l'articolo di catalogo corrispondente, prima per codice esatto,
+    poi per somiglianza di descrizione. Restituisce (articolo_o_None,
+    confidenza, codice_match_o_None)."""
+    articolo = trova_articolo_per_codice(codice_dichiarato, articoli) if codice_dichiarato else None
+    if articolo:
+        return articolo, "alta", articolo["codice"]
+    articolo_simile, confidenza = trova_articolo_per_descrizione(descrizione_dichiarata, articoli)
+    codice_match = articolo_simile["codice"] if articolo_simile else None
+    return articolo_simile, confidenza, codice_match
+
+
+def cliente_completo(dati_estratti: dict, cliente_match: dict | None) -> dict:
+    """Combina i dati cliente verificati dal backend (se trovato) con quelli
+    dichiarati nel documento (fallback se non trovato in anagrafica)."""
+    return {
+        "id_cliente_match": cliente_match["id"] if cliente_match else None,
+        "ragione_sociale": cliente_match["ragioneSociale"] if cliente_match else dati_estratti.get("cliente_ragione_sociale"),
+        "partita_iva": cliente_match.get("partitaIva") if cliente_match else dati_estratti.get("cliente_partita_iva"),
+        "indirizzo": cliente_match.get("indirizzo") if cliente_match else dati_estratti.get("cliente_indirizzo"),
+        "citta": cliente_match.get("citta") if cliente_match else dati_estratti.get("cliente_citta"),
+        "provincia": cliente_match.get("provincia") if cliente_match else dati_estratti.get("cliente_provincia"),
+        "email": cliente_match.get("email") if cliente_match else dati_estratti.get("cliente_email"),
+        "telefono": cliente_match.get("telefono") if cliente_match else dati_estratti.get("cliente_telefono"),
+        "fonte_cliente": "backend_verificato" if cliente_match else "documento_non_verificato",
+    }
+
+
 def verifica_coerenza_riga(riga_dichiarata: dict, articolo_match: dict | None, unita_dichiarata: str | None) -> list[str]:
     """Confronta i dati dichiarati nel documento con quelli reali di
     catalogo, e restituisce una lista di messaggi di anomalia (vuota se
     tutto è coerente). Non blocca mai l'elaborazione: la riga resta nel
-    risultato comunque, con le anomalie segnalate a parte."""
+    risultato comunque, con le anomalie segnalate a parte. Pensata per
+    ordini, dove il documento dichiara già un prezzo da confrontare."""
     anomalie = []
 
     quantita = riga_dichiarata.get("quantita")
@@ -95,48 +124,25 @@ def verifica_coerenza_riga(riga_dichiarata: dict, articolo_match: dict | None, u
 
 
 def valida_ordine(dati_estratti: dict, clienti: list[dict], articoli: list[dict]) -> dict:
-    """Valida i dati già estratti in JSON dall'agente, confrontandoli con
-    clienti e articoli reali presi dal backend."""
-    tipo_documento = dati_estratti.get("tipo_documento", "non_determinabile")
-    motivo_non_det = dati_estratti.get("motivo_non_determinabile")
-
-    intervento_umano = tipo_documento == "non_determinabile"
-    motivo_intervento = []
-    if tipo_documento == "non_determinabile":
-        motivo_intervento.append(f"Tipo documento non determinabile: {motivo_non_det or 'nessun dettaglio disponibile'}")
-
+    """Valida un documento classificato come ORDINE: verifica cliente e
+    articoli, confronta prezzo/unità dichiarati con il catalogo, segnala
+    anomalie e determina se serve intervento umano."""
     cliente_match = trova_cliente(dati_estratti, clienti)
+    intervento_umano = False
+    motivo_intervento = []
+
     if not cliente_match:
         intervento_umano = True
         motivo_intervento.append("Cliente non identificato in anagrafica")
-
-    cliente_output = {
-        "id_cliente_match": cliente_match["id"] if cliente_match else None,
-        "ragione_sociale": cliente_match["ragioneSociale"] if cliente_match else dati_estratti.get("cliente_ragione_sociale"),
-        "partita_iva": cliente_match.get("partitaIva") if cliente_match else dati_estratti.get("cliente_partita_iva"),
-        "indirizzo": cliente_match.get("indirizzo") if cliente_match else dati_estratti.get("cliente_indirizzo"),
-        "citta": cliente_match.get("citta") if cliente_match else dati_estratti.get("cliente_citta"),
-        "provincia": cliente_match.get("provincia") if cliente_match else dati_estratti.get("cliente_provincia"),
-        "email": cliente_match.get("email") if cliente_match else dati_estratti.get("cliente_email"),
-        "telefono": cliente_match.get("telefono") if cliente_match else dati_estratti.get("cliente_telefono"),
-        "fonte_cliente": "backend_verificato" if cliente_match else "documento_non_verificato",
-    }
 
     righe_validate = []
     for riga in dati_estratti.get("righe", []):
         codice_dichiarato = (riga.get("codice_articolo") or "").strip()
         descrizione_dichiarata = riga.get("descrizione") or ""
 
-        articolo = trova_articolo_per_codice(codice_dichiarato, articoli) if codice_dichiarato else None
-        if articolo:
-            confidenza, descrizione_match, codice_match = "alta", articolo["descrizione"], articolo["codice"]
-            unita_misura = riga.get("unita_misura") or articolo.get("unitaMisura")
-        else:
-            articolo_simile, confidenza = trova_articolo_per_descrizione(descrizione_dichiarata, articoli)
-            descrizione_match = articolo_simile["descrizione"] if articolo_simile else descrizione_dichiarata
-            codice_match = articolo_simile["codice"] if articolo_simile else None
-            unita_misura = riga.get("unita_misura") or (articolo_simile.get("unitaMisura") if articolo_simile else None)
-            articolo = articolo_simile
+        articolo, confidenza, codice_match = trova_articolo(codice_dichiarato, descrizione_dichiarata, articoli)
+        descrizione_match = articolo["descrizione"] if articolo else descrizione_dichiarata
+        unita_misura = riga.get("unita_misura") or (articolo.get("unitaMisura") if articolo else None)
 
         note_anomalia_parti = []
         if not codice_match:
@@ -148,7 +154,9 @@ def valida_ordine(dati_estratti: dict, clienti: list[dict], articoli: list[dict]
         if riga.get("nota"):
             note_anomalia_parti.append(f"Nota nel documento: {riga['nota']}")
             intervento_umano = True
-            motivo_intervento.append(f"Riga '{codice_dichiarato or descrizione_dichiarata[:30]}': nota che richiede valutazione — {riga['nota'][:80]}")
+            motivo_intervento.append(
+                f"Riga '{codice_dichiarato or descrizione_dichiarata[:30]}': nota che richiede valutazione — {riga['nota'][:80]}"
+            )
 
         anomalie_coerenza = verifica_coerenza_riga(riga, articolo, riga.get("unita_misura"))
         note_anomalia_parti.extend(anomalie_coerenza)
@@ -171,10 +179,9 @@ def valida_ordine(dati_estratti: dict, clienti: list[dict], articoli: list[dict]
         })
 
     return {
-        "tipo_documento": tipo_documento,
         "intervento_umano_necessario": intervento_umano,
         "motivo_intervento_umano": list(dict.fromkeys(motivo_intervento)) if motivo_intervento else None,
-        "cliente": cliente_output,
+        "cliente": cliente_completo(dati_estratti, cliente_match),
         "riferimento_ordine": dati_estratti.get("riferimento_ordine"),
         "data_ordine": dati_estratti.get("data_ordine"),
         "data_consegna_richiesta": dati_estratti.get("data_consegna_richiesta"),

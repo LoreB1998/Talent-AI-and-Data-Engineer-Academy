@@ -1,0 +1,62 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Cliente non identificato in anagrafica",
+    "Riga 'ART-023': nota che richiede valutazione — Si richiede certificato di conformità per la pompa."
+  ],
+  "cliente": {
+    "id_cliente_match": null,
+    "ragione_sociale": "Acme Manufacturing S.r.l.",
+    "partita_iva": null,
+    "indirizzo": "Via Bologna 100",
+    "citta": "Casalecchio di Reno",
+    "provincia": "BO",
+    "email": null,
+    "telefono": null,
+    "fonte_cliente": "documento_non_verificato"
+  },
+  "riferimento_ordine": "OFF-1142 del 14/05/2026",
+  "data_ordine": "22/05/2026",
+  "data_consegna_richiesta": "Entro 12 giorni",
+  "condizioni_pagamento": "Bonifico 30 gg fine mese",
+  "note_generali": "Si richiede certificato di conformità per la pompa.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-023",
+      "descrizione_dichiarata": "Pompa di circolazione 25-60",
+      "codice_articolo_match": "ART-023",
+      "descrizione_match": "Pompa di circolazione 25-60",
+      "quantita": 2,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 245.0,
+      "prezzo_listino_catalogo": 245.0,
+      "confidenza_match": "alta",
+      "note_anomalia": "Nota nel documento: Si richiede certificato di conformità per la pompa."
+    },
+    {
+      "codice_dichiarato": "ART-024",
+      "descrizione_dichiarata": "Manometro radiale 0-10 bar D=63mm",
+      "codice_articolo_match": "ART-024",
+      "descrizione_match": "Manometro radiale 0-10 bar D=63mm",
+      "quantita": 6,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 12.5,
+      "prezzo_listino_catalogo": 12.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-027",
+      "descrizione_dichiarata": "Filtro a Y 3/4\" ottone",
+      "codice_articolo_match": "ART-027",
+      "descrizione_match": "Filtro a Y 3/4\" ottone",
+      "quantita": 10,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 22.5,
+      "prezzo_listino_catalogo": 22.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}
