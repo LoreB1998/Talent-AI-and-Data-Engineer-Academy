@@ -760,7 +760,7 @@
         <ul>
           <li>Validazione vs catalogo</li>
           <li>Matching cliente/articolo</li>
-          <li>Flag intervento umano</li>
+          <li>Coda di revisione aggregata per ordine</li>
         </ul>
       </div>
 
@@ -783,11 +783,40 @@
   </section>
   </div>
 
+  <!-- SLIDE 2B: AGENTE AI -->
+  <div class="slide">
+  <section id="agente">
+  <div class="sec-head reveal">
+    <span class="sec-num">02 — AGENTE AI</span>
+    <h2>Solo estrazione, non decisione</h2>
+    <p class="desc">Microsoft Foundry, agente "PDF-Analyzer" — un compito unico e ben definito, non un tool-calling autonomo verso il gestionale.</p>
+  </div>
+
+  <div class="strata-wrap reveal">
+    <div class="strata bronze">
+      <div class="strata-tag"><span class="coin">A</span>COSA FA L'AGENTE</div>
+      <p class="strata-title">Legge il PDF, restituisce un JSON strutturato: dati cliente, riferimenti ordine, righe articolo. Un solo turno, nessuna chiamata a strumenti esterni. La classificazione del tipo documento (ordine / quotazione / richiesta info / non determinabile) è già inclusa nell'output.</p>
+    </div>
+
+    <div class="pour-connector">
+      <svg viewBox="0 0 2 30" preserveAspectRatio="none"><line x1="1" y1="0" x2="1" y2="30" stroke="var(--ink-faint)" stroke-width="1"/></svg>
+      <span class="arrow">JSON grezzo → validazione</span>
+      <svg viewBox="0 0 2 30" preserveAspectRatio="none"><line x1="1" y1="0" x2="1" y2="30" stroke="var(--ink-faint)" stroke-width="1"/></svg>
+    </div>
+
+    <div class="strata silver">
+      <div class="strata-tag"><span class="coin">P</span>PERCHÉ NON TOOL-CALLING</div>
+      <p class="strata-title">Bug confermato di Foundry: l'agente che chiama tool OpenAPI verso Assets tramite <span class="mono" style="color:var(--ink)">agent_reference</span> + <span class="mono" style="color:var(--ink)">responses.create</span> restituisce sistematicamente <span class="mono" style="color:var(--ink)">400 invalid_payload</span> — riproducibile via API, assente nel Playground. Soluzione: tutta la validazione (matching cliente/articolo, controlli di coerenza) spostata in Python, con chiamate REST dirette ad Assets.</p>
+    </div>
+  </div>
+  </section>
+  </div>
+
   <!-- SLIDE 3: BRONZE & SILVER -->
   <div class="slide">
   <section id="strata">
   <div class="sec-head reveal">
-    <span class="sec-num">02 — LAKEHOUSE</span>
+    <span class="sec-num">03 — LAKEHOUSE</span>
     <h2>Bronze &amp; Silver</h2>
     <p class="desc">Ingestione grezza e pulizia tipizzata su Microsoft Fabric Lakehouse. Ogni livello del Medallion raffina il dato di un grado.</p>
   </div>
@@ -832,7 +861,7 @@
   <div class="slide">
   <section id="gold">
   <div class="sec-head reveal">
-    <span class="sec-num">03 — GOLD</span>
+    <span class="sec-num">04 — GOLD</span>
     <h2>Gold — Star Schema</h2>
     <p class="desc">Modello dimensionale analitico su Microsoft Fabric Lakehouse. Tre dimensioni convergono su un'unica tabella dei fatti.</p>
   </div>
@@ -877,6 +906,85 @@
       <span class="star">★</span>
       <span>valore_riga = quantità × prezzo_listino — calcolato sempre da dim_articolo (Assets), mai preso dal documento originale.</span>
     </div>
+    <div class="star-note" style="margin-top:10px;">
+      <span class="star">✓</span>
+      <span>fact_ordini contiene solo record validati — il Dataflow Fabric esclude ogni riga con <span class="mono" style="color:var(--ink)">richiede_revisione = true</span> prima della scrittura, instradandola verso la coda di revisione (vedi sezione successiva).</span>
+    </div>
+  </div>
+  </section>
+  </div>
+
+  <!-- SLIDE 4B: CODA DI REVISIONE -->
+  <div class="slide">
+  <section id="revisione">
+  <div class="sec-head reveal">
+    <span class="sec-num">05 — QUALITÀ DATI</span>
+    <h2>Coda di Revisione</h2>
+    <p class="desc">Non tutto ciò che un agente AI estrae può entrare automaticamente nei numeri di fatturato. Ciò che non supera la validazione viene isolato, non scartato.</p>
+  </div>
+
+  <div class="strata-wrap reveal">
+    <div class="strata bronze">
+      <div class="strata-tag"><span class="coin">!</span>PERCHÉ A LIVELLO ORDINE</div>
+      <p class="strata-title">Un operatore riapre documenti, non singole righe. Se anche una sola riga di un ordine è anomala, l'intero documento richiede revisione — aggregare evita di presentare la stessa segnalazione ripetuta riga per riga.</p>
+    </div>
+
+    <div class="pour-connector">
+      <svg viewBox="0 0 2 30" preserveAspectRatio="none"><line x1="1" y1="0" x2="1" y2="30" stroke="var(--ink-faint)" stroke-width="1"/></svg>
+      <span class="arrow">aggregate by id_ordine</span>
+      <svg viewBox="0 0 2 30" preserveAspectRatio="none"><line x1="1" y1="0" x2="1" y2="30" stroke="var(--ink-faint)" stroke-width="1"/></svg>
+    </div>
+
+    <div class="strata silver">
+      <div class="strata-tag"><span class="coin">R</span>coda_revisione_ordini</div>
+      <p class="strata-title">Una riga per ordine, con tutto il contesto per decidere senza riaprire il PDF.</p>
+      <div class="field-grid">
+        <div class="field"><div class="fname">cliente_ragione_sociale_estratta</div><div class="fdesc">nome così come letto dal documento, anche se non risolto in anagrafica</div></div>
+        <div class="field"><div class="fname">id_cliente_risolto</div><div class="fdesc">null → cliente nuovo da censire o dato errato</div></div>
+        <div class="field"><div class="fname">righe_con_anomalia / numero_righe_totali</div><div class="fdesc">quanto è esteso il problema nel documento</div></div>
+        <div class="field"><div class="fname">dettaglio_anomalie</div><div class="fdesc">note concatenate e deduplicate</div></div>
+        <div class="field"><div class="fname">valore_stimato_totale</div><div class="fdesc">per prioritizzare — un ordine da 5.000€ prima di uno da 50€</div></div>
+        <div class="field"><div class="fname">motivo_principale</div><div class="fdesc">categoria sintetica per filtrare la coda</div></div>
+      </div>
+    </div>
+  </div>
+  </section>
+  </div>
+
+  <!-- SLIDE 5B: SFIDE TECNICHE -->
+  <div class="slide">
+  <section id="sfide">
+  <div class="sec-head reveal">
+    <span class="sec-num">06 — SFIDE TECNICHE</span>
+    <h2>Problemi reali, soluzioni verificate</h2>
+    <p class="desc">Un ambiente Fabric/Foundry ancora giovane presenta limitazioni non documentate. Ogni blocco ha richiesto diagnosi e una soluzione concreta.</p>
+  </div>
+
+  <div class="field-grid reveal" style="margin-top:8px;">
+    <div class="field">
+      <div class="fname">Date sempre NULL in Silver</div>
+      <div class="fdesc"><span class="mono">to_date()</span> Spark senza formato esplicito si aspetta <span class="mono">yyyy-MM-dd</span>; i PDF italiani usano <span class="mono">dd/MM/yyyy</span> e falliscono silenziosamente. <span class="mono">try_to_date</span> non disponibile in questo runtime. → UDF Python con <span class="mono">datetime.strptime</span> su più formati in sequenza.</div>
+    </div>
+    <div class="field">
+      <div class="fname">%pip install disabilitato in Pipeline</div>
+      <div class="fdesc">Le magic command non sono supportate nelle esecuzioni non interattive triggerate da Pipeline (<span class="mono">MagicUsageError</span>). → Fabric Environment custom con <span class="mono">azure-ai-projects</span> e <span class="mono">azure-identity</span> preinstallate via PyPI, pubblicato e collegato al notebook.</div>
+    </div>
+    <div class="field">
+      <div class="fname">DefaultAzureCredential non funziona in Spark Fabric</div>
+      <div class="fdesc">Nessun <span class="mono">az login</span> interattivo disponibile in un Notebook Spark. → Classe <span class="mono">TokenStaticoCredential</span>, wrapper che implementa <span class="mono">TokenCredential</span> restituendo un token Azure AD generato manualmente.</div>
+    </div>
+    <div class="field">
+      <div class="fname">Upload PDF: path OneLake non risolto da mount point</div>
+      <div class="fdesc"><span class="mono">getMountPath</span> gestisce mount point espliciti, non path OneLake generici. → <span class="mono">mssparkutils.fs.cp()</span> verso il filesystem locale del driver, poi <span class="mono">open()</span> Python standard.</div>
+    </div>
+    <div class="field">
+      <div class="fname">File ID con prefisso errato dopo upload</div>
+      <div class="fdesc">Comportamento intermittente del backend Foundry: a volte l'ID torna con prefisso <span class="mono">file-</span> invece di <span class="mono">assistant-</span>, non utilizzabile dall'agente. → Retry sull'upload finché il prefisso è corretto.</div>
+    </div>
+    <div class="field">
+      <div class="fname">Workspace Identity non configurabile come Managed Identity</div>
+      <div class="fdesc">Limitazioni IAM sul tenant del corso impediscono l'uso della Workspace Identity nativa di Fabric per l'autenticazione verso Foundry. → Token statico rigenerato manualmente (~1h di validità), soluzione pragmatica per l'ambito del progetto.</div>
+    </div>
   </div>
   </section>
   </div>
@@ -885,7 +993,7 @@
   <div class="slide">
   <section id="built">
   <div class="sec-head reveal">
-    <span class="sec-num">04 — RISULTATO</span>
+    <span class="sec-num">07 — RISULTATO</span>
     <h2>Cosa è stato costruito</h2>
     <p class="desc">Quattro percorsi di classificazione, un'architettura a tre notebook, un modello analitico unificato.</p>
   </div>
@@ -911,9 +1019,9 @@
 
   <div class="stat-grid reveal">
     <div class="stat">
-      <div class="num">3</div>
+      <div class="num">4</div>
       <div class="label">Notebook PySpark</div>
-      <div class="micro">01 estrai · 02 Bronze→Silver · 03 Silver→Gold</div>
+      <div class="micro">01 estrai · 02 Bronze→Silver · 02b storico Assets · 03 Silver→Gold</div>
     </div>
     <div class="stat">
       <div class="num">B·S·G</div>
@@ -923,7 +1031,7 @@
     <div class="stat">
       <div class="num">3+1</div>
       <div class="label">Star Schema</div>
-      <div class="micro">3 dim · 1 fact (storico + PDF unificati)</div>
+      <div class="micro">3 dim · 1 fact (storico + PDF, solo record validati)</div>
     </div>
     <div class="stat">
       <div class="num">24/7</div>
