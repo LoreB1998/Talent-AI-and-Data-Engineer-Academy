@@ -1,0 +1,59 @@
+{
+  "intervento_umano_necessario": false,
+  "motivo_intervento_umano": null,
+  "cliente": {
+    "id_cliente_match": "CLI-005",
+    "ragione_sociale": "Tecnomeccanica Lombarda S.p.A.",
+    "partita_iva": "IT05678901234",
+    "indirizzo": "Via Bergamo 23",
+    "citta": "Milano",
+    "provincia": "MI",
+    "email": "ufficio.acquisti@tecnomeccanica.it",
+    "telefono": "02 5678901",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "ODA-TL/2026-0455",
+  "data_ordine": "19/05/2026",
+  "data_consegna_richiesta": "Entro venerdì 29/05/2026",
+  "condizioni_pagamento": "RiBa 60 gg DF FM.",
+  "note_generali": "Sede di consegna: Via Bergamo 23, 20135 Milano (MI). Materiale destinato al reparto montaggio linea B. Per cortesia indicare ddt il riferimento commessa 26-118.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-001",
+      "descrizione_dichiarata": "Bullone esagonale M8x40 zincato",
+      "codice_articolo_match": "ART-001",
+      "descrizione_match": "Bullone esagonale M8x40 zincato",
+      "quantita": 500,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 0.45,
+      "prezzo_listino_catalogo": 0.45,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-002",
+      "descrizione_dichiarata": "Dado autobloccante M8 inox",
+      "codice_articolo_match": "ART-002",
+      "descrizione_match": "Dado autobloccante M8 inox",
+      "quantita": 500,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 0.32,
+      "prezzo_listino_catalogo": 0.32,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-004",
+      "descrizione_dichiarata": "Rondella piana M10 zincata",
+      "codice_articolo_match": "ART-004",
+      "descrizione_match": "Rondella piana M10 zincata",
+      "quantita": 800,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 0.12,
+      "prezzo_listino_catalogo": 0.12,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

@@ -1,0 +1,34 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Acme Manufacturing S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": "Via Bologna 100",
+  "cliente_citta": "Casalecchio di Reno",
+  "cliente_provincia": "BO",
+  "cliente_email": null,
+  "cliente_telefono": null,
+  "riferimento_ordine": "ODA-MEF/2026-0312",
+  "data_ordine": "22/05/2026",
+  "data_consegna_richiesta": "Entro 15 giorni",
+  "condizioni_pagamento": "Bonifico 60 gg DF",
+  "note_generali": "Materiale per cantiere edile.",
+  "righe": [
+    {
+      "codice_articolo": "ART-005",
+      "descrizione": "Tassello Fischer SX10 conf 40",
+      "quantita": 9.35,
+      "unita_misura": "conf",
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-046",
+      "descrizione": "Silicone sigillante trasparente 310ml pz 30",
+      "quantita": 5.6,
+      "unita_misura": "310ml",
+      "prezzo_unitario": null,
+      "nota": null
+    }
+  ]
+}

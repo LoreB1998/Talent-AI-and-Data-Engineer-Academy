@@ -1,0 +1,49 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Riga 'ART-017': Prezzo dichiarato (28.5) diverso dal listino (9.8), scostamento 191%"
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-008",
+    "ragione_sociale": "Componenti Industriali Veneto S.p.A.",
+    "partita_iva": "IT08901234567",
+    "indirizzo": "Via Trieste 67",
+    "citta": "Verona",
+    "provincia": "VR",
+    "email": "procurement@civs.it",
+    "telefono": "045 8901234",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "ODA-CIV/2026-0359",
+  "data_ordine": "25/05/2026",
+  "data_consegna_richiesta": "Entro 12 giorni lavorativi",
+  "condizioni_pagamento": "Bonifico anticipato 50%",
+  "note_generali": "Conferma costo connettori richiesta.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-017",
+      "descrizione_dichiarata": "Connettore circolare M12 4 pin",
+      "codice_articolo_match": "ART-017",
+      "descrizione_match": "Connettore circolare M12 4 pin",
+      "quantita": 50,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 28.5,
+      "prezzo_listino_catalogo": 9.8,
+      "confidenza_match": "alta",
+      "note_anomalia": "Prezzo dichiarato (28.5) diverso dal listino (9.8), scostamento 191%"
+    },
+    {
+      "codice_dichiarato": "ART-013",
+      "descrizione_dichiarata": "Morsettiera 12 poli 16mm²",
+      "codice_articolo_match": "ART-013",
+      "descrizione_match": "Morsettiera 12 poli 16mm²",
+      "quantita": 30,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 3.2,
+      "prezzo_listino_catalogo": 3.2,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

@@ -1,0 +1,89 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Riga '1000 dadi autobloccanti M8, mi': nota che richiede valutazione — inox non zincati",
+    "Riga 'circa 800 rondelle piane M10': nota che richiede valutazione — circa",
+    "Riga '': Unità di misura dichiarata ('pacchi') diversa da quella di vendita a catalogo ('conf')",
+    "Riga '5 barre filettate da metro M12': nota che richiede valutazione — filettate da metro; zincate",
+    "Riga '': Unità di misura dichiarata ('barre') diversa da quella di vendita a catalogo ('pz')"
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-004",
+    "ragione_sociale": "Ferramenta Emiliana S.r.l.",
+    "partita_iva": "IT04567890123",
+    "indirizzo": "Via Emilia Ovest 156",
+    "citta": "Modena",
+    "provincia": "MO",
+    "email": "ordini@ferramentaemiliana.it",
+    "telefono": "059 4567890",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": null,
+  "data_ordine": "lunedì 18 maggio 2026 08:47",
+  "data_consegna_richiesta": "metà settimana",
+  "condizioni_pagamento": "Pagamento come sempre.",
+  "note_generali": "Buongiorno, mi servirebbe rifornire il magazzino con un po' di minuteria, vedete voi come mandarmelo: Se avete tutto disponibile per giovedì sarebbe perfetto. Per i prezzi mi rifaccio al listino standard, non ho l'ultimo aggiornamento sotto mano - se ci sono variazioni avvisatemi prima di spedire. Saluti",
+  "righe": [
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "una scatola da 500 bulloni M8 zincati (quelli da 40mm)",
+      "codice_articolo_match": "ART-002",
+      "descrizione_match": "Dado autobloccante M8 inox",
+      "quantita": 500,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 0.32,
+      "confidenza_match": "bassa",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "1000 dadi autobloccanti M8, mi raccomando inox non zincati",
+      "codice_articolo_match": "ART-002",
+      "descrizione_match": "Dado autobloccante M8 inox",
+      "quantita": 1000,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 0.32,
+      "confidenza_match": "media",
+      "note_anomalia": "Nota nel documento: inox non zincati"
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "circa 800 rondelle piane M10",
+      "codice_articolo_match": "ART-004",
+      "descrizione_match": "Rondella piana M10 zincata",
+      "quantita": 800,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 0.12,
+      "confidenza_match": "bassa",
+      "note_anomalia": "Nota nel documento: circa"
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "20 pacchi di tasselli Fischer SX10",
+      "codice_articolo_match": "ART-005",
+      "descrizione_match": "Tassello Fischer SX10",
+      "quantita": 20,
+      "unita_misura": "pacchi",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 8.5,
+      "confidenza_match": "media",
+      "note_anomalia": "Unità di misura dichiarata ('pacchi') diversa da quella di vendita a catalogo ('conf')"
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "5 barre filettate da metro M12 zincate",
+      "codice_articolo_match": "ART-007",
+      "descrizione_match": "Barra filettata M12 L=1m zincata",
+      "quantita": 5,
+      "unita_misura": "barre",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 4.8,
+      "confidenza_match": "bassa",
+      "note_anomalia": "Nota nel documento: filettate da metro; zincate | Unità di misura dichiarata ('barre') diversa da quella di vendita a catalogo ('pz')"
+    }
+  ],
+  "tipo_documento": "ordine"
+}

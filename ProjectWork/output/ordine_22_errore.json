@@ -1,0 +1,51 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Cliente non identificato in anagrafica",
+    "Riga 'ART-37': Prezzo dichiarato (89) diverso dal listino (98.0), scostamento 9%",
+    "Riga 'ART-030': Prezzo dichiarato (98) diverso dal listino (89.0), scostamento 10%"
+  ],
+  "cliente": {
+    "id_cliente_match": null,
+    "ragione_sociale": "Acme-manufacturing.it",
+    "partita_iva": null,
+    "indirizzo": null,
+    "citta": null,
+    "provincia": null,
+    "email": "ordini@acme-manufacturing.it",
+    "telefono": null,
+    "fonte_cliente": "documento_non_verificato"
+  },
+  "riferimento_ordine": "UB-ORD/2026-0301",
+  "data_ordine": "26/05/2026",
+  "data_consegna_richiesta": "Urgente, entro 3 gg.",
+  "condizioni_pagamento": "RiBa 90 gg.",
+  "note_generali": "Consegna richiesta: Urgente, entro 3 gg. Sede di consegna: Via Seriate 45, 24121 Bergamo (BG). NOTE: Materiale per kit cliente fine settimana.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-37",
+      "descrizione_dichiarata": "Morsa da banco parallela 150mm",
+      "codice_articolo_match": "ART-037",
+      "descrizione_match": "Morsa da banco parallela 150mm",
+      "quantita": 2,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 89,
+      "prezzo_listino_catalogo": 98.0,
+      "confidenza_match": "alta",
+      "note_anomalia": "Prezzo dichiarato (89) diverso dal listino (98.0), scostamento 9%"
+    },
+    {
+      "codice_dichiarato": "ART-030",
+      "descrizione_dichiarata": "Set chiavi a bussola 1/2\" 10-32mm (21pz)",
+      "codice_articolo_match": "ART-030",
+      "descrizione_match": "Set chiavi a bussola 1/2\" 10-32mm (21pz)",
+      "quantita": 3,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 98,
+      "prezzo_listino_catalogo": 89.0,
+      "confidenza_match": "alta",
+      "note_anomalia": "Prezzo dichiarato (98) diverso dal listino (89.0), scostamento 10%"
+    }
+  ],
+  "tipo_documento": "ordine"
+}

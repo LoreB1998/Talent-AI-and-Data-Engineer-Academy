@@ -1,0 +1,71 @@
+{
+  "intervento_umano_necessario": false,
+  "motivo_intervento_umano": null,
+  "cliente": {
+    "id_cliente_match": "CLI-015",
+    "ragione_sociale": "Fonderia Marchigiana S.r.l.",
+    "partita_iva": "IT15678901234",
+    "indirizzo": "Via Industriale 22",
+    "citta": "Ancona",
+    "provincia": "AN",
+    "email": "ordini@fonderiamarchigiana.it",
+    "telefono": "071 5678901",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "FM-ORD-2026/0102",
+  "data_ordine": "25/05/2026",
+  "data_consegna_richiesta": "31/05/2026",
+  "condizioni_pagamento": "Bonifico 30 gg DF.",
+  "note_generali": "Consegna lato magazzino, lun-ven 8:00-12:00.\nSede di consegna: Via Industriale 22, 60131 Ancona (AN).",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-007",
+      "descrizione_dichiarata": "Barra filettata M12 L=1m zincata",
+      "codice_articolo_match": "ART-007",
+      "descrizione_match": "Barra filettata M12 L=1m zincata",
+      "quantita": 40,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 4.8,
+      "prezzo_listino_catalogo": 4.8,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-040",
+      "descrizione_dichiarata": "Olio lubrificante universale 5L",
+      "codice_articolo_match": "ART-040",
+      "descrizione_match": "Olio lubrificante universale 5L",
+      "quantita": 50,
+      "unita_misura": "lt",
+      "prezzo_dichiarato": 28.5,
+      "prezzo_listino_catalogo": 28.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-041",
+      "descrizione_dichiarata": "Grasso al litio multiuso 400g",
+      "codice_articolo_match": "ART-041",
+      "descrizione_match": "Grasso al litio multiuso 400g",
+      "quantita": 20,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 6.8,
+      "prezzo_listino_catalogo": 6.8,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-046",
+      "descrizione_dichiarata": "Silicone sigillante trasparente 310ml",
+      "codice_articolo_match": "ART-046",
+      "descrizione_match": "Silicone sigillante trasparente 310ml",
+      "quantita": 24,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 5.6,
+      "prezzo_listino_catalogo": 5.6,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

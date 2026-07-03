@@ -1,0 +1,42 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Acme Manufacturing S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": "Via Bologna 100, 40033 Casalecchio di Reno (BO)",
+  "cliente_citta": "Casalecchio di Reno",
+  "cliente_provincia": "BO",
+  "cliente_email": null,
+  "cliente_telefono": null,
+  "riferimento_ordine": "ODA-MMB/2026-1078",
+  "data_ordine": "28/05/2026",
+  "data_consegna_richiesta": "Entro 15 giorni",
+  "condizioni_pagamento": "Bonifico 60 gg DF",
+  "note_generali": "Imballo da 100 pezzi.",
+  "righe": [
+    {
+      "codice_articolo": "ART-002",
+      "descrizione": "Dado autobloccante M8 inox",
+      "quantita": 2000,
+      "unita_misura": "pz",
+      "prezzo_unitario": 0.42,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-003",
+      "descrizione": "Vite a brugola M6x30",
+      "quantita": 1500,
+      "unita_misura": "pz",
+      "prezzo_unitario": 0.28,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-006",
+      "descrizione": "Rivetto a strappo 4.8x12 alluminio conf",
+      "quantita": 20,
+      "unita_misura": "conf",
+      "prezzo_unitario": 12.9,
+      "nota": null
+    }
+  ]
+}

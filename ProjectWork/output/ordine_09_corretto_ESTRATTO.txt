@@ -1,0 +1,58 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Acme Manufacturing S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": "Via Bologna 100",
+  "cliente_citta": "Casalecchio di Reno",
+  "cliente_provincia": "BO",
+  "cliente_email": null,
+  "cliente_telefono": null,
+  "riferimento_ordine": "OFF-7710 del 17/05/2026",
+  "data_ordine": "26/05/2026",
+  "data_consegna_richiesta": "Entro 15 giorni",
+  "condizioni_pagamento": "Bonifico bancario 60 gg DF",
+  "note_generali": "Imballaggio in scatole da 100 pezzi etichettate.",
+  "righe": [
+    {
+      "codice_articolo": "ART-001",
+      "descrizione": "Bullone esagonale M8x40 zincato",
+      "quantita": 2000,
+      "unita_misura": "pz",
+      "prezzo_unitario": 0.45,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-003",
+      "descrizione": "Vite a brugola M6x30",
+      "quantita": 1500,
+      "unita_misura": "pz",
+      "prezzo_unitario": 0.28,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-004",
+      "descrizione": "Rondella piana M10 zincata",
+      "quantita": 3000,
+      "unita_misura": "pz",
+      "prezzo_unitario": 0.12,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-005",
+      "descrizione": "Tassello Fischer SX10 conf 30",
+      "quantita": 8.5,
+      "unita_misura": "conf",
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-006",
+      "descrizione": "Rivetto a strappo 4.8x12 alluminio conf 25",
+      "quantita": 12.9,
+      "unita_misura": "conf",
+      "prezzo_unitario": null,
+      "nota": null
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Meccanica Precisione S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "m.bianchi@meccanicaprecisione.it",
+  "cliente_telefono": null,
+  "riferimento_ordine": "26-MP-302",
+  "data_ordine": "lunedì 25 maggio 2026 11:30",
+  "data_consegna_richiesta": "prima settimana di giugno",
+  "condizioni_pagamento": null,
+  "note_generali": "Vi confermo per ddt: causale \"MERCE PER PRODUZIONE\", commessa 26-MP-302.\nConsegna possibilmente la prima settimana di giugno. Prezzi listino in vigore, eventuali variazioni segnalatemele.",
+  "righe": [
+    {
+      "codice_articolo": null,
+      "descrizione": "bulloni esagonali M8x40 zincati",
+      "quantita": 1500,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "dadi autobloccanti M8 inox",
+      "quantita": 1000,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "rondelle M10",
+      "quantita": 2000,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "confezioni rivetti 4.8x12 alluminio",
+      "quantita": 30,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "sensori prossimità induttivi M18 (PNP)",
+      "quantita": 12,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "metri di cavo H07V-K 2.5 blu",
+      "quantita": 200,
+      "unita_misura": "metri",
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "nastri isolanti neri 25m",
+      "quantita": 50,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "fascette cablaggio bianche (le confezioni da 100)",
+      "quantita": 20,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "l latte olio lubrificante 5L",
+      "quantita": 6,
+      "unita_misura": "l",
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "spray sgrassante 500ml",
+      "quantita": 10,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "cartucce silicone trasparente",
+      "quantita": 8,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    }
+  ]
+}

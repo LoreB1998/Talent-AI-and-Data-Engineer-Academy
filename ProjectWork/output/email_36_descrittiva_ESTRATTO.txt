@@ -1,0 +1,74 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Elettronica Adriatica S.p.A.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "l.ferri@elettronicaadriatica.it",
+  "cliente_telefono": null,
+  "riferimento_ordine": null,
+  "data_ordine": "giovedì 21 maggio 2026 17:12",
+  "data_consegna_richiesta": null,
+  "condizioni_pagamento": "Pagamento come da accordi.",
+  "note_generali": "Buonasera, ordine periodico materiale consumo: Buona serata",
+  "righe": [
+    {
+      "codice_articolo": null,
+      "descrizione": "20 litri di olio lubrificante (4 latte da 5 litri)",
+      "quantita": 20,
+      "unita_misura": "litri",
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "15 confezioni guanti nitrile taglia L",
+      "quantita": 15,
+      "unita_misura": "confezioni",
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "6 panni puliziaa industriale a rotolo",
+      "quantita": 6,
+      "unita_misura": "panni",
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "10 silicone trasparente da 310 ml",
+      "quantita": 10,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "30 nastri isolanti pvc neri da 25m",
+      "quantita": 30,
+      "unita_misura": "nastri",
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "una scatola da 100 fascette bianche 200x4.8",
+      "quantita": 1,
+      "unita_misura": "scatola",
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "5 spray sgrassante",
+      "quantita": 5,
+      "unita_misura": "spray",
+      "prezzo_unitario": null,
+      "nota": null
+    }
+  ]
+}

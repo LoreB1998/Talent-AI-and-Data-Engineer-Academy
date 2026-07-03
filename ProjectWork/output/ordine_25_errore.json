@@ -1,0 +1,49 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Riga 'ART-031': Prezzo dichiarato (38.5) diverso dal listino (385.0), scostamento 90%"
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-007",
+    "ragione_sociale": "Carpenteria Metallica Toscana S.r.l.",
+    "partita_iva": "IT07890123456",
+    "indirizzo": "Via Pisana 34",
+    "citta": "Firenze",
+    "provincia": "FI",
+    "email": "ordini@cmt-firenze.it",
+    "telefono": "055 7890123",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "ODA-CMT/2026-0588",
+  "data_ordine": "27/05/2026",
+  "data_consegna_richiesta": "Entro 7 giorni",
+  "condizioni_pagamento": "Bonifico 45 gg DF",
+  "note_generali": "Trapano destinato a sostituzione macchinario guasto.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-031",
+      "descrizione_dichiarata": "Trapano a colonna da banco 500W",
+      "codice_articolo_match": "ART-031",
+      "descrizione_match": "Trapano a colonna da banco 500W",
+      "quantita": 1,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 38.5,
+      "prezzo_listino_catalogo": 385.0,
+      "confidenza_match": "alta",
+      "note_anomalia": "Prezzo dichiarato (38.5) diverso dal listino (385.0), scostamento 90%"
+    },
+    {
+      "codice_dichiarato": "ART-037",
+      "descrizione_dichiarata": "Morsa da banco parallela 150mm",
+      "codice_articolo_match": "ART-037",
+      "descrizione_match": "Morsa da banco parallela 150mm",
+      "quantita": 2,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 98.0,
+      "prezzo_listino_catalogo": 98.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

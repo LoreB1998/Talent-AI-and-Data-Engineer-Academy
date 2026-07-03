@@ -1,0 +1,85 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Riga 'una saldatrice inverter, quell': nota che richiede valutazione — Se la saldatrice non l'avete ditemelo subito che ne cerco un'altra."
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-011",
+    "ragione_sociale": "Saldature & Montaggi S.n.c.",
+    "partita_iva": "IT11234567890",
+    "indirizzo": "Via Artigianato 8",
+    "citta": "Vicenza",
+    "provincia": "VI",
+    "email": "info@saldaturemontaggi.it",
+    "telefono": "0444 1234567",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": null,
+  "data_ordine": "martedì 19 maggio 2026 14:22",
+  "data_consegna_richiesta": "entro venerdì",
+  "condizioni_pagamento": null,
+  "note_generali": "Oggetto: Ordine urgente - kit per cantiere Vicenza\nci serve roba per un cantiere che parte lunedì:\nMi serve TUTTO entro venerdì, possibilmente consegna in cantiere a Vicenza (vi mando indirizzo separatamente).\nSe la saldatrice non l'avete ditemelo subito che ne cerco un'altra.\nGrazie",
+  "righe": [
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "una saldatrice inverter, quella MMA da 200A che ci avete dato l'ultima volta",
+      "codice_articolo_match": "ART-035",
+      "descrizione_match": "Saldatrice inverter MMA 200A",
+      "quantita": 1,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 420.0,
+      "confidenza_match": "alta",
+      "note_anomalia": "Nota nel documento: Se la saldatrice non l'avete ditemelo subito che ne cerco un'altra."
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "una cinquantina di dischi taglio inox 125 (quelli sottili da 1mm)",
+      "codice_articolo_match": "ART-032",
+      "descrizione_match": "Disco da taglio inox 125x1.0mm",
+      "quantita": 50,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 2.1,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "due chiavi dinamometriche da 1/2\", range 20-200 Nm",
+      "codice_articolo_match": "ART-030",
+      "descrizione_match": "Set chiavi a bussola 1/2\" 10-32mm (21pz)",
+      "quantita": 2,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 89.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "un trapano a colonna da banco, anche piccolino va bene, 500W",
+      "codice_articolo_match": "ART-031",
+      "descrizione_match": "Trapano a colonna da banco 500W",
+      "quantita": 1,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 385.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "5 confezioni di guanti nitrile taglia L",
+      "codice_articolo_match": "ART-044",
+      "descrizione_match": "Guanti da lavoro nitrile tg. L (100pz)",
+      "quantita": 5,
+      "unita_misura": "conf",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 14.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

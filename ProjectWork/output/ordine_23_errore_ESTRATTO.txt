@@ -1,0 +1,42 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Oleodinamica Parmense S.r.l.",
+  "cliente_partita_iva": "IT17890123456",
+  "cliente_indirizzo": "Via Emilia Est 67 — 43121 Parma (PR)",
+  "cliente_citta": "Parma",
+  "cliente_provincia": "PR",
+  "cliente_email": "acquisti@oleodinamicapr.it",
+  "cliente_telefono": "0521 7890123",
+  "riferimento_ordine": "ODA-OP/2026-0233",
+  "data_ordine": "26/05/2026",
+  "data_consegna_richiesta": "Entro 10 giorni",
+  "condizioni_pagamento": "Bonifico 30 gg FM",
+  "note_generali": "Per il kit raccordi rapidi si prega di fornire scheda tecnica.",
+  "righe": [
+    {
+      "codice_articolo": "ART-020",
+      "descrizione": "Tubo multistrato 20x2 (barra 5m)",
+      "quantita": 25,
+      "unita_misura": "pz",
+      "prezzo_unitario": 18.9,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-028",
+      "descrizione": "Kit raccordi rapidi oleodinamici 3/8\"",
+      "quantita": 4,
+      "unita_misura": "conf",
+      "prezzo_unitario": 45.0,
+      "nota": "Per il kit raccordi rapidi si prega di fornire scheda tecnica."
+    },
+    {
+      "codice_articolo": "ART-022",
+      "descrizione": "Valvola a sfera 1\" ottone",
+      "quantita": 10,
+      "unita_misura": "pz",
+      "prezzo_unitario": 14.8,
+      "nota": null
+    }
+  ]
+}

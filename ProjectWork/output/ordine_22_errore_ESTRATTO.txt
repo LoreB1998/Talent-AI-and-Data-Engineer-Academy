@@ -1,0 +1,34 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Acme-manufacturing.it",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "ordini@acme-manufacturing.it",
+  "cliente_telefono": null,
+  "riferimento_ordine": "UB-ORD/2026-0301",
+  "data_ordine": "26/05/2026",
+  "data_consegna_richiesta": "Urgente, entro 3 gg.",
+  "condizioni_pagamento": "RiBa 90 gg.",
+  "note_generali": "Consegna richiesta: Urgente, entro 3 gg. Sede di consegna: Via Seriate 45, 24121 Bergamo (BG). NOTE: Materiale per kit cliente fine settimana.",
+  "righe": [
+    {
+      "codice_articolo": "ART-37",
+      "descrizione": "Morsa da banco parallela 150mm",
+      "quantita": 2,
+      "unita_misura": null,
+      "prezzo_unitario": 89,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-030",
+      "descrizione": "Set chiavi a bussola 1/2\" 10-32mm (21pz)",
+      "quantita": 3,
+      "unita_misura": null,
+      "prezzo_unitario": 98,
+      "nota": null
+    }
+  ]
+}

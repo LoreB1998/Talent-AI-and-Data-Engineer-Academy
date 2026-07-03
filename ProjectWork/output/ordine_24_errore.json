@@ -1,0 +1,62 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Riga 'ART-010': nota che richiede valutazione — Doppio controllo prezzo cavo, sembra basso.",
+    "Riga 'ART-010': Prezzo dichiarato (0.58) diverso dal listino (0.85), scostamento 32%"
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-010",
+    "ragione_sociale": "Impianti Elettrici del Nord S.r.l.",
+    "partita_iva": "IT10123456789",
+    "indirizzo": "Via Marconi 56",
+    "citta": "Trento",
+    "provincia": "TN",
+    "email": "ordini@iednord.it",
+    "telefono": "0461 0123456",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "IEN/2026/ACQ/0151",
+  "data_ordine": "26/05/2026",
+  "data_consegna_richiesta": "02/06/2026",
+  "condizioni_pagamento": "Bonifico 60 gg DF.",
+  "note_generali": "Sede di consegna: Via Marconi 56, 38122 Trento (TN). Consegna richiesta: Entro 02/06/2026. NOTA: Doppio controllo prezzo cavo, sembra basso.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-010",
+      "descrizione_dichiarata": "Cavo elettrico H07V-K 2.5mm² blu (100m)",
+      "codice_articolo_match": "ART-010",
+      "descrizione_match": "Cavo elettrico H07V-K 2.5mm² blu (100m)",
+      "quantita": 400,
+      "unita_misura": "m",
+      "prezzo_dichiarato": 0.58,
+      "prezzo_listino_catalogo": 0.85,
+      "confidenza_match": "alta",
+      "note_anomalia": "Nota nel documento: Doppio controllo prezzo cavo, sembra basso. | Prezzo dichiarato (0.58) diverso dal listino (0.85), scostamento 32%"
+    },
+    {
+      "codice_dichiarato": "ART-014",
+      "descrizione_dichiarata": "Guaina spiralata D=16mm nera (25m)",
+      "codice_articolo_match": "ART-014",
+      "descrizione_match": "Guaina spiralata D=16mm nera (25m)",
+      "quantita": 8,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 15.4,
+      "prezzo_listino_catalogo": 15.4,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-012",
+      "descrizione_dichiarata": "Presa industriale CEE 32A 3P+T",
+      "codice_articolo_match": "ART-012",
+      "descrizione_match": "Presa industriale CEE 32A 3P+T",
+      "quantita": 4,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 24.9,
+      "prezzo_listino_catalogo": 24.9,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

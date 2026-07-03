@@ -1,0 +1,74 @@
+{
+  "tipo_documento": "non_determinabile",
+  "motivo_non_determinabile": "Email con lista mensile di materiali e richiesta di consegna entro fine maggio, ma senza prezzi e senza indicazione chiara di un ordine di acquisto con prezzi richiesti.",
+  "cliente_ragione_sociale": "Officina Meccanica Romagnola S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "m.lega@omromagnola.it",
+  "cliente_telefono": null,
+  "riferimento_ordine": null,
+  "data_ordine": "mercoledì 20 maggio 2026 11:08",
+  "data_consegna_richiesta": "entro fine maggio va benissimo.",
+  "condizioni_pagamento": null,
+  "note_generali": "la solita lista mensile, niente di particolare; Per la consegna non c'è urgenza, entro fine maggio va benissimo.",
+  "righe": [
+    {
+      "codice_articolo": null,
+      "descrizione": "10 latte d'olio lubrificante universale da 5 litri",
+      "quantita": 10,
+      "unita_misura": "da 5 litri",
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "una decina di barattoli di grasso al litio (quelli piccoli da 400g)",
+      "quantita": null,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "6 spray sgrassante 500ml",
+      "quantita": 6,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "30 metri di tubo multistrato 20x2 (le barre da 5 metri vanno bene)",
+      "quantita": 30,
+      "unita_misura": "metri",
+      "prezzo_unitario": null,
+      "nota": "(le barre da 5 metri vanno bene)"
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "20 raccordi a pressare 20 x mezzo pollice maschio",
+      "quantita": 20,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "4 valvole a sfera da un pollice ottone",
+      "quantita": 4,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "10 rotoli di nastro isolante nero, quelli normali da 25 metri",
+      "quantita": 10,
+      "unita_misura": "quelli normali da 25 metri",
+      "prezzo_unitario": null,
+      "nota": "Ah dimenticavo: aggiungete anche"
+    }
+  ]
+}

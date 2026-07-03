@@ -1,0 +1,61 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Articolo non identificato: 'ART-018'"
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-018",
+    "ragione_sociale": "Tecnologie Laser Alto Adige S.r.l.",
+    "partita_iva": "IT18901234567",
+    "indirizzo": "Via Galvani 15",
+    "citta": "Bolzano",
+    "provincia": "BZ",
+    "email": "order@techlaser-bz.it",
+    "telefono": "0471 8901234",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "TLA-ORD/2026-0099",
+  "data_ordine": "23/05/2026",
+  "data_consegna_richiesta": "Entro 30/05/2026",
+  "condizioni_pagamento": "Bonifico 30 gg DF.",
+  "note_generali": "Sede di consegna: Via Galvani 15, 39100 Bolzano (BZ). NOTA: Servono pezzi certificati CE.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-011",
+      "descrizione_dichiarata": "Interruttore magnetotermico 16A 1P",
+      "codice_articolo_match": "ART-011",
+      "descrizione_match": "Interruttore magnetotermico 16A 1P",
+      "quantita": 10,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 18.5,
+      "prezzo_listino_catalogo": 18.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-018",
+      "descrizione_dichiarata": "Pulsante luminoso 22mm verde",
+      "codice_articolo_match": null,
+      "descrizione_match": "Pulsante luminoso 22mm verde",
+      "quantita": 25,
+      "unita_misura": null,
+      "prezzo_dichiarato": 7.2,
+      "prezzo_listino_catalogo": null,
+      "confidenza_match": "bassa",
+      "note_anomalia": "Nessun match certo trovato a catalogo per codice dichiarato 'ART-018'"
+    },
+    {
+      "codice_dichiarato": "ART-017",
+      "descrizione_dichiarata": "Connettore circolare M12 4 pin",
+      "codice_articolo_match": "ART-017",
+      "descrizione_match": "Connettore circolare M12 4 pin",
+      "quantita": 30,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 9.8,
+      "prezzo_listino_catalogo": 9.8,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

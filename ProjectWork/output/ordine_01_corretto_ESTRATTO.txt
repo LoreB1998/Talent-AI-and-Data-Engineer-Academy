@@ -1,0 +1,50 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Acme Manufacturing S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": "Via Bologna 100",
+  "cliente_citta": "Casalecchio di Reno",
+  "cliente_provincia": "BO",
+  "cliente_email": null,
+  "cliente_telefono": null,
+  "riferimento_ordine": "ODA-IV/2026-0091",
+  "data_ordine": "18/05/2026",
+  "data_consegna_richiesta": "Entro 15 giorni lavorativi",
+  "condizioni_pagamento": "Bonifico bancario 30 giorni D.F.",
+  "note_generali": "Merce in pronta consegna. Conferma via email entro 24 ore.",
+  "righe": [
+    {
+      "codice_articolo": "ART-020",
+      "descrizione": "Tubo multistrato 20x2 (barra 5m)",
+      "quantita": 30,
+      "unita_misura": "pz",
+      "prezzo_unitario": 18.9,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-021",
+      "descrizione": "Raccordo a pressare 20x1/2\" maschio",
+      "quantita": 60,
+      "unita_misura": "pz",
+      "prezzo_unitario": 5.4,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-022",
+      "descrizione": "Valvola a sfera 1\" ottone",
+      "quantita": 12,
+      "unita_misura": "pz",
+      "prezzo_unitario": 14.8,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-025",
+      "descrizione": "Guarnizione piatta 1\" in fibra",
+      "quantita": 8,
+      "unita_misura": "conf",
+      "prezzo_unitario": 3.8,
+      "nota": null
+    }
+  ]
+}

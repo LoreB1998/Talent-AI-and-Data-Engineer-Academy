@@ -1,0 +1,50 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Impianti Elettrici del Nord S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "ordini@iednord.it",
+  "cliente_telefono": "0461 0123456",
+  "riferimento_ordine": "IEN/2026/ACQ/0094",
+  "data_ordine": "22/05/2026",
+  "data_consegna_richiesta": "Entro 28/05/2026",
+  "condizioni_pagamento": "Bonifico 60 gg DF.",
+  "note_generali": "Cantiere Trento Nord. Ddt intestato al cantiere con riferimento commessa CT-2026-44.",
+  "righe": [
+    {
+      "codice_articolo": "ART-011",
+      "descrizione": "Interruttore magnetotermico 16A 1P",
+      "quantita": 1,
+      "unita_misura": null,
+      "prezzo_unitario": 18.5,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-012",
+      "descrizione": "Presa industriale CEE 32A 3P+T",
+      "quantita": 8,
+      "unita_misura": null,
+      "prezzo_unitario": 24.9,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-014",
+      "descrizione": "Guaina spiralata D=16mm nera (25m)",
+      "quantita": 6,
+      "unita_misura": null,
+      "prezzo_unitario": 15.4,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-017",
+      "descrizione": "Connettore circolare M12 4 pin",
+      "quantita": 25,
+      "unita_misura": null,
+      "prezzo_unitario": 9.8,
+      "nota": null
+    }
+  ]
+}

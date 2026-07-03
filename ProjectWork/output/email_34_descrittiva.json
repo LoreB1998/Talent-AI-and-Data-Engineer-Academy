@@ -1,0 +1,101 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Riga '12 sensori di prossimità indut': nota che richiede valutazione — versione PNP (NON NPN!)",
+    "Riga '300 metri di cavo H07V-K sezio': nota che richiede valutazione — possibilmente blu ma se avete il marrone va uguale",
+    "Riga '': Unità di misura dichiarata ('metri') diversa da quella di vendita a catalogo ('m')",
+    "Riga 'una trentina di connettori M12': nota che richiede valutazione — una trentina",
+    "Riga '4 interruttori magnetotermici ': nota che richiede valutazione — 16A monofase"
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-006",
+    "ragione_sociale": "Automazione Industriale Piemonte S.r.l.",
+    "partita_iva": "IT06789012345",
+    "indirizzo": "Corso Francia 189",
+    "citta": "Torino",
+    "provincia": "TO",
+    "email": "acquisti@aipautomazione.it",
+    "telefono": "011 6789012",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": null,
+  "data_ordine": "mercoledì 20 maggio 2026 16:45",
+  "data_consegna_richiesta": "fine mese al massimo",
+  "condizioni_pagamento": null,
+  "note_generali": "Oggetto: Componentistica per quadro automazione - preventivo+ordine. Buongiorno, vi chiedo cortesemente di prepararmi il seguente materiale per un quadro automazione. La cosa è abbastanza urgente, fine mese al massimo. Una cosa: l'ultima volta sui sensori avevamo concordato uno sconto del 5%, vale ancora?",
+  "righe": [
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "12 sensori di prossimità induttivi M18, versione PNP (NON NPN!)",
+      "codice_articolo_match": "ART-015",
+      "descrizione_match": "Sensore di prossimità induttivo M18 PNP",
+      "quantita": 12,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 42.0,
+      "confidenza_match": "alta",
+      "note_anomalia": "Nota nel documento: versione PNP (NON NPN!)"
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "20 relè industriali 24V continua, 4 contatti",
+      "codice_articolo_match": "ART-016",
+      "descrizione_match": "Relè industriale 24VDC 4 contatti",
+      "quantita": 20,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 28.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "8 morsettiere a 12 poli da 16mm quadri",
+      "codice_articolo_match": "ART-013",
+      "descrizione_match": "Morsettiera 12 poli 16mm²",
+      "quantita": 8,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 3.2,
+      "confidenza_match": "media",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "300 metri di cavo H07V-K sezione 2.5, possibilmente blu ma se avete il marrone va uguale",
+      "codice_articolo_match": "ART-010",
+      "descrizione_match": "Cavo elettrico H07V-K 2.5mm² blu (100m)",
+      "quantita": 300,
+      "unita_misura": "metri",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 0.85,
+      "confidenza_match": "alta",
+      "note_anomalia": "Nota nel documento: possibilmente blu ma se avete il marrone va uguale | Unità di misura dichiarata ('metri') diversa da quella di vendita a catalogo ('m')"
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "una trentina di connettori M12 a 4 pin",
+      "codice_articolo_match": "ART-017",
+      "descrizione_match": "Connettore circolare M12 4 pin",
+      "quantita": null,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 9.8,
+      "confidenza_match": "alta",
+      "note_anomalia": "Nota nel documento: una trentina"
+    },
+    {
+      "codice_dichiarato": null,
+      "descrizione_dichiarata": "4 interruttori magnetotermici 16A monofase",
+      "codice_articolo_match": "ART-006",
+      "descrizione_match": "Rivetto a strappo 4.8x12 alluminio",
+      "quantita": 4,
+      "unita_misura": "conf",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 12.9,
+      "confidenza_match": "bassa",
+      "note_anomalia": "Nota nel documento: 16A monofase"
+    }
+  ],
+  "tipo_documento": "ordine"
+}

@@ -1,0 +1,66 @@
+{
+  "tipo_documento": "non_determinabile",
+  "motivo_non_determinabile": "Il testo contiene una richiesta di fornitura con quantità e specifiche, ma non include prezzi né chiarisce se si tratti di un ordine di acquisto con richiesta di quotazione.",
+  "cliente_ragione_sociale": "Sistemi Pneumatici Liguria S.p.A.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "m.repetto@spliguria.it",
+  "cliente_telefono": null,
+  "riferimento_ordine": null,
+  "data_ordine": "giovedì 21 maggio 2026 09:33",
+  "data_consegna_richiesta": "fine mese",
+  "condizioni_pagamento": null,
+  "note_generali": "Consegna fine mese, niente fretta.",
+  "righe": [
+    {
+      "codice_articolo": null,
+      "descrizione": "pinze amperometriche digitali 600A (quelle della categoria utensili)",
+      "quantita": 3,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "chiavi dinamometriche da mezzo pollice, 20-200 Nm",
+      "quantita": 2,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "set chiavi a bussola 1/2 da 10 a 32 mm (quelli da 21 pezzi)",
+      "quantita": 4,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "set di punte HSS rettificate da 1 a 13, in cassetta",
+      "quantita": 1,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "guanti nitrile L (100 pezzi a scatola)",
+      "quantita": 10,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "rotoloni di carta pulizia industriale (quelli grandi, da 500 strappi)",
+      "quantita": 8,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    }
+  ]
+}

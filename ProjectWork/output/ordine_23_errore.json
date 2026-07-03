@@ -1,0 +1,63 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Riga 'ART-028': nota che richiede valutazione — Per il kit raccordi rapidi si prega di fornire scheda tecnica.",
+    "Riga 'ART-028': Prezzo dichiarato (45.0) diverso dal listino (22.5), scostamento 100%",
+    "Riga 'ART-028': Unità di misura dichiarata ('conf') diversa da quella di vendita a catalogo ('pz')"
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-017",
+    "ragione_sociale": "Oleodinamica Parmense S.r.l.",
+    "partita_iva": "IT17890123456",
+    "indirizzo": "Via Emilia Est 67",
+    "citta": "Parma",
+    "provincia": "PR",
+    "email": "acquisti@oleodinamicapr.it",
+    "telefono": "0521 7890123",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "ODA-OP/2026-0233",
+  "data_ordine": "26/05/2026",
+  "data_consegna_richiesta": "Entro 10 giorni",
+  "condizioni_pagamento": "Bonifico 30 gg FM",
+  "note_generali": "Per il kit raccordi rapidi si prega di fornire scheda tecnica.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-020",
+      "descrizione_dichiarata": "Tubo multistrato 20x2 (barra 5m)",
+      "codice_articolo_match": "ART-020",
+      "descrizione_match": "Tubo multistrato 20x2 (barra 5m)",
+      "quantita": 25,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 18.9,
+      "prezzo_listino_catalogo": 18.9,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-028",
+      "descrizione_dichiarata": "Kit raccordi rapidi oleodinamici 3/8\"",
+      "codice_articolo_match": "ART-027",
+      "descrizione_match": "Filtro a Y 3/4\" ottone",
+      "quantita": 4,
+      "unita_misura": "conf",
+      "prezzo_dichiarato": 45.0,
+      "prezzo_listino_catalogo": 22.5,
+      "confidenza_match": "bassa",
+      "note_anomalia": "Nota nel documento: Per il kit raccordi rapidi si prega di fornire scheda tecnica. | Prezzo dichiarato (45.0) diverso dal listino (22.5), scostamento 100% | Unità di misura dichiarata ('conf') diversa da quella di vendita a catalogo ('pz')"
+    },
+    {
+      "codice_dichiarato": "ART-022",
+      "descrizione_dichiarata": "Valvola a sfera 1\" ottone",
+      "codice_articolo_match": "ART-022",
+      "descrizione_match": "Valvola a sfera 1\" ottone",
+      "quantita": 10,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 14.8,
+      "prezzo_listino_catalogo": 14.8,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

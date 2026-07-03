@@ -1,0 +1,59 @@
+{
+  "intervento_umano_necessario": false,
+  "motivo_intervento_umano": null,
+  "cliente": {
+    "id_cliente_match": "CLI-001",
+    "ragione_sociale": "Meccanica Precisione S.r.l.",
+    "partita_iva": "IT01234567890",
+    "indirizzo": "Via dell'Industria 12",
+    "citta": "Casalecchio di Reno",
+    "provincia": "BO",
+    "email": "ordini@meccanicaprecisione.it",
+    "telefono": "051 1234567",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "ODA-MP/2026-0612",
+  "data_ordine": "29/05/2026",
+  "data_consegna_richiesta": "Entro 05/06/2026",
+  "condizioni_pagamento": "Bonifico 60 gg DF.",
+  "note_generali": "Sede di consegna: Via dell'Industria 12, 40033 Casalecchio di\nReno (BO). NOTA: Verificare bene i codici, ordine compilato da nuovo addetto.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-015",
+      "descrizione_dichiarata": "Relè industriale 24VDC 4 contatti",
+      "codice_articolo_match": "ART-015",
+      "descrizione_match": "Sensore di prossimità induttivo M18 PNP",
+      "quantita": 8,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 42,
+      "prezzo_listino_catalogo": 42.0,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-013",
+      "descrizione_dichiarata": "Morsettiera 12 poli 16mm²",
+      "codice_articolo_match": "ART-013",
+      "descrizione_match": "Morsettiera 12 poli 16mm²",
+      "quantita": 30,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 3.2,
+      "prezzo_listino_catalogo": 3.2,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-043",
+      "descrizione_dichiarata": "Nastro isolante PVC 19mm nero (25m)",
+      "codice_articolo_match": "ART-043",
+      "descrizione_match": "Nastro isolante PVC 19mm nero (25m)",
+      "quantita": 40,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 2.4,
+      "prezzo_listino_catalogo": 2.4,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

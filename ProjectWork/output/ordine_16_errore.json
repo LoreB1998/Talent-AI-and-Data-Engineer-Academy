@@ -1,0 +1,62 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Riga 'ART-030': nota che richiede valutazione — NOTA: Verificare disponibilità del set chiavi prima della spedizione.",
+    "Riga 'ART-099': Prezzo dichiarato (245) diverso dal listino (0.28), scostamento 87400%"
+  ],
+  "cliente": {
+    "id_cliente_match": "CLI-009",
+    "ragione_sociale": "Officina Meccanica Romagnola S.r.l.",
+    "partita_iva": "IT09012345678",
+    "indirizzo": "Via Ravegnana 112",
+    "citta": "Forlì",
+    "provincia": "FC",
+    "email": "info@omromagnola.it",
+    "telefono": "0543 9012345",
+    "fonte_cliente": "backend_verificato"
+  },
+  "riferimento_ordine": "OMR-ORD/2026-0188",
+  "data_ordine": "21/05/2026",
+  "data_consegna_richiesta": "Entro 28/05/2026",
+  "condizioni_pagamento": "Bonifico 30 gg DF.",
+  "note_generali": "Sede di consegna: Via Ravegnana 112, 47122 Forlì (FC).\nNOTA: Verificare disponibilità del set chiavi prima della spedizione.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-030",
+      "descrizione_dichiarata": "Set chiavi a bussola 1/2\" 10-32mm (21pz)",
+      "codice_articolo_match": "ART-030",
+      "descrizione_match": "Set chiavi a bussola 1/2\" 10-32mm (21pz)",
+      "quantita": 3,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 89,
+      "prezzo_listino_catalogo": 89.0,
+      "confidenza_match": "alta",
+      "note_anomalia": "Nota nel documento: NOTA: Verificare disponibilità del set chiavi prima della spedizione."
+    },
+    {
+      "codice_dichiarato": "ART-099",
+      "descrizione_dichiarata": "Avvitatore a impulsi 18V brushless",
+      "codice_articolo_match": "ART-003",
+      "descrizione_match": "Vite a brugola M6x30",
+      "quantita": 2,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 245,
+      "prezzo_listino_catalogo": 0.28,
+      "confidenza_match": "bassa",
+      "note_anomalia": "Prezzo dichiarato (245) diverso dal listino (0.28), scostamento 87400%"
+    },
+    {
+      "codice_dichiarato": "ART-040",
+      "descrizione_dichiarata": "Olio lubrificante universale 5L",
+      "codice_articolo_match": "ART-040",
+      "descrizione_match": "Olio lubrificante universale 5L",
+      "quantita": 20,
+      "unita_misura": "lt",
+      "prezzo_dichiarato": 28.5,
+      "prezzo_listino_catalogo": 28.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

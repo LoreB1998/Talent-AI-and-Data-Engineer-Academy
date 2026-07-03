@@ -1,0 +1,62 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Cliente non identificato in anagrafica",
+    "Riga 'ART-007': Prezzo dichiarato (48) diverso dal listino (4.8), scostamento 900%"
+  ],
+  "cliente": {
+    "id_cliente_match": null,
+    "ragione_sociale": "Acme Manufacturing S.r.l.",
+    "partita_iva": null,
+    "indirizzo": "Via Bologna 100",
+    "citta": "Casalecchio di Reno",
+    "provincia": "BO",
+    "email": null,
+    "telefono": null,
+    "fonte_cliente": "documento_non_verificato"
+  },
+  "riferimento_ordine": "OFF-2233 del 13/05/2026",
+  "data_ordine": "18/05/2026",
+  "data_consegna_richiesta": "Entro 10 giorni",
+  "condizioni_pagamento": "Bonifico 30 gg DF",
+  "note_generali": "Verificare disponibilità immediata.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-001",
+      "descrizione_dichiarata": "Bullone esagonale M8x40 zincato",
+      "codice_articolo_match": "ART-001",
+      "descrizione_match": "Bullone esagonale M8x40 zincato",
+      "quantita": 1000,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 0.45,
+      "prezzo_listino_catalogo": 0.45,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-007",
+      "descrizione_dichiarata": "Barra filettata M12 L=1m zincata",
+      "codice_articolo_match": "ART-007",
+      "descrizione_match": "Barra filettata M12 L=1m zincata",
+      "quantita": 50,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 48,
+      "prezzo_listino_catalogo": 4.8,
+      "confidenza_match": "alta",
+      "note_anomalia": "Prezzo dichiarato (48) diverso dal listino (4.8), scostamento 900%"
+    },
+    {
+      "codice_dichiarato": "ART-008",
+      "descrizione_dichiarata": "Graffetta per tubi D=25mm",
+      "codice_articolo_match": "ART-008",
+      "descrizione_match": "Graffetta per tubi D=25mm",
+      "quantita": 100,
+      "unita_misura": "pz",
+      "prezzo_dichiarato": 1.65,
+      "prezzo_listino_catalogo": 1.65,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    }
+  ],
+  "tipo_documento": "ordine"
+}

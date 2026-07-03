@@ -1,0 +1,66 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Automazione Industriale Piemonte S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "f.galliano@aipautomazione.it",
+  "cliente_telefono": "348 7766112",
+  "riferimento_ordine": null,
+  "data_ordine": "mercoledì 20 maggio 2026 16:45",
+  "data_consegna_richiesta": "fine mese al massimo",
+  "condizioni_pagamento": null,
+  "note_generali": "Oggetto: Componentistica per quadro automazione - preventivo+ordine. Buongiorno, vi chiedo cortesemente di prepararmi il seguente materiale per un quadro automazione. La cosa è abbastanza urgente, fine mese al massimo. Una cosa: l'ultima volta sui sensori avevamo concordato uno sconto del 5%, vale ancora?",
+  "righe": [
+    {
+      "codice_articolo": null,
+      "descrizione": "12 sensori di prossimità induttivi M18, versione PNP (NON NPN!)",
+      "quantita": 12,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": "versione PNP (NON NPN!)"
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "20 relè industriali 24V continua, 4 contatti",
+      "quantita": 20,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "8 morsettiere a 12 poli da 16mm quadri",
+      "quantita": 8,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "300 metri di cavo H07V-K sezione 2.5, possibilmente blu ma se avete il marrone va uguale",
+      "quantita": 300,
+      "unita_misura": "metri",
+      "prezzo_unitario": null,
+      "nota": "possibilmente blu ma se avete il marrone va uguale"
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "una trentina di connettori M12 a 4 pin",
+      "quantita": null,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": "una trentina"
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "4 interruttori magnetotermici 16A monofase",
+      "quantita": 4,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": "16A monofase"
+    }
+  ]
+}

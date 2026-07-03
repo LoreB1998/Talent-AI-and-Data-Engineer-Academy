@@ -1,0 +1,50 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Utensileria Bergamasca S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "ordini@utensileriabg.it",
+  "cliente_telefono": "035 3456789",
+  "riferimento_ordine": "UB-ORD/2026-227",
+  "data_ordine": "21/05/2026",
+  "data_consegna_richiesta": "Urgente, entro 3 gg lavorativi",
+  "condizioni_pagamento": "Come da accordo quadro - RiBa 90 gg.",
+  "note_generali": "Materiale per cliente finale, imballi singoli per ciascun pezzo.\nSede di consegna: Via Seriate 45, 24121 Bergamo (BG).",
+  "righe": [
+    {
+      "codice_articolo": "ART-030",
+      "descrizione": "Set chiavi a bussola 1/2\" 10-32mm (21pz)",
+      "quantita": 4,
+      "unita_misura": null,
+      "prezzo_unitario": 89,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-034",
+      "descrizione": "Chiave dinamometrica 1/2\" 20-200Nm",
+      "quantita": 2,
+      "unita_misura": null,
+      "prezzo_unitario": 156,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-036",
+      "descrizione": "Set punte HSS rettificate 1-13mm (25pz)",
+      "quantita": 6,
+      "unita_misura": null,
+      "prezzo_unitario": 34.5,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-032",
+      "descrizione": "Disco da taglio inox 125x1.0mm",
+      "quantita": 100,
+      "unita_misura": null,
+      "prezzo_unitario": 2.1,
+      "nota": null
+    }
+  ]
+}

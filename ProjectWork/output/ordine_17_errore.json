@@ -1,0 +1,50 @@
+{
+  "intervento_umano_necessario": true,
+  "motivo_intervento_umano": [
+    "Cliente non identificato in anagrafica",
+    "Riga 'ART-046': Unità di misura dichiarata ('310ml') diversa da quella di vendita a catalogo ('pz')"
+  ],
+  "cliente": {
+    "id_cliente_match": null,
+    "ragione_sociale": "Acme Manufacturing S.r.l.",
+    "partita_iva": null,
+    "indirizzo": "Via Bologna 100",
+    "citta": "Casalecchio di Reno",
+    "provincia": "BO",
+    "email": null,
+    "telefono": null,
+    "fonte_cliente": "documento_non_verificato"
+  },
+  "riferimento_ordine": "ODA-MEF/2026-0312",
+  "data_ordine": "22/05/2026",
+  "data_consegna_richiesta": "Entro 15 giorni",
+  "condizioni_pagamento": "Bonifico 60 gg DF",
+  "note_generali": "Materiale per cantiere edile.",
+  "righe": [
+    {
+      "codice_dichiarato": "ART-005",
+      "descrizione_dichiarata": "Tassello Fischer SX10 conf 40",
+      "codice_articolo_match": "ART-005",
+      "descrizione_match": "Tassello Fischer SX10",
+      "quantita": 9.35,
+      "unita_misura": "conf",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 8.5,
+      "confidenza_match": "alta",
+      "note_anomalia": null
+    },
+    {
+      "codice_dichiarato": "ART-046",
+      "descrizione_dichiarata": "Silicone sigillante trasparente 310ml pz 30",
+      "codice_articolo_match": "ART-046",
+      "descrizione_match": "Silicone sigillante trasparente 310ml",
+      "quantita": 5.6,
+      "unita_misura": "310ml",
+      "prezzo_dichiarato": null,
+      "prezzo_listino_catalogo": 5.6,
+      "confidenza_match": "alta",
+      "note_anomalia": "Unità di misura dichiarata ('310ml') diversa da quella di vendita a catalogo ('pz')"
+    }
+  ],
+  "tipo_documento": "ordine"
+}

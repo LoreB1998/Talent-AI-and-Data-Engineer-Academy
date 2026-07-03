@@ -1,0 +1,34 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Componenti Industriali Veneto S.p.A.",
+  "cliente_partita_iva": "IT08901234567",
+  "cliente_indirizzo": "Via Trieste 67 — 37122 Verona (VR)",
+  "cliente_citta": "Verona",
+  "cliente_provincia": "VR",
+  "cliente_email": "procurement@civs.it",
+  "cliente_telefono": "045 8901234",
+  "riferimento_ordine": "ODA-CIV/2026-0359",
+  "data_ordine": "25/05/2026",
+  "data_consegna_richiesta": "Entro 12 giorni lavorativi",
+  "condizioni_pagamento": "Bonifico anticipato 50%",
+  "note_generali": "Conferma costo connettori richiesta.",
+  "righe": [
+    {
+      "codice_articolo": "ART-017",
+      "descrizione": "Connettore circolare M12 4 pin",
+      "quantita": 50,
+      "unita_misura": "pz",
+      "prezzo_unitario": 28.5,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-013",
+      "descrizione": "Morsettiera 12 poli 16mm²",
+      "quantita": 30,
+      "unita_misura": "pz",
+      "prezzo_unitario": 3.2,
+      "nota": null
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Saldature & Montaggi S.n.c.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "g.bonan@saldaturemontaggi.it",
+  "cliente_telefono": null,
+  "riferimento_ordine": null,
+  "data_ordine": "martedì 19 maggio 2026 14:22",
+  "data_consegna_richiesta": "entro venerdì",
+  "condizioni_pagamento": null,
+  "note_generali": "Oggetto: Ordine urgente - kit per cantiere Vicenza\nci serve roba per un cantiere che parte lunedì:\nMi serve TUTTO entro venerdì, possibilmente consegna in cantiere a Vicenza (vi mando indirizzo separatamente).\nSe la saldatrice non l'avete ditemelo subito che ne cerco un'altra.\nGrazie",
+  "righe": [
+    {
+      "codice_articolo": null,
+      "descrizione": "una saldatrice inverter, quella MMA da 200A che ci avete dato l'ultima volta",
+      "quantita": 1,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": "Se la saldatrice non l'avete ditemelo subito che ne cerco un'altra."
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "una cinquantina di dischi taglio inox 125 (quelli sottili da 1mm)",
+      "quantita": 50,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "due chiavi dinamometriche da 1/2\", range 20-200 Nm",
+      "quantita": 2,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "un trapano a colonna da banco, anche piccolino va bene, 500W",
+      "quantita": 1,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    },
+    {
+      "codice_articolo": null,
+      "descrizione": "5 confezioni di guanti nitrile taglia L",
+      "quantita": 5,
+      "unita_misura": null,
+      "prezzo_unitario": null,
+      "nota": null
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Acme Manufacturing S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": "Via Bologna 100",
+  "cliente_citta": "Casalecchio di Reno",
+  "cliente_provincia": "BO",
+  "cliente_email": null,
+  "cliente_telefono": null,
+  "riferimento_ordine": "ODA-SM/2026-0067",
+  "data_ordine": "19/05/2026",
+  "data_consegna_richiesta": "Entro 12 giorni",
+  "condizioni_pagamento": "Bonifico 60 gg DF",
+  "note_generali": "Imballi standard.",
+  "righe": [
+    {
+      "codice_articolo": "ART-035",
+      "descrizione": "Saldatrice inverter MMA 200A",
+      "quantita": 1,
+      "unita_misura": "pz",
+      "prezzo_unitario": 240.0,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-032",
+      "descrizione": "Disco da taglio inox 125x1.0mm",
+      "quantita": 200,
+      "unita_misura": "pz",
+      "prezzo_unitario": 2.1,
+      "nota": null
+    }
+  ]
+}

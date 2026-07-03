@@ -1,0 +1,42 @@
+{
+  "tipo_documento": "ordine",
+  "motivo_non_determinabile": null,
+  "cliente_ragione_sociale": "Officina Meccanica Romagnola S.r.l.",
+  "cliente_partita_iva": null,
+  "cliente_indirizzo": null,
+  "cliente_citta": null,
+  "cliente_provincia": null,
+  "cliente_email": "info@omromagnola.it",
+  "cliente_telefono": "0543 9012345",
+  "riferimento_ordine": "OMR-ORD/2026-0188",
+  "data_ordine": "21/05/2026",
+  "data_consegna_richiesta": "Entro 28/05/2026",
+  "condizioni_pagamento": "Bonifico 30 gg DF.",
+  "note_generali": "Sede di consegna: Via Ravegnana 112, 47122 Forlì (FC).\nNOTA: Verificare disponibilità del set chiavi prima della spedizione.",
+  "righe": [
+    {
+      "codice_articolo": "ART-030",
+      "descrizione": "Set chiavi a bussola 1/2\" 10-32mm (21pz)",
+      "quantita": 3,
+      "unita_misura": null,
+      "prezzo_unitario": 89,
+      "nota": "NOTA: Verificare disponibilità del set chiavi prima della spedizione."
+    },
+    {
+      "codice_articolo": "ART-099",
+      "descrizione": "Avvitatore a impulsi 18V brushless",
+      "quantita": 2,
+      "unita_misura": null,
+      "prezzo_unitario": 245,
+      "nota": null
+    },
+    {
+      "codice_articolo": "ART-040",
+      "descrizione": "Olio lubrificante universale 5L",
+      "quantita": 20,
+      "unita_misura": null,
+      "prezzo_unitario": 28.5,
+      "nota": null
+    }
+  ]
+}
