@@ -77,11 +77,8 @@
   }
   .slide{
     flex:0 0 100vw; width:100vw; height:100%;
-    overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch;
-    scrollbar-width:thin; scrollbar-color:var(--line) transparent;
+    overflow:hidden;
   }
-  .slide::-webkit-scrollbar{ width:6px; }
-  .slide::-webkit-scrollbar-thumb{ background:var(--line); border-radius:99px; }
 
   .slide-arrow{
     position:fixed; top:50%; transform:translateY(-50%); z-index:60;
@@ -1229,6 +1226,36 @@
 
   resetPipeline();
 
+  // fit-to-viewport: scala ogni slide (senza deformarla) così il contenuto
+  // sta sempre interamente nell'altezza disponibile, senza scroll verticale
+  function fitSlide(slideEl){
+    const section = slideEl.querySelector('section');
+    if(!section) return;
+    section.style.transform = 'none';
+    const availableH = slideEl.clientHeight;
+    const contentH = section.offsetHeight;
+    if(contentH > availableH){
+      const scale = availableH / contentH;
+      section.style.transformOrigin = 'top center';
+      section.style.transform = 'scale(' + scale + ')';
+    }
+  }
+
+  function fitAllSlides(){
+    document.querySelectorAll('.slide').forEach(fitSlide);
+    if(typeof buildStarLines === 'function'){ buildStarLines(); }
+  }
+
+  let fitResizeTimer = null;
+  window.addEventListener('resize', ()=>{
+    clearTimeout(fitResizeTimer);
+    fitResizeTimer = setTimeout(fitAllSlides, 120);
+  });
+
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(fitAllSlides);
+  }
+
   // slide navigation system
   const slidesTrack = document.getElementById('slidesTrack');
   const slideEls = Array.from(document.querySelectorAll('.slide'));
@@ -1334,6 +1361,7 @@
   }, { passive:true });
 
   // initial paint: same lifecycle as goTo — reset then play, so the hero settles in too
+  fitAllSlides();
   updateUI();
   resetSlideAnimations(0);
   requestAnimationFrame(()=>{
