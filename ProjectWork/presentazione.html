@@ -811,7 +811,7 @@
 
     <div class="strata silver">
       <div class="strata-tag"><span class="coin">P</span>PERCHÉ NON TOOL-CALLING</div>
-      <p class="strata-title">Bug confermato di Foundry: l'agente che chiama tool OpenAPI verso Assets tramite <span class="mono" style="color:var(--ink)">agent_reference</span> + <span class="mono" style="color:var(--ink)">responses.create</span> restituisce sistematicamente <span class="mono" style="color:var(--ink)">400 invalid_payload</span> — riproducibile via API, assente nel Playground. Soluzione: tutta la validazione (matching cliente/articolo, controlli di coerenza) spostata in Python, con chiamate REST dirette ad Assets.</p>
+      <p class="strata-title">L'agente aveva difficoltà a effettuare in modo affidabile le chiamate a tool OpenAPI verso Assets tramite <span class="mono" style="color:var(--ink)">agent_reference</span> + <span class="mono" style="color:var(--ink)">responses.create</span> — il function-calling risultava inconsistente. Soluzione: tutta la validazione (matching cliente/articolo, controlli di coerenza) spostata in Python, con chiamate REST dirette ad Assets — un agente più leggero, a singolo turno, anche più economico in termini di utilizzo del modello.</p>
     </div>
   </div>
   </section>
