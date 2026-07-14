@@ -21,7 +21,7 @@ Formare figure professionali nel mondo dell'AI e dei dati attraverso una base te
 
 | Cartella | Contenuto |
 |---|---|
-| [`Esercitazioni Python`](./Esercitazioni%20Python) | Esercitazioni pratiche in Python (classi, biblioteca, rubrica, veicoli, text processing, Tris, Pandas/Scikit-Learn/PyTorch, esame di Python e integrazione con Microsoft Foundry) |
+| [`Esercitazioni Python`](./Esercitazioni%20Python) | Esercitazioni pratiche in Python (classi, biblioteca, rubrica, veicoli, text processing, Tris, Pandas/Scikit-Learn/PyTorch, esame di Python, integrazione con Microsoft Foundry, domotica vocale con LLM e lettura documenti da webcam) |
 | [`Python Essentials 2`](./Python%20Essentials%202) | Modulo avanzato Python Essentials 2 (moduli, stringhe, eccezioni, OOP, ecc.) |
 | [`Machine Learning`](./Machine%20Learning) | Traduzione in italiano del corso scikit-learn (INRIA MOOC): concetti di ML, validazione, pipeline e preprocessing |
 | [`AZ-900`](./AZ-900) | Appunti e materiali per la certificazione Microsoft Azure Fundamentals |
@@ -29,7 +29,7 @@ Formare figure professionali nel mondo dell'AI e dei dati attraverso una base te
 | [`AI-900`](./AI-900) | Appunti e materiali per la certificazione Microsoft Azure AI Fundamentals |
 | [`AI-103`](./AI-103) | Appunti sullo sviluppo di app e agenti di intelligenza artificiale generativa con Microsoft Foundry in Azure (modulo avanzato, propedeutico ad AI-102) |
 | [`SQL DP-900`](./SQL%20DP-900) | Esercizi SQL svolti per il modulo DP-900 |
-| [`ProjectWork`](./ProjectWork) | Progetto finale (PDF-Analyzer): agente Azure AI che estrae, valida e conferma ordini a partire da PDF (email e ordini clienti), con matching automatico su clienti e articoli tramite backend REST |
+| [`ProjectWork`](./ProjectWork) | Progetto finale (PDF-Analyzer): pipeline su Microsoft Fabric che usa un agente Azure AI per estrarre, classificare (ordini/quotazioni/richieste di informazioni) e validare documenti PDF, con matching automatico su clienti e articoli tramite backend REST |
 
 ### 🐍 Dettaglio Esercitazioni Python
 
@@ -43,13 +43,15 @@ All'interno della cartella [`Esercitazioni Python`](./Esercitazioni%20Python) si
 - **[`Pandas e Scikit-Learn e PyTorch`](./Esercitazioni%20Python/Pandas%20e%20Scikit-Learn%20e%20PyTorch)**: Analisi dati con Pandas (Titanic), classificazione su Iris con scikit-learn e PyTorch, classificazione di cifre scritte a mano (MNIST) e di immagini di fiori con una CNN, oltre a una guida teorica agli iperparametri dei principali algoritmi scikit-learn.
 - **[`Foundry`](./Esercitazioni%20Python/Foundry)**: Esercizi di integrazione con i servizi AI di Azure tramite Microsoft Foundry — test dei servizi Cognitive Services (Text Analytics, Content Safety, Document Intelligence, Translator, Azure OpenAI), un traduttore multilingua, un chatbot "sarto" basato su LLM e due moduli di moderazione contenuti con Azure Content Safety (testo e immagini).
 - **[`Tris`](./Esercitazioni%20Python/Tris)**: Gioco del Tris implementato con approccio rules-based e algoritmo intelligente Minimax.
+- **[`Esercizio Domotica LLM`](./Esercitazioni%20Python/Esercizio%20Domotica%20LLM)**: Sistema di domotica vocale controllabile tramite comandi vocali o testuali, basato su Azure OpenAI (function calling) e Azure Cognitive Services Speech per riconoscimento e sintesi vocale (porte, cancello/garage, luci, finestre, climatizzatore, scenari ambiente).
+- **[`Webcam Document`](./Esercitazioni%20Python/Webcam%20Document)**: Script per la lettura e l'analisi OCR di documenti inquadrati da webcam tramite Azure AI.
 
 ### 🚀 Progetto finale — PDF-Analyzer
 
-La cartella [`ProjectWork`](./ProjectWork) contiene il progetto finale del percorso: uno script che usa un agente Azure AI per estrarre automaticamente il contenuto di ordini ed email in PDF, validare cliente e articoli tramite un backend REST e, opzionalmente, creare la conferma d'ordine.
+La cartella [`ProjectWork`](./ProjectWork) contiene il progetto finale del percorso: analisi automatica di ordini, quotazioni e richieste di informazioni ricevute via email in PDF, tramite un agente Azure AI che estrae il contenuto e lo valida confrontandolo con clienti e articoli reali su un backend REST. L'implementazione finale è interamente su **Microsoft Fabric** (cartella [`Fabric Notebooks`](./ProjectWork/Fabric%20Notebooks)): notebook PySpark che portano i documenti attraverso gli strati bronze → silver → gold, alimentando una dashboard Power BI (`DashBoard-ProjectWork.pbix`). Gli script `.py` nella radice della cartella sono il prototipo locale su cui è stata sviluppata e testata la logica prima di tradurla in Fabric.
 
 📊 **Presentazione**: [loreb1998.github.io/Talent-AI-and-Data-Engineer-Academy/ProjectWork/presentazione.html](https://loreb1998.github.io/Talent-AI-and-Data-Engineer-Academy/ProjectWork/presentazione.html)
 
-## 🚧 Work in progress
+## ✅ Stato del percorso
 
-La repository viene aggiornata settimanalmente con i materiali delle lezioni.
+Il percorso formativo si è concluso il **9 luglio 2026**. La repository raccoglie il materiale completo delle lezioni, delle esercitazioni e il progetto finale svolti durante il corso.
