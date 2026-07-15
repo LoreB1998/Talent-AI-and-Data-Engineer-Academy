@@ -996,11 +996,48 @@
   </section>
   </div>
 
+  <!-- SLIDE 2C: VALIDAZIONE -->
+  <div class="slide">
+  <section id="validazione">
+  <div class="sec-head reveal">
+    <span class="sec-num">03 — VALIDAZIONE</span>
+    <h2>Perché no all'agente, sì a Python</h2>
+    <p class="desc">L'agente estrae, il codice verifica. Ogni riga viene ricontrollata contro il Gestionale prima di contare come dato affidabile.</p>
+  </div>
+
+  <div class="strata-wrap reveal">
+    <div class="strata bronze">
+      <div class="strata-tag"><span class="coin"><svg class="icon"><use href="#i-unplug"/></svg></span>PERCHÉ IN PYTHON, NON NELL'AGENTE</div>
+      <p class="strata-title">L'agente lavora a singolo turno e senza tool-calling: legge il PDF e restituisce solo JSON. Ogni controllo contro l'anagrafica clienti/articoli avviene dopo, in PySpark, con chiamate REST dirette al backend del Gestionale — un solo punto di verità, più facile da tracciare e correggere di una logica nascosta nel prompt.</p>
+    </div>
+
+    <div class="field-grid" style="margin-top:18px;">
+      <div class="field">
+        <div class="field-head"><svg class="icon"><use href="#i-file-search"/></svg><div class="fname">Match cliente</div></div>
+        <div class="fdesc">Partita IVA esatta, poi ragione sociale normalizzata (uguale o contenuta). Nessun match → <span class="mono">id_cliente_match: null</span>, intervento umano.</div>
+      </div>
+      <div class="field">
+        <div class="field-head"><svg class="icon"><use href="#i-layers"/></svg><div class="fname">Match articolo</div></div>
+        <div class="fdesc">Codice esatto (confidenza alta) o descrizione per sovrapposizione di parole (confidenza alta/media/bassa). Nessuna corrispondenza → riga segnalata.</div>
+      </div>
+      <div class="field">
+        <div class="field-head"><svg class="icon"><use href="#i-package-x"/></svg><div class="fname">Coerenza quantità e prezzo</div></div>
+        <div class="fdesc">Quantità ≤ 0 o &gt; 100.000, scostamento prezzo dichiarato/listino oltre l'1%, unità di misura diversa dal catalogo → tutte segnalate come anomalia.</div>
+      </div>
+      <div class="field">
+        <div class="field-head"><svg class="icon"><use href="#i-inbox"/></svg><div class="fname">Esito</div></div>
+        <div class="fdesc"><span class="mono">intervento_umano_necessario</span> più l'elenco dei motivi: il documento resta in Bronze/Silver, marcato per la Coda di Revisione, mai scartato.</div>
+      </div>
+    </div>
+  </div>
+  </section>
+  </div>
+
   <!-- SLIDE 3: BRONZE & SILVER -->
   <div class="slide">
   <section id="strata">
   <div class="sec-head reveal">
-    <span class="sec-num">03 — LAKEHOUSE</span>
+    <span class="sec-num">04 — LAKEHOUSE</span>
     <h2>Bronze &amp; Silver</h2>
     <p class="desc">Ingestione grezza e pulizia tipizzata su Microsoft Fabric Lakehouse. Ogni livello del Medallion raffina il dato di un grado.</p>
   </div>
@@ -1033,9 +1070,9 @@
         <div class="table-card"><div class="src">da PDF</div><div class="tname">silver_quotazioni<br>silver_quotazioni_righe</div></div>
         <div class="table-card"><div class="src">da PDF</div><div class="tname">silver_richieste_info</div></div>
         <div class="table-card"><div class="src">da PDF</div><div class="tname">silver_documenti_non_gestiti</div></div>
-        <div class="table-card"><div class="src">da Assets</div><div class="tname">silver_clienti_assets</div></div>
-        <div class="table-card"><div class="src">da Assets</div><div class="tname">silver_articoli_assets</div></div>
-        <div class="table-card"><div class="src">da Assets</div><div class="tname">silver_ordini_storici<br>silver_ordini_righe_storiche</div></div>
+        <div class="table-card"><div class="src">da Gestionale</div><div class="tname">silver_clienti_assets</div></div>
+        <div class="table-card"><div class="src">da Gestionale</div><div class="tname">silver_articoli_assets</div></div>
+        <div class="table-card"><div class="src">da Gestionale</div><div class="tname">silver_ordini_storici<br>silver_ordini_righe_storiche</div></div>
       </div>
     </div>
   </div>
@@ -1046,7 +1083,7 @@
   <div class="slide">
   <section id="gold">
   <div class="sec-head reveal">
-    <span class="sec-num">04 — GOLD</span>
+    <span class="sec-num">05 — GOLD</span>
     <h2>Gold — Star Schema</h2>
     <p class="desc">Modello dimensionale analitico su Microsoft Fabric Lakehouse. Tre dimensioni convergono su un'unica tabella dei fatti.</p>
   </div>
@@ -1088,7 +1125,7 @@
 
     <div class="star-note">
       <span class="star">★</span>
-      <span>valore_riga = quantità × prezzo_listino — calcolato sempre da dim_articolo (Assets), mai preso dal documento originale. Il prezzo_dichiarato resta nel layer raw (<span class="mono" style="color:var(--ink)">fact_ordini_pdf</span>) come colonna informativa per analizzare gli scostamenti dal listino.</span>
+      <span>valore_riga = quantità × prezzo_listino — calcolato sempre da dim_articolo (Gestionale), mai preso dal documento originale. Il prezzo_dichiarato resta nel layer raw (<span class="mono" style="color:var(--ink)">fact_ordini_pdf</span>) come colonna informativa per analizzare gli scostamenti dal listino.</span>
     </div>
     <div class="star-note" style="margin-top:10px;">
       <span class="star">✓</span>
@@ -1102,7 +1139,7 @@
   <div class="slide">
   <section id="revisione">
   <div class="sec-head reveal">
-    <span class="sec-num">05 — QUALITÀ DATI</span>
+    <span class="sec-num">06 — QUALITÀ DATI</span>
     <h2>Coda di Revisione</h2>
     <p class="desc">Non tutto ciò che un agente AI estrae può entrare automaticamente nei numeri di fatturato. Ciò che non supera la validazione viene isolato, non scartato.</p>
   </div>
@@ -1181,7 +1218,7 @@
   <div class="slide">
   <section id="pbi-overview">
   <div class="sec-head reveal">
-    <span class="sec-num">06 — POWER BI</span>
+    <span class="sec-num">07 — POWER BI</span>
     <h2>Report Power BI</h2>
     <p class="desc">Fatturato totale, numero ordini, andamento temporale, top clienti e articoli — modello semantico DirectLake su OneLake.</p>
   </div>
@@ -1208,7 +1245,7 @@
   <div class="slide">
   <section id="sfide">
   <div class="sec-head reveal">
-    <span class="sec-num">07 — LIMITI</span>
+    <span class="sec-num">08 — LIMITI</span>
     <h2>Limiti della soluzione</h2>
     <p class="desc">Un prototipo funzionante, non un sistema in produzione. Ogni scelta qui sotto è un compromesso consapevole, con l'alternativa architetturale che richiederebbe.</p>
   </div>
@@ -1220,7 +1257,7 @@
     </div>
     <div class="field">
       <div class="field-head"><svg class="icon"><use href="#i-unplug"/></svg><div class="fname">Validazione centralizzata in Python</div></div>
-      <div class="fdesc">Nessun tool-calling REST diretto verso Assets: ogni scrittura passa da un unico script Python come collo di bottiglia. → Alternativa: più agenti con accesso diretto ad Assets, orchestrati tra loro.</div>
+      <div class="fdesc">Nessun tool-calling REST diretto verso il Gestionale: ogni scrittura passa da un unico script Python come collo di bottiglia. → Alternativa: più agenti con accesso diretto al Gestionale, orchestrati tra loro.</div>
     </div>
     <div class="field">
       <div class="field-head"><svg class="icon"><use href="#i-key-round"/></svg><div class="fname">Autenticazione a token statico</div></div>
@@ -1238,7 +1275,7 @@
   <div class="slide">
   <section id="built">
   <div class="sec-head reveal">
-    <span class="sec-num">08 — RISULTATO</span>
+    <span class="sec-num">09 — RISULTATO</span>
     <h2>Cosa è stato costruito</h2>
     <p class="desc">Quattro percorsi di classificazione, un'architettura a tre notebook, un modello analitico unificato.</p>
   </div>
@@ -1250,7 +1287,7 @@
     </div>
     <div class="built-card quot">
       <h4>Quotazione</h4>
-      <p>Bozza di offerta con prezzi calcolati automaticamente dal listino ufficiale Assets → fact_quotazioni_pdf in Gold, separata dal fatturato.</p>
+      <p>Bozza di offerta con prezzi calcolati automaticamente dal listino ufficiale del Gestionale → fact_quotazioni_pdf in Gold, separata dal fatturato.</p>
     </div>
     <div class="built-card info">
       <h4>Richiesta info</h4>
@@ -1266,7 +1303,7 @@
     <div class="stat">
       <div class="num">4</div>
       <div class="label">Notebook PySpark</div>
-      <div class="micro">01 estrai · 02 Bronze→Silver · 02b storico Assets · 03 Silver→Gold</div>
+      <div class="micro">01 estrai · 02 Bronze→Silver · 02b storico Gestionale · 03 Silver→Gold</div>
     </div>
     <div class="stat">
       <div class="num">B·S·G</div>
