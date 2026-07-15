@@ -54,4 +54,4 @@ La cartella [`ProjectWork`](./ProjectWork) contiene il progetto finale del perco
 
 ## ✅ Stato del percorso
 
-Il percorso formativo si è concluso il **9 luglio 2026**. La repository raccoglie il materiale completo delle lezioni, delle esercitazioni e il progetto finale svolti durante il corso.
+Il percorso formativo si è concluso il **9 luglio 2026**. La repository raccoglie il materiale completo delle lezioni, delle esercitazioni e il progetto finale svolti durante il corso. 
